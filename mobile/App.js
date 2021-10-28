@@ -8,7 +8,7 @@ import Appointment from './comps/Calendar'
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hello.js to start working on your app!</Text>
+      <Text>Hello.js to start working on your app!!!</Text>
       <Appointment/>
       <StatusBar style="auto" />
     </View>
