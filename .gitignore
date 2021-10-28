@@ -43,3 +43,6 @@ npm-debug.*
 */.vercel
 
 *node_modules*
+
+#DS_Store File
+*/.DS_Store
