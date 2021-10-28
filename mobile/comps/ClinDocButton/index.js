@@ -7,10 +7,12 @@ const Maincont = styled.View`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    background-color:#FFFFFF;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5)
     width: 284px;
     height: 80px;
-    border: 1px solid black;
-    border-radius: 25px;
+
+    border-radius: 15px;
 `
 const Avatarcont = styled.View`
     display:flex;
@@ -22,15 +24,25 @@ const Avatarcont = styled.View`
     background-color: #c4c4c4;
 `
 
+const Avatarimg = styled.Image`
+    width: 100%;
+    height:100%;
+    resize-mode:cover;
+    border-radius: 50px;
+`
+
 
   
 
 
 const ClinDocButton=({
-    bodyText = "Default Text"
+    bodyText = "Default Text",
+    imageSource = "https://placekitten.com/100/100"
 })=>{
     return <Maincont>
-        <Avatarcont/>
+        <Avatarcont>
+        <Avatarimg source={{uri:imageSource}}/>
+        </Avatarcont>
         <Text style={styles.titleText}>{bodyText}</Text>
     </Maincont>
     
