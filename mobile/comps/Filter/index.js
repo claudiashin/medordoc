@@ -1,6 +1,7 @@
 import React from "react";
 import {View,Text, SafeAreaView, StyleSheet, TextInput} from "react-native" ;
 import styled from "styled-components/native";
+import { Ionicons } from '@expo/vector-icons';
 
 //main container
 const Maincont = styled.View`
@@ -13,6 +14,13 @@ const Maincont = styled.View`
     background-color: #ffffff;
     border: 1px solid #E9D7CB;
     border-radius: 5px;
+`
+
+//filter icon container
+const Iconcont = styled.View`
+    position: absolute;
+    bottom: 375px;
+    left: 250px;
 `
 
 //headers
@@ -51,7 +59,9 @@ const Filter=({
     optionText = "Deafult"
 })=>{
     return <Maincont>
-        
+        <Iconcont>
+            <Ionicons name="filter" size={40} color="black" />
+        </Iconcont>
         <Headercont>
             <Filterheader>{headerText="Language Prefrences"}</Filterheader>
         </Headercont>
