@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import {AiOutlineMail} from '@react-icons/all-files/ai/AiOutlineMail'//card
+import {AiOutlineMail} from '@react-icons/all-files/ai/AiOutlineMail'
+
+//card
 const Maincont = styled.div`
     display:flex;
     flex-direction: column;

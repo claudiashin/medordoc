@@ -7,7 +7,7 @@ import PatientCard from '../comps/PatientCard'
 export default function Home() {
   return (
     <div className={styles.container}>
-      <PatientCard/>
+      
     </div>
   )
 }
