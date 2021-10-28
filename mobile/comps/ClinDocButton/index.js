@@ -16,16 +16,22 @@ const Avatarcont = styled.View`
     display:flex;
     height: 55px;
     width: 55px;
+    right:50px;
+    margin-right: 10px;
     border-radius: 50px;
     background-color: #c4c4c4;
 `
 
 
-const ClinDocButton=({
+  
 
+
+const ClinDocButton=({
+    bodyText = "Default Text"
 })=>{
     return <Maincont>
-        <Avatarcont></Avatarcont>
+        <Avatarcont/>
+        <Text>{bodyText}</Text>
     </Maincont>
     
 }
