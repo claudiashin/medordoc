@@ -3,12 +3,12 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import SearchBar from './comps/SearchBar';
-
+import ClinDocButton from './comps/ClinDocButton';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <SearchBar/>
+      
       <Text>Hello.js to start working on your app!!!</Text>
       <StatusBar style="auto" />
     </View>
