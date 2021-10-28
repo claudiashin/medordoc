@@ -2,20 +2,38 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { useFonts } from 'expo-font';
+
+
+
+import BookingForm from './comps/BookingForm';
+
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Hello.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+  let [fontsLoaded] = useFonts({
+    'Nunito-Regular': require('./assets/Nunito-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <Text>Hello</Text>;
+  } else {
+      return (
+        <View style={styles.container}>
+          <BookingForm />
+      
+        </View>
+      );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 200,
+    fontFamily: 'Nunito-Regular',
+    // flex: 1,
+    // backgroundColor: '#fff',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+
   },
 });
