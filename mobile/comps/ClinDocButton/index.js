@@ -1,5 +1,5 @@
 import React from "react";
-import {View,Text} from "react-native" ;
+import {View,Text, StyleSheet} from "react-native" ;
 import styled from "styled-components/native";
 
 const Maincont = styled.View`
@@ -31,9 +31,16 @@ const ClinDocButton=({
 })=>{
     return <Maincont>
         <Avatarcont/>
-        <Text>{bodyText}</Text>
+        <Text style={styles.titleText}>{bodyText}</Text>
     </Maincont>
     
 }
+
+const styles = StyleSheet.create({
+    titleText: {
+      fontSize: 20,
+    },
+    
+  });
 
 export default ClinDocButton;
