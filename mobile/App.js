@@ -2,28 +2,19 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { useFonts } from 'expo-font';
-
-
 
 import BookingForm from './comps/BookingForm';
+import DropDownFilter from './comps/DropDownFilter';
 
 export default function App() {
 
-  let [fontsLoaded] = useFonts({
-    'Nunito-Regular': require('./assets/Nunito-Regular.ttf'),
-  });
-
-  if (!fontsLoaded) {
-    return <Text>Hello</Text>;
-  } else {
       return (
         <View style={styles.container}>
           <BookingForm />
-      
+          <DropDownFilter />
         </View>
       );
-  }
+  
 }
 
 const styles = StyleSheet.create({
