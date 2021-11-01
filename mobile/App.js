@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import InfoCard from './comps/InfoCard';
+import NavBar from './comps/NavBar';
 
 // export {default} from './storybook';
 export default function App() {
@@ -10,7 +11,8 @@ export default function App() {
     <View style={styles.container}>
       <Text>Hello.js to start working on your app!</Text>
       <StatusBar style="auto" />
-      <InfoCard/>
+      {/* <InfoCard/> */}
+      <NavBar style={styles.footer}/>
     </View>
   );
 }
@@ -22,4 +24,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  footer: {
+  }
 });
