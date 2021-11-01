@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 import InfoCard from '../comps/InfoCard';
+import PopupCard from '../comps/PopupCard';
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
           <code className={styles.code}>pages/index.js</code>
         </p>
 
+        <PopupCard/>
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
