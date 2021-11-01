@@ -32,13 +32,20 @@ const ListCont = styled.div`
     overflow: scroll;
     height: 250px;
     margin-top: 80px;
+    
 `
 const ListItem = styled.div`
     display: flex;
     justify-content: space-between;
-    align-itmes: center;
+    align-items: center;
     font-size: 24px;
-    width: 450px;
+    width: 500px;
+    height: 60px;
+    margin: 10px;
+    padding: 0 20px 0 20px;
+    background-color: #F7F2EE;
+    border-radius: 5px;
+
 `
 const List = styled.p`
     

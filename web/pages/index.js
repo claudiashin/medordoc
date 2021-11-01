@@ -7,6 +7,7 @@ import DoctorCard from '../comps/DoctorCard';
 import LoginForm from '../comps/LoginForm';
 import SigninForm from '../comps/SigninForm';
 import PatientList from '../comps/PatientList';
+import LiveWaitTime from '../comps/LiveWaitTime';
 
 
 const Cont = styled.div`
@@ -21,6 +22,7 @@ export default function Home() {
       <LoginForm />
       <SigninForm />
       <PatientList />
+      <LiveWaitTime />
     </Cont>
   )
 }
