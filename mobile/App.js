@@ -1,6 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Appointment from './comps/Calendar'
+import QR from './comps/QrCode'
+import Map from './comps/Map'
+import MenuCard from './comps/MenuCard'
 
 
 // import BookingForm from './comps/BookingForm';

@@ -11,6 +11,26 @@
   },
   "dependencies": {
 <<<<<<< HEAD
+    "expo": "^43.0.0",
+    "expo-status-bar": "~1.1.0",
+    "lottie-react-native": "4.0.3",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-native": "0.64.2",
+    "react-native-calendars": "^1.1268.0",
+    "react-native-maps": "0.28.0",
+    "react-native-qrcode-svg": "^6.1.1",
+    "react-native-svg": "12.1.1",
+    "react-native-web": "0.17.1",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@storybook/addon-actions": "^5.3.21",
+    "@storybook/addon-knobs": "^5.3.21",
+    "@storybook/addon-links": "^5.3.21",
+=======
+<<<<<<< HEAD
     "@ant-design/icons": "^4.7.0",
 =======
     "@emotion/react": "^11.5.0",
@@ -41,6 +61,7 @@
     "@storybook/addon-actions": "^5.3",
     "@storybook/addon-knobs": "^5.3",
     "@storybook/addon-links": "^5.3",
+>>>>>>> 3f4cd3d02e812de123b3a9bddfc3b4b16b6b62fa
     "@storybook/addon-ondevice-actions": "^5.3.23",
     "@storybook/addon-ondevice-knobs": "^5.3.25",
     "@storybook/react-native": "^5.3.25",
