@@ -9,10 +9,6 @@ import NavBar from './comps/NavBar';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hello.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-      {/* <InfoCard/> */}
-      <NavBar style={styles.footer}/>
     </View>
   );
 }
@@ -24,6 +20,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  footer: {
-  }
 });
