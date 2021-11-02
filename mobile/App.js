@@ -3,15 +3,17 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 
-import BookingForm from './comps/BookingForm';
-import DropDownFilter from './comps/DropDownFilter';
+// import BookingForm from './comps/BookingForm';
+// import DropDownFilter from './comps/DropDownFilter';
+// import LoginForm from './comps/LoginForm';
 
 export default function App() {
 
       return (
         <View style={styles.container}>
-          <BookingForm />
-          <DropDownFilter />
+          {/* <BookingForm />
+          <DropDownFilter /> */}
+          {/* <LoginForm></LoginForm> */}
         </View>
       );
   

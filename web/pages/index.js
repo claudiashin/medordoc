@@ -14,15 +14,49 @@ const Cont = styled.div`
   display: flex;
   flex-wrap: wrap;
 `
+const BodyCont = styled.div`
+  display: flex;
+`
+const Header = styled.div`
+  display: inline-block;
+  position: relative;
+  width: 100vw;
+  padding-bottom: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+`
+const Wave = styled.svg`
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+`
+const WavePath = styled.path`
+  stroke: none; 
+  fill: #B9D1E1;
+  width: 100%;
+`
 
 export default function Home() {
   return (
     <Cont>
-      <DoctorCard />
+      {/* <DoctorCard />
       <LoginForm />
       <SigninForm />
       <PatientList />
       <LiveWaitTime />
+      <BodyCont>
+        <Header>
+          <Wave
+            viewBox="0 0 500 500" 
+            preserveAspectRatio="xMinYMin meet"
+          >
+            <WavePath 
+              d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"
+            />
+          </Wave>
+        </Header>
+      </BodyCont> */}
     </Cont>
   )
 }
