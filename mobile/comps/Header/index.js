@@ -6,13 +6,14 @@ const HeaderCont = styled.View`
     flex-direction: row;
     justify-content: flex-start;
     margin: 5px;
+    width: 300px;
+    height: 80px;
 `;
 
 const Title = styled.Text`
-    font-family: Nunito;
     color: #5C5C5C;
-    font-weight: ${props=>props.fweight};
-    font-size: ${props=>props.fsize}px;
+    font-weight: ${props=>props.fWeight};
+    font-size: ${props=>props.fSize}px;
     line-height: 33px;
 `;
 
@@ -20,15 +21,12 @@ const Header = ({
     title = "Create an Account",
     subtitle = "Personal Information",
     fontWeight = "bold",
-    fontSize = "24",
+    fontSize = 24,
 }) => {
 
     return <HeaderCont>
-        <Title 
-        fweight ={fontWeight} 
-        fsize = {fontSize}>
-            {title}</Title> 
-        <Header>{subtitle}</Header>
+       <Title fWeight={fontWeight} fSize={fontSize}>
+           {title}</Title>
     </HeaderCont>
 }
 
