@@ -10,17 +10,21 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "expo": "~42.0.1",
-    "expo-status-bar": "~1.0.4",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "expo": "^43.0.0",
+    "expo-status-bar": "~1.1.0",
+    "lottie-react-native": "4.0.3",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-native": "0.64.2",
     "react-native-calendars": "^1.1268.0",
-    "react-native-web": "~0.13.12",
+    "react-native-maps": "0.28.0",
+    "react-native-qrcode-svg": "^6.1.1",
+    "react-native-svg": "12.1.1",
+    "react-native-web": "0.17.1",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
+    "@babel/core": "^7.12.9",
     "@storybook/addon-actions": "^5.3.21",
     "@storybook/addon-knobs": "^5.3.21",
     "@storybook/addon-links": "^5.3.21",
