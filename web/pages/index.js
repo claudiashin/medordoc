@@ -37,6 +37,10 @@ const WavePath = styled.path`
   width: 100%;
 `
 
+import InfoCard from '../comps/InfoCard';
+import PopupCard from '../comps/PopupCard';
+import NavBar from '../comps/NavBar';
+
 export default function Home() {
   return (
     <Cont>
