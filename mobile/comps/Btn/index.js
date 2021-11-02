@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
 
@@ -23,7 +23,7 @@ const Btn = ({
 
 }) => {
     return (
-        <TouchableHighlight onPress={() => {}}>
+        <TouchableOpacity onPress={() => {}}>
             <View style={{
                 backgroundColor: bgColor,
                 width: width,
@@ -39,7 +39,7 @@ const Btn = ({
                     }}>{title}</Text>
                 </TextCont>
             </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
     )
 }
 

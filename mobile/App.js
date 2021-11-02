@@ -9,14 +9,14 @@ import MenuCard from './comps/MenuCard'
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <Header
+      <Header
         title="Sign-In" 
         // title="Here’s Your Account Info"
         fontSize="26"     
       />
       <Btn
         title = "Start"
-      /> */}
+      />
       <MenuCard />
       <MenuCard 
       title = "Find a Doctor"/>

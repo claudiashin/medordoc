@@ -1,5 +1,5 @@
-import React, {useRef} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useRef } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import LottieView from 'lottie-react-native';
 
@@ -27,40 +27,41 @@ const MenuCard = ({
     var anim = useRef();
     return (
         <MenuCont>
-            <View style={{
-                justifyContent: "flex-end",
-                alignItems: "center",
-                width: width,
-                height: height,
-                margin: 12,
-                borderStyle: border,
-                borderColor: borderColor,
-                borderWidth: bWidth,
-                borderRadius: borderRad,
-            }}>
+            <TouchableOpacity onPress={() => {}}>
+                <View style={{
+                    justifyContent: "flex-end",
+                    alignItems: "center",
+                    width: width,
+                    height: height,
+                    margin: 12,
+                    borderStyle: border,
+                    borderColor: borderColor,
+                    borderWidth: bWidth,
+                    borderRadius: borderRad,
+                }}>
+                    <LottieView
+                        ref={(ref) => {
+                            anim = ref;
+                        }}
+                        style={{
+                            width: 200,
+                            height: 200,
+                            marginBottom: 10,
+                            backgroundColor: "#fff",
+                        }}
+                        source={require('../../assets/lottie_location.json')}
+                        autoPlay={true}
+                    />
 
-                <LottieView
-                    ref={(ref) => {
-                        anim = ref;
-                    }}
-                    style={{
-                        width: 200,
-                        height: 200,
-                        marginBottom: 10,
-                        backgroundColor: "#fff",
-                    }}
-                    source={require('../../assets/lottie_location.json')}
-                    autoPlay={true}
-                />
-
-                <Text style={{
-                    textAlign: "center",
-                    fontSize: fSize,
-                    color: color,
-                    fontWeight: fWeight,
-                    margin: 15,
-                }}>{title}</Text>
-            </View>
+                    <Text style={{
+                        textAlign: "center",
+                        fontSize: fSize,
+                        color: color,
+                        fontWeight: fWeight,
+                        margin: 15,
+                    }}>{title}</Text>
+                </View>
+            </TouchableOpacity>
         </MenuCont>
     )
 }
