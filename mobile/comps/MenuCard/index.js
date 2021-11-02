@@ -3,6 +3,18 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import LottieView from 'lottie-react-native';
 
+const lottieFiles =[
+    require('../../assets/lottie_clipboard.json'),
+    require('../../assets/lottie_desktop.json'),    
+    require('../../assets/lottie_doctor.json'),
+    require('../../assets/lottie_doctorwoman.json'),
+    require('../../assets/lottie_laptop.json'),
+    require('../../assets/lottie_location.json'),
+    require('../../assets/lottie_login.json'),
+    require('../../assets/lottie_receptionist.json'),
+    require('../../assets/lottie_user.json'),
+    require('../../assets/lottie_welcome.json'),
+]
 
 const MenuCont = styled.View`
     flex-direction: column;
@@ -21,7 +33,7 @@ const MenuCard = ({
     borderColor = "#5C5C5C",
     bWidth = 1.5,
     borderRad = 5,
-    lottieFile = "",
+    ind = 0,
 
 }) => {
     var anim = useRef();
@@ -49,7 +61,7 @@ const MenuCard = ({
                             marginBottom: 10,
                             backgroundColor: "#fff",
                         }}
-                        source={require('../../assets/lottie_location.json')}
+                        source={lottieFiles[ind]}
                         autoPlay={true}
                     />
 
