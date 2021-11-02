@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import React from 'react'
 
 
 const HeroAvatarCont = styled.div`
@@ -7,7 +8,7 @@ const HeroAvatarCont = styled.div`
 `
 const HeroImage = styled.img`
   width:100%;
-  heigh:100%;
+  height:100%;
   object-fit:cover;
   border-radius:50%;
 `
@@ -25,7 +26,7 @@ const HeroAvatar = ({
 })=>{
   return<HeroAvatarCont herowidth={herowidth}>
     <HeroImage src={imagesrc}/>
-    <PlusImage pluswidth={pluswidth} src={require('../../stories/assets/plus.png')}/>
+    <PlusImage pluswidth={pluswidth} src={require('../../public/plus.png')}/>
   </HeroAvatarCont>
 }
 
