@@ -6,18 +6,6 @@ import QR from './comps/QrCode'
 import Map from './comps/Map'
 import MenuCard from './comps/MenuCard'
 
-<<<<<<< HEAD
-// export {default} from './storybook'; 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      {/* <Text>Hello.js to start working on your app!!!</Text> */}
-      <Appointment/>
-      <QR/> 
-      {/* <Map/>  */}
-    </View>
-  );
-=======
 
 // import BookingForm from './comps/BookingForm';
 // import DropDownFilter from './comps/DropDownFilter';
@@ -33,7 +21,6 @@ export default function App() {
         </View>
       );
   
->>>>>>> 3f4cd3d02e812de123b3a9bddfc3b4b16b6b62fa
 }
 
 const styles = StyleSheet.create({
