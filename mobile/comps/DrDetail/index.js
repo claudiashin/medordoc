@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-const MainCont = styled.div`
+const MainCont = styled.View`
     width: 500px;
     height: 650px;
     border: 1px solid #505050; 
@@ -19,36 +19,35 @@ const MainCont = styled.div`
     align-items: center;
     margin: 10px;
 `
-const AvatarCont = styled.div`
+const AvatarCont = styled.View`
     width: 130px;
     height: 130px;
     margin-top: 20px;
 `
-const AvatarImg = styled.img`
+const AvatarImg = styled.Image`
     width: 100%;
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
 `
-const FormCont = styled.div`
+const FormCont = styled.View`
     display: flex;
     flex-direction: column;
 
 `
 
-const Form = styled.fieldset`
-    margin: 15px;
-    border: 1px solid black;
-`
-const FormTitle = styled.legend`
-    margin: 0;
-    font-size: 12px;
-`
-const FormInput = styled.input`
+// const Form = styled.fieldset`
+//     margin: 15px;
+//     border: 1px solid black;
+// `
+// const FormTitle = styled.legend`
+//     margin: 0;
+//     font-size: 12px;
+// `
+const FormInput = styled.TextInput`
     border: none;
     outline: none;
-    type: text;
-    width: 280px;
+    width: 270px;
     height: 13px;
 `
 const SelectCont = styled.select`
