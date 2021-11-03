@@ -2,6 +2,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import styled from 'styled-components';
+import { useTheme } from '@mui/material/styles';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+
 
 import DoctorCard from '../comps/DoctorCard';
 import LoginForm from '../comps/LoginForm';
@@ -44,6 +49,7 @@ import NavBar from '../comps/NavBar';
 export default function Home() {
   return (
     <Cont>
+
       {/* <DoctorCard />
       <LoginForm />
       <SigninForm />
