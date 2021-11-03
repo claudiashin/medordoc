@@ -8,6 +8,7 @@ import LoginForm from '../comps/LoginForm';
 import SigninForm from '../comps/SigninForm';
 import PatientList from '../comps/PatientList';
 import LiveWaitTime from '../comps/LiveWaitTime';
+import Footer from '../comps/Footer';
 
 
 const Cont = styled.div`
@@ -44,6 +45,7 @@ import NavBar from '../comps/NavBar';
 export default function Home() {
   return (
     <Cont>
+      <Footer></Footer>
       {/* <DoctorCard />
       <LoginForm />
       <SigninForm />
