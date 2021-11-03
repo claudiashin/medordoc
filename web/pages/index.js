@@ -46,6 +46,7 @@ const WavePath = styled.path`
 import InfoCard from '../comps/InfoCard';
 import PopupCard from '../comps/PopupCard';
 import NavBar from '../comps/NavBar';
+import { Menu } from '@mui/material';
 
 export default function Home() {
   return (
