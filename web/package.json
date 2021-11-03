@@ -11,11 +11,18 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
     "@react-icons/all-files": "^4.1.0",
+>>>>>>> 0b5d9f9dfeb7f47f095d90884e97c4564b59883a
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
     "@mui/icons-material": "^5.0.5",
     "@mui/material": "^5.0.6",
+<<<<<<< HEAD
+    "@react-icons/all-files": "^4.1.0",
+=======
+>>>>>>> 0b5d9f9dfeb7f47f095d90884e97c4564b59883a
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
