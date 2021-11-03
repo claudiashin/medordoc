@@ -19,6 +19,7 @@ const NavCont = styled.div`
     width:100%;
     position:absolute;
     top:0;
+    left: 30px;
     
 `
 
@@ -47,22 +48,88 @@ export default function Home() {
         
         <ContPatientCard>
             <ContPatientCardInd>
-                <PatientCard/>
+                <PatientCard 
+                name = "Name:"
+                gender = "Gender:"
+                age = "Age:"
+                medicalconcerns = "Medical Concerns:"
+                phone = "Phone:"
+                nameText = " Katie Lee"
+                genderText = " Female"
+                ageText = " 24"
+                medicalText = " Seasonal"
+                phoneText = " 604-123-1234"
+                />
             </ContPatientCardInd>
             <ContPatientCardInd>
-                <PatientCard/>
+                <PatientCard
+                name = "Name:"
+                gender = "Gender:"
+                age = "Age:"
+                medicalconcerns = "Medical Concerns:"
+                phone = "Phone:"                
+                nameText = " Donald Petterson"
+                genderText = " Male"
+                ageText = " 18"
+                medicalText = " Heart"
+                phoneText = " 604-123-1354"
+                />
             </ContPatientCardInd>
             <ContPatientCardInd>
-                <PatientCard/>
+                <PatientCard
+                name = "Name:"
+                gender = "Gender:"
+                age = "Age:"
+                medicalconcerns = "Medical Concerns:"
+                phone = "Phone:"                
+                nameText = " Jenny Truong"
+                genderText = " Female"
+                ageText = " 44"
+                medicalText = " Seasonal allergies"
+                phoneText = " 604-123-1355"                
+                />
             </ContPatientCardInd>
             <ContPatientCardInd>
-                <PatientCard/>
+                <PatientCard
+                name = "Name:"
+                gender = "Gender:"
+                age = "Age:"
+                medicalconcerns = "Medical Concerns:"
+                phone = "Phone:"                
+                nameText = " Ben Bach"
+                genderText = " Male"
+                ageText = " 32"
+                medicalText = " Body aches"
+                phoneText = " 604-123-2222"                  
+                />
             </ContPatientCardInd>
             <ContPatientCardInd>
-                <PatientCard/>
+                <PatientCard
+                name = "Name:"
+                gender = "Gender:"
+                age = "Age:"
+                medicalconcerns = "Medical Concerns:"
+                phone = "Phone:"                
+                nameText = " Liam Parker"
+                genderText = " Male"
+                ageText = " 28"
+                medicalText = " Diabetes"
+                phoneText = " 604-123-2222"                 
+                />
             </ContPatientCardInd>
             <ContPatientCardInd>
-                <PatientCard/>
+                <PatientCard
+                name = "Name:"
+                gender = "Gender:"
+                age = "Age:"
+                medicalconcerns = "Medical Concerns:"
+                phone = "Phone:"                
+                nameText = " Julie Chu"
+                genderText = " Female"
+                ageText = " 32"
+                medicalText = " Seasonal allergies"
+                phoneText = " 604-555-2222"                 
+                />
             </ContPatientCardInd>
 
         </ContPatientCard>

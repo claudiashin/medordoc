@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import {AiOutlineMail} from '@react-icons/all-files/ai/AiOutlineMail'
+import {AiOutlineMail} from '@react-icons/all-files/ai/AiOutlineMail';
+//import {IoCloseSharp} from '@react-icons/all-files/io/IoCloseSharp';
 
 //card
 const Maincont = styled.div`
@@ -63,20 +64,35 @@ const Emailtext = styled.text`
 
 
 const PatientCard=({
-    bodyText = "Default Text",
+    //info
+    nameText = "Default Text",
+    genderText = "Default Text",
+    ageText = "Default Text",
+    medicalText = "Default Text",
+    phoneText = "Default Text",
     emailText = "Email",
-    imagesource="https://placekitten.com/100/100"
+    imagesource="https://placekitten.com/100/100",
+    //subject
+    name = "default text",
+    gender = "default text",
+    age = "default text",
+    experience = "default text",
+    location = "default text",
+    language = "default text",
+    medicalconcerns = "default text",
+    phone = "default text"
 })=>{
     return <Maincont>
+        
         <Avatarcont>
             <Avatarimg src={imagesource}/>
         </Avatarcont>
         <Textcont>
-            <Text>Name:{bodyText=" Katie Lee"}</Text>
-            <Text>Gender:{bodyText=" Female"}</Text>
-            <Text>Age:{bodyText=" 24"}</Text>
-            <Text>Medical Concerns:{bodyText=" Seasonal allergies"}</Text>
-            <Text>Phone:{bodyText=" 604-123-1234"}</Text>
+            <Text>{name}{nameText}</Text>
+            <Text>{gender}{genderText}</Text>
+            <Text>{age}{ageText}</Text>
+            <Text>{medicalconcerns}{medicalText}</Text>
+            <Text>{phone}{phoneText}</Text>
         </Textcont>
         <Emailbut>
             <AiOutlineMail size={30}/>
