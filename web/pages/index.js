@@ -36,6 +36,7 @@ const WavePath = styled.path`
   fill: #B9D1E1;
   width: 100%;
 `
+const Background = styled.img``;
 
 import InfoCard from '../comps/InfoCard';
 import PopupCard from '../comps/PopupCard';
@@ -44,6 +45,7 @@ import NavBar from '../comps/NavBar';
 export default function Home() {
   return (
     <Cont>
+      <Background src={'/background4.svg'}/>
       {/* <DoctorCard />
       <LoginForm />
       <SigninForm />

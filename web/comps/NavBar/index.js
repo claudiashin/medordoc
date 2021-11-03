@@ -4,8 +4,10 @@ const NavBarCont = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: space-between;
-  width: 100%;
-  margin-top: 20px;
+  // width: 100%;
+  margin-top: 30px;
+  margin-left: 30px;
+  // position: relative;
 `;
 
 const LogoCont = styled.div`
@@ -13,23 +15,27 @@ const LogoCont = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 120px;
-  height: 100px;
+  width: 110px;
+  height: 90px;
 `;
 
 const NavCont = styled.div`
   display: flex;
-  width: 70%;
-  font-size: 24px;
-  margin-left: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #636363;
+  // justify-content: flex-start;
+  // left: 200px;
+  // position: absolute;
 `;
 
 const NavButton = styled.p`
   display: flex;
+  margin-right: 80px;
 `;
 
 const ProfileCont = styled.div`
-margin-right: 50px;
+margin-right: 40px;
   // position: relative;
   // display: inline-block;
 
@@ -43,7 +49,6 @@ margin-right: 50px;
 const ProfileIcon = styled.img`
   width: 50px;
   height: 50px;
-  // background-color: #FAD;
   font-size: 16px;
   border: none;
 cursor: pointer;
@@ -60,6 +65,8 @@ const DropdownCont = styled.div`
   width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  top: 90px;
+  right: 35px;
 
   &:hover {
     background-color: #DDD;
@@ -82,7 +89,6 @@ const NavBar = ({
 
 }) => {
   return <NavBarCont>
-
     <LogoCont>
       <Logo /*onClick={{}}*/ src={'/MedOrDoc.png'} />
     </LogoCont>

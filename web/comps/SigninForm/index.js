@@ -12,7 +12,6 @@ import Select from '@mui/material/Select';
 const MainCont = styled.div`
     display: flex;
     flex-direction: column;
- 
 `
 const Form = styled.fieldset`
     margin: 15px;
@@ -28,6 +27,7 @@ const FormInput = styled.input`
     border: none;
     outline: none;
     padding-bottom: 5px;
+    background-color: #F7F2EE;
 `
 const FormTimeForm = styled.fieldset`
     margin: 15px;
@@ -54,7 +54,6 @@ const Button = styled.button`
     color: white;
     border: none;
     border-radius: 10px;
-
 ` 
 const LangMain = styled.form`
 
@@ -198,19 +197,9 @@ const SigninForm = ({
             </FormTimeForm>
         </TimeFormCont>
         <Title>Additional Information</Title>
-        {/* <Form>
-            <FormTitle>Available Languages</FormTitle>
-            <LangCont>
-                <LangOpt value="English">English</LangOpt>
-                <LangOpt value="French">French</LangOpt>
-                <LangOpt value="Chinese">Chinese</LangOpt>
-                <LangOpt value="Korean">Korean</LangOpt>
-                <LangOpt value="Japanese">Japanese</LangOpt>
-                <LangOpt value="Punjabi">Punjabi</LangOpt>
-            </LangCont>
-        </Form> */}
+
         <div>
-        <FormControl sx={{ m: 1, width: 400, height: 35, border: 'none', marginBottom: 5, color: 'black' }}>
+        <FormControl sx={{ m: 1, width: 400, height: 50, border: '1px solid black', marginBottom: 5, color: 'black' }}>
             <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
             <Select
             labelId="demo-multiple-name-label"
