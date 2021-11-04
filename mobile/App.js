@@ -10,16 +10,13 @@ import MenuCard from './comps/MenuCard'
 import { Provider as PaperProvider } from 'react-native-paper';
 
 
-<<<<<<< HEAD
 // import BookingForm from './comps/BookingForm';
 // import DropDownFilter from './comps/DropDownFilter';
 // import LoginForm from './comps/LoginForm';
-=======
 
 import LoginForm from './comps/LoginForm';
 import SigninForm from './comps/SigninForm';
 import BookingForm from './comps/BookingForm';
->>>>>>> c5ead3ceb634f833c04e938d65754fa09d2cb4ec
 
 export default function App() {
       return <>
