@@ -24,9 +24,11 @@ const NavCont = styled.div`
   font-size: 20px;
   font-weight: 600;
   color: #636363;
-  // justify-content: flex-start;
-  // left: 200px;
-  // position: absolute;
+  justify-content: flex-start;
+  left: 200px;
+  position: absolute;
+  flex-wrap: wrap;
+  margin-left: 20px;
 `;
 
 const NavButton = styled.p`

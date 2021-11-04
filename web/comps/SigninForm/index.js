@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
@@ -45,8 +45,13 @@ const Title = styled.p`
     font-size: 16px;
 `
 
+const ButtonCont = styled.div`
+    display: flex;
+    justify-content: flex-end;
+`;
+
 const Button = styled.button`
-    margin: 5px;
+    margin: 15px;
     width: 80px;
     height: 30px;
     padding: 5px;
@@ -54,7 +59,7 @@ const Button = styled.button`
     color: white;
     border: none;
     border-radius: 10px;
-` 
+`
 const LangMain = styled.form`
 
 `
@@ -72,34 +77,34 @@ const LangOpt = styled.option`
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
+    PaperProps: {
+        style: {
+            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+            width: 250,
+        },
     },
-  },
 };
 
 const names = [
-  'English',
-  'French',
-  'Chinese',
-  'Japanese',
-  'Korean',
-  'punjabi',
-  'Hindi',
-  'Spanish',
-  'Russian',
+    'English',
+    'French',
+    'Chinese',
+    'Japanese',
+    'Korean',
+    'punjabi',
+    'Hindi',
+    'Spanish',
+    'Russian',
 
 ];
 
 function getStyles(name, personName, theme) {
-  return {
-    fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
+    return {
+        fontWeight:
+            personName.indexOf(name) === -1
+                ? theme.typography.fontWeightRegular
+                : theme.typography.fontWeightMedium,
+    };
 }
 
 const SigninForm = ({
@@ -114,43 +119,45 @@ const SigninForm = ({
 
     const handleChange = (event) => {
         const {
-        target: { value },
+            target: { value },
         } = event;
         setPersonName(
-        // On autofill we get a the stringified value.
-        typeof value === 'string' ? value.split(',') : value,
+            // On autofill we get a the stringified value.
+            typeof value === 'string' ? value.split(',') : value,
         );
     };
 
-    if(changeForm === true ) {
+    if (changeForm === true) {
         return <MainCont>
             <Title>Log in Information</Title>
             <Form>
                 <FormTitle>Username</FormTitle>
-                <FormInput 
+                <FormInput
                     type="email"
                     placeholder="Username"
                 />
             </Form>
             <Form>
                 <FormTitle>Password</FormTitle>
-                <FormInput 
+                <FormInput
                     type="password"
                     placeholder="Password"
                 />
             </Form>
             <Form>
                 <FormTitle>Email Address</FormTitle>
-                <FormInput 
+                <FormInput
                     type="email"
                     placeholder="Email Address"
                 />
             </Form>
-            <Button
-                onClick={()=>{
-                    setChangeForm(false);
-                }}
-            >Next</Button>
+            {/* <ButtonCont>
+                <Button
+                    onClick={() => {
+                        setChangeForm(false);
+                    }}
+                >Next</Button>
+            </ButtonCont> */}
         </MainCont>
     }
 
@@ -158,23 +165,23 @@ const SigninForm = ({
         <Title>Clinic Information</Title>
         <Form>
             <FormTitle>Clinic Name</FormTitle>
-            <FormInput 
+            <FormInput
                 type="text"
                 placeholder="Clinic Name"
             />
         </Form>
         <Form>
             <FormTitle>Clinic Address</FormTitle>
-            <FormInput 
+            <FormInput
                 type="text"
                 placeholder="Clinic Address"
             />
         </Form>
         <Form
-            style={{marginBottom:50}}
+            style={{ marginBottom: 50 }}
         >
             <FormTitle>Contact Number</FormTitle>
-            <FormInput 
+            <FormInput
                 type="tel"
                 placeholder="Contact Number"
             />
@@ -183,14 +190,14 @@ const SigninForm = ({
         <TimeFormCont>
             <FormTimeForm>
                 <FormTitle>Open</FormTitle>
-                <FormInput 
+                <FormInput
                     type="time"
                     placeholder="Open Hour"
                 />
             </FormTimeForm>
             <FormTimeForm>
                 <FormTitle>Close</FormTitle>
-                <FormInput 
+                <FormInput
                     type="time"
                     placeholder="Open Hour"
                 />
@@ -199,36 +206,37 @@ const SigninForm = ({
         <Title>Additional Information</Title>
 
         <div>
-        <FormControl sx={{ m: 1, width: 400, height: 50, border: '1px solid black', marginBottom: 5, color: 'black' }}>
-            <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
-            <Select
-            labelId="demo-multiple-name-label"
-            id="demo-multiple-name"
-            multiple
-            value={personName}
-            onChange={handleChange}
-            input={<OutlinedInput label="Name" />}
-            MenuProps={MenuProps}
-            style={{height: 50, borderBlockStyle: 'black'}}
-            >
-            {names.map((name) => (
-                <MenuItem
-                key={name}
-                value={name}
-                style={getStyles(name, personName, theme)}
+            <FormControl sx={{ m: 1, width: 400, height: 50, border: '1px solid black', marginBottom: 5, color: 'black' }}>
+                <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
+                <Select
+                    labelId="demo-multiple-name-label"
+                    id="demo-multiple-name"
+                    multiple
+                    value={personName}
+                    onChange={handleChange}
+                    input={<OutlinedInput label="Name" />}
+                    MenuProps={MenuProps}
+                    style={{ height: 50, borderBlockStyle: 'black' }}
                 >
-                {name}
-                </MenuItem>
-            ))}
-            </Select>
-        </FormControl>
-    </div>
-     
-        <Button
-            onClick={()=>{
-                router.push("www.bcit.ca")
-            }}
-        >Next</Button>
+                    {names.map((name) => (
+                        <MenuItem
+                            key={name}
+                            value={name}
+                            style={getStyles(name, personName, theme)}
+                        >
+                            {name}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+        </div>
+        {/* <ButtonCont>
+            <Button
+                onClick={() => {
+                    router.push("www.bcit.ca")
+                }}
+            >Next</Button>
+        </ButtonCont> */}
     </MainCont>
 }
 
