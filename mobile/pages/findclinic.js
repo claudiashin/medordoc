@@ -8,10 +8,11 @@ import ClinDocButton from '../comps/ClinDocButton'
 
 
   const Cont = styled.View`
-  width:"400px";
+  width:100%;
   height:400px;
   display:flex;
-  ceneter
+  align-content:center;
+  justify-content:center;
   `
 
 
