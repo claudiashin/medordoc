@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { StyleSheet, Text, View } from 'react-native';
+import Appointment from './comps/Calendar'
+import QR from './comps/QrCode'
+import Map from './comps/Map'
+import MenuCard from './comps/MenuCard'
+//import SearchBar from './comps/SearchBar'
+//import Filter from './comps/Filter'
 import { Provider as PaperProvider } from 'react-native-paper';
 
 
@@ -24,11 +30,13 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 100,
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    
+    fontFamily: 'Nunito-Regular',
+    marginTop: 200,
+     //flex: 1,
+     //backgroundColor: '#fff',
+     //alignItems: 'center',
+     //justifyContent: 'center',
 
   },
 });
