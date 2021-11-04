@@ -85,7 +85,7 @@ export default function Home() {
                 nameText = " Jenny Truong"
                 genderText = " Female"
                 ageText = " 44"
-                medicalText = " Seasonal allergies"
+                medicalText = " Allergies"
                 phoneText = " 604-123-1355"                
                 />
             </ContPatientCardInd>
@@ -127,7 +127,7 @@ export default function Home() {
                 nameText = " Julie Chu"
                 genderText = " Female"
                 ageText = " 32"
-                medicalText = " Seasonal allergies"
+                medicalText = " Allergies"
                 phoneText = " 604-555-2222"                 
                 />
             </ContPatientCardInd>

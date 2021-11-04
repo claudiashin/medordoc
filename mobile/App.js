@@ -6,6 +6,8 @@ import QR from './comps/QrCode'
 import Map from './comps/Map'
 import MenuCard from './comps/MenuCard'
 
+//import Filter from './comps/Filter'
+
 
 // import BookingForm from './comps/BookingForm';
 // import DropDownFilter from './comps/DropDownFilter';
@@ -15,6 +17,7 @@ export default function App() {
 
       return (
         <View style={styles.container}>
+          
           {/* <BookingForm />
           <DropDownFilter /> */}
           {/* <LoginForm></LoginForm> */}
@@ -25,12 +28,13 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 200,
+    
     fontFamily: 'Nunito-Regular',
-    // flex: 1,
-    // backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    marginTop: 200,
+     //flex: 1,
+     //backgroundColor: '#fff',
+     //alignItems: 'center',
+     //justifyContent: 'center',
 
   },
 });
