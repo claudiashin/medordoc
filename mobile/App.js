@@ -5,7 +5,7 @@ import Appointment from './comps/Calendar'
 import QR from './comps/QrCode'
 import Map from './comps/Map'
 import MenuCard from './comps/MenuCard'
-
+//import SearchBar from './comps/SearchBar'
 //import Filter from './comps/Filter'
 
 
