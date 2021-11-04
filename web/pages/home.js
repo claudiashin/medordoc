@@ -15,9 +15,11 @@ const HomeCont = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 5px;
 `;
 
+const Wave = styled.img`
+  
+`;
 
 export default function home() {
   return (
