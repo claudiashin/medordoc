@@ -46,7 +46,7 @@ z-index: -1;
 const Searchiconcont = styled.View`
     display: flex;
     position: relative;
-    top: 8px;
+    top: 7px;
     left: 250px;
     z-index: 2;
     
