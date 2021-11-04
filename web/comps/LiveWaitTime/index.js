@@ -7,18 +7,19 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 const MainCont = styled.div`
-    width: 550px;
-    height: 270px;
+    width: 400px;
+    height: 240px;
     border: 1px solid black;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #F7F2EE;
+    position: relative;
 `
 const TitleCont = styled.div`
-    width: 350px;
-    height: 60px;
+    width: 300px;
+    height: 50px;
     background-color: #E9D7CB;
     border-radius: 5px;
     display: flex;
@@ -28,10 +29,22 @@ const TitleCont = styled.div`
 
 `
 const Title = styled.p`
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 22px;
+    font-weight: 600;
 `
-
+const UpdateButton = styled.button`
+    background-color: #226BAF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+`
 
 const LiveWaitTime = () => {
 
@@ -62,6 +75,7 @@ const LiveWaitTime = () => {
                 </Select>
             </FormControl>
         </div>
+        <UpdateButton onClick={()=>{}}>Update</UpdateButton>
        
     </MainCont>
 }
