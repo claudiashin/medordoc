@@ -43,29 +43,8 @@ const Wave = styled.img`
 
 export default function Home() {
   
-  return (
-    <Cont>
-      <Header>
-        
-      </Header>
-      <Footer></Footer>
-      {/* <DoctorCard />
-      <LoginForm />
-      <SigninForm />
-      <PatientList />
-      <LiveWaitTime />
-      <BodyCont>
-        <Header>
-          <Wave
-            viewBox="0 0 500 500" 
-            preserveAspectRatio="xMinYMin meet"
-          >
-            <WavePath 
-              d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"
-            />
-          </Wave>
-        </Header>
-      </BodyCont> */}
+  return <Cont>
+
+  
     </Cont>
-  )
 }

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { TextInput, Button } from 'react-native-paper';
 import { StyleSheet} from 'react-native';
-import { en,registerTranslation } from 'react-native-paper-dates'
-  registerTranslation('en', en)
-import { DatePickerModal } from 'react-native-paper-dates';
+// import { en,registerTranslation } from 'react-native-paper-dates'
+//   registerTranslation('en', en)
+// import { DatePickerModal } from 'react-native-paper-dates';
 
 
 const styles = StyleSheet.create({
@@ -22,7 +22,7 @@ const BookingForm = () => {
   const [concerns, setConcerns] = React.useState('');
   const [others, setOthers] = React.useState('');
 
-  const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined)
+//   const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined)
 
   return <>
     <TextInput
@@ -92,18 +92,18 @@ const BookingForm = () => {
 
         onChangeText={others => setOthers(others)}
     ></TextInput>
-     <DatePickerInput
+     {/* <DatePickerInput
         locale="en"
         label="Birthdate"
         value={inputDate}
         onChange={(d) => setInputDate(d)}
         inputMode="start"
-        // mode="outlined" (see react-native-paper docs)
-        // other react native TextInput props
-      />
+        /> */}
 
     </>
 };
+// mode="outlined" (see react-native-paper docs)
+// other react native TextInput props
 
 export default BookingForm;
 

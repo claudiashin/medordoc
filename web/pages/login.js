@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Lottie from "react-lottie";
 import React from "react";
 
-import Header from '../comps/Header';
+import HeaderTitle from '../comps/HeaderTitleTitle';
 import LoginForm from '../comps/LoginForm';
 import HeroLottie from '../comps/HeroLottie';
 import NavBar from '../comps/NavBar'
