@@ -2,12 +2,18 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import styled from 'styled-components';
+import { useTheme } from '@mui/material/styles';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+
 
 import DoctorCard from '../comps/DoctorCard';
 import LoginForm from '../comps/LoginForm';
 import SigninForm from '../comps/SigninForm';
 import PatientList from '../comps/PatientList';
 import LiveWaitTime from '../comps/LiveWaitTime';
+import Footer from '../comps/Footer';
 
 
 
@@ -42,6 +48,24 @@ export default function Home() {
       <Header>
         
       </Header>
+      <Footer></Footer>
+      {/* <DoctorCard />
+      <LoginForm />
+      <SigninForm />
+      <PatientList />
+      <LiveWaitTime />
+      <BodyCont>
+        <Header>
+          <Wave
+            viewBox="0 0 500 500" 
+            preserveAspectRatio="xMinYMin meet"
+          >
+            <WavePath 
+              d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"
+            />
+          </Wave>
+        </Header>
+      </BodyCont> */}
     </Cont>
   )
 }
