@@ -4,6 +4,7 @@ import React from 'react'
 
 const HeroAvatarCont = styled.div`
   width:${props=>props.herowidth};
+  height:${props=>props.heroheight};
   position:relative;
 `
 const HeroImage = styled.img`
@@ -21,10 +22,11 @@ const PlusImage = styled.img`
 `
 const HeroAvatar = ({
   herowidth="200px",
+  heroheight="200px",
   pluswidth="30px",
   imagesrc="https://placekitten.com/1000/1000"
 })=>{
-  return<HeroAvatarCont herowidth={herowidth}>
+  return<HeroAvatarCont herowidth={herowidth} heroheight={heroheight}>
     <HeroImage src={imagesrc}/>
     <PlusImage pluswidth={pluswidth} src={require('../../public/plus.png')}/>
   </HeroAvatarCont>
