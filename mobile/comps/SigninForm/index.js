@@ -1,246 +1,113 @@
-// import React, {useState} from 'react';
-// import styled from 'styled-components';
-// import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import styled from 'styled-components/native';
+import { Provider as PaperProvider, TextInput } from 'react-native-paper';
+import { Datepicker, Layout, Text, ApplicationProvider, Input } from '@ui-kitten/components';
+import { StyleSheet, Button, View } from "react-native";
 
-// import { useTheme } from '@mui/material/styles';
-// import OutlinedInput from '@mui/material/OutlinedInput';
-// import InputLabel from '@mui/material/InputLabel';
-// import MenuItem from '@mui/material/MenuItem';
-// import FormControl from '@mui/material/FormControl';
-// import Select from '@mui/material/Select';
 
-// const MainCont = styled.div`
-//     display: flex;
-//     flex-direction: column;
- 
-// `
-// const Form = styled.fieldset`
-//     margin: 15px;
-//     border: 1px solid black;
-//     width: 400px;
-//     height: 55px;
-// `
-// const FormTitle = styled.legend`
-//     margin: 5px;
-//     font-size: 14px;
-// `
-// const FormInput = styled.input`
-//     border: none;
-//     outline: none;
-//     padding-bottom: 5px;
-// `
-// const FormTimeForm = styled.fieldset`
-//     margin: 15px;
-//     border: 1px solid black;
-//     width: 185px;
-//     height: 55px;
+const MainCont = styled.View`
+    flex-direction: column;
+`
+const Title = styled.Text`
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+`
+const styles = StyleSheet.create({
+    container: {
+      minHeight: 376,
+    },
+  });
 
-// `
-// const TimeFormCont = styled.div`
-//     display: flex;
-//     margin-bottom: 30px;
-// `
-// const Title = styled.p`
-//     margin-left: 15px;
-//     font-size: 16px;
-// `
+const SigninForm = ({
+    
+}) => {
 
-// const Button = styled.button`
-//     margin: 5px;
-//     width: 80px;
-//     height: 30px;
-//     padding: 5px;
-//     background-color: #90AABB;
-//     color: white;
-//     border: none;
-//     border-radius: 10px;
+    const [fname, setFname] = React.useState('');
+    const [lname, setLname] = React.useState('');
+    const [text, setText] = React.useState('');
+    const [pass, setPass] = React.useState('');
 
-// ` 
-// const LangMain = styled.form`
+    const [changeForm, setChangeForm] = useState(true);
 
-// `
-// const LangCont = styled.select`
-//     width: 400px;
-//     height: 18px;
-//     margin-top: -15px;
- 
-//     border:none;
-// `
-// const LangOpt = styled.option`
+    const [date, setDate] = React.useState(new Date());
+    const [value, setValue] = React.useState('');
 
-// `
+    if (changeForm === true) {
+        return <MainCont>
+            <PaperProvider>
+                <Title>Personal Information</Title>
+                <TextInput
+                    style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
+                    label="First Name"
+                    returnKeyType="next"
+                    value={fname}
+                    mode='outlined'
+                    onChangeText={fname => setFname(fname)}
+                />
+                <TextInput
+                    style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
+                    label="Last Name"
+                    returnKeyType="next"
+                    value={lname}
+                    mode='outlined'
+                    onChangeText={lname => setLname(lname)}
+                />
+                <TextInput
+                    style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
+                    label="Email"
+                    returnKeyType="next"
+                    autoCapitalize="none"
+                    autoCompleteType="email"
+                    textContentType="emailAddress"
+                    keyboardType='email-address'
+                    value={text}
+                    mode='outlined'
+                    onChangeText={text => setText(text)}
+                />
+                <TextInput
+                    style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
+                    label="Password"
+                    returnKeyType="done"
+                    secureTextEntry
+                    value={pass}
+                    mode='outlined'
+                    onChangeText={pass => setPass(pass)}
+                />
+            <Button title="next"
+                onPress={()=>{setChangeForm(false);}}
+            ></Button>
+            </PaperProvider>
+        </MainCont>
+    }
 
-// const ITEM_HEIGHT = 48;
-// const ITEM_PADDING_TOP = 8;
-// const MenuProps = {
-//   PaperProps: {
-//     style: {
-//       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-//       width: 250,
-//     },
-//   },
-// };
+    return <MainCont>
+            {/* <ApplicationProvider> */}
+            <Title>Additional Information</Title>
+            {/* <Layout style={styles.container} level='1'>
+                <Text category='h6'>
+                    Selected date: {date.toLocaleDateString()}
+                </Text>
+                <Datepicker
+                    date={date}
+                    onSelect={nextDate => setDate(nextDate)}
+                />
+                <Input
+                placeholder='Place your Text'
+                value={value}
+                onChangeText={nextValue => setValue(nextValue)}
+                />
+            </Layout>
+            */}
+           
+        <Button title="next"
+            onPress={()=>{setChangeForm(true);}}
+        ></Button>
+        {/* </ApplicationProvider> */}
+    </MainCont>
 
-// const names = [
-//   'English',
-//   'French',
-//   'Chinese',
-//   'Japanese',
-//   'Korean',
-//   'punjabi',
-//   'Hindi',
-//   'Spanish',
-//   'Russian',
+};
 
-// ];
 
-// function getStyles(name, personName, theme) {
-//   return {
-//     fontWeight:
-//       personName.indexOf(name) === -1
-//         ? theme.typography.fontWeightRegular
-//         : theme.typography.fontWeightMedium,
-//   };
-// }
-
-// const SigninForm = ({
-
-// }) => {
-
-//     const [changeForm, setChangeForm] = useState(true);
-//     const router = useRouter();
-
-//     const theme = useTheme();
-//     const [personName, setPersonName] = React.useState([]);
-
-//     const handleChange = (event) => {
-//         const {
-//         target: { value },
-//         } = event;
-//         setPersonName(
-//         // On autofill we get a the stringified value.
-//         typeof value === 'string' ? value.split(',') : value,
-//         );
-//     };
-
-//     if(changeForm === true ) {
-//         return <MainCont>
-//             <Title>Log in Information</Title>
-//             <Form>
-//                 <FormTitle>Username</FormTitle>
-//                 <FormInput 
-//                     type="email"
-//                     placeholder="Username"
-//                 />
-//             </Form>
-//             <Form>
-//                 <FormTitle>Password</FormTitle>
-//                 <FormInput 
-//                     type="password"
-//                     placeholder="Password"
-//                 />
-//             </Form>
-//             <Form>
-//                 <FormTitle>Email Address</FormTitle>
-//                 <FormInput 
-//                     type="email"
-//                     placeholder="Email Address"
-//                 />
-//             </Form>
-//             <Button
-//                 onClick={()=>{
-//                     setChangeForm(false);
-//                 }}
-//             >Next</Button>
-//         </MainCont>
-//     }
-
-//     return <MainCont>
-//         <Title>Clinic Information</Title>
-//         <Form>
-//             <FormTitle>Clinic Name</FormTitle>
-//             <FormInput 
-//                 type="text"
-//                 placeholder="Clinic Name"
-//             />
-//         </Form>
-//         <Form>
-//             <FormTitle>Clinic Address</FormTitle>
-//             <FormInput 
-//                 type="text"
-//                 placeholder="Clinic Address"
-//             />
-//         </Form>
-//         <Form
-//             style={{marginBottom:50}}
-//         >
-//             <FormTitle>Contact Number</FormTitle>
-//             <FormInput 
-//                 type="tel"
-//                 placeholder="Contact Number"
-//             />
-//         </Form>
-//         <Title>Operation Hour</Title>
-//         <TimeFormCont>
-//             <FormTimeForm>
-//                 <FormTitle>Open</FormTitle>
-//                 <FormInput 
-//                     type="time"
-//                     placeholder="Open Hour"
-//                 />
-//             </FormTimeForm>
-//             <FormTimeForm>
-//                 <FormTitle>Close</FormTitle>
-//                 <FormInput 
-//                     type="time"
-//                     placeholder="Open Hour"
-//                 />
-//             </FormTimeForm>
-//         </TimeFormCont>
-//         <Title>Additional Information</Title>
-//         {/* <Form>
-//             <FormTitle>Available Languages</FormTitle>
-//             <LangCont>
-//                 <LangOpt value="English">English</LangOpt>
-//                 <LangOpt value="French">French</LangOpt>
-//                 <LangOpt value="Chinese">Chinese</LangOpt>
-//                 <LangOpt value="Korean">Korean</LangOpt>
-//                 <LangOpt value="Japanese">Japanese</LangOpt>
-//                 <LangOpt value="Punjabi">Punjabi</LangOpt>
-//             </LangCont>
-//         </Form> */}
-//         <div>
-//         <FormControl sx={{ m: 1, width: 400, height: 35, border: 'none', marginBottom: 5, color: 'black' }}>
-//             <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
-//             <Select
-//             labelId="demo-multiple-name-label"
-//             id="demo-multiple-name"
-//             multiple
-//             value={personName}
-//             onChange={handleChange}
-//             input={<OutlinedInput label="Name" />}
-//             MenuProps={MenuProps}
-//             style={{height: 50, borderBlockStyle: 'black'}}
-//             >
-//             {names.map((name) => (
-//                 <MenuItem
-//                 key={name}
-//                 value={name}
-//                 style={getStyles(name, personName, theme)}
-//                 >
-//                 {name}
-//                 </MenuItem>
-//             ))}
-//             </Select>
-//         </FormControl>
-//     </div>
-     
-//         <Button
-//             onClick={()=>{
-//                 router.push("www.bcit.ca")
-//             }}
-//         >Next</Button>
-//     </MainCont>
-// }
-
-// export default SigninForm
+export default SigninForm

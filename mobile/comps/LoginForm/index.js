@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components/native';
-// import { Input } from 'react-native-elements';
 import { Provider as PaperProvider, TextInput } from 'react-native-paper';
 import { TouchableOpacity, Text } from "react-native";
 
@@ -12,21 +11,14 @@ const LastDiv = styled.View`
     flex-direction: row;
     justify-content: flex-end;
     margin-top: -10px;
+    margin-right: 5px;
 
 `
-// const Text = styled.Text`
-//     font-size: 14px;
-//     color: #979595;
-//     margin-right: 5px;
-// `
-
 
 
 const LoginForm = ({
     
 }) => {
-    // const [text, onChangeText] = React.useState("Useless Text");
-    // const [number, onChangeNumber] = React.useState(null);
 
     const [text, setText] = React.useState('');
     const [pass, setPass] = React.useState('');
@@ -34,17 +26,23 @@ const LoginForm = ({
     return <MainCont>
         <PaperProvider>
             <TextInput
-            style={{width:300, height: 50, margin:5}}
+            style={{width:300, height: 50, margin:5, borderRadius: 0, backgroundColor:'#fff'}}
             label="Email"
+            returnKeyType="next"
+            autoCapitalize="none"
+            autoCompleteType="email"
+            textContentType="emailAddress"
             keyboardType='email-address'
             value={text}
             mode='outlined'
             onChangeText={text => setText(text)}
             />
             <TextInput
-            style={{width:300, height: 50, margin:5}}
+            style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
             label="Password"
+            returnKeyType="done"
             keyboardType='visible-password'
+            secureTextEntry
             value={pass}
             mode='outlined'
             onChangeText={pass => setPass(pass)}

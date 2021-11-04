@@ -45,7 +45,7 @@
 "@babel/compat-data@^7.12.13", "@babel/compat-data@^7.13.11", "@babel/compat-data@^7.15.0":
   "version" "7.15.0"
 
-"@babel/core@^7.0.0", "@babel/core@^7.12.9":
+"@babel/core@*", "@babel/core@^7.0.0", "@babel/core@^7.0.0-0", "@babel/core@^7.12.0", "@babel/core@^7.12.9", "@babel/core@^7.13.0", "@babel/core@^7.4.0-0":
   "version" "7.15.8"
   dependencies:
     "@babel/code-frame" "^7.15.8"
@@ -975,7 +975,7 @@
     "@emotion/weak-memoize" "^0.2.5"
     "stylis" "^4.0.10"
 
-"@emotion/core@^10.0.20", "@emotion/core@^10.0.9":
+"@emotion/core@^10.0.20", "@emotion/core@^10.0.27", "@emotion/core@^10.0.28", "@emotion/core@^10.0.9":
   "version" "10.1.1"
   dependencies:
     "@babel/runtime" "^7.5.5"
@@ -1024,7 +1024,7 @@
   dependencies:
     "css-to-react-native" "^2.2.1"
 
-"@emotion/react@^11.5.0":
+"@emotion/react@^11.0.0-rc.0", "@emotion/react@^11.4.1", "@emotion/react@^11.5.0":
   "version" "11.5.0"
   dependencies:
     "@babel/runtime" "^7.13.10"
@@ -1096,6 +1096,21 @@
 
 "@emotion/weak-memoize@^0.2.5", "@emotion/weak-memoize@0.2.5":
   "version" "0.2.5"
+
+"@eva-design/dss@^2.0.0":
+  "integrity" "sha512-Z6rZSodsQHWW1yDuiop1glJU8xKJSdKTPoWWCBsQWXYMNwTAEPgcZV69HNlnerB+T++jwj2jeoBzO24CTc0PmQ=="
+  "resolved" "https://registry.npmjs.org/@eva-design/dss/-/dss-2.1.1.tgz"
+  "version" "2.1.1"
+
+"@eva-design/eva@^2.1.1":
+  "integrity" "sha512-WS1ykETXyq0Kxa0aFlPMBeftEtBeTDv9qEUeQ4VvbTETMc7hsZPSkPr2HudtQhFihiM72GFfwAK6GIAlF6GXdQ=="
+  "resolved" "https://registry.npmjs.org/@eva-design/eva/-/eva-2.1.1.tgz"
+  "version" "2.1.1"
+
+"@eva-design/processor@^2.0.0":
+  "integrity" "sha512-lbxZLm5ARhuk/wxWkaiWhw5XeZ+Xcp1JGCjcZl+S5rUbLppfp4U47jfq861EY27BP1dpQ5PyTVFCbl5eHlRFdg=="
+  "resolved" "https://registry.npmjs.org/@eva-design/processor/-/processor-2.1.1.tgz"
+  "version" "2.1.1"
 
 "@expo-google-fonts/inter@^0.2.0":
   "version" "0.2.0"
@@ -1510,7 +1525,7 @@
     "sudo-prompt" "^9.0.0"
     "wcwidth" "^1.0.1"
 
-"@storybook/addon-actions@^5.3.21":
+"@storybook/addon-actions@*", "@storybook/addon-actions@^5.3.21":
   "version" "5.3.21"
   dependencies:
     "@storybook/addons" "5.3.21"
@@ -1528,7 +1543,7 @@
     "react-inspector" "^4.0.0"
     "uuid" "^3.3.2"
 
-"@storybook/addon-knobs@^5.3.21":
+"@storybook/addon-knobs@^5.3.21", "@storybook/addon-knobs@5.3.21":
   "version" "5.3.21"
   dependencies:
     "@storybook/addons" "5.3.21"
@@ -1976,7 +1991,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*":
+"@types/react@*", "@types/react@^16.8.0 || ^17.0.0", "@types/react@^16.8.6 || ^17.0.0":
   "version" "17.0.33"
   dependencies:
     "@types/prop-types" "*"
@@ -2037,6 +2052,17 @@
   "version" "15.0.14"
   dependencies:
     "@types/yargs-parser" "*"
+
+"@ui-kitten/components@^5.1.1":
+  "integrity" "sha512-iB4SE4qW2DjJZzzVSzKMkb182NHjZ4PST4lpFAZmZxv9ZgPcXTc4oQZZrpvk2BvQMUhMBe4g+m87BZ93skcPoQ=="
+  "resolved" "https://registry.npmjs.org/@ui-kitten/components/-/components-5.1.1.tgz"
+  "version" "5.1.1"
+  dependencies:
+    "@eva-design/dss" "^2.0.0"
+    "@eva-design/processor" "^2.0.0"
+    "fecha" "3.0.3"
+    "hoist-non-react-statics" "^3.2.1"
+    "lodash.merge" "^4.6.1"
 
 "@unimodules/core@~7.1.2":
   "version" "7.1.2"
@@ -2220,7 +2246,7 @@
 "ajv-keywords@^3.1.0", "ajv-keywords@^3.4.1", "ajv-keywords@^3.5.2":
   "version" "3.5.2"
 
-"ajv@^6.1.0", "ajv@^6.10.2", "ajv@^6.12.4":
+"ajv@^6.1.0", "ajv@^6.10.2", "ajv@^6.12.4", "ajv@^6.9.1", "ajv@>=5.0.0":
   "version" "6.12.6"
   dependencies:
     "fast-deep-equal" "^3.1.1"
@@ -2514,7 +2540,7 @@
 "babel-helper-to-multiple-sequence-expressions@^0.5.0":
   "version" "0.5.0"
 
-"babel-loader@^8.2.3":
+"babel-loader@^7.0.0 || ^8.0.0", "babel-loader@^8.2.3":
   "version" "8.2.3"
   dependencies:
     "find-cache-dir" "^3.3.1"
@@ -3340,7 +3366,7 @@
 "color-support@^1.1.3":
   "version" "1.1.3"
 
-"color@^3.1.2":
+"color@^3.1.2", "color@^3.1.3":
   "version" "3.2.1"
   dependencies:
     "color-convert" "^1.9.3"
@@ -4402,6 +4428,11 @@
     "setimmediate" "^1.0.5"
     "ua-parser-js" "^0.7.18"
 
+"fecha@3.0.3":
+  "integrity" "sha512-6LQK/1jud/FZnfEEZJ7y81vw7ge81DNd/XEsX0hgMUjhS+QMljkb1C0czBaP7dMNRVrd5mw/J2J7qI2Nw+TWZw=="
+  "resolved" "https://registry.npmjs.org/fecha/-/fecha-3.0.3.tgz"
+  "version" "3.0.3"
+
 "figgy-pudding@^3.5.1":
   "version" "3.5.2"
 
@@ -4415,7 +4446,7 @@
   dependencies:
     "escape-string-regexp" "^1.0.5"
 
-"file-loader@^4.2.0":
+"file-loader@*", "file-loader@^4.2.0":
   "version" "4.3.0"
   dependencies:
     "loader-utils" "^1.2.3"
@@ -4900,7 +4931,7 @@
     "minimalistic-assert" "^1.0.0"
     "minimalistic-crypto-utils" "^1.0.1"
 
-"hoist-non-react-statics@^3.0.0", "hoist-non-react-statics@^3.3.0", "hoist-non-react-statics@^3.3.1", "hoist-non-react-statics@^3.3.2":
+"hoist-non-react-statics@^3.0.0", "hoist-non-react-statics@^3.2.1", "hoist-non-react-statics@^3.3.0", "hoist-non-react-statics@^3.3.1", "hoist-non-react-statics@^3.3.2":
   "version" "3.3.2"
   dependencies:
     "react-is" "^16.7.0"
@@ -5676,6 +5707,11 @@
 
 "lodash.memoize@^4.1.2":
   "version" "4.1.2"
+
+"lodash.merge@^4.6.1":
+  "integrity" "sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ=="
+  "resolved" "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz"
+  "version" "4.6.2"
 
 "lodash.omit@^4.5.0":
   "version" "4.5.0"
@@ -6859,7 +6895,7 @@
   dependencies:
     "asap" "~2.0.6"
 
-"prop-types@^15.5.10", "prop-types@^15.5.8", "prop-types@^15.6.0", "prop-types@^15.6.1", "prop-types@^15.6.2", "prop-types@^15.7.2":
+"prop-types@^15.0.0", "prop-types@^15.5.10", "prop-types@^15.5.8", "prop-types@^15.6.0", "prop-types@^15.6.1", "prop-types@^15.6.2", "prop-types@^15.7.2":
   "version" "15.7.2"
   dependencies:
     "loose-envify" "^1.4.0"
@@ -7048,16 +7084,16 @@
     "shell-quote" "^1.6.1"
     "ws" "^7"
 
-"react-dom@^16.8.3":
-  "version" "16.14.0"
+"react-dom@*", "react-dom@^16.8.0 || ^17.0.0", "react-dom@^17.0.2", "react-dom@>= 16.8.0", "react-dom@>=16.0.0", "react-dom@>=16.5.1", "react-dom@>=16.6.0", "react-dom@>=16.9.0", "react-dom@15.x || 16.x || 16.4.0-alpha.0911da3", "react-dom@16.13.1":
+  "version" "16.13.1"
   dependencies:
     "loose-envify" "^1.1.0"
     "object-assign" "^4.1.1"
     "prop-types" "^15.6.2"
     "scheduler" "^0.19.1"
 
-"react-dom@16.13.1":
-  "version" "16.13.1"
+"react-dom@^0.14.0 || ^15.0.0-0 || ^16.0.0", "react-dom@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0", "react-dom@^16.6.0", "react-dom@^16.6.0 || ^17.0.0", "react-dom@^16.8.3", "react-dom@>= 16.3.0":
+  "version" "16.14.0"
   dependencies:
     "loose-envify" "^1.1.0"
     "object-assign" "^4.1.1"
@@ -7117,7 +7153,7 @@
     "is-dom" "^1.0.9"
     "prop-types" "^15.6.1"
 
-"react-is@^16.12.0", "react-is@^16.7.0", "react-is@^16.8.1", "react-is@^16.8.4":
+"react-is@^16.12.0", "react-is@^16.7.0", "react-is@^16.8.1", "react-is@^16.8.4", "react-is@>= 16.8.0":
   "version" "16.13.1"
 
 "react-is@^17.0.1":
@@ -7196,7 +7232,14 @@
     "prop-types" "^15.6.2"
     "react-native-animatable" "1.3.3"
 
-"react-native-paper@^4.9.2":
+"react-native-paper-dates@^0.5.1":
+  "integrity" "sha512-gf2rAoi7A6s+LeQ+xj3ll78Vwy9+r9R8RKPm0rh3k7kLN64dWSYg7vCIjjNNlGf9h+o+yrLDdhi9eS8i1sQAUg=="
+  "resolved" "https://registry.npmjs.org/react-native-paper-dates/-/react-native-paper-dates-0.5.1.tgz"
+  "version" "0.5.1"
+  dependencies:
+    "color" "^3.1.3"
+
+"react-native-paper@*", "react-native-paper@^4.9.2":
   "version" "4.9.2"
   dependencies:
     "@callstack/react-theme-provider" "^3.0.6"
@@ -7216,7 +7259,7 @@
   dependencies:
     "lodash" "^4.17.15"
 
-"react-native-safe-area-context@3.2.0":
+"react-native-safe-area-context@^3.1.9", "react-native-safe-area-context@3.2.0":
   "version" "3.2.0"
 
 "react-native-safe-modules@^1.0.3":
@@ -7229,7 +7272,7 @@
 "react-native-size-matters@^0.3.1":
   "version" "0.3.1"
 
-"react-native-svg@12.1.1":
+"react-native-svg@*", "react-native-svg@^12.1.0", "react-native-svg@^12.1.1":
   "integrity" "sha512-NIAJ8jCnXGCqGWXkkJ1GTzO4a3Md5at5sagYV8Vh4MXYnL4z5Rh428Wahjhh+LIjx40EE5xM5YtwyJBqOIba2Q=="
   "resolved" "https://registry.npmjs.org/react-native-svg/-/react-native-svg-12.1.1.tgz"
   "version" "12.1.1"
@@ -7240,7 +7283,7 @@
 "react-native-swipe-gestures@^1.0.4", "react-native-swipe-gestures@^1.0.5":
   "version" "1.0.5"
 
-"react-native-vector-icons@^9.0.0":
+"react-native-vector-icons@*", "react-native-vector-icons@^9.0.0", "react-native-vector-icons@>7.0.0":
   "version" "9.0.0"
   dependencies:
     "lodash.frompairs" "^4.0.1"
@@ -7252,7 +7295,7 @@
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
 
-"react-native-web@~0.13.12":
+"react-native-web@^0.11", "react-native-web@~0.13.12":
   "version" "0.13.18"
   dependencies:
     "array-find-index" "^1.0.2"
@@ -7265,7 +7308,7 @@
     "prop-types" "^15.6.0"
     "react-timer-mixin" "^0.13.4"
 
-"react-native@https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz":
+"react-native@*", "react-native@>= 0.51", "react-native@>=0.14.0 <1", "react-native@>=0.42.0", "react-native@>=0.46", "react-native@>=0.50.0", "react-native@>=0.57.0", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@>=0.63.4", "react-native@https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz":
   "integrity" "sha512-qWR6pcG4yDu/Rthm+DvAS017rL38LbZFnJv/k4HL4ZUH/WhKuqC+stD7TlpaOBb3N2bkydm9s+GCa14T41MLEg=="
   "resolved" "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz"
   "version" "0.63.2"
@@ -7364,22 +7407,15 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@^16.6.0":
-  "version" "16.14.0"
-  dependencies:
-    "loose-envify" "^1.1.0"
-    "object-assign" "^4.1.1"
-    "prop-types" "^15.6.2"
-
-"react@^16.8.3":
-  "version" "16.14.0"
-  dependencies:
-    "loose-envify" "^1.1.0"
-    "object-assign" "^4.1.1"
-    "prop-types" "^15.6.2"
-
-"react@16.13.1":
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^0.14.7 || ^15.0.0 || ^16.0.0", "react@^16.13.1", "react@^16.3.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.2", "react@>= 16.0 || < 17.0", "react@>= 16.8.0", "react@>=16.0.0", "react@>=16.3.0", "react@>=16.5.1", "react@>=16.6.0", "react@>=16.8.0", "react@>=16.9.0", "react@15.x || 16.x || 16.4.0-alpha.0911da3", "react@16.13.1":
   "version" "16.13.1"
+  dependencies:
+    "loose-envify" "^1.1.0"
+    "object-assign" "^4.1.1"
+    "prop-types" "^15.6.2"
+
+"react@^0.14.0 || ^15.0.0-0 || ^16.0.0", "react@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0", "react@^15.3.0 || ^16.0.0 || ^17.0.0", "react@^16.14.0", "react@^16.6.0", "react@^16.6.0 || ^17.0.0", "react@^16.8.3", "react@^16.8.4", "react@>= 0.14.0", "react@>= 16.3.0", "react@>=0.14.0", "react@>=0.14.0 <17.0.0", "react@0.14.x || ^15.0.0 || ^16.0.0 || ^17.0.0":
+  "version" "16.14.0"
   dependencies:
     "loose-envify" "^1.1.0"
     "object-assign" "^4.1.1"
@@ -7445,13 +7481,13 @@
 "regenerate@^1.4.2":
   "version" "1.4.2"
 
+"regenerator-runtime@*", "regenerator-runtime@^0.13.2", "regenerator-runtime@^0.13.3", "regenerator-runtime@^0.13.4":
+  "version" "0.13.9"
+
 "regenerator-runtime@^0.11.0":
   "integrity" "sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg=="
   "resolved" "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz"
   "version" "0.11.1"
-
-"regenerator-runtime@^0.13.2", "regenerator-runtime@^0.13.3", "regenerator-runtime@^0.13.4":
-  "version" "0.13.9"
 
 "regenerator-transform@^0.14.2":
   "version" "0.14.5"
@@ -8125,7 +8161,7 @@
     "loader-utils" "^2.0.0"
     "schema-utils" "^2.7.0"
 
-"styled-components@^5.3.3":
+"styled-components@^5.3.3", "styled-components@>= 2":
   "version" "5.3.3"
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
@@ -8604,7 +8640,7 @@
   dependencies:
     "debug" "^3.0.0"
 
-"webpack@^4.33.0", "webpack@^4.38.0":
+"webpack@^1 || ^2 || ^3 || ^4", "webpack@^4.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.3.0", "webpack@^4.33.0", "webpack@^4.38.0", "webpack@>=2":
   "version" "4.46.0"
   dependencies:
     "@webassemblyjs/ast" "1.9.0"
