@@ -14,6 +14,7 @@ const lottieFiles =[
     require('../../assets/lottie_receptionist.json'),
     require('../../assets/lottie_user.json'),
     require('../../assets/lottie_welcome.json'),
+    require('../../assets/lottie_booking.json'),
 ]
 
 const MenuCont = styled.View`
