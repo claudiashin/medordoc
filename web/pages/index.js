@@ -10,6 +10,8 @@ import PatientList from '../comps/PatientList';
 import LiveWaitTime from '../comps/LiveWaitTime';
 
 
+
+
 const Cont = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -25,42 +27,21 @@ const Header = styled.div`
   vertical-align: middle;
   overflow: hidden;
 `
-const Wave = styled.svg`
+const Wave = styled.img`
   display: inline-block;
   position: absolute;
   top: 0;
   left: 0;
 `
-const WavePath = styled.path`
-  stroke: none; 
-  fill: #B9D1E1;
-  width: 100%;
-`
 
-import InfoCard from '../comps/InfoCard';
-import PopupCard from '../comps/PopupCard';
-import NavBar from '../comps/NavBar';
 
 export default function Home() {
+  
   return (
     <Cont>
-      {/* <DoctorCard />
-      <LoginForm />
-      <SigninForm />
-      <PatientList />
-      <LiveWaitTime />
-      <BodyCont>
-        <Header>
-          <Wave
-            viewBox="0 0 500 500" 
-            preserveAspectRatio="xMinYMin meet"
-          >
-            <WavePath 
-              d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"
-            />
-          </Wave>
-        </Header>
-      </BodyCont> */}
+      <Header>
+        
+      </Header>
     </Cont>
   )
 }
