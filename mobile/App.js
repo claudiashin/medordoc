@@ -1,36 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Appointment from './comps/Calendar'
-import QR from './comps/QrCode'
-import Map from './comps/Map'
-import MenuCard from './comps/MenuCard'
+import React,{useState,useEffect} from 'react';
+import { StyleSheet, Text, View,Image } from 'react-native';
+import styled from 'styled-components/native';
+import Home from './pages/Home'
+import findclinic from './pages/findclinic'
+import QR from './pages/QR'
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// import BookingForm from './comps/BookingForm';
-// import DropDownFilter from './comps/DropDownFilter';
-// import LoginForm from './comps/LoginForm';
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-
-      return (
-        <View style={styles.container}>
-          {/* <BookingForm />
-          <DropDownFilter /> */}
-          {/* <LoginForm></LoginForm> */}
-        </View>
-      );
+  return (
   
+      <NavigationContainer>
+       <Stack.Navigator initialRouteName="Home">
+         <Stack.Screen name="Home" component={Home} />
+         <Stack.Screen name="QR" component={QR} />
+         <Stack.Screen name="findclinic" component={findclinic} />
+       </Stack.Navigator>
+     </NavigationContainer>
+    // <Map/>
+
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 200,
-    fontFamily: 'Nunito-Regular',
-    // flex: 1,
+    flex: 1,
     // backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
