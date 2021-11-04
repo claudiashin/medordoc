@@ -8,6 +8,8 @@ import LoginForm from '../comps/LoginForm';
 import SigninForm from '../comps/SigninForm';
 import PatientList from '../comps/PatientList';
 import LiveWaitTime from '../comps/LiveWaitTime';
+import MyLottie from '../public/skull.json'
+import HorizonTab from '../comps/HorizonTab'
 
 
 const Cont = styled.div`
@@ -40,6 +42,8 @@ const WavePath = styled.path`
 import InfoCard from '../comps/InfoCard';
 import PopupCard from '../comps/PopupCard';
 import NavBar from '../comps/NavBar';
+import HeroAvatar from '../comps/HeroAvatar'
+import HeroLottie from '../comps/HeroLottie';
 
 export default function Home() {
   return (
@@ -61,6 +65,9 @@ export default function Home() {
           </Wave>
         </Header>
       </BodyCont> */}
+
+      <HorizonTab/>
+      
     </Cont>
   )
 }
