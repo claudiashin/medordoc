@@ -22,12 +22,12 @@ const HomeCont = styled.div`
 export default function home() {
   return (
     <HomeCont>
-      {/* <NavBar/> */}
+      <NavBar/>
       {/* <Checkin/> */}
       <MenuCard width={300} height={350} source={MyLottie} />
       <MenuCard title={"Appointment Bookings"} width={300} height={350} source={MyLottie2} />
       <MenuCard title={"Doctors' Profiles"} width={300} height={350} source={MyLottie3} />
-      {/* <Footer/> */}
+      <Footer/>
     </HomeCont>
   )
 }
