@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import {useRouter} from "next/router"
+
 const MainCont = styled.div`
     display: flex;
     flex-direction: column;
+    width: $ ${props=>props.width}px;
  
 `
 const Form = styled.fieldset`
@@ -39,9 +42,11 @@ const TextLink = styled.a`
 `
 
 const LoginForm = ({
-
+    width = "300",
 }) => {
-    return <MainCont>
+    const router = useRouter();
+
+    return <MainCont width={width}>
         <Form>
             <FormTitle>Username</FormTitle>
             <FormInput 
@@ -60,7 +65,7 @@ const LoginForm = ({
             <Text>
                 Don't have an account?
                 <TextLink
-                    href="www.bcit.ca"
+                    onClick={()=>router.push("/signup")}
                 >Sign up</TextLink>
             </Text>
         </LastDiv>

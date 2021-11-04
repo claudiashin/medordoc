@@ -3,6 +3,7 @@ import {View,Text, SafeAreaView, StyleSheet, TextInput} from "react-native" ;
 import styled from "styled-components/native";
 // import {IoChevronBack} from 'react-icons/fa';
 import { AntDesign } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 // import { LeftOutlined } from 'react-native-elements';
 
 //main container
@@ -37,10 +38,19 @@ width:100%;
 border-radius: 15px;
 background-color:#ffffff;
 font-size:16px;
+z-index: -1;
 &:focus {
     border-color: rgba(0,0,0,0.3);
 }
-` 
+`
+const Searchiconcont = styled.View`
+    display: flex;
+    position: relative;
+    top: 8px;
+    left: 250px;
+    z-index: 2;
+    
+`
 //Go button styling
 
 const Gocont = styled.View`
@@ -62,8 +72,17 @@ const SearchBar=({
 })=>{
     return <Maincont>
         <AntDesign name="left" size={40} color="black" />
+        <Searchiconcont>
+        <EvilIcons name="search" size={35} color="black" />
+        </Searchiconcont>
+        
         <Searchcont>
-            <Searchinput/>
+        
+            <Searchinput>
+                
+                    
+                
+            </Searchinput>
         </Searchcont>
         <Gocont>
             <Gobut title="GO" color="black"></Gobut>

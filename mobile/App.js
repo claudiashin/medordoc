@@ -21,7 +21,6 @@ export default function App() {
          <Stack.Screen name="findclinic" component={findclinic} />
        </Stack.Navigator>
      </NavigationContainer>
-    // <Map/>
 
   );
 }
