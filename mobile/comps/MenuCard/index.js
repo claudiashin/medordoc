@@ -24,6 +24,7 @@ const MenuCont = styled.View`
 `;
 
 const MenuCard = ({
+    Cardpress =()=>{},
     title = "Find a Clinic",
     width = 280,
     height = 300,
@@ -35,12 +36,11 @@ const MenuCard = ({
     bWidth = 1.5,
     borderRad = 5,
     ind = 0,
-
 }) => {
     var anim = useRef();
     return (
         <MenuCont>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={Cardpress}>
                 <View style={{
                     justifyContent: "flex-end",
                     alignItems: "center",

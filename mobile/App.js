@@ -1,47 +1,37 @@
-import React from 'react';
+import { StatusBar } from 'expo-status-bar';
+import React,{useState,useEffect} from 'react';
+import { StyleSheet, Text, View,Image } from 'react-native';
 import styled from 'styled-components/native';
-import { StyleSheet, Text, View } from 'react-native';
-import Appointment from './comps/Calendar'
-import QR from './comps/QrCode'
-import Map from './comps/Map'
+import Home from './pages/Home'
+import findclinic from './pages/findclinic'
+import QR from './pages/QR'
 
-//import SearchBar from './comps/SearchBar'
-//import Filter from './comps/Filter'
-import { Provider as PaperProvider } from 'react-native-paper';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-
-// import BookingForm from './comps/BookingForm';
-// import DropDownFilter from './comps/DropDownFilter';
-// import LoginForm from './comps/LoginForm';
-
-import LoginForm from './comps/LoginForm';
-import SigninForm from './comps/SigninForm';
-import BookingForm from './comps/BookingForm';
+const Stack = createNativeStackNavigator();
 
 
 
 export default function App() {
-      return <>
-      <PaperProvider>
-          <View style={styles.container}>
-            {/* <LoginForm /> */}
-            {/* <SigninForm /> */}
-            <BookingForm />
-          </View>
-      </PaperProvider>
-    </>;
+  return (
   
+      <NavigationContainer>
+       <Stack.Navigator initialRouteName="Home">
+         <Stack.Screen name="Home" component={Home} />
+         <Stack.Screen name="QR" component={QR} />
+         <Stack.Screen name="findclinic" component={findclinic} />
+       </Stack.Navigator>
+     </NavigationContainer>
+
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    
-    fontFamily: 'Nunito-Regular',
-    marginTop: 50,
-     //flex: 1,
-     //backgroundColor: '#fff',
-     //alignItems: 'center',
-     //justifyContent: 'center',
-
+    flex: 1,
+    // backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
