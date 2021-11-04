@@ -7,6 +7,7 @@ import NavBar from '../comps/NavBar';
 import HeaderTitle from '../comps/HeaderTitle';
 import HeroLottie from '../comps/HeroLottie';
 import SigninForm from '../comps/SigninForm';
+import SigninFormTwo from '../comps/SigninFormTwo';
 import Btn from '../comps/Btn';
 import myLottie from '../public/lottie_login.json';
 import HeroAvatar from '../comps/HeroAvatar';
@@ -62,6 +63,20 @@ const TwoButtonCont = styled.div`
     display: flex;
     justify-content: flex-end;
 `;
+
+const SignInCont_Two = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+`;
+
+const Title = styled.p`
+    margin-left: 15px;
+    font-size: 16px;
+`;
+
+
+
 
 export default function Home() {
 
@@ -119,12 +134,15 @@ export default function Home() {
 
             <BodyCont>
                 <HeroLottieCont>
-                    <HeroAvatar herowidth="250px" heroheight="250px" />
+                    <HeroAvatar herowidth="220px" heroheight="220px" heromargin="20px 10px 40px 0px" />
                 </HeroLottieCont>
 
 
-                <SignInCont>
-                    <SigninForm />
+
+
+                <SignInCont_Two>
+                    <SigninFormTwo />
+
                     <TwoButtonCont>
                         <BtnCont onClick={() => setShowAvatar(false)}>
                             <Btn
@@ -135,7 +153,7 @@ export default function Home() {
                                 title="Confirm" width="120px" height="40px" fSize="16px" bgColor="#90AABB" borderRad="20px" margin="40px 15px 0px 0px" />
                         </BtnCont>
                     </TwoButtonCont>
-                </SignInCont>
+                </SignInCont_Two>
 
             </BodyCont>
         </Cont>
