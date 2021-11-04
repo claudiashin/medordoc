@@ -2,14 +2,18 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import styled from 'styled-components';
+import { useTheme } from '@mui/material/styles';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+
 
 import DoctorCard from '../comps/DoctorCard';
 import LoginForm from '../comps/LoginForm';
 import SigninForm from '../comps/SigninForm';
 import PatientList from '../comps/PatientList';
 import LiveWaitTime from '../comps/LiveWaitTime';
-import MyLottie from '../public/skull.json'
-import HorizonTab from '../comps/HorizonTab'
+import Footer from '../comps/Footer';
 
 
 const Cont = styled.div`
@@ -42,12 +46,12 @@ const WavePath = styled.path`
 import InfoCard from '../comps/InfoCard';
 import PopupCard from '../comps/PopupCard';
 import NavBar from '../comps/NavBar';
-import HeroAvatar from '../comps/HeroAvatar'
-import HeroLottie from '../comps/HeroLottie';
+import { Menu } from '@mui/material';
 
 export default function Home() {
   return (
     <Cont>
+      <Footer></Footer>
       {/* <DoctorCard />
       <LoginForm />
       <SigninForm />
