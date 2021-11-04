@@ -14,8 +14,8 @@ export default function App() {
       <PaperProvider>
           <View style={styles.container}>
             {/* <LoginForm /> */}
-            {/* <SigninForm /> */}
-            <BookingForm />
+            <SigninForm />
+            {/* <BookingForm /> */}
           </View>
       </PaperProvider>
     </>;
