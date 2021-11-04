@@ -16,6 +16,8 @@ import LiveWaitTime from '../comps/LiveWaitTime';
 import Footer from '../comps/Footer';
 
 
+
+
 const Cont = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -31,7 +33,7 @@ const Header = styled.div`
   vertical-align: middle;
   overflow: hidden;
 `
-const Wave = styled.svg`
+const Wave = styled.img`
   display: inline-block;
   position: absolute;
   top: 0;
@@ -44,9 +46,6 @@ const WavePath = styled.path`
 `
 const Background = styled.img``;
 
-import InfoCard from '../comps/InfoCard';
-import PopupCard from '../comps/PopupCard';
-import NavBar from '../comps/NavBar';
 
 export default function Home() {
   return (
@@ -71,5 +70,4 @@ export default function Home() {
         </Header>
       </BodyCont> */}
     </Cont>
-  )
 }

@@ -2,18 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MainCont = styled.div`
-    width: 550px;
+    width: 400px;
     height: ${props=>props.ht}px;
     border: 1px solid black;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #F7F2EE;
 
 `
 const TitleCont = styled.div`
-    width: 350px;
-    height: 60px;
+    width: 300px;
+    height: 50px;
     background-color: #E9D7CB;
     border-radius: 5px;
     display: flex;
@@ -23,8 +24,8 @@ const TitleCont = styled.div`
 
 `
 const Title = styled.p`
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 22px;
+    font-weight: 600;
 `
 const ListCont = styled.div`
     display: flex;
@@ -32,18 +33,18 @@ const ListCont = styled.div`
     overflow: scroll;
     height: 250px;
     margin-top: 80px;
+  
     
 `
 const ListItem = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 24px;
-    width: 500px;
-    height: 60px;
-    margin: 10px;
+    font-size: 20px;
+    width: 350px;
+    height: 50px;
+    margin: 8px;
     padding: 0 20px 0 20px;
-    background-color: #F7F2EE;
     border-radius: 5px;
 
 `
