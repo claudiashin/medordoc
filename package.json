@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@react-native-community/datetimepicker": "^3.5.2",
-    "lottie-react": "^2.1.0"
-  }
-}
