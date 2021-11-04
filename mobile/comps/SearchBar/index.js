@@ -18,7 +18,7 @@ const Maincont = styled.View`
 const Searchcont = styled.View`
 display:flex;
 position:relative;
-width: 222px;
+width: 221px;
 height:48px;
 align-items:center;
 justify-content: space-between;
