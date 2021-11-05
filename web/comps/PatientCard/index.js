@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import {AiOutlineMail} from '@react-icons/all-files/ai/AiOutlineMail'
+import {AiOutlineMail} from '@react-icons/all-files/ai/AiOutlineMail';
+import {IoIosClose} from '@react-icons/all-files/io/IoIosClose';
 
 //card
 const Maincont = styled.div`
@@ -20,7 +21,7 @@ const Avatarcont = styled.div`
     height: 105px;
     width: 105px;
     right:50px;
-    margin: 20px;
+    margin: 5px;
     border-radius: 50px;
     background-color: #c4c4c4;
 `
@@ -36,7 +37,7 @@ const Avatarimg = styled.img`
 const Textcont = styled.div`
     display:flex;
     flex-direction:column;
-    margin-right: 20px;
+    margin-right: 85px;
 `
 const Text = styled.text`
     font-size: 18px;
@@ -50,7 +51,7 @@ const Emailbut = styled.div`
     flex-direction: row;
     justify-content:center;
     align-items:center;
-    margin-top:15px;
+    margin-top:5px;
     width:175px;
     height:55px;
     background-color: #FAF0BF;
@@ -60,23 +61,46 @@ const Emailtext = styled.text`
     font-size: 20px;
     padding-left:20px;
 `
+//close button
+const Closebutton = styled.div`
+    display: flex;
+    margin-left: 300px;
+`
 
 
 const PatientCard=({
-    bodyText = "Default Text",
+    //info
+    nameText = "Default Text",
+    genderText = "Default Text",
+    ageText = "Default Text",
+    medicalText = "Default Text",
+    phoneText = "Default Text",
     emailText = "Email",
-    imagesource="https://placekitten.com/100/100"
+    imagesource="https://placekitten.com/100/100",
+    //subject
+    name = "default text",
+    gender = "default text",
+    age = "default text",
+    experience = "default text",
+    location = "default text",
+    language = "default text",
+    medicalconcerns = "default text",
+    phone = "default text"
 })=>{
     return <Maincont>
+        <Closebutton>
+        <IoIosClose size={60}/>
+        </Closebutton>
+        
         <Avatarcont>
             <Avatarimg src={imagesource}/>
         </Avatarcont>
         <Textcont>
-            <Text>Name:{bodyText=" Katie Lee"}</Text>
-            <Text>Gender:{bodyText=" Female"}</Text>
-            <Text>Age:{bodyText=" 24"}</Text>
-            <Text>Medical Concerns:{bodyText=" Seasonal allergies"}</Text>
-            <Text>Phone:{bodyText=" 604-123-1234"}</Text>
+            <Text>{name}{nameText}</Text>
+            <Text>{gender}{genderText}</Text>
+            <Text>{age}{ageText}</Text>
+            <Text>{medicalconcerns}{medicalText}</Text>
+            <Text>{phone}{phoneText}</Text>
         </Textcont>
         <Emailbut>
             <AiOutlineMail size={30}/>

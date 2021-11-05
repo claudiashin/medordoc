@@ -73,6 +73,12 @@ const BodyText = styled.p`
   width: 400px;
   font-size: 20px;
 `
+const WavePath = styled.path`
+  stroke: none; 
+  fill: #B9D1E1;
+  width: 100%;
+`
+const Background = styled.img``;
 
 
 export default function Home() {

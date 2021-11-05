@@ -92,7 +92,6 @@ const NavBar = ({
   const router = useRouter();
   
   return <NavBarCont>
-
     <LogoCont>
       <Logo 
         onClick={()=>router.push("/index.js")}

@@ -15,19 +15,21 @@ const HomeCont = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 5px;
 `;
 
+const Wave = styled.img`
+  
+`;
 
 export default function home() {
   return (
     <HomeCont>
-      {/* <NavBar/> */}
+      <NavBar/>
       {/* <Checkin/> */}
       <MenuCard width={300} height={350} source={MyLottie} />
       <MenuCard title={"Appointment Bookings"} width={300} height={350} source={MyLottie2} />
       <MenuCard title={"Doctors' Profiles"} width={300} height={350} source={MyLottie3} />
-      {/* <Footer/> */}
+      <Footer/>
     </HomeCont>
   )
 }
