@@ -8,11 +8,11 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 
 
-import DoctorCard from '../comps/DoctorCard';
-import LoginForm from '../comps/LoginForm';
-import SigninForm from '../comps/SigninForm';
-import PatientList from '../comps/PatientList';
-import LiveWaitTime from '../comps/LiveWaitTime';
+import HeaderTitle from '../comps/HeaderTitle';
+import HeroLottie from '../comps/HeroLottie';
+import myLottie from '../public/lottie_receptionist.json'
+
+import NavBar from '../comps/NavBar';
 import Footer from '../comps/Footer';
 
 
@@ -24,20 +24,54 @@ const Cont = styled.div`
 `
 const BodyCont = styled.div`
   display: flex;
-`
-const Header = styled.div`
-  display: inline-block;
-  position: relative;
+  flex-direction: column;
   width: 100vw;
-  padding-bottom: 100%;
-  vertical-align: middle;
-  overflow: hidden;
 `
-const Wave = styled.img`
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
+const HeaderwithNav = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  height: 150px;
+  width: 100%;
+  background-color: #B9D1E1;
+  margin-bottom: 100px;
+`
+const ColCont = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 600px;
+  background-color: #E9D7CB;
+
+`
+const RowCont = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+const SubCont = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
+const IconWithText = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 200px;
+
+`
+const Icon = styled.img`
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+`
+const SmText = styled.p`
+  width: 
+`
+
+const BodyText = styled.p`
+  width: 400px;
+  font-size: 20px;
 `
 const WavePath = styled.path`
   stroke: none; 
@@ -48,26 +82,90 @@ const Background = styled.img``;
 
 
 export default function Home() {
-  return (
-    <Cont>
-      <Background src={'/background4.svg'}/>
-      <Footer></Footer>
-      {/* <DoctorCard />
-      <LoginForm />
-      <SigninForm />
-      <PatientList />
-      <LiveWaitTime />
+  
+  return <Cont>
+      <HeaderwithNav>
+        <NavBar />
+      </HeaderwithNav>
       <BodyCont>
-        <Header>
-          <Wave
-            viewBox="0 0 500 500" 
-            preserveAspectRatio="xMinYMin meet"
-          >
-            <WavePath 
-              d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"
+        <ColCont style={{backgroundColor: '#fff'}}>
+          <RowCont>
+            <HeaderTitle 
+              title="Increase your clinic's patient base"
+              fontSize="36"
+              fontWeight="600"
             />
-          </Wave>
-        </Header>
-      </BodyCont> */}
+            <BodyText>
+              Try MedOrDoc to enhance your clinic’s web presence and broaden your patient reach. Start by listing your clinic today.
+            </BodyText>
+          </RowCont>
+          <RowCont>
+            <HeroLottie 
+            source={myLottie}
+            width="300px"
+            
+            />
+          </RowCont>
+        </ColCont>
+
+        <ColCont>
+          <RowCont>
+            <HeroLottie 
+            source={myLottie}
+            width="300px"
+            
+            />
+          </RowCont>
+          <RowCont>
+            <HeaderTitle 
+              title="What is MedOrDoc?"
+              fontSize="36"
+              fontWeight="600"
+            />
+            <BodyText style={{textAlign:'left'}}>
+              Try MedOrDoc to enhance your clinic’s web presence and broaden your patient reach. Start by listing your clinic today.
+            </BodyText>
+          </RowCont>
+        </ColCont>
+
+        <ColCont style={{backgroundColor: '#fff'}}>
+          <RowCont>
+            <HeaderTitle 
+              title="Benefits of MedOrDoc"
+              fontSize="36"
+              fontWeight="600"
+            />
+          </RowCont>
+          <RowCont style={{ backgroundColor: '#dad'}}>
+            <SubCont>
+              <IconWithText>
+                <Icon src={'/profile.png'}></Icon>
+                <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
+              </IconWithText>
+            </SubCont>
+            <SubCont>
+              <IconWithText>
+                <Icon src={'/profile.png'}></Icon>
+                <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
+              </IconWithText>
+            </SubCont>
+            <SubCont>
+              <IconWithText>
+                <Icon src={'/profile.png'}></Icon>
+                <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
+              </IconWithText>
+            </SubCont>
+            <SubCont>
+              <IconWithText>
+                <Icon src={'/profile.png'}></Icon>
+                <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
+              </IconWithText>
+            </SubCont>
+          </RowCont>
+
+        </ColCont>
+
+      </BodyCont>
+  
     </Cont>
 }
