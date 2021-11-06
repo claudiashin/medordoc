@@ -42,7 +42,8 @@ const TimeFormCont = styled.div`
 `
 const Title = styled.p`
     margin-left: 15px;
-    font-size: 16px;
+    font-size: 168px;
+    font-weight: 600;
 `
 
 const ButtonCont = styled.div`
