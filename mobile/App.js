@@ -8,7 +8,7 @@ import qrconfirm from './pages/qrconfirm';
 import findclinic from './pages/findclinic';
 import scan from './pages/scan';
 // import login from './pages/login';
-// import signup from './pages/signup';
+import signup from './pages/signup';
 // import patientprofile from './pages/patientprofile';
 // import history from './pages/history';
 // import finddoc from './pages/finddoc';
@@ -28,11 +28,11 @@ export default function App() {
   return (
   
        <NavigationContainer>
-        <Stack.Navigator initialRouteName="home">
+        <Stack.Navigator initialRouteName="signup">
           <Stack.Screen name="home" component={home} />
           <Stack.Screen name="findclinic" component={findclinic} />
-          {/* <Stack.Screen name="login" component={login} />
-          <Stack.Screen name="signup" component={signup} /> */}
+          {/* <Stack.Screen name="login" component={login} /> */}
+          <Stack.Screen name="signup" component={signup} />
           <Stack.Screen name="booking" component={booking} />
           <Stack.Screen name="qrconfirm" component={qrconfirm} />
           <Stack.Screen name="QR" component={scan} />
