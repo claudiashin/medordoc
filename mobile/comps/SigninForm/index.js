@@ -83,9 +83,9 @@ const SigninForm = ({
     }
 
     return <MainCont>
-            {/* <ApplicationProvider> */}
+            {/* <ApplicationProvider>
             <Title>Additional Information</Title>
-            {/* <Layout style={styles.container} level='1'>
+            <Layout style={styles.container} level='1'>
                 <Text category='h6'>
                     Selected date: {date.toLocaleDateString()}
                 </Text>
