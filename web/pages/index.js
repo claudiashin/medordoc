@@ -7,12 +7,10 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 
-
+import NavBar from '../comps/NavBar';
 import HeaderTitle from '../comps/HeaderTitle';
 import HeroLottie from '../comps/HeroLottie';
 import myLottie from '../public/lottie_receptionist.json'
-
-import NavBar from '../comps/NavBar';
 import Footer from '../comps/Footer';
 
 
@@ -27,6 +25,19 @@ const BodyCont = styled.div`
   flex-direction: column;
   width: 100vw;
 `
+
+const NavBarCont = styled.div`
+    width:100%;
+    // height:300px;
+    position:absolute;
+    top:0;
+`;
+
+const Wave = styled.img`
+    width: 100%;
+    height: 250px;
+`;
+
 const HeaderwithNav = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -66,106 +77,105 @@ const Icon = styled.img`
   object-fit: cover;
 `
 const SmText = styled.p`
-  width: 
+  /* width:  */
 `
 
 const BodyText = styled.p`
   width: 400px;
   font-size: 20px;
 `
-const WavePath = styled.path`
-  stroke: none; 
-  fill: #B9D1E1;
-  width: 100%;
-`
-const Background = styled.img``;
 
 
 export default function Home() {
-  
+
   return <Cont>
-      <HeaderwithNav>
-        <NavBar />
-      </HeaderwithNav>
-      <BodyCont>
-        <ColCont style={{backgroundColor: '#fff'}}>
-          <RowCont>
-            <HeaderTitle 
-              title="Increase your clinic's patient base"
-              fontSize="36"
-              fontWeight="600"
-            />
-            <BodyText>
-              Try MedOrDoc to enhance your clinic’s web presence and broaden your patient reach. Start by listing your clinic today.
-            </BodyText>
-          </RowCont>
-          <RowCont>
-            <HeroLottie 
+    {/* <HeaderwithNav></HeaderwithNav> */}
+    <Wave src={'/background_wave.jpg'}></Wave>
+
+    <NavBarCont>
+      <NavBar />
+    </NavBarCont>
+
+    <BodyCont>
+      <ColCont style={{ backgroundColor: '#fff' }}>
+        <RowCont>
+          <HeaderTitle
+            title="Increase your clinic's patient base"
+            fontSize="36"
+            fontWeight="600"
+          />
+          <BodyText>
+            Try MedOrDoc to enhance your clinic’s web presence and broaden your patient reach. Start by listing your clinic today.
+          </BodyText>
+        </RowCont>
+        <RowCont>
+          <HeroLottie
             source={myLottie}
             width="300px"
-            
-            />
-          </RowCont>
-        </ColCont>
 
-        <ColCont>
-          <RowCont>
-            <HeroLottie 
+          />
+        </RowCont>
+      </ColCont>
+
+      <ColCont>
+        <RowCont>
+          <HeroLottie
             source={myLottie}
             width="300px"
-            
-            />
-          </RowCont>
-          <RowCont>
-            <HeaderTitle 
-              title="What is MedOrDoc?"
-              fontSize="36"
-              fontWeight="600"
-            />
-            <BodyText style={{textAlign:'left'}}>
-              Try MedOrDoc to enhance your clinic’s web presence and broaden your patient reach. Start by listing your clinic today.
-            </BodyText>
-          </RowCont>
-        </ColCont>
 
-        <ColCont style={{backgroundColor: '#fff'}}>
-          <RowCont>
-            <HeaderTitle 
-              title="Benefits of MedOrDoc"
-              fontSize="36"
-              fontWeight="600"
-            />
-          </RowCont>
-          <RowCont style={{ backgroundColor: '#dad'}}>
-            <SubCont>
-              <IconWithText>
-                <Icon src={'/profile.png'}></Icon>
-                <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
-              </IconWithText>
-            </SubCont>
-            <SubCont>
-              <IconWithText>
-                <Icon src={'/profile.png'}></Icon>
-                <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
-              </IconWithText>
-            </SubCont>
-            <SubCont>
-              <IconWithText>
-                <Icon src={'/profile.png'}></Icon>
-                <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
-              </IconWithText>
-            </SubCont>
-            <SubCont>
-              <IconWithText>
-                <Icon src={'/profile.png'}></Icon>
-                <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
-              </IconWithText>
-            </SubCont>
-          </RowCont>
+          />
+        </RowCont>
+        <RowCont>
+          <HeaderTitle
+            title="What is MedOrDoc?"
+            fontSize="36"
+            fontWeight="600"
+          />
+          <BodyText style={{ textAlign: 'left' }}>
+            Try MedOrDoc to enhance your clinic’s web presence and broaden your patient reach. Start by listing your clinic today.
+          </BodyText>
+        </RowCont>
+      </ColCont>
 
-        </ColCont>
+      <ColCont style={{ backgroundColor: '#fff' }}>
+        <RowCont>
+          <HeaderTitle
+            title="Benefits of MedOrDoc"
+            fontSize="36"
+            fontWeight="600"
+          />
+        </RowCont>
+        <RowCont style={{ backgroundColor: '#dad' }}>
+          <SubCont>
+            <IconWithText>
+              <Icon src={'/profile.png'}></Icon>
+              <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
+            </IconWithText>
+          </SubCont>
+          <SubCont>
+            <IconWithText>
+              <Icon src={'/profile.png'}></Icon>
+              <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
+            </IconWithText>
+          </SubCont>
+          <SubCont>
+            <IconWithText>
+              <Icon src={'/profile.png'}></Icon>
+              <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
+            </IconWithText>
+          </SubCont>
+          <SubCont>
+            <IconWithText>
+              <Icon src={'/profile.png'}></Icon>
+              <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
+            </IconWithText>
+          </SubCont>
+        </RowCont>
 
-      </BodyCont>
-  
-    </Cont>
+      </ColCont>
+
+    </BodyCont>
+    <Footer/>
+
+  </Cont>
 }
