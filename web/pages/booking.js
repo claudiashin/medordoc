@@ -1,26 +1,41 @@
 import React from "react";
 import styled from 'styled-components';
 
+import NavBar from "../comps/NavBar";
 import PatientList from '../comps/PatientList';
 import LiveWaitTime from '../comps/LiveWaitTime';
+<<<<<<< HEAD
 import Calendar from '../comps/CalendarAPI'
+=======
+import Footer from '../comps/Footer';
+>>>>>>> 7d04e40d9055d823c59c3cfe8ea641823abe40d4
 
 
 
 const MainCont = styled.div`
     display: flex;
     flex-wrap: wrap;
-    width: 100vw;
-    height: 100vh;
+    background-color: #F7F2EE;
+    width: 100%;
+    height: 100%;
     justify-content: center;
 `
-const Head = styled.div`
-    display: flex;
-    height: 100px;
-    width: 100%;
-    background-color: #B9D1E1;
-    margin-bottom: 100px;
-`
+
+const WaveCont = styled.div`
+  width: 100%;
+`;
+
+const Wave = styled.img`
+  width: 100%;
+`;
+
+const NavBarCont = styled.div`
+  width:100%;
+  // height:300px;
+  position:absolute;
+  top:0;
+`;
+
 const BodyCont = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -46,7 +61,15 @@ const Calander = styled.div`
 export default function Home() {
     return (
         <MainCont>
-            <Head></Head>
+
+            <WaveCont>
+                <Wave src={'/background-web5.svg'}></Wave>
+            </WaveCont>
+
+            <NavBarCont>
+                <NavBar />
+            </NavBarCont>
+
             <BodyCont>
                 <Low>
                 
@@ -62,6 +85,8 @@ export default function Home() {
                     </Column>
                 </Low>
             </BodyCont>
+
+            <Footer />
         </MainCont>
     )
 }

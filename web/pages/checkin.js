@@ -1,23 +1,39 @@
 import React from "react";
 import styled from 'styled-components';
+<<<<<<< HEAD
 import  QRComponent from '../comps/CheckIn'
+=======
+
+import NavBar from "../comps/NavBar";
+>>>>>>> 7d04e40d9055d823c59c3cfe8ea641823abe40d4
 import BookingForm from '../comps/BookingForm';
+import Footer from "../comps/Footer";
 
 
 const MainCont = styled.div`
     display: flex;
     flex-wrap: wrap;
+    background-color: #F7F2EE;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     justify-content: center;
 `
-const Head = styled.div`
-    display: flex;
-    height: 100px;
-    width: 100%;
-    background-color: #B9D1E1;
-    margin-bottom: 100px;
-`
+
+const WaveCont = styled.div`
+  width: 100%;
+`;
+
+const Wave = styled.img`
+  width: 100%;
+`;
+
+const NavBarCont = styled.div`
+  width:100%;
+  // height:300px;
+  position:absolute;
+  top:0;
+`;
+
 const BodyCont = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -39,7 +55,14 @@ const Qrcode = styled.div`
 export default function Home() {
     return (
         <MainCont>
-            <Head></Head>
+            <WaveCont>
+                <Wave src={'/background-web5.svg'}></Wave>
+            </WaveCont>
+
+            <NavBarCont>
+                <NavBar />
+            </NavBarCont>
+
             <BodyCont>
                 <Low>
                     <Qrcode></Qrcode>
@@ -49,6 +72,8 @@ export default function Home() {
                 </Low>
                     <QRComponent/>
             </BodyCont>
+
+            <Footer/>
         </MainCont>
     )
 }
