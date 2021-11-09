@@ -33,16 +33,15 @@ const MenuCont = styled.div`
 `;
 
 
-
 export default function home() {
   return (
     <HomeCont>
       <NavBar />
       {/* <Checkin/> */}
       <MenuCont>
-        <MenuCard width={300} height={350} source={MyLottie} />
-        <MenuCard title={"Appointment Bookings"} width={300} height={350} source={MyLottie2} />
-        <MenuCard title={"Doctors' Profiles"} width={300} height={350} source={MyLottie3} />
+        <MenuCard width={280} height={330} source={MyLottie} onClick={() => {}} />
+        <MenuCard title={"Appointment Bookings"} width={280} height={330}  source={MyLottie2} onClick={() => {}} />
+        <MenuCard title={"Doctors' Profiles"} width={280} height={330}  source={MyLottie3} onClick={() => {}} />
       </MenuCont>
       <Footer />
     </HomeCont>

@@ -12,6 +12,7 @@ const MyCard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
 `;
 
 const MyCardText = styled.div`
@@ -23,7 +24,6 @@ const MenuCard = ({
     source,
     width,
     height,
-
 }) => {
 
     const defaultOptions = {

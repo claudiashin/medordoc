@@ -4,7 +4,7 @@ import Lottie from "react-lottie";
 const HeroLottie =({ 
   source, 
   width, 
-  height 
+  height,
 }) =>{
 
   const defaultOptions = {
