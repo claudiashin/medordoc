@@ -44,7 +44,7 @@ const DoctorCardCont = styled.div`
   position:absolute;
   top:0;
   background:white;
-  display=${props=>props.none};
+  display:${props=>props.none};
 `
 
 //replace with real button

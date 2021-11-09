@@ -10,11 +10,8 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-
     "@eva-design/eva": "^2.1.1",
-
     "@react-icons/all-files": "^4.1.0",
-
     "@react-native-community/datetimepicker": "3.5.2",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
