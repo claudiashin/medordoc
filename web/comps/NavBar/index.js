@@ -94,19 +94,19 @@ const NavBar = ({
   return <NavBarCont>
     <LogoCont>
       <Logo 
-        onClick={()=>router.push("/index.js")}
+        onClick={()=>router.push("/")}
         src={'/MedOrDoc.png'} 
       />
     </LogoCont>
 
     <NavCont>
-      <NavButton onClick={()=>router.push("/index.js")}>Home</NavButton>
+      <NavButton onClick={()=>router.push("/")}>Home</NavButton>
       <NavButton onClick={()=>router.push("/booking")}>Bookings</NavButton>
       <NavButton onClick={()=>router.push("/request")}>Requests</NavButton>
     </NavCont>
 
     <ProfileCont>
-      <ProfileIcon onClick={()=>router.push("/profile")} className="icon" src={'/profile.png'}></ProfileIcon>
+      <ProfileIcon onClick={()=>router.push("/profile/profile1")} className="icon" src={'/profile.png'}></ProfileIcon>
       <DropdownCont className="dropdown">
         <MenuLink className="signout" href="#">Sign Out</MenuLink>
       </DropdownCont>

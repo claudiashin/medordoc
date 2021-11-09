@@ -10,13 +10,14 @@ import BookingForm from './comps/BookingForm';
 
 //import pages
 import findclinic from './pages/findclinic'
-import home from './pages/Home';
+import home from './pages/home';
 import booking from './pages/booking';
 import qrconfirm from './pages/qrconfirm';
 import scan from './pages/scan';
 // import login from './pages/login';
 import signup from './pages/signup';
 import patientprofile from './pages/patientprofile';
+import QR from './pages/QR';
 
 
 // import history from './pages/history';
@@ -41,14 +42,14 @@ export default function App() {
   
       <NavigationContainer>
        <Stack.Navigator initialRouteName="Home">
-         <Stack.Screen name="Home" component={Home} />
-         <Stack.Screen name="QR" component={QR} />
+         <Stack.Screen name="Home" component={patientprofile} />
+         {/* <Stack.Screen name="QR" component={QR} />
          <Stack.Screen name="findclinic" component={findclinic} />
          <Stack.Screen name="clinicprofile" component={clinicprofile} />
          <Stack.Screen name="signup" component={signup} />
          <Stack.Screen name="booking" component={booking} />
          <Stack.Screen name="qrconfirm" component={qrconfirm} />
-         <Stack.Screen name="QR" component={scan} />
+         <Stack.Screen name="QR" component={scan} /> */}
        </Stack.Navigator>
      </NavigationContainer>
 

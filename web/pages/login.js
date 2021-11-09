@@ -4,11 +4,14 @@ import styles from '../styles/Home.module.css';
 import styled from 'styled-components';
 import Lottie from "react-lottie";
 import React from "react";
+
+//import comps
 import HeaderTitle from '../comps/HeaderTitle';
 import LoginForm from '../comps/LoginForm';
 import HeroLottie from '../comps/HeroLottie';
-import NavBar from '../comps/NavBar'
-import myLottie from '../public/lottie_receptionist.json'
+import NavBar from '../comps/NavBar';
+import myLottie from '../public/lottie_receptionist.json';
+import Btn from '../comps/Btn';
 
 
 
@@ -21,6 +24,7 @@ const Cont = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 `
 const BodyCont = styled.div`
   display: flex;
@@ -32,7 +36,7 @@ const BodyCont = styled.div`
 `
 const TitleCont = styled.div`
   position: absolute;
-  top: 80px;
+  top: 60px;
   right: 320px;
 
 `
@@ -48,6 +52,13 @@ const HeaderwithNav = styled.div`
     background-color: #B9D1E1;
     margin-bottom: 100px;
 `
+const BtnCont = styled.div`
+    position: absolute;
+    right: 320px;
+    bottom: -100px;
+    margin-top: 20px;
+
+`
 
 
 export default function Home() {
@@ -56,7 +67,6 @@ export default function Home() {
       <HeaderwithNav>
         <NavBar />
       </HeaderwithNav>
-
 
       <BodyCont>
         <TitleCont>
@@ -76,7 +86,18 @@ export default function Home() {
           />
         </Subcont>
       </BodyCont>
-
+      <BtnCont>
+          <Btn 
+            title = "Sign In"
+            fSize = "22px"
+            color = "#fff"
+            bgColor = "#90AABB"
+            width = "200px"
+            height = "53px"
+            margin = "5px"
+            borderRad = "25px"
+          />
+      </BtnCont>
     </Cont>
   )
 }
