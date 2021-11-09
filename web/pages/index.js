@@ -80,7 +80,6 @@ const LottieCont = styled.div`
   justify-content: center;
   align-items: center;
   /* margin: 50px; */
-
   @media only screen and (min-width: 500px) {
   }
 `;
@@ -113,7 +112,6 @@ const FourInfoCont = styled.div`
   margin: 20px 80px 100px 80px;
   padding: 20px;
   display: flex;
-
 @media only screen and (min-width: 500px) {
   flex-wrap: wrap;
   justify-content: center;

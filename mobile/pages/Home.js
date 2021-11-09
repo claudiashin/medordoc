@@ -25,7 +25,7 @@ const home = ({navigation})=>{
       return (
         <View style={styles.container}>
          <MenuCard ind = {[5]}　Cardpress ={()=>navigation.navigate("findclinic")}/>
-         <MenuCard ind={[3]} Cardpress ={()=>navigation.navigate("finddoc")} />
+         <MenuCard ind={[3]} Cardpress ={()=>navigation.navigate("clinicprofile")}/> 
         </View>
       );
     

@@ -10,7 +10,15 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@eva-design/eva": "^2.1.1",
+=======
+<<<<<<< HEAD
+    "@react-icons/all-files": "^4.1.0",
+=======
+    "@eva-design/eva": "^2.1.1",
+>>>>>>> a73572e8c6cdf7573f21413943d1af4949a2e355
+>>>>>>> 944c0c7210a4a98071fa5d093c4224fc37a33d61
     "@react-native-community/datetimepicker": "3.5.2",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
@@ -25,6 +33,8 @@
     "react-native-calendars": "^1.1268.0",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-maps": "0.28.0",
+    "react-native-material-dropdown": "^0.11.1",
+    "react-native-paper-dates": "^0.5.1",
     "react-native-qrcode-svg": "^6.1.1",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.8.0",
@@ -53,7 +63,7 @@
     "react-icons": "^4.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-elements": "^3.4.2",
-    "react-native-paper": "^4.9.2",
+    "react-native-paper": "^4.10.0",
     "react-native-vector-icons": "^9.0.0",
     "react-native-web": "~0.13.12",
     "styled-components": "^5.3.3"

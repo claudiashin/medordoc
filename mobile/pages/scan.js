@@ -1,13 +1,30 @@
-import styled from 'styled-components/native'
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import QRCode from 'react-native-qrcode-svg';
+import React from "react";
+import styled from "styled-components";
 
-const scan = ({navigation})=>{
-return( 
-    <QRCode
-    value="https://www.google.com/"
-  />
-)
+import HeroAvatar from "../comps/HeroAvatar";
+
+const ScanCont = styled.View`
+  width:100%;
+  height:100%;
+`
+
+const AvatarCont = styled.View`
+
+`
+const BodyCont = styled.View`
+
+`
+
+const scan = ()=>{
+  return <ScanCont>
+    <AvatarCont>
+      <HeroAvatar/>
+    </AvatarCont>
+
+    <BodyCont>
+
+    </BodyCont>
+  </ScanCont>
 }
-export default scan;
+
+export default scan
