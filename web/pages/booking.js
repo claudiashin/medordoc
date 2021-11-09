@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import PatientList from '../comps/PatientList';
 import LiveWaitTime from '../comps/LiveWaitTime';
+import Calendar from '../comps/CalendarAPI'
 
 
 
@@ -48,7 +49,9 @@ export default function Home() {
             <Head></Head>
             <BodyCont>
                 <Low>
-                    <Calander></Calander>
+                
+                        <Calendar/>
+                    
                 </Low>
                 <Low>
                     <Column>

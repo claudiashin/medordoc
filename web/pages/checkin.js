@@ -1,7 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
-
+import  QRComponent from '../comps/CheckIn'
 import BookingForm from '../comps/BookingForm';
+
 
 const MainCont = styled.div`
     display: flex;
@@ -46,6 +47,7 @@ export default function Home() {
                 <Low>
                     <BookingForm></BookingForm>
                 </Low>
+                    <QRComponent/>
             </BodyCont>
         </MainCont>
     )
