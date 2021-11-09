@@ -5,6 +5,8 @@ import styled from 'styled-components/native';
 import Home from './pages/Home'
 import findclinic from './pages/findclinic'
 import QR from './pages/QR'
+import clinicprofile from'./pages/clinicprofile'
+
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -19,6 +21,7 @@ export default function App() {
          <Stack.Screen name="Home" component={Home} />
          <Stack.Screen name="QR" component={QR} />
          <Stack.Screen name="findclinic" component={findclinic} />
+         <Stack.Screen name="clinicprofile" component={clinicprofile} />
        </Stack.Navigator>
      </NavigationContainer>
 
