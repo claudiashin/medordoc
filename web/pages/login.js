@@ -9,19 +9,36 @@ import LoginForm from '../comps/LoginForm';
 import HeroLottie from '../comps/HeroLottie';
 import NavBar from '../comps/NavBar'
 import myLottie from '../public/lottie_receptionist.json'
+import Footer from '../comps/Footer';
 
 
 
 const Cont = styled.div`
   display: flex;
   flex-wrap: wrap;
-  // background-color: #F7F2EE;
+  background-color: #F7F2EE;
   width: 100vw;
   height: 100wh;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 `
+
+const WaveCont = styled.div`
+  width: 100%;
+`;
+
+const Wave = styled.img`
+  width: 100%;
+`;
+
+const NavBarCont = styled.div`
+  width:100%;
+  // height:300px;
+  position:absolute;
+  top:0;
+`;
+
 const BodyCont = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -53,29 +70,35 @@ const HeaderwithNav = styled.div`
 export default function Home() {
   return (
     <Cont>
-      <HeaderwithNav>
+      <WaveCont>
+        <Wave src={'/background-web5.svg'}></Wave>
+      </WaveCont>
+
+      <NavBarCont>
         <NavBar />
-      </HeaderwithNav>
+      </NavBarCont>
 
 
       <BodyCont>
         <TitleCont>
-          <HeaderTitle 
-                title="Log in"
-                fontSize='36'
+          <HeaderTitle
+            title="Log in"
+            fontSize='36'
           />
         </TitleCont>
-        <HeroLottie 
+        <HeroLottie
           source={myLottie}
           width="400px"
         />
         <Subcont>
-          <LoginForm 
+          <LoginForm
             width="250"
-            style={{marginTop: 100}}  
+            style={{ marginTop: 100 }}
           />
         </Subcont>
       </BodyCont>
+
+      <Footer />
 
     </Cont>
   )
