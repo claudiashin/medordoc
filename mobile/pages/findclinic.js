@@ -11,13 +11,25 @@ import BookingForm from '../comps/BookingForm';
 
   const Cont = styled.View`
   width:100%;
-  height:400px;
+  height:100%;
+  background-color: #E9D7CB;
   display:flex;
   align-content:center;
   justify-content:center;
   `
 
 
+<<<<<<< HEAD
+const findclinic = ()=>{
+return(
+   <Cont>
+    <SearchBar/>   
+    <Map/>
+    <Filiter/>
+   
+    </Cont> 
+)
+=======
 const findclinic = () => {
   return(
     <Cont>
@@ -27,6 +39,7 @@ const findclinic = () => {
     
       </Cont> 
   )
+>>>>>>> a73572e8c6cdf7573f21413943d1af4949a2e355
 }
 
 export default findclinic;

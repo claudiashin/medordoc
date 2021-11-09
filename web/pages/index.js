@@ -87,6 +87,32 @@ const BodyText = styled.p`
 
 
 export default function Home() {
+<<<<<<< HEAD
+  return (
+    <Cont>
+      <Background src={'/background4.svg'}/>
+      <Footer></Footer>
+      {/* <DoctorCard />
+      <LoginForm />
+      <SigninForm />
+      <PatientList />
+      <LiveWaitTime />
+      <BodyCont>
+        <Header>
+          <Wave
+            viewBox="0 0 500 500" 
+            preserveAspectRatio="xMinYMin meet"
+          >
+            <WavePath 
+              d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"
+            />
+          </Wave>
+        </Header>
+      </BodyCont> */}
+    </Cont>
+  )
+}
+=======
 
   return <Cont>
     {/* <HeaderwithNav></HeaderwithNav> */}
@@ -179,3 +205,4 @@ export default function Home() {
 
   </Cont>
 }
+>>>>>>> a73572e8c6cdf7573f21413943d1af4949a2e355
