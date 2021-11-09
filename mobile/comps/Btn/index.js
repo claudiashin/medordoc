@@ -6,7 +6,7 @@ const TextCont = styled.View`
   justify-content: center;
   align-items: center;
   height: 50px;
-  margin: 5px;
+  /* margin: 5px; */
 `;
 
 const Btn = ({
@@ -27,6 +27,7 @@ const Btn = ({
                 width: width,
                 height: height,
                 borderRadius: borderRad,
+                justifyContent: 'center',
             }}>
                 <TextCont>
                     <Text style={{

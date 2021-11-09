@@ -81,7 +81,7 @@ const signup = () => {
                     title={'Next'}
                     fSize={18}
                     width={110}
-                    height={45}
+                    height={40}
                 />
             </ButtonCont>
 
