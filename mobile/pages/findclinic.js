@@ -6,6 +6,8 @@ import SearchBar from '../comps/SearchBar'
 import Filiter from '../comps/Filter'
 import ClinDocButton from '../comps/ClinDocButton'
 
+import BookingForm from '../comps/BookingForm';
+
 
   const Cont = styled.View`
   width:100%;
@@ -16,15 +18,15 @@ import ClinDocButton from '../comps/ClinDocButton'
   `
 
 
-const findclinic = ()=>{
-return(
-   <Cont>
-    <SearchBar/>   
-    <Map/>
-    {/* <Filiter/> */}
-   
-    </Cont> 
-)
+const findclinic = () => {
+  return(
+    <Cont>
+      <SearchBar/>   
+      <Map/>
+      {/* <Filiter/> */}
+    
+      </Cont> 
+  )
 }
 
 export default findclinic;
