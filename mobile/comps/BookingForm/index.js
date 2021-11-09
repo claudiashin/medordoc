@@ -5,6 +5,8 @@ import { en,registerTranslation } from 'react-native-paper-dates'
   registerTranslation('en', en)
 import { DatePickerInput } from 'react-native-paper-dates';
 
+import Datepick from '../DataPicker';
+
 
 const styles = StyleSheet.create({
     inputbox: {

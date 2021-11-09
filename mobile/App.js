@@ -9,17 +9,14 @@ import LoginForm from './comps/LoginForm';
 import BookingForm from './comps/BookingForm';
 
 //import pages
-import Home from './pages/Home'
 import findclinic from './pages/findclinic'
-import QR from './pages/QR'
-import home from './pages/home';
+import home from './pages/Home';
 import booking from './pages/booking';
 import qrconfirm from './pages/qrconfirm';
-import findclinic from './pages/findclinic';
 import scan from './pages/scan';
 // import login from './pages/login';
 // import signup from './pages/signup';
-// import patientprofile from './pages/patientprofile';
+import patientprofile from './pages/patientprofile';
 // import history from './pages/history';
 // import finddoc from './pages/finddoc';
 // import docprofile from './pages/docprofile';
@@ -29,26 +26,19 @@ import scan from './pages/scan';
 
 
 
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// const Stack = createNativeStackNavigator();
+
 
 const Stack = createNativeStackNavigator();
 
 
 export default function App() {
-      return <PaperProvider>
-          <View style={styles.container}>
-            {/* <LoginForm /> */}
-            {/* <SigninForm /> */}
-            <BookingForm />
-          </View>
-      
-  
+      return (
        <NavigationContainer>
         <Stack.Navigator initialRouteName="home">
-          <Stack.Screen name="home" component={home} />
+          <Stack.Screen name="home" component={patientprofile} />
           <Stack.Screen name="findclinic" component={findclinic} />
           {/* <Stack.Screen name="login" component={login} />
           <Stack.Screen name="signup" component={signup} /> */}
@@ -63,7 +53,7 @@ export default function App() {
           <Stack.Screen name="clinicprofile" component={clinicprofile} /> */}
         </Stack.Navigator>
      </NavigationContainer>
-     </PaperProvider>
+      );
 }
 
 const styles = StyleSheet.create({
