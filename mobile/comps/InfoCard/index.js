@@ -7,6 +7,7 @@ const InfoCardCont = styled.View`
     border: #E9D7CB;
     padding: 10px;
     margin: 10px;
+    background-color: #fff;
 `;
 
 const HeadingCont = styled.View`
@@ -26,7 +27,13 @@ const SubheadingCont = styled.View`
 `;
 
 const Subheading = styled.Text`
-    font-size: 18px;
+    font-size: 16px;
+    color: #505050;
+    margin: 10px 10px 0px 10px;
+    font-weight: 700;
+`;
+const Subheadingtwo = styled.Text`
+    font-size: 16px;
     color: #505050;
     margin: 10px;
 `;
@@ -35,9 +42,9 @@ const WebsiteContainer = styled.View`
     flex-direction: row;
 `;
 
-const Subheading_two = styled.Text`
+const Subheadingthree = styled.Text`
     font-size: 16px;
-    color: #505050;
+    color: #226BAF;
     margin: 10px;
     font-weight: bold;
 `;
@@ -49,24 +56,26 @@ const Website = styled.Text`
 `;
 
 const InfoCard = ({
-    clinic_name = "Clinic Name",
-    clinic_address = "Clinic Address",
+    text = "Heading",
+    text2 = "Subheading",
+    text3 = "Website:",
     website_url = "https://www.bcit.ca/",
-    fontsize = 22,
+    fontsize = 20,
     weight = 700,
 }) => {
 
     return <InfoCardCont>
         <HeadingCont>
-            <Heading heading_fs={fontsize} heading_fw={weight}>{clinic_name}</Heading>
+            <Heading heading_fs={fontsize} heading_fw={weight}>{text}</Heading>
         </HeadingCont>
 
         <SubheadingCont>
-            <Subheading>{clinic_address}</Subheading>
+            <Subheading>{text}</Subheading>
+            <Subheadingtwo>{text2}</Subheadingtwo>
         </SubheadingCont>
 
         <WebsiteContainer /*style={styles.website_container}*/>
-            <Subheading_two>Website:</Subheading_two>
+            <Subheadingthree>{text3}</Subheadingthree>
             <Website onPress={() => Linking.openURL(website_url)}>{website_url}</Website>
         </WebsiteContainer>
     </InfoCardCont >

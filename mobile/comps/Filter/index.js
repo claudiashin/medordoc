@@ -10,6 +10,8 @@ import {useState} from 'react';
 const Extra = styled.View`
 width: 300px;
 height: 380px;
+
+
 `
 const Maincont = styled.View`
     display:${props=>props.display};
@@ -28,7 +30,7 @@ const Maincont = styled.View`
 const Iconcont = styled.View`
     position: absolute;
     bottom: 375px;
-    left: 250px;
+    left: 350px;
 `
 
 //headers
