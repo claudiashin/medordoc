@@ -1,7 +1,7 @@
 import React,{useState,useEffect,} from 'react';
 import { StyleSheet, Text, View,Image } from 'react-native';
 import MenuCard from '../comps/MenuCard'
-import styled from 'styled-components/native';
+// import styled from 'styled-components/native';
 
 
 const Home = ({navigation})=>{
@@ -25,7 +25,7 @@ const Home = ({navigation})=>{
       return (
         <View style={styles.container}>
          <MenuCard ind = {[5]}　Cardpress ={()=>navigation.navigate("findclinic")}/>
-         <MenuCard ind={[3]}/> 
+         <MenuCard ind={[3]} /> 
         </View>
       );
     
