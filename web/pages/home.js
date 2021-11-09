@@ -15,34 +15,40 @@ const HomeCont = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  background-color: #F7F2EE;
+`;
+
+const WaveCont = styled.div`
+  width: 100%;
 `;
 
 const Wave = styled.img`
-
+  width: 100%;
 `;
 
-const WavePath = styled.path`
-
+const NavBarCont = styled.div`
+  width:100%;
+  // height:300px;
+  position:absolute;
+  top:0;
 `;
 
-const MenuCont = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-`;
 
 
 export default function home() {
   return (
     <HomeCont>
-      <NavBar />
+      <WaveCont>
+        <Wave src={'/background-web5.svg'}></Wave>
+      </WaveCont>
+
+      <NavBarCont>
+        <NavBar />
+      </NavBarCont>
       {/* <Checkin/> */}
-      <MenuCont>
-        <MenuCard width={280} height={330} source={MyLottie} onClick={() => {}} />
-        <MenuCard title={"Appointment Bookings"} width={280} height={330}  source={MyLottie2} onClick={() => {}} />
-        <MenuCard title={"Doctors' Profiles"} width={280} height={330}  source={MyLottie3} onClick={() => {}} />
-      </MenuCont>
+      <MenuCard width={300} height={350} source={MyLottie} />
+      <MenuCard title={"Appointment Bookings"} width={300} height={350} source={MyLottie2} />
+      <MenuCard title={"Doctors' Profiles"} width={300} height={350} source={MyLottie3} />
       <Footer />
     </HomeCont>
   )

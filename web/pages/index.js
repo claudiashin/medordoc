@@ -21,6 +21,10 @@ const MainCont = styled.div`
   width: 100%;
 `;
 
+const WaveCont = styled.div`
+  width: 100%;
+`;
+
 const Wave = styled.img`
   width: 100%;
 `;
@@ -94,6 +98,10 @@ const BtnCont = styled.div`
 const BodyText = styled.p`
   font-size: 20px;
   line-height: 30px;
+
+  @media only screen and (min-width: 500px) {
+  line-height: 1;
+  }
 `;
 
 //THIRD ROW
@@ -148,7 +156,9 @@ const FactText = styled.p`
 
 export default function Home() {
   return <MainCont>
-    <Wave src={'/background_wave.jpg'}></Wave>
+    <WaveCont>
+      <Wave src={'/background-web5.svg'}></Wave>
+    </WaveCont>
 
     <NavBarCont>
       <NavBar />
@@ -157,10 +167,10 @@ export default function Home() {
     {/* FIRST */}
     <ContOne>
       <MainInfoCont>
-        <HeaderTitle title="Increase your clinic's patient base"/>
+        <HeaderTitle title="Increase your clinic's patient base" />
         <BodyText>Try MedorDoc to enhance your clinic's web presence and broaden your patient reach. Start by listing your clinic today.</BodyText>
         <BtnCont>
-          <Btn fSize="20px" fWeight="500" width="230px" height="70px"/>
+          <Btn fSize="20px" fWeight="500" width="230px" height="70px" />
         </BtnCont>
       </MainInfoCont>
 
@@ -223,7 +233,7 @@ export default function Home() {
       <MainInfoCont>
         <HeaderTitle title="Start your free six month trial now" />
         <BtnCont>
-          <Btn title="Start Now" fSize="20px" fWeight="500" width="160px" height="60px"/>
+          <Btn title="Start Now" fSize="20px" fWeight="500" width="160px" height="60px" />
         </BtnCont>
       </MainInfoCont>
 

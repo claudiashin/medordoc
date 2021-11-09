@@ -40,7 +40,7 @@ const MenuCard = ({
             style={{
                 width: width,
                 height: height,
-                margin: 20,
+                margin: 30,
                 borderColor: "#5C5C5C",
                 borderWidth: 1.5,
                 borderRadius: 5,

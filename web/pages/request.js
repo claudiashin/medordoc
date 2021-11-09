@@ -8,9 +8,21 @@ import NavBar from '../comps/NavBar';
 const Cont = styled.div`
     background-color: #F7F2EE;
 `
-const Background = styled.img`
 
-`
+const WaveCont = styled.div`
+  width: 100%;
+`;
+
+const Wave = styled.img`
+  width: 100%;
+`;
+
+const NavBarCont = styled.div`
+  width:100%;
+  // height:300px;
+  position:absolute;
+  top:0;
+`;
 
 const NavCont = styled.div`
     display: flex;
@@ -40,104 +52,108 @@ const ContFooter = styled.div`
 `
 
 export default function Home() {
-    return( <Cont>
-        <Background src={'/background-web4.svg'}/>
-        <NavCont>
-            <NavBar/>
-        </NavCont>
-        
+    return (<Cont>
+
+        <WaveCont>
+            <Wave src={'/background-web5.svg'}></Wave>
+        </WaveCont>
+
+        <NavBarCont>
+            <NavBar />
+        </NavBarCont>
+
         <ContPatientCard>
             <ContPatientCardInd>
-                <PatientCard 
-                name = "Name:"
-                gender = "Gender:"
-                age = "Age:"
-                medicalconcerns = "Medical Concerns:"
-                phone = "Phone:"
-                nameText = " Katie Lee"
-                genderText = " Female"
-                ageText = " 24"
-                medicalText = " Seasonal"
-                phoneText = " 604-123-1234"
+                <PatientCard
+                    name="Name:"
+                    gender="Gender:"
+                    age="Age:"
+                    medicalconcerns="Medical Concerns:"
+                    phone="Phone:"
+                    nameText=" Katie Lee"
+                    genderText=" Female"
+                    ageText=" 24"
+                    medicalText=" Seasonal"
+                    phoneText=" 604-123-1234"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
                 <PatientCard
-                name = "Name:"
-                gender = "Gender:"
-                age = "Age:"
-                medicalconcerns = "Medical Concerns:"
-                phone = "Phone:"                
-                nameText = " Donald Petterson"
-                genderText = " Male"
-                ageText = " 18"
-                medicalText = " Heart"
-                phoneText = " 604-123-1354"
+                    name="Name:"
+                    gender="Gender:"
+                    age="Age:"
+                    medicalconcerns="Medical Concerns:"
+                    phone="Phone:"
+                    nameText=" Donald Petterson"
+                    genderText=" Male"
+                    ageText=" 18"
+                    medicalText=" Heart"
+                    phoneText=" 604-123-1354"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
                 <PatientCard
-                name = "Name:"
-                gender = "Gender:"
-                age = "Age:"
-                medicalconcerns = "Medical Concerns:"
-                phone = "Phone:"                
-                nameText = " Jenny Truong"
-                genderText = " Female"
-                ageText = " 44"
-                medicalText = " Allergies"
-                phoneText = " 604-123-1355"                
+                    name="Name:"
+                    gender="Gender:"
+                    age="Age:"
+                    medicalconcerns="Medical Concerns:"
+                    phone="Phone:"
+                    nameText=" Jenny Truong"
+                    genderText=" Female"
+                    ageText=" 44"
+                    medicalText=" Allergies"
+                    phoneText=" 604-123-1355"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
                 <PatientCard
-                name = "Name:"
-                gender = "Gender:"
-                age = "Age:"
-                medicalconcerns = "Medical Concerns:"
-                phone = "Phone:"                
-                nameText = " Ben Bach"
-                genderText = " Male"
-                ageText = " 32"
-                medicalText = " Body aches"
-                phoneText = " 604-123-2222"                  
+                    name="Name:"
+                    gender="Gender:"
+                    age="Age:"
+                    medicalconcerns="Medical Concerns:"
+                    phone="Phone:"
+                    nameText=" Ben Bach"
+                    genderText=" Male"
+                    ageText=" 32"
+                    medicalText=" Body aches"
+                    phoneText=" 604-123-2222"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
                 <PatientCard
-                name = "Name:"
-                gender = "Gender:"
-                age = "Age:"
-                medicalconcerns = "Medical Concerns:"
-                phone = "Phone:"                
-                nameText = " Liam Parker"
-                genderText = " Male"
-                ageText = " 28"
-                medicalText = " Diabetes"
-                phoneText = " 604-123-2222"                 
+                    name="Name:"
+                    gender="Gender:"
+                    age="Age:"
+                    medicalconcerns="Medical Concerns:"
+                    phone="Phone:"
+                    nameText=" Liam Parker"
+                    genderText=" Male"
+                    ageText=" 28"
+                    medicalText=" Diabetes"
+                    phoneText=" 604-123-2222"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
                 <PatientCard
-                name = "Name:"
-                gender = "Gender:"
-                age = "Age:"
-                medicalconcerns = "Medical Concerns:"
-                phone = "Phone:"                
-                nameText = " Julie Chu"
-                genderText = " Female"
-                ageText = " 32"
-                medicalText = " Allergies"
-                phoneText = " 604-555-2222"                 
+                    name="Name:"
+                    gender="Gender:"
+                    age="Age:"
+                    medicalconcerns="Medical Concerns:"
+                    phone="Phone:"
+                    nameText=" Julie Chu"
+                    genderText=" Female"
+                    ageText=" 32"
+                    medicalText=" Allergies"
+                    phoneText=" 604-555-2222"
                 />
             </ContPatientCardInd>
 
         </ContPatientCard>
 
         <ContFooter>
-            <Footer/>
+            <Footer />
         </ContFooter>
-        
+
     </Cont>
 
     )
