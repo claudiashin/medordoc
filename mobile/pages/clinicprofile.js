@@ -15,11 +15,18 @@ const Cont = styled.View`
   display:flex;
   align-content:center;
   justify-content:center;
+  z-index:1;
+`
+const Banner = styled.View`
+    display: flex;
+    z-index:2;
 `
 
-const clinicprofile = ()=>{
+const ClinicProfile = ()=>{
     return(
        <Cont>
+
+           
            <HeroAvatar/>
            <InfoCard/>
            <InfoCard/>
@@ -28,4 +35,4 @@ const clinicprofile = ()=>{
     )
     }
     
-    export default clinicprofile;
+    export default ClinicProfile;
