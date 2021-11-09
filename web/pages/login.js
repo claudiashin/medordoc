@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css';
 import styled from 'styled-components';
 import Lottie from "react-lottie";
 import React from "react";
+import {useRouter} from 'next/router';
 
 //import comps
 import HeaderTitle from '../comps/HeaderTitle';
@@ -49,12 +50,12 @@ const BodyCont = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 100px;
-  position: relative;
+  
 `
 const TitleCont = styled.div`
   position: absolute;
-  top: 60px;
-  right: 320px;
+  top: 300px;
+  right: 450px;
 
 `
 const Subcont = styled.div`
@@ -63,22 +64,23 @@ const Subcont = styled.div`
 
 `
 const HeaderwithNav = styled.div`
-    display: flex;
-    height: 100px;
-    width: 100%;
-    background-color: #B9D1E1;
-    margin-bottom: 100px;
+  display: flex;
+  height: 100px;
+  width: 100%;
+  background-color: #B9D1E1;
+  margin-bottom: 100px;
 `
 const BtnCont = styled.div`
-    position: absolute;
-    right: 320px;
-    bottom: -100px;
-    margin-top: 20px;
+  margin-top: 70px;
+  margin-left: 130px;
 
 `
 
 
 export default function Home() {
+
+  const router = useRouter();
+
   return (
     <Cont>
       <WaveCont>
@@ -100,25 +102,29 @@ export default function Home() {
           source={myLottie}
           width="400px"
         />
-        <Subcont>
+        <Subcont
+          style={{marginTop:100}}
+        >
           <LoginForm
             width="250"
             style={{ marginTop: 100 }}
           />
+          <BtnCont>
+            <Btn 
+              title = "Sign In"
+              fSize = "22px"
+              color = "#fff"
+              bgColor = "#90AABB"
+              width = "200px"
+              height = "53px"
+              margin = "5px"
+              borderRad = "25px"
+              onClick={()=>router.push("/home")}
+            />
+          </BtnCont>
         </Subcont>
+    
       </BodyCont>
-      <BtnCont>
-          <Btn 
-            title = "Sign In"
-            fSize = "22px"
-            color = "#fff"
-            bgColor = "#90AABB"
-            width = "200px"
-            height = "53px"
-            margin = "5px"
-            borderRad = "25px"
-          />
-      </BtnCont>
 
       <Footer />
 

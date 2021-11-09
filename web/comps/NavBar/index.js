@@ -106,7 +106,7 @@ const NavBar = ({
     </NavCont>
 
     <ProfileCont>
-      <ProfileIcon onClick={()=>router.push("/profile/profile1")} className="icon" src={'/profile.png'}></ProfileIcon>
+      <ProfileIcon onClick={()=>router.push("/profile")} className="icon" src={'/profile.png'}></ProfileIcon>
       <DropdownCont className="dropdown">
         <MenuLink className="signout" href="#">Sign Out</MenuLink>
       </DropdownCont>

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import Lottie from 'react-lottie';
+import {useRouter} from 'next/router';
 
 
 const MenuCont = styled.div`
@@ -24,6 +25,7 @@ const MenuCard = ({
     source,
     width,
     height,
+    routeTo = "/"
 
 }) => {
 
@@ -35,9 +37,13 @@ const MenuCard = ({
         },
 
     };
+
+    const router = useRouter();
+
     return (
+        
         <MenuCont>
-            <MyCard onClick={() => {}} 
+            <MyCard onClick={()=>router.push(routeTo)} 
             style={{
                 width: width,
                 height: height,

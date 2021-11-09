@@ -215,7 +215,7 @@ export default function Home() {
 
 
 
-            <BtnContTwo onClick={() => router.push("/login.js")}>
+            <BtnContTwo onClick={() => router.push("/login")}>
                 <Btn title="Let's Explore" bgColor="#90AABB" width="160px" height="50px" fSize="16px" fWeight="600" borderRad="25px" />
             </BtnContTwo>
 
