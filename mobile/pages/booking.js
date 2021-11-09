@@ -7,7 +7,6 @@ import Header from '../comps/Header';
 // import DropDownFilter from '../comps/DropDownFilter';
 import Btn from '../comps/Btn';
 import NavBar from '../comps/NavBar';
-import InfoCard from '../comps/InfoCard';
 
 const BookingCont = styled.View`
     flex: 1;
@@ -52,7 +51,6 @@ const booking = () => {
             <CalendarAPICont>
                 <Text>Calendar</Text>
             </CalendarAPICont>
-            <InfoCard/>
 
             <Header title={'Thursday, November 4th'}/>
 
