@@ -10,11 +10,8 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-
     "@eva-design/eva": "^2.1.1",
-
     "@react-icons/all-files": "^4.1.0",
-
     "@react-native-community/datetimepicker": "3.5.2",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
@@ -27,6 +24,7 @@
     "react-dom": "17.0.1",
     "react-native": "0.64.2",
     "react-native-calendars": "^1.1268.0",
+    "react-native-dropdown-picker": "^5.2.3",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-maps": "0.28.0",
     "react-native-material-dropdown": "^0.11.1",
