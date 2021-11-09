@@ -6,8 +6,10 @@ import {useRouter} from 'next/router';
 import Btn from '../comps/Btn';
 import HeaderTitle from '../comps/HeaderTitle';
 import NavBar from "../comps/NavBar";
+import  QRComponent from '../comps/CheckIn'
 import BookingForm from '../comps/BookingForm';
 import Footer from "../comps/Footer";
+
 
 const MainCont = styled.div`
     display: flex;
@@ -94,6 +96,7 @@ export default function Home() {
                         />
                     </BtnCont>
                 </Low>
+                    <QRComponent/>
             </BodyCont>
 
             <Footer/>
