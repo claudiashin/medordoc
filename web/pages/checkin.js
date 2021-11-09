@@ -1,9 +1,14 @@
 import React from "react";
 import styled from 'styled-components';
+<<<<<<< HEAD
+import  QRComponent from '../comps/CheckIn'
+=======
 
 import NavBar from "../comps/NavBar";
+>>>>>>> 7d04e40d9055d823c59c3cfe8ea641823abe40d4
 import BookingForm from '../comps/BookingForm';
 import Footer from "../comps/Footer";
+
 
 const MainCont = styled.div`
     display: flex;
@@ -65,6 +70,7 @@ export default function Home() {
                 <Low>
                     <BookingForm></BookingForm>
                 </Low>
+                    <QRComponent/>
             </BodyCont>
 
             <Footer/>

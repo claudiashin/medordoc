@@ -4,7 +4,11 @@ import styled from 'styled-components';
 import NavBar from "../comps/NavBar";
 import PatientList from '../comps/PatientList';
 import LiveWaitTime from '../comps/LiveWaitTime';
+<<<<<<< HEAD
+import Calendar from '../comps/CalendarAPI'
+=======
 import Footer from '../comps/Footer';
+>>>>>>> 7d04e40d9055d823c59c3cfe8ea641823abe40d4
 
 
 
@@ -68,7 +72,9 @@ export default function Home() {
 
             <BodyCont>
                 <Low>
-                    <Calander></Calander>
+                
+                        <Calendar/>
+                    
                 </Low>
                 <Low>
                     <Column>

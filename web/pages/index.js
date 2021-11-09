@@ -155,15 +155,107 @@ const FactText = styled.p`
 //END OF THIRD ROW
 
 export default function Home() {
+<<<<<<< HEAD
+
+  return <Cont>
+    {/* <HeaderwithNav></HeaderwithNav> */}
+    <Wave src={'/background_wave.jpg'}></Wave>
+=======
   return <MainCont>
     <WaveCont>
       <Wave src={'/background-web5.svg'}></Wave>
     </WaveCont>
+>>>>>>> 7d04e40d9055d823c59c3cfe8ea641823abe40d4
 
     <NavBarCont>
       <NavBar />
     </NavBarCont>
 
+<<<<<<< HEAD
+    <BodyCont>
+      <ColCont style={{ backgroundColor: '#fff' }}>
+        <RowCont>
+          <HeaderTitle
+            title="Increase your clinic's patient base"
+            fontSize="36"
+            fontWeight="600"
+          />
+          <BodyText>
+            Try MedOrDoc to enhance your clinic’s web presence and broaden your patient reach. Start by listing your clinic today.
+          </BodyText>
+        </RowCont>
+        <RowCont>
+          <HeroLottie
+            source={myLottie}
+            width="300px"
+
+          />
+        </RowCont>
+      </ColCont>
+
+      <ColCont>
+        <RowCont>
+          <HeroLottie
+            source={myLottie}
+            width="300px"
+
+          />
+        </RowCont>
+        <RowCont>
+          <HeaderTitle
+            title="What is MedOrDoc?"
+            fontSize="36"
+            fontWeight="600"
+          />
+          <BodyText style={{ textAlign: 'left' }}>
+            Try MedOrDoc to enhance your clinic’s web presence and broaden your patient reach. Start by listing your clinic today.
+          </BodyText>
+        </RowCont>
+      </ColCont>
+
+      <ColCont style={{ backgroundColor: '#fff' }}>
+        <RowCont>
+          <HeaderTitle
+            title="Benefits of MedOrDoc"
+            fontSize="36"
+            fontWeight="600"
+          />
+        </RowCont>
+        <RowCont style={{ backgroundColor: '#dad' }}>
+          <SubCont>
+            <IconWithText>
+              <Icon src={'/profile.png'}></Icon>
+              <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
+            </IconWithText>
+          </SubCont>
+          <SubCont>
+            <IconWithText>
+              <Icon src={'/profile.png'}></Icon>
+              <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
+            </IconWithText>
+          </SubCont>
+          <SubCont>
+            <IconWithText>
+              <Icon src={'/profile.png'}></Icon>
+              <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
+            </IconWithText>
+          </SubCont>
+          <SubCont>
+            <IconWithText>
+              <Icon src={'/profile.png'}></Icon>
+              <SmText>Increase patient reach by keeping your availability status up-to-date</SmText>
+            </IconWithText>
+          </SubCont>
+        </RowCont>
+
+      </ColCont>
+
+    </BodyCont>
+    <Footer/>
+
+  </Cont>
+}
+=======
     {/* FIRST */}
     <ContOne>
       <MainInfoCont>
@@ -249,3 +341,4 @@ export default function Home() {
 
   </MainCont>
 }
+>>>>>>> 7d04e40d9055d823c59c3cfe8ea641823abe40d4
