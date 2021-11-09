@@ -3,22 +3,18 @@ import styled from 'styled-components';
 
 //import comps
 import PatientList from '../comps/PatientList';
+import NavBar from "../comps/NavBar";
+import Footer from "../comps/Footer";
 
 
 
 const MainCont = styled.div`
     display: flex;
     flex-wrap: wrap;
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-`
-const Head = styled.div`
-    display: flex;
-    height: 100px;
     width: 100%;
-    background-color: #B9D1E1;
-    margin-bottom: 100px;
+    height: 100%;
+    justify-content: center;
+    background-color: #F7F2EE;
 `
 const BodyCont = styled.div`
     display: flex;
@@ -41,11 +37,31 @@ const Calander = styled.div`
     height: 500px;
     background-color: #868686;
 `
+const WaveCont = styled.div`
+  width: 100%;
+`;
+
+const Wave = styled.img`
+  width: 100%;
+`;
+
+const NavBarCont = styled.div`
+  width:100%;
+  // height:300px;
+  position:absolute;
+  top:0;
+`;
 
 export default function Home() {
     return (
         <MainCont>
-            <Head></Head>
+            <WaveCont>
+                <Wave src={'/background-web5.svg'}></Wave>
+            </WaveCont>
+
+            <NavBarCont>
+                <NavBar />
+            </NavBarCont>
             <BodyCont>
                 <Low>
                     <Calander></Calander>
@@ -58,6 +74,8 @@ export default function Home() {
                     </Column>
                 </Low>
             </BodyCont>
+
+            <Footer />
         </MainCont>
     )
 }

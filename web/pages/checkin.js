@@ -12,10 +12,12 @@ import Footer from "../comps/Footer";
 const MainCont = styled.div`
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     background-color: #F7F2EE;
     width: 100vw;
     height: 100%;
     justify-content: center;
+    align-items: center;
 `
 
 const WaveCont = styled.div`
@@ -60,11 +62,7 @@ export default function Home() {
 
     return (
         <MainCont>
-            <Head></Head>
-            <HeaderTitle 
-                title="Booking Confirmation"
-                fontSize='36'
-            />
+
             <WaveCont>
                 <Wave src={'/background-web5.svg'}></Wave>
             </WaveCont>
@@ -73,6 +71,10 @@ export default function Home() {
                 <NavBar />
             </NavBarCont>
 
+            <HeaderTitle 
+                title="Booking Confirmation"
+                fontSize='36'
+            />
             <BodyCont>
                 <Low>
                     <Qrcode></Qrcode>
