@@ -7,6 +7,7 @@ const InfoCardCont = styled.div`
     width: ${props => props.cont_width}px;
     padding: 20px;
     margin: 10px;
+    background-color: #fff;
 `;
 
 const HeadingCont = styled.div`
@@ -25,7 +26,7 @@ const SubheadingCont = styled.div`
 `;
 
 const Subheading = styled.p`
-    font-size: 22px;
+    font-size: 20px;
     color: #505050;
     margin: 30px;
 `;
@@ -35,7 +36,7 @@ const InfoCard = ({
     heading = "Welcome to MedOrDoc!",
     subheading = "An email confirmation has been sent to you.",
     subheading_two = "Please check your inbox and validate your account.",
-    width = 600,
+    width = 500,
 }) => {
 
     return <InfoCardCont cont_width={width}>

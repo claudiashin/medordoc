@@ -4,7 +4,7 @@ import MenuCard from '../comps/MenuCard'
 import styled from 'styled-components/native';
 
 
-const Home = ({navigation})=>{
+const home = ({navigation})=>{
 
       const [loading, setLoad] = useState(true)
       useEffect(() => {
@@ -19,7 +19,7 @@ const Home = ({navigation})=>{
         return (
           <View style={styles.container}>
            <Image source = {require('../assets/MedOrDoc.png')}/>
-          </View>
+          </View> 
        );
       }
       return (
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default Home;
+export default home;

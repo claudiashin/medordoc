@@ -4,8 +4,7 @@ import styles from '../styles/Home.module.css';
 import styled from 'styled-components';
 import Lottie from "react-lottie";
 import React from "react";
-
-import HeaderTitle from '../comps/HeaderTitleTitle';
+import HeaderTitle from '../comps/HeaderTitle';
 import LoginForm from '../comps/LoginForm';
 import HeroLottie from '../comps/HeroLottie';
 import NavBar from '../comps/NavBar'
@@ -21,11 +20,26 @@ const Cont = styled.div`
   height: 100wh;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `
 const BodyCont = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  padding-top: 100px;
+  position: relative;
+`
+const TitleCont = styled.div`
+  position: absolute;
+  top: 80px;
+  right: 320px;
+
+`
+const Subcont = styled.div`
+  display: flex;
+  flex-direction: column;
+
 `
 const HeaderwithNav = styled.div`
     display: flex;
@@ -39,14 +53,28 @@ const HeaderwithNav = styled.div`
 export default function Home() {
   return (
     <Cont>
-      <HeaderwithNav></HeaderwithNav>
+      <HeaderwithNav>
+        <NavBar />
+      </HeaderwithNav>
+
+
       <BodyCont>
+        <TitleCont>
+          <HeaderTitle 
+                title="Log in"
+                fontSize='36'
+          />
+        </TitleCont>
         <HeroLottie 
           source={myLottie}
           width="400px"
-          
         />
-        <LoginForm width="250"/>
+        <Subcont>
+          <LoginForm 
+            width="250"
+            style={{marginTop: 100}}  
+          />
+        </Subcont>
       </BodyCont>
 
     </Cont>
