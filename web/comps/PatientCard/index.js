@@ -102,10 +102,11 @@ const PatientCard=({
             <Text>{medicalconcerns}{medicalText}</Text>
             <Text>{phone}{phoneText}</Text>
         </Textcont>
-        <Emailbut>
+        <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
+        
             <AiOutlineMail size={30}/>
             <Emailtext>{emailText}</Emailtext>
-        </Emailbut>
+        </Emailbut></a>
     </Maincont>
     
 }

@@ -1,9 +1,13 @@
 import * as React from 'react';
+import  { compoenent } from 'react';
 import { TextInput, Button } from 'react-native-paper';
 import { StyleSheet} from 'react-native';
 // import { en,registerTranslation } from 'react-native-paper-dates'
 //   registerTranslation('en', en)
 // import { DatePickerModal } from 'react-native-paper-dates';
+
+import { Dropdown } from 'react-native-material-dropdown';
+import { render } from 'react-dom';
 
 
 const styles = StyleSheet.create({
@@ -24,7 +28,18 @@ const BookingForm = () => {
 
 //   const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined)
 
+    // render() {
+    //     let data = [
+    //         {value: 'Male' },
+    //         {value: 'Female' }
+    //     ];
+    // }
+
   return <>
+    <Dropdown 
+        label="Gender"
+        data={data}
+    />
     <TextInput
         style={styles.inputbox}
         underlineColor="#505050"

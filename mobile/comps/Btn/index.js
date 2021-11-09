@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
-
 const TextCont = styled.View`
   justify-content: center;
   align-items: center;
@@ -15,12 +14,11 @@ const Btn = ({
     fSize = 22,
     color = "#fff",
     fWeight = "bold",
-    letterSpace = 2,
+    letterSpace = 1.5,
     bgColor = "#97BDD6",
     borderRad = 30,
-    width = 155,
+    width = 145,
     height = 60,
-
 }) => {
     return (
         <TouchableOpacity onPress={() => {}}>

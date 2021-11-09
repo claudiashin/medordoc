@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {useRouter} from 'next/router';
 
 const NavBarCont = styled.div`
   display: flex;
@@ -53,8 +54,7 @@ const ProfileIcon = styled.img`
   height: 50px;
   font-size: 16px;
   border: none;
-cursor: pointer;
-
+  cursor: pointer;
   // &:hover {
   //   background-color: #31FF00;
   // }
@@ -69,7 +69,6 @@ const DropdownCont = styled.div`
   z-index: 1;
   top: 90px;
   right: 35px;
-
   &:hover {
     background-color: #DDD;
     display: block;
@@ -88,21 +87,26 @@ const MenuLink = styled.a`
 `;
 
 const NavBar = ({
-
+  
 }) => {
+  const router = useRouter();
+  
   return <NavBarCont>
     <LogoCont>
-      <Logo /*onClick={{}}*/ src={'/MedOrDoc.png'} />
+      <Logo 
+        onClick={()=>router.push("/index.js")}
+        src={'/MedOrDoc.png'} 
+      />
     </LogoCont>
 
     <NavCont>
-      <NavButton /*onClick={{}}*/>Home</NavButton>
-      <NavButton /*onClick={{}}*/>Bookings</NavButton>
-      <NavButton /*onClick={{}}*/>Requests</NavButton>
+      <NavButton onClick={()=>router.push("/index.js")}>Home</NavButton>
+      <NavButton onClick={()=>router.push("/booking")}>Bookings</NavButton>
+      <NavButton onClick={()=>router.push("/request")}>Requests</NavButton>
     </NavCont>
 
     <ProfileCont>
-      <ProfileIcon className="icon" src={'/profile.png'}></ProfileIcon>
+      <ProfileIcon onClick={()=>router.push("/profile")} className="icon" src={'/profile.png'}></ProfileIcon>
       <DropdownCont className="dropdown">
         <MenuLink className="signout" href="#">Sign Out</MenuLink>
       </DropdownCont>

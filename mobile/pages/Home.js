@@ -4,7 +4,7 @@ import MenuCard from '../comps/MenuCard'
 // import styled from 'styled-components/native';
 
 
-const Home = ({navigation})=>{
+const home = ({navigation})=>{
 
       const [loading, setLoad] = useState(true)
       useEffect(() => {
@@ -19,13 +19,17 @@ const Home = ({navigation})=>{
         return (
           <View style={styles.container}>
            <Image source = {require('../assets/MedOrDoc.png')}/>
-          </View>
+          </View> 
        );
       }
       return (
         <View style={styles.container}>
          <MenuCard ind = {[5]}　Cardpress ={()=>navigation.navigate("findclinic")}/>
+<<<<<<< HEAD
          <MenuCard ind={[3]} /> 
+=======
+         <MenuCard ind={[3]} Cardpress ={()=>navigation.navigate("clinicprofile")}/> 
+>>>>>>> 944c0c7210a4a98071fa5d093c4224fc37a33d61
         </View>
       );
     
@@ -39,4 +43,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default Home;
+export default home;
