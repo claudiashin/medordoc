@@ -19,7 +19,6 @@ import BookingForm from '../comps/BookingForm';
   `
 
 
-<<<<<<< HEAD
 const findclinic = ()=>{
 return(
    <Cont>
@@ -29,17 +28,6 @@ return(
    
     </Cont> 
 )
-=======
-const findclinic = () => {
-  return(
-    <Cont>
-      <SearchBar/>   
-      <Map/>
-      {/* <Filiter/> */}
-    
-      </Cont> 
-  )
->>>>>>> a73572e8c6cdf7573f21413943d1af4949a2e355
 }
 
 export default findclinic;
