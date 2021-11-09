@@ -1,11 +1,12 @@
 import React from "react";
 import styled from 'styled-components';
-<<<<<<< HEAD
-import  QRComponent from '../comps/CheckIn'
-=======
+import {useRouter} from 'next/router';
 
+//import comps
+import Btn from '../comps/Btn';
+import HeaderTitle from '../comps/HeaderTitle';
 import NavBar from "../comps/NavBar";
->>>>>>> 7d04e40d9055d823c59c3cfe8ea641823abe40d4
+import  QRComponent from '../comps/CheckIn'
 import BookingForm from '../comps/BookingForm';
 import Footer from "../comps/Footer";
 
@@ -13,10 +14,12 @@ import Footer from "../comps/Footer";
 const MainCont = styled.div`
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     background-color: #F7F2EE;
     width: 100vw;
     height: 100%;
     justify-content: center;
+    align-items: center;
 `
 
 const WaveCont = styled.div`
@@ -51,10 +54,17 @@ const Qrcode = styled.div`
     height: 400px;
     background-color: #868686;
 `
+const BtnCont = styled.div`
+    margin-top: 20px;
+    margin-left: 150px;
+`
 
 export default function Home() {
+    const router = useRouter();
+
     return (
         <MainCont>
+
             <WaveCont>
                 <Wave src={'/background-web5.svg'}></Wave>
             </WaveCont>
@@ -63,12 +73,28 @@ export default function Home() {
                 <NavBar />
             </NavBarCont>
 
+            <HeaderTitle 
+                title="Booking Confirmation"
+                fontSize='36'
+            />
             <BodyCont>
                 <Low>
                     <Qrcode></Qrcode>
                 </Low>
                 <Low>
                     <BookingForm></BookingForm>
+                    <BtnCont>
+                        <Btn 
+                            title = "Check In"
+                            fSize = "16px"
+                            color = "#fff"
+                            bgColor = "#90AABB"
+                            width = "125px"
+                            height = "40px"
+                            borderRad = "25px"
+                            onClick={()=>router.push("/confirm")}
+                        />
+                    </BtnCont>
                 </Low>
                     <QRComponent/>
             </BodyCont>

@@ -41,8 +41,8 @@ export default function App() {
   return (
   
       <NavigationContainer>
-       <Stack.Navigator initialRouteName="home">
-         <Stack.Screen name="Home" component={signup} />
+       <Stack.Navigator initialRouteName="Home">
+         <Stack.Screen name="Home" component={patientprofile} />
          {/* <Stack.Screen name="QR" component={QR} />
          <Stack.Screen name="findclinic" component={findclinic} />
          <Stack.Screen name="clinicprofile" component={clinicprofile} />

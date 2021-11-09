@@ -46,9 +46,9 @@ export default function home() {
         <NavBar />
       </NavBarCont>
       {/* <Checkin/> */}
-      <MenuCard width={300} height={350} source={MyLottie} />
-      <MenuCard title={"Appointment Bookings"} width={300} height={350} source={MyLottie2} />
-      <MenuCard title={"Doctors' Profiles"} width={300} height={350} source={MyLottie3} />
+      <MenuCard width={300} height={350} source={MyLottie} routeTo="/request" />
+      <MenuCard title={"Appointment Bookings"} width={300} height={350} source={MyLottie2} routeTo="/booking" />
+      <MenuCard title={"Doctors' Profiles"} width={300} height={350} source={MyLottie3} routeTo="/profile" />
       <Footer />
     </HomeCont>
   )
