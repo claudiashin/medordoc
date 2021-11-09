@@ -18,18 +18,33 @@ const HomeCont = styled.div`
 `;
 
 const Wave = styled.img`
-  
+
 `;
+
+const WavePath = styled.path`
+
+`;
+
+const MenuCont = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`;
+
+
 
 export default function home() {
   return (
     <HomeCont>
-      <NavBar/>
+      <NavBar />
       {/* <Checkin/> */}
-      <MenuCard width={300} height={350} source={MyLottie} />
-      <MenuCard title={"Appointment Bookings"} width={300} height={350} source={MyLottie2} />
-      <MenuCard title={"Doctors' Profiles"} width={300} height={350} source={MyLottie3} />
-      <Footer/>
+      <MenuCont>
+        <MenuCard width={300} height={350} source={MyLottie} />
+        <MenuCard title={"Appointment Bookings"} width={300} height={350} source={MyLottie2} />
+        <MenuCard title={"Doctors' Profiles"} width={300} height={350} source={MyLottie3} />
+      </MenuCont>
+      <Footer />
     </HomeCont>
   )
 }

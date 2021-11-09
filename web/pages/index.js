@@ -70,4 +70,5 @@ export default function Home() {
         </Header>
       </BodyCont> */}
     </Cont>
+  )
 }

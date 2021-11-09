@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import styled from 'styled-components/native';
 
+// Import Comps
 import Header from '../comps/Header';
 import InfoCard from '../comps/InfoCard';
 import NavBar from '../comps/NavBar';
@@ -35,15 +36,16 @@ const NavBarCont = styled.View`
 const qrconfirm = () => {
     return (
         <ConfirmCont>
-            <Header/>
+            <Wave source={require('../assets/background_wave.jpg')} />
+            <Header title="Booking Confirmed" />
             <InfoCard
-                clinic_name = {"Appointment Details"}
-                clinic_address = {"Clinic Address"}
-                website_url = {"https://www.bcit.ca/"}
-                fontsize = {22}
-                weight = {700}
+                clinic_name={"Appointment Details"}
+                clinic_address={"Clinic Address"}
+                website_url={"https://www.bcit.ca/"}
+                fontsize={22}
+                weight={700}
             />
-            <InfoCard/>
+            <InfoCard />
             <NavBarCont>
                 <NavBar />
             </NavBarCont>

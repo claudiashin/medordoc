@@ -1,6 +1,8 @@
 import styled from 'styled-components/native'
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+
+// Import QRCode
 import QRCode from 'react-native-qrcode-svg';
 
 const scan = ({navigation})=>{

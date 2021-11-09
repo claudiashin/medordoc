@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View,Image } from 'react-native';
 import styled from 'styled-components/native';
+
+// Import Pages
 import home from './pages/home';
 import booking from './pages/booking';
 import qrconfirm from './pages/qrconfirm';
@@ -16,7 +18,7 @@ import scan from './pages/scan';
 // import accountconfirm from './pages/accountconfirm';
 // import clinicprofile from './pages/clinicprofile';
 
-
+// Import Navigator
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
