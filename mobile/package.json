@@ -10,9 +10,11 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@eva-design/eva": "^2.1.1",
     "@react-native-community/datetimepicker": "3.5.2",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
+    "@ui-kitten/components": "^5.1.1",
     "expo": "^43.0.0",
     "expo-location": "~13.0.4",
     "expo-status-bar": "~1.1.0",
@@ -26,7 +28,7 @@
     "react-native-qrcode-svg": "^6.1.1",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.8.0",
-    "react-native-svg": "12.1.1",
+    "react-native-svg": "^12.1.1",
     "react-native-unimodules": "^0.14.10",
     "react-native-web": "0.17.1",
     "styled-components": "^5.3.3"

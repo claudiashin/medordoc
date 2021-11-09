@@ -9,8 +9,8 @@ const MainCont = styled.View`
     flex-direction: column;
 `
 const Title = styled.Text`
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 16px;
     margin-left: 5px;
     margin-bottom: 10px;
 `
@@ -39,7 +39,7 @@ const SigninForm = ({
             <PaperProvider>
                 <Title>Personal Information</Title>
                 <TextInput
-                    style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
+                    style={{width:300, height: 45, margin:5, backgroundColor:'#fff'}}
                     label="First Name"
                     returnKeyType="next"
                     value={fname}
@@ -47,7 +47,7 @@ const SigninForm = ({
                     onChangeText={fname => setFname(fname)}
                 />
                 <TextInput
-                    style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
+                    style={{width:300, height: 45, margin:5, backgroundColor:'#fff'}}
                     label="Last Name"
                     returnKeyType="next"
                     value={lname}
@@ -55,7 +55,7 @@ const SigninForm = ({
                     onChangeText={lname => setLname(lname)}
                 />
                 <TextInput
-                    style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
+                    style={{width:300, height: 45, margin:5, backgroundColor:'#fff'}}
                     label="Email"
                     returnKeyType="next"
                     autoCapitalize="none"
@@ -67,7 +67,7 @@ const SigninForm = ({
                     onChangeText={text => setText(text)}
                 />
                 <TextInput
-                    style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
+                    style={{width:300, height: 45, margin:5, backgroundColor:'#fff'}}
                     label="Password"
                     returnKeyType="done"
                     secureTextEntry
