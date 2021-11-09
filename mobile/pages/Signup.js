@@ -1,19 +1,22 @@
-import React,{useState,useEffect,} from 'react';
+import React, { useState, useEffect, } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';
 
 // import CalendarAPI from '../comps/CalendarAPI';
 import Header from '../comps/Header';
+import HeroLottie from '../comps/HeroLottie';
+import SignUpLottie from '../assets/lottie_welcome.json';
+import SigninForm from '../comps/SigninForm';
 // import DropDownFilter from '../comps/DropDownFilter';
 import Btn from '../comps/Btn';
 import NavBar from '../comps/NavBar';
-import InfoCard from '../comps/InfoCard';
 
 const BookingCont = styled.View`
-    flex: 1;
     background-color: #F7F2EE;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
 `;
 
 const Wave = styled.Image`
@@ -23,47 +26,62 @@ const Wave = styled.Image`
     top: 0;
 `;
 
-const CalendarAPICont = styled.View`
-
+const LottieCont = styled.View`
+    justify-content: center;
+    align-items: center;
+    top: 100;
 `;
 
-const DropDownCont = styled.View`
+const HeaderCont = styled.View`
+    justify-content: center;
+    align-items: center;
+    top: 200;
+`;
 
+const SignUpFormCont = styled.View`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 200px;
 `;
 
 const ButtonCont = styled.View`
-    /* justify-content: flex-end; */
-    align-items: flex-end;
+    top: -150px;
+    /* align-items: flex-end;
     width: 275px;
-    /* height: 150px; */
-    margin-top: 25px;
+    margin-top: 25px; */
 `;
 
 const NavBarCont = styled.View`
-    position: absolute;
-    bottom: 45;
+    top: -200px;
 `;
 
 const booking = () => {
     return (
         <BookingCont>
-            <Wave source={require('../assets/background_wave.jpg')}/>
-            
-            <CalendarAPICont>
-                <Text>Calendar</Text>
-            </CalendarAPICont>
-            <InfoCard/>
+            <Wave source={require('../assets/background_wave.jpg')} />
 
-            <Header title={'Thursday, November 4th'}/>
+            <HeaderCont>
+                <Header title={'Create Account'} />
+            </HeaderCont>
 
-            <DropDownCont>
-                <Text>Drop Down Filter</Text>
-            </DropDownCont>
+            <SignUpFormCont>
+                <SigninForm />
+            </SignUpFormCont>
+
+            <LottieCont>
+                <HeroLottie
+                    source={SignUpLottie}
+                    width="200"
+                />
+            </LottieCont>
 
             <ButtonCont>
-                <Btn 
-                    title={'Confirm'}
-                    fSize={20}
+                <Btn
+                    title={'Next'}
+                    fSize={18}
+                    width={110}
+                    height={45}
                 />
             </ButtonCont>
 
@@ -73,5 +91,10 @@ const booking = () => {
         </BookingCont>
     )
 }
+
+const styles = StyleSheet.create({
+    cont: {
+    },
+});
 
 export default booking

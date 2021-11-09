@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 import React from 'react'
 
 const HeroAvatarCont = styled.View`
@@ -7,9 +7,9 @@ const HeroAvatarCont = styled.View`
   align-items:center;
 `
 const HeroImage = styled.Image`
-  width:${props=>props.herowidth};
-  height:${props=>props.heroheight};
-  border-radius:100px;
+  width:${props=>props.herowidth}px;
+  height:${props=>props.heroheight}px;
+  border-radius:200px;
 `
 const PlusImage = styled.Image`
   width:${props=>props.pluswidth};
