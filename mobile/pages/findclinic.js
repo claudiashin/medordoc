@@ -1,4 +1,4 @@
-import React,{useState,useEffect,} from 'react';
+import React, {useState,useEffect,} from 'react';
 import { StyleSheet, Text, View,Image, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 import Map from '../comps/Map'
@@ -25,7 +25,6 @@ const Cont = styled.View`
   height:100vh;
   background-color: #E9D7CB;
   display:flex;
-
   margin-top:320px;
   align-items:center;
 
@@ -80,5 +79,6 @@ return (
 
 }
 export default findclinic;
+
 
 
