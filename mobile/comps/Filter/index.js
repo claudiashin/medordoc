@@ -32,6 +32,10 @@ const Iconcont = styled.View`
     bottom: 375px;
     left: 350px;
 `
+const FilterIcon = styled.Image`
+    height: 25px;
+    width: 25px;
+`
 
 //headers
 const Headercont = styled.View`

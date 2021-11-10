@@ -56,7 +56,7 @@ const NavBarCont = styled.View`
     top: -200px;
 `;
 
-const booking = () => {
+const signup = () => {
     return (
         <BookingCont>
             <Wave source={require('../assets/background_wave.jpg')} />
@@ -97,4 +97,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default booking
+export default signup

@@ -10,7 +10,7 @@ import BookingForm from './comps/BookingForm';
 
 //import pages
 import findclinic from './pages/findclinic'
-import home from './pages/Home';
+import home from './pages/home';
 import booking from './pages/booking';
 import qrconfirm from './pages/qrconfirm';
 import scan from './pages/scan';
@@ -40,9 +40,8 @@ export default function App() {
   return (
   
       <NavigationContainer>
-       <Stack.Navigator initialRouteName="Home">
-         <Stack.Screen name="Home" component={Home} />
-         <Stack.Screen name="QR" component={QR} />
+       <Stack.Navigator initialRouteName="findclinic">
+         <Stack.Screen name="home" component={home} />
          <Stack.Screen name="findclinic" component={findclinic} />
          <Stack.Screen name="clinicprofile" component={clinicprofile} />
          <Stack.Screen name="signup" component={signup} />

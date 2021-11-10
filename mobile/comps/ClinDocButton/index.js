@@ -11,7 +11,7 @@ const Maincont = styled.View`
     box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5)
     width: 284px;
     height: 80px;
-
+    margin: 10px;
     border-radius: 15px;
 `
 const Avatarcont = styled.View`
