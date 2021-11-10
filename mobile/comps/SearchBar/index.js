@@ -49,10 +49,17 @@ z-index: -1;
 const Searchiconcont = styled.View`
     display: flex;
     position: relative;
-    top: 7px;
-    left: 250px;
+    height: 75px;
+    width: 75px;
+    top: 8px;
+    left: 290px;
     z-index: 2;
     
+`
+const SearchIcon = styled.Image`
+
+    height: 25px;
+    width: 25px;
 `
 //Go button styling
 
@@ -61,6 +68,7 @@ const Gocont = styled.View`
     justify-content: center;
     height: 48px;
     width: 48px;
+    margin-right: 20px;
     background-color: #ffffff;
     border-radius: 15px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
@@ -74,9 +82,9 @@ const SearchBar=({
 
 })=>{
     return <Maincont>
-        { <AntDesign name="left" size={40} color="black" /> }
-        <Searchiconcont>
-        { <EvilIcons name="search" size={35} color="black" /> }
+        
+        <Searchiconcont >
+            <SearchIcon source={require('../../assets/icons/search.png')}/>
         </Searchiconcont>
         
         <Searchcont>

@@ -3,6 +3,10 @@ import styled from "styled-components";
 import {AiOutlineMail} from '@react-icons/all-files/ai/AiOutlineMail';
 import {IoIosClose} from '@react-icons/all-files/io/IoIosClose';
 
+import {useState} from 'react';
+
+import PopupCard from '../PopupCard';
+
 //card
 const Maincont = styled.div`
     display:flex;
@@ -66,7 +70,25 @@ const Closebutton = styled.div`
     display: flex;
     margin-left: 300px;
 `
-
+//edit button for doctor side
+const Editbut = styled.div`
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    margin-top:5px;
+    width:175px;
+    height:55px;
+    background-color: #FAF0BF;
+    border-radius: 5px;
+`
+const PopupCont = styled.div`
+    display: flex;
+    position: absolute;
+    top: 500px;
+    align-self: center;
+    justify-content: center;
+`
 
 const PatientCard=({
     //info
@@ -85,11 +107,24 @@ const PatientCard=({
     location = "default text",
     language = "default text",
     medicalconcerns = "default text",
-    phone = "default text"
+    phone = "default text",
+    //button
 })=>{
+
+    const [open, setOpen] = useState(false);
+
+    var display = "none";
+    if(open){
+        display = "flex"
+    }
+
     return <Maincont>
+        <PopupCont>
+        <PopupCard/>
+        </PopupCont>
+        
         <Closebutton>
-        <IoIosClose size={60}/>
+        <IoIosClose onClick={()=>setOpen(!open)} size={60}/>
         </Closebutton>
         
         <Avatarcont>

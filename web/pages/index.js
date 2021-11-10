@@ -29,6 +29,7 @@ const WaveCont = styled.div`
 
 const Wave = styled.img`
   width: 100%;
+  
 `;
 
 const NavBarCont = styled.div`

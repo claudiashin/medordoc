@@ -32,6 +32,10 @@ const Iconcont = styled.View`
     bottom: 375px;
     left: 350px;
 `
+const FilterIcon = styled.Image`
+    height: 25px;
+    width: 25px;
+`
 
 //headers
 const Headercont = styled.View`
@@ -56,7 +60,7 @@ const Filteropt = styled.View`
     height: 40px;
     background-color: #E9D7CB;
     border-radius: 5px;
-    margin: 5px;
+    margin: 4px;
     padding: 5px;
 `
 const Filttext = styled.Text`
