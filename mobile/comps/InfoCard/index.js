@@ -27,7 +27,7 @@ const SubheadingCont = styled.View`
 `;
 
 const Subheading = styled.Text`
-    font-size: 16px;
+    font-size: ${props => props.subheading_fs}px;
     color: #505050;
     margin: 10px 10px 0px 10px;
     font-weight: 700;
@@ -70,7 +70,6 @@ const InfoCard = ({
         </HeadingCont>
 
         <SubheadingCont>
-            <Subheading>{text}</Subheading>
             <Subheadingtwo>{text2}</Subheadingtwo>
         </SubheadingCont>
 

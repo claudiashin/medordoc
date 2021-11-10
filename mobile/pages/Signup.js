@@ -65,9 +65,10 @@ const signup = () => {
                 <Header title={'Create Account'} />
             </HeaderCont>
 
-            <SignUpFormCont>
+            {/* <SignUpFormCont>
                 <SigninForm />
-            </SignUpFormCont>
+            </SignUpFormCont> */}
+
 
             <LottieCont>
                 <HeroLottie
