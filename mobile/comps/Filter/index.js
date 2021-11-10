@@ -10,8 +10,6 @@ import {useState} from 'react';
 const Extra = styled.View`
 width: 300px;
 height: 380px;
-
-
 `
 const Maincont = styled.View`
     display:${props=>props.display};

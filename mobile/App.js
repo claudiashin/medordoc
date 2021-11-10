@@ -19,7 +19,6 @@ import signup from './pages/signup';
 import patientprofile from './pages/patientprofile';
 import QR from './pages/QR';
 
-
 // import history from './pages/history';
 // import finddoc from './pages/finddoc';
 // import docprofile from './pages/docprofile';
@@ -27,12 +26,8 @@ import QR from './pages/QR';
 import clinicprofile from './pages/clinicprofile';
 
 
-
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-
 
 const Stack = createNativeStackNavigator();
 
@@ -42,14 +37,14 @@ export default function App() {
   
       <NavigationContainer>
        <Stack.Navigator initialRouteName="Home">
-         <Stack.Screen name="Home" component={patientprofile} />
-         {/* <Stack.Screen name="QR" component={QR} />
+         <Stack.Screen name="Home" component={home} />
+          <Stack.Screen name="QR" component={QR} />
          <Stack.Screen name="findclinic" component={findclinic} />
          <Stack.Screen name="clinicprofile" component={clinicprofile} />
          <Stack.Screen name="signup" component={signup} />
          <Stack.Screen name="booking" component={booking} />
          <Stack.Screen name="qrconfirm" component={qrconfirm} />
-         <Stack.Screen name="QR" component={scan} /> */}
+         <Stack.Screen name="scan" component={scan} /> 
        </Stack.Navigator>
      </NavigationContainer>
 
