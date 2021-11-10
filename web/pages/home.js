@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {useRouter} from 'next/router';
 
 import NavBar from '../comps/NavBar';
 import MenuCard from '../comps/MenuCard';
@@ -20,6 +21,8 @@ const HomeCont = styled.div`
 
 const WaveCont = styled.div`
   width: 100%;
+  height: auto;
+  position: relative;
 `;
 
 const Wave = styled.img`
@@ -33,7 +36,18 @@ const NavBarCont = styled.div`
   top:0;
 `;
 
+const MenuCardCont = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
 
+  @media only screen and (min-width: 475px) {
+    margin: 100px;
+  }
+`;
 
 export default function home() {
   return (
@@ -45,10 +59,14 @@ export default function home() {
       <NavBarCont>
         <NavBar />
       </NavBarCont>
+
       {/* <Checkin/> */}
-      <MenuCard width={300} height={350} source={MyLottie} />
-      <MenuCard title={"Appointment Bookings"} width={300} height={350} source={MyLottie2} />
-      <MenuCard title={"Doctors' Profiles"} width={300} height={350} source={MyLottie3} />
+
+      <MenuCardCont>
+        <MenuCard width={300} height={350} source={MyLottie} onClick={()=>router.push("/")}/>
+        <MenuCard title={"Appointment Bookings"} width={300} height={350} source={MyLottie2} onClick={()=>router.push("/")} />
+        <MenuCard title={"Doctors' Profiles"} width={300} height={350} source={MyLottie3} onClick={()=>router.push("/")} />
+      </MenuCardCont>
       <Footer />
     </HomeCont>
   )

@@ -27,7 +27,7 @@ const MenuCard = ({
 }) => {
 
     const defaultOptions = {
-        loop: true,
+        // loop: true,
         autoplay: true,
         animationData: source,
         rendererSettings: {

@@ -97,8 +97,4 @@ const styles = StyleSheet.create({
     },
 });
 
-<<<<<<< HEAD
 export default signup
-=======
-export default signup
->>>>>>> 7d04e40d9055d823c59c3cfe8ea641823abe40d4

@@ -17,7 +17,7 @@ import qrconfirm from './pages/qrconfirm';
 import scan from './pages/scan';
 // import login from './pages/login';
 import signup from './pages/signup';
-import patientprofile from './pages/patientprofile';
+// import patientprofile from './pages/patientprofile';
 import QR from './pages/QR';
 
 
@@ -39,7 +39,6 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-  
       <NavigationContainer>
        <Stack.Navigator initialRouteName="home">
          <Stack.Screen name="Home" component={home} />
@@ -49,11 +48,10 @@ export default function App() {
          <Stack.Screen name="signup" component={signup} />
          <Stack.Screen name="booking" component={booking} />
          <Stack.Screen name="qrconfirm" component={qrconfirm} />
-         <Stack.Screen name="QR" component={scan} /> */}
+         <Stack.Screen name="scan" component={scan} /> */}
        </Stack.Navigator>
      </NavigationContainer>
-
-      );
+  );
 }
 
 const styles = StyleSheet.create({

@@ -8,7 +8,7 @@ const HeroLottie =({
 }) =>{
 
   const defaultOptions = {
-    loop: true,
+    // loop: true,
     autoplay: true,
     animationData: source,
     rendererSettings: {
