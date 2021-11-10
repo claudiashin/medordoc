@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import { Provider as PaperProvider, TextInput, RadioButton } from 'react-native-paper';
 import { StyleSheet, Button, View, Text } from "react-native";
+import { en,registerTranslation } from 'react-native-paper-dates'
+  registerTranslation('en', en)
+import { DatePickerInput } from 'react-native-paper-dates';
+import DropDownPicker from 'react-native-dropdown-picker';
+import Btn from '../Btn';
 
 
 const MainCont = styled.View`
@@ -15,7 +20,6 @@ const Title = styled.Text`
 `
 const Radio = styled.View`
     background-color: #fff;
-    border: 1px solid #505050;
     border-radius: 5px;
     width: 300px;
     margin-left: 5px; 
@@ -26,9 +30,10 @@ const RadioTitle = styled.Text`
     font-weight: 600; 
     margin-left: 15px; 
 `
-    
-    // position: absolute;
-    // top: -8px;
+const ButCont = styled.View`
+    margin-left: 180px;
+    margin-top: 50px;
+`
 
 
 const SigninForm = ({
@@ -46,13 +51,22 @@ const SigninForm = ({
 
     //for second form
     const [medcon, setMedcon] = React.useState('');
+    const [inputDate, setInputDate ] = React.useState('');
+
+    const [open, setOpen] = useState(false);
+    const [gender, setGender] = useState(null);
+    const [items, setItems] = useState([
+        {label: 'Male', gender: 'Male'},
+        {label: 'Female', gender: 'Female'},
+        {label: 'Prefer not to answer', gender: 'Prefer not to answer'}
+    ]);
 
     if (changeForm === true) {
         return <MainCont>
             <PaperProvider>
                 <Title>Personal Information</Title>
                 <TextInput
-                    style={{width:300, height: 45, margin:5, backgroundColor:'#fff'}}
+                    style={styles.inputbox}
                     label="First Name"
                     returnKeyType="next"
                     value={fname}
@@ -60,7 +74,7 @@ const SigninForm = ({
                     onChangeText={fname => setFname(fname)}
                 />
                 <TextInput
-                    style={{width:300, height: 45, margin:5, backgroundColor:'#fff'}}
+                    style={styles.inputbox}
                     label="Last Name"
                     returnKeyType="next"
                     value={lname}
@@ -68,7 +82,7 @@ const SigninForm = ({
                     onChangeText={lname => setLname(lname)}
                 />
                 <TextInput
-                    style={{width:300, height: 45, margin:5, backgroundColor:'#fff'}}
+                    style={styles.inputbox}
                     label="Email"
                     returnKeyType="next"
                     autoCapitalize="none"
@@ -80,7 +94,7 @@ const SigninForm = ({
                     onChangeText={text => setText(text)}
                 />
                 <TextInput
-                    style={{width:300, height: 45, margin:5, backgroundColor:'#fff'}}
+                    style={styles.inputbox}
                     label="Password"
                     returnKeyType="done"
                     secureTextEntry
@@ -88,62 +102,83 @@ const SigninForm = ({
                     mode='outlined'
                     onChangeText={pass => setPass(pass)}
                 />
-            <Button title="next"
-                onPress={()=>{setChangeForm(false);}}
-            ></Button>
+            <ButCont>
+                <Btn title="Next" fSize="20"
+                    onPress={()=>{setChangeForm(false)}}
+                ></Btn>
+            </ButCont>
             </PaperProvider>
         </MainCont>
     }
-
     return <MainCont>
             <PaperProvider>
             <Title>Additional Information</Title>
-            <TextInput
-                    style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
-                    label="First Name"
-                    returnKeyType="next"
-                    value={fname}
-                    mode='outlined'
-                    onChangeText={fname => setFname(fname)}
-                />
+            <DatePickerInput
+                locale="en"
+                label="Date of Birth"
+                value={inputDate}
+                onChange={inputDate => setInputDate(inputDate)}
+                inputMode="start"
+                mode="outlined"
+                style={styles.inputbox}
+            ></DatePickerInput>
             <Radio>
-                <RadioTitle>Gender</RadioTitle>
-                <RadioButton.Group onValueChange={value => setValue(value)} value={value}>
-                    <RadioButton.Item style={{width: 300}} label="Male" value="Male" />
-                    <RadioButton.Item style={{width: 300}} label="Female" value="Female" />
-                    <RadioButton.Item style={{width: 300}} label="Prefer not to answer" value="na" />
-                </RadioButton.Group>
+                <DropDownPicker
+                    open={open}
+                    value={gender}
+                    items={items}
+                    placeholder="Select Gender"
+                    setOpen={setOpen}
+                    setGender={setGender}
+                    setItems={setItems}
+                    style={{
+                        width: 335,
+                        height: 50,
+                        borderRadius: 4,
+                        borderColor: '#6d6d6d'
+                    }}
+                    />
             </Radio>
-                <TextInput
-                    style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
-                    label="Address"
-                    returnKeyType="next"
-                    autoCapitalize='sentences'
-                    autoComplete='postal-address-extended-postal-code'
-                    textContentType="fullStreetAddress"
-                    dataDetectorTypes='address'
-                    multiline={true}
-                    value={text}
-                    mode='outlined'
-                    onChangeText={text => setText(text)}
+            <TextInput
+                style={styles.inputbox}
+                label="Address"
+                returnKeyType="next"
+                autoCapitalize='sentences'
+                autoComplete='postal-address-extended-postal-code'
+                textContentType="fullStreetAddress"
+                dataDetectorTypes='address'
+                multiline={true}
+                value={text}
+                mode='outlined'
+                onChangeText={text => setText(text)}
+            />
+            <TextInput
+                style={styles.inputbox}
+                label="Medical Concern"
+                returnKeyType="done"
+                autoCapitalize='sentences'
+                value={medcon}
+                multiline={true}
+                mode='outlined'
+                onChangeText={medcon => setMedcon(medcon)}
                 />
-                <TextInput
-                    style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
-                    label="Medical Concern"
-                    returnKeyType="done"
-                    autoCapitalize='sentences'
-                    value={medcon}
-                    multiline={true}
-                    mode='outlined'
-                    onChangeText={medcon => setMedcon(medcon)}
-                />
-        <Button title="next"
-            onPress={()=>{setChangeForm(true);}}
-        ></Button>
+         <ButCont>
+                <Btn title="Confirm" fSize="20"
+                    onPress={()=>{setChangeForm(true)}}
+                ></Btn>
+            </ButCont>
       </PaperProvider>
     </MainCont>
 
 };
 
+const styles = StyleSheet.create({
+    inputbox: {
+        width: 335,
+        height: 50,
+        margin: 5,
+        backgroundColor: '#fff'
+    }
+})
 
 export default SigninForm

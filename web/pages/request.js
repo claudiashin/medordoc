@@ -4,25 +4,23 @@ import PatientCard from '../comps/PatientCard';
 import Footer from '../comps/Footer';
 import PopupCard from '../comps/PopupCard';
 import NavBar from '../comps/NavBar';
+import HeaderTitle from '../comps/HeaderTitle';
+import { useState } from "react";
+
 
 const Cont = styled.div`
     background-color: #F7F2EE;
 `
-
-const WaveCont = styled.div`
-  width: 100%;
-`;
-
-const Wave = styled.img`
-  width: 100%;
-`;
-
-const NavBarCont = styled.div`
-  width:100%;
-  // height:300px;
-  position:absolute;
-  top:0;
-`;
+const Background = styled.img`
+    
+`
+const HeaderCont = styled.div`
+    display: flex;
+    right: 50%;
+    top:200px;
+    align-self: center;
+    justify-content: center;
+`
 
 const NavCont = styled.div`
     display: flex;
@@ -50,18 +48,36 @@ const ContFooter = styled.div`
     display: flex;
     margin-top: 50px;
 `
+//popup card 
+const PopupCont = styled.div`
+    display: flex;
+    position: absolute;
+    top: 70%;
+    left: 38%;
+    align-self: center;
+    justify-content: center;
+`
 
 export default function Home() {
-    return (<Cont>
+    const [popup,setPopup] = useState(true)
+    if(popup == true){
 
-        <WaveCont>
-            <Wave src={'/background-web5.svg'}></Wave>
-        </WaveCont>
+    }
+    return( <Cont>
+        <Background src={'/background-web4.svg'}/>
+        <NavCont>
+        <NavBar/>
+        </NavCont>
 
-        <NavBarCont>
-            <NavBar />
-        </NavBarCont>
+        <HeaderCont>
+            <HeaderTitle title={"Patient List"}/>
+        </HeaderCont>
+        
 
+        {/* <PopupCont>
+            <PopupCard/>
+        </PopupCont> */}
+        
         <ContPatientCard>
             <ContPatientCardInd>
                 <PatientCard

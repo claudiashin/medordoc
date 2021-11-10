@@ -16,16 +16,16 @@ const PlusImage = styled.Image`
   height:${props=>props.plusheight};
   position:absolute;
   right:${props=>props.right};
-  bottom:${props=>props.bottom};
+  bottom:${props=>props.bottom}px;
 
 `
 const HeroAvatar =({
-  heroheight=300,
-  herowidth=300,
-  pluswidth=30,
-  plusheight=30,
-  right=120,
-  bottom=10,
+  heroheight="300",
+  herowidth="300",
+  pluswidth="30",
+  plusheight="30",
+  right="120",
+  bottom="10",
   imagesrc="https://placekitten.com/1000/1000",
 })=>{
   return <HeroAvatarCont >
