@@ -6,10 +6,8 @@ import SearchBar from '../comps/SearchBar'
 import Filiter from '../comps/Filter'
 import ClinDocButton from '../comps/ClinDocButton'
 import Header from '../comps/Header'
-
 import BookingForm from '../comps/BookingForm';
 import NavBar from '../comps/NavBar';
-
 
   const Cont = styled.View`
   width:100%;
@@ -20,15 +18,14 @@ import NavBar from '../comps/NavBar';
   align-content:center;
   justify-content: space-between;
 `
-const Cont = styled.View`
-  width:100vw;
-  height:100vh;
-  background-color: #E9D7CB;
-  display:flex;
-  margin-top:320px;
-  align-items:center;
-
-  `
+// const Cont = styled.View`
+//   width:100vw;
+//   height:100vh;
+//   background-color: #E9D7CB;
+//   display:flex;
+//   margin-top:320px;
+//   align-items:center;
+//   `
   const SearchCont = styled.View`
     display: flex;
     flex-direction: row;
