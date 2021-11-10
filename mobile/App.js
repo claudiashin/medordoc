@@ -40,7 +40,7 @@ export default function App() {
   return (
   
       <NavigationContainer>
-       <Stack.Navigator initialRouteName="findclinic">
+       <Stack.Navigator initialRouteName="home">
          <Stack.Screen name="home" component={home} />
          <Stack.Screen name="findclinic" component={findclinic} />
          <Stack.Screen name="clinicprofile" component={clinicprofile} />

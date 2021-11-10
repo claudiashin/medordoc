@@ -60,7 +60,7 @@ const Filteropt = styled.View`
     height: 40px;
     background-color: #E9D7CB;
     border-radius: 5px;
-    margin: 5px;
+    margin: 4px;
     padding: 5px;
 `
 const Filttext = styled.Text`
