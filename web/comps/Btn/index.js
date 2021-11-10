@@ -1,6 +1,7 @@
 import { flexbox } from '@mui/system';
 import React from 'react';
 import styled from 'styled-components';
+import {useRouter} from 'next/router';
 
 const Button = styled.div`
     display: flex;
@@ -26,11 +27,14 @@ const Btn = ({
     width = 250,
     height = 80,
     margin = 5,
-
+    onClick=()=>{}
 
 }) => {
+    const router = useRouter();
+
     return (
-        <Button onPress={() => {}}
+        
+        <Button onClick={onClick}
             style={{
                 backgroundColor: bgColor,
                 width: width,

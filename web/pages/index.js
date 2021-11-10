@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import styled from 'styled-components';
+import {useRouter} from 'next/router';
+
 import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -27,6 +29,7 @@ const WaveCont = styled.div`
 
 const Wave = styled.img`
   width: 100%;
+  
 `;
 
 const NavBarCont = styled.div`
@@ -155,6 +158,9 @@ const FactText = styled.p`
 //END OF THIRD ROW
 
 export default function Home() {
+
+  const router = useRouter();
+
   return <MainCont>
     <WaveCont>
       <Wave src={'/background-web5.svg'}></Wave>
@@ -233,7 +239,7 @@ export default function Home() {
       <MainInfoCont>
         <HeaderTitle title="Start your free six month trial now" />
         <BtnCont>
-          <Btn title="Start Now" fSize="20px" fWeight="500" width="160px" height="60px" />
+          <Btn title="Start Now" fSize="20px" fWeight="500" width="160px" height="60px" onClick={()=>router.push("/signup")} />
         </BtnCont>
       </MainInfoCont>
 

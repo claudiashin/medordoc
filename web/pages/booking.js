@@ -1,9 +1,12 @@
 import React from "react";
 import styled from 'styled-components';
 
+
+//import comps
 import NavBar from "../comps/NavBar";
 import PatientList from '../comps/PatientList';
 import LiveWaitTime from '../comps/LiveWaitTime';
+import Calendar from '../comps/CalendarAPI'
 import Footer from '../comps/Footer';
 
 
@@ -68,7 +71,7 @@ export default function Home() {
 
             <BodyCont>
                 <Low>
-                    <Calander></Calander>
+                    <Calendar/>
                 </Low>
                 <Low>
                     <Column>

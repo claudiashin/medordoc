@@ -24,6 +24,7 @@ const FormInput = styled.input`
     outline: none;
     type: text;
     padding-bottom: 5px;
+    background-color: #F7F2EE;
 `
 const LastDiv = styled.div`
     display: flex;

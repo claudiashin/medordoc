@@ -61,12 +61,9 @@ export default function home() {
       </NavBarCont>
 
       {/* <Checkin/> */}
-
-      <MenuCardCont>
-        <MenuCard width={300} height={350} source={MyLottie} onClick={()=>router.push("/")}/>
-        <MenuCard title={"Appointment Bookings"} width={300} height={350} source={MyLottie2} onClick={()=>router.push("/")} />
-        <MenuCard title={"Doctors' Profiles"} width={300} height={350} source={MyLottie3} onClick={()=>router.push("/")} />
-      </MenuCardCont>
+      <MenuCard width={300} height={350} source={MyLottie} routeTo="/request" />
+      <MenuCard title={"Appointment Bookings"} width={300} height={350} source={MyLottie2} routeTo="/booking" />
+      <MenuCard title={"Doctors' Profiles"} width={300} height={350} source={MyLottie3} routeTo="/profile" />
       <Footer />
     </HomeCont>
   )

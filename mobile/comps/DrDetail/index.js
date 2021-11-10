@@ -1,5 +1,4 @@
-import * as React from 'react';
-import  { compoenent } from 'react';
+import React, { Component } from 'react';
 import { TextInput, Button } from 'react-native-paper';
 import { StyleSheet} from 'react-native';
 // import { en,registerTranslation } from 'react-native-paper-dates'
@@ -7,7 +6,7 @@ import { StyleSheet} from 'react-native';
 // import { DatePickerModal } from 'react-native-paper-dates';
 
 import { Dropdown } from 'react-native-material-dropdown';
-import { render } from 'react-dom';
+
 
 
 const styles = StyleSheet.create({
@@ -34,6 +33,7 @@ const BookingForm = () => {
     //         {value: 'Female' }
     //     ];
     // }
+    class Example extends Component {}
 
   return <>
     <Dropdown 
