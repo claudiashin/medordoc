@@ -17,10 +17,10 @@ const HeroImage = styled.Image`
   border-radius:200px;
 `
 const PlusImage = styled.Image`
-  width:${props=>props.pluswidth};
-  height:${props=>props.plusheight};
+  width:${props=>props.pluswidth}px;
+  height:${props=>props.plusheight}px;
   position:absolute;
-  right:${props=>props.right};
+  right:${props=>props.right}px;
   bottom:${props=>props.bottom}px;
 
 `
@@ -33,6 +33,7 @@ const HeroAvatar =({
   right="120",
   bottom="10",
   imagesrc="https://placekitten.com/1000/1000",
+  visibility="visible"
 })=>{
 
 
@@ -66,8 +67,10 @@ const HeroAvatar =({
 
   return <HeroAvatarCont >
   <HeroImage heroheight={heroheight} herowidth={herowidth} source={{uri:imagesrc}}/>
-  <PlusImage onPress={pickImage} pluswidth={pluswidth} plusheight={plusheight} right={right} bottom={bottom} source={require('../../assets/plus.png')}/>
+
+  <PlusImage visibility={visibility} pluswidth={pluswidth} plusheight={plusheight} right={right} bottom={bottom} source={require('../../assets/plus.png')}/>
   <Button title="Pick an image from camera roll" onPress={pickImage} />
+
   
   {image && <HeroImage heroheight={heroheight} herowidth={herowidth} source={{ uri: image }} />}
 </HeroAvatarCont>

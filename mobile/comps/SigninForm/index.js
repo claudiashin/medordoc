@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
-import { Provider as PaperProvider, TextInput, RadioButton } from 'react-native-paper';
+import { Provider as PaperProvider, TextInput } from 'react-native-paper';
 import { StyleSheet, Button, View, Text } from "react-native";
 import { en,registerTranslation } from 'react-native-paper-dates'
   registerTranslation('en', en)
@@ -11,6 +11,7 @@ import Btn from '../Btn';
 
 const MainCont = styled.View`
     flex-direction: column;
+
 `
 const Title = styled.Text`
     font-weight: 500;
@@ -26,6 +27,9 @@ const Radio = styled.View`
     margin-top: 5px;
     position: relative;
 `
+const DateCont = styled.View`
+
+`
 const RadioTitle = styled.Text`
     font-weight: 600; 
     margin-left: 15px; 
@@ -33,6 +37,8 @@ const RadioTitle = styled.Text`
 const ButCont = styled.View`
     margin-left: 180px;
     margin-top: 50px;
+    margin-bottom: 100px;
+
 `
 
 
@@ -103,7 +109,13 @@ const SigninForm = ({
                     onChangeText={pass => setPass(pass)}
                 />
             <ButCont>
-                <Btn title="Next" fSize="20"
+                <Btn 
+                    title = "Next"
+                    fsize = '20'
+                    bgcolor = "#97BDD6"
+                    width = '140'
+                    height = '45'
+                    borderRad = '60'
                     onPress={()=>{setChangeForm(false)}}
                 ></Btn>
             </ButCont>
@@ -113,15 +125,17 @@ const SigninForm = ({
     return <MainCont>
             <PaperProvider>
             <Title>Additional Information</Title>
-            <DatePickerInput
-                locale="en"
-                label="Date of Birth"
-                value={inputDate}
-                onChange={inputDate => setInputDate(inputDate)}
-                inputMode="start"
-                mode="outlined"
-                style={styles.inputbox}
-            ></DatePickerInput>
+            <DateCont>
+                <DatePickerInput
+                    locale="en"
+                    label="Date of Birth"
+                    value={inputDate}
+                    onChange={inputDate => setInputDate(inputDate)}
+                    inputMode="start"
+                    mode="outlined"
+                    style={styles.inputbox}
+                ></DatePickerInput>
+            </DateCont>
             <Radio>
                 <DropDownPicker
                     open={open}
@@ -135,6 +149,8 @@ const SigninForm = ({
                         width: 335,
                         height: 50,
                         borderRadius: 4,
+                        borderColor: '#6d6d6d',
+                        zIndex: 2
                         borderColor: '#6d6d6d'
                     }}
                     />
@@ -162,8 +178,14 @@ const SigninForm = ({
                 mode='outlined'
                 onChangeText={medcon => setMedcon(medcon)}
                 />
-         <ButCont>
-                <Btn title="Confirm" fSize="20"
+        <ButCont>
+                <Btn
+                    title = "Confirm"
+                    fsize = '20'
+                    bgcolor = "#97BDD6"
+                    width = '140'
+                    height = '45'
+                    borderRad = '60'
                     onPress={()=>{setChangeForm(true)}}
                 ></Btn>
             </ButCont>
