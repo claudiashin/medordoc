@@ -5,8 +5,6 @@ import styled from 'styled-components/native';
 const TextCont = styled.View`
   justify-content: center;
   align-items: center;
-  height: 50px;
-  /* margin: 5px; */
 `;
 
 const Btn = ({
@@ -17,8 +15,8 @@ const Btn = ({
     letterSpace = 1.5,
     bgColor = "#97BDD6",
     borderRad = 30,
-    width = 145,
-    height = 60,
+    width = 140,
+    height = 55,
 }) => {
     return (
         <TouchableOpacity onPress={() => {}}>

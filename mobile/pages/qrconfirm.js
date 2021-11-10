@@ -2,9 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import styled from 'styled-components/native';
 
+// Import Comps
 import Header from '../comps/Header';
-import InfoCard from '../comps/InfoCard';
+// import InfoCard from '../comps/InfoCard';
 import NavBar from '../comps/NavBar';
+import InfoCardTwo from '../comps/InfoCardTwo';
 
 
 const ConfirmCont = styled.View`
@@ -21,12 +23,6 @@ const Wave = styled.Image`
     top: 0;
 `;
 
-const QRImage = styled.Image`
-    width: 25px;
-    height: 25px;
-
-`;
-
 const NavBarCont = styled.View`
     position: absolute;
     bottom: 45;
@@ -35,15 +31,24 @@ const NavBarCont = styled.View`
 const qrconfirm = () => {
     return (
         <ConfirmCont>
-            <Header/>
-            <InfoCard
-                clinic_name = {"Appointment Details"}
-                clinic_address = {"Clinic Address"}
-                website_url = {"https://www.bcit.ca/"}
-                fontsize = {22}
-                weight = {700}
+            <Wave source={require('../assets/background_wave.jpg')} />
+            <Header title="Booking Confirmed" fontSize={22} />
+            <InfoCardTwo
+                text1="Appointment Details"
+                text2="Submitted on: Oct 7, 2021"
+                text3="Appt Date: Oct 14, 2021"
+                text4="Appt Time: 10:00 AM"
+                text5="Location: Care Point Clinic"
+                text6="1234 Canada Way, Burnaby V4J2B7"
+                fweight="500"
+                display="none"
             />
-            <InfoCard/>
+            <InfoCardTwo
+                text1="QR Code Generated"
+                text2="Your QR code has your booking details. For faster check-in, scan it at the front desk when you arrive."
+                text3="To view, click on the QR Code icon in the nav below."
+                fweight="300"
+            />
             <NavBarCont>
                 <NavBar />
             </NavBarCont>

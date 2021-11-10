@@ -13,7 +13,7 @@ import NavBar from '../comps/NavBar';
 import HeaderTitle from '../comps/HeaderTitle';
 import Btn from '../comps/Btn';
 import HeroLottie from '../comps/HeroLottie';
-import myLottie from '../public/lottie_receptionist.json'
+import myLottie from '../public/lottie_woman_laptop.json'
 import LaptopLottie from '../public/lottie_laptop.json'
 import Footer from '../comps/Footer';
 
@@ -29,6 +29,7 @@ const WaveCont = styled.div`
 
 const Wave = styled.img`
   width: 100%;
+  
 `;
 
 const NavBarCont = styled.div`
