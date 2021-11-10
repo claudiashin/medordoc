@@ -17,6 +17,7 @@ import scan from './pages/scan';
 // import login from './pages/login';
 import signup from './pages/signup';
 import patientprofile from './pages/patientprofile';
+import QR from './pages/QR';
 
 
 // import history from './pages/history';
@@ -40,14 +41,15 @@ export default function App() {
   return (
   
       <NavigationContainer>
-       <Stack.Navigator initialRouteName="home">
-         <Stack.Screen name="home" component={home} />
+       <Stack.Navigator initialRouteName="Home">
+         <Stack.Screen name="Home" component={patientprofile} />
+         {/* <Stack.Screen name="QR" component={QR} />
          <Stack.Screen name="findclinic" component={findclinic} />
          <Stack.Screen name="clinicprofile" component={clinicprofile} />
          <Stack.Screen name="signup" component={signup} />
          <Stack.Screen name="booking" component={booking} />
          <Stack.Screen name="qrconfirm" component={qrconfirm} />
-         <Stack.Screen name="QR" component={scan} />
+         <Stack.Screen name="QR" component={scan} /> */}
        </Stack.Navigator>
      </NavigationContainer>
 

@@ -5,6 +5,8 @@ import { Text, View,Image } from 'react-native';
 import SigninForm from '../comps/SigninForm';
 import BookingForm from '../comps/BookingForm';
 import HeroAvatar from '../comps/HeroAvatar';
+import LoginForm from '../comps/LoginForm';
+
 
 
 
@@ -12,7 +14,7 @@ const MainCont = styled.View`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 100px;
 `
 
 const HeroCont = styled.View`
@@ -34,6 +36,9 @@ export default function patientprofile() {
                 />
             </HeroCont>
             <BookingForm />
+            {/* <SigninForm /> */}
+     
+       
         </MainCont>
     )
 }

@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import styled from 'styled-components';
+import {useRouter} from 'next/router';
+
 import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -18,6 +20,10 @@ import Footer from '../comps/Footer';
 const MainCont = styled.div`
   background-color: #F7F2EE;
   height: 100%;
+  width: 100%;
+`;
+
+const WaveCont = styled.div`
   width: 100%;
 `;
 
@@ -95,6 +101,10 @@ const BtnCont = styled.div`
 const BodyText = styled.p`
   font-size: 20px;
   line-height: 30px;
+
+  @media only screen and (min-width: 500px) {
+  line-height: 1;
+  }
 `;
 
 //THIRD ROW
@@ -148,8 +158,13 @@ const FactText = styled.p`
 //END OF THIRD ROW
 
 export default function Home() {
+
+  const router = useRouter();
+
   return <MainCont>
-    <Wave src={'/background_wave.jpg'}></Wave>
+    <WaveCont>
+      <Wave src={'/background-web5.svg'}></Wave>
+    </WaveCont>
 
     <NavBarCont>
       <NavBar />
@@ -158,10 +173,10 @@ export default function Home() {
     {/* FIRST */}
     <ContOne>
       <MainInfoCont>
-        <HeaderTitle title="Increase your clinic's patient base"/>
+        <HeaderTitle title="Increase your clinic's patient base" />
         <BodyText>Try MedorDoc to enhance your clinic's web presence and broaden your patient reach. Start by listing your clinic today.</BodyText>
         <BtnCont>
-          <Btn fSize="20px" fWeight="500" width="230px" height="70px"/>
+          <Btn fSize="20px" fWeight="500" width="230px" height="70px" />
         </BtnCont>
       </MainInfoCont>
 
@@ -224,7 +239,7 @@ export default function Home() {
       <MainInfoCont>
         <HeaderTitle title="Start your free six month trial now" />
         <BtnCont>
-          <Btn title="Start Now" fSize="20px" fWeight="500" width="160px" height="60px"/>
+          <Btn title="Start Now" fSize="20px" fWeight="500" width="160px" height="60px" onClick={()=>router.push("/signup")} />
         </BtnCont>
       </MainInfoCont>
 

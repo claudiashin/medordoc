@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const MainCont = styled.div`
     width: 400px;
-    height: ${props=>props.ht}px;
+    height: ${props=>props.height}px;
     border: 1px solid black;
     border-radius: 5px;
     display: flex;
@@ -53,9 +53,9 @@ const List = styled.p`
 `
 
 const PatientList = ({
-    ht="300"
+    height="300"
 }) => {
-    return <MainCont height={ht}>
+    return <MainCont height={height}>
         <TitleCont>
             <Title>October 8th Thursday</Title>
         </TitleCont>

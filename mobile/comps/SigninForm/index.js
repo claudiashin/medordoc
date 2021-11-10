@@ -23,7 +23,7 @@ const Radio = styled.View`
     position: relative;
 `
 const RadioTitle = styled.Text`
-    fontWeight: 600; 
+    font-weight: 600; 
     margin-left: 15px; 
 `
     
