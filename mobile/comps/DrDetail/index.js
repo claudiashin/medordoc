@@ -1,121 +1,91 @@
 import React, { Component } from 'react';
 import { TextInput, Button } from 'react-native-paper';
 import { StyleSheet} from 'react-native';
-// import { en,registerTranslation } from 'react-native-paper-dates'
-//   registerTranslation('en', en)
-// import { DatePickerModal } from 'react-native-paper-dates';
-
-import { Dropdown } from 'react-native-material-dropdown';
-
-
 
 const styles = StyleSheet.create({
     inputbox: {
-        width: 300,
+        width: 335,
         height: 50,
         margin: 5,
-        backgroundColor: '#fff'
+        backgroundColor: '#F7F2EE'
     }
 })
 
-const BookingForm = () => {
-  const [text, setText] = React.useState('');
-  const [name, setName] = React.useState('');
-  const [address, setAddress] = React.useState('');
-  const [concerns, setConcerns] = React.useState('');
-  const [others, setOthers] = React.useState('');
+const DrDetail = () => {
 
-//   const [inputDate, setInputDate] = React.useState<Date | undefined>(undefined)
-
-    // render() {
-    //     let data = [
-    //         {value: 'Male' },
-    //         {value: 'Female' }
-    //     ];
-    // }
-    class Example extends Component {}
+    const [text, setText] = React.useState('');
+    const [name, setName] = React.useState('');
+    const [lang, setLang] = React.useState('');
+    const [address, setAddress] = React.useState('');
+    const [experience, setExperience] = React.useState('');
+    const [others, setOthers] = React.useState('');
 
   return <>
-    <Dropdown 
-        label="Gender"
-        data={data}
-    />
+
+
     <TextInput
         style={styles.inputbox}
         underlineColor="#505050"
-        returnKeyType="next"
         type="flat"
         label="Name"
         textContentType='name'
         value={name}
-        readOnly="true"
-        
+        editable={false}
         onChangeText={name => setName(name)}
     ></TextInput>
     <TextInput
         style={styles.inputbox}
         underlineColor="#505050"
-        returnKeyType="next"
         type="flat"
         label="Gender"
         value={text}
-
+        editable={false}
         onChangeText={text => setText(text)}
     ></TextInput>
+
     <TextInput
         style={styles.inputbox}
         underlineColor="#505050"
-        returnKeyType="next"
-        type="flat"
-        label="DOB"
-        value={text}
-
-        onChangeText={text => setText(text)}
-    ></TextInput>
-    <TextInput
-        style={styles.inputbox}
-        underlineColor="#505050"
-        returnKeyType="next"
         textContentType="fullStreetAddress"
         type="flat"
-        label="Address"
+        label="Language"
+        value={lang}
+        editable={false}
+        onChangeText={lang => setLang(lang)}
+    ></TextInput>
+    <TextInput
+        style={styles.inputbox}
+        underlineColor="#505050"
+        autoCapitalize='sentences'
+        type="flat"
+        label="Experience"
+        value={experience}
+        editable={false}
+        onChangeText={experience => setExperience(experience)}
+    ></TextInput>
+    <TextInput
+        style={styles.inputbox}
+        underlineColor="#505050"
+        autoCapitalize='sentences'
+        type="flat"
+        label="Clinic"
         value={address}
-
+        editable={false}
         onChangeText={address => setAddress(address)}
     ></TextInput>
     <TextInput
         style={styles.inputbox}
         underlineColor="#505050"
-        returnKeyType="next"
         autoCapitalize='sentences'
         type="flat"
-        label="Concerns"
-        value={concerns}
-
-        onChangeText={concerns => setConcerns(concerns)}
-    ></TextInput>
-    <TextInput
-        style={styles.inputbox}
-        underlineColor="#505050"
-        returnKeyType="done"
-        autoCapitalize='sentences'
-        type="flat"
-        label="Others"
+        label="Type"
         value={others}
-
+        editable={false}
         onChangeText={others => setOthers(others)}
     ></TextInput>
-     {/* <DatePickerInput
-        locale="en"
-        label="Birthdate"
-        value={inputDate}
-        onChange={(d) => setInputDate(d)}
-        inputMode="start"
-        /> */}
 
     </>
 };
-// mode="outlined" (see react-native-paper docs)
-// other react native TextInput props
 
-export default BookingForm;
+
+export default DrDetail;

@@ -13,7 +13,7 @@ import NavBar from '../comps/NavBar';
 import HeaderTitle from '../comps/HeaderTitle';
 import Btn from '../comps/Btn';
 import HeroLottie from '../comps/HeroLottie';
-import myLottie from '../public/lottie_receptionist.json'
+import myLottie from '../public/lottie_woman_laptop.json'
 import LaptopLottie from '../public/lottie_laptop.json'
 import Footer from '../comps/Footer';
 
@@ -142,8 +142,8 @@ const InfoCont = styled.div`
 `;
 
 const Icon = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
 `;
 
@@ -209,25 +209,25 @@ export default function Home() {
       </BenefitCont>
       <FourInfoCont>
         <InfoCont>
-          <Icon src={'/profile.png'}></Icon>
+          <Icon src={'/live.png'}></Icon>
           <Heading>Update Availability in Real Time</Heading>
           <FactText>Increase patient reach by keeping your availability status up-to-date</FactText>
         </InfoCont>
 
         <InfoCont>
-          <Icon src={'/profile.png'}></Icon>
+          <Icon src={'/documents.png'}></Icon>
           <Heading>Connect Family Doctors with Patients</Heading>
           <FactText>Simplify the process and accept patients online</FactText>
         </InfoCont>
 
         <InfoCont>
-          <Icon src={'/profile.png'}></Icon>
+          <Icon src={'/timetable.png'}></Icon>
           <Heading>Manage Patients Bookings</Heading>
           <FactText>Simplify the process and accept patients online</FactText>
         </InfoCont>
 
         <InfoCont>
-          <Icon src={'/profile.png'}></Icon>
+          <Icon src={'/qr.png'}></Icon>
           <Heading>Generate a QR Code</Heading>
           <FactText>Cut down the time it takes to check-in to avoid long wait times</FactText>
         </InfoCont>

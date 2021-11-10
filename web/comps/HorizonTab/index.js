@@ -44,7 +44,7 @@ const DoctorCardCont = styled.div`
   position:absolute;
   top:0;
   background:white;
-  display:${props=>props.none};
+  display:${props=>props.display};
 `
 
 //replace with real button
@@ -62,7 +62,10 @@ const ButtonCont = styled.div`
 const panes = [
   {
     menuItem: 'Clinic',
-    render: () => 
+    render: ({
+     
+    }) => {
+      return <>
     <Tab.Pane attached={false}>
       <MyCont>
         <ItemCont>
@@ -74,15 +77,17 @@ const panes = [
         </MyCont>    
   
     </Tab.Pane>,
+      </>}
   },
 
   {
     menuItem: 'Doctor',
+    
     render: ({
-      none = "none",
       popup=false,
       onPopUp=()=>{},
     }) => {
+      
       if(popup == true){
       return <>
      <Tab.Pane attached={false}>
@@ -128,6 +133,7 @@ const panes = [
     </Tab.Pane>,
     </>
     }else if(popup == false){
+      
       return  <>
       <Tab.Pane attached={false}>
     
@@ -164,7 +170,7 @@ const panes = [
         <ButtonCont >
           <MyButton />
         </ButtonCont>
-        <DoctorCardCont none = {none}>
+        <DoctorCardCont >
           <DoctorCard />
         </DoctorCardCont>
       </MyCont2> 
@@ -180,6 +186,7 @@ const panes = [
 
 
 const HorizonTab = () => (
+  
   <Tab menu={{ secondary: true, pointing: true }} panes={panes}  />
 )
 

@@ -5,26 +5,30 @@ import { en,registerTranslation } from 'react-native-paper-dates'
   registerTranslation('en', en)
 import { DatePickerInput } from 'react-native-paper-dates';
 
-import Datepick from '../DataPicker';
 
 
 const styles = StyleSheet.create({
     inputbox: {
-        width: 300,
+        width: 335,
         height: 50,
         margin: 5,
         backgroundColor: '#fff'
     }
 })
 
-const BookingForm = () => {
+const BookingForm = ({
+    editable='false'
+}) => {
+    
   const [text, setText] = React.useState('');
   const [name, setName] = React.useState('');
   const [address, setAddress] = React.useState('');
   const [concerns, setConcerns] = React.useState('');
   const [others, setOthers] = React.useState('');
 
-  const {inputDate, setInputDate } = React.useState < Date | undefined>(undefined)
+//   const {inputDate, setInputDate } = React.useState < Date | undefined>(undefined);
+
+  const [inputDate, setInputDate ] = React.useState('');
 
   return <>
     <TextInput
@@ -35,8 +39,7 @@ const BookingForm = () => {
         label="Name"
         textContentType='name'
         value={name}
-        readOnly="true"
-        
+        editable={editable}
         onChangeText={name => setName(name)}
     ></TextInput>
     <TextInput
@@ -48,17 +51,18 @@ const BookingForm = () => {
         textContentType="telephoneNumber"
         keyboardType='phone-pad'
         value={text}
-
+        editable={editable}
         onChangeText={text => setText(text)}
     ></TextInput>
     <DatePickerInput
         locale="en"
         label="Date of Birth"
         value={inputDate}
-        onChange={(d) => setInputDate(d)}
+        onChange={inputDate => setInputDate(inputDate)}
         inputMode="start"
-        mode="outlined"
-        style={{width:150, margin: 10}}
+        mode="flat"
+        style={styles.inputbox}
+        editable={editable}
     ></DatePickerInput>
     <TextInput
         style={styles.inputbox}
@@ -68,7 +72,7 @@ const BookingForm = () => {
         type="flat"
         label="Address"
         value={address}
-
+        editable={editable}
         onChangeText={address => setAddress(address)}
     ></TextInput>
     <TextInput
@@ -79,7 +83,7 @@ const BookingForm = () => {
         type="flat"
         label="Concerns"
         value={concerns}
-
+        editable={editable}
         onChangeText={concerns => setConcerns(concerns)}
     ></TextInput>
     <TextInput
@@ -90,14 +94,12 @@ const BookingForm = () => {
         type="flat"
         label="Others"
         value={others}
-
+        editable={editable}
         onChangeText={others => setOthers(others)}
     ></TextInput>
 
     </>
 };
-// mode="outlined" (see react-native-paper docs)
-// other react native TextInput props
 
 export default BookingForm;
 

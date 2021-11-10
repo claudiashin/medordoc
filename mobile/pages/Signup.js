@@ -7,11 +7,10 @@ import Header from '../comps/Header';
 import HeroLottie from '../comps/HeroLottie';
 import SigninForm from '../comps/SigninForm';
 // import DropDownFilter from '../comps/DropDownFilter';
-import Btn from '../comps/Btn';
 import NavBar from '../comps/NavBar';
 
 const BookingCont = styled.View`
-   flex: 1;
+    flex: 1;
 `;
 
 const Wave = styled.Image`
@@ -50,16 +49,13 @@ const ButtonCont = styled.View`
 `;
 
 const NavBarCont = styled.View`
-    flex: 0.2;
-    
+    flex: 0.15;
 `;
 
 const signup = () => {
     return (
         <BookingCont>
             <ScrollView style={styles.scrollView} >
-
-
                 <Wave source={require('../assets/background_wave.jpg')} />
 
                 <LottieCont>
@@ -77,7 +73,6 @@ const signup = () => {
                     <SigninForm />
                 </SignUpFormCont>
 
-
             </ScrollView>
             <NavBarCont>
                 <NavBar />
@@ -88,8 +83,8 @@ const signup = () => {
 
 const styles = StyleSheet.create({
     scrollView: {
-        flex: 0.8,
+      flex: 0.85,
     },
-});
+  });
 
 export default signup;

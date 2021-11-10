@@ -1,44 +1,93 @@
 import React,{useState,useEffect} from 'react';
 import styled from 'styled-components/native';
-import { Text, View,Image } from 'react-native';
+import { StyleSheet, Text, View,Image, ScrollView, Button } from 'react-native';
 
 import SigninForm from '../comps/SigninForm';
 import BookingForm from '../comps/BookingForm';
 import HeroAvatar from '../comps/HeroAvatar';
 import LoginForm from '../comps/LoginForm';
+import Btn from '../comps/Btn';
 
 
 
-
-const MainCont = styled.View`
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;
-`
 
 const HeroCont = styled.View`
-    margin-bottom: 50px;
+    marginBottom: 50px;
+`
+const ButCont = styled.View`
+    marginLeft: 180px;
+    marginTop: 50px;
 `
 
 
 export default function patientprofile() {
-    return (
-        <MainCont>
-            <HeroCont>
-                <HeroAvatar 
-                    heroheight="150px"
-                    herowidth="150px"
-                    pluswidth="25px"
-                    plusheight="25px"
-                    right="0"
-                    bottom="17px"
-                />
-            </HeroCont>
-            <BookingForm />
-            {/* <SigninForm /> */}
-     
-       
-        </MainCont>
-    )
+    
+    const [changeForm, setChangeForm] = useState(true);
+
+    if (changeForm === true ){
+        return (
+            <ScrollView style={styles.scrollView} >
+                <HeroCont>
+                    <HeroAvatar 
+                        heroheight="150"
+                        herowidth="150"
+                        pluswidth="25"
+                        plusheight="25"
+                        right="105"
+                        bottom="15"
+                    />
+                </HeroCont>
+                <BookingForm />
+
+                <ButCont>
+                        <Btn
+                        title = "Edit"
+                        fsize = '20'
+                        bgcolor = "#97BDD6"
+                        width = '150'
+                        height = '50'
+                        borderRad = '60'
+                        onPress={()=>{setChangeForm(false)}}
+                    ></Btn>
+                </ButCont>
+            </ScrollView>
+        )
+    }
+
+    return <ScrollView style={styles.scrollView} >
+        <HeroCont>
+            <HeroAvatar 
+                heroheight="150"
+                herowidth="150"
+                pluswidth="25"
+                plusheight="25"
+                right="105"
+                bottom="15"
+            />
+        </HeroCont>
+        <BookingForm 
+            editable={true}
+        />
+        <ButCont>
+         <Btn
+            title = "Save"
+            fsize = '20'
+            bgcolor = "#97BDD6"
+            width = '150'
+            height = '50'
+            borderRad = '60'
+            onPress={()=>{setChangeForm(true)}}
+            ></Btn>
+        </ButCont>
+    </ScrollView>
 }
+
+const styles = StyleSheet.create({
+    scrollView: {
+      flex:1,
+      marginHorizontal: 30,
+      marginTop: 30,
+    },
+  });
+  
+

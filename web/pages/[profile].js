@@ -39,7 +39,7 @@ export default function Profile() {
         <NavBar />
       </NavBarCont>
     
-    <HorizonTab none="none" onPopUp={() => {
+    <HorizonTab onPopUp={() => {
         setShowPopup(false);
       }} popup={showPopup} />
       <Footer/>
