@@ -15,14 +15,14 @@ import booking from './pages/booking';
 import qrconfirm from './pages/qrconfirm';
 import scan from './pages/scan';
 // import login from './pages/login';
-import signup from './pages/signup';
+import signup from './pages/Signup';
 import patientprofile from './pages/patientprofile';
 import QR from './pages/QR';
 
 
 // import history from './pages/history';
 // import finddoc from './pages/finddoc';
-// import docprofile from './pages/docprofile';
+import docprofile from './pages/docprofile';
 // import accountconfirm from './pages/accountconfirm';
 import clinicprofile from './pages/clinicprofile';
 
@@ -42,7 +42,7 @@ export default function App() {
   
       <NavigationContainer>
        <Stack.Navigator initialRouteName="Home">
-         <Stack.Screen name="Home" component={patientprofile} />
+         <Stack.Screen name="Home" component={docprofile} />
          {/* <Stack.Screen name="QR" component={QR} />
          <Stack.Screen name="findclinic" component={findclinic} />
          <Stack.Screen name="clinicprofile" component={clinicprofile} />

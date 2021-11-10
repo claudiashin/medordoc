@@ -50,8 +50,8 @@ margin-right: 40px;
 `;
 
 const ProfileIcon = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -67,7 +67,7 @@ const DropdownCont = styled.div`
   width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  top: 90px;
+  top: 70px;
   right: 35px;
   &:hover {
     background-color: #DDD;
