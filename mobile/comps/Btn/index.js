@@ -18,7 +18,7 @@ const Btn = ({
     bgColor = "#97BDD6",
     borderRad = 30,
     width = 145,
-    height = 60,
+    height = 61,
 }) => {
     return (
         <TouchableOpacity onPress={() => {}}>
