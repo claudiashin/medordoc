@@ -1,8 +1,6 @@
-import React, {useState,useEffect,} from 'react';
-import { StyleSheet, Text, View,Image, ScrollView } from 'react-native';
+import React,{useState,useEffect,} from 'react';
+import { StyleSheet, Text, View,Image } from 'react-native';
 import styled from 'styled-components/native';
-
-// Import Comps
 import Map from '../comps/Map'
 import SearchBar from '../comps/SearchBar'
 import Filiter from '../comps/Filter'
@@ -21,15 +19,6 @@ import NavBar from '../comps/NavBar';
   flex-direction: column;
   align-content:center;
   justify-content: space-between;
-`
-const Cont = styled.View`
-  width:100vw;
-  height:100vh;
-  background-color: #E9D7CB;
-  display:flex;
-  margin-top:320px;
-  align-items:center;
-
   `
   const SearchCont = styled.View`
     display: flex;
@@ -54,13 +43,17 @@ const Cont = styled.View`
 `;
 
 
-
 const findclinic = ()=>{
-return ( 
-<Cont>
-    <SearchBar/>
-    <Map/>
+return(
+   <Cont>
+     <SearchCont>
+     <SearchBar/>
+     </SearchCont>
+      <MapCont>
+      <Map/>
+      </MapCont>
     <FilterCont>
+
     <Filiter/>
     </FilterCont>
 
@@ -76,11 +69,7 @@ return (
     </NavBarCont>
    
     </Cont> 
-    
 )
-
 }
+
 export default findclinic;
-
-
-

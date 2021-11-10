@@ -38,6 +38,7 @@ const ButCont = styled.View`
     margin-left: 180px;
     margin-top: 50px;
     margin-bottom: 100px;
+
 `
 
 
@@ -144,13 +145,13 @@ const SigninForm = ({
                     setOpen={setOpen}
                     setGender={setGender}
                     setItems={setItems}
-               
                     style={{
                         width: 335,
                         height: 50,
                         borderRadius: 4,
                         borderColor: '#6d6d6d',
                         zIndex: 2
+                        borderColor: '#6d6d6d'
                     }}
                     />
             </Radio>
@@ -177,7 +178,7 @@ const SigninForm = ({
                 mode='outlined'
                 onChangeText={medcon => setMedcon(medcon)}
                 />
-         <ButCont>
+        <ButCont>
                 <Btn
                     title = "Confirm"
                     fsize = '20'
@@ -201,6 +202,5 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     }
 })
-
 
 export default SigninForm

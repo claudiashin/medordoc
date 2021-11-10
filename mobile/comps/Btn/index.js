@@ -17,6 +17,7 @@ const TextCont = styled.Text`
   font-size: ${props=>props.fsize}px;
   font-weight: bold;
   color: #fff;
+
 `;
 
 const Btn = ({
@@ -27,6 +28,7 @@ const Btn = ({
     height = '60',
     borderRad = '50',
     onPress={}
+
 }) => {
 
     return (
