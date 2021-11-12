@@ -2,14 +2,12 @@ import React, { useState, useEffect, } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 
-// import CalendarAPI from '../comps/CalendarAPI';
 import Header from '../comps/Header';
-import HeroLottie from '../comps/HeroLottie';
-import SigninForm from '../comps/SigninForm';
-// import DropDownFilter from '../comps/DropDownFilter';
+import InfoCard from '../comps/InfoCard';
+import Btn from '../comps/Btn';
 import NavBar from '../comps/NavBar';
 
-const BookingCont = styled.View`
+const AccountCont = styled.View`
     flex: 1;
 `;
 
@@ -20,23 +18,22 @@ const Wave = styled.Image`
     top: 0;
 `;
 
-const LottieCont = styled.View`
-    justify-content: center;
-    align-items: center;
-    top: 180px;
-`;
-
 const HeaderCont = styled.View`
-    margin: 27px;
-    top: 200px;
-`;
-
-const SignUpFormCont = styled.View`
-    display: flex;
     justify-content: center;
     align-items: center;
-    top: 180px;
-    margin-bottom: 200px;
+    top: 150px;
+`;
+
+const InfoCardCont = styled.View`
+    justify-content: center;
+    align-items: center;
+    top: 150px;
+`;
+
+const BtnCont = styled.View`
+    justify-content:flex-end;
+    align-items: flex-end;
+    top: 200px;
 `;
 
 const NavBarCont = styled.View`
@@ -45,30 +42,35 @@ const NavBarCont = styled.View`
 
 const accountconfirm = () => {
     return (
-        <BookingCont>
+        <AccountCont>
             <ScrollView style={styles.scrollView} >
                 <Wave source={require('../assets/background_wave.jpg')} />
 
-                <LottieCont>
-                    <HeroLottie
-                        source={require('../assets/lottie_user.json')}
-                        style={{ width: 250 }}
-                    />
-                </LottieCont>
 
                 <HeaderCont>
-                    <Header title={'Create Account'} fontSize={22} />
+                    <Header title={"Here's Your Account Info"} fontSize={22} /><Text>Let's start</Text>
                 </HeaderCont>
 
-                <SignUpFormCont>
-                    <SigninForm />
-                </SignUpFormCont>
+                <InfoCardCont>
+                    <InfoCard
+                        text={'Welcome Jenny Lee!'}
+                        text2={'Thank you for choosing MedOrDoc.'}
+                        text3={'Start booking your first appointment by signing in.'}
+                        website_url={''}
+                        weight2={'400'}
+                        fontcolor={'#505050'}
+                    />
+                </InfoCardCont>
+
+                <BtnCont>
+                    <Btn/>
+                </BtnCont>
 
             </ScrollView>
             <NavBarCont>
                 <NavBar />
             </NavBarCont>
-        </BookingCont>
+        </AccountCont>
     )
 }
 

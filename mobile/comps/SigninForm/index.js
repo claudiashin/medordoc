@@ -170,7 +170,7 @@ const SigninForm = ({
             />
             <TextInput
                 style={styles.inputbox}
-                label="Medical Concern"
+                label="Medical Concerns"
                 returnKeyType="done"
                 autoCapitalize='sentences'
                 value={medcon}
