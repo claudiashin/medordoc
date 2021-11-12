@@ -22,7 +22,15 @@ import NavBar from '../comps/NavBar';
   align-content:center;
   justify-content: space-between;
 `
+// const Cont = styled.View`
+//   width:100vw;
+//   height:100vh;
+//   background-color: #E9D7CB;
+//   display:flex;
+//   margin-top:320px;
+//   align-items:center;
 
+//   `
   const SearchCont = styled.View`
     display: flex;
     flex-direction: row;

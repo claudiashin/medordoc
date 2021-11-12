@@ -17,7 +17,7 @@ import qrconfirm from './pages/qrconfirm';
 import scan from './pages/scan';
 // import login from './pages/login';
 
-import signup from './pages/Signup';
+import signup from './pages/signup';
 import patientprofile from './pages/patientprofile';
 import QR from './pages/QR';
 
@@ -27,6 +27,7 @@ import history from './pages/history';
 import docprofile from './pages/docprofile';
 // import accountconfirm from './pages/accountconfirm';
 import clinicprofile from './pages/clinicprofile';
+import confirmreq from './pages/confirmreq';
 
 
 // Import Navigator
