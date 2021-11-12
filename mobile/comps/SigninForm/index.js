@@ -150,7 +150,9 @@ const SigninForm = ({
                         height: 50,
                         borderRadius: 4,
                         borderColor: '#6d6d6d',
-                        zIndex: 2
+                        zIndex: 2,
+                        borderColor: '#6d6d6d'
+
                     }}
                     />
             </Radio>
@@ -169,7 +171,7 @@ const SigninForm = ({
             />
             <TextInput
                 style={styles.inputbox}
-                label="Medical Concern"
+                label="Medical Concerns"
                 returnKeyType="done"
                 autoCapitalize='sentences'
                 value={medcon}
