@@ -43,7 +43,7 @@ import NavBar from '../comps/NavBar';
 `;
 
 
-const findclinic = ()=>{
+const finddoc = ()=>{
 return(
    <Cont>
      <SearchCont>
@@ -72,4 +72,4 @@ return(
 )
 }
 
-export default findclinic;
+export default finddoc;

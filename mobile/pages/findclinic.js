@@ -12,13 +12,14 @@ import BookingForm from '../comps/BookingForm';
 import NavBar from '../comps/NavBar';
 
   const Cont = styled.View`
-  width:100%;
-  height:100%;
   background-color: #F7F2EE;
-  display:flex;
+  flex:1;
   flex-direction: column;
   align-content:center;
   justify-content: space-between;
+`
+
+const SubCont = styled.ScrollView`
 `
 // const Cont = styled.View`
 //   width:100vw;
@@ -50,23 +51,22 @@ import NavBar from '../comps/NavBar';
 
 `;
 
-
-
-const findclinic = ()=>{
+const findclinic = ({navigation})=>{
 return ( 
 <Cont>
+  <SubCont>
     <SearchBar/>
     <Map/>
     <FilterCont>
     <Filiter/>
     </FilterCont>
 
-    <CardCont>
-      
-      <ClinDocButton/>
-      <ClinDocButton/>
-      <ClinDocButton/>
+    <CardCont> 
+      <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
+      <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
+      <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
     </CardCont>
+  </SubCont>  
 
     <NavBarCont>
       <NavBar/>
