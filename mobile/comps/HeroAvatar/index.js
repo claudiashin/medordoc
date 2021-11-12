@@ -17,8 +17,8 @@ const HeroImage = styled.Image`
   border-radius:200px;
 `
 const PlusImage = styled.Image`
-  width:${props=>props.pluswidth};
-  height:${props=>props.plusheight};
+  width:${props=>props.pluswidth}px;
+  height:${props=>props.plusheight}px;
   position:absolute;
   right:${props=>props.right}px;
   bottom:${props=>props.bottom}px;
