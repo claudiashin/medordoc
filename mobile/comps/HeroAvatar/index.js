@@ -24,20 +24,21 @@ const PlusImage = styled.Image`
   bottom:${props=>props.bottom}px;
 
 `
+const PlusCont = styled.TouchableOpacity`
+
+`
 
 const HeroAvatar =({
   heroheight="300",
   herowidth="300",
   pluswidth="30",
   plusheight="30",
-  right="120",
+  right="-70",
   bottom="10",
-  imagesrc="https://placekitten.com/1000/1000",
-  visibility="visible"
 })=>{
 
 
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=")
 
   useEffect(() => {
     (async () => {
@@ -66,13 +67,11 @@ const HeroAvatar =({
   };
 
   return <HeroAvatarCont >
-  <HeroImage heroheight={heroheight} herowidth={herowidth} source={{uri:imagesrc}}/>
-
-  <PlusImage visibility={visibility} pluswidth={pluswidth} plusheight={plusheight} right={right} bottom={bottom} source={require('../../assets/plus.png')}/>
-  <Button title="Pick an image from camera roll" onPress={pickImage} />
-
+      {image && <HeroImage heroheight={heroheight} herowidth={herowidth} source={{ uri: image }} />}
+  <PlusCont onPress={pickImage} >
+  <PlusImage pluswidth={pluswidth} plusheight={plusheight} right={right} bottom={bottom} source={require('../../assets/plus.png')}/>
+  </PlusCont>
   
-  {image && <HeroImage heroheight={heroheight} herowidth={herowidth} source={{ uri: image }} />}
 </HeroAvatarCont>
 }
 

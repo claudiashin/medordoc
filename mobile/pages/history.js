@@ -4,7 +4,7 @@ import HeroAvatar from '../comps/HeroAvatar';
 import InfoCard from '../comps/InfoCard'
 import NavBar from "../comps/NavBar";
 import Header from "../comps/Header";
-
+import InfoCardThree from '../comps/InfoCardThree'
 const AvatarCont = styled.View`
   align-items:center;
 `
@@ -13,20 +13,20 @@ const BodyCont = styled.View`
 `
 
 const Cont = styled.View`
-  width:100%;
-  height:100%;
   justify-content:space-between;
   padding-top:20px;
+  flex:1
 `
 
 const NavBarCont = styled.View`
  
 `
-const BodyContCont = styled.View`
+const BodyContCont = styled.ScrollView`
 
 `
 const History = ()=>{
   return <Cont>
+    <BodyContCont>
     <BodyContCont>
       <AvatarCont>
         <HeroAvatar imagesrc="https://placekitten.com/3000/2000" herowidth={150} heroheight={150}></HeroAvatar>
@@ -38,11 +38,11 @@ const History = ()=>{
         </BodyContCont>
 
       <BodyCont>
-        <InfoCard/>
+        <InfoCardThree/>
       </BodyCont>
-      
     </BodyContCont>
 
+    </BodyContCont>
       <NavBarCont>
         <NavBar/> 
       </NavBarCont>
