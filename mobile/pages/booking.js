@@ -2,11 +2,12 @@ import React,{useState,useEffect,} from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';
 
-// import CalendarAPI from '../comps/CalendarAPI';
+import Calendar from '../comps/Calendar';
 import Header from '../comps/Header';
 // import DropDownFilter from '../comps/DropDownFilter';
 import Btn from '../comps/Btn';
 import NavBar from '../comps/NavBar';
+import Datepick from '../comps/DataPicker';
 
 const BookingCont = styled.View`
     flex: 1;
@@ -27,6 +28,8 @@ const CalendarAPICont = styled.View`
 `;
 
 const DropDownCont = styled.View`
+margin-top: 25px;
+
 
 `;
 
@@ -50,12 +53,14 @@ const booking = () => {
             
             <CalendarAPICont>
                 <Text>Calendar</Text>
+                <Calendar/>
             </CalendarAPICont>
 
-            <Header title={'Thursday, November 4th'}/>
+            {/* <Header title={'Thursday, November 4th'}/> */}
 
             <DropDownCont>
-                <Text>Drop Down Filter</Text>
+                <Text>Pick the Time</Text> 
+                <Datepick/>
             </DropDownCont>
 
             <ButtonCont>

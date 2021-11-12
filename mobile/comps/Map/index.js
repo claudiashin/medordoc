@@ -1,11 +1,9 @@
 import React,{useEffect,useState} from 'react';
 import { StyleSheet, Text, View,Dimensions } from 'react-native';
-import MapView,{PROVIDER_GOOGLE}from 'react-native-maps';
+import MapView,{PROVIDER_GOOGLE,Marker}from 'react-native-maps';
 import styled from 'styled-components/native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
-
-
 
 const Map =({
      currentlatitude,
@@ -14,6 +12,12 @@ const Map =({
 
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const tokyoRegion = {
+     latitude: 49.2511364,
+     longitude: -123.002596,
+     latitudeDelta: 0.01,
+     longitudeDelta: 0.01,
+   };
 
   useEffect(() => {
     (async () => {
@@ -35,28 +39,34 @@ const Map =({
 
 
   let text = 'Waiting..';
+  
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
-    text = JSON.stringify(location);
+      text = JSON.stringify(location);
+      const lat = location.coords.latitude;
+      const long = location.coords.longitude;
+      console.log(lat)
+      console.log(long)
   }
 
-
+  // const lat = location.coords.latitude;
+  // const long = location.coords.longitude;
 
  return(
   <View style={styles.container}>
   <MapView style={styles.map}
   initialRegion={{
-       latitude: 49.246292,
-       longitude: -123.116226,
-       latitudeDelta: 0.0922,
-       longitudeDelta: 0.0421,
+      latitude:49.24943520266814,
+      longitude: -123.00034945406064,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
     }}/>
+   {/* <Marker coordinate={tokyoRegion} /> */}
     
   </View>
     )
 }
-
 const styles = StyleSheet.create({
     container: {
       flex: 1,

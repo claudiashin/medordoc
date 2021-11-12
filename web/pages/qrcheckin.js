@@ -61,7 +61,6 @@ const BtnCont = styled.div`
 
 export default function Home() {
     const router = useRouter();
-    
 
     return (
         <MainCont>
@@ -78,26 +77,8 @@ export default function Home() {
                 fontSize='36'
             />
             <BodyCont>
-                <Low>
-                    <Qrcode><img src = "/qrcode.png" width="100%"/>
-                    </Qrcode>
-                </Low>
-                <Low>
-                    <BookingForm></BookingForm>
-                    <BtnCont>
-                        <Btn 
-                            title = "Check In"
-                            fSize = "16px"
-                            color = "#fff"
-                            bgColor = "#90AABB"
-                            width = "125px"
-                            height = "40px"
-                            borderRad = "25px"
-                            onClick={()=>router.push("/confirm")}
-                        />
-                    </BtnCont>
-                </Low>
-                   
+
+                    <QRComponent click = {{}}/>
             </BodyCont>
 
             <Footer/>

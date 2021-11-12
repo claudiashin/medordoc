@@ -47,7 +47,7 @@ const BtnCont = styled.View`
 
 `
 
-const ClinicProfile = ()=>{
+const ClinicProfile = ({navigation})=>{
     return(
        <Cont>   
            <Cont2>
@@ -60,7 +60,7 @@ const ClinicProfile = ()=>{
 
            </CardCont>
            <BtnCont>
-               <Btn/>
+               <Btn onPress = {()=>navigation.navigate("signup")}/>
            </BtnCont>
 
             <NavBarCont>
