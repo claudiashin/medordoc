@@ -4,12 +4,12 @@ import { StyleSheet, View, Text } from 'react-native';
 
 const InfoCardTwoCont = styled.View`
     width: 300px;
-    height: 230px;
+    height: ${props=>props.height}px;
     border: #E9D7CB;
     padding: 10px;
     margin: 10px;
     background-color: #fff;
-    border: 1px solid;
+    border: 2px solid #E9D7CB;
 `;
 
 const HeaderCont = styled.View`
@@ -17,7 +17,7 @@ const HeaderCont = styled.View`
 `;
 
 const Header = styled.Text`
-    font-size: ${props=>props.fontSize};
+    font-size: ${props=>props.fontSize}px;
     font-weight: ${props=>props.fontWeight};
     color: #505050;
     margin: 10px;
@@ -57,9 +57,10 @@ const InfoCardTwo = ({
     fsize = "18",
     fweight = "700",
     display = "flex",
+    height = "240"
 }) => {
 
-    return <InfoCardTwoCont>
+    return <InfoCardTwoCont height={height} >
         <HeaderCont>
             <Header
                 fontSize={fsize}
