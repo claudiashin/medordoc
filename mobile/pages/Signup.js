@@ -2,11 +2,9 @@ import React, { useState, useEffect, } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 
-// import CalendarAPI from '../comps/CalendarAPI';
 import Header from '../comps/Header';
 import HeroLottie from '../comps/HeroLottie';
 import SigninForm from '../comps/SigninForm';
-// import DropDownFilter from '../comps/DropDownFilter';
 import NavBar from '../comps/NavBar';
 
 const BookingCont = styled.View`
@@ -27,10 +25,8 @@ const LottieCont = styled.View`
 `;
 
 const HeaderCont = styled.View`
-    justify-content: center;
-    align-items: center;
+    margin: 27px;
     top: 200px;
-    margin-left: -38px;
 `;
 
 const SignUpFormCont = styled.View`
@@ -38,14 +34,7 @@ const SignUpFormCont = styled.View`
     justify-content: center;
     align-items: center;
     top: 180px;
-    margin-bottom: 240px;
-`;
-
-const ButtonCont = styled.View`
-    top: -260px;
-    /* align-items: flex-end;
-    width: 275px;
-    margin-top: 25px; */
+    margin-bottom: 200px;
 `;
 
 const NavBarCont = styled.View`
