@@ -150,8 +150,8 @@ const SigninForm = ({
                         height: 50,
                         borderRadius: 4,
                         borderColor: '#6d6d6d',
-                        zIndex: 2
-                        borderColor: '#6d6d6d'
+                        zIndex: 2,
+                        borderColor: '#6d6d6d',
                     }}
                     />
             </Radio>

@@ -1,6 +1,6 @@
 import React,{useState,useEffect,} from 'react';
 import { StyleSheet, Text, View,Image } from 'react-native';
-import MenuCard from '../comps/MenuCard'
+
 // import styled from 'styled-components/native';
 
 // Import Comps
