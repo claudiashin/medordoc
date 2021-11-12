@@ -44,7 +44,7 @@ export default function App() {
   return (
   
       <NavigationContainer>
-       <Stack.Navigator initialRouteName="history">
+       <Stack.Navigator initialRouteName="home">
          <Stack.Screen name="Home" component={home} />
          {/* <Stack.Screen name="QR" component={QR} />
          <Stack.Screen name="findclinic" component={findclinic} />
@@ -54,8 +54,8 @@ export default function App() {
          <Stack.Screen name="booking" component={booking} />
          <Stack.Screen name="qrconfirm" component={qrconfirm} />
          <Stack.Screen name="QR" component={scan} /> */}
-         <Stack.Screen name="scan" component={scan} /> 
-         <Stack.Screen name="history" component={history} />
+         {/* <Stack.Screen name="scan" component={scan} />  */}
+         {/* <Stack.Screen name="history" component={history} /> */}
 
        </Stack.Navigator>
      </NavigationContainer>
