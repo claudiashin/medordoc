@@ -43,10 +43,21 @@ const ContOne = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+
+
   flex-wrap: wrap;
+
+
   /* align-items: center; */
   width: 100%;
-  height: 500px;
+
+
+  /* height: 500px; */
+
+
+  @media only screen and (min-width: 500px) {
+    text-align: center;
+  }
 `;
 
 const ContTwo = styled.div`
@@ -89,6 +100,7 @@ const LottieCont = styled.div`
   align-items: center;
   /* margin: 50px; */
   @media only screen and (min-width: 500px) {
+    /* width: 80px; */
   }
 `;
 

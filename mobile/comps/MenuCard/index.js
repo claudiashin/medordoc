@@ -30,12 +30,12 @@ const MenuCard = ({
     width = 280,
     height = 300,
     fSize = 24,
+    backgroundColor = "#fff",
     color = "#5C5C5C",
     fWeight = "bold",
-    border = "solid",
-    borderColor = "#5C5C5C",
     bWidth = 1.5,
     borderRad = 5,
+    borderColor = "#D3D3D3",
     ind = 0,
 }) => {
     var anim = useRef();
@@ -48,10 +48,10 @@ const MenuCard = ({
                     width: width,
                     height: height,
                     margin: 12,
-                    borderStyle: border,
-                    borderColor: borderColor,
                     borderWidth: bWidth,
                     borderRadius: borderRad,
+                    borderColor: borderColor,
+                    backgroundColor: backgroundColor,
                 }}>
                     <LottieView
                         ref={(ref) => {
