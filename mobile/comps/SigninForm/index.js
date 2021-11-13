@@ -7,6 +7,7 @@ import { en,registerTranslation } from 'react-native-paper-dates'
 import { DatePickerInput } from 'react-native-paper-dates';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Btn from '../Btn';
+import { useNavigation } from '@react-navigation/native';
 
 
 const MainCont = styled.View`
@@ -26,6 +27,7 @@ const Radio = styled.View`
     margin-left: 5px; 
     margin-top: 5px;
     position: relative;
+    z-index: 1;
 `
 const DateCont = styled.View`
 
@@ -35,16 +37,14 @@ const RadioTitle = styled.Text`
     margin-left: 15px; 
 `
 const ButCont = styled.View`
-    margin-left: 180px;
-    margin-top: 50px;
-    margin-bottom: 100px;
-
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 50px 10px 80px 0px;
 `
 
-
 const SigninForm = ({
-    
 }) => {
+    const navigation = useNavigation(); 
     //for first form
     const [fname, setFname] = React.useState('');
     const [lname, setLname] = React.useState('');
@@ -52,15 +52,13 @@ const SigninForm = ({
     const [pass, setPass] = React.useState('');
     //for button
     const [changeForm, setChangeForm] = useState(true);
-    //for radiobutton(gender)
-    const [value, setValue] = React.useState('first');
 
     //for second form
     const [medcon, setMedcon] = React.useState('');
     const [inputDate, setInputDate ] = React.useState('');
 
     const [open, setOpen] = useState(false);
-    const [gender, setGender] = useState(null);
+    const [gender, setGender] = useState('');
     const [items, setItems] = useState([
         {label: 'Male', gender: 'Male'},
         {label: 'Female', gender: 'Female'},
@@ -113,8 +111,8 @@ const SigninForm = ({
                     title = "Next"
                     fsize = '20'
                     bgcolor = "#97BDD6"
-                    width = '140'
-                    height = '45'
+                    width = '130'
+                    height = '50'
                     borderRad = '60'
                     onPress={()=>{setChangeForm(false)}}
                 ></Btn>
@@ -141,7 +139,7 @@ const SigninForm = ({
                     open={open}
                     value={gender}
                     items={items}
-                    placeholder="Select Gender"
+                    placeholder="Gender"
                     setOpen={setOpen}
                     setGender={setGender}
                     setItems={setItems}
@@ -150,9 +148,7 @@ const SigninForm = ({
                         height: 50,
                         borderRadius: 4,
                         borderColor: '#6d6d6d',
-                        zIndex: 2,
                         borderColor: '#6d6d6d'
-
                     }}
                     />
             </Radio>
@@ -184,15 +180,15 @@ const SigninForm = ({
                     title = "Confirm"
                     fsize = '20'
                     bgcolor = "#97BDD6"
-                    width = '140'
-                    height = '45'
+                    width = '130'
+                    height = '50'
                     borderRad = '60'
-                    onPress={()=>{setChangeForm(true)}}
+                    onPress={()=>navigation.navigate('accountconfirm')}
                 ></Btn>
             </ButCont>
       </PaperProvider>
     </MainCont>
-
+    
 };
 
 const styles = StyleSheet.create({
@@ -204,4 +200,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SigninForm
+export default SigninForm;
