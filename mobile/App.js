@@ -26,7 +26,6 @@ import history from './pages/history';
 import docprofile from './pages/docprofile';
 import patientprofile from './pages/patientprofile';
 import confirmreq from './pages/confirmreq';
-
 import QR from './pages/QR';
 
 
@@ -36,14 +35,14 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-  
       <NavigationContainer>
-       <Stack.Navigator initialRouteName="home">
+       <Stack.Navigator initialRouteName="login">
          <Stack.Screen name="home" component={home} />
          <Stack.Screen name="QR" component={QR} /> 
          <Stack.Screen name="findclinic" options={{headerShown: false}}   component={findclinic} /> 
          <Stack.Screen name="finddoc" component={finddoc} />
          <Stack.Screen name="clinicprofile" component={clinicprofile} />
+         <Stack.Screen name="docprofile" component={docprofile} />
          <Stack.Screen name="patientprofile" component={patientprofile} />
          <Stack.Screen name="signup" component={signup} />
          <Stack.Screen name="booking" component={booking} />
@@ -53,7 +52,7 @@ export default function App() {
          <Stack.Screen name="login" component={login}/> 
          <Stack.Screen name="history" component={history} /> 
          <Stack.Screen name="confirmreq" component={confirmreq} />
-         <Stack.Screen name="docprofile" component={docprofile} />
+  
 
        </Stack.Navigator>
     </NavigationContainer>
