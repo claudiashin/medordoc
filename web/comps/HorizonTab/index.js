@@ -115,26 +115,98 @@ const MyTab = ({
 
     <ItemCont2>
       <DoctorCont>
-        <PatientCard/>
+        <PatientCard 
+        name="Name: " 
+        nameText="George Jordan" 
+        gender="Experience: " 
+        genderText="3 Years" 
+        age="Gender: " 
+        ageText="40" 
+        medicalconcerns="Language: " 
+        medicalText=" English" 
+        phone="Location: " 
+        phoneText="St. Joseph’s Clinic" 
+        emailText="Edit" 
+        button1={"none"}/>
       </DoctorCont>
       <DoctorCont>
-       <PatientCard/>
-      </DoctorCont>
+      <PatientCard 
+        name="Name: " 
+        nameText="George Jordan" 
+        gender="Experience: " 
+        genderText="3 Years" 
+        age="Gender: " 
+        ageText="40" 
+        medicalconcerns="Language: " 
+        medicalText=" English" 
+        phone="Location: " 
+        phoneText="St. Joseph’s Clinic" 
+        emailText="Edit" 
+        button1={"none"}/>      
+        </DoctorCont>
       <DoctorCont>
-       <PatientCard/>
-      </DoctorCont>
+      <PatientCard 
+        name="Name: " 
+        nameText="George Jordan" 
+        gender="Experience: " 
+        genderText="3 Years" 
+        age="Gender: " 
+        ageText="40" 
+        medicalconcerns="Language: " 
+        medicalText=" English" 
+        phone="Location: " 
+        phoneText="St. Joseph’s Clinic" 
+        emailText="Edit" 
+        button1={"none"}/>      
+        </DoctorCont>
     </ItemCont2>
 
     <ItemCont2>
       <DoctorCont>
-        <PatientCard/>
-      </DoctorCont>
+      <PatientCard 
+        name="Name: " 
+        nameText="George Jordan" 
+        gender="Experience: " 
+        genderText="3 Years" 
+        age="Gender: " 
+        ageText="40" 
+        medicalconcerns="Language: " 
+        medicalText=" English" 
+        phone="Location: " 
+        phoneText="St. Joseph’s Clinic" 
+        emailText="Edit" 
+        button1={"none"}/>      
+        </DoctorCont>
       <DoctorCont>
-       <PatientCard/>
-      </DoctorCont>
+      <PatientCard 
+        name="Name: " 
+        nameText="George Jordan" 
+        gender="Experience: " 
+        genderText="3 Years" 
+        age="Gender: " 
+        ageText="40" 
+        medicalconcerns="Language: " 
+        medicalText=" English" 
+        phone="Location: " 
+        phoneText="St. Joseph’s Clinic" 
+        emailText="Edit" 
+        button1={"none"}/>      
+        </DoctorCont>
       <DoctorCont>
-       <PatientCard/>
-      </DoctorCont>
+      <PatientCard 
+        name="Name: " 
+        nameText="George Jordan" 
+        gender="Experience: " 
+        genderText="3 Years" 
+        age="Gender: " 
+        ageText="40" 
+        medicalconcerns="Language: " 
+        medicalText=" English" 
+        phone="Location: " 
+        phoneText="St. Joseph’s Clinic" 
+        emailText="Edit" 
+        button1={"none"}/>      
+        </DoctorCont>
     </ItemCont2>
     
     <ButtonCont onClick={()=>{
@@ -155,26 +227,98 @@ const MyTab = ({
 
     <ItemCont2>
       <DoctorCont>
-        <PatientCard/>
-      </DoctorCont>
+      <PatientCard 
+        name="Name: " 
+        nameText="George Jordan" 
+        gender="Experience: " 
+        genderText="3 Years" 
+        age="Gender: " 
+        ageText="40" 
+        medicalconcerns="Language: " 
+        medicalText=" English" 
+        phone="Location: " 
+        phoneText="St. Joseph’s Clinic" 
+        emailText="Edit" 
+        button1={"none"}/>      
+        </DoctorCont>
       <DoctorCont>
-       <PatientCard/>
-      </DoctorCont>
+      <PatientCard 
+        name="Name: " 
+        nameText="George Jordan" 
+        gender="Experience: " 
+        genderText="3 Years" 
+        age="Gender: " 
+        ageText="40" 
+        medicalconcerns="Language: " 
+        medicalText=" English" 
+        phone="Location: " 
+        phoneText="St. Joseph’s Clinic" 
+        emailText="Edit" 
+        button1={"none"}/>
+              </DoctorCont>
       <DoctorCont>
-       <PatientCard/>
-      </DoctorCont>
+      <PatientCard 
+        name="Name: " 
+        nameText="George Jordan" 
+        gender="Experience: " 
+        genderText="3 Years" 
+        age="Gender: " 
+        ageText="40" 
+        medicalconcerns="Language: " 
+        medicalText=" English" 
+        phone="Location: " 
+        phoneText="St. Joseph’s Clinic" 
+        emailText="Edit" 
+        button1={"none"}/>      
+        </DoctorCont>
     </ItemCont2>
 
     <ItemCont2>
       <DoctorCont>
-        <PatientCard/>
-      </DoctorCont>
+      <PatientCard 
+        name="Name: " 
+        nameText="George Jordan" 
+        gender="Experience: " 
+        genderText="3 Years" 
+        age="Gender: " 
+        ageText="40" 
+        medicalconcerns="Language: " 
+        medicalText=" English" 
+        phone="Location: " 
+        phoneText="St. Joseph’s Clinic" 
+        emailText="Edit" 
+        button1={"none"}/>      
+        </DoctorCont>
       <DoctorCont>
-       <PatientCard/>
-      </DoctorCont>
+      <PatientCard 
+        name="Name: " 
+        nameText="George Jordan" 
+        gender="Experience: " 
+        genderText="3 Years" 
+        age="Gender: " 
+        ageText="40" 
+        medicalconcerns="Language: " 
+        medicalText=" English" 
+        phone="Location: " 
+        phoneText="St. Joseph’s Clinic" 
+        emailText="Edit" 
+        button1={"none"}/>      
+        </DoctorCont>
       <DoctorCont>
-       <PatientCard/>
-      </DoctorCont>
+      <PatientCard 
+        name="Name: " 
+        nameText="George Jordan" 
+        gender="Experience: " 
+        genderText="3 Years" 
+        age="Gender: " 
+        ageText="40" 
+        medicalconcerns="Language: " 
+        medicalText=" English" 
+        phone="Location: " 
+        phoneText="St. Joseph’s Clinic" 
+        emailText="Edit" 
+        button1={"none"}/>      
+        </DoctorCont>
     </ItemCont2>
 
     <ButtonCont >
