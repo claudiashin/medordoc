@@ -85,7 +85,7 @@ const Editbut = styled.div`
 const PopupCont = styled.div`
     display: flex;
     position: absolute;
-    top: 500px;
+    
     align-self: center;
     justify-content: center;
 `
@@ -111,20 +111,14 @@ const PatientCard=({
     //button
 })=>{
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(0);
 
-    var display = "none";
-    if(open){
-        display = "flex"
-    }
 
+    if(open == 0){
     return <Maincont>
-        <PopupCont>
-        <PopupCard/>
-        </PopupCont>
         
         <Closebutton>
-        <IoIosClose onClick={()=>setOpen(!open)} size={60}/>
+        <IoIosClose onClick={()=>{setOpen(1)}} size={60}/>
         </Closebutton>
         
         <Avatarcont>
@@ -144,7 +138,39 @@ const PatientCard=({
         </Emailbut></a>
     </Maincont>
     
+}else if(open == 1){
+    return <Maincont>
+        <PopupCont>
+            <PopupCard CloseCard={()=>{
+                setOpen(2)
+            }} ClosePop={()=>{
+                setOpen(0)
+            }}/>
+        </PopupCont>
+        
+        <Closebutton>
+        <IoIosClose  size={60}/>
+        </Closebutton>
+        
+        <Avatarcont>
+            <Avatarimg src={imagesource}/>
+        </Avatarcont>
+        <Textcont>
+            <Text>{name}{nameText}</Text>
+            <Text>{gender}{genderText}</Text>
+            <Text>{age}{ageText}</Text>
+            <Text>{medicalconcerns}{medicalText}</Text>
+            <Text>{phone}{phoneText}</Text>
+        </Textcont>
+        <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
+        
+            <AiOutlineMail size={30}/>
+            <Emailtext>{emailText}</Emailtext>
+        </Emailbut></a>
+    </Maincont>
+}else if(open == 2){
+    return <></>
 }
-
+}
 
 export default PatientCard;

@@ -20,6 +20,12 @@ import NavBar from '../comps/NavBar';
   align-content:center;
   justify-content: space-between;
   `
+  const Wave = styled.Image`
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  top: 0;
+  `;
   const SearchCont = styled.View`
     display: flex;
     flex-direction: row;
@@ -43,9 +49,10 @@ import NavBar from '../comps/NavBar';
 `;
 
 
-const finddoc = ()=>{
+const finddoc = ({navigation})=>{
 return(
    <Cont>
+     <Wave source={require('../assets/background_wave.jpg')}/>
      <SearchCont>
      <SearchBar/>
      </SearchCont>
@@ -59,9 +66,9 @@ return(
 
     <CardCont>
       
-      <ClinDocButton/>
-      <ClinDocButton/>
-      <ClinDocButton/>
+      <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
+      <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
+      <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
     </CardCont>
 
     <NavBarCont>
