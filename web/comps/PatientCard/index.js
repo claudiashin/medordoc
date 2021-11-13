@@ -85,11 +85,17 @@ const Editbut = styled.div`
 const PopupCont = styled.div`
     display: flex;
     position: absolute;
-    top: 500px;
+    
     align-self: center;
     justify-content: center;
 `
 
+const EmailbutCont = styled.div`
+    display:${props=>props.button1};
+`
+const EditbutCont = styled.div`
+display:${props=>props.button2};
+`
 const PatientCard=({
     //info
     nameText = "Default Text",
@@ -108,23 +114,55 @@ const PatientCard=({
     language = "default text",
     medicalconcerns = "default text",
     phone = "default text",
+    button1="flex",
+    button2="flex"
     //button
 })=>{
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(0);
 
-    var display = "none";
-    if(open){
-        display = "flex"
-    }
 
+    if(open == 0){
+    return <Maincont>
+        
+        <Closebutton>
+        <IoIosClose onClick={()=>{setOpen(1)}} size={60}/>
+        </Closebutton>
+        
+        <Avatarcont>
+            <Avatarimg src={imagesource}/>
+        </Avatarcont>
+        <Textcont>
+            <Text>{name}{nameText}</Text>
+            <Text>{gender}{genderText}</Text>
+            <Text>{age}{ageText}</Text>
+            <Text>{medicalconcerns}{medicalText}</Text>
+            <Text>{phone}{phoneText}</Text>
+        </Textcont>
+        <EmailbutCont button1={button1}>
+        <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
+        
+            <AiOutlineMail size={30}/>
+            <Emailtext>{emailText}</Emailtext>
+        </Emailbut></a>
+        </EmailbutCont>
+        <EditbutCont button2={button2} >
+            <Editbut>{emailText}</Editbut>
+        </EditbutCont>
+    </Maincont>
+    
+}else if(open == 1){
     return <Maincont>
         <PopupCont>
-        <PopupCard/>
+            <PopupCard CloseCard={()=>{
+                setOpen(2)
+            }} ClosePop={()=>{
+                setOpen(0)
+            }}/>
         </PopupCont>
         
         <Closebutton>
-        <IoIosClose onClick={()=>setOpen(!open)} size={60}/>
+        <IoIosClose  size={60}/>
         </Closebutton>
         
         <Avatarcont>
@@ -138,13 +176,14 @@ const PatientCard=({
             <Text>{phone}{phoneText}</Text>
         </Textcont>
         <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
-        
+    
             <AiOutlineMail size={30}/>
             <Emailtext>{emailText}</Emailtext>
         </Emailbut></a>
     </Maincont>
-    
+}else if(open == 2){
+    return <></>
 }
-
+}
 
 export default PatientCard;

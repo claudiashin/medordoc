@@ -3,16 +3,22 @@ import {View,Text, SafeAreaView, StyleSheet, TextInput} from "react-native" ;
 import styled from "styled-components/native";
 import { Ionicons } from '@expo/vector-icons';
 
+import Btn from '../Btn';
+
 
 import {useState} from 'react';
 
 //main container
 const Extra = styled.View`
-width: 300px;
-height: 380px;
+    width: 300px;
+    height: 380px;
+    justify-content: center;
+    align-items: center;
+
 `
 const Maincont = styled.View`
     display:${props=>props.display};
+    flex:1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -21,7 +27,6 @@ const Maincont = styled.View`
     background-color: #ffffff;
     border: 1px solid #E9D7CB;
     border-radius: 5px;
-    
 `
 
 //filter icon container
@@ -65,6 +70,13 @@ const Filttext = styled.Text`
     font-size: 16px;
 `
 
+const Btncont = styled.View`
+    display: flex;
+    position: relative;
+    top: 40px;
+    left: 60px;
+`
+
 
 const Filter=({
     headerText = "Header",
@@ -76,10 +88,11 @@ const Filter=({
     if(open){
         display = "flex"
     }
+
     return <Extra>
             <Iconcont >
                 <Ionicons onPress={()=>setOpen(!open)} 
-                name="filter" size={40} color="black" />
+                name="filter" size={30} color="black" />
             </Iconcont>
         <Maincont display={display}>
 
@@ -105,7 +118,6 @@ const Filter=({
                 <Filteropt>
                     <Filttext>{optionText="Punjabi"}</Filttext>
                 </Filteropt>
-
             </Filtercont>
             <Headercont>
                 <Filterheader>{headerText="Gender of Doctors"}</Filterheader>
@@ -119,6 +131,10 @@ const Filter=({
                 <Filttext>{optionText="Female"}</Filttext>
             </Filteropt>
             </Filtercont>
+            <Btncont>
+                <Btn title={"Apply"} height={50} width={120} fsize={20}/>
+            </Btncont>
+            
 
         </Maincont>
         </Extra>
