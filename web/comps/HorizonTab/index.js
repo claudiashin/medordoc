@@ -102,7 +102,6 @@ const ButtonCont = styled.div`
 `
 
 const MyTab = ({
-
 }) =>{
   const [popup, setShowPopup] = useState(true)
 
@@ -127,7 +126,11 @@ const MyTab = ({
         phone="Location: " 
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
-        button1={"none"}/>
+        button1={"none"}
+        editDoc={()=>{
+          setShowPopup(false)
+        }}
+        />
       </DoctorCont>
       <DoctorCont>
       <PatientCard 
@@ -142,7 +145,9 @@ const MyTab = ({
         phone="Location: " 
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
-        button1={"none"}/>      
+        button1={"none"}
+        editDoc={()=>{setShowPopup(false)}}
+        />      
         </DoctorCont>
       <DoctorCont>
       <PatientCard 
@@ -157,7 +162,9 @@ const MyTab = ({
         phone="Location: " 
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
-        button1={"none"}/>      
+        button1={"none"}
+        editDoc={()=>{setShowPopup(false)}}
+        />      
         </DoctorCont>
     </ItemCont2>
 
@@ -175,7 +182,9 @@ const MyTab = ({
         phone="Location: " 
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
-        button1={"none"}/>      
+        button1={"none"}
+        editDoc={()=>{setShowPopup(false)}}
+        />      
         </DoctorCont>
       <DoctorCont>
       <PatientCard 
@@ -190,7 +199,9 @@ const MyTab = ({
         phone="Location: " 
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
-        button1={"none"}/>      
+        button1={"none"}
+        editDoc={()=>{setShowPopup(false)}}
+        />      
         </DoctorCont>
       <DoctorCont>
       <PatientCard 
@@ -205,7 +216,9 @@ const MyTab = ({
         phone="Location: " 
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
-        button1={"none"}/>      
+        button1={"none"}
+        editDoc={()=>{setShowPopup(false)}}
+        />      
         </DoctorCont>
     </ItemCont2>
     
@@ -239,7 +252,9 @@ const MyTab = ({
         phone="Location: " 
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
-        button1={"none"}/>      
+        button1={"none"}
+        editDoc={()=>{setShowPopup(false)}}
+        />      
         </DoctorCont>
       <DoctorCont>
       <PatientCard 
@@ -254,8 +269,10 @@ const MyTab = ({
         phone="Location: " 
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
-        button1={"none"}/>
-              </DoctorCont>
+        button1={"none"}
+        
+        editDoc={()=>{setShowPopup(false)}}/>
+      </DoctorCont>
       <DoctorCont>
       <PatientCard 
         name="Name: " 
@@ -269,7 +286,9 @@ const MyTab = ({
         phone="Location: " 
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
-        button1={"none"}/>      
+        button1={"none"}
+        editDoc={()=>{setShowPopup(false)}}
+        />      
         </DoctorCont>
     </ItemCont2>
 
@@ -287,7 +306,9 @@ const MyTab = ({
         phone="Location: " 
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
-        button1={"none"}/>      
+        button1={"none"}
+        editDoc={()=>{setShowPopup(false)}}
+        />      
         </DoctorCont>
       <DoctorCont>
       <PatientCard 
@@ -302,7 +323,9 @@ const MyTab = ({
         phone="Location: " 
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
-        button1={"none"}/>      
+        button1={"none"}
+        editDoc={()=>{setShowPopup(false)}}
+        />      
         </DoctorCont>
       <DoctorCont>
       <PatientCard 
@@ -317,15 +340,24 @@ const MyTab = ({
         phone="Location: " 
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
-        button1={"none"}/>      
+        button1={"none"}
+        editDoc={()=>{setShowPopup(false)}}
+        />      
         </DoctorCont>
     </ItemCont2>
 
     <ButtonCont >
       <Btn title="Create New" bgColor="#90AABB" />
     </ButtonCont>
-    <DoctorCardCont >
-      <DoctorCard />
+    <DoctorCardCont>
+      <DoctorCard xDoc={()=>{
+        setShowPopup(true)
+       
+      }} 
+      addDoc={()=>{
+        setShowPopup(true)
+        titleDoc="add"
+      }}/>
     </DoctorCardCont>
   </MyCont2> 
   }
