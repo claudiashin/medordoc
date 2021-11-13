@@ -15,6 +15,7 @@ import BookingForm from './comps/BookingForm';
 import home from './pages/home';
 import findclinic from './pages/findclinic';
 import clinicprofile from './pages/clinicprofile';
+
 // import login from './pages/login';
 import signup from './pages/signup';
 import accountconfirm from './pages/accountconfirm';
@@ -26,16 +27,7 @@ import history from './pages/history';
 import docprofile from './pages/docprofile';
 
 // import login from './pages/login';
-import accountconfirm from './pages/accountconfirm';
-import signup from './pages/signup';
 import patientprofile from './pages/patientprofile';
-import history from './pages/history';
-import scan from './pages/scan';
-
-import finddoc from './pages/finddoc';
-import docprofile from './pages/docprofile';
-import confirmreq from './pages/confirmreq';
-
 import QR from './pages/QR';
 
 
@@ -49,7 +41,6 @@ export default function App() {
       <NavigationContainer>
        <Stack.Navigator initialRouteName="home">
          <Stack.Screen name="home" component={home} />
-         <Stack.Screen name="QR" component={QR} /> 
          <Stack.Screen name="findclinic" options={{headerShown: false}}   component={findclinic} /> 
          <Stack.Screen name="finddoc" component={finddoc} />
          <Stack.Screen name="clinicprofile" component={clinicprofile} />
@@ -59,12 +50,8 @@ export default function App() {
          <Stack.Screen name="qrconfirm" component={qrconfirm} />
          <Stack.Screen name="QR" component={scan} />
         <Stack.Screen name="accountconfirm" component={accountconfirm}/> 
-        <Stack.Screen name="login" component={login}/> 
-
-         <Stack.Screen name="scan" component={scan} /> 
-         <Stack.Screen name="login" component={login} /> 
          <Stack.Screen name="history" component={history} /> 
-         <Stack.Screen name="confirmreq" component={confirmreq} />
+         {/* <Stack.Screen name="confirmreq" component={confirmreq} /> */}
        </Stack.Navigator>
      </NavigationContainer>
 
