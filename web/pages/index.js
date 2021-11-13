@@ -43,10 +43,21 @@ const ContOne = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+
+
   flex-wrap: wrap;
+
+
   /* align-items: center; */
   width: 100%;
-  height: 500px;
+
+
+  /* height: 500px; */
+
+
+  @media only screen and (min-width: 500px) {
+    text-align: center;
+  }
 `;
 
 const ContTwo = styled.div`
@@ -89,6 +100,7 @@ const LottieCont = styled.div`
   align-items: center;
   /* margin: 50px; */
   @media only screen and (min-width: 500px) {
+    /* width: 80px; */
   }
 `;
 
@@ -179,7 +191,7 @@ export default function Home() {
         <HeaderTitle title="Increase your clinic's patient base" />
         <BodyText>Try MedorDoc to enhance your clinic's web presence and broaden your patient reach. Start by listing your clinic today.</BodyText>
         <BtnCont>
-          <Btn fSize="20px" fWeight="500" width="230px" height="70px" />
+          <Btn fSize="20px" fWeight="500" width="230px" height="70px" onClick={()=>router.push("/signup")} />
         </BtnCont>
       </MainInfoCont>
 

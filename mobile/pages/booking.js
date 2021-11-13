@@ -46,7 +46,7 @@ const NavBarCont = styled.View`
     bottom: 45;
 `;
 
-const booking = () => {
+const booking = ({navigation}) => {
     return (
         <BookingCont>
             <Wave source={require('../assets/background_wave.jpg')}/>
@@ -67,6 +67,7 @@ const booking = () => {
                 <Btn 
                     title={'Confirm'}
                     fSize={20}
+                    onPress={()=>navigation.navigate('qrconfirm')}
                 />
             </ButtonCont>
 

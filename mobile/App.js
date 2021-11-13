@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React,{useState,useEffect} from 'react';
-import { StyleSheet, Text, View,Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import styled from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -15,7 +15,7 @@ import BookingForm from './comps/BookingForm';
 import home from './pages/home';
 import findclinic from './pages/findclinic';
 import clinicprofile from './pages/clinicprofile';
-// import login from './pages/login';
+import login from './pages/login';
 import signup from './pages/signup';
 import accountconfirm from './pages/accountconfirm';
 import booking from './pages/booking';
@@ -24,9 +24,12 @@ import scan from './pages/scan';
 import finddoc from './pages/finddoc';
 import history from './pages/history';
 import docprofile from './pages/docprofile';
+<<<<<<< HEAD
 import login from './pages/login'
 
 // import login from './pages/login';
+=======
+>>>>>>> a8cc0691b4d9004b66d66a6587b45c551a6f0e1c
 import patientprofile from './pages/patientprofile';
 import confirmreq from './pages/confirmreq';
 import QR from './pages/QR';
@@ -50,15 +53,17 @@ export default function App() {
          <Stack.Screen name="signup" component={signup} />
          <Stack.Screen name="booking" component={booking} />
          <Stack.Screen name="qrconfirm" component={qrconfirm} />
+         <Stack.Screen name="scan" component={scan} />
          <Stack.Screen name="accountconfirm" component={accountconfirm}/> 
          <Stack.Screen name="login" component={login}/> 
-         <Stack.Screen name="scan" component={scan} /> 
          <Stack.Screen name="history" component={history} /> 
          <Stack.Screen name="confirmreq" component={confirmreq} />
-       </Stack.Navigator>
-     </NavigationContainer>
+         <Stack.Screen name="docprofile" component={docprofile} />
 
-      );
+       </Stack.Navigator>
+    </NavigationContainer>
+
+  );
 }
 
 const styles = StyleSheet.create({
