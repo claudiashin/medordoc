@@ -5,7 +5,8 @@ import styled from "styled-components"
 import HeroAvatar from "../HeroAvatar";
 import SigninForm from "../SigninForm";
 import PatientCard from "../PatientCard";
-import DoctorCard from "../DoctorCard"
+import DoctorCard from "../DoctorCard";
+import SigninFormTwo from '../SigninFormTwo';
 
  const Nav = styled("div")`
   & > * {
@@ -219,7 +220,7 @@ const HorizonTab = ({ router }) => {
           <HeroAvatar/>
         </ItemCont>
         <ItemCont>
-          <SigninForm/>
+          <SigninFormTwo />
         </ItemCont>
         </MyCont>   
           </React.Fragment>}
