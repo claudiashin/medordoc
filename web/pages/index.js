@@ -43,6 +43,7 @@ const ContOne = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
   /* align-items: center; */
   width: 100%;
   height: 500px;
@@ -100,10 +101,8 @@ const BtnCont = styled.div`
 
 const BodyText = styled.p`
   font-size: 20px;
-  line-height: 30px;
 
   @media only screen and (min-width: 500px) {
-  line-height: 1;
   }
 `;
 
@@ -139,6 +138,10 @@ const InfoCont = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 60px;
+  width: 240px;
+  @media only screen and (min-width: 500px) {
+  min-width: 0px;
+}
 `;
 
 const Icon = styled.img`
@@ -183,7 +186,7 @@ export default function Home() {
       <LottieCont>
         <HeroLottie
           source={myLottie}
-          width="300px"
+          width="550px"
         />
       </LottieCont>
     </ContOne>

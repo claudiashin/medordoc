@@ -35,7 +35,7 @@ const home = ({navigation})=>{
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#F7F2EE',
       alignItems: 'center',
       justifyContent: 'center',
     },

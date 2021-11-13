@@ -5,7 +5,7 @@ import { StyleSheet, View, Button, Linking, Text } from 'react-native';
 const InfoCardCont = styled.View`
     width: 300px;
     border: #E9D7CB;
-    padding: 15px;
+    padding: 20px;
     margin: 10px;
     background-color: #fff;
 `;
