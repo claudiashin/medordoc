@@ -27,6 +27,7 @@ const Radio = styled.View`
     margin-left: 5px; 
     margin-top: 5px;
     position: relative;
+    z-index: 1;
 `
 const DateCont = styled.View`
 
@@ -51,15 +52,13 @@ const SigninForm = ({
     const [pass, setPass] = React.useState('');
     //for button
     const [changeForm, setChangeForm] = useState(true);
-    //for radiobutton(gender)
-    const [value, setValue] = React.useState('first');
 
     //for second form
     const [medcon, setMedcon] = React.useState('');
     const [inputDate, setInputDate ] = React.useState('');
 
     const [open, setOpen] = useState(false);
-    const [gender, setGender] = useState(null);
+    const [gender, setGender] = useState('');
     const [items, setItems] = useState([
         {label: 'Male', gender: 'Male'},
         {label: 'Female', gender: 'Female'},
@@ -140,7 +139,7 @@ const SigninForm = ({
                     open={open}
                     value={gender}
                     items={items}
-                    placeholder="Select Gender"
+                    placeholder="Gender"
                     setOpen={setOpen}
                     setGender={setGender}
                     setItems={setItems}
@@ -149,7 +148,6 @@ const SigninForm = ({
                         height: 50,
                         borderRadius: 4,
                         borderColor: '#6d6d6d',
-                        zIndex: 2,
                         borderColor: '#6d6d6d'
                     }}
                     />

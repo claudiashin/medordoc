@@ -23,13 +23,14 @@ const HeaderCont = styled.div`
 `
 
 const NavCont = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9255d18a725bf6f9bc62d242404c3d3230e8a0f0
     width:100%;
+    // height:300px;
     position:absolute;
     top:0;
-    left: 30px;
     
 `
 
@@ -59,10 +60,7 @@ const PopupCont = styled.div`
 `
 
 export default function Home() {
-    const [popup,setPopup] = useState(true)
-    if(popup == true){
 
-    }
     return( <Cont>
         <Background src={'/background-web4.svg'}/>
         <NavCont>
@@ -74,9 +72,9 @@ export default function Home() {
         </HeaderCont>
         
 
-        {/* <PopupCont>
+         {/* <PopupCont>
             <PopupCard/>
-        </PopupCont> */}
+        </PopupCont>  */}
         
         <ContPatientCard>
             <ContPatientCardInd>
