@@ -7,6 +7,7 @@ import DrDetail from '../comps/DrDetail';
 import HeroAvatar from '../comps/HeroAvatar';
 import Btn from '../comps/Btn';
 import Header from '../comps/Header';
+import NavBar from '../comps/NavBar';
 
 const MainCont = styled.View`
     flex:1;
@@ -28,15 +29,19 @@ const HdCont = styled.View`
 const ButCont = styled.View`
     flex-direction: row;
     margin-top: 20px;
+    margin-bottom: 20px;
     align-items: center;
     justify-content: space-around;
   
 
 `;
+const NavBarCont = styled.View`
+    flex: 0.15;
+`;
 
 export default function docprofile({navigation}) {
     return <MainCont>
-        <ScrollView>
+        <ScrollView style={styles.scrollView}>
             <ImageCont>
                 <HeroAvatar 
                     heroheight="200"
@@ -72,5 +77,16 @@ export default function docprofile({navigation}) {
                 />
             </ButCont>
         </ScrollView>
+
+        <NavBarCont>
+            <NavBar />
+        </NavBarCont>
+
     </MainCont>
 }
+
+const styles = StyleSheet.create({
+    scrollView: {
+      flex: 0.85,
+    },
+  });

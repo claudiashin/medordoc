@@ -47,19 +47,18 @@ export default function App() {
   
       <NavigationContainer>
        <Stack.Navigator initialRouteName="home">
-         <Stack.Screen name="Home" component={home} />
-          <Stack.Screen name="QR" component={QR} />
-         <Stack.Screen name="findclinic" component={findclinic} />
+         <Stack.Screen name="home" component={home} />
+         <Stack.Screen name="QR" component={QR} /> 
+         <Stack.Screen name="findclinic" component={findclinic} /> 
          <Stack.Screen name="finddoc" component={finddoc} />
          <Stack.Screen name="clinicprofile" component={clinicprofile} />
+         <Stack.Screen name="patientprofile" component={patientprofile} />
          <Stack.Screen name="signup" component={signup} />
          <Stack.Screen name="booking" component={booking} />
          <Stack.Screen name="qrconfirm" component={qrconfirm} />
-         {/* <Stack.Screen name="QR" component={scan} />  */}
          <Stack.Screen name="scan" component={scan} /> 
-         <Stack.Screen name="history" component={history} />
-         <Stack.Screen name="docprofile" component={docprofile} />
-
+         <Stack.Screen name="history" component={history} /> 
+         <Stack.Screen name="confirmreq" component={confirmreq} />
        </Stack.Navigator>
      </NavigationContainer>
 
