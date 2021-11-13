@@ -3,14 +3,21 @@ import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View,Image } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import styled from 'styled-components/native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 //import comps
 import SigninForm from './comps/SigninForm';
 import LoginForm from './comps/LoginForm';
 import BookingForm from './comps/BookingForm';
 
 //import pages
-import findclinic from './pages/findclinic';
 import home from './pages/home';
+import findclinic from './pages/findclinic';
+import clinicprofile from './pages/clinicprofile';
+// import login from './pages/login';
+import signup from './pages/signup';
+import accountconfirm from './pages/accountconfirm';
 import booking from './pages/booking';
 import qrconfirm from './pages/qrconfirm';
 import scan from './pages/scan';
@@ -20,24 +27,16 @@ import docprofile from './pages/docprofile';
 
 // import login from './pages/login';
 
-import accountconfirm from './pages/accountconfirm';
-import signup from './pages/signup';
 import patientprofile from './pages/patientprofile';
-import QR from './pages/QR';
+import history from './pages/history';
+import scan from './pages/scan';
 
-
-// import history from './pages/history';
-// import finddoc from './pages/finddoc';
-// import docprofile from './pages/docprofile';
-// import accountconfirm from './pages/accountconfirm';
-import clinicprofile from './pages/clinicprofile';
+import finddoc from './pages/finddoc';
+import docprofile from './pages/docprofile';
 import confirmreq from './pages/confirmreq';
 
+import QR from './pages/QR';
 
-
-
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 const Stack = createNativeStackNavigator();

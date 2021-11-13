@@ -23,11 +23,14 @@ const HeaderCont = styled.div`
 `
 
 const NavCont = styled.div`
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9255d18a725bf6f9bc62d242404c3d3230e8a0f0
     width:100%;
+    // height:300px;
     position:absolute;
     top:0;
-    left: 30px;
     
 `
 

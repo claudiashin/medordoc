@@ -34,7 +34,7 @@ const ButCont = styled.View`
 
 `;
 
-export default function docprofile() {
+export default function docprofile({navigation}) {
     return <MainCont>
         <ScrollView>
             <ImageCont>
@@ -60,6 +60,7 @@ export default function docprofile() {
                     width = '100'
                     height = '45'
                     borderRad = '50'
+                    onPress={() => navigation.goBack()}
                 />
                 <Btn 
                     title = "Yes"
@@ -67,7 +68,7 @@ export default function docprofile() {
                     width = '100'
                     height = '45'
                     borderRad = '50'
-
+                    onPress={() => navigation.navigate('confirmreq')}
                 />
             </ButCont>
         </ScrollView>
