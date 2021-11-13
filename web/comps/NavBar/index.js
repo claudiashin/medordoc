@@ -103,6 +103,7 @@ const NavBar = ({
       <NavButton onClick={()=>router.push("/")}>Home</NavButton>
       <NavButton onClick={()=>router.push("/booking")}>Bookings</NavButton>
       <NavButton onClick={()=>router.push("/request")}>Requests</NavButton>
+      <NavButton onClick={()=>router.push("/qrcheckin")}>Checkin</NavButton>
     </NavCont>
 
     <ProfileCont>
