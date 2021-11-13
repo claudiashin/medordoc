@@ -40,18 +40,17 @@ const Map =({
 
   let text = 'Waiting..';
   
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-      text = JSON.stringify(location);
-      const lat = location.coords.latitude;
-      const long = location.coords.longitude;
-      console.log(lat)
-      console.log(long)
+ if (errorMsg) {
+    text = errorMsg;} 
+     else if (location) {
+       text = JSON.stringify(location);
+       const lat = location.coords.latitude;
+       const long = location.coords.longitude;
+       console.log(lat);
+       console.log(long);
   }
 
-  // const lat = location.coords.latitude;
-  // const long = location.coords.longitude;
+
 
  return(
   <View style={styles.container}>
@@ -62,7 +61,7 @@ const Map =({
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
     }}/>
-   {/* <Marker coordinate={tokyoRegion} /> */}
+ 
     
   </View>
     )
@@ -76,7 +75,7 @@ const styles = StyleSheet.create({
     },
     map: {
       width: Dimensions.get('window').width,
-      height: Dimensions.get('window').height/3,
+      height: Dimensions.get('window').height/2,
     }})
 
 export default Map;

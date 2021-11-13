@@ -18,6 +18,7 @@ const Extra = styled.View`
 `
 const Maincont = styled.View`
     display:${props=>props.display};
+    flex:1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -26,7 +27,6 @@ const Maincont = styled.View`
     background-color: #ffffff;
     border: 1px solid #E9D7CB;
     border-radius: 5px;
-    
 `
 
 //filter icon container
@@ -88,10 +88,11 @@ const Filter=({
     if(open){
         display = "flex"
     }
+
     return <Extra>
             <Iconcont >
                 <Ionicons onPress={()=>setOpen(!open)} 
-                name="filter" size={40} color="black" />
+                name="filter" size={30} color="black" />
             </Iconcont>
         <Maincont display={display}>
 
@@ -117,7 +118,6 @@ const Filter=({
                 <Filteropt>
                     <Filttext>{optionText="Punjabi"}</Filttext>
                 </Filteropt>
-
             </Filtercont>
             <Headercont>
                 <Filterheader>{headerText="Gender of Doctors"}</Filterheader>

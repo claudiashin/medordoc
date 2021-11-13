@@ -15,11 +15,12 @@ import NavBar from '../comps/NavBar';
   background-color: #F7F2EE;
   flex:1;
   flex-direction: column;
-  align-content:center;
+  align-items:center;
   justify-content: space-between;
 `
 
 const SubCont = styled.ScrollView`
+
 `
 // const Cont = styled.View`
 //   width:100vw;
@@ -47,7 +48,11 @@ const SubCont = styled.ScrollView`
   `
   const FilterCont = styled.View`
     display: flex;
+<<<<<<< HEAD
+   
+=======
     margin-top: 50px;
+>>>>>>> 4c279107cac6027480ac1803575c13a3b4305bb2
   `
   const CardCont = styled.View`
     display: flex;
@@ -66,10 +71,8 @@ return (
     <Wave source={require('../assets/background_wave.jpg')}/>
     <SearchBar/>
     <Map/>
-    <FilterCont>
+ 
     <Filiter/>
-    </FilterCont>
-
     <CardCont> 
       <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
       <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
