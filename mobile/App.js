@@ -49,7 +49,7 @@ export default function App() {
        <Stack.Navigator initialRouteName="home">
          <Stack.Screen name="home" component={home} />
          <Stack.Screen name="QR" component={QR} /> 
-         <Stack.Screen name="findclinic" component={findclinic} /> 
+         <Stack.Screen name="findclinic" options={{headerShown: false}}   component={findclinic} /> 
          <Stack.Screen name="finddoc" component={finddoc} />
          <Stack.Screen name="clinicprofile" component={clinicprofile} />
          <Stack.Screen name="patientprofile" component={patientprofile} />
