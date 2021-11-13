@@ -52,7 +52,7 @@ export default function Profile() {
         <NavBar />
         <HeaderCont>
           <HeaderTitle title="Profile"/>
-          <HeaderTitle fontSize="10  " title="St. Joseph’s Clinic" />
+          <HeaderTitle fontSize="10 " title="St. Joseph’s Clinic" />
         </HeaderCont>
       </NavBarCont>
      
