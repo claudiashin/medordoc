@@ -1,13 +1,59 @@
-import React from "react";
-import styled from 'styled-components'
-import 'semantic-ui-css/semantic.min.css'
-import { Tab, } from 'semantic-ui-react';
+import React, {useState} from "react"
+import Link from "next/link"
+import { withRouter } from "next/router"
+import styled from "styled-components"
 import HeroAvatar from "../HeroAvatar";
 import SigninForm from "../SigninForm";
 import PatientCard from "../PatientCard";
 import DoctorCard from "../DoctorCard"
 
-//fix patientcard props
+ const Nav = styled("div")`
+  & > * {
+    margin-left: 1em;
+    color: white;
+  }
+  background: black;
+  padding: 1em;
+  height: 2em;
+  display: flex;
+  align-items: center;
+`
+
+ const PageBody = styled("div")`
+  width: 100%;
+  height: 100%;
+  padding: 2em;
+`
+
+ const TabHead = styled("div")`
+  border-bottom: 2px solid black;
+  display: flex;
+  background: white;
+`
+
+ const TabContainer = styled("div")`
+  width: 100vw;
+  height: 30em;
+  webkit-box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
+  -moz-box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
+  box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
+  align-items:center;
+  display:flex;
+  flex-direction:column;
+`
+
+ const TabBody = styled(PageBody)`
+  height: 100%;
+`
+
+ const Tab = styled("div")`
+  padding: 1em;
+  background: ${({ selected }) => (selected ? "white" : "#F7F2EE")};
+  * {
+    color: black;
+  }
+`
+
 const MyCont = styled.div`
   width:100vw;
   min-height:500px;
@@ -42,7 +88,7 @@ const DoctorCont = styled.div`
 
 const DoctorCardCont = styled.div`
   position:absolute;
-  top:0;
+  top:660px;
   background:white;
   display:${props=>props.display};
 `
@@ -59,171 +105,130 @@ const ButtonCont = styled.div`
   width:100vw;
   margin-right:250px;
 `
-const panes = [
-  {
-    menuItem: 'Clinic',
-    render: ({
-     
-    }) => {
-      return <>
-    <Tab.Pane attached={false}>
-      <MyCont>
+
+const MyTab = ({
+
+}) =>{
+  const [popup, setShowPopup] = useState(true)
+
+  if(popup === true){
+    return  <MyCont2>
+    <HeaderCont>
+      {/* replace with real header */}
+      <Text>List of Doctors</Text>
+    </HeaderCont>
+
+    <ItemCont2>
+      <DoctorCont>
+        <PatientCard/>
+      </DoctorCont>
+      <DoctorCont>
+       <PatientCard/>
+      </DoctorCont>
+      <DoctorCont>
+       <PatientCard/>
+      </DoctorCont>
+    </ItemCont2>
+
+    <ItemCont2>
+      <DoctorCont>
+        <PatientCard/>
+      </DoctorCont>
+      <DoctorCont>
+       <PatientCard/>
+      </DoctorCont>
+      <DoctorCont>
+       <PatientCard/>
+      </DoctorCont>
+    </ItemCont2>
+    
+    <ButtonCont onClick={()=>{
+        setShowPopup(false)
+      }}>
+      <MyButton onClick={()=>{
+        setShowPopup(false)
+      }}/>
+    </ButtonCont>
+
+  </MyCont2> 
+  }else if(popup === false){
+    return  <MyCont2>
+    <HeaderCont>
+      {/* replace with real header */}
+      <Text>List of Doctors</Text>
+    </HeaderCont>
+
+    <ItemCont2>
+      <DoctorCont>
+        <PatientCard/>
+      </DoctorCont>
+      <DoctorCont>
+       <PatientCard/>
+      </DoctorCont>
+      <DoctorCont>
+       <PatientCard/>
+      </DoctorCont>
+    </ItemCont2>
+
+    <ItemCont2>
+      <DoctorCont>
+        <PatientCard/>
+      </DoctorCont>
+      <DoctorCont>
+       <PatientCard/>
+      </DoctorCont>
+      <DoctorCont>
+       <PatientCard/>
+      </DoctorCont>
+    </ItemCont2>
+
+    <ButtonCont >
+      <MyButton />
+    </ButtonCont>
+    <DoctorCardCont >
+      <DoctorCard />
+    </DoctorCardCont>
+  </MyCont2> 
+  }
+}
+const HorizonTab = ({ router }) => {
+  const {
+    query: { tab }
+  } = router
+
+  const isTabOne = tab === "1" || tab == null
+  const isTabTwo = tab === "2"
+  return (
+    <TabContainer>
+      <TabHead>
+        <Tab selected={isTabOne}>
+          <Link href={{ pathname: "/profile/", query: { tab: "1" } }}>
+            <a>Clinics</a>
+          </Link>
+        </Tab>
+        <Tab selected={isTabTwo}>
+          <Link href={{ pathname: "/profile", query: { tab: "2" } }}>
+            <a>Doctors</a>
+          </Link>
+        </Tab>
+      </TabHead>
+      <TabBody>
+        {isTabOne && <React.Fragment>
+          <MyCont>
         <ItemCont>
           <HeroAvatar/>
         </ItemCont>
         <ItemCont>
           <SigninForm/>
         </ItemCont>
-        </MyCont>    
-  
-    </Tab.Pane>,
-      </>}
-  },
+        </MyCont>   
+          </React.Fragment>}
+        {isTabTwo && <React.Fragment>
+            <MyTab></MyTab>
+          </React.Fragment>}
+      </TabBody>
+    </TabContainer>
+  )
+}
 
-  {
-    menuItem: 'Doctor',
-    
-    render: ({
-      popup=false,
-      onPopUp=()=>{},
-    }) => {
-      
-      if(popup == true){
-      return <>
-     <Tab.Pane attached={false}>
-    
-      <MyCont2>
-        <HeaderCont>
-          {/* replace with real header */}
-          <Text>List of Doctors</Text>
-        </HeaderCont>
-
-        <ItemCont2>
-          <DoctorCont>
-            <PatientCard/>
-          </DoctorCont>
-          <DoctorCont>
-           <PatientCard/>
-          </DoctorCont>
-          <DoctorCont>
-           <PatientCard/>
-          </DoctorCont>
-        </ItemCont2>
-
-        <ItemCont2>
-          <DoctorCont>
-            <PatientCard/>
-          </DoctorCont>
-          <DoctorCont>
-           <PatientCard/>
-          </DoctorCont>
-          <DoctorCont>
-           <PatientCard/>
-          </DoctorCont>
-        </ItemCont2>
-        
-        <ButtonCont >
-          <MyButton onClick={()=>{
-            onPopUp();
-          }}/>
-        </ButtonCont>
-
-      </MyCont2> 
-   
-    </Tab.Pane>,
-    </>
-    }else if(popup == false){
-      
-      return  <>
-      <Tab.Pane attached={false}>
-    
-      <MyCont2>
-        <HeaderCont>
-          {/* replace with real header */}
-          <Text>List of Doctors</Text>
-        </HeaderCont>
-
-        <ItemCont2>
-          <DoctorCont>
-            <PatientCard/>
-          </DoctorCont>
-          <DoctorCont>
-           <PatientCard/>
-          </DoctorCont>
-          <DoctorCont>
-           <PatientCard/>
-          </DoctorCont>
-        </ItemCont2>
-
-        <ItemCont2>
-          <DoctorCont>
-            <PatientCard/>
-          </DoctorCont>
-          <DoctorCont>
-           <PatientCard/>
-          </DoctorCont>
-          <DoctorCont>
-           <PatientCard/>
-          </DoctorCont>
-        </ItemCont2>
-
-        <ButtonCont >
-          <MyButton />
-        </ButtonCont>
-        <DoctorCardCont >
-          <DoctorCard />
-        </DoctorCardCont>
-      </MyCont2> 
-   
-    </Tab.Pane>,
-    </>
-    }
-    }
-  },
-  
-]
-
-
-
-const HorizonTab = () => (
-  
-  <Tab menu={{ secondary: true, pointing: true }} panes={panes}  />
-)
-
-export default HorizonTab
-
-
-// const panes = [
-//   {
-//     menuItem: 'Clinics',
-//     // pane: {
-//     //   key: 'tab2',
-//     //   content: 'asd',
-//     //   textAlign: 'center',
-      
-//     // },
-
-//   },
-//   {
-//     menuItem: 'Doctors',
-//     pane: {
-//       key: 'tab3',
-//       content: (
-//         <Button>
-//           This is a test
-//         </Button>
-//       ),
-//     },
-//   },
-// ]
-
-
-// const HorizonTab = ({
-  
-// }) =>{
-//   return <Tab  style={{width:"100%"}} panes={panes} renderActiveOnly={false} >
-
-//   </Tab>
-// }
-
-// export default HorizonTab
+export default withRouter(HorizonTab)

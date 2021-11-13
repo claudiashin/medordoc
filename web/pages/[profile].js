@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from 'styled-components';
 import HorizonTab from '../comps/HorizonTab'
 import NavBar from "../comps/NavBar";
 import Footer from "../comps/Footer";
 
 const Cont = styled.div`
-  width:100vw;
-  height:100vh;
+  display:flex;
   background-color: #F7F2EE;
+  flex-direction:column;
+  min-height:80em;
 `
 
 const WaveCont = styled.div`
-  width: 100%;
+  // width: 100%;
+  flex-grow:1;
 `;
 
 const Wave = styled.img`
@@ -25,9 +27,14 @@ const NavBarCont = styled.div`
   top:0;
 `;
 
-export default function Profile() {
-  const [showPopup, setShowPopup] = useState(true)
+const FooterCont = styled.div`
 
+`
+const TabCont = styled.div`
+  flex-basis:1000px;
+  z-index:1;
+`
+export default function Profile() {
   return (
     <Cont>
 
@@ -38,12 +45,14 @@ export default function Profile() {
       <NavBarCont>
         <NavBar />
       </NavBarCont>
-    
-    <HorizonTab onPopUp={() => {
-        setShowPopup(false);
-      }} popup={showPopup} />
 
-      <Footer/>
+      <TabCont>
+        <HorizonTab/>
+      </TabCont>
+
+      <FooterCont>
+        <Footer/>
+      </FooterCont>
     </Cont>
   )
 }
