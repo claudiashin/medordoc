@@ -3,10 +3,10 @@ import Link from "next/link"
 import { withRouter } from "next/router"
 import styled from "styled-components"
 import HeroAvatar from "../HeroAvatar";
-import SigninForm from "../SigninForm";
 import PatientCard from "../PatientCard";
 import DoctorCard from "../DoctorCard";
 import SigninFormTwo from '../SigninFormTwo';
+import Btn from "../Btn"
 
  const Nav = styled("div")`
   & > * {
@@ -94,12 +94,6 @@ const DoctorCardCont = styled.div`
   display:${props=>props.display};
 `
 
-//replace with real button
-const MyButton = styled.button`
-  width:200px;
-  height:50px;
-  background:#90AABB;
-`
 const ButtonCont = styled.div`
   display:flex;
   justify-content:flex-end;
@@ -146,7 +140,7 @@ const MyTab = ({
     <ButtonCont onClick={()=>{
         setShowPopup(false)
       }}>
-      <MyButton onClick={()=>{
+      <Btn title="Create New" bgColor="#90AABB" onClick={()=>{
         setShowPopup(false)
       }}/>
     </ButtonCont>
@@ -184,7 +178,7 @@ const MyTab = ({
     </ItemCont2>
 
     <ButtonCont >
-      <MyButton />
+      <Btn title="Create New" bgColor="#90AABB" />
     </ButtonCont>
     <DoctorCardCont >
       <DoctorCard />
