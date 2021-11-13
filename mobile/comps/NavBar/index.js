@@ -6,6 +6,7 @@ const FooterCont = styled.View`
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    padding: 15px;
 `;
 
 const Footer = styled.View`

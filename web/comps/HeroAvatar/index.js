@@ -4,6 +4,8 @@ import React from 'react'
 
 const HeroAvatarCont = styled.div`
   width:${props=>props.herowidth};
+  height:${props=>props.heroheight};
+  margin:${props=>props.heromargin};
   position:relative;
 `
 const HeroImage = styled.img`
@@ -21,10 +23,12 @@ const PlusImage = styled.img`
 `
 const HeroAvatar = ({
   herowidth="200px",
+  heroheight="200px",
+  heromargin="0px",
   pluswidth="30px",
   imagesrc="https://placekitten.com/1000/1000"
 })=>{
-  return<HeroAvatarCont herowidth={herowidth}>
+  return<HeroAvatarCont herowidth={herowidth} heroheight={heroheight} heromargin={heromargin}>
     <HeroImage src={imagesrc}/>
     <PlusImage pluswidth={pluswidth} src={require('../../public/plus.png')}/>
   </HeroAvatarCont>

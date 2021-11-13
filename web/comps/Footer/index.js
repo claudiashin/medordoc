@@ -9,9 +9,9 @@ const Maincont = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #B9D1E1;
-    height: 95px;
+    height: 60px;
     width: 100%;
-
+    margin-top: 10%;
 `
 const Textcont = styled.div`
     display: flex;
@@ -19,19 +19,21 @@ const Textcont = styled.div`
     justify-content: center;
     align-items: center;
 `
-const Text = styled.text`
-    font-size: 20px;
+
+const MODText = styled.text`
+    font-size: 16px;
+`;
+const CRText = styled.text`
+    font-size: 10px;
 `
-
-
 
 const Footer=({
 
 })=>{
     return <Maincont>
         <Textcont>
-            <Text>MedOrDoc</Text>
-            <Text>Copyright 2021©</Text>
+            <MODText>MedOrDoc</MODText>
+            <CRText>Copyright 2021©</CRText>
         </Textcont>
     </Maincont>
     

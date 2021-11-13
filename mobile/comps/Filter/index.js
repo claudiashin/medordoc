@@ -3,9 +3,21 @@ import {View,Text, SafeAreaView, StyleSheet, TextInput} from "react-native" ;
 import styled from "styled-components/native";
 import { Ionicons } from '@expo/vector-icons';
 
+import Btn from '../Btn';
+
+
+import {useState} from 'react';
+
 //main container
+const Extra = styled.View`
+    width: 300px;
+    height: 380px;
+    justify-content: center;
+    align-items: center;
+
+`
 const Maincont = styled.View`
-    display:flex;
+    display:${props=>props.display};
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -14,13 +26,18 @@ const Maincont = styled.View`
     background-color: #ffffff;
     border: 1px solid #E9D7CB;
     border-radius: 5px;
+    
 `
 
 //filter icon container
 const Iconcont = styled.View`
     position: absolute;
     bottom: 375px;
-    left: 250px;
+    left: 350px;
+`
+const FilterIcon = styled.Image`
+    height: 25px;
+    width: 25px;
 `
 
 //headers
@@ -46,11 +63,18 @@ const Filteropt = styled.View`
     height: 40px;
     background-color: #E9D7CB;
     border-radius: 5px;
-    margin: 5px;
+    margin: 4px;
     padding: 5px;
 `
 const Filttext = styled.Text`
     font-size: 16px;
+`
+
+const Btncont = styled.View`
+    display: flex;
+    position: relative;
+    top: 40px;
+    left: 60px;
 `
 
 
@@ -58,48 +82,62 @@ const Filter=({
     headerText = "Header",
     optionText = "Deafult"
 })=>{
-    return <Maincont>
-        <Iconcont>
-            <Ionicons name="filter" size={40} color="black" />
-        </Iconcont>
-        <Headercont>
-            <Filterheader>{headerText="Language Prefrences"}</Filterheader>
-        </Headercont>
-        <Filtercont>
-            <Filteropt>
-                <Filttext>{optionText="English"}</Filttext>
-            </Filteropt>
-            <Filteropt>
-                <Filttext>{optionText="Chinese"}</Filttext>
-            </Filteropt>
-            <Filteropt>
-                <Filttext>{optionText="Korean"}</Filttext>
-            </Filteropt>
-            <Filteropt>
-                <Filttext>{optionText="Japanese"}</Filttext>
-            </Filteropt>
-            <Filteropt>
-                <Filttext>{optionText="Vietnamese"}</Filttext>
-            </Filteropt>
-            <Filteropt>
-                <Filttext>{optionText="Punjabi"}</Filttext>
-            </Filteropt>
+    const [open, setOpen] = useState(false);
 
-        </Filtercont>
-        <Headercont>
-            <Filterheader>{headerText="Gender of Doctors"}</Filterheader>
-        </Headercont>
+    var display = "none";
+    if(open){
+        display = "flex"
+    }
+    return <Extra>
+            <Iconcont >
+                <Ionicons onPress={()=>setOpen(!open)} 
+                name="filter" size={40} color="black" />
+            </Iconcont>
+        <Maincont display={display}>
 
-        <Filtercont>
-        <Filteropt>
-            <Filttext>{optionText="Male"}</Filttext>
-        </Filteropt>
-        <Filteropt>
-            <Filttext>{optionText="Female"}</Filttext>
-        </Filteropt>
-        </Filtercont>
+            <Headercont>
+                <Filterheader>{headerText="Language Prefrences"}</Filterheader>
+            </Headercont>
+            <Filtercont>
+                <Filteropt>
+                    <Filttext>{optionText="English"}</Filttext>
+                </Filteropt>
+                <Filteropt>
+                    <Filttext>{optionText="Chinese"}</Filttext>
+                </Filteropt>
+                <Filteropt>
+                    <Filttext>{optionText="Korean"}</Filttext>
+                </Filteropt>
+                <Filteropt>
+                    <Filttext>{optionText="Japanese"}</Filttext>
+                </Filteropt>
+                <Filteropt>
+                    <Filttext>{optionText="Vietnamese"}</Filttext>
+                </Filteropt>
+                <Filteropt>
+                    <Filttext>{optionText="Punjabi"}</Filttext>
+                </Filteropt>
 
-    </Maincont>
+            </Filtercont>
+            <Headercont>
+                <Filterheader>{headerText="Gender of Doctors"}</Filterheader>
+            </Headercont>
+
+            <Filtercont>
+            <Filteropt>
+                <Filttext>{optionText="Male"}</Filttext>
+            </Filteropt>
+            <Filteropt>
+                <Filttext>{optionText="Female"}</Filttext>
+            </Filteropt>
+            </Filtercont>
+            <Btncont>
+                <Btn title={"Apply"} height={50} width={120} fsize={20}/>
+            </Btncont>
+            
+
+        </Maincont>
+        </Extra>
     
 }
 

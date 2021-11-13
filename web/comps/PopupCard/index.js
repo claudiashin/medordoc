@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
+import {IoIosClose} from '@react-icons/all-files/io/IoIosClose';
+import {useState} from 'react';
+
 const PopupCardCont = styled.div`
     display: flex;
+    background-color: #ffffff;
     flex-direction: column;
     justify-content: space-between;
     align-content: space-between;
@@ -14,7 +18,7 @@ const PopupCardCont = styled.div`
 const CloseCont = styled.div`
     display: flex;
     justify-content: flex-end;
-    margin: -10px 15px -30px 0px;
+    margin: 5px 15px -30px 0px;
 `;
 
 const Close = styled.h2`
@@ -30,7 +34,7 @@ const ButtonCont = styled.div`
     display: flex;
     justify-content: space-around;
     background-color: white;
-    margin: 0px 20px 45px 20px;
+    margin: 0px 20px 65px 20px;
 `;
 
 const Button = styled.button`
@@ -42,18 +46,29 @@ const Button = styled.button`
 `;
 
 const PopupCard = ({
-
+    ClosePop=()=>{},
+    CloseCard=()=>{},
 }) => {
+    
+    // const [open, setOpen] = useState(true);
+
+    // var display = "none";
+    // if(open){
+    //     display = "flex"
+    // }
     return <PopupCardCont>
+        {/* <PopupCardCont display={display}> */}
         <CloseCont>
-            <Close>X</Close>
+        {/* <IoIosClose onClick={()=>setOpen(!open)} size={60}/> */}
+        <IoIosClose onClick={()=>{ClosePop()}} size={60}/>
+
         </CloseCont>
 
         <Heading>Are you sure you want to remove this patient request?</Heading>
 
         <ButtonCont>
-            <Button>YES</Button>
-            <Button>NO</Button>
+            <Button onClick={()=>CloseCard()}>YES</Button>
+            <Button onClick={()=>ClosePop()}>NO</Button>
         </ButtonCont>
     </PopupCardCont>
 

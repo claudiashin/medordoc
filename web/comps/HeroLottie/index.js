@@ -4,11 +4,11 @@ import Lottie from "react-lottie";
 const HeroLottie =({ 
   source, 
   width, 
-  height 
+  height,
 }) =>{
 
   const defaultOptions = {
-    loop: true,
+    // loop: true,
     autoplay: true,
     animationData: source,
     rendererSettings: {

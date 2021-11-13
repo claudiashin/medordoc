@@ -1,54 +1,49 @@
-import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import styled from 'styled-components/native';
+import styled from 'styled-components/native'
+import React from 'react'
 
 
-const TextCont = styled.View`
+const ButCont = styled.TouchableOpacity`
+    background-color: ${props=>props.bgcolor};
+    width: ${props=>props.width}px;
+    height: ${props=>props.height}px;
+    border-radius: ${props=>props.borderRad}px;
+    justify-content: center;
+    align-items: center;
+
+`
+const TextCont = styled.Text`
   justify-content: center;
   align-items: center;
-  height: 50px;
-  margin: 5px;
+  font-size: ${props=>props.fsize}px;
+  font-weight: bold;
+  color: #fff;
+
 `;
 
 const Btn = ({
     title = "Next", 
-    fSize = 22,
-    color = "#fff",
-    fWeight = "bold",
-    letterSpace = 2,
-    bgColor = "#97BDD6",
-    borderRad = 30,
-    width = 155,
-    height = 60,
+    fsize = '22',
+    bgcolor = "#97BDD6",
+    width = '145',
+    height = '60',
+    borderRad = '50',
+    onPress={}
 
 }) => {
+
     return (
-        <TouchableOpacity onPress={() => {}}>
-            <View style={{
-                backgroundColor: bgColor,
-                width: width,
-                height: height,
-                borderRadius: borderRad,
-            }}>
-                <TextCont>
-                    <Text style={{
-                        fontSize: fSize,
-                        color: color,
-                        fontWeight: fWeight,
-                        letterSpacing: letterSpace,
-                    }}>{title}</Text>
-                </TextCont>
-            </View>
-        </TouchableOpacity>
+        <ButCont
+            onPress={onPress}
+            bgcolor={bgcolor}
+            width={width}
+            height={height}
+            borderRad={borderRad}
+        >
+            <TextCont
+                fsize={fsize}
+            >{title}</TextCont>
+        </ButCont>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        // flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
 
 export default Btn

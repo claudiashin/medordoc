@@ -7,6 +7,7 @@ const InfoCardCont = styled.View`
     border: #E9D7CB;
     padding: 10px;
     margin: 10px;
+    background-color: #fff;
 `;
 
 const HeadingCont = styled.View`
@@ -26,7 +27,13 @@ const SubheadingCont = styled.View`
 `;
 
 const Subheading = styled.Text`
-    font-size: 18px;
+    font-size: ${props => props.subheading_fs}px;
+    color: #505050;
+    margin: 10px 10px 0px 10px;
+    font-weight: 700;
+`;
+const Subheadingtwo = styled.Text`
+    font-size: 16px;
     color: #505050;
     margin: 10px;
 `;
@@ -35,11 +42,11 @@ const WebsiteContainer = styled.View`
     flex-direction: row;
 `;
 
-const Subheading_two = styled.Text`
+const Subheadingthree = styled.Text`
     font-size: 16px;
-    color: #505050;
+    color: ${props => props.fontcolor};
     margin: 10px;
-    font-weight: bold;
+    font-weight: ${props => props.subheadingthree_fw};
 `;
 
 const Website = styled.Text`
@@ -49,24 +56,27 @@ const Website = styled.Text`
 `;
 
 const InfoCard = ({
-    clinic_name = "Clinic Name",
-    clinic_address = "Clinic Address",
+    text = "Heading",
+    text2 = "Subheading",
+    text3 = "Website:",
     website_url = "https://www.bcit.ca/",
-    fontsize = 22,
+    fontsize = 20,
     weight = 700,
+    weight2 = 700,
+    fontcolor = '#226BAF',
 }) => {
 
     return <InfoCardCont>
         <HeadingCont>
-            <Heading heading_fs={fontsize} heading_fw={weight}>{clinic_name}</Heading>
+            <Heading heading_fs={fontsize} heading_fw={weight}>{text}</Heading>
         </HeadingCont>
 
         <SubheadingCont>
-            <Subheading>{clinic_address}</Subheading>
+            <Subheadingtwo>{text2}</Subheadingtwo>
         </SubheadingCont>
 
         <WebsiteContainer /*style={styles.website_container}*/>
-            <Subheading_two>Website:</Subheading_two>
+            <Subheadingthree subheadingthree_fw={weight2} fontcolor={fontcolor}>{text3}</Subheadingthree>
             <Website onPress={() => Linking.openURL(website_url)}>{website_url}</Website>
         </WebsiteContainer>
     </InfoCardCont >

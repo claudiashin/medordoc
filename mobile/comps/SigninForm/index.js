@@ -1,246 +1,207 @@
-import React, {useState} from 'react';
-import styled from 'styled-components';
-import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import styled from 'styled-components/native';
+import { Provider as PaperProvider, TextInput } from 'react-native-paper';
+import { StyleSheet, Button, View, Text } from "react-native";
+import { en,registerTranslation } from 'react-native-paper-dates'
+  registerTranslation('en', en)
+import { DatePickerInput } from 'react-native-paper-dates';
+import DropDownPicker from 'react-native-dropdown-picker';
+import Btn from '../Btn';
 
-import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 
-const MainCont = styled.div`
-    display: flex;
+const MainCont = styled.View`
     flex-direction: column;
- 
-`
-const Form = styled.fieldset`
-    margin: 15px;
-    border: 1px solid black;
-    width: 400px;
-    height: 55px;
-`
-const FormTitle = styled.legend`
-    margin: 5px;
-    font-size: 14px;
-`
-const FormInput = styled.input`
-    border: none;
-    outline: none;
-    padding-bottom: 5px;
-`
-const FormTimeForm = styled.fieldset`
-    margin: 15px;
-    border: 1px solid black;
-    width: 185px;
-    height: 55px;
 
 `
-const TimeFormCont = styled.div`
-    display: flex;
-    margin-bottom: 30px;
-`
-const Title = styled.p`
-    margin-left: 15px;
+const Title = styled.Text`
+    font-weight: 500;
     font-size: 16px;
+    margin-left: 5px;
+    margin-bottom: 10px;
 `
-
-const Button = styled.button`
-    margin: 5px;
-    width: 80px;
-    height: 30px;
-    padding: 5px;
-    background-color: #90AABB;
-    color: white;
-    border: none;
-    border-radius: 10px;
-
-` 
-const LangMain = styled.form`
+const Radio = styled.View`
+    background-color: #fff;
+    border-radius: 5px;
+    width: 300px;
+    margin-left: 5px; 
+    margin-top: 5px;
+    position: relative;
+`
+const DateCont = styled.View`
 
 `
-const LangCont = styled.select`
-    width: 400px;
-    height: 18px;
-    margin-top: -15px;
- 
-    border:none;
+const RadioTitle = styled.Text`
+    font-weight: 600; 
+    margin-left: 15px; 
 `
-const LangOpt = styled.option`
+const ButCont = styled.View`
+    margin-left: 180px;
+    margin-top: 50px;
+    margin-bottom: 100px;
 
 `
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
-const names = [
-  'English',
-  'French',
-  'Chinese',
-  'Japanese',
-  'Korean',
-  'punjabi',
-  'Hindi',
-  'Spanish',
-  'Russian',
-
-];
-
-function getStyles(name, personName, theme) {
-  return {
-    fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
 
 const SigninForm = ({
-
+    
 }) => {
-
+    //for first form
+    const [fname, setFname] = React.useState('');
+    const [lname, setLname] = React.useState('');
+    const [text, setText] = React.useState('');
+    const [pass, setPass] = React.useState('');
+    //for button
     const [changeForm, setChangeForm] = useState(true);
-    const router = useRouter();
+    //for radiobutton(gender)
+    const [value, setValue] = React.useState('first');
 
-    const theme = useTheme();
-    const [personName, setPersonName] = React.useState([]);
+    //for second form
+    const [medcon, setMedcon] = React.useState('');
+    const [inputDate, setInputDate ] = React.useState('');
 
-    const handleChange = (event) => {
-        const {
-        target: { value },
-        } = event;
-        setPersonName(
-        // On autofill we get a the stringified value.
-        typeof value === 'string' ? value.split(',') : value,
-        );
-    };
+    const [open, setOpen] = useState(false);
+    const [gender, setGender] = useState(null);
+    const [items, setItems] = useState([
+        {label: 'Male', gender: 'Male'},
+        {label: 'Female', gender: 'Female'},
+        {label: 'Prefer not to answer', gender: 'Prefer not to answer'}
+    ]);
 
-    if(changeForm === true ) {
+    if (changeForm === true) {
         return <MainCont>
-            <Title>Log in Information</Title>
-            <Form>
-                <FormTitle>Username</FormTitle>
-                <FormInput 
-                    type="email"
-                    placeholder="Username"
+            <PaperProvider>
+                <Title>Personal Information</Title>
+                <TextInput
+                    style={styles.inputbox}
+                    label="First Name"
+                    returnKeyType="next"
+                    value={fname}
+                    mode='outlined'
+                    onChangeText={fname => setFname(fname)}
                 />
-            </Form>
-            <Form>
-                <FormTitle>Password</FormTitle>
-                <FormInput 
-                    type="password"
-                    placeholder="Password"
+                <TextInput
+                    style={styles.inputbox}
+                    label="Last Name"
+                    returnKeyType="next"
+                    value={lname}
+                    mode='outlined'
+                    onChangeText={lname => setLname(lname)}
                 />
-            </Form>
-            <Form>
-                <FormTitle>Email Address</FormTitle>
-                <FormInput 
-                    type="email"
-                    placeholder="Email Address"
+                <TextInput
+                    style={styles.inputbox}
+                    label="Email"
+                    returnKeyType="next"
+                    autoCapitalize="none"
+                    autoComplete="email"
+                    textContentType="emailAddress"
+                    keyboardType='email-address'
+                    value={text}
+                    mode='outlined'
+                    onChangeText={text => setText(text)}
                 />
-            </Form>
-            <Button
-                onClick={()=>{
-                    setChangeForm(false);
-                }}
-            >Next</Button>
+                <TextInput
+                    style={styles.inputbox}
+                    label="Password"
+                    returnKeyType="done"
+                    secureTextEntry
+                    value={pass}
+                    mode='outlined'
+                    onChangeText={pass => setPass(pass)}
+                />
+            <ButCont>
+                <Btn 
+                    title = "Next"
+                    fsize = '20'
+                    bgcolor = "#97BDD6"
+                    width = '140'
+                    height = '45'
+                    borderRad = '60'
+                    onPress={()=>{setChangeForm(false)}}
+                ></Btn>
+            </ButCont>
+            </PaperProvider>
         </MainCont>
     }
-
     return <MainCont>
-        <Title>Clinic Information</Title>
-        <Form>
-            <FormTitle>Clinic Name</FormTitle>
-            <FormInput 
-                type="text"
-                placeholder="Clinic Name"
+            <PaperProvider>
+            <Title>Additional Information</Title>
+            <DateCont>
+                <DatePickerInput
+                    locale="en"
+                    label="Date of Birth"
+                    value={inputDate}
+                    onChange={inputDate => setInputDate(inputDate)}
+                    inputMode="start"
+                    mode="outlined"
+                    style={styles.inputbox}
+                ></DatePickerInput>
+            </DateCont>
+            <Radio>
+                <DropDownPicker
+                    open={open}
+                    value={gender}
+                    items={items}
+                    placeholder="Select Gender"
+                    setOpen={setOpen}
+                    setGender={setGender}
+                    setItems={setItems}
+                    style={{
+                        width: 335,
+                        height: 50,
+                        borderRadius: 4,
+                        borderColor: '#6d6d6d',
+                        zIndex: 2,
+                        borderColor: '#6d6d6d'
+
+                    }}
+                    />
+            </Radio>
+            <TextInput
+                style={styles.inputbox}
+                label="Address"
+                returnKeyType="next"
+                autoCapitalize='sentences'
+                autoComplete='postal-address-extended-postal-code'
+                textContentType="fullStreetAddress"
+                dataDetectorTypes='address'
+                multiline={true}
+                value={text}
+                mode='outlined'
+                onChangeText={text => setText(text)}
             />
-        </Form>
-        <Form>
-            <FormTitle>Clinic Address</FormTitle>
-            <FormInput 
-                type="text"
-                placeholder="Clinic Address"
-            />
-        </Form>
-        <Form
-            style={{marginBottom:50}}
-        >
-            <FormTitle>Contact Number</FormTitle>
-            <FormInput 
-                type="tel"
-                placeholder="Contact Number"
-            />
-        </Form>
-        <Title>Operation Hour</Title>
-        <TimeFormCont>
-            <FormTimeForm>
-                <FormTitle>Open</FormTitle>
-                <FormInput 
-                    type="time"
-                    placeholder="Open Hour"
+            <TextInput
+                style={styles.inputbox}
+                label="Medical Concerns"
+                returnKeyType="done"
+                autoCapitalize='sentences'
+                value={medcon}
+                multiline={true}
+                mode='outlined'
+                onChangeText={medcon => setMedcon(medcon)}
                 />
-            </FormTimeForm>
-            <FormTimeForm>
-                <FormTitle>Close</FormTitle>
-                <FormInput 
-                    type="time"
-                    placeholder="Open Hour"
-                />
-            </FormTimeForm>
-        </TimeFormCont>
-        <Title>Additional Information</Title>
-        {/* <Form>
-            <FormTitle>Available Languages</FormTitle>
-            <LangCont>
-                <LangOpt value="English">English</LangOpt>
-                <LangOpt value="French">French</LangOpt>
-                <LangOpt value="Chinese">Chinese</LangOpt>
-                <LangOpt value="Korean">Korean</LangOpt>
-                <LangOpt value="Japanese">Japanese</LangOpt>
-                <LangOpt value="Punjabi">Punjabi</LangOpt>
-            </LangCont>
-        </Form> */}
-        <div>
-        <FormControl sx={{ m: 1, width: 400, height: 35, border: 'none', marginBottom: 5, color: 'black' }}>
-            <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
-            <Select
-            labelId="demo-multiple-name-label"
-            id="demo-multiple-name"
-            multiple
-            value={personName}
-            onChange={handleChange}
-            input={<OutlinedInput label="Name" />}
-            MenuProps={MenuProps}
-            style={{height: 50, borderBlockStyle: 'black'}}
-            >
-            {names.map((name) => (
-                <MenuItem
-                key={name}
-                value={name}
-                style={getStyles(name, personName, theme)}
-                >
-                {name}
-                </MenuItem>
-            ))}
-            </Select>
-        </FormControl>
-    </div>
-     
-        <Button
-            onClick={()=>{
-                router.push("www.bcit.ca")
-            }}
-        >Next</Button>
+        <ButCont>
+                <Btn
+                    title = "Confirm"
+                    fsize = '20'
+                    bgcolor = "#97BDD6"
+                    width = '140'
+                    height = '45'
+                    borderRad = '60'
+                    onPress={()=>{setChangeForm(true)}}
+                ></Btn>
+            </ButCont>
+      </PaperProvider>
     </MainCont>
-}
+
+};
+
+const styles = StyleSheet.create({
+    inputbox: {
+        width: 335,
+        height: 50,
+        margin: 5,
+        backgroundColor: '#fff'
+    }
+})
 
 export default SigninForm
