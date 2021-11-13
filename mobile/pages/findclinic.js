@@ -48,7 +48,7 @@ const SubCont = styled.ScrollView`
   `
   const FilterCont = styled.View`
     display: flex;
-   
+    margin-top: 50px;
   `
   const CardCont = styled.View`
     display: flex;

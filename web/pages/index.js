@@ -191,7 +191,7 @@ export default function Home() {
         <HeaderTitle title="Increase your clinic's patient base" />
         <BodyText>Try MedorDoc to enhance your clinic's web presence and broaden your patient reach. Start by listing your clinic today.</BodyText>
         <BtnCont>
-          <Btn fSize="20px" fWeight="500" width="230px" height="70px" />
+          <Btn fSize="20px" fWeight="500" width="230px" height="70px" onClick={()=>router.push("/signup")} />
         </BtnCont>
       </MainInfoCont>
 

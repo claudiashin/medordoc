@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { Provider as PaperProvider, TextInput } from 'react-native-paper';
 import { TouchableOpacity, Text } from "react-native";
-
+import { useNavigation } from '@react-navigation/native';
 
 const MainCont = styled.View`
     flex-direction: column;
@@ -22,6 +22,8 @@ const LoginForm = ({
 
     const [text, setText] = React.useState('');
     const [pass, setPass] = React.useState('');
+
+    const navigation = useNavigation(); 
 
     return <MainCont>
         <PaperProvider>
@@ -49,7 +51,9 @@ const LoginForm = ({
             />
         <LastDiv>
             <Text style={{color:'#575757', paddingTop:20, paddingLeft:5}}>Don't have an account?</Text>
-                <TouchableOpacity><Text style={{color:'#226BAF', paddingTop:20, paddingLeft:5}}>Sign In</Text></TouchableOpacity> 
+                <TouchableOpacity
+                    onPress={()=>navigation.navigate('signup')}
+                ><Text style={{color:'#226BAF', paddingTop:20, paddingLeft:5}}>Sign Up</Text></TouchableOpacity> 
         </LastDiv>
         </PaperProvider>
     </MainCont>
