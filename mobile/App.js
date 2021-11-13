@@ -27,6 +27,7 @@ import docprofile from './pages/docprofile';
 import patientprofile from './pages/patientprofile';
 import confirmreq from './pages/confirmreq';
 import QR from './pages/QR';
+import firebase from './pages/firebase';
 
 
 
@@ -36,8 +37,9 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
       <NavigationContainer>
-       <Stack.Navigator initialRouteName="login">
+       <Stack.Navigator initialRouteName="home">
          <Stack.Screen name="home" component={home} />
+         <Stack.Screen name="firebase" component={firebase} />
          <Stack.Screen name="QR" component={QR} /> 
          <Stack.Screen name="findclinic" options={{headerShown: false}}   component={findclinic} /> 
          <Stack.Screen name="finddoc" component={finddoc} />
