@@ -60,7 +60,7 @@ const ClinicProfile = ({navigation})=>{
 
            </CardCont>
            <BtnCont>
-               <Btn onPress = {()=>navigation.navigate("signup")}/>
+               <Btn onPress = {()=>navigation.navigate("login")}/>
            </BtnCont>
 
             <NavBarCont>
