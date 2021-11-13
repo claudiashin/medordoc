@@ -40,7 +40,7 @@ export default function App() {
 
     <NavigationContainer>
       <Stack.Navigator initialRouteName="home">
-        <Stack.Screen name="home" component={signup} />
+        <Stack.Screen name="home" component={home} />
         <Stack.Screen name="findclinic" options={{ headerShown: false }} component={findclinic} />
         <Stack.Screen name="finddoc" component={finddoc} />
         <Stack.Screen name="clinicprofile" component={clinicprofile} />
