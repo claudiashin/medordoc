@@ -23,13 +23,10 @@ const HeaderCont = styled.div`
 `
 
 const NavCont = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width:100%;
+    // height:300px;
     position:absolute;
     top:0;
-    left: 30px;
     
 `
 
