@@ -90,6 +90,12 @@ const PopupCont = styled.div`
     justify-content: center;
 `
 
+const EmailbutCont = styled.div`
+    display:${props=>props.button1};
+`
+const EditbutCont = styled.div`
+display:${props=>props.button2};
+`
 const PatientCard=({
     //info
     nameText = "Default Text",
@@ -108,6 +114,8 @@ const PatientCard=({
     language = "default text",
     medicalconcerns = "default text",
     phone = "default text",
+    button1="flex",
+    button2="flex"
     //button
 })=>{
 
@@ -131,11 +139,16 @@ const PatientCard=({
             <Text>{medicalconcerns}{medicalText}</Text>
             <Text>{phone}{phoneText}</Text>
         </Textcont>
+        <EmailbutCont button1={button1}>
         <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
         
             <AiOutlineMail size={30}/>
             <Emailtext>{emailText}</Emailtext>
         </Emailbut></a>
+        </EmailbutCont>
+        <EditbutCont button2={button2} >
+            <Editbut>{emailText}</Editbut>
+        </EditbutCont>
     </Maincont>
     
 }else if(open == 1){
@@ -163,7 +176,7 @@ const PatientCard=({
             <Text>{phone}{phoneText}</Text>
         </Textcont>
         <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
-        
+    
             <AiOutlineMail size={30}/>
             <Emailtext>{emailText}</Emailtext>
         </Emailbut></a>

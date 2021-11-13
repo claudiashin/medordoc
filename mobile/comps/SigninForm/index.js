@@ -7,6 +7,7 @@ import { en,registerTranslation } from 'react-native-paper-dates'
 import { DatePickerInput } from 'react-native-paper-dates';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Btn from '../Btn';
+import { useNavigation } from '@react-navigation/native';
 
 
 const MainCont = styled.View`
@@ -36,16 +37,14 @@ const RadioTitle = styled.Text`
     margin-left: 15px; 
 `
 const ButCont = styled.View`
-    margin-left: 180px;
-    margin-top: 50px;
-    margin-bottom: 100px;
-
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 50px 10px 80px 0px;
 `
 
-
 const SigninForm = ({
-    
 }) => {
+    const navigation = useNavigation(); 
     //for first form
     const [fname, setFname] = React.useState('');
     const [lname, setLname] = React.useState('');
@@ -112,8 +111,8 @@ const SigninForm = ({
                     title = "Next"
                     fsize = '20'
                     bgcolor = "#97BDD6"
-                    width = '140'
-                    height = '45'
+                    width = '130'
+                    height = '50'
                     borderRad = '60'
                     onPress={()=>{setChangeForm(false)}}
                 ></Btn>
@@ -181,15 +180,15 @@ const SigninForm = ({
                     title = "Confirm"
                     fsize = '20'
                     bgcolor = "#97BDD6"
-                    width = '140'
-                    height = '45'
+                    width = '130'
+                    height = '50'
                     borderRad = '60'
-                    onPress={()=>{setChangeForm(true)}}
+                    onPress={()=>navigation.navigate('accountconfirm')}
                 ></Btn>
             </ButCont>
       </PaperProvider>
     </MainCont>
-
+    
 };
 
 const styles = StyleSheet.create({
@@ -201,4 +200,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SigninForm
+export default SigninForm;
