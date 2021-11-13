@@ -27,7 +27,7 @@ const login = ()=>{
          console.log(result);
      }
  return(
-     <Button onClick ={SignInGoogle} title = "Sign in Google ac"></Button>
+     <Button onClick ={SignInGoogle} title = "Sign in Google Account"></Button>
  )
  }
  export default login;
