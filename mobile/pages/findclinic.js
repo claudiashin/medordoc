@@ -15,11 +15,12 @@ import NavBar from '../comps/NavBar';
   background-color: #F7F2EE;
   flex:1;
   flex-direction: column;
-  align-content:center;
+  align-items:center;
   justify-content: space-between;
 `
 
 const SubCont = styled.ScrollView`
+
 `
 // const Cont = styled.View`
 //   width:100vw;
@@ -29,6 +30,8 @@ const SubCont = styled.ScrollView`
 //   margin-top:320px;
 //   align-items:center;
 //   `
+
+
   const SearchCont = styled.View`
     display: flex;
     flex-direction: row;
@@ -40,6 +43,7 @@ const SubCont = styled.ScrollView`
   `
   const FilterCont = styled.View`
     display: flex;
+   
   `
   const CardCont = styled.View`
     display: flex;
@@ -57,10 +61,8 @@ return (
   <SubCont>
     <SearchBar/>
     <Map/>
-    <FilterCont>
+ 
     <Filiter/>
-    </FilterCont>
-
     <CardCont> 
       <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
       <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>

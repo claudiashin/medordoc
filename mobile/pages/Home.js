@@ -3,7 +3,7 @@ import { StyleSheet, Text, View,Image } from 'react-native';
 // import styled from 'styled-components/native';
 
 // Import Comps
-// import MenuCard from '../comps/MenuCard'
+import MenuCard from '../comps/MenuCard'
 
 
 const home = ({navigation})=>{

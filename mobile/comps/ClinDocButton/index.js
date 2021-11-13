@@ -14,7 +14,6 @@ const Maincont = styled.View`
     width: 284px;
     height: 80px;
     margin:20px;
-
     border-radius: 15px;
 `
 const Avatarcont = styled.View`
@@ -38,7 +37,6 @@ const ClinDocButton=({
     bodyText = "Default Text",
     imageSource = "https://placekitten.com/100/100",
     cardpress  =()=>{},
-    
 })=>{
     return <TouchableOpacity onPress ={cardpress}>
     <Maincont onpress>
