@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
 import { useTheme } from '@mui/material/styles';
@@ -7,10 +7,12 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import {IoIosClose} from '@react-icons/all-files/io/IoIosClose';
+
 
 const MainCont = styled.div`
     width: 500px;
-    height: 650px;
+    height: 700px;
     border: 1px solid #505050; 
     border-radius: 5px;
     display: flex;
@@ -22,7 +24,8 @@ const MainCont = styled.div`
 const AvatarCont = styled.div`
     width: 130px;
     height: 130px;
-    margin-top: 20px;
+    margin-top: 45px;
+    margin-bottom: 10px;
 `
 const AvatarImg = styled.img`
     width: 100%;
@@ -35,7 +38,6 @@ const FormCont = styled.div`
     flex-direction: column;
 
 `
-
 const Form = styled.fieldset`
     margin: 15px;
     border: 1px solid black;
@@ -59,6 +61,26 @@ const SelectCont = styled.select`
 const SelectOpt = styled.option`
     width: 100%;
 `
+const ButtonCont = styled.div`
+    position: relative;
+`
+const Button = styled.button`
+    width: 120px;
+    height: 40px;
+    background-color: #FAF0BF;
+    border: none;
+    border-radius: 5px;
+    position:absolute;
+    left: 75px;
+    top: 30px;
+`
+const Closebutton = styled.div`
+    position: absolute;
+    right: 20px;
+`
+
+
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -95,9 +117,9 @@ function getStyles(name, personName, theme) {
 
 const DoctorCard = ({
     profile="https://placekitten.com/1200/1200",
-    placeholder="Dr.Alex Chan"
-
-
+    placeholder="Dr.Alex Chan",
+    title="Edit",
+    onClick=()=>{},
 }) => {
 
     const theme = useTheme();
@@ -113,7 +135,18 @@ const DoctorCard = ({
         );
     };
 
+    const [open, setOpen] = useState(false);
+
+    var display = "none";
+    if(open){
+        display = "flex"
+    }
+
     return <MainCont>
+        <Closebutton>
+            <IoIosClose onClick={()=>setOpen(!open)} size={60}/>
+        </Closebutton>
+
         <AvatarCont>
             <AvatarImg src={profile}/>
         </AvatarCont>
@@ -181,7 +214,11 @@ const DoctorCard = ({
             </div>
            
         </FormCont>
-        {/* <Button></Button> */}
+        <ButtonCont>
+            <Button
+                onClick={onClick}
+            >{title}</Button>
+        </ButtonCont>
     </MainCont>
 }
 

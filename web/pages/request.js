@@ -23,10 +23,6 @@ const HeaderCont = styled.div`
 `
 
 const NavCont = styled.div`
-<<<<<<< HEAD
-
-=======
->>>>>>> 9255d18a725bf6f9bc62d242404c3d3230e8a0f0
     width:100%;
     // height:300px;
     position:absolute;
@@ -89,6 +85,7 @@ export default function Home() {
                     ageText=" 24"
                     medicalText=" Seasonal"
                     phoneText=" 604-123-1234"
+                    button2="none"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
@@ -103,6 +100,7 @@ export default function Home() {
                     ageText=" 18"
                     medicalText=" Heart"
                     phoneText=" 604-123-1354"
+                    button2="none"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
@@ -117,6 +115,7 @@ export default function Home() {
                     ageText=" 44"
                     medicalText=" Allergies"
                     phoneText=" 604-123-1355"
+                    button2="none"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
@@ -131,6 +130,7 @@ export default function Home() {
                     ageText=" 32"
                     medicalText=" Body aches"
                     phoneText=" 604-123-2222"
+                    button2="none"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
@@ -145,6 +145,7 @@ export default function Home() {
                     ageText=" 28"
                     medicalText=" Diabetes"
                     phoneText=" 604-123-2222"
+                    button2="none"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
@@ -159,6 +160,7 @@ export default function Home() {
                     ageText=" 32"
                     medicalText=" Allergies"
                     phoneText=" 604-555-2222"
+                    button2="none"
                 />
             </ContPatientCardInd>
 
