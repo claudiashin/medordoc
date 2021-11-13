@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React,{useState,useEffect} from 'react';
-import { StyleSheet, Text, View,Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import styled from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -56,9 +56,9 @@ export default function App() {
          <Stack.Screen name="docprofile" component={docprofile} />
 
        </Stack.Navigator>
-     </NavigationContainer>
+    </NavigationContainer>
 
-      );
+  );
 }
 
 const styles = StyleSheet.create({
