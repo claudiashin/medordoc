@@ -1,6 +1,5 @@
 import React,{useState,useEffect,} from 'react';
 import { StyleSheet, Text, View,Image } from 'react-native';
-
 // import styled from 'styled-components/native';
 
 // Import Comps
@@ -28,7 +27,7 @@ const home = ({navigation})=>{
       return (
         <View style={styles.container}>
          <MenuCard ind = {[5]}　Cardpress ={()=>navigation.navigate("findclinic")}/>
-         <MenuCard ind={[3]} Cardpress ={()=>navigation.navigate("clinicprofile")}/> 
+         <MenuCard ind={[3]} Cardpress ={()=>navigation.navigate("finddoc")}/> 
         </View>
       );
     

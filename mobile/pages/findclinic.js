@@ -8,21 +8,27 @@ import SearchBar from '../comps/SearchBar'
 import Filiter from '../comps/Filter'
 import ClinDocButton from '../comps/ClinDocButton'
 import Header from '../comps/Header'
-
 import BookingForm from '../comps/BookingForm';
 import NavBar from '../comps/NavBar';
 
-
   const Cont = styled.View`
-  width:100%;
-  height:100%;
   background-color: #F7F2EE;
-  display:flex;
+  flex:1;
   flex-direction: column;
   align-content:center;
   justify-content: space-between;
 `
 
+const SubCont = styled.ScrollView`
+`
+// const Cont = styled.View`
+//   width:100vw;
+//   height:100vh;
+//   background-color: #E9D7CB;
+//   display:flex;
+//   margin-top:320px;
+//   align-items:center;
+//   `
   const SearchCont = styled.View`
     display: flex;
     flex-direction: row;
@@ -34,6 +40,7 @@ import NavBar from '../comps/NavBar';
   `
   const FilterCont = styled.View`
     display: flex;
+    margin-top: 50px;
   `
   const CardCont = styled.View`
     display: flex;
@@ -45,23 +52,22 @@ import NavBar from '../comps/NavBar';
 
 `;
 
-
-
-const findclinic = ()=>{
+const findclinic = ({navigation})=>{
 return ( 
 <Cont>
+  <SubCont>
     <SearchBar/>
     <Map/>
     <FilterCont>
     <Filiter/>
     </FilterCont>
 
-    <CardCont>
-      
-      <ClinDocButton/>
-      <ClinDocButton/>
-      <ClinDocButton/>
+    <CardCont> 
+      <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
+      <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
+      <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
     </CardCont>
+  </SubCont>  
 
     <NavBarCont>
       <NavBar/>

@@ -3,14 +3,17 @@ import {View,Text, SafeAreaView, StyleSheet, TextInput} from "react-native" ;
 import styled from "styled-components/native";
 import { Ionicons } from '@expo/vector-icons';
 
+import Btn from '../Btn';
+
 
 import {useState} from 'react';
 
 //main container
 const Extra = styled.View`
-width: 300px;
-height: 380px;
-
+    width: 300px;
+    height: 380px;
+    justify-content: center;
+    align-items: center;
 
 `
 const Maincont = styled.View`
@@ -67,6 +70,13 @@ const Filttext = styled.Text`
     font-size: 16px;
 `
 
+const Btncont = styled.View`
+    display: flex;
+    position: relative;
+    top: 40px;
+    left: 60px;
+`
+
 
 const Filter=({
     headerText = "Header",
@@ -121,6 +131,10 @@ const Filter=({
                 <Filttext>{optionText="Female"}</Filttext>
             </Filteropt>
             </Filtercont>
+            <Btncont>
+                <Btn title={"Apply"} height={50} width={120} fsize={20}/>
+            </Btncont>
+            
 
         </Maincont>
         </Extra>

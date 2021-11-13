@@ -42,7 +42,6 @@ export default function Profile() {
     <HorizonTab onPopUp={() => {
         setShowPopup(false);
       }} popup={showPopup} />
-
       <Footer/>
     </Cont>
   )

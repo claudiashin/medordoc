@@ -44,9 +44,9 @@ const WebsiteContainer = styled.View`
 
 const Subheadingthree = styled.Text`
     font-size: 16px;
-    color: #226BAF;
+    color: ${props => props.fontcolor};
     margin: 10px;
-    font-weight: bold;
+    font-weight: ${props => props.subheadingthree_fw};
 `;
 
 const Website = styled.Text`
@@ -62,6 +62,8 @@ const InfoCard = ({
     website_url = "https://www.bcit.ca/",
     fontsize = 20,
     weight = 700,
+    weight2 = 700,
+    fontcolor = '#226BAF',
 }) => {
 
     return <InfoCardCont>
@@ -74,7 +76,7 @@ const InfoCard = ({
         </SubheadingCont>
 
         <WebsiteContainer /*style={styles.website_container}*/>
-            <Subheadingthree>{text3}</Subheadingthree>
+            <Subheadingthree subheadingthree_fw={weight2} fontcolor={fontcolor}>{text3}</Subheadingthree>
             <Website onPress={() => Linking.openURL(website_url)}>{website_url}</Website>
         </WebsiteContainer>
     </InfoCardCont >

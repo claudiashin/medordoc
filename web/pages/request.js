@@ -59,10 +59,7 @@ const PopupCont = styled.div`
 `
 
 export default function Home() {
-    const [popup,setPopup] = useState(true)
-    if(popup == true){
 
-    }
     return( <Cont>
         <Background src={'/background-web4.svg'}/>
         <NavCont>
@@ -74,9 +71,9 @@ export default function Home() {
         </HeaderCont>
         
 
-        {/* <PopupCont>
+         {/* <PopupCont>
             <PopupCard/>
-        </PopupCont> */}
+        </PopupCont>  */}
         
         <ContPatientCard>
             <ContPatientCardInd>
