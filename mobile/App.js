@@ -36,7 +36,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
       <NavigationContainer>
-       <Stack.Navigator initialRouteName="login">
+       <Stack.Navigator initialRouteName="signup">
          <Stack.Screen name="home" component={home} />
          <Stack.Screen name="findclinic" options={{headerShown: false}}   component={findclinic} /> 
          <Stack.Screen name="finddoc" component={finddoc} />
@@ -51,6 +51,7 @@ export default function App() {
          <Stack.Screen name="login" component={login}/> 
          <Stack.Screen name="history" component={history} /> 
          <Stack.Screen name="confirmreq" component={confirmreq} />
+         <Stack.Screen name="QR" component={QR} />
   
 
        </Stack.Navigator>
