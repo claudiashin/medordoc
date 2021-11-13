@@ -8,33 +8,30 @@ import SigninForm from '../comps/SigninForm';
 import NavBar from '../comps/NavBar';
 
 const BookingCont = styled.View`
-    flex: 1;
+    flex: 2;
 `;
 
 const Wave = styled.Image`
     width: 100%;
+    height: 10%;
     /* height: 10vh; */
-    position: absolute;
-    top: 0;
+    /* position: absolute; */
 `;
 
 const LottieCont = styled.View`
     justify-content: center;
     align-items: center;
-    top: 180px;
 `;
 
 const HeaderCont = styled.View`
     margin: 27px;
-    top: 200px;
 `;
 
 const SignUpFormCont = styled.View`
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 180px;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
 `;
 
 const NavBarCont = styled.View`
@@ -42,6 +39,7 @@ const NavBarCont = styled.View`
 `;
 
 const signup = () => {
+
     return (
         <BookingCont>
             <ScrollView style={styles.scrollView} >
@@ -55,7 +53,10 @@ const signup = () => {
                 </LottieCont>
 
                 <HeaderCont>
-                    <Header title={'Create Account'} fontSize={22} />
+                    <Header
+                        title={'Create Account'}
+                        fontSize={22}
+                    />
                 </HeaderCont>
 
                 <SignUpFormCont>
