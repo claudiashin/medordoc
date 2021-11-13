@@ -31,7 +31,12 @@ const SubCont = styled.ScrollView`
 //   align-items:center;
 //   `
 
-
+  const Wave = styled.Image`
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  top: 0;
+  `;
   const SearchCont = styled.View`
     display: flex;
     flex-direction: row;
@@ -43,7 +48,11 @@ const SubCont = styled.ScrollView`
   `
   const FilterCont = styled.View`
     display: flex;
+<<<<<<< HEAD
    
+=======
+    margin-top: 50px;
+>>>>>>> 4c279107cac6027480ac1803575c13a3b4305bb2
   `
   const CardCont = styled.View`
     display: flex;
@@ -59,6 +68,7 @@ const findclinic = ({navigation})=>{
 return ( 
 <Cont>
   <SubCont>
+    <Wave source={require('../assets/background_wave.jpg')}/>
     <SearchBar/>
     <Map/>
  

@@ -5,7 +5,8 @@ import { Tab, } from 'semantic-ui-react';
 import HeroAvatar from "../HeroAvatar";
 import SigninForm from "../SigninForm";
 import PatientCard from "../PatientCard";
-import DoctorCard from "../DoctorCard"
+import DoctorCard from "../DoctorCard";
+import SigninFormTwo from '../SigninFormTwo';
 
 //fix patientcard props
 const MyCont = styled.div`
@@ -72,7 +73,7 @@ const panes = [
           <HeroAvatar/>
         </ItemCont>
         <ItemCont>
-          <SigninForm/>
+          <SigninFormTwo />
         </ItemCont>
         </MyCont>    
   
