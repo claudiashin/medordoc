@@ -7,7 +7,6 @@ import Header from '../comps/Header';
 import InfoCard from '../comps/InfoCard';
 import Btn from '../comps/Btn';
 import NavBar from '../comps/NavBar';
-import InfoCardThree from '../comps/InfoCardThree'
 
 const AccountCont = styled.View`
     flex: 1;
@@ -74,7 +73,7 @@ const accountconfirm = ({
                         fsize="20"
                         width="130"
                         height="50"
-                        onPress={()=>navigation.navigate('login')}
+                        onPress={()=>navigation.navigate("login")}
                     />
                 </BtnCont>
 

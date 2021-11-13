@@ -48,11 +48,7 @@ const SubCont = styled.ScrollView`
   `
   const FilterCont = styled.View`
     display: flex;
-<<<<<<< HEAD
-   
-=======
     margin-top: 50px;
->>>>>>> 4c279107cac6027480ac1803575c13a3b4305bb2
   `
   const CardCont = styled.View`
     display: flex;

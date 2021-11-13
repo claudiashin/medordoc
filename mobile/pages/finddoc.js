@@ -65,7 +65,6 @@ return(
     </FilterCont>
 
     <CardCont>
-      
       <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
       <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
       <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
