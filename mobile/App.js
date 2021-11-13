@@ -16,6 +16,7 @@ import qrconfirm from './pages/qrconfirm';
 import scan from './pages/scan';
 import finddoc from './pages/finddoc';
 import history from './pages/history';
+import docprofile from './pages/docprofile';
 
 // import login from './pages/login';
 
@@ -58,6 +59,7 @@ export default function App() {
          {/* <Stack.Screen name="QR" component={scan} />  */}
          <Stack.Screen name="scan" component={scan} /> 
          <Stack.Screen name="history" component={history} />
+         <Stack.Screen name="docprofile" component={docprofile} />
 
        </Stack.Navigator>
      </NavigationContainer>
