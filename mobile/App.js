@@ -11,6 +11,7 @@ import SigninForm from './comps/SigninForm';
 import LoginForm from './comps/LoginForm';
 import BookingForm from './comps/BookingForm';
 
+
 //import pages
 import home from './pages/home';
 import findclinic from './pages/findclinic';
