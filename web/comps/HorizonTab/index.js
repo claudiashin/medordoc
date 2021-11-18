@@ -102,10 +102,11 @@ const ButtonCont = styled.div`
 `
 
 const MyTab = ({
+  popup,
+  setShowPopup
 }) =>{
-  const [popup, setShowPopup] = useState(true)
 
-  if(popup === true){
+  if(popup = true){
     return  <MyCont2>
     <HeaderCont>
       {/* replace with real header */}
@@ -127,111 +128,22 @@ const MyTab = ({
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
         button1={"none"}
-        editDoc={()=>{
-          setShowPopup(false)
-        }}
+       
         />
       </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
+      
+      
     </ItemCont2>
-
-    <ItemCont2>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-    </ItemCont2>
-    
-    <ButtonCont onClick={()=>{
-        setShowPopup(false)
-      }}>
-      <Btn title="Create New" bgColor="#90AABB" onClick={()=>{
-        setShowPopup(false)
-      }}/>
+    <ButtonCont onClick={
+        setShowPopup
+      }>
+      <Btn title="Create New" bgColor="#90AABB" onClick={
+        setShowPopup
+      }/>
     </ButtonCont>
 
   </MyCont2> 
-  }else if(popup === false){
+  }else {
     return  <MyCont2>
     <HeaderCont>
       {/* replace with real header */}
@@ -253,95 +165,6 @@ const MyTab = ({
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
         button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        
-        editDoc={()=>{setShowPopup(false)}}/>
-      </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-    </ItemCont2>
-
-    <ItemCont2>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
         />      
         </DoctorCont>
     </ItemCont2>
@@ -350,14 +173,8 @@ const MyTab = ({
       <Btn title="Create New" bgColor="#90AABB" />
     </ButtonCont>
     <DoctorCardCont>
-      <DoctorCard xDoc={()=>{
-        setShowPopup(true)
-       
-      }} 
-      addDoc={()=>{
-        setShowPopup(true)
-        titleDoc="add"
-      }}/>
+      <DoctorCard 
+     />
     </DoctorCardCont>
   </MyCont2> 
   }

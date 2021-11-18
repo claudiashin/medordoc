@@ -43,7 +43,10 @@ export default function App() {
          <Stack.Screen name="clinicprofile" component={clinicprofile} />
          <Stack.Screen name="docprofile" component={docprofile} />
          <Stack.Screen name="patientprofile" component={patientprofile} />
-         <Stack.Screen name="signup" component={signup} />
+         <Stack.Screen name="signup" options={{
+           headerShown:false,
+           title:"hello"
+         }} component={signup} />
          <Stack.Screen name="booking" component={booking} />
          <Stack.Screen name="qrconfirm" component={qrconfirm} />
          <Stack.Screen name="scan" component={scan} />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from 'styled-components';
 import HorizonTab from '../comps/HorizonTab'
 import NavBar from "../comps/NavBar";
@@ -41,6 +41,7 @@ align-items:center;
 flex-direction:column;
 `
 export default function Profile() {
+  const [activeIndex, setActiveIndex] = useState(0)
   return (
     <Cont>
      
@@ -57,9 +58,18 @@ export default function Profile() {
       </NavBarCont>
      
       <TabCont>
-        <HorizonTab/>
+        <HorizonTab 
+        popup={activeIndex === 0}
+        setShowPopup={()=>{setActiveIndex(0)}}
+        />
       </TabCont>
 
+      <TabCont>
+        <HorizonTab 
+        popup={activeIndex === 1}
+        setShowPopup={()=>{setActiveIndex(1)}}
+        />
+      </TabCont>
       <FooterCont>
         <Footer/>
       </FooterCont>
