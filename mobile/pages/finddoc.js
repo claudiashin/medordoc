@@ -12,10 +12,8 @@ import NavBar from '../comps/NavBar';
 
 
   const Cont = styled.View`
-  width:100%;
-  height:100%;
+  flex:1;
   background-color: #F7F2EE;
-  display:flex;
   flex-direction: column;
   align-content:center;
   justify-content: space-between;
@@ -37,40 +35,45 @@ import NavBar from '../comps/NavBar';
   `
   const FilterCont = styled.View`
     display: flex;
+    margin-top: 30px;
   `
   const CardCont = styled.View`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    bottom: 350px;
+    z-index: -1;
   `
   const NavBarCont = styled.View`
 
 `;
+const MyScrollView = styled.ScrollView`
 
+`
 
 const finddoc = ({navigation})=>{
 return(
    <Cont>
-     <Wave source={require('../assets/background_wave.jpg')}/>
-     <SearchCont>
-     <SearchBar/>
-     </SearchCont>
-      <MapCont>
-      <Map/>
-      </MapCont>
-    <FilterCont>
+     <MyScrollView>
+      <Wave source={require('../assets/background_wave.jpg')}/>
+      <SearchCont>
+      <SearchBar/>
+      </SearchCont>
+        <MapCont>
+        <Map/>
+        </MapCont>
+      <FilterCont>
 
-    <Filiter/>
-    </FilterCont>
+      <Filiter/>
+      </FilterCont>
 
-    <CardCont>
-      
-      <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
-      <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
-      <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
-    </CardCont>
-
+      <CardCont>
+        <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
+        <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
+        <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
+      </CardCont> 
+    </MyScrollView>
     <NavBarCont>
       <NavBar/>
     </NavBarCont>

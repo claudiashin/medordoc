@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import { useState } from "react";
 
+//import comps
 import PatientCard from '../comps/PatientCard';
 import Footer from '../comps/Footer';
 import PopupCard from '../comps/PopupCard';
 import NavBar from '../comps/NavBar';
 import HeaderTitle from '../comps/HeaderTitle';
-import { useState } from "react";
-
+import QRscan from "../comps/QRscan";
 
 const Cont = styled.div`
     background-color: #F7F2EE;
@@ -23,11 +24,10 @@ const HeaderCont = styled.div`
 `
 
 const NavCont = styled.div`
-
     width:100%;
+    // height:300px;
     position:absolute;
     top:0;
-    left: 30px;
     
 `
 
@@ -72,6 +72,8 @@ export default function Home() {
          {/* <PopupCont>
             <PopupCard/>
         </PopupCont>  */}
+
+        <QRscan />
         
         <ContPatientCard>
             <ContPatientCardInd>
@@ -86,6 +88,7 @@ export default function Home() {
                     ageText=" 24"
                     medicalText=" Seasonal"
                     phoneText=" 604-123-1234"
+                    button2="none"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
@@ -100,6 +103,7 @@ export default function Home() {
                     ageText=" 18"
                     medicalText=" Heart"
                     phoneText=" 604-123-1354"
+                    button2="none"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
@@ -114,6 +118,7 @@ export default function Home() {
                     ageText=" 44"
                     medicalText=" Allergies"
                     phoneText=" 604-123-1355"
+                    button2="none"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
@@ -128,6 +133,7 @@ export default function Home() {
                     ageText=" 32"
                     medicalText=" Body aches"
                     phoneText=" 604-123-2222"
+                    button2="none"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
@@ -142,6 +148,7 @@ export default function Home() {
                     ageText=" 28"
                     medicalText=" Diabetes"
                     phoneText=" 604-123-2222"
+                    button2="none"
                 />
             </ContPatientCardInd>
             <ContPatientCardInd>
@@ -156,6 +163,7 @@ export default function Home() {
                     ageText=" 32"
                     medicalText=" Allergies"
                     phoneText=" 604-555-2222"
+                    button2="none"
                 />
             </ContPatientCardInd>
 

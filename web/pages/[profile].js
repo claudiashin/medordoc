@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from 'styled-components';
 import HorizonTab from '../comps/HorizonTab'
 import NavBar from "../comps/NavBar";
 import Footer from "../comps/Footer";
+import QRscan from "../comps/QRscan";
+import HeaderTitle from '../comps/HeaderTitle'
 
 const Cont = styled.div`
-  width:100vw;
-  height:100vh;
+  display:flex;
   background-color: #F7F2EE;
+  flex-direction:column;
+  min-height:80em;
 `
 
 const WaveCont = styled.div`
-  width: 100%;
+  // width: 100%;
+  flex-grow:1;
 `;
 
 const Wave = styled.img`
@@ -25,24 +29,44 @@ const NavBarCont = styled.div`
   top:0;
 `;
 
-export default function Profile() {
-  const [showPopup, setShowPopup] = useState(true)
+const FooterCont = styled.div`
 
+`
+const TabCont = styled.div`
+  flex-basis:1000px;
+  z-index:1;
+`
+const HeaderCont = styled.div`
+display:flex;
+align-items:center;
+flex-direction:column;
+`
+export default function Profile() {
   return (
     <Cont>
-
+     
       <WaveCont>
         <Wave src={'/background-web5.svg'}></Wave>
       </WaveCont>
 
       <NavBarCont>
         <NavBar />
+        <HeaderCont>
+          <HeaderTitle title="Profile"/>
+          <HeaderTitle fontSize="10 " title="St. Joseph’s Clinic" />
+        </HeaderCont>
       </NavBarCont>
-    
-    <HorizonTab onPopUp={() => {
-        setShowPopup(false);
-      }} popup={showPopup} />
-      <Footer/>
+
+      <QRscan />
+
+     
+      <TabCont>
+        <HorizonTab/>
+      </TabCont>
+
+      <FooterCont>
+        <Footer/>
+      </FooterCont>
     </Cont>
   )
 }

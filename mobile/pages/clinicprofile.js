@@ -10,8 +10,7 @@ import NavBar from '../comps/NavBar';
 
 
 const Cont = styled.View`
-  width:100%;
-  height:100%;
+  flex:1;
   background-color: #F7F2EE;
   display:flex;
   align-content:center;
@@ -46,22 +45,26 @@ const BtnCont = styled.View`
     margin-right: 20px;
 
 `
+const MyScrollView = styled.ScrollView`
 
+`
 const ClinicProfile = ({navigation})=>{
     return(
        <Cont>   
-           <Cont2>
-                <HeroAvatar herowidth={200} heroheight={200}/>
-                
-           </Cont2>
-           <CardCont>
-                <InfoCard/>
-                <InfoCard/>
+           <MyScrollView>
+            <Cont2>
+                    <HeroAvatar herowidth={200} heroheight={200}/>
+                    
+            </Cont2>
+            <CardCont>
+                    <InfoCard/>
+                    <InfoCard/>
 
-           </CardCont>
-           <BtnCont>
-               <Btn onPress = {()=>navigation.navigate("signup")}/>
-           </BtnCont>
+            </CardCont>
+            <BtnCont>
+                <Btn onPress = {()=>navigation.navigate("login")}/>
+            </BtnCont>
+           </MyScrollView>
 
             <NavBarCont>
                 <NavBar/>

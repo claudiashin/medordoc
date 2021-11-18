@@ -22,6 +22,7 @@ const PlusImage = styled.Image`
   position:absolute;
   right:${props=>props.right}px;
   bottom:${props=>props.bottom}px;
+  display: ${props=>props.visible};
 
 `
 const PlusCont = styled.TouchableOpacity`
@@ -35,6 +36,7 @@ const HeroAvatar =({
   plusheight="30",
   right="-70",
   bottom="10",
+  visible="flex"
 })=>{
 
 
@@ -69,7 +71,7 @@ const HeroAvatar =({
   return <HeroAvatarCont >
       {image && <HeroImage heroheight={heroheight} herowidth={herowidth} source={{ uri: image }} />}
   <PlusCont onPress={pickImage} >
-  <PlusImage pluswidth={pluswidth} plusheight={plusheight} right={right} bottom={bottom} source={require('../../assets/plus.png')}/>
+  <PlusImage pluswidth={pluswidth} plusheight={plusheight} right={right} bottom={bottom} visible={visible} source={require('../../assets/plus.png')}/>
   </PlusCont>
   
 </HeroAvatarCont>

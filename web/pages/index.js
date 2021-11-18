@@ -43,9 +43,21 @@ const ContOne = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+
+
+  flex-wrap: wrap;
+
+
   /* align-items: center; */
   width: 100%;
-  height: 500px;
+
+
+  /* height: 500px; */
+
+
+  @media only screen and (min-width: 500px) {
+    text-align: center;
+  }
 `;
 
 const ContTwo = styled.div`
@@ -88,6 +100,7 @@ const LottieCont = styled.div`
   align-items: center;
   /* margin: 50px; */
   @media only screen and (min-width: 500px) {
+    /* width: 80px; */
   }
 `;
 
@@ -100,10 +113,8 @@ const BtnCont = styled.div`
 
 const BodyText = styled.p`
   font-size: 20px;
-  line-height: 30px;
 
   @media only screen and (min-width: 500px) {
-  line-height: 1;
   }
 `;
 
@@ -139,6 +150,10 @@ const InfoCont = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 60px;
+  width: 240px;
+  @media only screen and (min-width: 500px) {
+  min-width: 0px;
+}
 `;
 
 const Icon = styled.img`
@@ -176,14 +191,14 @@ export default function Home() {
         <HeaderTitle title="Increase your clinic's patient base" />
         <BodyText>Try MedorDoc to enhance your clinic's web presence and broaden your patient reach. Start by listing your clinic today.</BodyText>
         <BtnCont>
-          <Btn fSize="20px" fWeight="500" width="230px" height="70px" />
+          <Btn fSize="20px" fWeight="500" width="230px" height="70px" onClick={()=>router.push("/signup")} />
         </BtnCont>
       </MainInfoCont>
 
       <LottieCont>
         <HeroLottie
           source={myLottie}
-          width="300px"
+          width="550px"
         />
       </LottieCont>
     </ContOne>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
+import { useNavigation } from '@react-navigation/native';
 
 import Header from '../comps/Header';
 import InfoCard from '../comps/InfoCard';
@@ -13,34 +14,36 @@ const AccountCont = styled.View`
 
 const Wave = styled.Image`
     width: 100%;
-    /* height: 10vh; */
-    position: absolute;
-    top: 0;
+    height: 10%;
 `;
 
 const HeaderCont = styled.View`
     justify-content: center;
     align-items: center;
-    top: 150px;
+    margin-top: 50px;
 `;
 
 const InfoCardCont = styled.View`
     justify-content: center;
     align-items: center;
-    top: 150px;
+    margin-top: 40px;
 `;
 
 const BtnCont = styled.View`
     justify-content:flex-end;
     align-items: flex-end;
-    top: 200px;
+    margin: 50px;
 `;
 
 const NavBarCont = styled.View`
     flex: 0.15;
 `;
 
-const accountconfirm = () => {
+const accountconfirm = ({
+
+}) => {
+    const navigation = useNavigation(); 
+
     return (
         <AccountCont>
             <ScrollView style={styles.scrollView} >
@@ -48,7 +51,7 @@ const accountconfirm = () => {
 
 
                 <HeaderCont>
-                    <Header title={"Here's Your Account Info"} fontSize={22} /><Text>Let's start</Text>
+                    <Header title={"Here's Your Account Info"} fontSize={22} />
                 </HeaderCont>
 
                 <InfoCardCont>
@@ -62,8 +65,16 @@ const accountconfirm = () => {
                     />
                 </InfoCardCont>
 
+     
+
                 <BtnCont>
-                    <Btn/>
+                    <Btn
+                        title="Sign In"
+                        fsize="20"
+                        width="130"
+                        height="50"
+                        onPress={()=>navigation.navigate("login")}
+                    />
                 </BtnCont>
 
             </ScrollView>
