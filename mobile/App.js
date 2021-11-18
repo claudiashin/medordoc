@@ -28,6 +28,7 @@ import patientprofile from './pages/patientprofile';
 import confirmreq from './pages/confirmreq';
 import QR from './pages/QR';
 import firebase from './pages/firebase';
+// import test from './pages/test'
 
 
 

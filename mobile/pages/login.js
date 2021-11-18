@@ -1,6 +1,7 @@
 import styled from 'styled-components/native'
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity,Button,ScrollView,Image } from 'react-native';
+// import  app from '../utils/inits';
+import { StyleSheet, Text, View, TouchableOpacity,Button,ScrollView,Image,Input } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Header from '../comps/Header';
 import HeroLottie from '../comps/HeroLottie';
@@ -10,7 +11,6 @@ import NavBar from '../comps/NavBar';
 import * as Google from 'expo-google-app-auth';
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider,getAuth,signInWithCredential } from "firebase/auth";
-
 import LoginForm from '../comps/LoginForm';
 import Btn from '../comps/Btn';
 
@@ -59,9 +59,8 @@ const ButCont = styled.View`
 const login = ()=>{
 
     const navigation = useNavigation(); 
-
-    const SignInGoogle = async()=>{
-        
+    
+    const SignInGoogle = async()=>{  
         try {
              const result = await Google.logInAsync({
               androidClientId: '170688855918-7tp9hjjf1kfmg109oo7i5o0s0q0i6vk1.apps.googleusercontent.com',
@@ -89,11 +88,10 @@ const login = ()=>{
           } catch (e) {
             return { error: true };
           }
-
     }
      
- return <MainCont>
-                     
+ return (
+ <MainCont>
     <Wave source={require('../assets/background_wave.jpg')} />
      <ScrollView>
 
@@ -119,9 +117,13 @@ const login = ()=>{
         />
         </ButCont>
 
-
      <Login>
-        <LoginForm></LoginForm>
+        <Input type = 'text' placeholder = 'email'/>
+        <Input type = 'password'placeholder = 'password'/>    
+        <Button>Sign in</Button>
+        <Button>Create Account</Button>
+        <Input type = 'file'/>
+        {/* <LoginForm></LoginForm> */}
      </Login>
 
      <ButCont>
@@ -140,7 +142,7 @@ const login = ()=>{
      
         <NavBar></NavBar>
      </MainCont> 
-
+   )
  }
 
  const styles = StyleSheet.create({
@@ -148,5 +150,6 @@ const login = ()=>{
       flex: 0.85,
     },
   });
- export default login;
+ 
+  export default login;
 
