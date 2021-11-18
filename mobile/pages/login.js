@@ -17,7 +17,6 @@ import Btn from '../comps/Btn';
 const Wave = styled.Image`
     width: 100%;
     height: 10%;
-
 `;
 
 const LottieCont = styled.View`
@@ -113,4 +112,3 @@ const login = ()=>{
     },
   });
  export default login;
-

@@ -23,7 +23,6 @@ class CheckIn extends Component {
     click = {},
     
   ) {
-
      const container = {
        display:"flex",
        backgroundColor:'DodgerBlue',
@@ -65,7 +64,6 @@ class CheckIn extends Component {
         </div>
       </div>
     )
-   
     }
    
   }
