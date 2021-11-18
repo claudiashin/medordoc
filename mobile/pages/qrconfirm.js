@@ -17,22 +17,32 @@ const ConfirmCont = styled.View`
 `;
 
 const Wave = styled.Image`
-    width: 100%;
+    width:100%;
     height: 10%;
     position: absolute;
     top: 0;
 `;
 
 const NavBarCont = styled.View`
-    position: absolute;
-    bottom: 45;
+   
 `;
+
+const MyScrollView = styled.ScrollView`
+
+`
+const Cont = styled.View`
+
+`
 
 const qrconfirm = () => {
     return (
         <ConfirmCont>
+            <MyScrollView>
             <Wave source={require('../assets/background_wave.jpg')} />
+            <Cont>
             <Header title="Booking Confirmed" fontSize={22} />
+            </Cont>
+            <Cont>
             <InfoCardTwo
                 text1="Appointment Details"
                 text2="Submitted on: Oct 7, 2021"
@@ -43,12 +53,15 @@ const qrconfirm = () => {
                 fweight="500"
                 display="none"
             />
+           
             <InfoCardTwo
                 text1="QR Code Generated"
                 text2="Your QR code has your booking details. For faster check-in, scan it at the front desk when you arrive."
                 text3="To view, click on the QR Code icon in the nav below."
                 fweight="300"
             />
+            </Cont>
+            </MyScrollView>
             <NavBarCont>
                 <NavBar />
             </NavBarCont>

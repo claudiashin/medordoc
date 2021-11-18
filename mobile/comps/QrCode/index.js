@@ -7,6 +7,7 @@ const QR = ({})=>{
 return(
     <QRCode
     value="https://www.google.com/"
+    logoSize={80}
   />
 )
 }

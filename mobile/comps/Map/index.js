@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React ,{useEffect,useState} from 'react';
 import { StyleSheet, Text, View,Dimensions } from 'react-native';
 import MapView,{PROVIDER_GOOGLE,Marker}from 'react-native-maps';
 import styled from 'styled-components/native';

@@ -4,6 +4,7 @@ import HorizonTab from '../comps/HorizonTab'
 import NavBar from "../comps/NavBar";
 import Footer from "../comps/Footer";
 import QRscan from "../comps/QRscan";
+import HeaderTitle from '../comps/HeaderTitle'
 
 const Cont = styled.div`
   display:flex;
@@ -35,20 +36,30 @@ const TabCont = styled.div`
   flex-basis:1000px;
   z-index:1;
 `
+const HeaderCont = styled.div`
+display:flex;
+align-items:center;
+flex-direction:column;
+`
 export default function Profile() {
   return (
     <Cont>
-
+     
       <WaveCont>
         <Wave src={'/background-web5.svg'}></Wave>
       </WaveCont>
 
       <NavBarCont>
         <NavBar />
+        <HeaderCont>
+          <HeaderTitle title="Profile"/>
+          <HeaderTitle fontSize="10 " title="St. Joseph’s Clinic" />
+        </HeaderCont>
       </NavBarCont>
 
       <QRscan />
 
+     
       <TabCont>
         <HorizonTab/>
       </TabCont>
