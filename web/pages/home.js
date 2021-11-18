@@ -6,6 +6,7 @@ import NavBar from '../comps/NavBar';
 import MenuCard from '../comps/MenuCard';
 import Checkin from '../comps/Checkin';
 import Footer from '../comps/Footer';
+import QRscan from '../comps/QRscan';
 
 import MyLottie from '../public/lottie_clipboard.json';
 import MyLottie2 from '../public/lottie_booking.json';
@@ -59,6 +60,8 @@ export default function home() {
       <NavBarCont>
         <NavBar />
       </NavBarCont>
+
+      <QRscan />
 
       {/* <Checkin/> */}
       <MenuCard width={300} height={350} source={MyLottie} routeTo="/request" />

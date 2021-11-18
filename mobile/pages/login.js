@@ -1,14 +1,28 @@
-
 import styled from 'styled-components/native'
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity,Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity,Button,ScrollView,Image } from 'react-native';
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider,getAuth,signInWithPopup } from "firebase/auth";
 import { useNavigation } from '@react-navigation/native';
+import Header from '../comps/Header';
+import HeroLottie from '../comps/HeroLottie';
+import NavBar from '../comps/NavBar';
+
+
 
 import LoginForm from '../comps/LoginForm';
 import Btn from '../comps/Btn';
 
+
+const Wave = styled.Image`
+    width: 100%;
+    height: 10%;
+`;
+
+const LottieCont = styled.View`
+    justify-content: center;
+    align-items: center;
+`;
 
 
 const MainCont = styled.View`
@@ -52,8 +66,26 @@ const login = ()=>{
          const result  = await signInWithPopup(auth,provider);
          console.log(result);
      }
+     
  return <MainCont>
-     <Button onPress ={SignInGoogle} title = "Sign in Google Account"></Button>
+                     
+    <Wave source={require('../assets/background_wave.jpg')} />
+     <ScrollView>
+
+                <LottieCont>
+                    <HeroLottie
+                        source={require('../assets/lottie_user.json')}
+                        style={{ width: 250 }}
+                    />
+                </LottieCont>
+   
+
+     {/* <Button onPress ={SignInGoogle} title = "Sign in Google Account"></Button> */}
+    
+     <Login>
+        <LoginForm></LoginForm>
+     </Login>
+
      <ButCont>
         <Btn 
             title = "Log In"
@@ -65,12 +97,18 @@ const login = ()=>{
         />
         {/* <Button title="signin" /> */}
         </ButCont>
-     <Login>
-        <LoginForm></LoginForm>
-     </Login>
+
+       </ScrollView>
      
-     </MainCont>
+     
+        <NavBar></NavBar>
+     </MainCont> 
 
  }
- export default login;
 
+ const styles = StyleSheet.create({
+    scrollView: {
+      flex: 0.85,
+    },
+  });
+ export default login;
