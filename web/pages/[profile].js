@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import HorizonTab from '../comps/HorizonTab'
 import NavBar from "../comps/NavBar";
 import Footer from "../comps/Footer";
+import QRscan from "../comps/QRscan";
 import HeaderTitle from '../comps/HeaderTitle'
 
 const Cont = styled.div`
@@ -55,6 +56,9 @@ export default function Profile() {
           <HeaderTitle fontSize="10 " title="St. Joseph’s Clinic" />
         </HeaderCont>
       </NavBarCont>
+
+      <QRscan />
+
      
       <TabCont>
         <HorizonTab/>

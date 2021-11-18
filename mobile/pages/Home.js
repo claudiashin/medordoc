@@ -33,6 +33,7 @@ const home = ({ navigation }) => {
 
 }
 const styles = StyleSheet.create({
+  
   container: {
     flex: 1,
     backgroundColor: '#F7F2EE',
