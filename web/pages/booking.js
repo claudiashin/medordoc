@@ -8,6 +8,7 @@ import PatientList from '../comps/PatientList';
 import LiveWaitTime from '../comps/LiveWaitTime';
 import Calendar from '../comps/CalendarAPI'
 import Footer from '../comps/Footer';
+import QRscan from '../comps/QRscan';
 
 
 
@@ -68,6 +69,8 @@ export default function Home() {
             <NavBarCont>
                 <NavBar />
             </NavBarCont>
+
+            <QRscan />
 
             <BodyCont>
                 <Low>

@@ -39,8 +39,7 @@ export default function patientprofile() {
                         herowidth="150"
                         pluswidth="25"
                         plusheight="25"
-                        right="105"
-                        bottom="15"
+                        visible="none"
                     />
                 </HeroCont>
                 <BookingForm />
@@ -49,7 +48,7 @@ export default function patientprofile() {
                         <Btn
                         title = "Edit"
                         fsize = '20'
-                        bgcolor = "#97BDD6"
+                        bgcolor = "#B9D1E1"
                         width = '150'
                         height = '50'
                         borderRad = '60'
@@ -72,8 +71,6 @@ export default function patientprofile() {
                 herowidth="150"
                 pluswidth="25"
                 plusheight="25"
-                right="105"
-                bottom="15"
             />
         </HeroCont>
         <BookingForm 
