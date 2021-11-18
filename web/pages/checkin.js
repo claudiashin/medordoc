@@ -9,6 +9,8 @@ import NavBar from "../comps/NavBar";
 import QRComponent from '../comps/CheckIn'
 import BookingForm from '../comps/BookingForm';
 import Footer from "../comps/Footer";
+import QR from "../../mobile/pages/QR";
+import QRscan from "../comps/QRscan";
 
 
 const MainCont = styled.div`
@@ -99,7 +101,7 @@ export default function Home() {
                 </Low>
                    
             </BodyCont>
-
+            <QRscan />
             <Footer/>
         </MainCont>
     )

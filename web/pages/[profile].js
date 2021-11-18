@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import HorizonTab from '../comps/HorizonTab'
 import NavBar from "../comps/NavBar";
 import Footer from "../comps/Footer";
+import QRscan from "../comps/QRscan";
 
 const Cont = styled.div`
   display:flex;
@@ -45,6 +46,8 @@ export default function Profile() {
       <NavBarCont>
         <NavBar />
       </NavBarCont>
+
+      <QRscan />
 
       <TabCont>
         <HorizonTab/>

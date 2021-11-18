@@ -11,3 +11,18 @@ return(
 )
 }
 export default QR;
+
+
+// export default function QR() {
+
+//   const [size, setSize] = useState(400);
+//   const [word, setWord] = useState("");
+//   const [qrCode, setQrCode] = useState("");
+
+//   useEffect(() => {
+//     setQrCode
+//   (`http://api.qrserver.com/v1/create-qr-code/?data=${word}!&size=${size}x${size}&bgcolor=${bgColor}`);
+//   }, [word, size]);
+// }
+
+
