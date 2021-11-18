@@ -8,6 +8,7 @@ import Header from '../comps/Header';
 import Btn from '../comps/Btn';
 import NavBar from '../comps/NavBar';
 import Datepick from '../comps/DataPicker';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const BookingCont = styled.View`
     flex: 1;
@@ -24,12 +25,11 @@ const Wave = styled.Image`
 `;
 
 const CalendarAPICont = styled.View`
-
+   
 `;
 
 const DropDownCont = styled.View`
 margin-top: 25px;
-
 
 `;
 
@@ -39,16 +39,19 @@ const ButtonCont = styled.View`
     width: 275px;
     /* height: 150px; */
     margin-top: 25px;
+    
 `;
 
 const NavBarCont = styled.View`
-    position: absolute;
-    bottom: 45;
-`;
 
+`;
+const MyScrollView = styled.ScrollView`
+
+`
 const booking = ({navigation}) => {
     return (
         <BookingCont>
+            <MyScrollView >
             <Wave source={require('../assets/background_wave.jpg')}/>
             
             <CalendarAPICont>
@@ -70,6 +73,7 @@ const booking = ({navigation}) => {
                     onPress={()=>navigation.navigate('qrconfirm')}
                 />
             </ButtonCont>
+            </MyScrollView>
 
             <NavBarCont>
                 <NavBar />

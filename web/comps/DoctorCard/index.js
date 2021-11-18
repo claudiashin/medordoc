@@ -118,8 +118,9 @@ function getStyles(name, personName, theme) {
 const DoctorCard = ({
     profile="https://placekitten.com/1200/1200",
     placeholder="Dr.Alex Chan",
-    title="Edit",
-    onClick=()=>{},
+    titleDoc="Confirm",
+    addDoc=()=>{},
+    xDoc=()=>{}
 }) => {
 
     const theme = useTheme();
@@ -143,7 +144,7 @@ const DoctorCard = ({
     }
 
     return <MainCont>
-        <Closebutton>
+        <Closebutton onClick={()=>xDoc()}>
             <IoIosClose onClick={()=>setOpen(!open)} size={60}/>
         </Closebutton>
 
@@ -216,8 +217,8 @@ const DoctorCard = ({
         </FormCont>
         <ButtonCont>
             <Button
-                onClick={onClick}
-            >{title}</Button>
+                onClick={addDoc}
+            >{titleDoc}</Button>
         </ButtonCont>
     </MainCont>
 }

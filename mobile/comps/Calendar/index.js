@@ -9,6 +9,7 @@ import Day from 'react-native-calendars/src/calendar/day';
 
 const Appointment =({})=>{
 
+console.log(day);
 
 return(
   <Calendar
@@ -20,6 +21,8 @@ return(
     '2021-11-19': {disabled: true, disableTouchEvent: true}
   }}
   style={{width:400}}/> 
+
+  
 
 
 // {/* <Agenda

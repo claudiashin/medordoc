@@ -115,7 +115,8 @@ const PatientCard=({
     medicalconcerns = "default text",
     phone = "default text",
     button1="flex",
-    button2="flex"
+    button2="flex",
+    editDoc=()=>{}
     //button
 })=>{
 
@@ -147,7 +148,7 @@ const PatientCard=({
         </Emailbut></a>
         </EmailbutCont>
         <EditbutCont button2={button2} >
-            <Editbut>{emailText}</Editbut>
+            <Editbut onClick={()=>{editDoc()}}>{emailText}</Editbut>
         </EditbutCont>
     </Maincont>
     
