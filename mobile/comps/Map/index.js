@@ -83,13 +83,23 @@ const Map =({
    <MapView.Marker
      coordinate={{latitude: 49.25810,
      longitude: -123.021580}}
-     title={"title"}
-     description={"description"}
-    />   
+     title={"Saint Clinic"}
+     description={"Address:"}
+    />
+      <MapView.Marker
+     coordinate={{latitude: 49.25710,
+     longitude: -123.021570}}
+     title={"Holy Clinic"}
+     description={"Address:"}
+    /> 
+     <MapView.Marker
+     coordinate={{latitude: 49.25320,
+     longitude: -123.021470}}
+     title={"Christmas clinic"}
+     description={"Address"}
+    />  
    </MapView>
     <Button onPress = {getLoc} title = {loading} disabled = {visible}/>     
-  
-    
  
   </View>
     )
