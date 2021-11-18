@@ -2,10 +2,6 @@
 import styled from 'styled-components/native'
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,Button } from 'react-native';
-<<<<<<< HEAD
-// import { initializeApp } from "firebase/app";
-// import { GoogleAuthProvider,getAuth,signInWithPopup } from "firebase/auth";
-=======
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider,getAuth,signInWithPopup } from "firebase/auth";
 import { useNavigation } from '@react-navigation/native';
@@ -32,7 +28,6 @@ const ButCont = styled.View`
     justify-content: center;
 `;
 
->>>>>>> a8cc0691b4d9004b66d66a6587b45c551a6f0e1c
 
 // Your web app's Firebase configuration
 // const firebaseConfig = {
@@ -49,17 +44,6 @@ const ButCont = styled.View`
 
 const login = ()=>{
 
-<<<<<<< HEAD
-    //  const SignInGoogle = async()=>{
-    //      const auth = getAuth();
-    //      const provider = new GoogleAuthProvider();
-    //      const result  = await signInWithPopup(auth,provider);
-    //      console.log(result);
-    //  }
- return(
-     <Button onClick ={SignInGoogle} title = "Sign in Google Account"></Button>
- )
-=======
     const navigation = useNavigation(); 
 
      const SignInGoogle = async()=>{
@@ -87,7 +71,6 @@ const login = ()=>{
      
      </MainCont>
 
->>>>>>> a8cc0691b4d9004b66d66a6587b45c551a6f0e1c
  }
  export default login;
 
