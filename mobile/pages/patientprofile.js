@@ -7,6 +7,7 @@ import BookingForm from '../comps/BookingForm';
 import HeroAvatar from '../comps/HeroAvatar';
 import LoginForm from '../comps/LoginForm';
 import Btn from '../comps/Btn';
+import NavBar from '../comps/NavBar';
 
 
 
@@ -18,14 +19,19 @@ const ButCont = styled.View`
     marginLeft: 180px;
     marginTop: 50px;
 `
+const Cont = styled.View`
+    flex:1;
+`
+const NavBarCont = styled.View`
 
-
+`;
 export default function patientprofile() {
     
     const [changeForm, setChangeForm] = useState(true);
 
     if (changeForm === true ){
         return (
+            <Cont>
             <ScrollView style={styles.scrollView} >
                 <HeroCont>
                     <HeroAvatar 
@@ -33,8 +39,7 @@ export default function patientprofile() {
                         herowidth="150"
                         pluswidth="25"
                         plusheight="25"
-                        right="105"
-                        bottom="15"
+                        visible="none"
                     />
                 </HeroCont>
                 <BookingForm />
@@ -43,7 +48,7 @@ export default function patientprofile() {
                         <Btn
                         title = "Edit"
                         fsize = '20'
-                        bgcolor = "#97BDD6"
+                        bgcolor = "#B9D1E1"
                         width = '150'
                         height = '50'
                         borderRad = '60'
@@ -51,18 +56,21 @@ export default function patientprofile() {
                     ></Btn>
                 </ButCont>
             </ScrollView>
+             <NavBarCont>
+             <NavBar/>
+           </NavBarCont>
+           </Cont>
         )
     }
 
-    return <ScrollView style={styles.scrollView} >
+    return <Cont>
+    <ScrollView style={styles.scrollView} >
         <HeroCont>
             <HeroAvatar 
                 heroheight="150"
                 herowidth="150"
                 pluswidth="25"
                 plusheight="25"
-                right="105"
-                bottom="15"
             />
         </HeroCont>
         <BookingForm 
@@ -80,6 +88,10 @@ export default function patientprofile() {
             ></Btn>
         </ButCont>
     </ScrollView>
+    <NavBarCont>
+    <NavBar/>
+    </NavBarCont>
+    </Cont>
 }
 
 const styles = StyleSheet.create({

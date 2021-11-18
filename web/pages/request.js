@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import { useState } from "react";
 
+//import comps
 import PatientCard from '../comps/PatientCard';
 import Footer from '../comps/Footer';
 import PopupCard from '../comps/PopupCard';
 import NavBar from '../comps/NavBar';
 import HeaderTitle from '../comps/HeaderTitle';
-import { useState } from "react";
-
+import QRscan from "../comps/QRscan";
 
 const Cont = styled.div`
     background-color: #F7F2EE;
@@ -71,6 +72,8 @@ export default function Home() {
          {/* <PopupCont>
             <PopupCard/>
         </PopupCont>  */}
+
+        <QRscan />
         
         <ContPatientCard>
             <ContPatientCardInd>

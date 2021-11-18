@@ -1,6 +1,7 @@
 import React, { Component,useState } from 'react'
 import dynamic from "next/dynamic";
-import styled from 'styled-components'
+import styled from 'styled-components';
+
 const QrReader = dynamic(() => import('react-qr-reader'),{ ssr: false })
 
 class CheckIn extends Component {
