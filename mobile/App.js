@@ -18,7 +18,7 @@ import finddoc from './pages/finddoc';
 import history from './pages/history';
 import docprofile from './pages/docprofile';
 
-// import login from './pages/login';
+import login from './pages/login';
 
 import accountconfirm from './pages/accountconfirm';
 import signup from './pages/signup';
