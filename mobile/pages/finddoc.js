@@ -65,7 +65,18 @@ return(
         </MapCont>
       <FilterCont>
 
-      <Filiter/>
+      <Filiter
+          headerText1 = {"Location"}
+          headerText2 = {"Language Prefences"}
+          optionText1 = {"Vancouver"}
+          optionText2 = {"Burnaby"}
+          optionText3 = {"North Vancouver"}
+          optionText4 = {"Coquitlam"}
+          optionText5 = {"Surrey"}
+          optionText6 = {"Richmond"}
+          optionText7 = {"English"}
+          optionText8 = {"French"}
+      />
       </FilterCont>
 
       <CardCont>

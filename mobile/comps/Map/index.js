@@ -88,15 +88,12 @@ const Map =({
     />   
    </MapView>
     <Button onPress = {getLoc} title = {loading} disabled = {visible}/>     
-  
-    
- 
   </View>
     )
 }
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      flex: 1.0,
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',

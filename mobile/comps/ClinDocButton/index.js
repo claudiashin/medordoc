@@ -15,6 +15,7 @@ const Maincont = styled.View`
     height: 80px;
     margin:10px;
     border-radius: 15px;
+   
 `
 const Avatarcont = styled.View`
     display:flex;

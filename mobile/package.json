@@ -26,6 +26,7 @@
     "expo-updates": "~0.10.13",
     "firebase": "^9.4.1",
     "i": "^0.3.7",
+    "ionicons-npm": "^2.0.1",
     "lottie-react-native": "4.0.3",
     "moment": "^2.29.1",
     "react": "17.0.1",

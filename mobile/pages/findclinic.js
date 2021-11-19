@@ -49,6 +49,7 @@ const SubCont = styled.ScrollView`
   const FilterCont = styled.View`
     display: flex;
     margin-top: 30px;
+    z-index: 2;
   `
   const CardCont = styled.View`
     display: flex;
@@ -56,7 +57,7 @@ const SubCont = styled.ScrollView`
     justify-content: center;
     align-items: center;
     bottom: 350px;
-    z-index: -1;
+    
   `
   const NavBarCont = styled.View`
 
@@ -73,7 +74,18 @@ return (
     
     <Map/>
     <FilterCont>
-      <Filiter/>
+      <Filiter
+      headerText1={"Language Prefrences"}
+      headerText2={"Gender"}
+      optionText1 = {"English"}
+      optionText2 = {"French"}
+      optionText3 = {"Chinese"}
+      optionText4 = {"Korean"}
+      optionText5 = {"Japanese"}
+      optionText6 = {"Punjabi"}
+      optionText7 = {"Male"}
+      optionText8 = {"Female"}
+      />
     </FilterCont>
     
     <CardCont> 
@@ -82,11 +94,9 @@ return (
       <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
     </CardCont>
   </SubCont>  
-
     <NavBarCont>
       <NavBar/>
     </NavBarCont>
-   
     </Cont> 
     
 )
