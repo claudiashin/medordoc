@@ -46,16 +46,6 @@ const ButCont = styled.View`
 
 
 // Your web app's Firebase configuration
-<<<<<<< HEAD
-// const firebaseConfig = {
-//   apiKey: "AIzaSyDeOMoQTGw_ofJzos_bQOqX_XQpty1YtXk",
-//   authDomain: "medordoc-516a4.firebaseapp.com",
-//   projectId: "medordoc-516a4",
-//   storageBucket: "medordoc-516a4.appspot.com",
-//   messagingSenderId: "170688855918",
-//   appId: "1:170688855918:web:5efaddb77d4f3aeef5cb7f"
-// };
-=======
 const firebaseConfig = {
     apiKey: "AIzaSyDeOMoQTGw_ofJzos_bQOqX_XQpty1YtXk",
     authDomain: "medordoc-516a4.firebaseapp.com",
@@ -64,7 +54,6 @@ const firebaseConfig = {
     messagingSenderId: "170688855918",
     appId: "1:170688855918:web:5efaddb77d4f3aeef5cb7f"
 };
->>>>>>> 43e6d66789fa414337a18aeb59024c6b56b26ee6
 
 // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
