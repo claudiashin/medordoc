@@ -28,7 +28,7 @@ import patientprofile from './pages/patientprofile';
 import confirmreq from './pages/confirmreq';
 import QR from './pages/QR';
 import firebase from './pages/firebase';
-// import test from './pages/test'
+import test from './pages/test'
 
 
 
@@ -40,6 +40,8 @@ export default function App() {
       <NavigationContainer>
        <Stack.Navigator initialRouteName="home">
          <Stack.Screen name="home" component={home} />
+         <Stack.Screen name="test" component={test} />
+         <Stack.Screen name="firebase" component={firebase} />
          <Stack.Screen name="findclinic" options={{headerShown: false}}   component={findclinic} /> 
          <Stack.Screen name="finddoc" component={finddoc} />
          <Stack.Screen name="clinicprofile" component={clinicprofile} />

@@ -1,7 +1,6 @@
-import {useState} from 'react'
+import React,{useState} from 'react'
 import styled from 'styled-components/native'
-
-const TInput =styled.TextInnput``;
+const TInput =styled.TextInput``;
 const Button = styled.Button``;
 const Cont = styled.View``
 

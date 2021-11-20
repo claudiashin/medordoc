@@ -25,11 +25,11 @@ const Wave = styled.Image`
 `;
 
 const CalendarAPICont = styled.View`
-   
+margin-top: 25px;
 `;
 
 const DropDownCont = styled.View`
-margin-top: 25px;
+margin: 50px;
 
 `;
 
@@ -53,12 +53,11 @@ const booking = ({navigation}) => {
         <BookingCont>
             <MyScrollView >
             <Wave source={require('../assets/background_wave.jpg')}/>
-            
             <CalendarAPICont>
-                <Text>Calendar</Text>
-                <Calendar/>
+               <Calendar/>
             </CalendarAPICont>
-
+               
+     
             {/* <Header title={'Thursday, November 4th'}/> */}
 
             <DropDownCont>

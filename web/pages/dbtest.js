@@ -1,17 +1,22 @@
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection,setDoc,doc} from 'firebase/firestore';
 import React, { useState,useEffect } from 'react';
 import {db} from '../firebase';
 
-export default function dbtest(){
+export default function dbtest({
+    num ="booking2000",
+}){
     const booking = async() =>{
     const bookingdata = collection(db,"bookings")
-    await addDoc(bookingdata,{
-        day:12,
-        month:11,
-        year:2021
-    })
+    // await setDoc(bookingdata,{
+    //     date:1233,
+    //     month:1221,
+    //     year:2023
+    // }
+    await setDoc(doc(bookingdata, num), {
+        date:1225,
+        month:12,
+        year:2019});
 }
-
     return(
         <div>
             <h1>booking</h1>
@@ -22,7 +27,6 @@ export default function dbtest(){
                    <p>{booking1.year}</p>
                 </div>    
             ))} */}
-
         </div>    
     )
 }
@@ -30,13 +34,10 @@ export default function dbtest(){
     // useEffect(()=>{
     //     getbookings();
     // },[])
-    
     // if(loading){
     //     return <h1>loading..</h1>
     // }
 
-   
-    
 
 
 
