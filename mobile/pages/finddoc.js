@@ -1,5 +1,5 @@
-import React,{useState,useEffect,} from 'react';
-import { StyleSheet, Text, View,Image } from 'react-native';
+import React, { useState, useEffect, } from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';
 import Map from '../comps/Map'
 import SearchBar from '../comps/SearchBar'
@@ -11,72 +11,72 @@ import BookingForm from '../comps/BookingForm';
 import NavBar from '../comps/NavBar';
 
 
-  const Cont = styled.View`
+const Cont = styled.View`
   flex:1;
   background-color: #F7F2EE;
   flex-direction: column;
   align-content:center;
   justify-content: space-between;
   `
-  const Wave = styled.Image`
+const Wave = styled.Image`
   width: 100%;
-  height: 10%;
+  height: 30%;
   position: absolute;
-  top: 0;
-  `;
-  const SearchCont = styled.View`
+`;
+
+const SearchCont = styled.View`
     display: flex;
     flex-direction: row;
     margin-top: 10px;
   `
-  const MapCont = styled.View`
-    display: flex;
+const MapCont = styled.View`
+  display: flex;
+`;
 
-  `
-  const FilterCont = styled.View`
+const FilterCont = styled.View`
     display: flex;
   `
-  const CardCont = styled.View`
+const CardCont = styled.View`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   `
-  const NavBarCont = styled.View`
+const NavBarCont = styled.View`
 
 `;
 const MyScrollView = styled.ScrollView`
 
 `
 
-const finddoc = ({navigation})=>{
-return(
-   <Cont>
-     <MyScrollView>
-      <Wave source={require('../assets/background_wave.jpg')}/>
-      <SearchCont>
-      <SearchBar/>
-      </SearchCont>
+const finddoc = ({ navigation }) => {
+  return (
+    <Cont>
+      <MyScrollView>
+        <Wave source={require('../assets/backgroundmobile.png')} />
+        <SearchCont>
+          <SearchBar />
+        </SearchCont>
         <MapCont>
-        <Map/>
+          <Map />
         </MapCont>
-      <FilterCont>
+        <FilterCont>
 
-      <Filiter/>
-      </FilterCont>
+          <Filiter />
+        </FilterCont>
 
-      <CardCont>
-        <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
-        <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
-        <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
-      </CardCont> 
-    </MyScrollView>
-    <NavBarCont>
-      <NavBar/>
-    </NavBarCont>
-   
-    </Cont> 
-)
+        <CardCont>
+          <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
+          <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
+          <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
+        </CardCont>
+      </MyScrollView>
+      <NavBarCont>
+        <NavBar />
+      </NavBarCont>
+
+    </Cont>
+  )
 }
 
 export default finddoc;
