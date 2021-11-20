@@ -15,10 +15,10 @@ const Datepick = () => {
       setDate(currentDate);
 
 
-     let tempDate = new Date(currentDate);
-     let fdate =tempDate.getDate() + "/" +(tempDate.getMonth())+tempDate.getFullYea();
+    //  let tempDate = new Date(currentDate);
+    //  let fdate =tempDate.getDate() + "/" +(tempDate.getMonth())+tempDate.getFullYea();
 
-     setText(fdate);
+    //  setText(fdate);
 
     };
   
