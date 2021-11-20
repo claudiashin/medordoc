@@ -60,9 +60,9 @@ const SigninForm = ({
     const [open, setOpen] = useState(false);
     const [gender, setGender] = useState('');
     const [items, setItems] = useState([
-        {label: 'Male', gender: 'Male'},
-        {label: 'Female', gender: 'Female'},
-        {label: 'Prefer not to answer', gender: 'Prefer not to answer'}
+        {label: 'Male', value: 'Male'},
+        {label: 'Female', value: 'Female'},
+        {label: 'Prefer not to answer', value: 'Prefer not to answer'}
     ]);
 
     if (changeForm === true) {
@@ -141,7 +141,7 @@ const SigninForm = ({
                     items={items}
                     placeholder="Gender"
                     setOpen={setOpen}
-                    setGender={setGender}
+                    setValue={setGender}
                     setItems={setItems}
                     style={{
                         width: 335,
@@ -160,7 +160,6 @@ const SigninForm = ({
                 autoComplete='postal-address-extended-postal-code'
                 textContentType="fullStreetAddress"
                 dataDetectorTypes='address'
-                multiline={true}
                 value={text}
                 mode='outlined'
                 onChangeText={text => setText(text)}
@@ -171,7 +170,6 @@ const SigninForm = ({
                 returnKeyType="done"
                 autoCapitalize='sentences'
                 value={medcon}
-                multiline={true}
                 mode='outlined'
                 onChangeText={medcon => setMedcon(medcon)}
                 />

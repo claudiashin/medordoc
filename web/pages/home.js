@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 
 import NavBar from '../comps/NavBar';
 import MenuCard from '../comps/MenuCard';
@@ -22,12 +22,16 @@ const HomeCont = styled.div`
 
 const WaveCont = styled.div`
   width: 100%;
-  height: auto;
-  position: relative;
+  object-fit: cover;
 `;
 
 const Wave = styled.img`
   width: 100%;
+  @media only screen and (min-width: 500px) {
+    object-fit: cover;
+    height: 320px;
+    width: 100%;
+  }
 `;
 
 const NavBarCont = styled.div`

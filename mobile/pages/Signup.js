@@ -13,14 +13,14 @@ const BookingCont = styled.View`
 
 const Wave = styled.Image`
     width: 100%;
-    height: 10%;
-    /* height: 10vh; */
-    /* position: absolute; */
+    height: 30%;
+    position: absolute;
 `;
 
 const LottieCont = styled.View`
     justify-content: center;
     align-items: center;
+    margin-top: 70px;
 `;
 
 const HeaderCont = styled.View`
@@ -31,7 +31,7 @@ const SignUpFormCont = styled.View`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
 `;
 
 const NavBarCont = styled.View`
@@ -43,7 +43,7 @@ const signup = () => {
     return (
         <BookingCont>
             <ScrollView style={styles.scrollView} >
-                <Wave source={require('../assets/background_wave.jpg')} />
+                <Wave source={require('../assets/backgroundmobile.png')} />
 
                 <LottieCont>
                     <HeroLottie
@@ -73,8 +73,8 @@ const signup = () => {
 
 const styles = StyleSheet.create({
     scrollView: {
-      flex: 0.85,
+        flex: 0.85,
     },
-  });
+});
 
 export default signup;

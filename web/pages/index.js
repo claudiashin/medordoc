@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import styled from 'styled-components';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 
 import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -25,11 +25,16 @@ const MainCont = styled.div`
 
 const WaveCont = styled.div`
   width: 100%;
+  object-fit: cover;
 `;
 
 const Wave = styled.img`
   width: 100%;
-  
+  @media only screen and (min-width: 500px) {
+    object-fit: cover;
+    height: 320px;
+    width: 100%;
+  }
 `;
 
 const NavBarCont = styled.div`
@@ -43,20 +48,15 @@ const ContOne = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-
-
-  flex-wrap: wrap;
-
-
-  /* align-items: center; */
   width: 100%;
-
-
-  /* height: 500px; */
-
+  height: 500px;
 
   @media only screen and (min-width: 500px) {
     text-align: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    /* margin-top: 50px; */
   }
 `;
 
@@ -100,7 +100,7 @@ const LottieCont = styled.div`
   align-items: center;
   /* margin: 50px; */
   @media only screen and (min-width: 500px) {
-    /* width: 80px; */
+    margin-top: -100px;
   }
 `;
 
@@ -191,14 +191,14 @@ export default function Home() {
         <HeaderTitle title="Increase your clinic's patient base" />
         <BodyText>Try MedorDoc to enhance your clinic's web presence and broaden your patient reach. Start by listing your clinic today.</BodyText>
         <BtnCont>
-          <Btn fSize="20px" fWeight="500" width="230px" height="70px" onClick={()=>router.push("/signup")} />
+          <Btn fSize="20px" fWeight="500" width="230px" height="70px" onClick={() => router.push("/signup")} />
         </BtnCont>
       </MainInfoCont>
 
       <LottieCont>
         <HeroLottie
           source={myLottie}
-          width="550px"
+          width="500px"
         />
       </LottieCont>
     </ContOne>
@@ -208,7 +208,7 @@ export default function Home() {
       <LottieCont>
         <HeroLottie
           source={myLottie}
-          width="300px"
+          width="400px"
         />
       </LottieCont>
       <MainInfoCont>
@@ -254,11 +254,11 @@ export default function Home() {
       <MainInfoCont>
         <HeaderTitle title="Start your free six month trial now" />
         <BtnCont>
-          <Btn title="Start Now" fSize="20px" fWeight="500" width="160px" height="60px" onClick={()=>router.push("/signup")} />
+          <Btn title="Start Now" fSize="20px" fWeight="500" width="160px" height="60px" onClick={() => router.push("/signup")} />
         </BtnCont>
       </MainInfoCont>
 
-      <LottieCont>
+      <LottieCont style={{}}>
         <HeroLottie
           source={LaptopLottie}
           width="300px"
