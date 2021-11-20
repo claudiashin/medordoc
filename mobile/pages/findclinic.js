@@ -56,7 +56,7 @@ const SubCont = styled.ScrollView`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    bottom: 350px;
+    
     
   `
   const NavBarCont = styled.View`

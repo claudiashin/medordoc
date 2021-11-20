@@ -30,14 +30,36 @@ import QR from './pages/QR';
 import firebase from './pages/firebase';
 // import test from './pages/test'
 
+import { Ionicons } from '@expo/vector-icons';
+import AppLoading from 'expo-app-loading';
+import * as Font from 'expo-font';
 
+function cacheFonts(fonts) {
+  return fonts.map(font => Font.loadAsync(font));
+}
 
 const Stack = createNativeStackNavigator();
 
 
 export default function App() {
+
+  const [ready, setReady] = useState(false);
+  const init = async()=>{
+    const fontAssets = cacheFonts([Ionicons.font]);
+    await Promise.all([...fontAssets]);
+  }
+  if (!ready) {
+    return (
+      <AppLoading
+        startAsync={init}
+        onFinish={() => setReady(true)}
+        onError={console.warn}
+      />
+    );
+  }
   return (
       <NavigationContainer>
+        
        <Stack.Navigator initialRouteName="home">
          <Stack.Screen name="home" component={home} />
          <Stack.Screen name="findclinic" options={{headerShown: false}}   component={findclinic} /> 
@@ -58,7 +80,7 @@ export default function App() {
 
        </Stack.Navigator>
     </NavigationContainer>
-
+    
   );
 }
 

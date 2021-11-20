@@ -1,7 +1,7 @@
 import React from "react";
 import {View,Text, SafeAreaView, StyleSheet, TextInput, Pressable} from "react-native" ;
 import styled from "styled-components/native";
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
 
 
 import Btn from '../Btn';
@@ -12,9 +12,7 @@ import { TouchableOpacity } from "react-native";
 
 //main container
 const Extra = styled.View`
-  
     width: 300px;
-    height: 380px;
     justify-content: center;
     align-items: center;
 
@@ -26,12 +24,11 @@ const Maincont = styled.View`
     justify-content: center;
     align-items: center;
     width: 294px;
-    height: 376px;
+    height: ${props=>props.display==="none"?"0px":"370px"};
     background-color: #ffffff;
     border: 1px solid #E9D7CB;
     border-radius: 5px;
     left: 20%;
- 
 `
 
 //filter icon container
@@ -101,6 +98,7 @@ const Filter=({
     const [open, setOpen] = useState(false);
 
     var display = "none";
+  
 
     if(open){
         display = "flex"
@@ -114,7 +112,7 @@ const Filter=({
     return <Extra>
             <Iconcont >
                 <Ionicons onPress={()=>setOpen(!open)} 
-                name="filter" size={30} color="black" />
+                name="filter" size={40} color="black" />
             </Iconcont>
         <Maincont display={display}>
 
