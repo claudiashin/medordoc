@@ -1,6 +1,6 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 
 //import comps
 import Btn from '../comps/Btn';
@@ -22,14 +22,20 @@ const MainCont = styled.div`
     height: 100%;
     justify-content: center;
     align-items: center;
-`
+`;
 
 const WaveCont = styled.div`
   width: 100%;
+  object-fit: cover;
 `;
 
 const Wave = styled.img`
   width: 100%;
+  @media only screen and (min-width: 500px) {
+    object-fit: cover;
+    height: 320px;
+    width: 100%;
+  }
 `;
 
 const NavBarCont = styled.div`
@@ -63,7 +69,7 @@ const BtnCont = styled.div`
 
 export default function Home() {
     const router = useRouter();
-    
+
 
     return (
         <MainCont>
@@ -75,34 +81,34 @@ export default function Home() {
                 <NavBar />
             </NavBarCont>
 
-            <HeaderTitle 
+            <HeaderTitle
                 title="Booking Confirmation"
                 fontSize='36'
             />
             <BodyCont>
                 <Low>
-                    <Qrcode><img src = "/qrcode.png" width="100%"/>
+                    <Qrcode><img src="/qrcode.png" width="100%" />
                     </Qrcode>
                 </Low>
                 <Low>
                     <BookingForm></BookingForm>
                     <BtnCont>
-                        <Btn 
-                            title = "Check In"
-                            fSize = "16px"
-                            color = "#fff"
-                            bgColor = "#90AABB"
-                            width = "125px"
-                            height = "40px"
-                            borderRad = "25px"
-                            onClick={()=>router.push("/confirm")}
+                        <Btn
+                            title="Check In"
+                            fSize="16px"
+                            color="#fff"
+                            bgColor="#90AABB"
+                            width="125px"
+                            height="40px"
+                            borderRad="25px"
+                            onClick={() => router.push("/confirm")}
                         />
                     </BtnCont>
                 </Low>
-                   
+
             </BodyCont>
             <QRscan />
-            <Footer/>
+            <Footer />
         </MainCont>
     )
 }

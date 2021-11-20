@@ -37,28 +37,26 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-      <NavigationContainer>
-       <Stack.Navigator initialRouteName="home">
-         <Stack.Screen name="home" component={home} />
-         <Stack.Screen name="test" component={test} />
-         <Stack.Screen name="firebase" component={firebase} />
-         <Stack.Screen name="findclinic" options={{headerShown: false}}   component={findclinic} /> 
-         <Stack.Screen name="finddoc" component={finddoc} />
-         <Stack.Screen name="clinicprofile" component={clinicprofile} />
-         <Stack.Screen name="docprofile" component={docprofile} />
-         <Stack.Screen name="patientprofile" component={patientprofile} />
-         <Stack.Screen name="signup" component={signup} />
-         <Stack.Screen name="booking" component={booking} />
-         <Stack.Screen name="qrconfirm" component={qrconfirm} />
-         <Stack.Screen name="scan" component={scan} />
-         <Stack.Screen name="accountconfirm" component={accountconfirm}/> 
-         <Stack.Screen name="login" component={login}/> 
-         <Stack.Screen name="history" component={history} /> 
-         <Stack.Screen name="confirmreq" component={confirmreq} />
-         <Stack.Screen name="QR" component={QR} />
-  
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="home">
+        <Stack.Screen options={{ headerShown: false }} name="home" component={scan} />
+        <Stack.Screen options={{ headerShown: false }} name="findclinic" options={{ headerShown: false }} component={findclinic} />
+        <Stack.Screen options={{ headerShown: false }} name="finddoc" component={finddoc} />
+        <Stack.Screen options={{ headerShown: false }} name="clinicprofile" component={clinicprofile} />
+        <Stack.Screen options={{ headerShown: false }} name="docprofile" component={docprofile} />
+        <Stack.Screen options={{ headerShown: false }} name="patientprofile" component={patientprofile} />
+        <Stack.Screen options={{ headerShown: false }} name="signup" component={signup} />
+        <Stack.Screen options={{ headerShown: false }} name="booking" component={booking} />
+        <Stack.Screen options={{ headerShown: false }} name="qrconfirm" component={qrconfirm} />
+        <Stack.Screen options={{ headerShown: false }} name="scan" component={scan} />
+        <Stack.Screen options={{ headerShown: false }} name="accountconfirm" component={accountconfirm} />
+        <Stack.Screen options={{ headerShown: false }} name="login" component={login} />
+        <Stack.Screen options={{ headerShown: false }} name="history" component={history} />
+        <Stack.Screen options={{ headerShown: false }} options={{ headerShown: false }}name="confirmreq" component={confirmreq} />
+        <Stack.Screen options={{ headerShown: false }} name="QR" component={QR} />
 
-       </Stack.Navigator>
+
+      </Stack.Navigator>
     </NavigationContainer>
 
   );

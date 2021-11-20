@@ -1,4 +1,4 @@
-import React,{useState,useEffect,} from 'react';
+import React, { useState, useEffect, } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -48,30 +48,31 @@ const NavBarCont = styled.View`
 const MyScrollView = styled.ScrollView`
 
 `
-const booking = ({navigation}) => {
+const booking = ({ navigation }) => {
     return (
         <BookingCont>
             <MyScrollView >
-            <Wave source={require('../assets/background_wave.jpg')}/>
-            <CalendarAPICont>
-               <Calendar/>
-            </CalendarAPICont>
-               
-     
-            {/* <Header title={'Thursday, November 4th'}/> */}
+                <Wave source={require('../assets/backgroundmobile.png')} />
 
-            <DropDownCont>
-                <Text>Pick the Time</Text> 
-                <Datepick/>
-            </DropDownCont>
+                <CalendarAPICont>
+                    <Text>Calendar</Text>
+                    <Calendar />
+                </CalendarAPICont>
 
-            <ButtonCont>
-                <Btn 
-                    title={'Confirm'}
-                    fSize={20}
-                    onPress={()=>navigation.navigate('qrconfirm')}
-                />
-            </ButtonCont>
+                {/* <Header title={'Thursday, November 4th'}/> */}
+
+                <DropDownCont>
+                    <Text>Pick the Time</Text>
+                    <Datepick />
+                </DropDownCont>
+
+                <ButtonCont>
+                    <Btn
+                        title={'Confirm'}
+                        fSize={20}
+                        onPress={() => navigation.navigate('qrconfirm')}
+                    />
+                </ButtonCont>
             </MyScrollView>
 
             <NavBarCont>

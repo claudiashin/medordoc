@@ -19,14 +19,20 @@ const MainCont = styled.div`
     width: 100%;
     height: 100%;
     justify-content: center;
-`
+`;
 
 const WaveCont = styled.div`
   width: 100%;
+  object-fit: cover;
 `;
 
 const Wave = styled.img`
   width: 100%;
+  @media only screen and (min-width: 500px) {
+    object-fit: cover;
+    height: 320px;
+    width: 100%;
+  }
 `;
 
 const NavBarCont = styled.div`
@@ -74,7 +80,7 @@ export default function Home() {
 
             <BodyCont>
                 <Low>
-                    <Calendar/>
+                    <Calendar />
                 </Low>
                 <Low>
                     <Column>

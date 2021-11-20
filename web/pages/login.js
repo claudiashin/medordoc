@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css';
 import styled from 'styled-components';
 import Lottie from "react-lottie";
 import React from "react";
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 
 //import comps
 import HeaderTitle from '../comps/HeaderTitle';
@@ -30,10 +30,16 @@ const Cont = styled.div`
 
 const WaveCont = styled.div`
   width: 100%;
+  object-fit: cover;
 `;
 
 const Wave = styled.img`
   width: 100%;
+  @media only screen and (min-width: 500px) {
+    object-fit: cover;
+    height: 320px;
+    width: 100%;
+  }
 `;
 
 const NavBarCont = styled.div`
@@ -102,27 +108,27 @@ export default function Home() {
           width="400px"
         />
         <Subcont
-          style={{marginTop:100}}
+          style={{ marginTop: 100 }}
         >
           <LoginForm
             width="250"
             style={{ marginTop: 100 }}
           />
           <BtnCont>
-            <Btn 
-              title = "Sign In"
-              fSize = "22px"
-              color = "#fff"
-              bgColor = "#90AABB"
-              width = "200px"
-              height = "53px"
-              margin = "5px"
-              borderRad = "25px"
-              onClick={()=>router.push("/home")}
+            <Btn
+              title="Sign In"
+              fSize="22px"
+              color="#fff"
+              bgColor="#90AABB"
+              width="200px"
+              height="53px"
+              margin="5px"
+              borderRad="25px"
+              onClick={() => router.push("/home")}
             />
           </BtnCont>
         </Subcont>
-    
+
       </BodyCont>
 
       <Footer />

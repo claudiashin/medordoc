@@ -9,22 +9,26 @@ import LoginForm from '../comps/LoginForm';
 import Btn from '../comps/Btn';
 import NavBar from '../comps/NavBar';
 
-
-
-
 const HeroCont = styled.View`
-    marginBottom: 50px;
+    margin-top: 100px;
+    margin-bottom: 50px;
 `
 const ButCont = styled.View`
-    marginLeft: 180px;
-    marginTop: 50px;
+    margin-left: 180px;
+    margin-top: 50px;
 `
 const Cont = styled.View`
     flex:1;
 `
 const NavBarCont = styled.View`
-
 `;
+
+const Wave = styled.Image`
+    width: 100%;
+    height: 30%;
+    position: absolute;
+`;
+
 export default function patientprofile() {
     
     const [changeForm, setChangeForm] = useState(true);
@@ -32,6 +36,7 @@ export default function patientprofile() {
     if (changeForm === true ){
         return (
             <Cont>
+            <Wave source={require('../assets/backgroundmobile.png')} />
             <ScrollView style={styles.scrollView} >
                 <HeroCont>
                     <HeroAvatar 
