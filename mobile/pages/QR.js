@@ -6,8 +6,14 @@ import NavBar from '../comps/NavBar';
 
 const Cont = styled.View`
   flex:1;
+`;
 
-`
+const Wave = styled.Image`
+    width: 100%;
+    height: 30%;
+    position: absolute;
+`;
+
 const NavBarCont = styled.View`
 
 `;
@@ -17,6 +23,7 @@ const MyScrollView = styled.ScrollView`
 const QR = ({navigation})=>{
 return(
     <Cont>
+      <Wave source={require('../assets/backgroundmobile.png')} />
       <MyScrollView>
 
     <QRCode

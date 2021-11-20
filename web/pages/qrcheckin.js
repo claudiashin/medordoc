@@ -1,6 +1,6 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 
 //import comps
 import Btn from '../comps/Btn';
@@ -24,10 +24,16 @@ const MainCont = styled.div`
 
 const WaveCont = styled.div`
   width: 100%;
+  object-fit: cover;
 `;
 
 const Wave = styled.img`
   width: 100%;
+  @media only screen and (min-width: 500px) {
+    object-fit: cover;
+    height: 320px;
+    width: 100%;
+  }
 `;
 
 const NavBarCont = styled.div`
@@ -72,16 +78,16 @@ export default function Home() {
                 <NavBar />
             </NavBarCont>
 
-            <HeaderTitle 
+            <HeaderTitle
                 title="Booking Confirmation"
                 fontSize='36'
             />
             <BodyCont>
 
-                    <QRComponent click = {{}}/>
+                <QRComponent click={{}} />
             </BodyCont>
 
-            <Footer/>
+            <Footer />
         </MainCont>
     )
 }

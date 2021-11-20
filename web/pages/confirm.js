@@ -39,10 +39,16 @@ const Calander = styled.div`
 `
 const WaveCont = styled.div`
   width: 100%;
+  object-fit: cover;
 `;
 
 const Wave = styled.img`
   width: 100%;
+  @media only screen and (min-width: 500px) {
+    object-fit: cover;
+    height: 320px;
+    width: 100%;
+  }
 `;
 
 const NavBarCont = styled.div`
@@ -68,7 +74,7 @@ export default function Home() {
                 </Low>
                 <Low>
                     <Column>
-                        <PatientList 
+                        <PatientList
                             height="500"
                         />
                     </Column>

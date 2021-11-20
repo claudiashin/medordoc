@@ -8,6 +8,7 @@ import Header from "../comps/Header";
 
 const AvatarCont = styled.View`
   align-items:center;
+  margin-top: 100px;
 `
 const BodyCont = styled.View`
   align-items:center;
@@ -15,8 +16,13 @@ const BodyCont = styled.View`
 
 const Cont = styled.View`
   flex:1;
-  padding-top:20px;
-`
+`;
+
+const Wave = styled.Image`
+    width: 100%;
+    height: 30%;
+    position: absolute;
+`;
 
 const NavBarCont = styled.View`
  
@@ -36,6 +42,7 @@ const scan = ({
 })=>{
   return <Cont>
     <MyScroll>
+    <Wave source={require('../assets/backgroundmobile.png')} />
     <BodyContCont>
       <AvatarCont>
         <HeroAvatar imagesrc="https://placekitten.com/3000/2000" herowidth={150} heroheight={150}></HeroAvatar>
