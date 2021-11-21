@@ -105,8 +105,9 @@ const FooterCont = styled.div`
     bottom: 0;
 `;
 
+//make an object 
 
-export default function Home() {
+export default function Home({Push}) {
     const router = useRouter();
 
     const [changePage, setChangePage] = useState(0);
@@ -172,14 +173,14 @@ export default function Home() {
 
                 <SignInCont_Two>
 
-                    <SigninFormTwo />
+                    <SigninFormTwo onSubmit={Push}/>
 
                     <TwoButtonCont>
                         <BtnCont onClick={() => setChangePage(changePage - 1)}>
                             <Btn
                                 title="Back" width="120px" height="40px" fSize="16px" bgColor="#90AABB" borderRad="20px" margin="40px 15px 0px 0px" />
                         </BtnCont>
-                        <BtnCont onClick={() => setChangePage(changePage + 1)}>
+                        <BtnCont onClick={() => setChangePage(changePage + 1), setPush()}>
                             <Btn
                                 title="Confirm" width="120px" height="40px" fSize="16px" bgColor="#90AABB" borderRad="20px" margin="40px 15px 0px 0px" />
                         </BtnCont>

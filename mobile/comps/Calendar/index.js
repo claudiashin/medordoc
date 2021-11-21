@@ -9,7 +9,6 @@ import Day from 'react-native-calendars/src/calendar/day';
 
 const Appointment =({})=>{
 
-console.log(day);
 
 return(
   <Calendar

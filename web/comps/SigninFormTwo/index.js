@@ -2,12 +2,19 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
+//
 import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+
+//firebase
+import { addDoc, collection } from 'firebase/firestore';
+import {db} from '../../firebase';
+
+
 
 const MainCont = styled.div`
     display: flex;
@@ -92,11 +99,7 @@ const names = [
     'Chinese',
     'Japanese',
     'Korean',
-    'punjabi',
-    'Hindi',
-    'Spanish',
-    'Russian',
-
+    'Punjabi',
 ];
 
 function getStyles(name, personName, theme) {
@@ -108,22 +111,44 @@ function getStyles(name, personName, theme) {
     };
 }
 
-const SigninFormTwo = ({
 
+
+const SigninFormTwo = ({
+    onChange=()=>{}
 }) => {
 
     const theme = useTheme();
-    const [personName, setPersonName] = React.useState([]);
+    
+    const [language, setLanguage] = React.useState([]);
+    const [clinicName, setClinicName] = React.useState();
+    const [clinicAddress, setClinicAddress] = React.useState();
+    const [clinicContact, setClinicContact] = React.useState();
+    const [clinicOpen, setClinicOpen] = React.useState();
+    const [clinicClose, setClinicClose] = React.useState();
+    
 
     const handleChange = (event) => {
         const {
             target: { value },
         } = event;
-        setPersonName(
+        setLanguage(
             // On autofill we get a the stringified value.
             typeof value === 'string' ? value.split(',') : value,
         );
     };
+    
+    //firebase
+    const Push = async(cn)=>{
+        const clinicData = collection(db,"clinics")
+        await addDoc(clinicData,{
+            name: clinicName,
+            address: cn,
+            contact: clinicContact,
+            open: clinicOpen,
+            close: clinicClose,
+            language: language
+        })
+    }
 
     return <MainCont>
     <Title>Clinic Information</Title>
@@ -132,6 +157,8 @@ const SigninFormTwo = ({
         <FormInput
             type="text"
             placeholder="Clinic Name"
+            value={clinicName}
+            onChange={(e) => setClinicName(e.target.value)}
         />
     </Form>
     <Form>
@@ -139,6 +166,8 @@ const SigninFormTwo = ({
         <FormInput
             type="text"
             placeholder="Clinic Address"
+            value={clinicAddress}
+            onChange={(e) => setClinicAddress(e.target.value)}
         />
     </Form>
     <Form
@@ -148,6 +177,8 @@ const SigninFormTwo = ({
         <FormInput
             type="tel"
             placeholder="Contact Number"
+            value={clinicContact}
+            onChange={(e) => setClinicContact(e.target.value)}
         />
     </Form>
     <Title>Operation Hour</Title>
@@ -157,6 +188,8 @@ const SigninFormTwo = ({
             <FormInput
                 type="time"
                 placeholder="Open Hour"
+                value={clinicOpen}
+                onChange={(e) => setClinicOpen(e.target.value)}
             />
         </FormTimeForm>
         <FormTimeForm>
@@ -164,29 +197,31 @@ const SigninFormTwo = ({
             <FormInput
                 type="time"
                 placeholder="Open Hour"
+                value={clinicClose}
+                onChange={(e) => setClinicClose(e.target.value)}
             />
         </FormTimeForm>
     </TimeFormCont>
     <Title>Additional Information</Title>
 
     <div>
-        <FormControl sx={{ m: 1, width: 400, height: 50, border: '1px solid black', marginBottom: 5, color: 'black' }}>
-            <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
+        <FormControl sx={{ m: 1, width: 400, height: 50, border: 'none', marginBottom: 5, color: 'black' }}>
+            <InputLabel id="demo-multiple-name-label" style={{border: 'black'}}>Languages</InputLabel>
             <Select
                 labelId="demo-multiple-name-label"
                 id="demo-multiple-name"
                 multiple
-                value={personName}
+                value={language}
                 onChange={handleChange}
                 input={<OutlinedInput label="Name" />}
                 MenuProps={MenuProps}
-                style={{ height: 50, borderBlockStyle: 'black' }}
+                style={{ height: 50, borderColor: 'black' }}
             >
                 {names.map((name) => (
                     <MenuItem
                         key={name}
                         value={name}
-                        style={getStyles(name, personName, theme)}
+                        style={getStyles(name, language, theme)}
                     >
                         {name}
                     </MenuItem>
@@ -194,13 +229,11 @@ const SigninFormTwo = ({
             </Select>
         </FormControl>
     </div>
-    {/* <ButtonCont>
+    <ButtonCont>
         <Button
-            onClick={() => {
-                router.push("www.bcit.ca")
-            }}
+            onClick={()=>onSubmit(clinicContact)}
         >Confirm</Button>
-    </ButtonCont> */}
+    </ButtonCont>
 </MainCont>
 
 }
