@@ -15,8 +15,14 @@ const MainCont = styled.View`
     align-items: center;
 `;
 
+const Wave = styled.Image`
+    width: 100%;
+    height: 30%;
+    position: absolute;
+`;
+
 const ImageCont = styled.View`
-    margin-top: 30px;
+    margin-top: 100px;
     margin-bottom: 20px;
 `;
 
@@ -41,6 +47,7 @@ const NavBarCont = styled.View`
 
 export default function docprofile({navigation}) {
     return <MainCont>
+        <Wave source={require('../assets/backgroundmobile.png')} />
         <ScrollView style={styles.scrollView}>
             <ImageCont>
                 <HeroAvatar 

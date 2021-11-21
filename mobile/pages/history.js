@@ -4,9 +4,12 @@ import HeroAvatar from '../comps/HeroAvatar';
 import InfoCard from '../comps/InfoCard'
 import NavBar from "../comps/NavBar";
 import Header from "../comps/Header";
-import InfoCardThree from '../comps/InfoCardThree'
+import InfoCardThree from '../comps/InfoCardThree';
+import { EdgeInsetsPropType } from "react-native";
+
 const AvatarCont = styled.View`
   align-items:center;
+  margin-top: 100px;
 `
 const BodyCont = styled.View`
   align-items:center;
@@ -14,38 +17,51 @@ const BodyCont = styled.View`
 
 const Cont = styled.View`
   justify-content:space-between;
-  padding-top:20px;
-  flex:1
+  flex:1;
 `
+const Wave = styled.Image`
+    width: 100%;
+    height: 30%;
+    position: absolute;
+`;
 
 const NavBarCont = styled.View`
- 
-`
+`;
+
+const HeaderCont = styled.View`
+  margin-left: 50px;
+`;
+
+const MainCont = styled.View`
+`;
 const BodyContCont = styled.ScrollView`
 
 `
-const History = ()=>{
+const History = () => {
   return <Cont>
+
     <BodyContCont>
-    <BodyContCont>
-      <AvatarCont>
-        <HeroAvatar imagesrc="https://placekitten.com/3000/2000" herowidth={150} heroheight={150}></HeroAvatar>
-        <Header fontSize={18} fontWeight={"normal"} title="Jenny Lee"/>
-      </AvatarCont>
+      <Wave source={require('../assets/backgroundmobile.png')} />
+      <MainCont>
+        
+        <AvatarCont>
+          <HeroAvatar imagesrc="https://placekitten.com/3000/2000" herowidth={150} heroheight={150}></HeroAvatar>
+          <Header fontSize={18} fontWeight={"normal"} title="Jenny Lee" />
+        </AvatarCont>
 
-        <BodyContCont>
-        <Header title="Booking History"/>
-        </BodyContCont>
+        <HeaderCont>
+          <Header title="Booking History" />
+        </HeaderCont>
 
-      <BodyCont>
-        <InfoCardThree/>
-      </BodyCont>
+        <BodyCont>
+          <InfoCardThree />
+        </BodyCont>
+      </MainCont>
+
     </BodyContCont>
-
-    </BodyContCont>
-      <NavBarCont>
-        <NavBar/> 
-      </NavBarCont>
+    <NavBarCont>
+      <NavBar />
+    </NavBarCont>
   </Cont>
 }
 

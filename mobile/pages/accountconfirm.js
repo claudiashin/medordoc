@@ -14,13 +14,14 @@ const AccountCont = styled.View`
 
 const Wave = styled.Image`
     width: 100%;
-    height: 10%;
+    height: 30%;
+    position: absolute;
 `;
 
 const HeaderCont = styled.View`
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 150px;
 `;
 
 const InfoCardCont = styled.View`
@@ -42,13 +43,12 @@ const NavBarCont = styled.View`
 const accountconfirm = ({
 
 }) => {
-    const navigation = useNavigation(); 
+    const navigation = useNavigation();
 
     return (
         <AccountCont>
             <ScrollView style={styles.scrollView} >
-                <Wave source={require('../assets/background_wave.jpg')} />
-
+                <Wave source={require('../assets/backgroundmobile.png')} />
 
                 <HeaderCont>
                     <Header title={"Here's Your Account Info"} fontSize={22} />
@@ -65,7 +65,7 @@ const accountconfirm = ({
                     />
                 </InfoCardCont>
 
-     
+
 
                 <BtnCont>
                     <Btn
@@ -73,7 +73,7 @@ const accountconfirm = ({
                         fsize="20"
                         width="130"
                         height="50"
-                        onPress={()=>navigation.navigate("login")}
+                        onPress={() => navigation.navigate("login")}
                     />
                 </BtnCont>
 
@@ -87,8 +87,8 @@ const accountconfirm = ({
 
 const styles = StyleSheet.create({
     scrollView: {
-      flex: 0.85,
+        flex: 0.85,
     },
-  });
+});
 
 export default accountconfirm;

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
-
 import NavBar from '../comps/NavBar';
 import HeaderTitle from '../comps/HeaderTitle';
 import HeroLottie from '../comps/HeroLottie';
@@ -26,8 +25,18 @@ const NavBarCont = styled.div`
     top:0;
 `;
 
+const WaveCont = styled.div`
+  width: 100%;
+  object-fit: cover;
+`;
+
 const Wave = styled.img`
+  width: 100%;
+  @media only screen and (min-width: 500px) {
+    object-fit: cover;
+    height: 320px;
     width: 100%;
+  }
 `;
 
 const HeaderTitleCont = styled.div`
@@ -116,7 +125,9 @@ export default function Home({Push}) {
     if (changePage === 0)
         return <Cont>
 
-            <Wave src={'/background_wave.jpg'}></Wave>
+            <WaveCont>
+                <Wave src={'/background-web5.svg'}></Wave>
+            </WaveCont>
 
             <NavBarCont>
                 <NavBar />
@@ -146,7 +157,7 @@ export default function Home({Push}) {
                 </SignInCont>
 
             </BodyCont>
-            
+
             <FooterCont>
                 <Footer />
             </FooterCont>

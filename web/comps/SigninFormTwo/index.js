@@ -2,19 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
-//
 import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
-//firebase
-import { addDoc, collection } from 'firebase/firestore';
-import {db} from '../../firebase';
-
-
 
 const MainCont = styled.div`
     display: flex;
@@ -41,7 +34,6 @@ const FormTimeForm = styled.fieldset`
     border: 1px solid black;
     width: 185px;
     height: 55px;
-
 `
 const TimeFormCont = styled.div`
     display: flex;
@@ -69,7 +61,6 @@ const Button = styled.button`
     border-radius: 10px;
 `
 const LangMain = styled.form`
-
 `
 const LangCont = styled.select`
     width: 400px;
@@ -79,7 +70,6 @@ const LangCont = styled.select`
     border:none;
 `
 const LangOpt = styled.option`
-
 `
 
 const ITEM_HEIGHT = 48;
@@ -99,7 +89,11 @@ const names = [
     'Chinese',
     'Japanese',
     'Korean',
-    'Punjabi',
+    'punjabi',
+    'Hindi',
+    'Spanish',
+    'Russian',
+
 ];
 
 function getStyles(name, personName, theme) {
@@ -111,44 +105,22 @@ function getStyles(name, personName, theme) {
     };
 }
 
-
-
 const SigninFormTwo = ({
-    onChange=()=>{}
+
 }) => {
 
     const theme = useTheme();
-    
-    const [language, setLanguage] = React.useState([]);
-    const [clinicName, setClinicName] = React.useState();
-    const [clinicAddress, setClinicAddress] = React.useState();
-    const [clinicContact, setClinicContact] = React.useState();
-    const [clinicOpen, setClinicOpen] = React.useState();
-    const [clinicClose, setClinicClose] = React.useState();
-    
+    const [personName, setPersonName] = React.useState([]);
 
     const handleChange = (event) => {
         const {
             target: { value },
         } = event;
-        setLanguage(
+        setPersonName(
             // On autofill we get a the stringified value.
             typeof value === 'string' ? value.split(',') : value,
         );
     };
-    
-    //firebase
-    const Push = async(cn)=>{
-        const clinicData = collection(db,"clinics")
-        await addDoc(clinicData,{
-            name: clinicName,
-            address: cn,
-            contact: clinicContact,
-            open: clinicOpen,
-            close: clinicClose,
-            language: language
-        })
-    }
 
     return <MainCont>
     <Title>Clinic Information</Title>
@@ -157,8 +129,6 @@ const SigninFormTwo = ({
         <FormInput
             type="text"
             placeholder="Clinic Name"
-            value={clinicName}
-            onChange={(e) => setClinicName(e.target.value)}
         />
     </Form>
     <Form>
@@ -166,8 +136,6 @@ const SigninFormTwo = ({
         <FormInput
             type="text"
             placeholder="Clinic Address"
-            value={clinicAddress}
-            onChange={(e) => setClinicAddress(e.target.value)}
         />
     </Form>
     <Form
@@ -177,8 +145,6 @@ const SigninFormTwo = ({
         <FormInput
             type="tel"
             placeholder="Contact Number"
-            value={clinicContact}
-            onChange={(e) => setClinicContact(e.target.value)}
         />
     </Form>
     <Title>Operation Hour</Title>
@@ -188,8 +154,6 @@ const SigninFormTwo = ({
             <FormInput
                 type="time"
                 placeholder="Open Hour"
-                value={clinicOpen}
-                onChange={(e) => setClinicOpen(e.target.value)}
             />
         </FormTimeForm>
         <FormTimeForm>
@@ -197,31 +161,29 @@ const SigninFormTwo = ({
             <FormInput
                 type="time"
                 placeholder="Open Hour"
-                value={clinicClose}
-                onChange={(e) => setClinicClose(e.target.value)}
             />
         </FormTimeForm>
     </TimeFormCont>
     <Title>Additional Information</Title>
 
     <div>
-        <FormControl sx={{ m: 1, width: 400, height: 50, border: 'none', marginBottom: 5, color: 'black' }}>
-            <InputLabel id="demo-multiple-name-label" style={{border: 'black'}}>Languages</InputLabel>
+        <FormControl sx={{ m: 1, width: 400, height: 50, border: '1px solid black', marginBottom: 5, color: 'black' }}>
+            <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
             <Select
                 labelId="demo-multiple-name-label"
                 id="demo-multiple-name"
                 multiple
-                value={language}
+                value={personName}
                 onChange={handleChange}
                 input={<OutlinedInput label="Name" />}
                 MenuProps={MenuProps}
-                style={{ height: 50, borderColor: 'black' }}
+                style={{ height: 50, borderBlockStyle: 'black' }}
             >
                 {names.map((name) => (
                     <MenuItem
                         key={name}
                         value={name}
-                        style={getStyles(name, language, theme)}
+                        style={getStyles(name, personName, theme)}
                     >
                         {name}
                     </MenuItem>
@@ -229,11 +191,13 @@ const SigninFormTwo = ({
             </Select>
         </FormControl>
     </div>
-    <ButtonCont>
+    {/* <ButtonCont>
         <Button
-            onClick={()=>onSubmit(clinicContact)}
+            onClick={() => {
+                router.push("www.bcit.ca")
+            }}
         >Confirm</Button>
-    </ButtonCont>
+    </ButtonCont> */}
 </MainCont>
 
 }
