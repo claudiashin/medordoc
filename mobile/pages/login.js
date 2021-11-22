@@ -7,9 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import Header from '../comps/Header';
 import HeroLottie from '../comps/HeroLottie';
 import NavBar from '../comps/NavBar';
-
-
-
+import Firebase from '../comps/Auth'
 import LoginForm from '../comps/LoginForm';
 import Btn from '../comps/Btn';
 
@@ -35,7 +33,7 @@ const MainCont = styled.View`
     justify-content: space-between;
 `
 const Login = styled.View`
-    
+
 `
 const ButCont = styled.View`
     margin-top: 20px;
@@ -44,64 +42,61 @@ const ButCont = styled.View`
     justify-content: center;
 `;
 
-
 // Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyDeOMoQTGw_ofJzos_bQOqX_XQpty1YtXk",
-    authDomain: "medordoc-516a4.firebaseapp.com",
-    projectId: "medordoc-516a4",
-    storageBucket: "medordoc-516a4.appspot.com",
-    messagingSenderId: "170688855918",
-    appId: "1:170688855918:web:5efaddb77d4f3aeef5cb7f"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDeOMoQTGw_ofJzos_bQOqX_XQpty1YtXk",
+//   authDomain: "medordoc-516a4.firebaseapp.com",
+//   projectId: "medordoc-516a4",
+//   storageBucket: "medordoc-516a4.appspot.com",
+//   messagingSenderId: "170688855918",
+//   appId: "1:170688855918:web:5efaddb77d4f3aeef5cb7f"
+// };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
 
-const login = () => {
+const login = ()=>{
+     const navigation = useNavigation(); 
+     const SignInGoogle = async()=>{
+         const auth = getAuth();
+         const provider = new GoogleAuthProvider();
+         const result  = await signInWithPopup(auth,provider);
+         console.log(result);
+     }
+     
+ return <MainCont>
+    <Wave source={require('../assets/backgroundmobile.png')} />
+     <ScrollView>
 
-    const navigation = useNavigation();
+                <LottieCont>
+                    <HeroLottie
+                        source={require('../assets/lottie_user.json')}
+                        style={{ width: 250 }}
+                    />
+                </LottieCont>
+   
 
-    const SignInGoogle = async () => {
-        const auth = getAuth();
-        const provider = new GoogleAuthProvider();
-        const result = await signInWithPopup(auth, provider);
-        console.log(result);
-    }
+     <Firebase/>
+    
+     <Login>
+        <LoginForm></LoginForm>
+     </Login>
 
-    return <MainCont>
-            <Wave source={require('../assets/backgroundmobile.png')} />
-        <ScrollView>
+     <ButCont>
+        <Btn 
+            title = "Log In"
+            fsize = '18'
+            width = '160'
+            height = '45'
+            borderRad = '50'
+            onPress={()=>navigation.navigate('booking')}
+        />
+        {/* <Button title="signin" /> */}
+        </ButCont>
 
-            <LottieCont>
-                <HeroLottie
-                    source={require('../assets/lottie_user.json')}
-                    style={{ width: 250 }}
-                />
-            </LottieCont>
-
-
-            {/* <Button onPress ={SignInGoogle} title = "Sign in Google Account"></Button> */}
-
-            <Login>
-                <LoginForm></LoginForm>
-            </Login>
-
-            <ButCont>
-                <Btn
-                    title="Log In"
-                    fsize='18'
-                    width='160'
-                    height='45'
-                    borderRad='50'
-                    onPress={() => navigation.navigate('booking')}
-                />
-                {/* <Button title="signin" /> */}
-            </ButCont>
-
-        </ScrollView>
-
-
+       </ScrollView>
+     
+     
         <NavBar></NavBar>
     </MainCont>
 

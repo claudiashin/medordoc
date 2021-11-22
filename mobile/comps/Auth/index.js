@@ -32,7 +32,6 @@ export default function firebase(
             });
         
             if (result.type === 'success') {
-              
                const auth =getAuth();
                const provider = GoogleAuthProvider.credential(
                 result.idToken, 

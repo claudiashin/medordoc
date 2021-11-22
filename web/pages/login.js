@@ -16,7 +16,6 @@ import Btn from '../comps/Btn';
 import Footer from '../comps/Footer';
 
 
-
 const Cont = styled.div`
   display: flex;
   flex-wrap: wrap;
