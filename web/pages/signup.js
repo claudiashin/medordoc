@@ -64,17 +64,6 @@ const SignInCont = styled.div`
     flex-direction: column;
 `;
 
-const BtnCont = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 80px;
-`;
-
-const TwoButtonCont = styled.div`
-    display: flex;
-    justify-content: flex-end;
-`;
-
 const SignInCont_Two = styled.div`
     display: flex;
     flex-direction: column;
@@ -84,6 +73,11 @@ const SignInCont_Two = styled.div`
 const Title = styled.p`
     margin-left: 15px;
     font-size: 16px;
+`;
+const BtnCont = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 80px;
 `;
 
 const BtnContTwo = styled.div`
@@ -149,11 +143,7 @@ export default function Home({Push}) {
 
 
                 <SignInCont>{/*{changeForm}*/}
-                    <SigninForm />
-                    <BtnCont onClick={() => setChangePage(changePage + 1)}>
-                        <Btn
-                            title="Next" width="120px" height="40px" fSize="16px" bgColor="#90AABB" borderRad="20px" margin="40px 15px 0px 0px" />
-                    </BtnCont>
+                    <SigninForm  setChangePage={(number) => setChangePage(changePage + number)}/>
                 </SignInCont>
 
             </BodyCont>
@@ -181,21 +171,8 @@ export default function Home({Push}) {
                     <HeroAvatar herowidth="220px" heroheight="220px" heromargin="50px 20px 40px 0px" />
                 </HeroLottieCont>
 
-
                 <SignInCont_Two>
-
-                    <SigninFormTwo onSubmit={Push}/>
-
-                    <TwoButtonCont>
-                        <BtnCont onClick={() => setChangePage(changePage - 1)}>
-                            <Btn
-                                title="Back" width="120px" height="40px" fSize="16px" bgColor="#90AABB" borderRad="20px" margin="40px 15px 0px 0px" />
-                        </BtnCont>
-                        <BtnCont onClick={() => setChangePage(changePage + 1), setPush()}>
-                            <Btn
-                                title="Confirm" width="120px" height="40px" fSize="16px" bgColor="#90AABB" borderRad="20px" margin="40px 15px 0px 0px" />
-                        </BtnCont>
-                    </TwoButtonCont>
+                    <SigninFormTwo setChangePage={(number) => setChangePage(changePage + number)}/>
                 </SignInCont_Two>
 
             </BodyCont>
@@ -228,7 +205,7 @@ export default function Home({Push}) {
 
 
             <BtnContTwo onClick={() => router.push("/login")}>
-                <Btn title="Let's Explore" bgColor="#90AABB" width="160px" height="50px" fSize="16px" fWeight="600" borderRad="25px" />
+                <Btn title="Let's Explore" bgColor="#90AABB" width="160px" height="50px" fSize="16px" fWeight="600" borderRad="25px" bgHover="#7C9AAD" />
             </BtnContTwo>
 
             <FooterCont>

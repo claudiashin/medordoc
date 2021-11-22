@@ -125,6 +125,7 @@ export default function Home() {
               height="53px"
               margin="5px"
               borderRad="25px"
+              bgHover="#7C9AAD"
               onClick={() => router.push("/home")}
             />
           </BtnCont>

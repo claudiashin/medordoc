@@ -1,105 +1,83 @@
-import styled from 'styled-components/native'
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import QRCode from 'react-native-qrcode-svg';
-import NavBar from '../comps/NavBar';
+import styled from "styled-components/native";
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from "react-native";
+
+//import comps
+import NavBar from "../comps/NavBar";
+import HeroAvatar from "../comps/HeroAvatar";
+import Header from "../comps/Header";
+import InfoCardThree from "../comps/InfoCardThree";
+import Qrcode from "../comps/QrCode";
 
 const Cont = styled.View`
-  flex:1;
+  flex: 1;
 `;
 
 const Wave = styled.Image`
-    width: 100%;
-    height: 30%;
-    position: absolute;
+  width: 100%;
+  height: 30%;
+  position: absolute;
 `;
 
 const NavBarCont = styled.View`
-
+  flex: 0.15;
 `;
-const MyScrollView = styled.ScrollView`
-
-`
-const QR = ({navigation})=>{
-return(
+const QRCont = styled.View`
+  justify-content: center;
+  align-items: center;
+`;
+const HeaderCont = styled.View`
+  margin: 100px 0 50px 0;
+  justify-content: center;
+  align-items: center;
+`;
+const QR = ({ navigation }) => {
+  return (
     <Cont>
-      <Wave source={require('../assets/backgroundmobile.png')} />
-      <MyScrollView>
+      <ScrollView style={styles.scrollView}>
+        <Wave source={require("../assets/backgroundmobile.png")} />
 
-    <QRCode
-    value="https://www.google.com/"
-  />
-  </MyScrollView>
+        <HeaderCont>
+          <HeroAvatar heroheight="180" herowidth="180" />
+          <Header title="User Name" fontSize="22" style={{ paddingTop: 20 }} />
+          <Header title="Scan Your QR Code" />
+        </HeaderCont>
 
-  <NavBarCont>
-  <NavBar />
-  </NavBarCont>
-</Cont>
+        <QRCont>
+          <Qrcode 
+          />
+          <InfoCardThree
+            text="Next Appointment Details"
+            text2="Date"
+            text3="December 5th, 2021"
+            text4="Time"
+            text5="10:00 AM"
+            text6="Location"
+            text7="Vancouver Medical Clinic, 1234 Canada Way, V4J 2B7"
+            text8=""
+            text9=""
+          />
+        </QRCont>
+      </ScrollView>
 
-)
-}
-
-// const QR = () => {
-//   const [imageUri, setImageUri] = useState(null);
-//   const [detectImageUri, setDetectImageUri] = useState(null);
-//   const [detectedValues, setDetectedValues] = useState([]);
-//   const [text, setText] = useState('');
-//   const [error, setError] = useState('');
-
-//   const generate = () => {
-//     if (!text.trim()) {
-//       setError('value cannot be empty');
-//       setText('');
-//       return;
-//     }
-//     RNQRGenerator.generate({
-//       // value: 'otpauth://totp/Example:alice@google.com?secret=JBSWY3DPEHPK3PXP&issuer=Example', // required
-//       value: text,
-//       height: 300,
-//       width: 300,
-//       base64: true,
-//       backgroundColor: 'white',
-//       color: 'black',
-//       correctionLevel: 'M',
-//       // padding: {
-//       //   top: 0,
-//       //   left: 0,
-//       //   bottom: 0,
-//       //   right: 0,
-//       // }
-//     })
-//       .then((response) => {
-//         console.log('Response:', response);
-//         setImageUri({uri: response.uri});
-//       })
-//       .catch((err) => console.log('Cannot create QR code', err));
-//   };
-
-//   return <Cont>
-      
-//   <Image style={styles.image} source={imageUri} />
-
-//    <NavBarCont>
-//      <NavBar />
-//    </NavBarCont>
-  
-//   </Cont>
-// }
+      <NavBarCont>
+        <NavBar />
+      </NavBarCont>
+    </Cont>
+  );
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-
+  scrollView: {
+    flex: 0.85,
   },
-  // image: {
-  //   backgroundColor: '#F3F3F3',
-  //   width: height / 3,
-  //   height: height / 3,
-  //   borderWidth: StyleSheet.hairlineWidth,
-  //   marginBottom: 16,
-  // },
 });
 
 export default QR;

@@ -23,6 +23,7 @@ const FormInput = styled.input`
     border: none;
     outline: none;
     type: text;
+    width: 380px;
     padding-bottom: 5px;
     background-color: #F7F2EE;
 `

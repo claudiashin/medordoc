@@ -34,6 +34,7 @@ function SimpleDialog(props) {
             setState({
                 result: data
             })
+            window.location.href = `/checkIn?ccode=${result.cornit}`;
         }
     }
 
@@ -49,7 +50,6 @@ function SimpleDialog(props) {
             style={{width: '100%'}}
         />
         <ListItem button onClick={() => handleListItemClick(code)} key={code}>
-            {/* {result.data} */}
         </ListItem>
       </Dialog>
     );
