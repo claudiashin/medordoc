@@ -1,23 +1,30 @@
 import React ,{useEffect,useState} from 'react';
 import { StyleSheet, Text, View,Dimensions,Button } from 'react-native';
-import MapView,{PROVIDER_GOOGLE,Marker}from 'react-native-maps';
+import MapView,{PROVIDER_GOOGLE,Marker,Callout, Circle,}from 'react-native-maps';
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 
-const Map =({
 
+const Map =({
+navigation
 })=>{
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [loading,setLoading] =useState("waiting");
   const [visible,setVisible] =useState(true)
   const [region,setRegion]=useState({
-    latitude: 37.78825,
-    longitude: -122.4324,
+    latitude: 48.250150584432035,
+    longitude: -123.01565794794925,
     latitudeDelta: 0.015,
     longitudeDelta: 0.0121,
   })
+  const [ pin, setPin ] = React.useState({
+		latitude: 48.250150584432035,
+		longitude: -123.01565794794925
+	})
 
   const getLoc = () => {
     console.log(location);
@@ -31,6 +38,9 @@ const Map =({
         longitudeDelta: 0.0121,
       })
     }
+
+     const navigate=()=>{()=>navigation.navigate('booking')}
+      
 
     // const latitude = location.coords.latitude;
     // console.log(latitude);
@@ -58,7 +68,7 @@ const Map =({
       }
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
-      setLoading("Update Location");
+      setLoading("Current Location");
       setVisible(false)
     })();
   },[]);
@@ -76,31 +86,81 @@ const Map =({
 
   }
  return(
-  <View style={styles.container}>
-  <MapView style={styles.map}
-  region={region}
+ 		<View style={styles.container} keyboardShouldPersistTaps={'handled'}>
+			<GooglePlacesAutocomplete
+				placeholder="Search"
+				fetchDetails={true}
+				GooglePlacesSearchQuery={{
+          rankby: "distance",
+          type:'hospital'
+          
+				}}
+				onPress={(data, details = null) => {
+					// 'details' is provided when fetchDetails = true
+					console.log(data, details)
+					setRegion({
+						latitude: details.geometry.location.lat,
+						longitude: details.geometry.location.lng,
+						latitudeDelta: 0.0922,
+						longitudeDelta: 0.0421
+					})
+				}}
+				query={{
+					key: "AIzaSyCCt-xyjh42M9cMpdoeAo4nK6sP5bWDVss",
+					language: "en",
+					components: "country:ca",
+					types: "establishment",
+					radius: 30000,
+					location: `${region.latitude}, ${region.longitude}`
+				}}
+				styles={{
+					container: { flex: 0, position: "absolute",top:"13%", width: "80%", zIndex: 1 },
+					listView: { backgroundColor: "white" }
+				}}
+			/>
+  
+   <MapView style={styles.map}
+    region={region}
+    provider={PROVIDER_GOOGLE}　
     >
-   <MapView.Marker
-     coordinate={{latitude: 49.25810,
-     longitude: -123.021580}}
-     title={"Saint Clinic"}
-     description={"Address:"}
-    />
-      <MapView.Marker
-     coordinate={{latitude: 49.25710,
-     longitude: -123.021570}}
-     title={"Holy Clinic"}
-     description={"Address:"}
-    /> 
-     <MapView.Marker
-     coordinate={{latitude: 49.25320,
-     longitude: -123.021470}}
-     title={"Christmas clinic"}
-     description={"Address"}
-    />  
+   
+   <Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} />
+				<Marker
+					coordinate={pin}
+					pinColor="black"
+					draggable={true}
+					onDragStart={(e) => {
+						console.log("Drag start", e.nativeEvent.coordinates)
+					}}
+					onDragEnd={(e) => {
+						setPin({
+							latitude: e.nativeEvent.coordinate.latitude,
+							longitude: e.nativeEvent.coordinate.longitude
+						})
+					}}
+				>
+   
+					<Callout>
+						<Text>I'm here</Text>
+					</Callout>
+				</Marker>
+				<Circle center={pin} radius={1000} /> 
+    <MapView.Marker
+     coordinate={{latitude: 49.250150584432035,
+     longitude: -123.01565794794925}}
+     title={"Burnaby Clinic"}
+     description={"description"}
+    
+    >
+    <MapView.Callout tooltip style={styles.customView} onPress = {navigate}
+    >
+        <View style={styles.calloutText} >
+        <Text>Burnaby{"\n"}20 minutes</Text>
+    </View>
+   </MapView.Callout> 
+    </MapView.Marker>   
    </MapView>
     <Button onPress = {getLoc} title = {loading} disabled = {visible}/>     
- 
   </View>
     )
 }
@@ -109,7 +169,8 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
-      justifyContent: 'center',
+      // justifyContent: 'center',
+      // margin:50
     },
     map: {
       width: Dimensions.get('window').width,

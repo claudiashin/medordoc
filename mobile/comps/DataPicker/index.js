@@ -3,18 +3,16 @@ import { StyleSheet, Text, View, TouchableOpacity,Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import styled from "styled-components/native";
 
-const Datepick = () => {
+export default function Datepick() {
     const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('time');
     const [show, setShow] = useState(true);
-    const [text, setText] = useState(['Empty'])
+    const [text, setText] = useState('Empty')
   
     const onChange = (event, selectedDate) => {
       const currentDate = selectedDate || date;
       setShow(Platform.OS === 'ios');
       setDate(currentDate);
-
-
     //  let tempDate = new Date(currentDate);
     //  let fdate =tempDate.getDate() + "/" +(tempDate.getMonth())+tempDate.getFullYea();
 
@@ -29,7 +27,7 @@ const Datepick = () => {
   
      const showDatepicker = () => {
        showMode('date');
-       console.log(date);
+      
      };
   
     const showTimepicker = () => {
@@ -42,7 +40,7 @@ const Datepick = () => {
           
           <Button onPress={showDatepicker} title="Show time picker!"/>
           <Button onPress={showTimepicker} title="Show time picker!"/>
-         <Text>{Text}</Text>
+         <Text>{text}</Text>
         </View> 
         {show && (
           <DateTimePicker
@@ -65,4 +63,4 @@ const Datepick = () => {
   //     justifyContent: 'center',
   //   },})
 
-export default Datepick;
+// export default Datepick;

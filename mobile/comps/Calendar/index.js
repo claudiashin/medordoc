@@ -7,8 +7,6 @@ import {Card, Avatar} from 'react-native-paper';
 import Day from 'react-native-calendars/src/calendar/day';
 // import moment from ''
 
-
-
 const Appointment =({})=>{
   const renderItem = (item) => {
     return (
