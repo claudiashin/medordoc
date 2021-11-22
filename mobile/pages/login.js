@@ -65,12 +65,12 @@ const login = ()=>{
      }
      
  return <MainCont>
-    <Wave source={require('../assets/background_wave.jpg')} />
+    <Wave source={require('../assets/background_mobile.png')} />
      <ScrollView>
 
                 <LottieCont>
                     <HeroLottie
-                        source={require('../assets/lottie_user.json')}
+                        source={require('./assets/lottie_user.json')}
                         style={{ width: 250 }}
                     />
                 </LottieCont>
