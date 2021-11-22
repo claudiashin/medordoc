@@ -25,11 +25,11 @@ const Wave = styled.Image`
 `;
 
 const CalendarAPICont = styled.View`
-   
+margin-top: 25px;
 `;
 
 const DropDownCont = styled.View`
-margin-top: 25px;
+margin: 50px;
 
 `;
 

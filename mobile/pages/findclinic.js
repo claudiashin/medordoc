@@ -19,8 +19,10 @@ const Cont = styled.View`
   justify-content: space-between;
 `
 
-const SubCont = styled.ScrollView`
-`;
+// const SubCont = styled.ScrollView`
+
+
+// `;
 
 const Wave = styled.Image`
     width: 100%;
@@ -61,32 +63,30 @@ const NavBarCont = styled.View`
 
 `;
 
-const findclinic = ({ navigation }) => {
+export default function findclinic({ navigation }){
   return (
     <Cont>
-      <SubCont>
+      <ScrollView keyboardShouldPersistTaps={'handled'}>
         <Wave source={require('../assets/backgroundmobile.png')} />
-        <SearchBar />
         <Map />
 
-        <Filiter />
+        {/* <Filiter /> */}
         <CardCont>
           <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
           <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
           <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
-        </CardCont>
-      </SubCont>
+        </CardCont> 
+      </ScrollView> 
 
       <NavBarCont>
         <NavBar />
       </NavBarCont>
-
     </Cont>
 
   )
 
 }
-export default findclinic;
+
 
 
 

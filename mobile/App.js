@@ -28,7 +28,7 @@ import patientprofile from './pages/patientprofile';
 import confirmreq from './pages/confirmreq';
 import QR from './pages/QR';
 import firebase from './pages/firebase';
-// import test from './pages/test'
+import test from './pages/test'
 
 
 
@@ -54,8 +54,6 @@ export default function App() {
         <Stack.Screen options={{ headerShown: false }} name="history" component={history} />
         <Stack.Screen options={{ headerShown: false }} options={{ headerShown: false }}name="confirmreq" component={confirmreq} />
         <Stack.Screen options={{ headerShown: false }} name="QR" component={QR} />
-
-
       </Stack.Navigator>
     </NavigationContainer>
 
