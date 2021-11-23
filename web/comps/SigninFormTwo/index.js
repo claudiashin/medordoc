@@ -8,9 +8,6 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../firebase";
 import Btn from "../Btn";
 
 const MainCont = styled.div`
@@ -82,6 +79,18 @@ const BtnCont = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-bottom: 80px;
+  display: ${(props) => (props.display ? "block" : "none")};
+`;
+
+const AlertBanner = styled.div`
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+  display: ${(props) => (props.show ? "block" : "none")};
 `;
 
 const ITEM_HEIGHT = 48;
@@ -103,8 +112,6 @@ const names = [
   "Korean",
   "punjabi",
   "Hindi",
-  "Spanish",
-  "Russian",
 ];
 
 function getStyles(name, personName, theme) {
@@ -116,52 +123,31 @@ function getStyles(name, personName, theme) {
   };
 }
 
-const SigninFormTwo = ({ setChangePage }) => {
+const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
+  const [showAlert, setShowAlert] = React.useState(false);
+  const [error, setError] = React.useState("");
   const theme = useTheme();
-
-  const [clinicLang, setLanguage] = React.useState([]);
-  const [clinicName, setClinicName] = React.useState([]);
-  const [clinicAdd, setClinicAdd] = React.useState([]);
-  const [clinicNum, setClinicNum] = React.useState([]);
-  const [clinicOpen, setClinicOpen] = React.useState([]);
-  const [clinicClose, setClinicClose] = React.useState([]);
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setLanguage(
-      // On autofill we get a the stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+    setInfo({lang: typeof value === "string" ? value.split(",") : value});
   };
-
-  function getAlert() {
-    if (
-      clinicName == "" ||
-      clinicAdd == "" ||
-      clinicNum == "" ||
-      clinicOpen == "" ||
-      clinicClose == "" ||
-      clinicLang == ""
-    ) {
-      alert("Please fill out all form");
-    } else setChangePage(1);
-  }
 
   return (
     <MainCont>
+      <AlertBanner show={showAlert}>{error}</AlertBanner>
       <Title>Clinic Information</Title>
       <FormField>
         <FormTitle>Clinic Name</FormTitle>
         <FormInput
           type="text"
           placeholder="Clinic Name"
-          value={clinicName}
+          value={info.name}
           onChange={(e) => {
-            setClinicName(e.target.value);
+            setInfo({name: e.target.value });
           }}
-          required={require}
         />
       </FormField>
       <FormField>
@@ -169,9 +155,9 @@ const SigninFormTwo = ({ setChangePage }) => {
         <FormInput
           type="text"
           placeholder="Clinic Address"
-          value={clinicAdd}
+          value={info.add}
           onChange={(e) => {
-            setClinicAdd(e.target.value);
+            setInfo({ add: e.target.value });
           }}
         />
       </FormField>
@@ -180,9 +166,9 @@ const SigninFormTwo = ({ setChangePage }) => {
         <FormInput
           type="tel"
           placeholder="Contact Number"
-          value={clinicNum}
+          value={info.num}
           onChange={(e) => {
-            setClinicNum(e.target.value);
+            setInfo({ num: e.target.value });
           }}
         />
       </FormField>
@@ -193,9 +179,9 @@ const SigninFormTwo = ({ setChangePage }) => {
           <FormTimeInput
             type="time"
             placeholder="Open Hour"
-            value={clinicOpen}
+            value={info.open}
             onChange={(e) => {
-              setClinicOpen(e.target.value);
+              setInfo({ open: e.target.value });
             }}
           />
         </FormTimeForm>
@@ -204,9 +190,9 @@ const SigninFormTwo = ({ setChangePage }) => {
           <FormTimeInput
             type="time"
             placeholder="Open Hour"
-            value={clinicClose}
+            value={info.close}
             onChange={(e) => {
-              setClinicClose(e.target.value);
+              setInfo({ close: e.target.value });
             }}
           />
         </FormTimeForm>
@@ -229,7 +215,7 @@ const SigninFormTwo = ({ setChangePage }) => {
             labelId="demo-multiple-name-label"
             id="demo-multiple-name"
             multiple
-            value={clinicLang}
+            value={info.lang}
             onChange={handleChange}
             input={<OutlinedInput label="Name" />}
             MenuProps={MenuProps}
@@ -239,7 +225,7 @@ const SigninFormTwo = ({ setChangePage }) => {
               <MenuItem
                 key={name}
                 value={name}
-                style={getStyles(name, clinicLang, theme)}
+                style={getStyles(name, info.lang, theme)}
               >
                 {name}
               </MenuItem>
@@ -262,15 +248,26 @@ const SigninFormTwo = ({ setChangePage }) => {
         </BtnCont>
         <BtnCont
           onClick={async () => {
-            const result = await addDoc(collection(db, "clinics"), {
-              name: clinicName,
-              address: clinicAdd,
-              contact: clinicNum,
-              open: clinicOpen,
-              close: clinicClose,
-              lang: clinicLang,
-            });
-            getAlert();
+            setShowAlert(false);
+            if (
+              info.name == "" ||
+              info.lang == "" ||
+              info.add == "" ||
+              info.num == "" ||
+              info.open == "" ||
+              info.close == ""
+            ) {
+              setError("Please fill out the form correctly");
+              setShowAlert(true);
+            } else {
+              const result = await submit();
+              if (result.id) {
+                setChangePage(1);
+              } else {
+                setError("We have some issue to sign you up. Please try again later.");
+                setShowAlert(true);
+              }
+            }
           }}
         >
           <Btn

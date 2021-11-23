@@ -6,8 +6,10 @@ import { en, registerTranslation } from "react-native-paper-dates";
 registerTranslation("en", en);
 import { DatePickerInput } from "react-native-paper-dates";
 import DropDownPicker from "react-native-dropdown-picker";
-import Btn from "../Btn";
 import { useNavigation } from "@react-navigation/native";
+
+//import comps
+import Btn from "../Btn";
 
 const MainCont = styled.View`
   flex-direction: column;
@@ -27,7 +29,8 @@ const Radio = styled.View`
   position: relative;
   z-index: 1;
 `;
-const DateCont = styled.View``;
+const DateCont = styled.View`
+`;
 const RadioTitle = styled.Text`
   font-weight: 600;
   margin-left: 15px;
