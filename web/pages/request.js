@@ -11,41 +11,56 @@ import QRscan from "../comps/QRscan";
 
 const Cont = styled.div`
     background-color: #F7F2EE;
-`
+`;
+
+const WaveCont = styled.div`
+  width: 100%;
+  object-fit: cover;
+`;
+
+const Wave = styled.img`
+  width: 100%;
+  @media only screen and (min-width: 500px) {
+    object-fit: cover;
+    height: 320px;
+    width: 100%;
+  }
+`;
+
 const Background = styled.img`
-    
-`
+`;
 const HeaderCont = styled.div`
     display: flex;
     right: 50%;
     top:200px;
     align-self: center;
     justify-content: center;
-`
+`;
 
 const NavCont = styled.div`
     width:100%;
     // height:300px;
     position:absolute;
     top:0;
-    
-`
+`;
 
 const ContPatientCard = styled.div`
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    
-`
+`;
+
 const ContPatientCardInd = styled.div`
     display: flex;
     margin: 10px;
-`
+`;
+
 const ContFooter = styled.div`
     display: flex;
     margin-top: 50px;
-`
+`;
+
 //popup card 
 const PopupCont = styled.div`
     display: flex;
@@ -54,27 +69,29 @@ const PopupCont = styled.div`
     left: 38%;
     align-self: center;
     justify-content: center;
-`
+`;
 
 export default function Home() {
 
-    return( <Cont>
-        <Background src={'/background-web4.svg'}/>
+    return (<Cont>
+        <WaveCont>
+            <Wave src={'/background-web5.svg'}></Wave>
+        </WaveCont>
         <NavCont>
-        <NavBar/>
+            <NavBar />
         </NavCont>
 
         <HeaderCont>
-            <HeaderTitle title={"Patient List"}/>
+            <HeaderTitle title={"Patient List"} />
         </HeaderCont>
-        
 
-         {/* <PopupCont>
+
+        {/* <PopupCont>
             <PopupCard/>
         </PopupCont>  */}
 
         <QRscan />
-        
+
         <ContPatientCard>
             <ContPatientCardInd>
                 <PatientCard

@@ -1,27 +1,27 @@
 import styled from 'styled-components/native'
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity,Button,ScrollView,Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button, ScrollView, Image } from 'react-native';
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider,getAuth,signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { useNavigation } from '@react-navigation/native';
 import Header from '../comps/Header';
 import HeroLottie from '../comps/HeroLottie';
 import NavBar from '../comps/NavBar';
-
-
-
+import Firebase from '../comps/Auth'
 import LoginForm from '../comps/LoginForm';
 import Btn from '../comps/Btn';
 
-
 const Wave = styled.Image`
     width: 100%;
-    height: 10%;
+    height: 30%;
+    position: absolute;
+    top: 0;
 `;
 
 const LottieCont = styled.View`
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
 `;
 
 
@@ -33,7 +33,7 @@ const MainCont = styled.View`
     justify-content: space-between;
 `
 const Login = styled.View`
-    
+
 `
 const ButCont = styled.View`
     margin-top: 20px;
@@ -42,24 +42,21 @@ const ButCont = styled.View`
     justify-content: center;
 `;
 
-
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDeOMoQTGw_ofJzos_bQOqX_XQpty1YtXk",
-  authDomain: "medordoc-516a4.firebaseapp.com",
-  projectId: "medordoc-516a4",
-  storageBucket: "medordoc-516a4.appspot.com",
-  messagingSenderId: "170688855918",
-  appId: "1:170688855918:web:5efaddb77d4f3aeef5cb7f"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDeOMoQTGw_ofJzos_bQOqX_XQpty1YtXk",
+//   authDomain: "medordoc-516a4.firebaseapp.com",
+//   projectId: "medordoc-516a4",
+//   storageBucket: "medordoc-516a4.appspot.com",
+//   messagingSenderId: "170688855918",
+//   appId: "1:170688855918:web:5efaddb77d4f3aeef5cb7f"
+// };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
 
 const login = ()=>{
-
-    const navigation = useNavigation(); 
-
+     const navigation = useNavigation(); 
      const SignInGoogle = async()=>{
          const auth = getAuth();
          const provider = new GoogleAuthProvider();
@@ -68,8 +65,7 @@ const login = ()=>{
      }
      
  return <MainCont>
-                     
-    <Wave source={require('../assets/background_wave.jpg')} />
+    <Wave source={require('../assets/backgroundmobile.png')} />
      <ScrollView>
 
                 <LottieCont>
@@ -80,7 +76,7 @@ const login = ()=>{
                 </LottieCont>
    
 
-     {/* <Button onPress ={SignInGoogle} title = "Sign in Google Account"></Button> */}
+     <Firebase/>
     
      <Login>
         <LoginForm></LoginForm>
@@ -102,13 +98,13 @@ const login = ()=>{
      
      
         <NavBar></NavBar>
-     </MainCont> 
+    </MainCont>
 
- }
+}
 
- const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     scrollView: {
-      flex: 0.85,
+        flex: 0.85,
     },
-  });
- export default login;
+});
+export default login;

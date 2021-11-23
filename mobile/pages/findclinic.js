@@ -1,5 +1,5 @@
-import React, {useState,useEffect,} from 'react';
-import { StyleSheet, Text, View,Image, ScrollView } from 'react-native';
+import React, { useState, useEffect, } from 'react';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 
 // Import Comps
@@ -11,7 +11,7 @@ import Header from '../comps/Header'
 import BookingForm from '../comps/BookingForm';
 import NavBar from '../comps/NavBar';
 
-  const Cont = styled.View`
+const Cont = styled.View`
   background-color: #F7F2EE;
   flex:1;
   flex-direction: column;
@@ -19,9 +19,17 @@ import NavBar from '../comps/NavBar';
   justify-content: space-between;
 `
 
-const SubCont = styled.ScrollView`
+// const SubCont = styled.ScrollView`
 
-`
+
+// `;
+
+const Wave = styled.Image`
+    width: 100%;
+    height: 30%;
+    position: absolute;
+`;
+
 // const Cont = styled.View`
 //   width:100vw;
 //   height:100vh;
@@ -31,61 +39,54 @@ const SubCont = styled.ScrollView`
 //   align-items:center;
 //   `
 
-  const Wave = styled.Image`
-  width: 100%;
-  height: 10%;
-  position: absolute;
-  top: 0;
-  `;
-  const SearchCont = styled.View`
+
+const SearchCont = styled.View`
     display: flex;
     flex-direction: row;
     margin-top: 10px;
   `
-  const MapCont = styled.View`
+const MapCont = styled.View`
     display: flex;
 
   `
-  const FilterCont = styled.View`
+const FilterCont = styled.View`
     display: flex;
     margin-top: 50px;
   `
-  const CardCont = styled.View`
+const CardCont = styled.View`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   `
-  const NavBarCont = styled.View`
+const NavBarCont = styled.View`
 
 `;
 
-const findclinic = ({navigation})=>{
-return ( 
-<Cont>
-  <SubCont>
-    <Wave source={require('../assets/background_wave.jpg')}/>
-    <SearchBar/>
-    <Map/>
- 
-    <Filiter/>
-    <CardCont> 
-      <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
-      <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
-      <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
-    </CardCont>
-  </SubCont>  
+export default function findclinic({ navigation }){
+  return (
+    <Cont>
+      <ScrollView keyboardShouldPersistTaps={'handled'}>
+        <Wave source={require('../assets/backgroundmobile.png')} />
+        <Map />
 
-    <NavBarCont>
-      <NavBar/>
-    </NavBarCont>
-   
-    </Cont> 
-    
-)
+        {/* <Filiter /> */}
+        <CardCont>
+          <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+          <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+          <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+        </CardCont> 
+      </ScrollView> 
+
+      <NavBarCont>
+        <NavBar />
+      </NavBarCont>
+    </Cont>
+
+  )
 
 }
-export default findclinic;
+
 
 
 

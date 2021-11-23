@@ -373,6 +373,39 @@ const HorizonTab = ({ router }) => {
 
   const isTabOne = tab === "1" || tab == null
   const isTabTwo = tab === "2"
+
+  const [clinicLang, setLanguage] = React.useState([]);
+  const [clinicName, setClinicName] = React.useState("");
+  const [clinicAdd, setClinicAdd] = React.useState("");
+  const [clinicNum, setClinicNum] = React.useState("");
+  const [clinicOpen, setClinicOpen] = React.useState("");
+  const [clinicClose, setClinicClose] = React.useState("");
+
+  const info = {
+    name: clinicName,
+    lang: clinicLang,
+    add: clinicAdd,
+    num: clinicNum,
+    open: clinicOpen,
+    close: clinicClose,
+  };
+
+  const setInfo = ({
+    name = clinicName,
+    lang = clinicLang,
+    add = clinicAdd,
+    num = clinicNum,
+    open = clinicOpen,
+    close = clinicClose,
+  }) => {
+    setClinicName(name);
+    setLanguage(lang);
+    setClinicAdd(add);
+    setClinicNum(num);
+    setClinicOpen(open);
+    setClinicClose(close);
+  };
+
   return (
     <TabContainer>
       <TabHead>
@@ -394,7 +427,10 @@ const HorizonTab = ({ router }) => {
           <HeroAvatar/>
         </ItemCont>
         <ItemCont>
-          <SigninFormTwo />
+          <SigninFormTwo 
+            setInfo={setInfo}
+            info={info}
+          />
         </ItemCont>
         </MyCont>   
           </React.Fragment>}

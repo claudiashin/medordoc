@@ -1,10 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import { withStyles } from "@material-ui/core/styles";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
+const DarkerDisabledTextField = withStyles({
+    root: {
+      marginRight: 8,
+      "& .MuiInputBase-root.Mui-disabled": {
+        color: "black" // (default alpha is 0.38)
+      }
+    }
+  })(TextField);
 
 const BookingForm = () => {
+
+
     return  <Box
                 component="form"
                 sx={{
@@ -17,41 +28,33 @@ const BookingForm = () => {
                     <div
                         style={{display: 'flex', flexDirection: 'column', margin: 10,}}
                     >
-                        <TextField
+                        <DarkerDisabledTextField
                             id="standard-read-only-input"
                             label="Name"
                             defaultValue="Patient Name"
-                            InputProps={{
-                                readOnly: true,
-                            }}
                             variant="standard"
+                            disabled={true}
                         />
                         <TextField
                             id="standard-read-only-input"
                             label="Confirmation Code"
                             defaultValue="ABCDEF1234"
-                            InputProps={{
-                                readOnly: true,
-                            }}
                             variant="standard"
+                            disabled={true}
                         />
                         <TextField
                             id="standard-read-only-input"
                             label="Booking Date"
                             defaultValue="November 1st"
-                            InputProps={{
-                                readOnly: true,
-                            }}
                             variant="standard"
+                            disabled={true}
                         />
                         <TextField
                             id="standard-read-only-input"
                             label="Booking Time"
                             defaultValue="9:00 AM"
-                            InputProps={{
-                                readOnly: true,
-                            }}
                             variant="standard"
+                            disabled={true}
                         />
                     </div>
                 </Box>

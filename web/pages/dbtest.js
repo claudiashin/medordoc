@@ -34,8 +34,33 @@ const fetchData = ()=>{
         });
     })   
 }
+    
+    const  getting =async()=>{
+        const docRef = doc(db, "bookings", "booking100");
+        const docSnap = await getDoc(docRef);
+    
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data());
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+       
+    }
 
+    // const query = async()=>{
+    //     const q = query(collection(db, "bookings"), where("year", "==", 2019));
+
+    //     const querySnapshot = await getDocs(q);
+    //     querySnapshot.forEach((doc) => {
+    //       // doc.data() is never undefined for query doc snapshots
+    //       console.log(doc.id, " => ", doc.data());
+    //     }); 
+    // }
+ 
+   
     return(
+<<<<<<< HEAD
       
         <div className="App" style={{marginTop : 250}}>
         <center>
@@ -61,19 +86,30 @@ const fetchData = ()=>{
 
         </div>
        
+=======
+        <div>
+            <h1>booking</h1>
+            <button onClick = {booking}/>
+            <button onClick = {getting}/>
+            <button onClick = {query}/>
+            {/* {bookings.map((booking1) =>(
+                <div key = {booking1.day}>
+                   <h2> {booking1.month}</h2>
+                   <p>{booking1.year}</p>
+                </div>    
+            ))} */}
+        </div>    
+>>>>>>> fa386a24e445f74322bd8a47faec89bfc4f19b7d
     )
 }
 
     // useEffect(()=>{
     //     getbookings();
     // },[])
-    
     // if(loading){
     //     return <h1>loading..</h1>
     // }
 
-   
-    
 
 
 
