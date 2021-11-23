@@ -1,12 +1,23 @@
 import { flexbox } from '@mui/system';
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {useRouter} from 'next/router';
 
-const Button = styled.div`
+
+const Button = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: ${props=>props.bgColor};
+    width: ${props=>props.width};
+    height: ${props=>props.height};
+    border-radius: ${props=>props.borderRad};
+    margin: ${props=>props.margin};
+    border: none;
+
+    &:hover {
+        background-color: ${props=>props.bgHover};
+      }
 `; 
 
 const TextCont = styled.div`
@@ -27,22 +38,31 @@ const Btn = ({
     width = 250,
     height = 80,
     margin = 5,
+    bgHover ="#FEC6C6",
     onClick=()=>{}
 
 }) => {
     const router = useRouter();
 
+
+    // const [btnHover, setBtnHover] = useState("#BCDFF6");
+
+    // const BtnStyle = {
+    //     background: `${btnHover}`
+    // };
+
     return (
         
         <Button onClick={onClick}
-            style={{
-                backgroundColor: bgColor,
-                width: width,
-                height: height,
-                borderRadius: borderRad,
-                margin: margin,
-
-            }}>
+            bgColor={bgColor}
+            width={width}
+            height={height}
+            borderRad={borderRad}
+            margin={margin}
+            bgHover={bgHover}
+            // onMouseEnter={()=>setBtnHover("#90AABB")}
+            // onMouseLeave={()=>setBtnHover("#BCDFF6")}
+            >
                 <TextCont>
                     <Text style={{
                         fontSize: fSize,

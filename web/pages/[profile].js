@@ -42,9 +42,9 @@ const TabCont = styled.div`
   z-index:1;
 `
 const HeaderCont = styled.div`
-display:flex;
-align-items:center;
-flex-direction:column;
+  display:flex;
+  align-items:center;
+  flex-direction:column;
 `
 export default function Profile() {
   return (
