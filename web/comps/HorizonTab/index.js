@@ -8,6 +8,7 @@ import DoctorCard from "../DoctorCard";
 import SigninFormTwo from '../SigninFormTwo';
 import Btn from "../Btn"
 
+
  const Nav = styled("div")`
   & > * {
     margin-left: 1em;
@@ -104,6 +105,7 @@ const ButtonCont = styled.div`
 const MyTab = ({
 }) =>{
   const [popup, setShowPopup] = useState(true)
+
 
   if(popup === true){
     return  <MyCont2>
@@ -227,6 +229,7 @@ const MyTab = ({
       }}>
       <Btn title="Create New" bgColor="#90AABB" onClick={()=>{
         setShowPopup(false)
+      
       }}/>
     </ButtonCont>
 
@@ -253,7 +256,9 @@ const MyTab = ({
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
         button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
+        editDoc={()=>{
+          setShowPopup(false)
+        }}
         />      
         </DoctorCont>
       <DoctorCont>

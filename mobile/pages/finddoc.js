@@ -22,19 +22,11 @@ const Wave = styled.Image`
   width: 100%;
   height: 30%;
   position: absolute;
-`;
+  top: 0;
+  `;
 
-const SearchCont = styled.View`
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
-  `
-const MapCont = styled.View`
-  display: flex;
-`;
-
-const FilterCont = styled.View`
-    display: flex;
+  const FilterCont = styled.View`
+  
   `
 const CardCont = styled.View`
     display: flex;
@@ -49,32 +41,16 @@ const MyScrollView = styled.ScrollView`
 
 `
 
-const finddoc = ({ navigation }) => {
-  return (
-    <Cont>
-      <MyScrollView>
-        <Wave source={require('../assets/backgroundmobile.png')} />
-        <SearchCont>
-          <SearchBar />
-        </SearchCont>
-        <MapCont>
-          <Map />
-        </MapCont>
-        <FilterCont>
+const finddoc = ({navigation})=>{
+return(
+   <Cont>
+     <MyScrollView>
+    
+      <FilterCont>
 
-          <Filiter />
-        </FilterCont>
-
-        <CardCont>
-          <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
-          <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
-          <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
-        </CardCont>
-      </MyScrollView>
-      <NavBarCont>
-        <NavBar />
-      </NavBarCont>
-
+        <Filiter/>
+      </FilterCont>
+  </MyScrollView>
     </Cont>
   )
 }
