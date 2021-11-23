@@ -14,7 +14,6 @@ export default function Test(){
   const [ps, setPs] = useState('')  
 
 
-
   const Upload = async(e)=>{
     
     console.log(e.target.files[0]);

@@ -7,16 +7,16 @@ export default function Datepick() {
     const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('time');
     const [show, setShow] = useState(true);
-    const [text, setText] = useState('Empty')
+    const [text, setText] = useState('Select Date and Time');
   
     const onChange = (event, selectedDate) => {
       const currentDate = selectedDate || date;
       setShow(Platform.OS === 'ios');
       setDate(currentDate);
-    //  let tempDate = new Date(currentDate);
-    //  let fdate =tempDate.getDate() + "/" +(tempDate.getMonth())+tempDate.getFullYea();
-
-    //  setText(fdate);
+       let tempDate = new Date(currentDate);
+       let fdate =tempDate.getDate() + "/" +tempDate.getMonth() + "/" +tempDate.getFullYear();
+       let ftime = tempDate.getHours() + ":" +tempDate.getMinutes();
+      setText(fdate + "       " + ftime);
 
     };
   
@@ -37,7 +37,6 @@ export default function Datepick() {
     return (
       <View>
         <View>
-          
           <Button onPress={showDatepicker} title="Show time picker!"/>
           <Button onPress={showTimepicker} title="Show time picker!"/>
          <Text>{text}</Text>
