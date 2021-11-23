@@ -19,7 +19,7 @@ export default function Auth(
             });
         
             if (result.type === 'success') {
-               const auth =getAuth();
+               const auth = getAuth();
                const provider = GoogleAuthProvider.credential(
                 result.idToken, 
                 result.accessToken,

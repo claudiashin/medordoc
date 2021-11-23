@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import styled from 'styled-components';
 
 //dialog comps from mui
-
 import Dialog from '@mui/material/Dialog';
 import Button from '@mui/material/Button';
 import PropTypes from 'prop-types';
@@ -14,8 +13,7 @@ const MainCont = styled.div`
     display: flex;
 `;
 
-const code = [];
-
+const code = ['go to check in']
 function SimpleDialog(props) {
     const { onClose, selectedValue, open } = props;
   
@@ -27,20 +25,19 @@ function SimpleDialog(props) {
       onClose(value);
     };
 
+    const handleError = (err) => {
+      console.error(err)
+    }
+
     const handleScan = (data) => {
         if(data) {
             setState({
                 result: data
             })
+            window.location.href = `/checkIn?ccode=${result.cornit}`;
         }
     }
-    const handleError = (err) => {
-        console.error(err)
-    }
 
-   
-    
-  
     return (
       <Dialog onClose={handleClose} open={open}>
         <DialogTitle
@@ -53,7 +50,6 @@ function SimpleDialog(props) {
             style={{width: '100%'}}
         />
         <ListItem button onClick={() => handleListItemClick(code)} key={code}>
-            {/* {result.data} */}
         </ListItem>
       </Dialog>
     );
