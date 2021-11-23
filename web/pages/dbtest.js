@@ -1,29 +1,66 @@
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection,setDoc,doc, getDoc } from 'firebase/firestore';
+import database from 'mime-db';
 import React, { useState,useEffect } from 'react';
 import {db} from '../firebase';
 
 export default function dbtest(){
-    const booking = async() =>{
-    const bookingdata = collection(db,"bookings")
-    await addDoc(bookingdata,{
-        day:12,
-        month:11,
-        year:2021
-    })
+   
+const [name , setName] = useState();
+const [ex , setEx] = useState();
+const [gender , setGender] = useState();
+const [location , setLocation] = useState();
+const [lang , setLang] = useState();
+
+const [data, setData] = useState();
+// Push Function
+const Push = async() => {
+    const doctordata = collection(db,"doctors")
+    
+    await setDoc(doc(doctordata,name ),{
+        
+        name: name,
+        ex: ex,
+        gender:gender,
+        location:location,
+        lang:lang
+
+    }).catch(alert);
+
+}
+const fetchData = ()=>{
+    db.collection("doctors").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            console.log(`${doc.id} => ${doc.data()}`);
+        });
+    })   
 }
 
     return(
-        <div>
-            <h1>booking</h1>
-            <button onClick = {booking}/>
-            {/* {bookings.map((booking1) =>(
-                <div key = {booking1.day}>
-                   <h2> {booking1.month}</h2>
-                   <p>{booking1.year}</p>
-                </div>    
-            ))} */}
+      
+        <div className="App" style={{marginTop : 250}}>
+        <center>
+        <input placeholder="Enter your name" value={name} 
+        onChange={(e) => setName(e.target.value)}/>
+        <br/><br/>
+        <input placeholder="Enter your age" value={ex} 
+        onChange={(e) => setEx(e.target.value)}/>
+        <br/><br/>
+        <input placeholder="Enter your gender" value={gender} 
+        onChange={(e) => setGender(e.target.value)}/>
+        <br/><br/>
+        <input placeholder="Enter your location" value={location} 
+        onChange={(e) => setLocation(e.target.value)}/>
+        <br/><br/>
+        <input placeholder="Enter your language" value={lang} 
+        onChange={(e) => setLang(e.target.value)}/>
+        <br/><br/> 
+        <button onClick={Push}>PUSH</button>
+        <button onClick={fetchData}>get</button>
+        {/* <p>{listItems}</p> */}
+        </center>
 
-        </div>    
+        </div>
+       
     )
 }
 

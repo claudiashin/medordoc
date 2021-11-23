@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import styled from 'styled-components';
-import HorizonTab from '../comps/HorizonTab'
+import HorizonTab from '../comps/HorizonTab/index'
 import NavBar from "../comps/NavBar";
 import Footer from "../comps/Footer";
 import QRscan from "../comps/QRscan";
 import HeaderTitle from '../comps/HeaderTitle'
+import {db} from '../firebase';
+
 
 const Cont = styled.div`
   display:flex;
@@ -41,8 +43,12 @@ display:flex;
 align-items:center;
 flex-direction:column;
 `
+
+
 export default function Profile() {
-  const [activeIndex, setActiveIndex] = useState(0)
+
+
+  
   return (
     <Cont>
      
@@ -60,18 +66,9 @@ export default function Profile() {
 
       <QRscan />
 
-     
-      <TabCont>
-        <HorizonTab 
-        popup={activeIndex === 0}
-        setShowPopup={()=>{setActiveIndex(0)}}
-        />
-      </TabCont>
 
       <TabCont>
         <HorizonTab 
-        popup={activeIndex === 1}
-        setShowPopup={()=>{setActiveIndex(1)}}
         />
       </TabCont>
       <FooterCont>

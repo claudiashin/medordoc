@@ -6,6 +6,9 @@ import NavBar from '../comps/NavBar';
 
 const Cont = styled.View`
   flex:1;
+  justify-content:center;
+align-items:center;
+padding-top:100px;
 
 `
 const NavBarCont = styled.View`
@@ -19,7 +22,7 @@ return(
     <Cont>
       <MyScrollView>
 
-    <QRCode
+    <QRCode 
     value="https://www.google.com/"
   />
   </MyScrollView>

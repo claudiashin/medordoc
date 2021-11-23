@@ -24,17 +24,9 @@ import NavBar from '../comps/NavBar';
   position: absolute;
   top: 0;
   `;
-  const SearchCont = styled.View`
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
-  `
-  const MapCont = styled.View`
-    display: flex;
 
-  `
   const FilterCont = styled.View`
-    display: flex;
+  
   `
   const CardCont = styled.View`
     display: flex;
@@ -53,16 +45,10 @@ const finddoc = ({navigation})=>{
 return(
    <Cont>
      <MyScrollView>
-      <Wave source={require('../assets/background_wave.jpg')}/>
-      <SearchCont>
-      <SearchBar/>
-      </SearchCont>
-        <MapCont>
-        <Map/>
-        </MapCont>
+    
       <FilterCont>
 
-      <Filiter/>
+        <Filiter/>
       </FilterCont>
 
       <CardCont>

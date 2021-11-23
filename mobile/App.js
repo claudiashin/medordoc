@@ -38,7 +38,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
       <NavigationContainer>
-       <Stack.Navigator initialRouteName="home">
+       <Stack.Navigator initialRouteName="finddoc">
          <Stack.Screen name="home" component={home} />
          <Stack.Screen name="findclinic" options={{headerShown: false}}   component={findclinic} /> 
          <Stack.Screen name="finddoc" component={finddoc} />
