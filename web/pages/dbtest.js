@@ -60,7 +60,6 @@ const fetchData = ()=>{
  
    
     return(
-<<<<<<< HEAD
       
         <div className="App" style={{marginTop : 250}}>
         <center>
@@ -86,20 +85,6 @@ const fetchData = ()=>{
 
         </div>
        
-=======
-        <div>
-            <h1>booking</h1>
-            <button onClick = {booking}/>
-            <button onClick = {getting}/>
-            <button onClick = {query}/>
-            {/* {bookings.map((booking1) =>(
-                <div key = {booking1.day}>
-                   <h2> {booking1.month}</h2>
-                   <p>{booking1.year}</p>
-                </div>    
-            ))} */}
-        </div>    
->>>>>>> fa386a24e445f74322bd8a47faec89bfc4f19b7d
     )
 }
 
