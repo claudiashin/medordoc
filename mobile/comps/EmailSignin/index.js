@@ -1,57 +1,87 @@
 import React from "react";
 import styled from 'styled-components/native';
-import Head from 'next/head'
-import Image from 'next/image'
-import { getStorage, ref, uploadBytes } from "firebase/storage";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import store from '../../utils/inits'
+import Btn from '../Btn';
 import {useState} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { Provider as PaperProvider, TextInput } from 'react-native-paper';
+import { StyleSheet, Text, View, TouchableOpacity,ScrollView,Image} from 'react-native';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 
-const ITinput =styeld.TextInput``
-const Button = styled.Button``
-const Cont =styled.View``
+const MainCont = styled.View`
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    
+`
+const LastDiv = styled.View`
+    flex-direction: row;
+    justify-content: center;
+    margin-top: -10px;
+    margin-right: 5px;
 
-export default function Signin(){
- 
+`
+
+const ITinput =styled.TextInput``;
+const Button = styled.Button``;
+const Cont =styled.View``;
+
+
+export default function EmailSignin({
+    onSignin=()=>{},
+    onCreate=()=>{}
+}){
   const [em, setEm] = useState('')  
   const [ps, setPs] = useState('')  
+  
+  const navigation = useNavigation(); 
 
-  const Upload = async(e)=>{
-    
-    console.log(e.target.files[0]);
-    
-    if(e.target.files.length <= 0){
-        alert("no file selected");
-        return false;
-    }
-
-    const file = e.target.files[0];
-    const storage = getStorage();
-    const storageRef = ref(storage, 'test.jpg');  
-    const snapshot = await uploadBytes(storageRef,file)
-    console.log ('uploaded');
-
-}
-
-    const CreateUser = async()=>{
-        const auth =getAuth();
-        const result = await createUserWithEmailAndPassword(auth,em,ps);
-        alert('created');
-        }
-        
-    const signin = async()=>{
-        const auth =getAuth();
-        const result = await signInWithEmailAndPassword(auth,em,ps);
-        alert('sign in');
-        }
-    return(
-        <Cont>
-            <ITinput type = 'text' placeholder = 'email' onChange = {(e)=>setEm(e.target.value)}/>
-            <ITinput type = 'password' placeholder = 'password'onChange = {(e)=>setPs(e.target.value)}/>
-            <Button onClick ={signin}>Sign in</Button>
-            <Button onClick ={CreateUser}>Create Account</Button>
-            {/* <Input type = 'file' onChange={Upload}/> */}
-        </Cont>    
+ 
+  return(
+        <MainCont>
+         <PaperProvider>
+            <TextInput
+            style={{width:300, height: 50, margin:5, borderRadius: 0, backgroundColor:'#fff'}}
+            label="Email"
+            returnKeyType="next"
+            autoCapitalize="none"
+            autoCompleteType="email"
+            textContentType="emailAddress"
+            keyboardType='email-address'
+            mode='outlined'
+            onChangeText = {(val)=>setEm(val)}
+            />
+            <TextInput
+            style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
+            label="Password"
+            returnKeyType="done"
+            keyboardType='visible-password'
+            secureTextEntry
+            mode='outlined'
+            onChangeText={(val)=>setPs(val)}
+            /> 
+            {/* <Button onPress ={()=>onSignin(em,ps)}title="Sign in"></Button> */}
+            <LastDiv>
+            <Text style={{color:'#575757', paddingTop:20, paddingLeft:5}}>Don't have an account?</Text>
+                <TouchableOpacity
+                    onPress={()=>navigation.navigate('signup')}
+                ><Text style={{color:'#226BAF', paddingTop:20, paddingLeft:5}}>Sign Up</Text></TouchableOpacity> 
+            </LastDiv>
+           <Btn 
+            title = "Log In"
+            fsize = '18'
+            width = '310'
+            height = '45'
+            borderRad = '50'
+            margin = '20'
+            onPress={()=>{onSignin(em,ps);if(em && ps !==" "){{navigation.navigate('booking')}}}}
+            /> 
+            {/* <Button onPress ={()=>onCreate(em,ps)}title="Create Account"></Button> */}
+           
+            
+            </PaperProvider>
+        </MainCont>    
     )
-
 } 
+

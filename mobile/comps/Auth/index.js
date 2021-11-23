@@ -2,25 +2,12 @@ import React from "react";
 import styled from 'styled-components/native';
 import {StyleSheet,Text,View,Button} from 'react-native';
 import * as Google from 'expo-google-app-auth';
-import { initializeApp } from "firebase/app";
+import app from '../../utils/inits';
+// import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider,getAuth,signInWithCredential } from "firebase/auth";
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDeOMoQTGw_ofJzos_bQOqX_XQpty1YtXk",
-  authDomain: "medordoc-516a4.firebaseapp.com",
-  projectId: "medordoc-516a4",
-  storageBucket: "medordoc-516a4.appspot.com",
-  messagingSenderId: "170688855918",
-  appId: "1:170688855918:web:5efaddb77d4f3aeef5cb7f"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-export default function firebase(
+export default function Auth(
 ){
- 
     const SignInGoogle = async() =>{
         
         try {
@@ -49,7 +36,6 @@ export default function firebase(
           } catch (e) {
             return { error: true };
           }
-
     }
 return(
 
