@@ -79,7 +79,6 @@ const BtnCont = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-bottom: 80px;
-  display: ${(props) => (props.display ? "block" : "none")};
 `;
 
 const AlertBanner = styled.div`

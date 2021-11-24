@@ -74,7 +74,7 @@ export default function EmailSignin({
             fsize = '18'
             width = '310'
             height = '45'
-            borderRad = '50'
+            borderRad = '10'
             margin = '20'
             onPress={()=>{onSignin(em,ps);if(em && ps !==" "){{navigation.navigate('booking')}}}}
             /> 

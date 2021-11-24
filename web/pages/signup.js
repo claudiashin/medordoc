@@ -15,6 +15,7 @@ import HeroAvatar from "../comps/HeroAvatar";
 import Footer from "../comps/Footer";
 
 import { addDoc, collection } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from "../firebase";
 
 const Cont = styled.div`
@@ -113,9 +114,6 @@ const FooterCont = styled.div`
 export default function Home() {
   const router = useRouter();
 
-  const [clinicUser, setUser] = React.useState("");
-  const [clinicPass, setPass] = React.useState("");
-  const [clinicEmail, setEmail] = React.useState("");
   const [clinicLang, setLanguage] = React.useState([]);
   const [clinicName, setClinicName] = React.useState("");
   const [clinicAdd, setClinicAdd] = React.useState("");
@@ -126,9 +124,6 @@ export default function Home() {
   const [changePage, setChangePage] = useState(0);
 
   const info = {
-    user: clinicUser,
-    pass: clinicPass,
-    email: clinicEmail,
     name: clinicName,
     lang: clinicLang,
     add: clinicAdd,
@@ -138,9 +133,6 @@ export default function Home() {
   };
 
   const setInfo = ({
-    user = clinicUser,
-    pass = clinicPass,
-    email = clinicEmail,
     name = clinicName,
     lang = clinicLang,
     add = clinicAdd,
@@ -148,9 +140,6 @@ export default function Home() {
     open = clinicOpen,
     close = clinicClose,
   }) => {
-    setUser(user);
-    setPass(pass);
-    setEmail(email);
     setClinicName(name);
     setLanguage(lang);
     setClinicAdd(add);
@@ -171,8 +160,6 @@ export default function Home() {
             <SignInCont>
               <SigninForm
                 setChangePage={(number) => setChangePage(changePage + number)}
-                setInfo={setInfo}
-                info={info}
               />
             </SignInCont>
           </BodyCont>
@@ -200,7 +187,7 @@ export default function Home() {
                 submit={async () =>
                   await addDoc(collection(db, "clinics"), info)
                 }
-                setInfo={setInfo} 
+                setInfo={setInfo}
                 info={info}
               />
             </SignInCont_Two>
@@ -208,40 +195,44 @@ export default function Home() {
         </div>
       );
     } else {
-      return <div>
-        <BodyContTwo>
-          <HeroLottieTwo>
-            <HeroLottie changePage source={myLottie2} width="400px" />
-          </HeroLottieTwo>
-          <InfoCardCont>
-            <InfoCard />
-          </InfoCardCont>
-        </BodyContTwo>
+      return (
+        <div>
+          <BodyContTwo>
+            <HeroLottieTwo>
+              <HeroLottie changePage source={myLottie2} width="400px" />
+            </HeroLottieTwo>
+            <InfoCardCont>
+              <InfoCard />
+            </InfoCardCont>
+          </BodyContTwo>
 
-        <BtnContTwo onClick={() => router.push("/login")}>
-          <Btn
-            title="Let's Explore"
-            bgColor="#90AABB"
-            width="160px"
-            height="50px"
-            fSize="16px"
-            fWeight="600"
-            borderRad="25px"
-            bgHover="#7C9AAD"
-          />
-        </BtnContTwo>
-      </div>;
+          <BtnContTwo onClick={() => router.push("/login")}>
+            <Btn
+              title="Let's Explore"
+              bgColor="#90AABB"
+              width="160px"
+              height="50px"
+              fSize="16px"
+              fWeight="600"
+              borderRad="25px"
+              bgHover="#7C9AAD"
+            />
+          </BtnContTwo>
+        </div>
+      );
     }
   };
 
-  return <Cont>
-    <Wave src={"/background-web5.svg"}></Wave>
-    <NavBarCont>
-      <NavBar />
-    </NavBarCont>
-    {body()}
-    <FooterCont>
-      <Footer />
-    </FooterCont>
-  </Cont>;
+  return (
+    <Cont>
+      <Wave src={"/background-web5.svg"}></Wave>
+      <NavBarCont>
+        <NavBar />
+      </NavBarCont>
+      {body()}
+      <FooterCont>
+        <Footer />
+      </FooterCont>
+    </Cont>
+  );
 }
