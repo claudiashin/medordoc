@@ -4,6 +4,9 @@ import styled from 'styled-components/native';
 
 // Import Comps
 import MenuCard from '../comps/MenuCard';
+import NavBar from '../comps/NavBar';
+
+const NavBarCont = styled.View``;
 
 
 const home = ({ navigation }) => {
@@ -24,13 +27,15 @@ const home = ({ navigation }) => {
       </View>
     );
   }
-  return (
-    <View style={styles.container}>
+  return <>
+   <View style={styles.container}>
       <MenuCard ind={[5]} Cardpress={() => navigation.navigate("findclinic")} />
       <MenuCard title="Find a Doctor" ind={[3]} Cardpress={() => navigation.navigate("finddoc")} />
     </View>
-  );
-
+      <NavBarCont>
+      <NavBar />
+    </NavBarCont>
+    </>
 }
 const styles = StyleSheet.create({
   
@@ -40,6 +45,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 20,
+    marginTop: 70,
   },
 
   image: {
