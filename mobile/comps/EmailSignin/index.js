@@ -17,9 +17,10 @@ const MainCont = styled.View`
 `
 const LastDiv = styled.View`
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-end;
     margin-top: -10px;
     margin-right: 5px;
+    margin-bottom: 50px;
 
 `
 

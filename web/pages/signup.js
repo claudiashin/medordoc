@@ -200,7 +200,7 @@ export default function Home() {
                 submit={async () =>
                   await addDoc(collection(db, "clinics"), info)
                 }
-                setInfo={setInfo}
+                setInfo={setInfo} 
                 info={info}
               />
             </SignInCont_Two>

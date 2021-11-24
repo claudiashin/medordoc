@@ -1,10 +1,27 @@
 import React from "react";
 import styled from 'styled-components/native';
 import {StyleSheet,Text,View,Button} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import * as Google from 'expo-google-app-auth';
 import app from '../../utils/inits';
 // import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider,getAuth,signInWithCredential } from "firebase/auth";
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    width: 300,
+    height: 50,
+    marginLeft: 5,
+    marginBottom: 20,
+    borderColor: 'rgb(0,0,0)',
+    borderRadius: 10,
+    backgroundColor: "#fff",
+    justifyContent: 'center',
+    alignItems: "center",
+  }
+})
 
 export default function Auth(
 ){
@@ -39,10 +56,23 @@ export default function Auth(
     }
 return(
 
-    <View>
-    <Button onPress = {SignInGoogle} title = 'sign in with google'/>
+    <View
+    style={styles.container}
+    >
+    <Button 
+      style={{
+        fontSize: 1,
+        color: "#00000",
+      }}
+      icon={
+        <Icon
+          name="arrow-right"
+          size={15}
+          color="white"
+        />
+      }
+      onPress = {SignInGoogle} title = 'Sign in with Google'/>
     </View>
 )
 
 };
-

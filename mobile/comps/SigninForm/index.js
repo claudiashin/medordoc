@@ -11,6 +11,9 @@ import { useNavigation } from "@react-navigation/native";
 //import comps
 import Btn from "../Btn";
 
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../utils/store";
+
 const MainCont = styled.View`
   flex-direction: column;
 `;
@@ -29,8 +32,7 @@ const Radio = styled.View`
   position: relative;
   z-index: 1;
 `;
-const DateCont = styled.View`
-`;
+const DateCont = styled.View``;
 const RadioTitle = styled.Text`
   font-weight: 600;
   margin-left: 15px;
@@ -62,6 +64,7 @@ const SigninForm = ({}) => {
     { label: "Female", value: "Female" },
     { label: "Prefer not to answer", value: "Prefer not to answer" },
   ]);
+  const [add, setAdd] = useState("");
 
   if (changeForm === true) {
     return (
@@ -113,6 +116,15 @@ const SigninForm = ({}) => {
               width="130"
               height="50"
               borderRad="60"
+              // onPress={async () => {
+              //   const result = await addDoc(collection(db, "patientuser"), {
+              //     fname: fname,
+              //     lname: lname,
+              //     email: text,
+              //     password: pass,
+              //   });
+              //   setChangeForm(false);
+              // }}
               onPress={() => {
                 setChangeForm(false);
               }}
@@ -146,6 +158,7 @@ const SigninForm = ({}) => {
             setOpen={setOpen}
             setValue={setGender}
             setItems={setItems}
+            onChangeText={(gender) => setGender(gender)}
             style={{
               width: 335,
               height: 50,
@@ -162,9 +175,9 @@ const SigninForm = ({}) => {
           autoComplete="postal-address-extended-postal-code"
           textContentType="fullStreetAddress"
           dataDetectorTypes="address"
-          value={text}
+          value={add}
           mode="outlined"
-          onChangeText={(text) => setText(text)}
+          onChangeText={(add) => setAdd(add)}
         />
         <TextInput
           style={styles.inputbox}
@@ -183,7 +196,20 @@ const SigninForm = ({}) => {
             width="130"
             height="50"
             borderRad="60"
-            onPress={() => navigation.navigate("accountconfirm")}
+            onPress={async () => {
+              const result = await addDoc(collection(db, "patientuser"), {
+                fname: fname,
+                lname: lname,
+                email: text,
+                password: pass,
+                dob: inputDate,
+                gender: gender,
+                address: add,
+                medconcern: medcon,
+              });
+              
+              navigation.navigate("accountconfirm");
+            }}
           ></Btn>
         </ButCont>
       </PaperProvider>
