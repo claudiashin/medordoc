@@ -1,6 +1,9 @@
-import React,{useState,useEffect,} from 'react';
+import React, { useState, useEffect, } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';
+import { addDoc, collection,setDoc,getDoc,doc,query,where,} from 'firebase/firestore';
+// import {db} from '../utils/firebase';
+
 
 import Calendar from '../comps/Calendar';
 import Header from '../comps/Header';
@@ -25,11 +28,11 @@ const Wave = styled.Image`
 `;
 
 const CalendarAPICont = styled.View`
-   
+margin-top: 25px;
 `;
 
 const DropDownCont = styled.View`
-margin-top: 25px;
+margin: 50px;
 
 `;
 
@@ -48,31 +51,31 @@ const NavBarCont = styled.View`
 const MyScrollView = styled.ScrollView`
 
 `
-const booking = ({navigation}) => {
+const booking = ({ navigation }) => {
     return (
         <BookingCont>
             <MyScrollView >
-            <Wave source={require('../assets/background_wave.jpg')}/>
-            
-            <CalendarAPICont>
-                <Text>Calendar</Text>
-                <Calendar/>
-            </CalendarAPICont>
+                <Wave source={require('../assets/backgroundmobile.png')} />
 
-            {/* <Header title={'Thursday, November 4th'}/> */}
+                <CalendarAPICont>
+                    <Text>Calendar</Text>
+                    <Calendar />
+                </CalendarAPICont>
 
-            <DropDownCont>
-                <Text>Pick the Time</Text> 
-                <Datepick/>
-            </DropDownCont>
+                {/* <Header title={'Thursday, November 4th'}/> */}
 
-            <ButtonCont>
-                <Btn 
-                    title={'Confirm'}
-                    fSize={20}
-                    onPress={()=>navigation.navigate('qrconfirm')}
-                />
-            </ButtonCont>
+                <DropDownCont>
+                    <Text>Pick the Time</Text>
+                    <Datepick />
+                </DropDownCont>
+
+                <ButtonCont>
+                    <Btn
+                        title={'Confirm'}
+                        fSize={20}
+                        onPress={() => navigation.navigate('qrconfirm')}
+                    />
+                </ButtonCont>
             </MyScrollView>
 
             <NavBarCont>

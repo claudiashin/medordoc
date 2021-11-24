@@ -1,5 +1,5 @@
-import React,{useState,useEffect,} from 'react';
-import { StyleSheet, Text, View,Image } from 'react-native';
+import React, { useState, useEffect, } from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';
 import Map from '../comps/Map'
 import SearchBar from '../comps/SearchBar'
@@ -11,86 +11,106 @@ import BookingForm from '../comps/BookingForm';
 import NavBar from '../comps/NavBar';
 
 
-  const Cont = styled.View`
+const Cont = styled.View`
   flex:1;
   background-color: #F7F2EE;
   flex-direction: column;
   align-content:center;
   justify-content: space-between;
   `
-  const Wave = styled.Image`
+const Wave = styled.Image`
   width: 100%;
-  height: 10%;
+  height: 30%;
   position: absolute;
   top: 0;
   `;
-  const SearchCont = styled.View`
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
-  `
-  const MapCont = styled.View`
-    display: flex;
 
-  `
   const FilterCont = styled.View`
-    display: flex;
-    margin-top: 30px;
+    
+    margin-top: 180px;
   `
-  const CardCont = styled.View`
+  const HeaderCont = styled.View`
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 120px;
+  `
+  const HeaderCont2 = styled.View`
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 50px;
+  margin-top: 25px;
+`
+const CardCont = styled.View`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    bottom: 350px;
-    z-index: -1;
+
   `
-  const NavBarCont = styled.View`
+const NavBarCont = styled.View`
 
 `;
-const MyScrollView = styled.ScrollView`
+const ScrollView = styled.ScrollView`
 
 `
 
 const finddoc = ({navigation})=>{
-return(
-   <Cont>
-     <MyScrollView>
-      <Wave source={require('../assets/background_wave.jpg')}/>
-      <SearchCont>
-      <SearchBar/>
-      </SearchCont>
-        <MapCont>
-        <Map/>
-        </MapCont>
-      <FilterCont>
+return( <Cont>
+  <ScrollView keyboardShouldPersistTaps={'handled'}>
+  <Wave source={require('../assets/backgroundmobile.png')} />
 
-      <Filiter
-          headerText1 = {"Location"}
-          headerText2 = {"Language Prefences"}
-          optionText1 = {"Vancouver"}
-          optionText2 = {"Burnaby"}
-          optionText3 = {"North Vancouver"}
-          optionText4 = {"Coquitlam"}
-          optionText5 = {"Surrey"}
-          optionText6 = {"Richmond"}
-          optionText7 = {"English"}
-          optionText8 = {"French"}
+  <HeaderCont>
+    <Header
+      title="Find a Family Doctor"
+      fSize="26px"
       />
-      </FilterCont>
+  </HeaderCont>
 
-      <CardCont>
-        <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
-        <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
-        <ClinDocButton cardpress = {()=>navigation.navigate("docprofile")}/>
-      </CardCont> 
-    </MyScrollView>
-    <NavBarCont>
-      <NavBar/>
-    </NavBarCont>
+  
+    <FilterCont>
+    <Filiter 
+              headerText1={"Language Prefrences"}
+              headerText2={"Gender"}
+              optionText1={"French"}
+              optionText2={"Chinese"}
+              optionText3={"Korean"}
+              optionText4={"Japanese"}
+              optionText5={"Punjabi"}
+              optionText6={"Vietnamese"}
+    
+              optionText7={"Male"}
+              optionText8={"Female"}
+              display={"none"}
+
+    /> 
+    </FilterCont>
+
+    <HeaderCont2>
+    <Header
+      title="Available Doctors"
+      fSize="26px"
+      />
+  </HeaderCont2>
    
-    </Cont> 
-)
+  <CardCont>
+    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+  </CardCont> 
+</ScrollView> 
+
+<NavBarCont>
+  <NavBar />
+</NavBarCont>
+</Cont>
+  )
 }
 
 export default finddoc;

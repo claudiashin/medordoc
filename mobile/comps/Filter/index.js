@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 
 import Btn from '../Btn';
-
+// height: ${props=>props.display==="none"?"0px":"370px"};
 
 import {useState} from 'react';
 import { TouchableOpacity } from "react-native";
@@ -18,13 +18,13 @@ const Extra = styled.View`
 
 `
 const Maincont = styled.View`
-    display:${props=>props.display};
+    display:flex;
     flex:1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 294px;
-    height: ${props=>props.display==="none"?"0px":"370px"};
+    width: 350px;
+    height: 430px;
     background-color: #ffffff;
     border: 1px solid #E9D7CB;
     border-radius: 5px;
@@ -45,6 +45,7 @@ const FilterIcon = styled.Image`
 //headers
 const Headercont = styled.View`
     display: flex;
+    margin: 15px;
     
 `
 const Filterheader = styled.Text`
@@ -63,8 +64,19 @@ const Filteropt = styled.TouchableOpacity`
     display: flex;
     justify-content: center;
     align-items: center;
-    width:80px;
-    height: 40px;
+    width:100px;
+    height: 50px;
+    background-color: #E9D7CB;
+    border-radius: 5px; 
+    margin: 4px;
+    
+`
+const FilteroptTwo = styled.TouchableOpacity`
+    display: ${props=>props.display};
+    justify-content: center;
+    align-items: center;
+    width:100px;
+    height: 50px;
     background-color: #E9D7CB;
     border-radius: 5px; 
     margin: 4px;
@@ -77,8 +89,9 @@ const Filttext = styled.Text`
 const Btncont = styled.View`
     display: flex;
     position: relative;
+    margin-bottom: 10px;
     top: 40px;
-    left: 60px;
+    left: 80px;
 `
 
 const Filter=({
@@ -92,17 +105,23 @@ const Filter=({
     optionText6 = "Deafult",
     optionText7 = "Deafult",
     optionText8 = "Deafult",
+    optionText9 = "Deafult",
+    optionText10 = "Deafult",
+    optionText11 = "Deafult",
+    optionText12 = "Deafult",
+
+    display = "flex"
 
     
 })=>{
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(true);
 
-    var display = "none";
+    // var display = "none";
   
 
-    if(open){
-        display = "flex"
-    }
+    // if(open){
+    //     display = "flex"
+    // }
 
     // const [touch, touchOpen] = useState(false);
     // var color = "#E9D7CB";
@@ -110,11 +129,11 @@ const Filter=({
     //     color = "white"
     // }
     return <Extra>
-            <Iconcont >
+            {/* <Iconcont >
                 <Ionicons onPress={()=>setOpen(!open)} 
                 name="filter" size={40} color="black" />
-            </Iconcont>
-        <Maincont display={display}>
+            </Iconcont> */}
+        <Maincont >
 
             <Headercont>
                 <Filterheader>{headerText1=headerText1}</Filterheader>
@@ -153,6 +172,19 @@ const Filter=({
             <Filteropt>
                 <Filttext>{optionText8=optionText8}</Filttext>
             </Filteropt>
+            <FilteroptTwo display={display}>
+                <Filttext>{optionText8=optionText9}</Filttext>
+            </FilteroptTwo>
+            <FilteroptTwo display={display}>
+                <Filttext>{optionText8=optionText10}</Filttext>
+            </FilteroptTwo>
+            <FilteroptTwo display={display}>
+                <Filttext>{optionText8=optionText11}</Filttext>
+            </FilteroptTwo>
+            <FilteroptTwo display={display}>
+                <Filttext>
+                    {optionText8=optionText12}</Filttext>
+            </FilteroptTwo>
             </Filtercont>
 
             <Btncont>

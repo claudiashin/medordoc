@@ -8,6 +8,7 @@ import DoctorCard from "../DoctorCard";
 import SigninFormTwo from '../SigninFormTwo';
 import Btn from "../Btn"
 
+
  const Nav = styled("div")`
   & > * {
     margin-left: 1em;
@@ -104,6 +105,7 @@ const ButtonCont = styled.div`
 const MyTab = ({
 }) =>{
   const [popup, setShowPopup] = useState(true)
+
 
   if(popup === true){
     return  <MyCont2>
@@ -227,6 +229,7 @@ const MyTab = ({
       }}>
       <Btn title="Create New" bgColor="#90AABB" onClick={()=>{
         setShowPopup(false)
+      
       }}/>
     </ButtonCont>
 
@@ -253,7 +256,9 @@ const MyTab = ({
         phoneText="St. Joseph’s Clinic" 
         emailText="Edit" 
         button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
+        editDoc={()=>{
+          setShowPopup(false)
+        }}
         />      
         </DoctorCont>
       <DoctorCont>
@@ -356,7 +361,6 @@ const MyTab = ({
       }} 
       addDoc={()=>{
         setShowPopup(true)
-        titleDoc="add"
       }}/>
     </DoctorCardCont>
   </MyCont2> 
@@ -369,6 +373,39 @@ const HorizonTab = ({ router }) => {
 
   const isTabOne = tab === "1" || tab == null
   const isTabTwo = tab === "2"
+
+  const [clinicLang, setLanguage] = React.useState([]);
+  const [clinicName, setClinicName] = React.useState("");
+  const [clinicAdd, setClinicAdd] = React.useState("");
+  const [clinicNum, setClinicNum] = React.useState("");
+  const [clinicOpen, setClinicOpen] = React.useState("");
+  const [clinicClose, setClinicClose] = React.useState("");
+
+  const info = {
+    name: clinicName,
+    lang: clinicLang,
+    add: clinicAdd,
+    num: clinicNum,
+    open: clinicOpen,
+    close: clinicClose,
+  };
+
+  const setInfo = ({
+    name = clinicName,
+    lang = clinicLang,
+    add = clinicAdd,
+    num = clinicNum,
+    open = clinicOpen,
+    close = clinicClose,
+  }) => {
+    setClinicName(name);
+    setLanguage(lang);
+    setClinicAdd(add);
+    setClinicNum(num);
+    setClinicOpen(open);
+    setClinicClose(close);
+  };
+
   return (
     <TabContainer>
       <TabHead>
@@ -390,7 +427,10 @@ const HorizonTab = ({ router }) => {
           <HeroAvatar/>
         </ItemCont>
         <ItemCont>
-          <SigninFormTwo />
+          <SigninFormTwo 
+            setInfo={setInfo}
+            info={info}
+          />
         </ItemCont>
         </MyCont>   
           </React.Fragment>}

@@ -1,5 +1,5 @@
-import React,{useState,useEffect,} from 'react';
-import { StyleSheet, Text, View,Image } from 'react-native';
+import React, { useState, useEffect, } from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';
 
 import HeroAvatar from '../comps/HeroAvatar';
@@ -17,9 +17,17 @@ const Cont = styled.View`
   justify-content: space-between;
   z-index:1;
 `
+
+const Wave = styled.Image`
+    width: 100%;
+    height: 30%;
+    position: absolute;
+`;
+
 const Cont2 = styled.View`
     display: flex;
-    padding-top: 20px;
+    margin-top: 100px;
+    /* padding-top: 20px; */
     align-content:center;
     justify-content:center;
 `
@@ -28,7 +36,6 @@ const Banner = styled.View`
     z-index:2;
 `
 const NavBarCont = styled.View`
-
 `;
 
 const CardCont = styled.View`
@@ -48,29 +55,30 @@ const BtnCont = styled.View`
 const MyScrollView = styled.ScrollView`
 
 `
-const ClinicProfile = ({navigation})=>{
-    return(
-       <Cont>   
-           <MyScrollView>
-            <Cont2>
-                    <HeroAvatar herowidth={200} heroheight={200}/>
-                    
-            </Cont2>
-            <CardCont>
-                    <InfoCard/>
-                    <InfoCard/>
+const ClinicProfile = ({ navigation }) => {
+    return (
+        <Cont>
+            <MyScrollView>
+                <Wave source={require('../assets/backgroundmobile.png')} />
+                <Cont2>
+                    <HeroAvatar herowidth={200} heroheight={200} />
 
-            </CardCont>
-            <BtnCont>
-                <Btn onPress = {()=>navigation.navigate("login")}/>
-            </BtnCont>
-           </MyScrollView>
+                </Cont2>
+                <CardCont>
+                    <InfoCard />
+                    <InfoCard />
+
+                </CardCont>
+                <BtnCont>
+                    <Btn onPress={() => navigation.navigate("login")} />
+                </BtnCont>
+            </MyScrollView>
 
             <NavBarCont>
-                <NavBar/>
+                <NavBar />
             </NavBarCont>
-        </Cont> 
+        </Cont>
     )
-    }
-    
-    export default ClinicProfile;
+}
+
+export default ClinicProfile;

@@ -1,17 +1,17 @@
-import React, {useState,useEffect,} from 'react';
-import { StyleSheet, Text, View,Image, ScrollView } from 'react-native';
+import React, { useState, useEffect, } from 'react';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 
 // Import Comps
 import Map from '../comps/Map'
 import SearchBar from '../comps/SearchBar'
-import Filiter from '../comps/Filter'
+import Filter from '../comps/Filter'
 import ClinDocButton from '../comps/ClinDocButton'
 import Header from '../comps/Header'
 import BookingForm from '../comps/BookingForm';
 import NavBar from '../comps/NavBar';
 
-  const Cont = styled.View`
+const Cont = styled.View`
   background-color: #F7F2EE;
   flex:1;
   flex-direction: column;
@@ -19,9 +19,17 @@ import NavBar from '../comps/NavBar';
   justify-content: space-between;
 `
 
-const SubCont = styled.ScrollView`
+// const SubCont = styled.ScrollView`
 
-`
+
+// `;
+
+const Wave = styled.Image`
+    width: 100%;
+    height: 30%;
+    position: absolute;
+`;
+
 // const Cont = styled.View`
 //   width:100vw;
 //   height:100vh;
@@ -31,27 +39,22 @@ const SubCont = styled.ScrollView`
 //   align-items:center;
 //   `
 
-  const Wave = styled.Image`
-  width: 100%;
-  height: 10%;
-  position: absolute;
-  top: 0;
-  `;
-  const SearchCont = styled.View`
+
+const SearchCont = styled.View`
     display: flex;
     flex-direction: row;
     margin-top: 30px;
   `
-  const MapCont = styled.View`
+const MapCont = styled.View`
     display: flex;
 
   `
-  const FilterCont = styled.View`
+const FilterCont = styled.View`
     display: flex;
-    margin-top: 30px;
-    z-index: 2;
+    margin-top: 20px;
+   
   `
-  const CardCont = styled.View`
+const CardCont = styled.View`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,50 +62,52 @@ const SubCont = styled.ScrollView`
     
     
   `
-  const NavBarCont = styled.View`
+const NavBarCont = styled.View`
 
 `;
 
-const findclinic = ({navigation})=>{
-return ( 
-<Cont>
-  <SubCont>
-    <Wave source={require('../assets/background_wave.jpg')}/>
-    <SearchCont>
-      <SearchBar/>
-    </SearchCont>
-    
-    <Map/>
-    <FilterCont>
-      <Filiter
-      headerText1={"Language Prefrences"}
-      headerText2={"Gender"}
-      optionText1 = {"English"}
-      optionText2 = {"French"}
-      optionText3 = {"Chinese"}
-      optionText4 = {"Korean"}
-      optionText5 = {"Japanese"}
-      optionText6 = {"Punjabi"}
-      optionText7 = {"Male"}
-      optionText8 = {"Female"}
-      />
-    </FilterCont>
-    
-    <CardCont> 
-      <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
-      <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
-      <ClinDocButton cardpress = {()=>navigation.navigate("clinicprofile")}/>
-    </CardCont>
-  </SubCont>  
-    <NavBarCont>
-      <NavBar/>
-    </NavBarCont>
-    </Cont> 
-    
-)
+export default function findclinic({ navigation }){
+  return (
+    <Cont>
+      <ScrollView keyboardShouldPersistTaps={'handled'}>
+        <Wave source={require('../assets/backgroundmobile.png')} />
+        <Map />
+        <FilterCont>
+          <Filter 
+          headerText1={"Language Prefrences"}
+          headerText2={"Location"}
+          optionText1={"French"}
+          optionText2={"Chinese"}
+          optionText3={"Korean"}
+          optionText4={"Japanese"}
+          optionText5={"Punjabi"}
+          optionText6={"Vietnamese"}
+
+          optionText7={"Vancouver"}
+          optionText8={"N.Vancouver"}
+          optionText9={"Surrey"}
+          optionText10={"Burnaby"}
+          optionText11={"Richmond"}
+          optionText12={"Coquitlam"}
+          /> 
+        </FilterCont>
+        
+        <CardCont>
+          {/* <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+          <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+          <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} /> */}
+        </CardCont> 
+      </ScrollView> 
+
+      <NavBarCont>
+        <NavBar />
+      </NavBarCont>
+    </Cont>
+
+  )
 
 }
-export default findclinic;
+
 
 
 
