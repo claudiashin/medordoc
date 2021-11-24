@@ -22,6 +22,7 @@ const Maincont = styled.div`
 //avatar image
 const Avatarcont = styled.div`
     display:flex;
+    
     height: 105px;
     width: 105px;
     right:50px;
@@ -49,6 +50,13 @@ const Text = styled.text`
     margin-bottom: 5px;
     text-align:left;
 `
+const Nameheader = styled.text`
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+`
 //email button
 const Emailbut = styled.div`
     display:flex;
@@ -56,10 +64,13 @@ const Emailbut = styled.div`
     justify-content:center;
     align-items:center;
     margin-top:5px;
-    width:175px;
-    height:55px;
+    width:150px;
+    height:40px;
     background-color: #FAF0BF;
     border-radius: 5px;
+    &:hover {
+        background-color: #EADCA2;
+    }
 `
 const Emailtext = styled.text`
     font-size: 20px;
@@ -68,7 +79,12 @@ const Emailtext = styled.text`
 //close button
 const Closebutton = styled.div`
     display: flex;
+    border-radius: 50%;
     margin-left: 300px;
+    &:hover {
+        background-color: #EADCA2;
+        opacity: 0.8;
+    }
 `
 //edit button for doctor side
 const Editbut = styled.div`
@@ -133,8 +149,11 @@ const PatientCard=({
         <Avatarcont>
             <Avatarimg src={imagesource}/>
         </Avatarcont>
+        <Nameheader>
+            <Text>{nameText}</Text>
+        </Nameheader>
         <Textcont>
-            <Text>{name}{nameText}</Text>
+            
             <Text>{gender}{genderText}</Text>
             <Text>{age}{ageText}</Text>
             <Text>{medicalconcerns}{medicalText}</Text>

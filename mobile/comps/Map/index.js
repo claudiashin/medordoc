@@ -166,7 +166,7 @@ navigation
 }
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      flex: 1.0,
       backgroundColor: '#fff',
       alignItems: 'center',
       // justifyContent: 'center',
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     },
     map: {
       width: Dimensions.get('window').width,
-      height: Dimensions.get('window').height/3,
+      height: Dimensions.get('window').height/2,
     }})
 
 export default Map;
