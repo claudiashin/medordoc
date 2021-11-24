@@ -114,7 +114,7 @@ const SigninForm = ({ setChangePage, setInfo, info }) => {
         bgColor="#90AABB"
         borderRad="20px"
         margin="40px 15px 0px 0px"
-        bgHover="#BCDFF6"
+        bgHover="#7592A5"
       />
     </ButtonCont>
   </MainCont>

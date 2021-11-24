@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import {AiOutlineMail} from '@react-icons/all-files/ai/AiOutlineMail';
-import {IoIosClose} from '@react-icons/all-files/io/IoIosClose';
+import { AiOutlineMail } from '@react-icons/all-files/ai/AiOutlineMail';
+import { IoIosClose } from '@react-icons/all-files/io/IoIosClose';
 
-import {useState} from 'react';
+import { useState } from 'react';
 
 import PopupCard from '../PopupCard';
 
@@ -18,6 +18,7 @@ const Maincont = styled.div`
     border-radius: 10px;
     border: 1px solid black;
     background:white;
+    padding-bottom: 50px;
 `
 //avatar image
 const Avatarcont = styled.div`
@@ -34,7 +35,7 @@ const Avatarcont = styled.div`
 const Avatarimg = styled.img`
     width: 100%;
     height:100%;
-    resize-mode:cover;
+    /* resize-mode:cover; */
     border-radius: 50px;
 `
 
@@ -101,18 +102,21 @@ const Editbut = styled.div`
 const PopupCont = styled.div`
     display: flex;
     position: absolute;
+    margin-top: 50px;
     
     align-self: center;
     justify-content: center;
 `
 
 const EmailbutCont = styled.div`
-    display:${props=>props.button1};
+    display:${props => props.button1};
 `
+
 const EditbutCont = styled.div`
-display:${props=>props.button2};
+    display:${props => props.button2};
 `
-const PatientCard=({
+
+const PatientCard = ({
     //info
     nameText = "Default Text",
     genderText = "Default Text",
@@ -120,7 +124,7 @@ const PatientCard=({
     medicalText = "Default Text",
     phoneText = "Default Text",
     emailText = "Email",
-    imagesource="https://placekitten.com/100/100",
+    imagesource = "https://placekitten.com/100/100",
     //subject
     name = "default text",
     gender = "default text",
@@ -130,11 +134,11 @@ const PatientCard=({
     language = "default text",
     medicalconcerns = "default text",
     phone = "default text",
-    button1="flex",
-    button2="flex",
-    editDoc=()=>{}
+    button1 = "flex",
+    button2 = "flex",
+    editDoc = () => { }
     //button
-})=>{
+}) => {
 
     const [open, setOpen] = useState(0);
 
