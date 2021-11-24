@@ -65,12 +65,14 @@ const BodyCont = styled.div`
 const SignInCont = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 10%;
 `;
 
 const SignInCont_Two = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 40px;
+  margin-bottom: 10%;
 `;
 
 const Title = styled.p`
@@ -227,7 +229,7 @@ export default function Home() {
             fSize="16px"
             fWeight="600"
             borderRad="25px"
-            bgHover="#7C9AAD"
+            bgHover="#7592A5"
           />
         </BtnContTwo>
       </div>;

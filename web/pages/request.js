@@ -58,7 +58,7 @@ const ContPatientCardInd = styled.div`
 
 const ContFooter = styled.div`
     display: flex;
-    margin-top: 50px;
+    margin-top: 10%;
 `;
 
 //popup card 

@@ -44,6 +44,7 @@ const BodyCont = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10%;
 `;
 const Low = styled.div`
   display: flex;

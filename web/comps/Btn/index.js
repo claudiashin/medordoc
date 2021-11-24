@@ -14,10 +14,11 @@ const Button = styled.button`
     border-radius: ${props=>props.borderRad};
     margin: ${props=>props.margin};
     border: none;
+    box-shadow: 2px 3px 9px #AFAFAF; 
 
     &:hover {
         background-color: ${props=>props.bgHover};
-      }
+    }
 `; 
 
 const TextCont = styled.div`
