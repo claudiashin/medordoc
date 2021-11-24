@@ -11,15 +11,16 @@ const Maincont = styled.View`
     align-items: center;
     background-color:#FFFFFF;
     box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5)
-    width: 284px;
-    height: 80px;
-    margin:20px;
+    width: 350px;
+    height: 100px;
+    margin:10px;
     border-radius: 15px;
+   
 `
 const Avatarcont = styled.View`
     display:flex;
-    height: 55px;
-    width: 55px;
+    height: 80px;
+    width: 80px;
     right:50px;
     margin-right: 10px;
     border-radius: 50px;

@@ -23,6 +23,7 @@ const Maincont = styled.div`
 //avatar image
 const Avatarcont = styled.div`
     display:flex;
+    
     height: 105px;
     width: 105px;
     right:50px;
@@ -34,7 +35,7 @@ const Avatarcont = styled.div`
 const Avatarimg = styled.img`
     width: 100%;
     height:100%;
-    resize-mode:cover;
+    /* resize-mode:cover; */
     border-radius: 50px;
 `
 
@@ -50,6 +51,13 @@ const Text = styled.text`
     margin-bottom: 5px;
     text-align:left;
 `
+const Nameheader = styled.text`
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+`
 //email button
 const Emailbut = styled.div`
     display:flex;
@@ -57,10 +65,13 @@ const Emailbut = styled.div`
     justify-content:center;
     align-items:center;
     margin-top:5px;
-    width:175px;
-    height:55px;
+    width:150px;
+    height:40px;
     background-color: #FAF0BF;
     border-radius: 5px;
+    &:hover {
+        background-color: #EADCA2;
+    }
 `
 const Emailtext = styled.text`
     font-size: 20px;
@@ -69,9 +80,12 @@ const Emailtext = styled.text`
 //close button
 const Closebutton = styled.div`
     display: flex;
+    border-radius: 50%;
     margin-left: 300px;
-    top: 20px;
-    position: relative;
+    &:hover {
+        background-color: #EADCA2;
+        opacity: 0.8;
+    }
 `
 //edit button for doctor side
 const Editbut = styled.div`
@@ -129,69 +143,71 @@ const PatientCard = ({
     const [open, setOpen] = useState(0);
 
 
-    if (open == 0) {
-        return <Maincont>
-
-            <Closebutton>
-                <IoIosClose onClick={() => { setOpen(1) }} size={60} />
-            </Closebutton>
-
-            <Avatarcont>
-                <Avatarimg src={imagesource} />
-            </Avatarcont>
-            <Textcont>
-                <Text>{name}{nameText}</Text>
-                <Text>{gender}{genderText}</Text>
-                <Text>{age}{ageText}</Text>
-                <Text>{medicalconcerns}{medicalText}</Text>
-                <Text>{phone}{phoneText}</Text>
-            </Textcont>
-            <EmailbutCont button1={button1}>
-                <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'>
-                    <Emailbut>
-                        <AiOutlineMail size={30} />
-                        <Emailtext>{emailText}
-                        </Emailtext>
-                    </Emailbut></a>
-            </EmailbutCont>
-            <EditbutCont button2={button2}>
-                <Editbut onClick={() => { editDoc() }}>{emailText}</Editbut>
-            </EditbutCont>
-        </Maincont>
-
-    } else if (open == 1) {
-        return <Maincont>
-            <PopupCont>
-                <PopupCard CloseCard={() => {
-                    setOpen(2)
-                }} ClosePop={() => {
-                    setOpen(0)
-                }} />
-            </PopupCont>
-
-            <Closebutton>
-                <IoIosClose size={60} />
-            </Closebutton>
-
-            <Avatarcont>
-                <Avatarimg src={imagesource} />
-            </Avatarcont>
-            <Textcont>
-                <Text>{name}{nameText}</Text>
-                <Text>{gender}{genderText}</Text>
-                <Text>{age}{ageText}</Text>
-                <Text>{medicalconcerns}{medicalText}</Text>
-                <Text>{phone}{phoneText}</Text>
-            </Textcont>
-            <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
-
-                <AiOutlineMail size={30} />
-                <Emailtext>{emailText}</Emailtext>
-            </Emailbut></a>
-        </Maincont>
-    } else if (open == 2) {
-        return <></>
-    }
+    if(open == 0){
+    return <Maincont>
+        
+        <Closebutton>
+        <IoIosClose onClick={()=>{setOpen(1)}} size={60}/>
+        </Closebutton>
+        
+        <Avatarcont>
+            <Avatarimg src={imagesource}/>
+        </Avatarcont>
+        <Nameheader>
+            <Text>{nameText}</Text>
+        </Nameheader>
+        <Textcont>
+            
+            <Text>{gender}{genderText}</Text>
+            <Text>{age}{ageText}</Text>
+            <Text>{medicalconcerns}{medicalText}</Text>
+            <Text>{phone}{phoneText}</Text>
+        </Textcont>
+        <EmailbutCont button1={button1}>
+        <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
+        
+            <AiOutlineMail size={30}/>
+            <Emailtext>{emailText}</Emailtext>
+        </Emailbut></a>
+        </EmailbutCont>
+        <EditbutCont button2={button2} >
+            <Editbut onClick={()=>{editDoc()}}>{emailText}</Editbut>
+        </EditbutCont>
+    </Maincont>
+    
+}else if(open == 1){
+    return <Maincont>
+        <PopupCont>
+            <PopupCard CloseCard={()=>{
+                setOpen(2)
+            }} ClosePop={()=>{
+                setOpen(0)
+            }}/>
+        </PopupCont>
+        
+        <Closebutton>
+        <IoIosClose  size={60}/>
+        </Closebutton>
+        
+        <Avatarcont>
+            <Avatarimg src={imagesource}/>
+        </Avatarcont>
+        <Textcont>
+            <Text>{name}{nameText}</Text>
+            <Text>{gender}{genderText}</Text>
+            <Text>{age}{ageText}</Text>
+            <Text>{medicalconcerns}{medicalText}</Text>
+            <Text>{phone}{phoneText}</Text>
+        </Textcont>
+        <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
+    
+            <AiOutlineMail size={30}/>
+            <Emailtext>{emailText}</Emailtext>
+        </Emailbut></a>
+    </Maincont>
+}else if(open == 2){
+    return <></>
+}
 }
 
 export default PatientCard;

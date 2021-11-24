@@ -31,12 +31,33 @@ import test from './pages/test'
 import dbtest from './pages/dbtest'
 
 
+import { Ionicons } from '@expo/vector-icons';
+import AppLoading from 'expo-app-loading';
+import * as Font from 'expo-font';
 
+function cacheFonts(fonts) {
+  return fonts.map(font => Font.loadAsync(font));
+}
 
 const Stack = createNativeStackNavigator();
 
 
 export default function App() {
+
+  const [ready, setReady] = useState(false);
+  const init = async()=>{
+    const fontAssets = cacheFonts([Ionicons.font]);
+    await Promise.all([...fontAssets]);
+  }
+  if (!ready) {
+    return (
+      <AppLoading
+        startAsync={init}
+        onFinish={() => setReady(true)}
+        onError={console.warn}
+      />
+    );
+  }
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="home">
@@ -59,7 +80,7 @@ export default function App() {
         {/* <Stack.Screen options={{ headerShown: false }} name="dbtest" component={dbtest} /> */}
       </Stack.Navigator>
     </NavigationContainer>
-
+    
   );
 }
 
