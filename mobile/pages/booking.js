@@ -4,7 +4,6 @@ import styled from 'styled-components/native';
 import { addDoc, collection,setDoc,getDoc,doc,query,where,} from 'firebase/firestore';
 // import {db} from '../utils/firebase';
 
-
 import Calendar from '../comps/Calendar';
 import Header from '../comps/Header';
 // import DropDownFilter from '../comps/DropDownFilter';
@@ -72,7 +71,7 @@ const booking = ({ navigation }) => {
                 <ButtonCont>
                     <Btn
                         title={'Confirm'}
-                        fSize={20}
+                        fSize={18}
                         onPress={() => navigation.navigate('qrconfirm')}
                     />
                 </ButtonCont>

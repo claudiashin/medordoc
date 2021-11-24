@@ -95,7 +95,7 @@ const login = ()=>{
      <View style = {styles.container}>
         <EmailSignin onSignin = {Signin}
                  onCreate = {CreateUser}/>
-        </View> 
+    </View> 
 
      
      </Login>

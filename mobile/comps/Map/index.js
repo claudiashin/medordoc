@@ -150,7 +150,6 @@ navigation
      longitude: -123.01565794794925}}
      title={"Burnaby Clinic"}
      description={"description"}
-    
     >
     <MapView.Callout tooltip style={styles.customView} onPress = {() => navigate}
     >

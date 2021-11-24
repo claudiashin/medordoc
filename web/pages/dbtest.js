@@ -5,7 +5,6 @@ import {db} from '../firebase';
 export default function dbtest({
     num ="booking2000",
 }){
-
     const booking = async() =>{
     const bookingdata = collection(db,"bookings")
     // await setDoc(bookingdata,{
