@@ -1,5 +1,10 @@
 import styled from 'styled-components'
-import React from 'react'
+import React , {useState} from 'react'
+import ImageUpload from 'image-upload-react'
+//important for getting nice style.
+import 'image-upload-react/dist/index.css'
+import {getStorage, ref, uploadBytes} from "firebase/storage"
+
 
 
 const HeroAvatarCont = styled.div`
@@ -21,16 +26,47 @@ const PlusImage = styled.img`
   bottom:10px;
 
 `
+const MyFile = styled.input`
+// opacity: 0;
+// position: absolute;
+// z-index: -1;
+`
+const MyLabel = styled.label`
+cursor: pointer;
+`
 const HeroAvatar = ({
   herowidth="200px",
   heroheight="200px",
   heromargin="0px",
   pluswidth="30px",
-  imagesrc="https://placekitten.com/1000/1000"
+  imagesrc="https://placekitten.com/1000/1000",
 })=>{
+
+
+  
+  const Upload = async(e)=>{
+    
+    console.log(e.target.files[0]);ç
+    
+    if(e.target.files.length <= 0){
+        alert("no file selected");
+        return false;
+    }
+
+    const file = e.target.files[0];
+    const storage = getStorage();
+    const storageRef = ref(storage, 'test.jpg');  
+    const snapshot = await uploadBytes(storageRef,file)
+    console.log ('uploaded');
+
+}
+    
   return<HeroAvatarCont herowidth={herowidth} heroheight={heroheight} heromargin={heromargin}>
-    <HeroImage src={imagesrc}/>
-    <PlusImage pluswidth={pluswidth} src={require('../../public/plus.png')}/>
+    <HeroImage onClick={Upload}  src={imagesrc}/>
+    <PlusImage onChange={Upload} pluswidth={pluswidth} src={require('../../public/plus.png')}/>
+    <MyLabel for="file">asdasd</MyLabel>
+    <MyFile id="file" type="file"/>
+
   </HeroAvatarCont>
 }
 

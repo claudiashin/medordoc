@@ -122,9 +122,8 @@ const LoginForm = ({ width = "300" }) => {
                 clinicEmail,
                 clinicPass
               );
-              router.push("/home");
             }
-            
+            router.push("/home");
           }}
         />
       </BtnCont>
@@ -133,3 +132,5 @@ const LoginForm = ({ width = "300" }) => {
 };
 
 export default LoginForm;
+
+

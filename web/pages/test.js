@@ -7,7 +7,6 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 import {useState} from 'react';
 
 
-
 export default function Test(){
   
   const [em, setEm] = useState('')  
@@ -49,8 +48,9 @@ export default function Test(){
             <input type = 'password' placeholder = 'password'onChange = {(e)=>setPs(e.target.value)}/>
             <button onClick ={signin}>Sign in</button>
             <button onClick ={CreateUser}>Create Account</button>
-            <input type = 'file' onChange={Upload}/>
+            <input type = 'file'/>
+            <button onChange={Upload}>uppload</button>
         </div>    
     )
 
-} 
+}

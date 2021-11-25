@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 //import comps
 import NavBar from "../comps/NavBar";
@@ -18,6 +18,10 @@ import Footer from "../comps/Footer";
 import { setDoc, doc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from "../firebase";
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+
 
 const Cont = styled.div`
   background-color: #f7f2ee;
@@ -115,6 +119,19 @@ const FooterCont = styled.div`
 `;
 
 export default function Home() {
+
+  useEffect(()=>{
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("Signed in", user)
+        // might want to use a state that changes when signed in
+      } else {
+        console.log("Signed out")
+      }
+    });
+  })
+  
   const router = useRouter();
 
   const [clinicEmail, setEmail] = React.useState("");

@@ -16,6 +16,9 @@ import HeroLottie from '../comps/HeroLottie';
 import myLottie from '../public/lottie_woman_laptop.json'
 import LaptopLottie from '../public/lottie_laptop.json'
 import Footer from '../comps/Footer';
+import { useEffect } from 'react';
+
+
 
 const MainCont = styled.div`
   background-color: #F7F2EE;
@@ -186,7 +189,7 @@ const FactText = styled.p`
 
 export default function Home() {
 
-  const router = useRouter();
+
 
   return <MainCont>
     <WaveCont>
