@@ -2,6 +2,8 @@ import React, { Component, useState, setState } from 'react';
 import dynamic from "next/dynamic";
 import styled from 'styled-components';
 
+import axios from 'axios';
+
 //dialog comps from mui
 import Dialog from '@mui/material/Dialog';
 import Button from '@mui/material/Button';
@@ -36,6 +38,7 @@ function SimpleDialog(props) {
             })
             window.location.href = `/checkIn?ccode=${result.cornit}`;
             // window.location.href = '/checkin';
+            //axios user id 
         }
     }
 

@@ -122,8 +122,9 @@ const LoginForm = ({ width = "300" }) => {
                 clinicEmail,
                 clinicPass
               );
+              router.push("/home");
             }
-            () => router.push("/booking");
+            
           }}
         />
       </BtnCont>

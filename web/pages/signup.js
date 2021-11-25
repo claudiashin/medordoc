@@ -14,7 +14,8 @@ import myLottie2 from "../public/lottie_welcome.json";
 import HeroAvatar from "../comps/HeroAvatar";
 import Footer from "../comps/Footer";
 
-import { addDoc, collection } from "firebase/firestore";
+
+import { setDoc, doc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from "../firebase";
 
@@ -114,6 +115,9 @@ const FooterCont = styled.div`
 export default function Home() {
   const router = useRouter();
 
+  const [clinicEmail, setEmail] = React.useState("");
+  const [clinicPass, setPass] = React.useState("");
+
   const [clinicLang, setLanguage] = React.useState([]);
   const [clinicName, setClinicName] = React.useState("");
   const [clinicAdd, setClinicAdd] = React.useState("");
@@ -121,7 +125,14 @@ export default function Home() {
   const [clinicOpen, setClinicOpen] = React.useState("");
   const [clinicClose, setClinicClose] = React.useState("");
 
+  const [clinicid, setClinicId] = React.useState(null);
+
   const [changePage, setChangePage] = useState(0);
+
+  const LogIn = {
+    email: clinicEmail,
+    password: clinicPass,
+  };
 
   const info = {
     name: clinicName,
@@ -130,6 +141,11 @@ export default function Home() {
     num: clinicNum,
     open: clinicOpen,
     close: clinicClose,
+  };
+
+  const setLogin = ({ email = clinicEmail, password = clinicPass }) => {
+    setEmail(email);
+    setPass(password);
   };
 
   const setInfo = ({
@@ -152,6 +168,9 @@ export default function Home() {
     if (changePage === 0) {
       return (
         <div>
+            <HeaderTitleCont>
+            <HeaderTitle title="Create Your Account" />
+          </HeaderTitleCont>
           <BodyCont>
             <HeroLottieCont>
               <HeroLottie changePage source={myLottie} width="550px" />
@@ -160,6 +179,8 @@ export default function Home() {
             <SignInCont>
               <SigninForm
                 setChangePage={(number) => setChangePage(changePage + number)}
+                LogIn={LogIn}
+                setLogin={setLogin}
               />
             </SignInCont>
           </BodyCont>
@@ -184,9 +205,17 @@ export default function Home() {
             <SignInCont_Two>
               <SigninFormTwo
                 setChangePage={(number) => setChangePage(changePage + number)}
-                submit={async () =>
-                  await addDoc(collection(db, "clinics"), info)
-                }
+                submit={async () => {
+                  const auth = getAuth();
+                  const result = await createUserWithEmailAndPassword(
+                    auth,
+                    clinicEmail,
+                    clinicPass
+                  );
+                  info.id = result.user.uid;
+                  await setDoc(doc(db, "clinics", result.user.uid), info);
+                  return info;
+                }}
                 setInfo={setInfo}
                 info={info}
               />

@@ -14,10 +14,12 @@ const Cont = styled.View`
   align-items: center;
 `;
 
-const Qrcode = ({}) => {
+const Qrcode = ({
+  val="default"
+}) => {
   return (
     <Cont>
-      <QRCode value="https://www.google.com/" />
+      <QRCode value={val} />
     </Cont>
   );
 };

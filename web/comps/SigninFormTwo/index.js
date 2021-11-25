@@ -35,7 +35,7 @@ const FormTimeForm = styled.fieldset`
   margin: 15px;
   border: 1px solid black;
   width: 185px;
-  height: 55px;
+  height: 57    px;
 `;
 const TimeFormCont = styled.div`
   display: flex;
