@@ -18,6 +18,7 @@
     "@mui/material": "^5.0.6",
     "@react-icons/all-files": "^4.1.0",
     "@trendmicro/react-modal": "^3.1.0",
+    "axios": "^0.24.0",
     "blob": "^0.1.0",
     "firebase": "^9.4.1",
     "image-upload-react": "^1.4.5",

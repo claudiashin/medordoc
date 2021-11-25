@@ -11,7 +11,6 @@ const Maincont = styled.div`
     background-color: #B9D1E1;
     height: 60px;
     width: 100%;
-    margin-top: 10%;
 `
 const Textcont = styled.div`
     display: flex;

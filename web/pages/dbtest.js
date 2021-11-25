@@ -3,6 +3,7 @@ import database from 'mime-db';
 import React, { useState,useEffect } from 'react';
 import {db} from '../firebase';
 
+
 export default function dbtest(){
    
 const [name , setName] = useState();

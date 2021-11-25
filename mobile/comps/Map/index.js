@@ -39,7 +39,7 @@ navigation
       })
     }
 
-     const navigate=()=>{()=>navigation.navigate('booking')}
+     const navigate=()=>{()=>navigation.navigate("home")}
       
 
     // const latitude = location.coords.latitude;
@@ -152,7 +152,7 @@ navigation
      description={"description"}
     
     >
-    <MapView.Callout tooltip style={styles.customView} onPress = {navigate}
+    <MapView.Callout tooltip style={styles.customView} onPress = {() => navigate}
     >
         <View style={styles.calloutText} >
         <Text>Burnaby{"\n"}20 minutes</Text>
@@ -166,7 +166,7 @@ navigation
 }
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      flex: 1.0,
       backgroundColor: '#fff',
       alignItems: 'center',
       // justifyContent: 'center',
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     },
     map: {
       width: Dimensions.get('window').width,
-      height: Dimensions.get('window').height/3,
+      height: Dimensions.get('window').height/2,
     }})
 
 export default Map;

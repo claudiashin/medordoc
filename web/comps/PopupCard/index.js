@@ -43,11 +43,15 @@ const Button = styled.button`
     font-weight: 900;
     border: none;
     background-color: #fff;
+    &:hover {
+        color: ${props=>props.bgHover};
+    }
 `;
 
 const PopupCard = ({
     ClosePop=()=>{},
     CloseCard=()=>{},
+    bgHover ="#14487B",
 }) => {
     
     // const [open, setOpen] = useState(true);
@@ -60,15 +64,15 @@ const PopupCard = ({
         {/* <PopupCardCont display={display}> */}
         <CloseCont>
         {/* <IoIosClose onClick={()=>setOpen(!open)} size={60}/> */}
-        <IoIosClose onClick={()=>{ClosePop()}} size={60}/>
+        <IoIosClose onClick={()=>{ClosePop()}} size={40}/>
 
         </CloseCont>
 
         <Heading>Are you sure you want to remove this patient request?</Heading>
 
         <ButtonCont>
-            <Button onClick={()=>CloseCard()}>YES</Button>
-            <Button onClick={()=>ClosePop()}>NO</Button>
+            <Button onClick={()=>CloseCard()} bgHover={bgHover}>YES</Button>
+            <Button onClick={()=>ClosePop()} bgHover={bgHover}>NO</Button>
         </ButtonCont>
     </PopupCardCont>
 

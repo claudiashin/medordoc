@@ -1,16 +1,15 @@
-// import app from '../utils/inits'
-// import db from '../utils/inits'
+// import db from '../utils/store'
 // import React, { useState,useEffect } from 'react';
+// import styled from 'styled-components/native'
+// import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
 
 
-// function dbtest (){
-//     const[booking,setbookings] = useState([]);
-//     const [loading,setLoading] =useState(false);
+// const dbtest =()=>{
+//      const [booking,setbookings] = useState([]);
+//      const [loading,setLoading] =useState(false);
+//      const ref = firebase.firestore().collection("bookings");
 
-//     const ref = firebase.firestore().collection("bookings");
-    
 //  function getbookings(){
-       
 //        setLoading(true)
 //        ref.onSnapshot((querySnapshot)=>{
 //            const items = [];
@@ -19,7 +18,6 @@
 //            });
 //            setbookings(items)
 //            setLoading(false) 
-
 //        })
 //     }
 
@@ -28,23 +26,21 @@
 //     },[])
     
 //     if(loading){
-//         return <h1>loading..</h1>
+//         return <Text>loading..</Text>
 //     }
 
-   
 //         return(
-//             <div>
-//                 <h1>booking</h1>
+//             <View>
+//                 <Text>booking</Text>
 //                 {bookings.map((booking1) =>(
-//                     <div key = {booking1.day}>
-//                        <h2> {booking1.month}</h2>
-//                        <p>{booking1.year}</p>
-//                     </div>    
+//                     <View key = {booking1.day}>
+//                        <Text> {booking1.month}</Text>
+//                        <Text>{booking1.year}</Text>
+//                     </View>    
 //                 ))}
   
-//             </div>    
+//             </View>    
 //         )
-    
-
-
 // }
+
+// export default dbtest();

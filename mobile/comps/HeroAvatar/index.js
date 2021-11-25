@@ -8,43 +8,37 @@ import { Button, Image, View, Platform } from 'react-native';
 
 
 const HeroAvatarCont = styled.View`
-  width:100%;
-  max-height:300px;
-  align-items:center;
-`
+  width: 100%;
+  max-height: 300px;
+  align-items: center;
+`;
 const HeroImage = styled.Image`
-  width:${props=>props.herowidth}px;
-  height:${props=>props.heroheight}px;
-  border-radius:200px;
-`
+  width: ${(props) => props.herowidth}px;
+  height: ${(props) => props.heroheight}px;
+  border-radius: 200px;
+`;
 const PlusImage = styled.Image`
-  width:${props=>props.pluswidth}px;
-  height:${props=>props.plusheight}px;
-  position:absolute;
-  right:${props=>props.right}px;
-  bottom:${props=>props.bottom}px;
-  display: ${props=>props.visible};
+  width: ${(props) => props.pluswidth}px;
+  height: ${(props) => props.plusheight}px;
+  position: absolute;
+  right: ${(props) => props.right}px;
+  bottom: ${(props) => props.bottom}px;
+  display: ${(props) => props.visible};
+`;
+const PlusCont = styled.TouchableOpacity``;
 
-`
-const PlusCont = styled.TouchableOpacity`
-
-`
-const MyButton = styled.Button`
-
-`
-
-const HeroAvatar =({
-  heroheight="300",
-  herowidth="300",
-  pluswidth="30",
-  plusheight="30",
-  right="-70",
-  bottom="10",
-  visible="flex"
-})=>{
-
-
-  const [image, setImage] = useState("https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=")
+const HeroAvatar = ({
+  heroheight = "300",
+  herowidth = "300",
+  pluswidth = "30",
+  plusheight = "30",
+  right = "-70",
+  bottom = "10",
+  visible = "flex",
+}) => {
+  const [image, setImage] = useState(
+    "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0="
+  );
 
   useEffect(() => {
     (async () => {
@@ -65,9 +59,9 @@ const HeroAvatar =({
       aspect: [4, 3],
       quality: 0.3,
     });
-  
+
     console.log(result);
-  
+
     if (!result.cancelled) {
       setImage(result.uri);
       Upload(result.uri)
@@ -113,4 +107,4 @@ const HeroAvatar =({
 </HeroAvatarCont>
 }
 
-export default HeroAvatar
+export default HeroAvatar;

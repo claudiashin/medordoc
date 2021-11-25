@@ -29,42 +29,90 @@ const Wave = styled.Image`
   `
 
   const FilterCont = styled.View`
-  
+    
+    margin-top: 180px;
   `
+  const HeaderCont = styled.View`
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 120px;
+  `
+  const HeaderCont2 = styled.View`
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 50px;
+  margin-top: 25px;
+`
 const CardCont = styled.View`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
   `
 const NavBarCont = styled.View`
 
 `;
-const MyScrollView = styled.ScrollView`
+const ScrollView = styled.ScrollView`
 
 `
 
 const finddoc = ({navigation})=>{
-return(
-   <Cont>
-     <MyScrollView>
+return( <Cont>
+  <ScrollView keyboardShouldPersistTaps={'handled'}>
+  <Wave source={require('../assets/backgroundmobile.png')} />
 
-      <Wave source={require('../assets/backgroundmobile.png')} />
-      <FilterCont>
-        <Filiter/>
-      </FilterCont>
+  <HeaderCont>
+    <Header
+      title="Find a Family Doctor"
+      fSize="26px"
+      />
+  </HeaderCont>
 
-      <CardCont>
-          <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
-          <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
-          <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
-      </CardCont>
+  
+    <FilterCont>
+    <Filiter 
+              headerText1={"Language Prefrences"}
+              headerText2={"Gender"}
+              optionText1={"French"}
+              optionText2={"Chinese"}
+              optionText3={"Korean"}
+              optionText4={"Japanese"}
+              optionText5={"Punjabi"}
+              optionText6={"Vietnamese"}
+    
+              optionText7={"Male"}
+              optionText8={"Female"}
+              display={"none"}
 
-  </MyScrollView>
-  <NavBarCont>
-    <NavBar/>
-  </NavBarCont>
-    </Cont>
+    /> 
+    </FilterCont>
+
+    <HeaderCont2>
+    <Header
+      title="Available Doctors"
+      fSize="26px"
+      />
+  </HeaderCont2>
+   
+  <CardCont>
+    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+  </CardCont> 
+</ScrollView> 
+
+<NavBarCont>
+  <NavBar />
+</NavBarCont>
+</Cont>
   )
 }
 

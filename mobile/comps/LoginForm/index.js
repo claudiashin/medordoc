@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 import { Provider as PaperProvider, TextInput } from 'react-native-paper';
 import { TouchableOpacity, Text } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-
 const MainCont = styled.View`
     flex-direction: column;
 `
@@ -14,8 +13,6 @@ const LastDiv = styled.View`
     margin-right: 5px;
 
 `
-
-
 const LoginForm = ({
     
 }) => {
@@ -27,6 +24,7 @@ const LoginForm = ({
 
     return <MainCont>
         <PaperProvider>
+           
             <TextInput
             style={{width:300, height: 50, margin:5, borderRadius: 0, backgroundColor:'#fff'}}
             label="Email"

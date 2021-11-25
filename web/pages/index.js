@@ -22,7 +22,7 @@ import { useEffect } from 'react';
 
 const MainCont = styled.div`
   background-color: #F7F2EE;
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
 `;
 
@@ -50,7 +50,7 @@ const NavBarCont = styled.div`
 const ContOne = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
   height: 500px;
 
@@ -66,33 +66,42 @@ const ContOne = styled.div`
 const ContTwo = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  /* align-items: center; */
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 500px;
-  background-color: #E9D7CB;
+  /* height: 500px; */
+  background-color: #ffffff;
+  /* background-color: #E9D7CB; */
+  @media only screen and (min-width: 500px) {
+    flex-wrap: wrap-reverse;
+    padding: 5%;
+  }
 `;
 
 const ContFour = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  /* align-items: center; */
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 400px;
-  background-color: #E9D7CB;
+  background-color: #ffffff;
 `;
 
 const MainInfoCont = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   /* margin: 50px; */
-  width: 50%;
+  width: 40%;
+  margin-bottom: 50px;
+  text-align: left;
+  padding: 5%;
   
   @media only screen and (min-width: 500px) {
-    text-align: center;
+    text-align: left;
+
   }
 `;
 
@@ -103,19 +112,22 @@ const LottieCont = styled.div`
   align-items: center;
   /* margin: 50px; */
   @media only screen and (min-width: 500px) {
-    margin-top: -100px;
   }
 `;
 
+const ImageCont = styled.div`
+`;
+
 const BtnCont = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex;
+  justify-content: flex-start;
+  align-items: flex-start; */
   margin-top: 60px;
 `;
 
 const BodyText = styled.p`
   font-size: 20px;
+  text-align: left;
 
   @media only screen and (min-width: 500px) {
   }
@@ -194,9 +206,10 @@ export default function Home() {
         <HeaderTitle title="Increase your clinic's patient base" />
         <BodyText>Try MedorDoc to enhance your clinic's web presence and broaden your patient reach. Start by listing your clinic today.</BodyText>
         <BtnCont>
-          <Btn fSize="20px" fWeight="500" width="230px" height="70px" onClick={() => router.push("/signup")} />
+          <Btn title="Upload Clinic" fSize="20px" fWeight="500" width="200px" height="70px" borderRad="4px" bgHover="#E08E8E" onClick={() => router.push("/signup")} />
         </BtnCont>
       </MainInfoCont>
+
 
       <LottieCont>
         <HeroLottie
@@ -208,12 +221,10 @@ export default function Home() {
 
     {/* SECOND */}
     <ContTwo>
-      <LottieCont>
-        <HeroLottie
-          source={myLottie}
-          width="400px"
-        />
-      </LottieCont>
+      <ImageCont>
+        <Image src={'/startscreenlogo.png'} width="150px" height="300px"></Image>
+        <Image src={'/twocardsmobilescreen.png'} width="200px" height="400px"></Image>
+      </ImageCont>
       <MainInfoCont>
         <HeaderTitle title="What is MedOrDoc?" />
         <BodyText>MedorDoc is an online platform that connects patients with doctors and serves to provide access to pateint care in the Lower Mainland. Patients will have the ability to book appointments at your walk-in clinic and smoothen the process for both parties.</BodyText>
@@ -257,7 +268,7 @@ export default function Home() {
       <MainInfoCont>
         <HeaderTitle title="Start your free six month trial now" />
         <BtnCont>
-          <Btn title="Start Now" fSize="20px" fWeight="500" width="160px" height="60px" onClick={() => router.push("/signup")} />
+          <Btn title="Start Now" fSize="20px" fWeight="500" width="180px" height="60px" borderRad="4px" bgHover="#E08E8E" onClick={() => router.push("/signup")} />
         </BtnCont>
       </MainInfoCont>
 

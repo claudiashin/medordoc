@@ -1,6 +1,9 @@
 import React, { useState, useEffect, } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';
+import { addDoc, collection,setDoc,getDoc,doc,query,where,} from 'firebase/firestore';
+// import {db} from '../utils/firebase';
+
 
 import Calendar from '../comps/Calendar';
 import Header from '../comps/Header';

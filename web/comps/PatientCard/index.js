@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import {AiOutlineMail} from '@react-icons/all-files/ai/AiOutlineMail';
-import {IoIosClose} from '@react-icons/all-files/io/IoIosClose';
+import { AiOutlineMail } from '@react-icons/all-files/ai/AiOutlineMail';
+import { IoIosClose } from '@react-icons/all-files/io/IoIosClose';
 
-import {useState} from 'react';
+import { useState } from 'react';
 
 import PopupCard from '../PopupCard';
 
@@ -13,11 +13,12 @@ const Maincont = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 370px;
+    width: 330px;
     height: 420px;
     border-radius: 10px;
     border: 1px solid black;
     background:white;
+    padding-bottom: 50px;
 `
 //avatar image
 const Avatarcont = styled.div`
@@ -33,7 +34,7 @@ const Avatarcont = styled.div`
 const Avatarimg = styled.img`
     width: 100%;
     height:100%;
-    resize-mode:cover;
+    /* resize-mode:cover; */
     border-radius: 50px;
 `
 
@@ -41,13 +42,22 @@ const Avatarimg = styled.img`
 const Textcont = styled.div`
     display:flex;
     flex-direction:column;
-    margin-right: 85px;
+    align-self: start;
+    padding: 10px 30px 15px 30px;
+    // margin-right: 85px;
 `
 const Text = styled.text`
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 5px;
     margin-bottom: 5px;
     text-align:left;
+`
+const Nameheader = styled.text`
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
 `
 //email button
 const Emailbut = styled.div`
@@ -56,19 +66,30 @@ const Emailbut = styled.div`
     justify-content:center;
     align-items:center;
     margin-top:5px;
-    width:175px;
-    height:55px;
+    width:100px;
+    height:35px;
     background-color: #FAF0BF;
     border-radius: 5px;
+    &:hover {
+        background-color: #EADCA2;
+        transition: 1s;
+    }
 `
 const Emailtext = styled.text`
-    font-size: 20px;
-    padding-left:20px;
+    font-size: 16px;
+    padding-left:10px;
 `
 //close button
 const Closebutton = styled.div`
     display: flex;
-    margin-left: 300px;
+    border-radius: 50%;
+    margin-top: 30px;
+    margin-left: 270px;
+    &:hover {
+        background-color: #EADCA2;
+        opacity: 0.8;
+        transition: 1s;
+    }
 `
 //edit button for doctor side
 const Editbut = styled.div`
@@ -77,26 +98,33 @@ const Editbut = styled.div`
     justify-content:center;
     align-items:center;
     margin-top:5px;
-    width:175px;
-    height:55px;
+    width:100px;
+    height:35px;
     background-color: #FAF0BF;
     border-radius: 5px;
+    &:hover {
+        background-color: #EADCA2;
+        transition: 1s;
+    }
 `
 const PopupCont = styled.div`
     display: flex;
     position: absolute;
+    margin-top: 50px;
     
     align-self: center;
     justify-content: center;
 `
 
 const EmailbutCont = styled.div`
-    display:${props=>props.button1};
+    display:${props => props.button1};
 `
+
 const EditbutCont = styled.div`
-display:${props=>props.button2};
+    display:${props => props.button2};
 `
-const PatientCard=({
+
+const PatientCard = ({
     //info
     nameText = "Default Text",
     genderText = "Default Text",
@@ -104,7 +132,7 @@ const PatientCard=({
     medicalText = "Default Text",
     phoneText = "Default Text",
     emailText = "Email",
-    imagesource="https://placekitten.com/100/100",
+    imagesource = "https://placekitten.com/100/100",
     //subject
     name = "default text",
     gender = "default text",
@@ -114,11 +142,11 @@ const PatientCard=({
     language = "default text",
     medicalconcerns = "default text",
     phone = "default text",
-    button1="flex",
-    button2="flex",
-    editDoc=()=>{}
+    button1 = "flex",
+    button2 = "flex",
+    editDoc = () => { }
     //button
-})=>{
+}) => {
 
     const [open, setOpen] = useState(0);
 
@@ -127,23 +155,25 @@ const PatientCard=({
     return <Maincont>
         
         <Closebutton>
-        <IoIosClose onClick={()=>{setOpen(1)}} size={60}/>
+        <IoIosClose onClick={()=>{setOpen(1)}} size={40}/>
         </Closebutton>
         
         <Avatarcont>
             <Avatarimg src={imagesource}/>
         </Avatarcont>
+        <Nameheader>
+            <Text style={{fontSize:20}}>{nameText}</Text>
+        </Nameheader>
         <Textcont>
-            <Text>{name}{nameText}</Text>
-            <Text>{gender}{genderText}</Text>
             <Text>{age}{ageText}</Text>
             <Text>{medicalconcerns}{medicalText}</Text>
+            <Text>{gender}{genderText}</Text>
             <Text>{phone}{phoneText}</Text>
         </Textcont>
         <EmailbutCont button1={button1}>
         <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
         
-            <AiOutlineMail size={30}/>
+            <AiOutlineMail size={20}/>
             <Emailtext>{emailText}</Emailtext>
         </Emailbut></a>
         </EmailbutCont>
@@ -163,7 +193,7 @@ const PatientCard=({
         </PopupCont>
         
         <Closebutton>
-        <IoIosClose  size={60}/>
+        <IoIosClose  size={40}/>
         </Closebutton>
         
         <Avatarcont>
@@ -171,14 +201,15 @@ const PatientCard=({
         </Avatarcont>
         <Textcont>
             <Text>{name}{nameText}</Text>
-            <Text>{gender}{genderText}</Text>
+            
             <Text>{age}{ageText}</Text>
             <Text>{medicalconcerns}{medicalText}</Text>
+            <Text>{gender}{genderText}</Text>
             <Text>{phone}{phoneText}</Text>
         </Textcont>
         <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
     
-            <AiOutlineMail size={30}/>
+            <AiOutlineMail size={20}/>
             <Emailtext>{emailText}</Emailtext>
         </Emailbut></a>
     </Maincont>

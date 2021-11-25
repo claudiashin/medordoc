@@ -4,8 +4,6 @@ import { useRouter } from "next/router";
 
 import Btn from "../Btn";
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
 const MainCont = styled.div`
   display: flex;
   flex-direction: column;
@@ -49,12 +47,9 @@ const AlertBanner = styled.div`
   display: ${(props) => (props.show ? "block" : "none")};
 `;
 
-const SigninForm = ({ setChangePage, auth, setLoginInfo, loginInfo }) => {
+const SigninForm = ({ setChangePage, LogIn, setLogin }) => {
   const [showAlert, setShowAlert] = React.useState(false);
   const [error, setError] = React.useState("");
-
-  const [clinicPass, setPass] = React.useState("");
-  const [clinicEmail, setEmail] = React.useState("");
 
   return (
     <MainCont>
@@ -65,8 +60,10 @@ const SigninForm = ({ setChangePage, auth, setLoginInfo, loginInfo }) => {
         <FormInput
           type="email"
           placeholder="Email Address"
-          value={clinicEmail}
-          onChange={(e) => setEmail(e.target.value)}
+          value={LogIn.email}
+          onChange={(e) => {
+            setLogin({ email: e.target.value });
+          }}
         />
       </Form>
       <Form>
@@ -74,24 +71,20 @@ const SigninForm = ({ setChangePage, auth, setLoginInfo, loginInfo }) => {
         <FormInput
           type="password"
           placeholder="Password"
-          value={clinicPass}
-          onChange={(e) => setPass(e.target.value)}
+          value={LogIn.password}
+          onChange={(e) => {
+            setLogin({ password: e.target.value });
+          }}
         />
       </Form>
 
       <ButtonCont
         onClick={async () => {
           setShowAlert(false);
-          if (clinicEmail == "" || clinicPass == "") {
+          if (LogIn.email == "" || LogIn.password == "") {
             setError("Please fill out the form correctly");
             setShowAlert(true);
           } else {
-            const auth = getAuth();
-            const result = await createUserWithEmailAndPassword(
-              auth,
-              clinicEmail,
-              clinicPass
-            );
             setChangePage(1);
           }
         }}
