@@ -95,7 +95,7 @@ export default function Home() {
               width="125px"
               height="40px"
               borderRad="25px"
-              bgHover="#BCDFF6"
+              bgHover="#7592A5"
               onClick={() => router.push("/confirm")}
             />
           </BtnCont>

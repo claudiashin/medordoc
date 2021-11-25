@@ -67,12 +67,14 @@ const BodyCont = styled.div`
 const SignInCont = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 10%;
 `;
 
 const SignInCont_Two = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 40px;
+  margin-bottom: 10%;
 `;
 
 const Title = styled.p`
@@ -224,6 +226,7 @@ export default function Home() {
         </div>
       );
     } else {
+<<<<<<< HEAD
       return (
         <div>
           <BodyContTwo>
@@ -249,6 +252,31 @@ export default function Home() {
           </BtnContTwo>
         </div>
       );
+=======
+      return <div>
+        <BodyContTwo>
+          <HeroLottieTwo>
+            <HeroLottie changePage source={myLottie2} width="400px" />
+          </HeroLottieTwo>
+          <InfoCardCont>
+            <InfoCard />
+          </InfoCardCont>
+        </BodyContTwo>
+
+        <BtnContTwo onClick={() => router.push("/login")}>
+          <Btn
+            title="Let's Explore"
+            bgColor="#90AABB"
+            width="160px"
+            height="50px"
+            fSize="16px"
+            fWeight="600"
+            borderRad="25px"
+            bgHover="#7592A5"
+          />
+        </BtnContTwo>
+      </div>;
+>>>>>>> f80c55febd780e4ee566bb0779a633d4129d91eb
     }
   };
 
