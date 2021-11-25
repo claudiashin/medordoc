@@ -7,6 +7,7 @@ import PatientCard from "../PatientCard";
 import DoctorCard from "../DoctorCard";
 import SigninFormTwo from '../SigninFormTwo';
 import Btn from "../Btn"
+import {getStorage, ref, uploadBytes} from "firebase/storage"
 
 
  const Nav = styled("div")`
@@ -35,7 +36,7 @@ import Btn from "../Btn"
 
  const TabContainer = styled("div")`
   width: 100vw;
-  height: 30em;
+  height: 55px;
   webkit-box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
   -moz-box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
   box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
@@ -106,6 +107,8 @@ const MyTab = ({
 }) =>{
   const [popup, setShowPopup] = useState(true)
 
+
+  
 
   if(popup === true){
     return  <MyCont2>

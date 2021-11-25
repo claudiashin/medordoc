@@ -3,8 +3,8 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import styled from 'styled-components';
 import Lottie from "react-lottie";
-import React from "react";
-import { useRouter } from 'next/router';
+import React, {useEffect} from "react";
+
 
 //import comps
 import HeaderTitle from '../comps/HeaderTitle';
@@ -84,8 +84,7 @@ const BtnCont = styled.div`
 
 export default function Home() {
 
-  const router = useRouter();
-
+  
   return (
     <Cont>
       <WaveCont>
@@ -114,20 +113,7 @@ export default function Home() {
             width="250"
             style={{ marginTop: 100 }}
           />
-          <BtnCont>
-            <Btn
-              title="Sign In"
-              fSize="22px"
-              color="#fff"
-              bgColor="#90AABB"
-              width="200px"
-              height="53px"
-              margin="5px"
-              borderRad="25px"
-              bgHover="#7C9AAD"
-              onClick={() => router.push("/home")}
-            />
-          </BtnCont>
+         
         </Subcont>
 
       </BodyCont>

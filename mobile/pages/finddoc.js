@@ -24,6 +24,9 @@ const Wave = styled.Image`
   position: absolute;
   top: 0;
   `;
+  const WaveCont = styled.View`
+  
+  `
 
   const FilterCont = styled.View`
   
@@ -45,12 +48,22 @@ const finddoc = ({navigation})=>{
 return(
    <Cont>
      <MyScrollView>
-    
-      <FilterCont>
 
+      <Wave source={require('../assets/backgroundmobile.png')} />
+      <FilterCont>
         <Filiter/>
       </FilterCont>
+
+      <CardCont>
+          <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
+          <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
+          <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
+      </CardCont>
+
   </MyScrollView>
+  <NavBarCont>
+    <NavBar/>
+  </NavBarCont>
     </Cont>
   )
 }
