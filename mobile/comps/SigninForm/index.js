@@ -11,8 +11,10 @@ import { useNavigation } from "@react-navigation/native";
 //import comps
 import Btn from "../Btn";
 
-import { addDoc, collection } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import { db } from "../../utils/store";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+
 
 const MainCont = styled.View`
   flex-direction: column;
@@ -65,6 +67,24 @@ const SigninForm = ({}) => {
     { label: "Prefer not to answer", value: "Prefer not to answer" },
   ]);
   const [add, setAdd] = useState("");
+  const [patientId, setPatientId] = useState();
+
+  const info = {
+    patientid: patientId,
+    fname: fname,
+    lname: lname
+  };
+
+  const setInfo = ({
+    patientid = patientId,
+    fname = fname,
+    lname = lname
+  }) => {
+    setFname(fname);
+    setLname(lname);
+    setPatientId(patientid);
+  }
+
 
   if (changeForm === true) {
     return (
@@ -125,15 +145,30 @@ const SigninForm = ({}) => {
               //   });
               //   setChangeForm(false);
               // }}
-              onPress={() => {
-                setChangeForm(false);
+                 onPress={async () => {
+                   const auth = getAuth();
+                   const result = await createUserWithEmailAndPassword(
+                     auth,
+                     text,
+                     pass
+                   );
+                  info.patientid = result.user.uid;
+                    
+                    // console.log(result.user.uid);
+                    console.log(info.patientid)
+
+                  setChangeForm(false);
               }}
+           
             ></Btn>
           </ButCont>
         </PaperProvider>
       </MainCont>
     );
   }
+
+
+
   return (
     <MainCont>
       <PaperProvider>
@@ -197,19 +232,22 @@ const SigninForm = ({}) => {
             height="50"
             borderRad="60"
             onPress={async () => {
-              const result = await addDoc(collection(db, "patientuser"), {
-                fname: fname,
-                lname: lname,
-                email: text,
-                password: pass,
+              const result = await setDoc(doc(db, "patientuser", info.patientid), {
+                // fname: fname,
+                // lname: lname,
                 dob: inputDate,
                 gender: gender,
                 address: add,
                 medconcern: medcon,
+                // id: info.patientid,
+                
               });
-              
-              navigation.navigate("accountconfirm");
-            }}
+                console.log(info.patientid);
+                // navigation.navigate("accountconfirm");
+                return info;
+              }}
+              setInfo={setInfo}
+              info={info}
           ></Btn>
         </ButCont>
       </PaperProvider>

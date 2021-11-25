@@ -143,6 +143,7 @@ export default function Home() {
     num: clinicNum,
     open: clinicOpen,
     close: clinicClose,
+    clinicId: clinicid
   };
 
   const setLogin = ({ email = clinicEmail, password = clinicPass }) => {
@@ -157,6 +158,7 @@ export default function Home() {
     num = clinicNum,
     open = clinicOpen,
     close = clinicClose,
+    clinicId = clinicid
   }) => {
     setClinicName(name);
     setLanguage(lang);
@@ -164,6 +166,7 @@ export default function Home() {
     setClinicNum(num);
     setClinicOpen(open);
     setClinicClose(close);
+    setClinicId(clinicId);
   };
 
   const body = () => {
@@ -214,7 +217,7 @@ export default function Home() {
                     clinicEmail,
                     clinicPass
                   );
-                  info.id = result.user.uid;
+                  info.clinicId = result.user.uid;
                   await setDoc(doc(db, "clinics", result.user.uid), info);
                   return info;
                 }}
