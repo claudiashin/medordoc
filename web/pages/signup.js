@@ -226,7 +226,6 @@ export default function Home() {
         </div>
       );
     } else {
-<<<<<<< HEAD
       return (
         <div>
           <BodyContTwo>
@@ -252,31 +251,6 @@ export default function Home() {
           </BtnContTwo>
         </div>
       );
-=======
-      return <div>
-        <BodyContTwo>
-          <HeroLottieTwo>
-            <HeroLottie changePage source={myLottie2} width="400px" />
-          </HeroLottieTwo>
-          <InfoCardCont>
-            <InfoCard />
-          </InfoCardCont>
-        </BodyContTwo>
-
-        <BtnContTwo onClick={() => router.push("/login")}>
-          <Btn
-            title="Let's Explore"
-            bgColor="#90AABB"
-            width="160px"
-            height="50px"
-            fSize="16px"
-            fWeight="600"
-            borderRad="25px"
-            bgHover="#7592A5"
-          />
-        </BtnContTwo>
-      </div>;
->>>>>>> f80c55febd780e4ee566bb0779a633d4129d91eb
     }
   };
 
