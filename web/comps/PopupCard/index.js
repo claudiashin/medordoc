@@ -64,7 +64,7 @@ const PopupCard = ({
         {/* <PopupCardCont display={display}> */}
         <CloseCont>
         {/* <IoIosClose onClick={()=>setOpen(!open)} size={60}/> */}
-        <IoIosClose onClick={()=>{ClosePop()}} size={60}/>
+        <IoIosClose onClick={()=>{ClosePop()}} size={40}/>
 
         </CloseCont>
 

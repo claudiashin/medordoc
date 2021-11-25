@@ -13,7 +13,7 @@ const Maincont = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 370px;
+    width: 330px;
     height: 420px;
     border-radius: 10px;
     border: 1px solid black;
@@ -23,7 +23,6 @@ const Maincont = styled.div`
 //avatar image
 const Avatarcont = styled.div`
     display:flex;
-    
     height: 105px;
     width: 105px;
     right:50px;
@@ -43,10 +42,12 @@ const Avatarimg = styled.img`
 const Textcont = styled.div`
     display:flex;
     flex-direction:column;
-    margin-right: 85px;
+    align-self: start;
+    padding: 10px 30px 15px 30px;
+    // margin-right: 85px;
 `
 const Text = styled.text`
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 5px;
     margin-bottom: 5px;
     text-align:left;
@@ -65,26 +66,29 @@ const Emailbut = styled.div`
     justify-content:center;
     align-items:center;
     margin-top:5px;
-    width:150px;
-    height:40px;
+    width:100px;
+    height:35px;
     background-color: #FAF0BF;
     border-radius: 5px;
     &:hover {
         background-color: #EADCA2;
+        transition: 1s;
     }
 `
 const Emailtext = styled.text`
-    font-size: 20px;
-    padding-left:20px;
+    font-size: 16px;
+    padding-left:10px;
 `
 //close button
 const Closebutton = styled.div`
     display: flex;
     border-radius: 50%;
-    margin-left: 300px;
+    margin-top: 30px;
+    margin-left: 270px;
     &:hover {
         background-color: #EADCA2;
         opacity: 0.8;
+        transition: 1s;
     }
 `
 //edit button for doctor side
@@ -94,10 +98,14 @@ const Editbut = styled.div`
     justify-content:center;
     align-items:center;
     margin-top:5px;
-    width:175px;
-    height:55px;
+    width:100px;
+    height:35px;
     background-color: #FAF0BF;
     border-radius: 5px;
+    &:hover {
+        background-color: #EADCA2;
+        transition: 1s;
+    }
 `
 const PopupCont = styled.div`
     display: flex;
@@ -147,26 +155,25 @@ const PatientCard = ({
     return <Maincont>
         
         <Closebutton>
-        <IoIosClose onClick={()=>{setOpen(1)}} size={60}/>
+        <IoIosClose onClick={()=>{setOpen(1)}} size={40}/>
         </Closebutton>
         
         <Avatarcont>
             <Avatarimg src={imagesource}/>
         </Avatarcont>
         <Nameheader>
-            <Text>{nameText}</Text>
+            <Text style={{fontSize:20}}>{nameText}</Text>
         </Nameheader>
         <Textcont>
-            
-            <Text>{gender}{genderText}</Text>
             <Text>{age}{ageText}</Text>
             <Text>{medicalconcerns}{medicalText}</Text>
+            <Text>{gender}{genderText}</Text>
             <Text>{phone}{phoneText}</Text>
         </Textcont>
         <EmailbutCont button1={button1}>
         <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
         
-            <AiOutlineMail size={30}/>
+            <AiOutlineMail size={20}/>
             <Emailtext>{emailText}</Emailtext>
         </Emailbut></a>
         </EmailbutCont>
@@ -186,7 +193,7 @@ const PatientCard = ({
         </PopupCont>
         
         <Closebutton>
-        <IoIosClose  size={60}/>
+        <IoIosClose  size={40}/>
         </Closebutton>
         
         <Avatarcont>
@@ -194,14 +201,15 @@ const PatientCard = ({
         </Avatarcont>
         <Textcont>
             <Text>{name}{nameText}</Text>
-            <Text>{gender}{genderText}</Text>
+            
             <Text>{age}{ageText}</Text>
             <Text>{medicalconcerns}{medicalText}</Text>
+            <Text>{gender}{genderText}</Text>
             <Text>{phone}{phoneText}</Text>
         </Textcont>
         <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
     
-            <AiOutlineMail size={30}/>
+            <AiOutlineMail size={20}/>
             <Emailtext>{emailText}</Emailtext>
         </Emailbut></a>
     </Maincont>
