@@ -7,9 +7,13 @@ registerTranslation("en", en);
 import { DatePickerInput } from "react-native-paper-dates";
 import DropDownPicker from "react-native-dropdown-picker";
 import { useNavigation } from "@react-navigation/native";
+import store from '../../utils/inits'
 
 //import comps
 import Btn from "../Btn";
+
+import { addDoc, collection, setDoc } from "firebase/firestore";
+import { db } from "../../utils/store";
 
 const MainCont = styled.View`
   flex-direction: column;
@@ -29,8 +33,7 @@ const Radio = styled.View`
   position: relative;
   z-index: 1;
 `;
-const DateCont = styled.View`
-`;
+const DateCont = styled.View``;
 const RadioTitle = styled.Text`
   font-weight: 600;
   margin-left: 15px;
@@ -41,7 +44,11 @@ const ButCont = styled.View`
   margin: 50px 10px 80px 0px;
 `;
 
-const SigninForm = ({}) => {
+const SigninForm = ({
+  onSignin=()=>{},
+  onCreate=()=>{},
+  // userid = ""
+}) => {
   const navigation = useNavigation();
   //for first form
   const [fname, setFname] = React.useState("");
@@ -50,6 +57,10 @@ const SigninForm = ({}) => {
   const [pass, setPass] = React.useState("");
   //for button
   const [changeForm, setChangeForm] = useState(true);
+  
+  const change=()=>{
+    setChangeForm(false)
+  }
 
   //for second form
   const [medcon, setMedcon] = React.useState("");
@@ -62,6 +73,10 @@ const SigninForm = ({}) => {
     { label: "Female", value: "Female" },
     { label: "Prefer not to answer", value: "Prefer not to answer" },
   ]);
+  const [add, setAdd] = useState("");
+
+  const [em, setEm] = useState('')  
+  const [ps, setPs] = useState('')  
 
   if (changeForm === true) {
     return (
@@ -89,21 +104,20 @@ const SigninForm = ({}) => {
             label="Email"
             returnKeyType="next"
             autoCapitalize="none"
-            autoComplete="email"
+            autoCompleteType="email"
             textContentType="emailAddress"
-            keyboardType="email-address"
-            value={text}
-            mode="outlined"
-            onChangeText={(text) => setText(text)}
+            keyboardType='email-address'
+            mode='outlined'
+            onChangeText={(val) => setEm(val)}
           />
           <TextInput
             style={styles.inputbox}
             label="Password"
             returnKeyType="done"
+            keyboardType='visible-password'
             secureTextEntry
-            value={pass}
-            mode="outlined"
-            onChangeText={(pass) => setPass(pass)}
+            mode='outlined'
+            onChangeText={(val)=>setPs(val)}
           />
           <ButCont>
             <Btn
@@ -113,10 +127,25 @@ const SigninForm = ({}) => {
               width="130"
               height="50"
               borderRad="60"
-              onPress={() => {
-                setChangeForm(false);
-              }}
-            ></Btn>
+              // onPress={async () => {
+              //   const result = await addDoc(collection(db, "patientuser"), {
+              //     fname: fname,
+              //     lname: lname,
+              //     email: text,
+              //     password: pass,
+              //   });
+              //   setChangeForm(false);
+              // }}
+              onPress={()=>{onCreate(em,ps);if(userid !==""){setTimeout(() => {
+                setChangeForm(false)
+              },3000)}}}
+             
+              // onPress={()=>{setChangeForm(false)}} 
+              // onPress={()=>setTimeout(() => {
+              //   setChangeForm(false)
+              // },2000)}
+            />
+            {/* <Btn title="test" onPress={()=>{onCreate(em,ps)}}/>  */}
           </ButCont>
         </PaperProvider>
       </MainCont>
@@ -146,6 +175,7 @@ const SigninForm = ({}) => {
             setOpen={setOpen}
             setValue={setGender}
             setItems={setItems}
+            onChangeText={(gender) => setGender(gender)}
             style={{
               width: 335,
               height: 50,
@@ -162,9 +192,9 @@ const SigninForm = ({}) => {
           autoComplete="postal-address-extended-postal-code"
           textContentType="fullStreetAddress"
           dataDetectorTypes="address"
-          value={text}
+          value={add}
           mode="outlined"
-          onChangeText={(text) => setText(text)}
+          onChangeText={(add) => setAdd(add)}
         />
         <TextInput
           style={styles.inputbox}
@@ -183,7 +213,17 @@ const SigninForm = ({}) => {
             width="130"
             height="50"
             borderRad="60"
-            onPress={() => navigation.navigate("accountconfirm")}
+            onPress={async () => {
+              const result = await setDoc(collection(db,"pateintuser",userid),{
+                fname: fname,
+                lname: lname,
+                dob: inputDate,
+                gender: gender,
+                address: add,
+                medconcern: medcon,
+              });
+              navigation.navigate("accountconfirm");
+            }}
           ></Btn>
         </ButCont>
       </PaperProvider>

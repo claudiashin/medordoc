@@ -31,10 +31,11 @@ function SimpleDialog(props) {
 
     const handleScan = (data) => {
         if(data) {
-            setState({
+            useState({
                 result: data
             })
             window.location.href = `/checkIn?ccode=${result.cornit}`;
+            // window.location.href = '/checkin';
         }
     }
 
@@ -79,9 +80,6 @@ const QRscan = () => {
         setOpen(false);
         setSelectedValue(value);
       };
-
-
-    // const result = ""
 
     return  <MainCont>
         <Button 

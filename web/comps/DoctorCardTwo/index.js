@@ -8,9 +8,6 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import {IoIosClose} from '@react-icons/all-files/io/IoIosClose';
-import {db} from '../../firebase';
-import { addDoc, collection,setDoc,doc } from 'firebase/firestore';
-
 
 
 const MainCont = styled.div`
@@ -113,44 +110,31 @@ function getStyles(name, personName, theme) {
       fontWeight:
         personName.indexOf(name) === -1
           ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
+          : theme.typography.fontWeightRegular,
     };
   }
+
 
 const DoctorCard = ({
     profile="https://placekitten.com/1200/1200",
     placeholder="Dr.Alex Chan",
-    addDoctor=()=>{},
+    addDoc=()=>{},
     xDoc=()=>{}
 }) => {
 
-    const [nameDoc , setNameDoc] = useState();
-    const [ex , setEx] = useState();
-    const [gender , setGender] = useState();
-    const [location , setLocation] = useState(); 
-    // Push Function
-const Push = async () => {
-    const result = await setDoc(doc(collection(db, "doctors"), nameDoc), {
-      name: nameDoc,
-      ex: ex,
-      gender:gender,
-      location:location,
-      lang:personName
-    });
-
-  }
     const theme = useTheme();
     const [personName, setPersonName] = React.useState([]);
 
     const handleChange = (event) => {
         const {
-          target: { value },
+        target: { value },
         } = event;
         setPersonName(
-          // On autofill we get a the stringified value.
-          typeof value === "string" ? value.split(",") : value
+        // On autofill we get a the stringified value.
+        typeof value === 'string' ? value.split(',') : value,
         );
-      };
+    };
+
     const [open, setOpen] = useState(false);
 
     var display = "none";
@@ -172,9 +156,7 @@ const Push = async () => {
                 <FormTitle>Name</FormTitle>
                 <FormInput 
                     type="text"
-                    placeholder={placeholder} 
-                    value={nameDoc} 
-                    onChange={(e) => setNameDoc(e.target.value)}   
+                    placeholder={placeholder}    
                 />
             </Form>
             <Form>
@@ -182,15 +164,11 @@ const Push = async () => {
                 <FormInput 
                     type="number"
                     placeholder={placeholder}
-                    value={ex} 
-                    onChange={(e) => setEx(e.target.value)}
                 />
             </Form>
             <Form>
                 <FormTitle>Gender</FormTitle>
-                <SelectCont
-                    onChange={(e)=>setGender(e.target.value)}
-                >
+                <SelectCont>
                     <SelectOpt></SelectOpt>
                     <SelectOpt>Male</SelectOpt>
                     <SelectOpt>Female</SelectOpt>
@@ -201,8 +179,6 @@ const Push = async () => {
                 <FormInput 
                     type="text"
                     placeholder={placeholder}
-                    value={location} 
-                    onChange={(e) => setLocation(e.target.value)}
                 />
             </Form>
             <div>
@@ -240,9 +216,8 @@ const Push = async () => {
         </FormCont>
         <ButtonCont>
             <Button
-                onClick={addDoctor}
-                onClick={Push}
-            >Confirm</Button>
+                onClick={addDoc}
+            >Add</Button>
         </ButtonCont>
     </MainCont>
 }

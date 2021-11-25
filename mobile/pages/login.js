@@ -34,7 +34,6 @@ const MainCont = styled.View`
     justify-content: space-between;
 `
 const Login = styled.View`
-
 `
 const ButCont = styled.View`
     margin-top: 20px;
@@ -75,8 +74,17 @@ const login = ()=>{
         const Signin = async(em,ps)=>{
         const auth =getAuth();
         const result = await signInWithEmailAndPassword(auth,em,ps);
+        console.log(result);
         alert("Sign in!")
             }
+
+    const booking = async() =>{
+      const bookingdata = collection(db,"bookings")
+      await setDoc(doc(bookingdata,user.uid), {
+          date:23,
+          month:12,
+          year:2021});
+  }
 
 
  return <MainCont>
@@ -100,17 +108,7 @@ const login = ()=>{
      
      </Login>
 
-     {/* <ButCont>
-        <Btn 
-            title = "Log In"
-            fsize = '18'
-            width = '160'
-            height = '45'
-            borderRad = '50'
-            onPress={()=>onSignin(em,ps)}
-        />
-        <Button title="signin" />
-        </ButCont> */}
+   
 
        </ScrollView>
 

@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from 'styled-components';
-import HorizonTab from '../comps/HorizonTab'
+import HorizonTab from '../comps/HorizonTab/index'
 import NavBar from "../comps/NavBar";
 import Footer from "../comps/Footer";
 import QRscan from "../comps/QRscan";
 import HeaderTitle from '../comps/HeaderTitle'
+import {db} from '../firebase';
+
 
 const Cont = styled.div`
   display:flex;
@@ -46,7 +48,12 @@ const HeaderCont = styled.div`
   align-items:center;
   flex-direction:column;
 `
+
+
 export default function Profile() {
+
+
+  
   return (
     <Cont>
 
@@ -66,9 +73,9 @@ export default function Profile() {
 
 
       <TabCont>
-        <HorizonTab />
+        <HorizonTab 
+        />
       </TabCont>
-
       <FooterCont>
         <Footer />
       </FooterCont>
