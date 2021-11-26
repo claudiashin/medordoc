@@ -27,6 +27,7 @@ const LastDiv = styled.View`
 const ITinput =styled.TextInput``;
 const Button = styled.Button``;
 const Cont =styled.View``;
+const MyText = styled.Text``
 
 
 export default function EmailSignin({
@@ -38,11 +39,15 @@ export default function EmailSignin({
   
   const navigation = useNavigation(); 
 
+
+
+
  
   return(
         <MainCont>
          <PaperProvider>
             <TextInput
+        
             style={{width:300, height: 50, margin:5, borderRadius: 0, backgroundColor:'#fff'}}
             label="Email"
             returnKeyType="next"

@@ -25,6 +25,7 @@ import Auth from "../comps/Auth";
 import EmailSignin from "../comps/EmailSignin";
 import LoginForm from "../comps/LoginForm";
 import Btn from "../comps/Btn";
+import BackBtn from "../comps/BackBtn";
 
 const Wave = styled.Image`
   width: 100%;
@@ -53,6 +54,12 @@ const ButCont = styled.View`
   align-items: center;
   justify-content: center;
 `;
+const BackCont = styled.View`
+  display: flex;
+  position: absolute;
+  right: 250px;
+  z-index: 999;
+`
 
 const login = () => {
   const navigation = useNavigation();
@@ -93,6 +100,9 @@ const login = () => {
     <MainCont>
       <Wave source={require("../assets/backgroundmobile.png")} />
       <ScrollView>
+        <BackCont>
+          <BackBtn onPress={() => navigation.goBack()}/>
+        </BackCont>
         <LottieCont>
           <HeroLottie
             source={require("../assets/lottie_user.json")}

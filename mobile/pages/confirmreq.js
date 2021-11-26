@@ -13,6 +13,7 @@ import {
 import Header from "../comps/Header";
 import InfoCardTwo from "../comps/InfoCardTwo";
 import Btn from "../comps/Btn";
+import BackBtn from "../comps/BackBtn";
 
 const MainCont = styled.View`
   flex: 1;
@@ -38,6 +39,13 @@ const ButCont = styled.View`
   align-items: center;
   justify-content: flex-end;
 `;
+const BackCont = styled.View`
+  display: flex;
+  position: absolute;
+  z-index: 999;
+  right: 340px;
+  top: 15px;
+`
 
 export default function confirmreq() {
   const [changeForm, setChangeForm] = useState(true);
@@ -45,9 +53,15 @@ export default function confirmreq() {
   if (changeForm === true) {
     return (
       <MainCont>
+          <BackCont>
+            <BackBtn/>
+          </BackCont>
         <Wave source={require("../assets/backgroundmobile.png")} />
 
         <ScrollView>
+          <BackCont>
+            <BackBtn/>
+          </BackCont>
           <HdCont>
             <Header title="Request Process" fontSize="28" />
           </HdCont>
