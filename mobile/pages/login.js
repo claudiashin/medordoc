@@ -41,6 +41,12 @@ const ButCont = styled.View`
     align-items: center;
     justify-content: center;
 `;
+const BackCont = styled.View`
+  display: flex;
+  position: absolute;
+  right: 250px;
+  z-index: 999;
+`
 
 const login = ()=>{
      const navigation = useNavigation(); 

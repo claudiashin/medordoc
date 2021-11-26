@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import React, { useEffect, useState } from 'react';
+import home from '../../pages/home';
 
 const NavBarCont = styled.div`
   display: flex;
@@ -9,6 +12,7 @@ const NavBarCont = styled.div`
   margin-top: 30px;
   margin-left: 30px;
   // position: relative;
+  cursor: pointer;
 `;
 
 const LogoCont = styled.div`
@@ -35,6 +39,13 @@ const NavCont = styled.div`
 const NavButton = styled.p`
   display: flex;
   margin-right: 80px;
+
+  &:hover {
+    border-width: 0 0 2.5px;
+    border-style: solid;
+    font-weight: bold;
+    color: ${props => props.bgHover};
+  }
 `;
 
 const ProfileCont = styled.div`
@@ -69,6 +80,7 @@ const DropdownCont = styled.div`
   z-index: 1;
   top: 70px;
   right: 35px;
+
   &:hover {
     background-color: #DDD;
     display: block;
@@ -87,9 +99,40 @@ const MenuLink = styled.a`
 `;
 
 const NavBar = ({
-
+  bgHover= "#5D5D5D",
 }) => {
   const router = useRouter();
+
+  const [homelink, setHomeLink] = React.useState("/home")
+  const [profile, setProfile] = React.useState("/login")
+  const [booking, setBooking] = React.useState("/login")
+  const [request, setRequest] = React.useState("/login")
+  useEffect(()=>{
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+      setHomeLink("/home")
+      setProfile("/profile")
+      setBooking("/booking")
+      setRequest("/request")
+      console.log("signin")
+
+      } else {
+       setHomeLink("/")
+       setProfile("/login")
+       setBooking("/login")
+       setRequest("/login")
+       console.log("signout")
+      }
+    });
+  })
+
+  const SignOut = async()=>{
+    const auth = getAuth();
+    await signOut(auth);
+    router.push("/")
+  }
+
 
   return <NavBarCont>
     <LogoCont>
@@ -100,16 +143,16 @@ const NavBar = ({
     </LogoCont>
 
     <NavCont>
-      <NavButton onClick={() => router.push("/")}>Home</NavButton>
-      <NavButton onClick={() => router.push("/booking")}>Bookings</NavButton>
-      <NavButton onClick={() => router.push("/request")}>Requests</NavButton>
+      <NavButton onClick={() => router.push(homelink)}>Home</NavButton>
+      <NavButton onClick={() => router.push(booking)}>Bookings</NavButton>
+      <NavButton onClick={() => router.push(request)}>Requests</NavButton>
       {/* <NavButton onClick={()=>router.push("/checkin")}>Checkin</NavButton> */}
     </NavCont>
 
     <ProfileCont>
-      <ProfileIcon onClick={() => router.push("/profile")} className="icon" src={'/profile.png'}></ProfileIcon>
+      <ProfileIcon onClick={() => router.push(profile)} className="icon" src={'/profile.png'}></ProfileIcon>
       <DropdownCont className="dropdown">
-        <MenuLink className="signout" href="#">Sign Out</MenuLink>
+        <MenuLink onClick={SignOut} className="signout" href="#">Sign Out</MenuLink>
       </DropdownCont>
     </ProfileCont>
 

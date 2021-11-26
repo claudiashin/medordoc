@@ -9,6 +9,7 @@ import HeroLottie from "../comps/HeroLottie";
 import SigninForm from "../comps/SigninForm";
 import NavBar from "../comps/NavBar";
 
+
 const BookingCont = styled.View`
   flex: 2;
 `;
@@ -67,6 +68,7 @@ const signup = (
           <HeroLottie
             source={require("../assets/lottie_user.json")}
             style={{ width: 250 }}
+            loop={false}
           />
         </LottieCont>
 

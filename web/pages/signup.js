@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 //import comps
 import NavBar from "../comps/NavBar";
@@ -16,8 +16,12 @@ import Footer from "../comps/Footer";
 
 
 import { setDoc, doc } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,onAuthStateChanged  } from "firebase/auth";
 import { db } from "../firebase";
+
+
+
+
 
 const Cont = styled.div`
   background-color: #f7f2ee;
@@ -115,6 +119,19 @@ const FooterCont = styled.div`
 `;
 
 export default function Home() {
+
+  useEffect(()=>{
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("Signed in", user)
+        // might want to use a state that changes when signed in
+      } else {
+        console.log("Signed out")
+      }
+    });
+  })
+  
   const router = useRouter();
 
   const [clinicEmail, setEmail] = React.useState("");
@@ -143,6 +160,7 @@ export default function Home() {
     num: clinicNum,
     open: clinicOpen,
     close: clinicClose,
+    clinicId: clinicid
   };
 
   const setLogin = ({ email = clinicEmail, password = clinicPass }) => {
@@ -157,6 +175,7 @@ export default function Home() {
     num = clinicNum,
     open = clinicOpen,
     close = clinicClose,
+    clinicId = clinicid
   }) => {
     setClinicName(name);
     setLanguage(lang);
@@ -164,6 +183,7 @@ export default function Home() {
     setClinicNum(num);
     setClinicOpen(open);
     setClinicClose(close);
+    setClinicId(clinicId);
   };
 
   const body = () => {
@@ -214,7 +234,7 @@ export default function Home() {
                     clinicEmail,
                     clinicPass
                   );
-                  info.id = result.user.uid;
+                  info.clinicId = result.user.uid;
                   await setDoc(doc(db, "clinics", result.user.uid), info);
                   return info;
                 }}

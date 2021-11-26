@@ -9,28 +9,28 @@ const MainCont = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f7f2ee;
+  background-color: #FCFCFC;
 `;
 const TitleCont = styled.div`
   width: 300px;
   height: 50px;
-  background-color: #e9d7cb;
+  background-color: #F7E8DC;
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 25px;
 `;
 const Title = styled.p`
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
 `;
 const ListCont = styled.div`
   display: flex;
   flex-direction: column;
   overflow: scroll;
-  height: 250px;
-  margin-top: 80px;
+  height: 400px;
+  margin-top: 35px;
 `;
 const ListItem = styled.div`
   display: flex;
@@ -45,13 +45,17 @@ const ListItem = styled.div`
 `;
 const List = styled.p``;
 
-const PatientList = ({ height = "300" }) => {
+const PatientList = ({ height = "540" }) => {
   return (
     <MainCont height={height}>
       <TitleCont>
         <Title>October 8th Thursday</Title>
       </TitleCont>
       <ListCont>
+        <ListItem>
+          <List>9:00 AM</List>
+          <List>Tom Clooney</List>
+        </ListItem>
         <ListItem>
           <List>9:00 AM</List>
           <List>Tom Clooney</List>

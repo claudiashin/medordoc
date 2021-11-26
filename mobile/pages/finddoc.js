@@ -6,6 +6,7 @@ import SearchBar from '../comps/SearchBar'
 import Filiter from '../comps/Filter'
 import ClinDocButton from '../comps/ClinDocButton'
 import Header from '../comps/Header'
+import BackBtn from '../comps/BackBtn';
 
 import BookingForm from '../comps/BookingForm';
 import NavBar from '../comps/NavBar';
@@ -24,6 +25,9 @@ const Wave = styled.Image`
   position: absolute;
   top: 0;
   `;
+  const WaveCont = styled.View`
+  
+  `
 
   const FilterCont = styled.View`
     
@@ -57,10 +61,19 @@ const NavBarCont = styled.View`
 const ScrollView = styled.ScrollView`
 
 `
+const BackCont = styled.View`
+  display: flex;
+  position: absolute;
+  z-index: 999;
+`
 
 const finddoc = ({navigation})=>{
 return( <Cont>
   <ScrollView keyboardShouldPersistTaps={'handled'}>
+    <BackCont>
+    <BackBtn onPress={() => navigation.goBack()} />
+    </BackCont>
+    
   <Wave source={require('../assets/backgroundmobile.png')} />
 
   <HeaderCont>

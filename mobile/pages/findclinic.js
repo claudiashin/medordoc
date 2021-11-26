@@ -12,6 +12,7 @@ import ClinDocButton from '../comps/ClinDocButton'
 import Header from '../comps/Header'
 import BookingForm from '../comps/BookingForm';
 import NavBar from '../comps/NavBar';
+import BackBtn from '../comps/BackBtn';
 
 const Cont = styled.View`
   background-color: #F7F2EE;
@@ -58,12 +59,22 @@ const CardCont = styled.View`
     `
     const NavBarCont = styled.View`
 `;
+const BackCont = styled.View`
+  display: flex;
+  position: absolute;
+  z-index: 999;
+  right: 350px;
+  top: -16px;
+`
 
 export default function findclinic({navigation}){
 
   return (
     <Cont>
       <ScrollView keyboardShouldPersistTaps={'handled'}>
+        <BackCont>
+          <BackBtn onPress={() => navigation.goBack()}/>
+        </BackCont>
         <Wave source={require('../assets/backgroundmobile.png')} />
         <Map onMappress ={()=>navigation.navigate('login')} />
         <FilterCont>

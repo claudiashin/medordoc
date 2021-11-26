@@ -260,7 +260,7 @@ const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
               setShowAlert(true);
             } else {
               const result = await submit();
-              if (result.id) {
+              if (result.clincId) {
                 setChangePage(1);
               } else {
                 setError("We have some issue to sign you up. Please try again later.");

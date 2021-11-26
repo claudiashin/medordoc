@@ -41,16 +41,26 @@ const NavBarCont = styled.div`
 
 const BodyCont = styled.div`
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin-bottom: 10%;
 `;
+
 const Low = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   margin: 10px;
+  @media only screen and (min-width: 500px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
+
+const CalendarCont = styled.div``;
+
 const Column = styled.div`
   display: flex;
   margin: 5px;
@@ -71,9 +81,11 @@ export default function Home() {
       <QRscan />
 
       <BodyCont>
-        <Low>
+
+        <CalendarCont>
           <Calendar />
-        </Low>
+        </CalendarCont>
+        
         <Low>
           <Column>
             <LiveWaitTime></LiveWaitTime>
@@ -82,6 +94,7 @@ export default function Home() {
             <PatientList></PatientList>
           </Column>
         </Low>
+
       </BodyCont>
 
       <Footer />

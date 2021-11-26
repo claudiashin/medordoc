@@ -12,7 +12,6 @@ const Title = styled.p`
     color: #5C5C5C;
     font-weight: ${props=>props.fWeight};
     font-size: ${props=>props.fSize}px;
-    line-height: 20px;
 `;
 
 const HeaderTitle = ({

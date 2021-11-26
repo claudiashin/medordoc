@@ -15,6 +15,8 @@ import Btn from "../Btn";
 
 import { addDoc, collection, setDoc,doc } from "firebase/firestore";
 import { db } from "../../utils/store";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+
 
 const MainCont = styled.View`
   flex-direction: column;
@@ -74,6 +76,24 @@ const SigninForm = ({
     { label: "Prefer not to answer", value: "Prefer not to answer" },
   ]);
   const [add, setAdd] = useState("");
+  const [patientId, setPatientId] = useState();
+
+  const info = {
+    patientid: patientId,
+    fname: fname,
+    lname: lname
+  };
+
+  const setInfo = ({
+    patientid = patientId,
+    fname = fname,
+    lname = lname
+  }) => {
+    setFname(fname);
+    setLname(lname);
+    setPatientId(patientid);
+  }
+
 
   const [em, setEm] = useState('')  
   const [ps, setPs] = useState('')  
@@ -175,6 +195,9 @@ const SigninForm = ({
       </MainCont>
     );
   }
+
+
+
   return (
     <MainCont>
       <PaperProvider>
@@ -239,7 +262,6 @@ const SigninForm = ({
             borderRad="60"
             onPress={ 
                 ()=>{CreateUser(em,ps);
-                 
               //   async () => {
               //   const result = await setDoc(doc(db,"patientuser",userid),{
               //   fname: fname,
