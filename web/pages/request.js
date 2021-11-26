@@ -11,6 +11,7 @@ import QRscan from "../comps/QRscan";
 
 const Cont = styled.div`
     background-color: #F7F2EE;
+    width: 100%;
 `;
 
 const WaveCont = styled.div`
@@ -49,11 +50,12 @@ const ContPatientCard = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    
 `;
 
 const ContPatientCardInd = styled.div`
     display: flex;
-    width: 400px;
+
     margin: 10px;
 `;
 

@@ -1,11 +1,13 @@
 import React, { useState, useEffect, } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image,Button } from 'react-native';
 import styled from 'styled-components/native';
-
-import HeroAvatar from '../comps/HeroAvatar';
+import {db} from '../utils/store'
+import { collection, doc, setDoc,getDoc,} from "firebase/firestore"; 
+import HeroAvatar from '../comps/HeroAvatar';   
 import InfoCard from '../comps/InfoCard';
 import Btn from '../comps/Btn';
 import NavBar from '../comps/NavBar';
+import BackBtn from '../comps/BackBtn';
 
 
 
@@ -52,20 +54,69 @@ const BtnCont = styled.View`
     margin-right: 20px;
 
 `
+const BackCont = styled.View`
+  display: flex;
+  position: absolute;
+  z-index: 999;
+`
 const MyScrollView = styled.ScrollView`
 
 `
 const ClinicProfile = ({ navigation }) => {
+
+const [info,setInfo] =useState('')
+const [choice,setChoice] = useState('')
+
+    
+useEffect(()=>{
+    
+    // const gettinginfo =(()=>{
+    // const docRef = doc(db, "clinics", "HxjkpD1lNC5H8xdLn0jT");
+    // const docSnap = getDoc(docRef)   
+    // setInfo(docSnap.date)
+    // console.log('fuck')
+    // gettinginfo();
+    // }
+
+    const get =async()=>{
+    const MapdocRef = doc(db, "mapchoice", "HxjkpD1lNC5H8xdLn0jT");
+    const MapdocSnap = await getDoc(MapdocRef);
+    setChoice(MapdocSnap.data())
+
+
+    const docRef = doc(db, "clinics","HxjkpD1lNC5H8xdLn0jT" );
+    const docSnap = await getDoc(docRef)  
+    setInfo(docSnap.data())
+    // console.log(docSnap.data())
+    }
+    get()
+ 
+
+},[])    
+
+
     return (
         <Cont>
             <MyScrollView>
+                <BackCont>
+                    <BackBtn onPress={() => navigation.goBack()}/>
+                </BackCont>
                 <Wave source={require('../assets/backgroundmobile.png')} />
                 <Cont2>
                     <HeroAvatar herowidth={200} heroheight={200} />
 
                 </Cont2>
                 <CardCont>
-                    <InfoCard />
+                    <InfoCard 
+                        text = {info.name}
+                        text2 = {info.address}
+                        text3 = "Website:"
+                        website_url = {info.website}
+                        fontsize = "20"
+                        weight = "700"
+                        weight2 = "700"
+                        fontcolor = '#226BAF'
+                    />
                     <InfoCard />
 
                 </CardCont>
@@ -73,6 +124,8 @@ const ClinicProfile = ({ navigation }) => {
                     <Btn onPress={() => navigation.navigate("login")} />
                 </BtnCont>
             </MyScrollView>
+
+
 
             <NavBarCont>
                 <NavBar />
