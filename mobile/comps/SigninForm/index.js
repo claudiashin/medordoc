@@ -15,7 +15,6 @@ import Btn from "../Btn";
 
 import { addDoc, collection, setDoc,doc } from "firebase/firestore";
 import { db } from "../../utils/store";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
 
 const MainCont = styled.View`
@@ -117,7 +116,6 @@ const SigninForm = ({
           medconcern: medcon,
         })
     }
-
     
   if (changeForm === true) {
     return (
