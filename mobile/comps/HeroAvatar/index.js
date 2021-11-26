@@ -4,7 +4,8 @@ import * as ImagePicker from 'expo-image-picker';
 
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
-import { Button, Image, View, Platform } from 'react-native';
+import { Button, Image, View, Platform} from 'react-native';
+import {getStorage, ref, uploadBytes} from 'firebase/storage'
 
 
 const HeroAvatarCont = styled.View`
@@ -26,6 +27,7 @@ const PlusImage = styled.Image`
   display: ${(props) => props.visible};
 `;
 const PlusCont = styled.TouchableOpacity``;
+const MyButton = styled.Button``
 
 const HeroAvatar = ({
   heroheight = "300",
@@ -40,6 +42,7 @@ const HeroAvatar = ({
     "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0="
   );
 
+  const [name, setName] = useState(0)
   useEffect(() => {
     (async () => {
       if (Platform.OS !== 'web') {
@@ -57,10 +60,11 @@ const HeroAvatar = ({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],
-      quality: 0.3,
+      quality: 0.1,
     });
 
     console.log(result);
+
 
     if (!result.cancelled) {
       setImage(result.uri);
@@ -74,7 +78,7 @@ const HeroAvatar = ({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],
-      quality: 0.3,
+      quality: 0.1,
     });
   
     console.log(result);
@@ -82,27 +86,30 @@ const HeroAvatar = ({
     if (!result.cancelled) {
       // setImage(result.uri);
       Upload(result.uri)
+      setImage(result.uri)
+      
     }
   };
 
   const Upload = async(file_uri)=>{
-
+    
     const file = await fetch(file_uri)
-    const blob = file.blob()
+    const blob = await file.blob()
     const storage = getStorage();
-    const storageRef = ref(storage, 'test_mobile.jpg');  
+    const storageRef = ref(storage,'mobile' + name + '.jpg');  
     const snapshot = await uploadBytes(storageRef,blob)
     console.log ('uploaded');
+    setName(name +1)
 
 }
 
 
   return <HeroAvatarCont >
       {image && <HeroImage heroheight={heroheight} herowidth={herowidth} source={{ uri: image }} />}
-  <PlusCont onPress={pickImage} >
+  <PlusCont onPress={Upload} onPress={pickImage} >
   <PlusImage pluswidth={pluswidth} plusheight={plusheight} right={right} bottom={bottom} visible={visible} source={require('../../assets/plus.png')}/>
   </PlusCont>
-  <MyButton onPress={Upload} onPress={TakePicture} title="asda"/>
+  <MyButton onPress={TakePicture} title="Take picture"/>
 
 </HeroAvatarCont>
 }
