@@ -36,6 +36,7 @@ const AlertBanner = styled.Text`
 const ITinput =styled.TextInput``;
 const Button = styled.Button``;
 const Cont =styled.View``;
+const MyText = styled.Text``
 
 
 export default function EmailSignin({
@@ -51,12 +52,16 @@ export default function EmailSignin({
   
   const navigation = useNavigation(); 
 
+
+
+
  
   return(
         <MainCont>
            <AlertBanner show={setError,setErrorTwo}>{showError}</AlertBanner>
          <PaperProvider>
             <TextInput
+        
             style={{width:300, height: 50, margin:5, borderRadius: 0, backgroundColor:'#fff'}}
             label="Email"
             returnKeyType="next"

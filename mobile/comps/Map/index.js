@@ -7,20 +7,21 @@ import styled from 'styled-components/native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 
-
 const Map =({
-navigation
+ onMappress =()=>{}
 })=>{
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [loading,setLoading] =useState("waiting");
   const [visible,setVisible] =useState(true)
+  const navigation = useNavigation();
   const [region,setRegion]=useState({
     latitude: 48.250150584432035,
     longitude: -123.01565794794925,
     latitudeDelta: 0.015,
     longitudeDelta: 0.0121,
   })
+
   const [ pin, setPin ] = React.useState({
 		latitude: 48.250150584432035,
 		longitude: -123.01565794794925
@@ -39,8 +40,6 @@ navigation
       })
     }
 
-     const navigate=()=>{()=>navigation.navigate("home")}
-      
 
     // const latitude = location.coords.latitude;
     // console.log(latitude);
@@ -148,16 +147,18 @@ navigation
     <MapView.Marker
      coordinate={{latitude: 49.250150584432035,
      longitude: -123.01565794794925}}
+     key='test'
      title={"Burnaby Clinic"}
      description={"description"}
-    
+     
     >
-    <MapView.Callout tooltip style={styles.customView} onPress = {() => navigate}
-    >
-        <View style={styles.calloutText} >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile')} tooltip> 
+      <View style={styles.calloutText} >
         <Text>Burnaby{"\n"}20 minutes</Text>
-    </View>
-   </MapView.Callout> 
+        <Button title = "lead" onPress={()=>navigation.navigate('clinicprofile')} />
+       </View>
+   </MapView.Callout>  
     </MapView.Marker>   
    </MapView>
     <Button onPress = {getLoc} title = {loading} disabled = {visible}/>     

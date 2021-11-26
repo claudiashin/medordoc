@@ -36,7 +36,7 @@ const fetchData = ()=>{
     })   
 }
     
-    const  getting =async()=>{
+        const  getting =async()=>{
         const docRef = doc(db, "bookings", "booking100");
         const docSnap = await getDoc(docRef);
     

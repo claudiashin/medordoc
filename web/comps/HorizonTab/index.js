@@ -40,7 +40,6 @@ const TabHead = styled("div")`
 
 const TabContainer = styled("div")`
   width: 100vw;
-  height: 55px;
   webkit-box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
   -moz-box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
 
@@ -52,11 +51,12 @@ const TabContainer = styled("div")`
 
 const TabBody = styled(PageBody)`
   height: 100%;
-
+  margin-bottom: 100px;
 `;
 
 const Tab = styled("div")`
   padding: 10px 100px 10px 100px;
+
   color: ${({ selected }) => (selected ? "#226BAF" : "black")};
   font-weight: ${({ selected }) => (selected ? "700" : "300")};
   font-size: 24px;
@@ -68,19 +68,28 @@ const MyCont = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 50px
 `;
 const ItemCont = styled.div`
   margin: 100px;
 `;
-const HeaderCont = styled.div``;
+const HeaderCont = styled.div`
+  margin: 22px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  jsutify-content: center;
+  align-items: center;
+`;
 const Text = styled.text``;
 const MyCont2 = styled.div`
   width: 100vw;
-
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: relative;
 `;
 const ItemCont2 = styled.div`
   display: flex;
@@ -91,10 +100,10 @@ const DoctorCont = styled.div`
 `;
 
 const ButtonCont = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  width: 100vw;
-  margin-right: 250px;
+ 
+  margin-top: 30px;
+  
+
 `;
 
 const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
@@ -138,8 +147,22 @@ const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
   return (
     <MyCont2>
       <HeaderCont>
-        {/* replace with real header */}
         <Text>List of Doctors</Text>
+        <ButtonCont>
+          <Btn
+            title="Create New"
+            bgColor="#90AABB"
+            borderRad = "20"
+            bgHover="#c5c5c5"
+            width="100"
+            height="50"
+            fSize="20"
+            onClick={() => {
+              showModal(true);
+              setModal();
+            }}
+          />
+      </ButtonCont>
       </HeaderCont>
 
       <ItemCont2>
@@ -171,18 +194,6 @@ const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
           );
         })}
       </ItemCont2>
-      {/* <ButtonCont>
-        <Btn
-          title="Create New"
-          bgColor="#90AABB"
-          onClick={() => {
-            showModal(true);
-            setModal();
-          }}
-        />
-      </ButtonCont> */}
-
-
     </MyCont2>
   );
 };
