@@ -118,8 +118,9 @@ const login = ()=>{
 }
 
 const styles = StyleSheet.create({
-    scrollView: {
-        flex: 0.85,
+      container: {
+      flex: 0.85,
     },
-});
+  });
+
 export default login;

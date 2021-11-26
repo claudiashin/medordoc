@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { addDoc,collection,setDoc,getDoc,doc,query,where} from 'firebase/firestore';
+import {onAuthStateChanged} from 'firebase/auth'
+
 import styled from "styled-components/native";
-import {db} from '../../utils/store'
+import {Auth} from '../../utils/auth'
+// import {db} from '../../utils/store'
 
 
 const ButtonCont = styled.View`
@@ -23,9 +26,9 @@ export default function Datepick(
     const [show, setShow] = useState(true);
     const [text, setText] = useState('Select Date and Time');
     const [dbtime, setTime] = useState('18:30') 
+    const [user, setUser] = useState(null);
 
     const booking = async() =>{
-      
       const bookingdata = collection(db,"bookings")
       // await setDoc(bookingdata,{
       //     date:1233,
@@ -36,24 +39,39 @@ export default function Datepick(
           date:23,
           month:12,
           year:2021});
-  }
-      // await setDoc(document(bookingdata,"test"), {
-      //     date:30,
-      //     month:12,
-      //     year:2019});
-      
+    }
 
-     const getting = async()=>{
-     const docRef = doc(db, "bookings", "booking100");
-     const docSnap = await getDoc(docRef);
-     if (docSnap.exists()) {
-         console.log("Document data:", docSnap.data());
-        
-       } else {
-         // doc.data() will be undefined in this case
-         console.log("No such document!");
-       }
-     }
+  //   const GetUser = async()=>{
+  //     const auth =getAuth();
+  //     const result = await getDoc(auth,em,ps);
+  //     userid = result.user.uid;
+  //     console.log(userid)
+  //     alert("Created!")
+  // }
+
+    //  const getting = async()=>{
+    //  const auth = getAuth();
+    //  const user = auth.currentUser;  
+    //  console.log(user);
+    //  const docRef = doc(db, "bookings","booking100");
+    //  const docSnap = await getDoc(docRef);
+    //  if (docSnap.exists()) {
+    //      console.log("Document data:", docSnap.data());
+    //    } else {
+    //      // doc.data() will be undefined in this case
+    //      console.log("No such document!");
+    //    }
+    //  }
+
+      useEffect (()=>{
+       const auth = getAuth
+       onAuthStateChanged((u)=>{
+         if(u){
+           setUser(u);
+           console.log(u)
+         }
+       }) 
+      },[])
 
       const onChange = (event, selectedDate) => {
       const currentDate = selectedDate || date;
@@ -97,19 +115,19 @@ export default function Datepick(
             onChange={onChange}
           />
         )}
-
               <ButtonCont>
                     <Button
                         title={'Confirm'}
                         fSize={18}
                         onPress={() => navigation.navigate('qrconfirm')}
                      />
-                    <Button onPress = {getting} title={'getting'}></Button>
+                    <Button  title='getting'></Button>
               </ButtonCont>
              
       </View>
     );
   };
+
 
   // const styles = StyleSheet.create({
   //   container: {

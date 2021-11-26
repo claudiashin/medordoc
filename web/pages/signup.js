@@ -14,7 +14,9 @@ import myLottie2 from "../public/lottie_welcome.json";
 import HeroAvatar from "../comps/HeroAvatar";
 import Footer from "../comps/Footer";
 
-import { addDoc, collection } from "firebase/firestore";
+
+import { setDoc, doc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from "../firebase";
 
 const Cont = styled.div`
@@ -65,12 +67,14 @@ const BodyCont = styled.div`
 const SignInCont = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 10%;
 `;
 
 const SignInCont_Two = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 40px;
+  margin-bottom: 10%;
 `;
 
 const Title = styled.p`
@@ -113,9 +117,9 @@ const FooterCont = styled.div`
 export default function Home() {
   const router = useRouter();
 
-  const [clinicUser, setUser] = React.useState("");
-  const [clinicPass, setPass] = React.useState("");
   const [clinicEmail, setEmail] = React.useState("");
+  const [clinicPass, setPass] = React.useState("");
+
   const [clinicLang, setLanguage] = React.useState([]);
   const [clinicName, setClinicName] = React.useState("");
   const [clinicAdd, setClinicAdd] = React.useState("");
@@ -123,12 +127,16 @@ export default function Home() {
   const [clinicOpen, setClinicOpen] = React.useState("");
   const [clinicClose, setClinicClose] = React.useState("");
 
+  const [clinicid, setClinicId] = React.useState(null);
+
   const [changePage, setChangePage] = useState(0);
 
-  const info = {
-    user: clinicUser,
-    pass: clinicPass,
+  const LogIn = {
     email: clinicEmail,
+    password: clinicPass,
+  };
+
+  const info = {
     name: clinicName,
     lang: clinicLang,
     add: clinicAdd,
@@ -137,10 +145,12 @@ export default function Home() {
     close: clinicClose,
   };
 
+  const setLogin = ({ email = clinicEmail, password = clinicPass }) => {
+    setEmail(email);
+    setPass(password);
+  };
+
   const setInfo = ({
-    user = clinicUser,
-    pass = clinicPass,
-    email = clinicEmail,
     name = clinicName,
     lang = clinicLang,
     add = clinicAdd,
@@ -148,9 +158,6 @@ export default function Home() {
     open = clinicOpen,
     close = clinicClose,
   }) => {
-    setUser(user);
-    setPass(pass);
-    setEmail(email);
     setClinicName(name);
     setLanguage(lang);
     setClinicAdd(add);
@@ -163,6 +170,9 @@ export default function Home() {
     if (changePage === 0) {
       return (
         <div>
+            <HeaderTitleCont>
+            <HeaderTitle title="Create Your Account" />
+          </HeaderTitleCont>
           <BodyCont>
             <HeroLottieCont>
               <HeroLottie changePage source={myLottie} width="550px" />
@@ -171,8 +181,8 @@ export default function Home() {
             <SignInCont>
               <SigninForm
                 setChangePage={(number) => setChangePage(changePage + number)}
-                setInfo={setInfo}
-                info={info}
+                LogIn={LogIn}
+                setLogin={setLogin}
               />
             </SignInCont>
           </BodyCont>
@@ -197,10 +207,18 @@ export default function Home() {
             <SignInCont_Two>
               <SigninFormTwo
                 setChangePage={(number) => setChangePage(changePage + number)}
-                submit={async () =>
-                  await addDoc(collection(db, "clinics"), info)
-                }
-                setInfo={setInfo} 
+                submit={async () => {
+                  const auth = getAuth();
+                  const result = await createUserWithEmailAndPassword(
+                    auth,
+                    clinicEmail,
+                    clinicPass
+                  );
+                  info.id = result.user.uid;
+                  await setDoc(doc(db, "clinics", result.user.uid), info);
+                  return info;
+                }}
+                setInfo={setInfo}
                 info={info}
               />
             </SignInCont_Two>
@@ -208,40 +226,44 @@ export default function Home() {
         </div>
       );
     } else {
-      return <div>
-        <BodyContTwo>
-          <HeroLottieTwo>
-            <HeroLottie changePage source={myLottie2} width="400px" />
-          </HeroLottieTwo>
-          <InfoCardCont>
-            <InfoCard />
-          </InfoCardCont>
-        </BodyContTwo>
+      return (
+        <div>
+          <BodyContTwo>
+            <HeroLottieTwo>
+              <HeroLottie changePage source={myLottie2} width="400px" />
+            </HeroLottieTwo>
+            <InfoCardCont>
+              <InfoCard />
+            </InfoCardCont>
+          </BodyContTwo>
 
-        <BtnContTwo onClick={() => router.push("/login")}>
-          <Btn
-            title="Let's Explore"
-            bgColor="#90AABB"
-            width="160px"
-            height="50px"
-            fSize="16px"
-            fWeight="600"
-            borderRad="25px"
-            bgHover="#7C9AAD"
-          />
-        </BtnContTwo>
-      </div>;
+          <BtnContTwo onClick={() => router.push("/login")}>
+            <Btn
+              title="Let's Explore"
+              bgColor="#90AABB"
+              width="160px"
+              height="50px"
+              fSize="16px"
+              fWeight="600"
+              borderRad="25px"
+              bgHover="#7C9AAD"
+            />
+          </BtnContTwo>
+        </div>
+      );
     }
   };
 
-  return <Cont>
-    <Wave src={"/background-web5.svg"}></Wave>
-    <NavBarCont>
-      <NavBar />
-    </NavBarCont>
-    {body()}
-    <FooterCont>
-      <Footer />
-    </FooterCont>
-  </Cont>;
+  return (
+    <Cont>
+      <Wave src={"/background-web5.svg"}></Wave>
+      <NavBarCont>
+        <NavBar />
+      </NavBarCont>
+      {body()}
+      <FooterCont>
+        <Footer />
+      </FooterCont>
+    </Cont>
+  );
 }

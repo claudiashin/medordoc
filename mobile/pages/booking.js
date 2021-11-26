@@ -2,7 +2,9 @@ import React, { useState, useEffect, } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';
 import { addDoc, collection,setDoc,getDoc,doc,query,where,} from 'firebase/firestore';
-// import {db} from '../utils/firebase';
+// import {db} from '../utils/store';
+// import {Auth} from '../utils/auth'
+// import {onAuthStateChanged} from 'firebase/auth'
 
 import Calendar from '../comps/Calendar';
 import Header from '../comps/Header';
@@ -51,7 +53,22 @@ const MyScrollView = styled.ScrollView`
 
 `
 const booking = ({ navigation }) => {
+    
+    
+    
+    // useEffect (()=>{
+    //     onAuthStateChanged((u)=>{
+    //       if(u){
+    //         setUser(u);
+    //         console.log(u);
+    //       }
+    //     }) 
+    //    },[])
+
+
+
     return (
+
         <BookingCont>
             <MyScrollView >
                 <Wave source={require('../assets/backgroundmobile.png')} />

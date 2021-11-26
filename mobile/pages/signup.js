@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import { GoogleAuthProvider, getAuth, signInWithPopup,createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import styled from "styled-components/native";
-import app from '../utils/inits';
+// import app from '../utils/inits';
 
 import Header from "../comps/Header";
 import HeroLottie from "../comps/HeroLottie";
@@ -41,16 +41,21 @@ const NavBarCont = styled.View`
 `;
 
 const signup = (
- userid = userid
+    userid =''
 ) => {
-    
-    const CreateUser = async(em,ps)=>{
-    const auth =getAuth();
-    const result = await createUserWithEmailAndPassword(auth,em,ps);
-    userid = result.user.uid
-    console.log(userid)
-    alert("Created!")
-        }
+   
+    const [test,setTest] = useState();
+
+    // const CreateUser = async(em,ps)=>{
+    // const auth =getAuth();
+    // const result = await createUserWithEmailAndPassword(auth,em,ps);
+    // const userid = result.user.uid
+    // alert("Created!")
+    //     }
+
+    // const userid =()=>{
+    //   console.log('hello')
+    // }    
 
 
   return (
@@ -70,7 +75,8 @@ const signup = (
         </HeaderCont>
 
         <SignUpFormCont>
-          <SigninForm  onCreate = {CreateUser} userid = {userid}/>
+          <SigninForm userid ={userid}/> 
+         
         </SignUpFormCont>
         
       </ScrollView>

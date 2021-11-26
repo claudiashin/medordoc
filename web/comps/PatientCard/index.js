@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import {AiOutlineMail} from '@react-icons/all-files/ai/AiOutlineMail';
-import {IoIosClose} from '@react-icons/all-files/io/IoIosClose';
+import { AiOutlineMail } from '@react-icons/all-files/ai/AiOutlineMail';
+import { IoIosClose } from '@react-icons/all-files/io/IoIosClose';
 
-import {useState} from 'react';
+import { useState } from 'react';
 
 import PopupCard from '../PopupCard';
 
@@ -18,10 +18,12 @@ const Maincont = styled.div`
     border-radius: 10px;
     border: 1px solid black;
     background:white;
+    padding-bottom: 50px;
 `
 //avatar image
 const Avatarcont = styled.div`
     display:flex;
+    
     height: 105px;
     width: 105px;
     right:50px;
@@ -33,7 +35,7 @@ const Avatarcont = styled.div`
 const Avatarimg = styled.img`
     width: 100%;
     height:100%;
-    resize-mode:cover;
+    /* resize-mode:cover; */
     border-radius: 50px;
 `
 
@@ -49,6 +51,13 @@ const Text = styled.text`
     margin-bottom: 5px;
     text-align:left;
 `
+const Nameheader = styled.text`
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+`
 //email button
 const Emailbut = styled.div`
     display:flex;
@@ -56,10 +65,13 @@ const Emailbut = styled.div`
     justify-content:center;
     align-items:center;
     margin-top:5px;
-    width:175px;
-    height:55px;
+    width:150px;
+    height:40px;
     background-color: #FAF0BF;
     border-radius: 5px;
+    &:hover {
+        background-color: #EADCA2;
+    }
 `
 const Emailtext = styled.text`
     font-size: 20px;
@@ -68,7 +80,12 @@ const Emailtext = styled.text`
 //close button
 const Closebutton = styled.div`
     display: flex;
+    border-radius: 50%;
     margin-left: 300px;
+    &:hover {
+        background-color: #EADCA2;
+        opacity: 0.8;
+    }
 `
 //edit button for doctor side
 const Editbut = styled.div`
@@ -85,18 +102,21 @@ const Editbut = styled.div`
 const PopupCont = styled.div`
     display: flex;
     position: absolute;
+    margin-top: 50px;
     
     align-self: center;
     justify-content: center;
 `
 
 const EmailbutCont = styled.div`
-    display:${props=>props.button1};
+    display:${props => props.button1};
 `
+
 const EditbutCont = styled.div`
-display:${props=>props.button2};
+    display:${props => props.button2};
 `
-const PatientCard=({
+
+const PatientCard = ({
     //info
     nameText = "Default Text",
     genderText = "Default Text",
@@ -104,7 +124,7 @@ const PatientCard=({
     medicalText = "Default Text",
     phoneText = "Default Text",
     emailText = "Email",
-    imagesource="https://placekitten.com/100/100",
+    imagesource = "https://placekitten.com/100/100",
     //subject
     name = "default text",
     gender = "default text",
@@ -114,11 +134,11 @@ const PatientCard=({
     language = "default text",
     medicalconcerns = "default text",
     phone = "default text",
-    button1="flex",
-    button2="flex",
-    editDoc=()=>{}
+    button1 = "flex",
+    button2 = "flex",
+    editDoc = () => { }
     //button
-})=>{
+}) => {
 
     const [open, setOpen] = useState(0);
 
@@ -133,8 +153,11 @@ const PatientCard=({
         <Avatarcont>
             <Avatarimg src={imagesource}/>
         </Avatarcont>
+        <Nameheader>
+            <Text>{nameText}</Text>
+        </Nameheader>
         <Textcont>
-            <Text>{name}{nameText}</Text>
+            
             <Text>{gender}{genderText}</Text>
             <Text>{age}{ageText}</Text>
             <Text>{medicalconcerns}{medicalText}</Text>
