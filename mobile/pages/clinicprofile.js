@@ -79,12 +79,12 @@ useEffect(()=>{
     // }
 
     const get =async()=>{
-    const MapdocRef = doc(db, "mapchoice", "HxjkpD1lNC5H8xdLn0jT");
-    const MapdocSnap = await getDoc(MapdocRef);
-    setChoice(MapdocSnap.data())
+    // const MapdocRef = doc(db, "mapchoice", "HxjkpD1lNC5H8xdLn0jT");
+    // const MapdocSnap = await getDoc(MapdocRef);
+    // setChoice(MapdocSnap.data())
 
 
-    const docRef = doc(db, "clinics","HxjkpD1lNC5H8xdLn0jT" );
+    const docRef = doc(db, "clinics","uxDtPAIbYVOEFLdIOjXILD3KUf33" );
     const docSnap = await getDoc(docRef)  
     setInfo(docSnap.data())
     // console.log(docSnap.data())
@@ -109,7 +109,7 @@ useEffect(()=>{
                 <CardCont>
                     <InfoCard 
                         text = {info.name}
-                        text2 = {info.address}
+                        text2 = {info.add}
                         text3 = "Website:"
                         website_url = {info.website}
                         fontsize = "20"
