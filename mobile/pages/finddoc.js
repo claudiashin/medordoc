@@ -24,6 +24,9 @@ const Wave = styled.Image`
   position: absolute;
   top: 0;
   `;
+  const WaveCont = styled.View`
+  
+  `
 
   const FilterCont = styled.View`
     

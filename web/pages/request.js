@@ -53,6 +53,7 @@ const ContPatientCard = styled.div`
 
 const ContPatientCardInd = styled.div`
     display: flex;
+    width: 400px;
     margin: 10px;
 `;
 
@@ -96,13 +97,13 @@ export default function Home() {
             <ContPatientCardInd>
                 <PatientCard
                     name="Name:"
-                    gender="Gender:"
-                    age="Age:"
+                    gender="Email:"
+                    age="DOB:"
                     medicalconcerns="Medical Concerns:"
                     phone="Phone:"
                     nameText=" Katie Lee"
-                    genderText=" Female"
-                    ageText=" 24"
+                    genderText=" example@mail.com"
+                    ageText=" 10/12/1991"
                     medicalText=" Seasonal"
                     phoneText=" 604-123-1234"
                     button2="none"
@@ -111,13 +112,13 @@ export default function Home() {
             <ContPatientCardInd>
                 <PatientCard
                     name="Name:"
-                    gender="Gender:"
-                    age="Age:"
+                    gender="Email:"
+                    age="DOB:"
                     medicalconcerns="Medical Concerns:"
                     phone="Phone:"
                     nameText=" Donald Petterson"
-                    genderText=" Male"
-                    ageText=" 18"
+                    genderText=" example@mail.com"
+                    ageText=" 10/12/1991"
                     medicalText=" Heart"
                     phoneText=" 604-123-1354"
                     button2="none"
@@ -126,13 +127,13 @@ export default function Home() {
             <ContPatientCardInd>
                 <PatientCard
                     name="Name:"
-                    gender="Gender:"
-                    age="Age:"
+                    gender="Email:"
+                    age="DOB:"
                     medicalconcerns="Medical Concerns:"
                     phone="Phone:"
                     nameText=" Jenny Truong"
-                    genderText=" Female"
-                    ageText=" 44"
+                    genderText=" example@mail.com"
+                    ageText=" 10/12/1991"
                     medicalText=" Allergies"
                     phoneText=" 604-123-1355"
                     button2="none"
@@ -141,13 +142,13 @@ export default function Home() {
             <ContPatientCardInd>
                 <PatientCard
                     name="Name:"
-                    gender="Gender:"
-                    age="Age:"
+                    gender="Email:"
+                    age="DOB:"
                     medicalconcerns="Medical Concerns:"
                     phone="Phone:"
                     nameText=" Ben Bach"
-                    genderText=" Male"
-                    ageText=" 32"
+                    genderText=" example@mail.com"
+                    ageText=" 10/12/1991"
                     medicalText=" Body aches"
                     phoneText=" 604-123-2222"
                     button2="none"
@@ -156,13 +157,13 @@ export default function Home() {
             <ContPatientCardInd>
                 <PatientCard
                     name="Name:"
-                    gender="Gender:"
-                    age="Age:"
+                    gender="Email:"
+                    age="DOB:"
                     medicalconcerns="Medical Concerns:"
                     phone="Phone:"
                     nameText=" Liam Parker"
-                    genderText=" Male"
-                    ageText=" 28"
+                    genderText=" example@mail.com"
+                    ageText=" 10/12/1991"
                     medicalText=" Diabetes"
                     phoneText=" 604-123-2222"
                     button2="none"
@@ -171,13 +172,28 @@ export default function Home() {
             <ContPatientCardInd>
                 <PatientCard
                     name="Name:"
-                    gender="Gender:"
-                    age="Age:"
+                    gender="Email:"
+                    age="DOB:"
                     medicalconcerns="Medical Concerns:"
                     phone="Phone:"
                     nameText=" Julie Chu"
-                    genderText=" Female"
-                    ageText=" 32"
+                    genderText=" example@mail.com"
+                    ageText=" 10/12/1991"
+                    medicalText=" Allergies"
+                    phoneText=" 604-555-2222"
+                    button2="none"
+                />
+            </ContPatientCardInd>
+            <ContPatientCardInd>
+                <PatientCard
+                    name="Name:"
+                    gender="Email:"
+                    age="DOB:"
+                    medicalconcerns="Medical Concerns:"
+                    phone="Phone:"
+                    nameText=" Julie Chu"
+                    genderText=" example@mail.com"
+                    ageText=" 10/12/1991"
                     medicalText=" Allergies"
                     phoneText=" 604-555-2222"
                     button2="none"

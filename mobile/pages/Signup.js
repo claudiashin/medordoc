@@ -7,6 +7,7 @@ import HeroLottie from "../comps/HeroLottie";
 import SigninForm from "../comps/SigninForm";
 import NavBar from "../comps/NavBar";
 
+
 const BookingCont = styled.View`
   flex: 2;
 `;

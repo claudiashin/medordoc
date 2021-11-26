@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 //import comps
 import NavBar from "../comps/NavBar";
@@ -14,8 +14,14 @@ import myLottie2 from "../public/lottie_welcome.json";
 import HeroAvatar from "../comps/HeroAvatar";
 import Footer from "../comps/Footer";
 
-import { addDoc, collection } from "firebase/firestore";
+
+import { setDoc, doc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword,onAuthStateChanged  } from "firebase/auth";
 import { db } from "../firebase";
+
+
+
+
 
 const Cont = styled.div`
   background-color: #f7f2ee;
@@ -113,11 +119,24 @@ const FooterCont = styled.div`
 `;
 
 export default function Home() {
+
+  useEffect(()=>{
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("Signed in", user)
+        // might want to use a state that changes when signed in
+      } else {
+        console.log("Signed out")
+      }
+    });
+  })
+  
   const router = useRouter();
 
-  const [clinicUser, setUser] = React.useState("");
-  const [clinicPass, setPass] = React.useState("");
   const [clinicEmail, setEmail] = React.useState("");
+  const [clinicPass, setPass] = React.useState("");
+
   const [clinicLang, setLanguage] = React.useState([]);
   const [clinicName, setClinicName] = React.useState("");
   const [clinicAdd, setClinicAdd] = React.useState("");
@@ -125,46 +144,55 @@ export default function Home() {
   const [clinicOpen, setClinicOpen] = React.useState("");
   const [clinicClose, setClinicClose] = React.useState("");
 
+  const [clinicid, setClinicId] = React.useState(null);
+
   const [changePage, setChangePage] = useState(0);
 
-  const info = {
-    user: clinicUser,
-    pass: clinicPass,
+  const LogIn = {
     email: clinicEmail,
+    password: clinicPass,
+  };
+
+  const info = {
     name: clinicName,
     lang: clinicLang,
     add: clinicAdd,
     num: clinicNum,
     open: clinicOpen,
     close: clinicClose,
+    clinicId: clinicid
+  };
+
+  const setLogin = ({ email = clinicEmail, password = clinicPass }) => {
+    setEmail(email);
+    setPass(password);
   };
 
   const setInfo = ({
-    user = clinicUser,
-    pass = clinicPass,
-    email = clinicEmail,
     name = clinicName,
     lang = clinicLang,
     add = clinicAdd,
     num = clinicNum,
     open = clinicOpen,
     close = clinicClose,
+    clinicId = clinicid
   }) => {
-    setUser(user);
-    setPass(pass);
-    setEmail(email);
     setClinicName(name);
     setLanguage(lang);
     setClinicAdd(add);
     setClinicNum(num);
     setClinicOpen(open);
     setClinicClose(close);
+    setClinicId(clinicId);
   };
 
   const body = () => {
     if (changePage === 0) {
       return (
         <div>
+            <HeaderTitleCont>
+            <HeaderTitle title="Create Your Account" />
+          </HeaderTitleCont>
           <BodyCont>
             <HeroLottieCont>
               <HeroLottie changePage source={myLottie} width="550px" />
@@ -173,8 +201,8 @@ export default function Home() {
             <SignInCont>
               <SigninForm
                 setChangePage={(number) => setChangePage(changePage + number)}
-                setInfo={setInfo}
-                info={info}
+                LogIn={LogIn}
+                setLogin={setLogin}
               />
             </SignInCont>
           </BodyCont>
@@ -199,10 +227,18 @@ export default function Home() {
             <SignInCont_Two>
               <SigninFormTwo
                 setChangePage={(number) => setChangePage(changePage + number)}
-                submit={async () =>
-                  await addDoc(collection(db, "clinics"), info)
-                }
-                setInfo={setInfo} 
+                submit={async () => {
+                  const auth = getAuth();
+                  const result = await createUserWithEmailAndPassword(
+                    auth,
+                    clinicEmail,
+                    clinicPass
+                  );
+                  info.clinicId = result.user.uid;
+                  await setDoc(doc(db, "clinics", result.user.uid), info);
+                  return info;
+                }}
+                setInfo={setInfo}
                 info={info}
               />
             </SignInCont_Two>
@@ -210,40 +246,44 @@ export default function Home() {
         </div>
       );
     } else {
-      return <div>
-        <BodyContTwo>
-          <HeroLottieTwo>
-            <HeroLottie changePage source={myLottie2} width="400px" />
-          </HeroLottieTwo>
-          <InfoCardCont>
-            <InfoCard />
-          </InfoCardCont>
-        </BodyContTwo>
+      return (
+        <div>
+          <BodyContTwo>
+            <HeroLottieTwo>
+              <HeroLottie changePage source={myLottie2} width="400px" />
+            </HeroLottieTwo>
+            <InfoCardCont>
+              <InfoCard />
+            </InfoCardCont>
+          </BodyContTwo>
 
-        <BtnContTwo onClick={() => router.push("/login")}>
-          <Btn
-            title="Let's Explore"
-            bgColor="#90AABB"
-            width="160px"
-            height="50px"
-            fSize="16px"
-            fWeight="600"
-            borderRad="25px"
-            bgHover="#7592A5"
-          />
-        </BtnContTwo>
-      </div>;
+          <BtnContTwo onClick={() => router.push("/login")}>
+            <Btn
+              title="Let's Explore"
+              bgColor="#90AABB"
+              width="160px"
+              height="50px"
+              fSize="16px"
+              fWeight="600"
+              borderRad="25px"
+              bgHover="#7C9AAD"
+            />
+          </BtnContTwo>
+        </div>
+      );
     }
   };
 
-  return <Cont>
-    <Wave src={"/background-web5.svg"}></Wave>
-    <NavBarCont>
-      <NavBar />
-    </NavBarCont>
-    {body()}
-    <FooterCont>
-      <Footer />
-    </FooterCont>
-  </Cont>;
+  return (
+    <Cont>
+      <Wave src={"/background-web5.svg"}></Wave>
+      <NavBarCont>
+        <NavBar />
+      </NavBarCont>
+      {body()}
+      <FooterCont>
+        <Footer />
+      </FooterCont>
+    </Cont>
+  );
 }

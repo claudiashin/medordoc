@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
+import { useRouter, router } from 'next/router';
 
 import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -16,6 +16,9 @@ import HeroLottie from '../comps/HeroLottie';
 import myLottie from '../public/lottie_woman_computer.json'
 import LaptopLottie from '../public/lottie_laptop.json'
 import Footer from '../comps/Footer';
+import { useEffect } from 'react';
+
+
 
 const MainCont = styled.div`
   background-color: #F7F2EE;
@@ -199,7 +202,6 @@ const FactText = styled.p`
 //END OF THIRD ROW
 
 export default function Home() {
-
   const router = useRouter();
 
   return <MainCont>

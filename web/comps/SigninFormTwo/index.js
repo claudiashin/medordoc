@@ -35,7 +35,7 @@ const FormTimeForm = styled.fieldset`
   margin: 15px;
   border: 1px solid black;
   width: 185px;
-  height: 55px;
+  height: 57    px;
 `;
 const TimeFormCont = styled.div`
   display: flex;
@@ -79,7 +79,6 @@ const BtnCont = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-bottom: 80px;
-  display: ${(props) => (props.display ? "block" : "none")};
 `;
 
 const AlertBanner = styled.div`
@@ -261,7 +260,7 @@ const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
               setShowAlert(true);
             } else {
               const result = await submit();
-              if (result.id) {
+              if (result.clincId) {
                 setChangePage(1);
               } else {
                 setError("We have some issue to sign you up. Please try again later.");
