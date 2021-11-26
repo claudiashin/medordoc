@@ -5,14 +5,17 @@ import { StyleSheet, Button, View, Text } from "react-native";
 import { en, registerTranslation } from "react-native-paper-dates";
 registerTranslation("en", en);
 import { DatePickerInput } from "react-native-paper-dates";
+import { GoogleAuthProvider, getAuth, signInWithPopup,createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import DropDownPicker from "react-native-dropdown-picker";
 import { useNavigation } from "@react-navigation/native";
+import store from '../../utils/inits'
 
 //import comps
 import Btn from "../Btn";
 
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, setDoc,doc } from "firebase/firestore";
 import { db } from "../../utils/store";
+
 
 const MainCont = styled.View`
   flex-direction: column;
@@ -43,15 +46,22 @@ const ButCont = styled.View`
   margin: 50px 10px 80px 0px;
 `;
 
-const SigninForm = ({}) => {
+const SigninForm = ({
+ userid = ''
+}) => {
   const navigation = useNavigation();
   //for first form
   const [fname, setFname] = React.useState("");
   const [lname, setLname] = React.useState("");
+
   const [text, setText] = React.useState("");
   const [pass, setPass] = React.useState("");
   //for button
   const [changeForm, setChangeForm] = useState(true);
+  
+  const change=()=>{
+    setChangeForm(false)
+  }
 
   //for second form
   const [medcon, setMedcon] = React.useState("");
@@ -65,7 +75,48 @@ const SigninForm = ({}) => {
     { label: "Prefer not to answer", value: "Prefer not to answer" },
   ]);
   const [add, setAdd] = useState("");
+  const [patientId, setPatientId] = useState();
 
+  const info = {
+    patientid: patientId,
+    fname: fname,
+    lname: lname
+  };
+
+  const setInfo = ({
+    patientid = patientId,
+    fname = fname,
+    lname = lname
+  }) => {
+    setFname(fname);
+    setLname(lname);
+    setPatientId(patientid);
+  }
+
+
+  const [em, setEm] = useState('')  
+  const [ps, setPs] = useState('')  
+  const [id,setId] =useState('')
+
+  
+  const CreateUser = async(em,ps)=>{
+       
+        const auth =getAuth();
+        const result = await createUserWithEmailAndPassword(auth,em,ps);
+        userid = result.user.uid;
+        console.log(userid)
+        alert("Created!")
+    
+          const pushing = setDoc(doc(db,"patientuser",userid),{
+          fname: fname,
+          lname: lname,
+          dob: inputDate,
+          gender: gender,
+          address: add,
+          medconcern: medcon,
+        })
+    }
+    
   if (changeForm === true) {
     return (
       <MainCont>
@@ -92,21 +143,20 @@ const SigninForm = ({}) => {
             label="Email"
             returnKeyType="next"
             autoCapitalize="none"
-            autoComplete="email"
+            autoCompleteType="email"
             textContentType="emailAddress"
-            keyboardType="email-address"
-            value={text}
-            mode="outlined"
-            onChangeText={(text) => setText(text)}
+            keyboardType='email-address'
+            mode='outlined'
+            onChangeText={(val) => setEm(val)}
           />
           <TextInput
             style={styles.inputbox}
             label="Password"
             returnKeyType="done"
+            keyboardType='visible-password'
             secureTextEntry
-            value={pass}
-            mode="outlined"
-            onChangeText={(pass) => setPass(pass)}
+            mode='outlined'
+            onChangeText={(val)=>setPs(val)}
           />
           <ButCont>
             <Btn
@@ -125,15 +175,27 @@ const SigninForm = ({}) => {
               //   });
               //   setChangeForm(false);
               // }}
-              onPress={() => {
-                setChangeForm(false);
-              }}
-            ></Btn>
+              onPress={()=>{setChangeForm(false);}}
+              
+
+              //   ;if(userid !== ""){setTimeout(() => {
+              //   setChangeForm(false);console.log(userid);
+              // },3000)}}}
+             
+              // onPress={()=>{setChangeForm(false)}} 
+              // onPress={()=>setTimeout(() => {
+              //   setChangeForm(false)
+              // },2000)}
+            />
+            {/* <Btn title="test" onPress={()=>{onCreate(em,ps)}}/>  */}
           </ButCont>
         </PaperProvider>
       </MainCont>
     );
   }
+
+
+
   return (
     <MainCont>
       <PaperProvider>
@@ -196,18 +258,17 @@ const SigninForm = ({}) => {
             width="130"
             height="50"
             borderRad="60"
-            onPress={async () => {
-              const result = await addDoc(collection(db, "patientuser"), {
-                fname: fname,
-                lname: lname,
-                email: text,
-                password: pass,
-                dob: inputDate,
-                gender: gender,
-                address: add,
-                medconcern: medcon,
-              });
-              
+            onPress={ 
+                ()=>{CreateUser(em,ps);
+              //   async () => {
+              //   const result = await setDoc(doc(db,"patientuser",userid),{
+              //   fname: fname,
+              //   lname: lname,
+              //   dob: inputDate,
+              //   gender: gender,
+              //   address: add,
+              //   medconcern: medcon,
+              // })};
               navigation.navigate("accountconfirm");
             }}
           ></Btn>

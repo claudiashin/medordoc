@@ -65,6 +65,7 @@ const MenuCard = ({
                         }}
                         source={lottieFiles[ind]}
                         autoPlay={true}
+                        loop={false}
                     />
 
                     <Text style={{

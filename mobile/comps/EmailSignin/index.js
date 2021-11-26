@@ -23,10 +23,20 @@ const LastDiv = styled.View`
     margin-bottom: 50px;
 
 `
+const AlertBanner = styled.Text`
+  padding: 1px 1px;
+  margin-bottom: 1px;
+  border: 1px solid transparent;
+  color: #842029;
+  background-color: #F7F2EE;
+  border-color: #f5c2c7;
+  display: ${(props) => (props.show ? "flex" : "none")};
+`;
 
 const ITinput =styled.TextInput``;
 const Button = styled.Button``;
 const Cont =styled.View``;
+const MyText = styled.Text``
 
 
 export default function EmailSignin({
@@ -35,14 +45,23 @@ export default function EmailSignin({
 }){
   const [em, setEm] = useState('')  
   const [ps, setPs] = useState('')  
+  const [showError, setShowError] = useState('')
+  const [error, setError] = useState(false)
+  const [errorTwo, setErrorTwo] = useState(false)
+  
   
   const navigation = useNavigation(); 
+
+
+
 
  
   return(
         <MainCont>
+           <AlertBanner show={setError,setErrorTwo}>{showError}</AlertBanner>
          <PaperProvider>
             <TextInput
+        
             style={{width:300, height: 50, margin:5, borderRadius: 0, backgroundColor:'#fff'}}
             label="Email"
             returnKeyType="next"
@@ -51,7 +70,9 @@ export default function EmailSignin({
             textContentType="emailAddress"
             keyboardType='email-address'
             mode='outlined'
-            onChangeText = {(val)=>setEm(val)}
+            value={em}
+            onChangeText={(val)=>setEm(val)}
+            error={error}
             />
             <TextInput
             style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
@@ -60,7 +81,9 @@ export default function EmailSignin({
             keyboardType='visible-password'
             secureTextEntry
             mode='outlined'
+            value={ps}
             onChangeText={(val)=>setPs(val)}
+            error={errorTwo}
             /> 
             {/* <Button onPress ={()=>onSignin(em,ps)}title="Sign in"></Button> */}
             <LastDiv>
@@ -76,7 +99,23 @@ export default function EmailSignin({
             height = '45'
             borderRad = '10'
             margin = '20'
-            onPress={()=>{onSignin(em,ps);if(em && ps !==" "){{navigation.navigate('booking')}}}}
+            onPress={
+                async()=>{
+                    setShowError(false);
+                    if(em == "" || em.length < 5){
+                        setError(true);
+                
+                        setShowError("Please fill out the form correctly")
+                    } 
+                    if (ps =="" || ps.length <5) {
+                        setErrorTwo(true);
+                    } 
+                    else {
+                         {onSignin(em,ps);if(em && ps !==" "){{navigation.navigate('booking')}}}
+                    }
+                }
+                
+            }
             /> 
             {/* <Button onPress ={()=>onCreate(em,ps)}title="Create Account"></Button> */}
            

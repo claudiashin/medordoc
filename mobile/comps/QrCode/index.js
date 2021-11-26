@@ -19,7 +19,10 @@ const Qrcode = ({
 }) => {
   return (
     <Cont>
-      <QRCode value={val} />
+      <QRCode 
+        value={val} 
+        size={185}
+      />
     </Cont>
   );
 };

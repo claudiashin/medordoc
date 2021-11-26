@@ -12,6 +12,7 @@ const NavBarCont = styled.div`
   margin-top: 30px;
   margin-left: 30px;
   // position: relative;
+  cursor: pointer;
 `;
 
 const LogoCont = styled.div`
@@ -38,6 +39,13 @@ const NavCont = styled.div`
 const NavButton = styled.p`
   display: flex;
   margin-right: 80px;
+
+  &:hover {
+    border-width: 0 0 2.5px;
+    border-style: solid;
+    font-weight: bold;
+    color: ${props => props.bgHover};
+  }
 `;
 
 const ProfileCont = styled.div`
@@ -72,6 +80,7 @@ const DropdownCont = styled.div`
   z-index: 1;
   top: 70px;
   right: 35px;
+
   &:hover {
     background-color: #DDD;
     display: block;
@@ -90,7 +99,7 @@ const MenuLink = styled.a`
 `;
 
 const NavBar = ({
-
+  bgHover= "#5D5D5D",
 }) => {
   const router = useRouter();
 

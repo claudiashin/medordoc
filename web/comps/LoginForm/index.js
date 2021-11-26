@@ -11,6 +11,13 @@ const MainCont = styled.div`
   flex-direction: column;
   width: $ ${(props) => props.width}px;
 `;
+
+const Title = styled.p`
+  margin-left: 15px;
+  font-size: 16px;
+  font-weight: 600;
+`;
+
 const Form = styled.fieldset`
   margin: 15px;
   border: 1px solid black;
@@ -75,6 +82,7 @@ const LoginForm = ({ width = "300" }) => {
   return (
     <MainCont width={width}>
       <AlertBanner show={showAlert}>{error}</AlertBanner>
+      <Title>Sign In</Title>
       <Form>
         <FormTitle>Email</FormTitle>
         <FormInput
