@@ -11,7 +11,7 @@ import HeaderTitle from '../comps/HeaderTitle';
 import LoginForm from '../comps/LoginForm';
 import HeroLottie from '../comps/HeroLottie';
 import NavBar from '../comps/NavBar';
-import myLottie from '../public/lottie_receptionist.json';
+import myLottie from '../public/lottie_hello.json';
 import Btn from '../comps/Btn';
 import Footer from '../comps/Footer';
 

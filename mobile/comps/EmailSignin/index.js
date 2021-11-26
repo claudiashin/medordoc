@@ -51,6 +51,7 @@ export default function EmailSignin({
             textContentType="emailAddress"
             keyboardType='email-address'
             mode='outlined'
+            // activeOutlineColor='blue'
             onChangeText = {(val)=>setEm(val)}
             />
             <TextInput

@@ -48,6 +48,7 @@ const signup = () => {
           <HeroLottie
             source={require("../assets/lottie_user.json")}
             style={{ width: 250 }}
+            loop={false}
           />
         </LottieCont>
 
