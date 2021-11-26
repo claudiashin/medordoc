@@ -10,31 +10,32 @@ import { db } from "../../firebase";
 
 const MainCont = styled.div`
   width: 400px;
-  height: 240px;
-  border: 1px solid black;
+  height: 280px;
+  border: 1px solid #505050;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f7f2ee;
+  background-color: #FCFCFC;
   position: relative;
 `;
 const TitleCont = styled.div`
   width: 300px;
   height: 50px;
-  background-color: #e9d7cb;
+  background-color: #F7E8DC;
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 25px;
 `;
 const Title = styled.p`
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
+  color: #505050;
 `;
 const UpdateButton = styled.button`
-  background-color: #226baf;
+  background-color: #90AABB;
   color: white;
   border: none;
   border-radius: 10px;
@@ -43,11 +44,11 @@ const UpdateButton = styled.button`
   padding: 10px;
   font-size: 16px;
   position: absolute;
-  right: 20px;
-  bottom: 20px;
+  right: 25px;
+  bottom: 25px;
 
   &:hover {
-    background-color: #6494c0;
+    background-color: #7592A5;
   }
 `;
 

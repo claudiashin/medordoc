@@ -13,7 +13,7 @@ import NavBar from '../comps/NavBar';
 import HeaderTitle from '../comps/HeaderTitle';
 import Btn from '../comps/Btn';
 import HeroLottie from '../comps/HeroLottie';
-import myLottie from '../public/lottie_woman_laptop.json'
+import myLottie from '../public/lottie_woman_computer.json'
 import LaptopLottie from '../public/lottie_laptop.json'
 import Footer from '../comps/Footer';
 import { useEffect } from 'react';
@@ -49,17 +49,23 @@ const NavBarCont = styled.div`
 
 const ContOne = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   height: 500px;
+  margin-bottom: 30px;
+
+  @media only screen and (max-width: 600px) {
+    /* text-align: left; */
+    display: flex;
+    flex-direction: row;
+  }
 
   @media only screen and (min-width: 500px) {
     text-align: center;
     flex-direction: row;
     flex-wrap: wrap;
     height: 100%;
-    /* margin-top: 50px; */
   }
 `;
 
@@ -91,17 +97,13 @@ const ContFour = styled.div`
 const MainInfoCont = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* margin: 50px; */
-  width: 40%;
-  margin-bottom: 50px;
+  width: 60%;
+  margin: 0px 10px 50px 40px;
   text-align: left;
-  padding: 5%;
   
-  @media only screen and (min-width: 500px) {
-    text-align: left;
-
+  @media only screen and (max-width: 600px) {
+    /* text-align: left; */
+    width: 100%;
   }
 `;
 
@@ -110,12 +112,12 @@ const LottieCont = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* margin: 50px; */
   @media only screen and (min-width: 500px) {
   }
 `;
 
 const ImageCont = styled.div`
+  /* margin: 30px; */
 `;
 
 const BtnCont = styled.div`
@@ -125,9 +127,21 @@ const BtnCont = styled.div`
   margin-top: 60px;
 `;
 
-const BodyText = styled.p`
+const ContOneText = styled.p`
   font-size: 20px;
   text-align: left;
+  width: 90%;
+  color: #5C5C5C;
+
+  @media only screen and (min-width: 500px) {
+  }
+`;
+
+const ContTwoText = styled.p`
+  font-size: 20px;
+  text-align: left;
+  width: 100%;
+  color: #5C5C5C;
 
   @media only screen and (min-width: 500px) {
   }
@@ -140,7 +154,7 @@ const ContThree = styled.div`
   width: 100%;
   height: 100%;
 `;
-const BenefitCont = styled.div`
+const BenefitHeaderCont = styled.div`
   margin: 50px 0px 30px 80px;
 `;
 
@@ -203,7 +217,7 @@ export default function Home() {
     <ContOne>
       <MainInfoCont>
         <HeaderTitle title="Increase your clinic's patient base" />
-        <BodyText>Try MedorDoc to enhance your clinic's web presence and broaden your patient reach. Start by listing your clinic today.</BodyText>
+        <ContOneText>Try MedorDoc to enhance your clinic's web presence and broaden your patient reach. Let MedOrDoc assist in expanding your practice and refine the patient experience. Start by listing your clinic today.</ContOneText>
         <BtnCont>
           <Btn title="Upload Clinic" fSize="20px" fWeight="500" width="200px" height="70px" borderRad="4px" bgHover="#E08E8E" onClick={() => router.push("/signup")} />
         </BtnCont>
@@ -213,7 +227,7 @@ export default function Home() {
       <LottieCont>
         <HeroLottie
           source={myLottie}
-          width="500px"
+          width="400px"
         />
       </LottieCont>
     </ContOne>
@@ -226,15 +240,16 @@ export default function Home() {
       </ImageCont>
       <MainInfoCont>
         <HeaderTitle title="What is MedOrDoc?" />
-        <BodyText>MedorDoc is an online platform that connects patients with doctors and serves to provide access to pateint care in the Lower Mainland. Patients will have the ability to book appointments at your walk-in clinic and smoothen the process for both parties.</BodyText>
+        <ContTwoText>MedorDoc is an online platform that connects patients with doctors and serves to provide access to pateint care in the Lower Mainland. Patients will have the ability to book appointments at your walk-in clinic and smoothen the process for both parties.</ContTwoText>
       </MainInfoCont>
     </ContTwo>
 
     {/* THIRD */}
     <ContThree>
-      <BenefitCont>
+      <BenefitHeaderCont>
         <HeaderTitle title="Benefits of MedOrDoc" />
-      </BenefitCont>
+      </BenefitHeaderCont>
+
       <FourInfoCont>
         <InfoCont>
           <Icon src={'/live.png'}></Icon>
@@ -260,6 +275,7 @@ export default function Home() {
           <FactText>Cut down the time it takes to check-in to avoid long wait times</FactText>
         </InfoCont>
       </FourInfoCont>
+      
     </ContThree>
 
     {/* FOURTH */}

@@ -18,6 +18,7 @@ const HomeCont = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #F7F2EE;
+  height: 100%;
 `;
 
 const WaveCont = styled.div`
@@ -54,6 +55,12 @@ const MenuCardCont = styled.div`
   }
 `;
 
+const FooterCont = styled.div`
+  display: flex;
+  margin-top: 10%;
+  width: 100%;
+`;
+
 export default function home() {
   return (
     <HomeCont>
@@ -71,7 +78,11 @@ export default function home() {
       <MenuCard width={300} height={350} source={MyLottie} routeTo="/request" />
       <MenuCard title={"Appointment Bookings"} width={300} height={350} source={MyLottie2} routeTo="/booking" />
       <MenuCard title={"Doctors' Profiles"} width={300} height={350} source={MyLottie3} routeTo="/profile" />
+
+      <FooterCont>
       <Footer />
+      </FooterCont>
+
     </HomeCont>
   )
 }
