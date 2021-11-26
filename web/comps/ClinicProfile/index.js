@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
@@ -9,11 +9,16 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-import { getDatabase, ref, set } from "firebase/database";
+// import { getDatabase, ref, child, get } from "firebase/database";
 
-import {AuthenticatedUserContext} from '../../function/getFile';
+// import {AuthenticatedUserContext} from '../../function/getFile';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getDoc, doc, updateDoc } from "firebase/firestore";
+// import { collection, getDoc, addDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase";
 
-
+// export const AuthenticatedUserContext = createContext({});
+import { getDatabase, ref, onValue } from "firebase/database";
 
 const MainCont = styled.div`
   display: flex;
@@ -39,7 +44,7 @@ const FormTimeForm = styled.fieldset`
   margin: 15px;
   border: 1px solid black;
   width: 185px;
-  height: 57px;
+  height: 60px;
 `;
 const TimeFormCont = styled.div`
   display: flex;
@@ -109,256 +114,188 @@ function getStyles(name, personName, theme) {
   };
 }
 
-
-
-
-const ClinicProfile = ({}) => {
-  const [changeForm, setChangeForm] = useState(false);
+const ClinicProfile = (props) => {
+  const [readOnly, setReadOnly] = useState(true);
 
   const [clinicName, setClinicName] = React.useState("");
   const [clinicAdd, setClinicAdd] = React.useState("");
   const [clinicNum, setClinicNum] = React.useState("");
   const [clinicOpen, setClinicOpen] = React.useState("");
   const [clinicClose, setClinicClose] = React.useState("");
-  const [clinicLang, setLanguage] = React.useState([]);
 
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
+  const [clinicLang, setLanguage] = React.useState([]);
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setPersonName(
+    setLanguage(
       // On autofill we get a the stringified value.
       typeof value === "string" ? value.split(",") : value
     );
   };
 
+  // function writeUserData(clinicId, name, add, num, open, close, lang) {
+  //   const db = getDatabase();
+  //   set(ref(db, 'clinics/' + clinics.clinicId), {
+  //     // username: name,
+  //     // email: email,
+  //     id: clinicId,
+  //     clinicname: name,
+  //     clinicadd: add,
+  //     clinicnum: num,
+  //     clinicopen: open,
+  //     clinicclose: close,
+  //     cliniclang: lang
+  //   });
 
+  //   console.log(db);
+  // }
 
-function writeUserData(clinicId, name, add, num, open, close, lang) {
-  const db = getDatabase();
-  set(ref(db, 'clinics/' + clinicId), {
-    // username: name,
-    // email: email,
-    id: clinicId,
-    clinicname: name,
-    clinicadd: add,
-    clinicnum: num,
-    clinicopen: open,
-    clinicclose: close, 
-    cliniclang: lang    
-  });
+  // const dbRef = ref(getDatabase());
+  // get(child(dbRef, `clinics/YWNtg1MQC4SUgOIC4LSfWcmLQUA2`)).then((snapshot) => {
+  //   if(snapshot.exists()) {
+  //     console.log(snapshot.val());
+  //   } else {
+  //     console.log("no data available");
+  //   }
+  // }).catch((error)=>{
+  //   console.log(error);
+  // })
 
-  console.log(clinicname);
-}
+  useEffect(async () => {
+    if (props.uid) {
+      const usersDocRef = doc(db, "clinics", props.uid);
+      const data = await getDoc(usersDocRef);
+      const result = data.data();
+      setClinicName(result.name);
+      setClinicAdd(result.add);
+      setClinicNum(result.num);
+      setClinicOpen(result.open);
+      setClinicClose(result.close);
+      setLanguage(result.lang);
+    }
+  }, [props.uid]);
 
+  // const {user, users} = useContext(AuthenticatedUserContext);
+  // console.log(users.name)
 
-const {user, users} = useContext(AuthenticatedUserContext);
-// console.log(users.name)
+  return <MainCont>
+    <Title>Clinic Information</Title>
+    <Form>
+      <FormTitle>Clinic Name</FormTitle>
+      <FormInput
+        readOnly={readOnly}
+        type="text"
+        placeholder="Clinic Name"
+        value={clinicName}
+        onChange={(e) => setClinicName(e.target.value)}
+      />
+    </Form>
+    <Form>
+      <FormTitle>Clinic Address</FormTitle>
+      <FormInput
+        readOnly={readOnly}
+        type="text"
+        placeholder="Clinic Address"
+        value={clinicAdd}
+        onChange={(e) => setClinicAdd(e.target.value)}
+      />
+    </Form>
+    <Form style={{ marginBottom: 50 }}>
+      <FormTitle>Contact Number</FormTitle>
+      <FormInput
+        readOnly={readOnly}
+        type="tel"
+        placeholder="Contact Number"
+        value={clinicNum}
+        onChange={(e) => setClinicNum(e.target.value)}
+      />
+    </Form>
+    <Title>Operation Hour</Title>
+    <TimeFormCont>
+      <FormTimeForm>
+        <FormTitle>Open</FormTitle>
+        <FormInput
+          readOnly={readOnly}
+          type="time"
+          placeholder="Open Hour"
+          value={clinicOpen}
+          onChange={(e) => setClinicOpen(e.target.value)}
+        />
+      </FormTimeForm>
+      <FormTimeForm>
+        <FormTitle>Close</FormTitle>
+        <FormInput
+          readOnly={readOnly}
+          type="time"
+          placeholder="Close Hour"
+          value={clinicClose}
+          onChange={(e) => setClinicClose(e.target.value)}
+        />
+      </FormTimeForm>
+    </TimeFormCont>
+    <Title>Additional Information</Title>
 
-
-  if (changeForm === false) {
-    return (
-      <MainCont>
-        <button onClick={writeUserData}>click</button>
-        <Title>Clinic Information</Title>
-        <Form>
-          <FormTitle>Clinic Name</FormTitle>
-          <FormInput
-            type="text"
-            placeholder="Clinic Name"
-            value={clinicName}
-            onChange={(e) => setClinicName(e.target.value)}
-          />
-        </Form>
-        <Form>
-          <FormTitle>Clinic Address</FormTitle>
-          <FormInput
-            type="text"
-            placeholder="Clinic Address"
-            value={clinicAdd}
-            onChange={(e) => setClinicAdd(e.target.value)}
-          />
-        </Form>
-        <Form style={{ marginBottom: 50 }}>
-          <FormTitle>Contact Number</FormTitle>
-          <FormInput
-            type="tel"
-            placeholder="Contact Number"
-            value={clinicNum}
-            onChange={(e) => setClinicNum(e.target.value)}
-          />
-        </Form>
-        <Title>Operation Hour</Title>
-        <TimeFormCont>
-          <FormTimeForm>
-            <FormTitle>Open</FormTitle>
-            <FormInput
-              type="time"
-              placeholder="Open Hour"
-              value={clinicOpen}
-              onChange={(e) => setClinicOpen(e.target.value)}
-            />
-          </FormTimeForm>
-          <FormTimeForm>
-            <FormTitle>Close</FormTitle>
-            <FormInput
-              type="time"
-              placeholder="Close Hour"
-              value={clinicClose}
-              onChange={(e) => setClinicClose(e.target.value)}
-            />
-          </FormTimeForm>
-        </TimeFormCont>
-        <Title>Additional Information</Title>
-
-        <div>
-          <FormControl
-            sx={{
-              m: 1,
-              width: 400,
-              height: 50,
-              marginBottom: 5,
-              marginLeft: 1.7,
-              color: "black",
-            }}
-          >
-            <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
-            <Select
-              labelId="demo-multiple-name-label"
-              id="demo-multiple-name"
-              multiple
-              value={personName}
-              onChange={handleChange}
-              input={<OutlinedInput label="Name" />}
-              MenuProps={MenuProps}
-              style={{ height: 50, borderBlockStyle: "black" }}
+    <div>
+      <FormControl
+        sx={{
+          m: 1,
+          width: 400,
+          height: 50,
+          marginBottom: 5,
+          marginLeft: 1.7,
+          color: "black",
+        }}
+      >
+        <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
+        <Select
+          readOnly={readOnly}
+          labelId="demo-multiple-name-label"
+          id="demo-multiple-name"
+          multiple
+          value={clinicLang}
+          onChange={handleChange}
+          input={<OutlinedInput label="Name" />}
+          MenuProps={MenuProps}
+          style={{ height: 50, borderBlockStyle: "black" }}
+        >
+          {names.map((name) => (
+            <MenuItem
+              key={name}
+              value={name}
+              style={getStyles(name, clinicLang, theme)}
             >
-              {names.map((name) => (
-                <MenuItem
-                  key={name}
-                  value={name}
-                  style={getStyles(name, personName, theme)}
-                >
-                  {name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </div>
-        <ButtonCont>
-          <Button
-            onClick={() => {
-              setChangeForm(true);
-            }}
-          >
-            Edit
-          </Button>
-        </ButtonCont>
-      </MainCont>
-    );
-  }
-
-  return (
-    <MainCont>
-      <Title>Clinic Information</Title>
-      <Form>
-        <FormTitle>Clinic Name</FormTitle>
-        <FormInput
-          type="text"
-          placeholder="Clinic Name"
-          value={clinicName}
-          onChange={(e) => setClinicName(e.target.value)}
-        />
-      </Form>
-      <Form>
-        <FormTitle>Clinic Address</FormTitle>
-        <FormInput
-          type="text"
-          placeholder="Clinic Address"
-          value={clinicAdd}
-          onChange={(e) => setClinicAdd(e.target.value)}
-        />
-      </Form>
-      <Form style={{ marginBottom: 50 }}>
-        <FormTitle>Contact Number</FormTitle>
-        <FormInput
-          type="tel"
-          placeholder="Contact Number"
-          value={clinicNum}
-          onChange={(e) => setClinicNum(e.target.value)}
-        />
-      </Form>
-      <Title>Operation Hour</Title>
-      <TimeFormCont>
-        <FormTimeForm>
-          <FormTitle>Open</FormTitle>
-          <FormInput
-            type="time"
-            placeholder="Open Hour"
-            value={clinicOpen}
-            onChange={(e) => setClinicOpen(e.target.value)}
-          />
-        </FormTimeForm>
-        <FormTimeForm>
-          <FormTitle>Close</FormTitle>
-          <FormInput
-            type="time"
-            placeholder="Close Hour"
-            value={clinicClose}
-            onChange={(e) => setClinicClose(e.target.value)}
-          />
-        </FormTimeForm>
-      </TimeFormCont>
-      <Title>Additional Information</Title>
-
-      <div>
-        <FormControl
-          sx={{
-            m: 1,
-            width: 400,
-            height: 50,
-            marginBottom: 5,
-            marginLeft: 1.7,
-            color: "black",
-          }}
-        >
-          <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
-          <Select
-            labelId="demo-multiple-name-label"
-            id="demo-multiple-name"
-            multiple
-            value={personName}
-            onChange={handleChange}
-            input={<OutlinedInput label="Name" />}
-            MenuProps={MenuProps}
-            style={{ height: 50, borderBlockStyle: "black" }}
-          >
-            {names.map((name) => (
-              <MenuItem
-                key={name}
-                value={name}
-                style={getStyles(name, personName, theme)}
-              >
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </div>
-      <ButtonCont>
-        <Button
-          onClick={() => {
-            setChangeForm(false);
-          }}
-        >
-          Confirm
-        </Button>
-      </ButtonCont>
-    </MainCont>
-  );
+              {name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </div>
+    <ButtonCont>
+      <Button
+        onClick={async () => {
+          if(readOnly) {
+            setReadOnly(false);
+          } else {
+            const usersDocRef = doc(db, "clinics", props.uid);
+              await updateDoc(usersDocRef, {
+                add: clinicAdd,
+                close: clinicClose,
+                lang: clinicLang,
+                name: clinicName,
+                num: clinicNum,
+                open: clinicOpen,
+              });
+              setReadOnly(true);
+          }
+        }}
+      >
+        {readOnly ? "Edit" : "Confirm"}
+      </Button>
+    </ButtonCont>
+  </MainCont>;
 };
 
 export default ClinicProfile;

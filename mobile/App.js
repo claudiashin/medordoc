@@ -60,11 +60,7 @@ export default function App() {
   }
   return (
     <NavigationContainer>
-<<<<<<< HEAD
-      <Stack.Navigator initialRouteName="signup">
-=======
-      <Stack.Navigator initialRouteName="docprofile">
->>>>>>> eaf47a9dd8ff29bbf9238e932e63b123690c84f0
+      <Stack.Navigator initialRouteName="login">
         <Stack.Screen options={{ headerShown: false }} name="home" component={home} />
         <Stack.Screen options={{ headerShown: false }} name="findclinic" options={{ headerShown: false }} component={findclinic} />
         <Stack.Screen options={{ headerShown: false }} name="finddoc" component={finddoc} />

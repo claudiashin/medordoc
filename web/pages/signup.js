@@ -16,10 +16,10 @@ import Footer from "../comps/Footer";
 
 
 import { setDoc, doc } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,onAuthStateChanged  } from "firebase/auth";
 import { db } from "../firebase";
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 
 
 

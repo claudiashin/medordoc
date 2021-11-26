@@ -58,7 +58,7 @@ const BodyCont = styled.div`
 const TitleCont = styled.div`
   position: absolute;
   top: 300px;
-  right: 450px;
+  right: 500px;
 `;
 const Subcont = styled.div`
   display: flex;
@@ -87,7 +87,7 @@ export default function Home() {
 
       <BodyCont>
         <TitleCont>
-          <HeaderTitle title="Log in" fontSize="36" />
+          <HeaderTitle title="Welcome Back" fontSize="36" />
         </TitleCont>
         <HeroLottie source={myLottie} width="400px" />
         <Subcont style={{ marginTop: 100 }}>

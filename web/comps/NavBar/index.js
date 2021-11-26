@@ -106,12 +106,14 @@ const NavBar = ({
       setProfile("/profile")
       setBooking("/booking")
       setRequest("/request")
+      console.log("signin")
 
       } else {
        setHomeLink("/")
        setProfile("/login")
        setBooking("/login")
        setRequest("/login")
+       console.log("signout")
       }
     });
   })

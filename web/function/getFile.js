@@ -30,7 +30,7 @@ export const AuthenticatedUserProvider = ({ children }) => {
     }
  
     getUser()
-
+    console.log(users);
   }, [user])
   
   

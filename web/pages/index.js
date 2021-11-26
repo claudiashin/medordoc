@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
+import { useRouter, router } from 'next/router';
 
 import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -188,8 +188,7 @@ const FactText = styled.p`
 //END OF THIRD ROW
 
 export default function Home() {
-
-
+  const router = useRouter();
 
   return <MainCont>
     <WaveCont>
