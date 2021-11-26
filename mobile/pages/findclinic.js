@@ -1,6 +1,8 @@
 import React, { useState, useEffect, } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
+import { useNavigation } from '@react-navigation/native';
+
 
 // Import Comps
 import Map from '../comps/Map'
@@ -19,12 +21,6 @@ const Cont = styled.View`
   align-items:center;
   justify-content: space-between;
 `
-
-// const SubCont = styled.ScrollView`
-
-
-// `;
-
 const Wave = styled.Image`
     width: 100%;
     height: 30%;
@@ -60,11 +56,8 @@ const CardCont = styled.View`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    
-  `
-const NavBarCont = styled.View`
-
+    `
+    const NavBarCont = styled.View`
 `;
 const BackCont = styled.View`
   display: flex;
@@ -74,7 +67,8 @@ const BackCont = styled.View`
   top: -16px;
 `
 
-export default function findclinic({ navigation }){
+export default function findclinic({navigation}){
+
   return (
     <Cont>
       <ScrollView keyboardShouldPersistTaps={'handled'}>
@@ -82,7 +76,7 @@ export default function findclinic({ navigation }){
           <BackBtn onPress={() => navigation.goBack()}/>
         </BackCont>
         <Wave source={require('../assets/backgroundmobile.png')} />
-        <Map />
+        <Map onMappress ={()=>navigation.navigate('login')} />
         <FilterCont>
           <Filter 
           headerText1={"Language Prefrences"}

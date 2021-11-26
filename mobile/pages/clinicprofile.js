@@ -10,7 +10,6 @@ import NavBar from '../comps/NavBar';
 import BackBtn from '../comps/BackBtn';
 
 
-
 const Cont = styled.View`
   flex:1;
   background-color: #F7F2EE;
@@ -87,10 +86,9 @@ useEffect(()=>{
     const docRef = doc(db, "clinics","uxDtPAIbYVOEFLdIOjXILD3KUf33" );
     const docSnap = await getDoc(docRef)  
     setInfo(docSnap.data())
-    // console.log(docSnap.data())
+    console.log(docSnap.data())
     }
     get()
- 
 
 },[])    
 
@@ -124,7 +122,6 @@ useEffect(()=>{
                     <Btn onPress={() => navigation.navigate("login")} />
                 </BtnCont>
             </MyScrollView>
-
 
 
             <NavBarCont>

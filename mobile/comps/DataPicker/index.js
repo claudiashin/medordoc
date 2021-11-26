@@ -1,15 +1,79 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import styled from "styled-components/native";
+import { addDoc,collection,setDoc,getDoc,doc,query,where} from 'firebase/firestore';
+import {onAuthStateChanged} from 'firebase/auth'
 
-export default function Datepick() {
+import styled from "styled-components/native";
+import {Auth} from '../../utils/auth'
+// import {db} from '../../utils/store'
+
+
+const ButtonCont = styled.View`
+    /* justify-content: flex-end; */
+    align-items: flex-end;
+    width: 275px;
+    /* height: 150px; */
+    margin-top: 25px;
+`;
+
+export default function Datepick(
+   bookingdate = {text}
+
+) {
     const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('time');
     const [show, setShow] = useState(true);
     const [text, setText] = useState('Select Date and Time');
-  
-    const onChange = (event, selectedDate) => {
+    const [dbtime, setTime] = useState('18:30') 
+    const [user, setUser] = useState(null);
+
+    const booking = async() =>{
+      const bookingdata = collection(db,"bookings")
+      // await setDoc(bookingdata,{
+      //     date:1233,
+      //     month:1221,
+      //     year:2023
+      // }
+      await setDoc(doc(bookingdata, "not"), {
+          date:23,
+          month:12,
+          year:2021});
+    }
+
+  //   const GetUser = async()=>{
+  //     const auth =getAuth();
+  //     const result = await getDoc(auth,em,ps);
+  //     userid = result.user.uid;
+  //     console.log(userid)
+  //     alert("Created!")
+  // }
+
+    //  const getting = async()=>{
+    //  const auth = getAuth();
+    //  const user = auth.currentUser;  
+    //  console.log(user);
+    //  const docRef = doc(db, "bookings","booking100");
+    //  const docSnap = await getDoc(docRef);
+    //  if (docSnap.exists()) {
+    //      console.log("Document data:", docSnap.data());
+    //    } else {
+    //      // doc.data() will be undefined in this case
+    //      console.log("No such document!");
+    //    }
+    //  }
+
+      useEffect (()=>{
+       const auth = getAuth
+       onAuthStateChanged((u)=>{
+         if(u){
+           setUser(u);
+           console.log(u)
+         }
+       }) 
+      },[])
+
+      const onChange = (event, selectedDate) => {
       const currentDate = selectedDate || date;
       setShow(Platform.OS === 'ios');
       setDate(currentDate);
@@ -17,7 +81,7 @@ export default function Datepick() {
        let fdate =tempDate.getDate() + "/" +tempDate.getMonth() + "/" +tempDate.getFullYear();
        let ftime = tempDate.getHours() + ":" +tempDate.getMinutes();
       setText(fdate + "       " + ftime);
-
+      setTime(ftime)
     };
   
     const showMode = (currentMode) => {
@@ -27,7 +91,6 @@ export default function Datepick() {
   
      const showDatepicker = () => {
        showMode('date');
-      
      };
   
     const showTimepicker = () => {
@@ -37,9 +100,10 @@ export default function Datepick() {
     return (
       <View>
         <View>
-          <Button onPress={showDatepicker} title="Show time picker!"/>
+          <Button onPress={showDatepicker} title="Show Date picker!"/>
           <Button onPress={showTimepicker} title="Show time picker!"/>
          <Text>{text}</Text>
+         <Text>{dbtime}</Text> 
         </View> 
         {show && (
           <DateTimePicker
@@ -51,9 +115,19 @@ export default function Datepick() {
             onChange={onChange}
           />
         )}
+              <ButtonCont>
+                    <Button
+                        title={'Confirm'}
+                        fSize={18}
+                        onPress={() => navigation.navigate('qrconfirm')}
+                     />
+                    <Button  title='getting'></Button>
+              </ButtonCont>
+             
       </View>
     );
   };
+
 
   // const styles = StyleSheet.create({
   //   container: {
