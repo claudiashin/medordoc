@@ -3,8 +3,9 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';
 import { addDoc, collection,setDoc,getDoc,doc,query,where,} from 'firebase/firestore';
 // import {db} from '../utils/store';
-// import {Auth} from '../utils/auth'
+import {Auth} from '../utils/auth'
 // import {onAuthStateChanged} from 'firebase/auth'
+import {getAuth} from 'firebase/auth'
 
 import Calendar from '../comps/Calendar';
 import Header from '../comps/Header';
@@ -14,6 +15,7 @@ import BackBtn from '../comps/BackBtn';
 import NavBar from '../comps/NavBar';
 import Datepick from '../comps/DataPicker';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useNavigationState } from '@react-navigation/native';
 
 const BookingCont = styled.View`
     flex: 1;
@@ -60,18 +62,15 @@ const BackCont = styled.View`
   z-index: 999;
 `
 const booking = ({ navigation }) => {
-    
-    
+
+    // const [user,setUser] = useState('');
     
     // useEffect (()=>{
-    //     onAuthStateChanged((u)=>{
-    //       if(u){
-    //         setUser(u);
-    //         console.log(u);
-    //       }
-    //     }) 
+    //     const auth = getAuth()
+    //     const userid = auth.currentUser.uid;
+    //     setUser(userid)
+    //     console.log(user)
     //    },[])
-
 
 
     return (
@@ -92,7 +91,7 @@ const booking = ({ navigation }) => {
 
                 <DropDownCont>
                     <Text>Pick the Time</Text>
-                    <Datepick />
+                    <Datepick/>
                 </DropDownCont>
 
                 <ButtonCont>

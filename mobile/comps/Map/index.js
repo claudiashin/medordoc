@@ -8,7 +8,7 @@ import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 
 const Map =({
- onMappress =()=>{}
+//  onMappress =()=>{}
 })=>{
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -150,13 +150,14 @@ const Map =({
      key='test'
      title={"Burnaby Clinic"}
      description={"description"}
-     
     >
      {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
-     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile')} tooltip> 
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+          UID:"oXOf7T5hj4ewq5ls5YzoJQpGbrp1"
+        })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Burnaby{"\n"}20 minutes</Text>
-        <Button title = "lead" onPress={()=>navigation.navigate('clinicprofile')} />
+        <Button title = "lead"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>   

@@ -48,9 +48,14 @@ const BackCont = styled.View`
   z-index: 999;
 `
 
-const login = ()=>{
-     const navigation = useNavigation(); 
-     const SignInGoogle = async()=>{
+const login = ({route,Navigation})=>{
+    
+    // const {UID} = route.params;
+    // setUID(UID);
+    // console.log(uid);
+
+
+    const SignInGoogle = async()=>{
          const auth = getAuth();
          const provider = new GoogleAuthProvider();
          const result  = await signInWithPopup(auth,provider);
@@ -84,14 +89,6 @@ const login = ()=>{
         alert("Sign in!")
             }
 
-    const booking = async() =>{
-      const bookingdata = collection(db,"bookings")
-      await setDoc(doc(bookingdata,user.uid), {
-          date:23,
-          month:12,
-          year:2021});
-  }
-
 
  return <MainCont>
     <Wave source={require('../assets/backgroundmobile.png')} />
@@ -109,7 +106,7 @@ const login = ()=>{
      <View style = {styles.container}>
         <EmailSignin onSignin = {Signin}
                  onCreate = {CreateUser}/>
-    </View> 
+     </View> 
 
      
      </Login>

@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { addDoc,collection,setDoc,getDoc,doc,query,where} from 'firebase/firestore';
-import {onAuthStateChanged} from 'firebase/auth'
-
+import {onAuthStateChanged,getAuth} from 'firebase/auth'
 import styled from "styled-components/native";
 import {Auth} from '../../utils/auth'
-// import {db} from '../../utils/store'
+import {db} from '../../utils/store'
 
 
 const ButtonCont = styled.View`
@@ -18,60 +17,57 @@ const ButtonCont = styled.View`
 `;
 
 export default function Datepick(
-   bookingdate = {text}
-
+  //  bookingdate = {text},
+  //  useruid= '',
 ) {
     const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('time');
     const [show, setShow] = useState(true);
     const [text, setText] = useState('Select Date and Time');
     const [dbtime, setTime] = useState('18:30') 
-    const [user, setUser] = useState(null);
+    const [dbday, setDay] = useState('') 
+    const [user,setUser] = useState('');
+    
+    useEffect (()=>{
+        const auth = getAuth()
+        const userid = auth.currentUser.uid;
+        setUser(userid)
+        console.log(user)
+       },[])
 
-    const booking = async() =>{
-      const bookingdata = collection(db,"bookings")
-      // await setDoc(bookingdata,{
-      //     date:1233,
-      //     month:1221,
-      //     year:2023
-      // }
-      await setDoc(doc(bookingdata, "not"), {
-          date:23,
-          month:12,
-          year:2021});
+    const booking = async(
+
+    )=>{
+
+      await setDoc(doc(db,"appointment",user), {
+          userid:user,
+          Time:dbtime,
+          Day:dbday});
+
+      //   const pushing = setDoc(doc(db,"appointment",useruid),{
+      //   fname: "hello",
+      //   lname: "again",
+      //   clinicid: "nah",
+      //   clincid: "bcit",
+      //   date: "hennry",
+      //   time: "medcon",
+      // })
     }
 
-  //   const GetUser = async()=>{
-  //     const auth =getAuth();
-  //     const result = await getDoc(auth,em,ps);
-  //     userid = result.user.uid;
-  //     console.log(userid)
-  //     alert("Created!")
-  // }
+    
 
-    //  const getting = async()=>{
-    //  const auth = getAuth();
-    //  const user = auth.currentUser;  
-    //  console.log(user);
-    //  const docRef = doc(db, "bookings","booking100");
-    //  const docSnap = await getDoc(docRef);
-    //  if (docSnap.exists()) {
-    //      console.log("Document data:", docSnap.data());
-    //    } else {
-    //      // doc.data() will be undefined in this case
-    //      console.log("No such document!");
-    //    }
-    //  }
+    
 
-      useEffect (()=>{
-       const auth = getAuth
-       onAuthStateChanged((u)=>{
-         if(u){
-           setUser(u);
-           console.log(u)
-         }
-       }) 
-      },[])
+      // useEffect (()=>{
+      //  const auth = getAuth
+      //  auth.currentUser
+      //  onAuthStateChanged((u)=>{
+      //    if(u){
+      //      setUser(u);
+      //      console.log(u)
+      //    }
+      //  }) 
+      // },[])
 
       const onChange = (event, selectedDate) => {
       const currentDate = selectedDate || date;
@@ -80,8 +76,11 @@ export default function Datepick(
        let tempDate = new Date(currentDate);
        let fdate =tempDate.getDate() + "/" +tempDate.getMonth() + "/" +tempDate.getFullYear();
        let ftime = tempDate.getHours() + ":" +tempDate.getMinutes();
-      setText(fdate + "       " + ftime);
-      setTime(ftime)
+      setText(fdate + "      " + ftime);
+      setTime(ftime);
+      setDay(fdate);
+      
+      // setTime(ftime)
     };
   
     const showMode = (currentMode) => {
@@ -97,13 +96,15 @@ export default function Datepick(
       showMode('time');
     };
 
+  
+
     return (
       <View>
         <View>
           <Button onPress={showDatepicker} title="Show Date picker!"/>
           <Button onPress={showTimepicker} title="Show time picker!"/>
          <Text>{text}</Text>
-         <Text>{dbtime}</Text> 
+        
         </View> 
         {show && (
           <DateTimePicker
@@ -121,7 +122,7 @@ export default function Datepick(
                         fSize={18}
                         onPress={() => navigation.navigate('qrconfirm')}
                      />
-                    <Button  title='getting'></Button>
+                    <Button  title='getting' onPress = {booking}></Button>
               </ButtonCont>
              
       </View>

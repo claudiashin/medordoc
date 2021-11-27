@@ -61,10 +61,12 @@ const BackCont = styled.View`
 const MyScrollView = styled.ScrollView`
 
 `
-const ClinicProfile = ({ navigation }) => {
+const ClinicProfile = ({ route,navigation }) => {
 
 const [info,setInfo] =useState('')
 const [choice,setChoice] = useState('')
+const [cluid,setUid] = useState('')
+
 
     
 useEffect(()=>{
@@ -76,20 +78,23 @@ useEffect(()=>{
     // console.log('fuck')
     // gettinginfo();
     // }
-
+    const {UID} = route.params;
+    setUid(UID);
+    console.log(UID);
+    
     const get =async()=>{
-    const MapdocRef = doc(db, "mapchoice", "uxDtPAIbYVOEFLdIOjXILD3KUf33");
+    const MapdocRef = doc(db, "mapchoice", UID);
     const MapdocSnap = await getDoc(MapdocRef);
     setChoice(MapdocSnap.data())
     
-    const docRef = doc(db, "clinics","uxDtPAIbYVOEFLdIOjXILD3KUf33" );
+    const docRef = doc(db, "clinics",UID );
     const docSnap = await getDoc(docRef)  
     setInfo(docSnap.data())
-    console.log(docSnap.data())
+    // console.log(docSnap.data())
     }
     get()
 
-},[])    
+},[])
 
 
     return (
@@ -106,19 +111,22 @@ useEffect(()=>{
                 <CardCont>
                     <InfoCard 
                         text = {info.name}
-                        text2 = {info.address}
-                        text3 = "Website:"
-                        website_url = {info.website}
+                        text2 = {info.add}
+                        text3 = {info.lang}
+                        text4 ={info.num}
+                        text5 = {info.open}
+                        text6 ={info.close}
+                        // text3 = "Website:"
+                        // website_url = {info.website}
                         fontsize = "20"
                         weight = "700"
                         weight2 = "700"
                         fontcolor = '#226BAF'
                     />
-                    <InfoCard />
-
+    
                 </CardCont>
                 <BtnCont>
-                    <Btn onPress={() => navigation.navigate("login")} />
+                    <Btn onPress={() => navigation.navigate("login",{UID:cluid})} />
                 </BtnCont>
             </MyScrollView>
 
