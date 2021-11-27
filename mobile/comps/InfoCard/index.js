@@ -2,7 +2,8 @@ import styled from 'styled-components/native';
 import React from 'react';
 import { StyleSheet, View, Button, Linking, Text } from 'react-native';
 
-const InfoCardCont = styled.View`
+const InfoCardCont = styled.View`  
+    height:400px;
     width: 300px;
     border: #E9D7CB;
     padding: 20px;
@@ -59,6 +60,9 @@ const InfoCard = ({
     text = "Heading",
     text2 = "Subheading",
     text3 = "Website:",
+    text4 = "Website:",
+    text5 = "Website:",
+    text6 = "Website:",
     website_url = "https://www.bcit.ca/",
     fontsize = 20,
     weight = 700,
@@ -75,9 +79,28 @@ const InfoCard = ({
             <Subheadingtwo>{text2}</Subheadingtwo>
         </SubheadingCont>
 
+
+        <SubheadingCont>
+            <Subheadingtwo>{text3}</Subheadingtwo>
+        </SubheadingCont>
+
+        <SubheadingCont>
+            <Subheadingtwo>{text4}</Subheadingtwo>
+        </SubheadingCont>
+
+        <SubheadingCont>
+            <Subheadingtwo>{text5}</Subheadingtwo>
+        </SubheadingCont>
+
+
+        <SubheadingCont>
+            <Subheadingtwo>{text6}</Subheadingtwo>
+        </SubheadingCont>
+
         <WebsiteContainer /*style={styles.website_container}*/>
             <Subheadingthree subheadingthree_fw={weight2} fontcolor={fontcolor}>{text3}</Subheadingthree>
-            <Website onPress={() => Linking.openURL(website_url)}>{website_url}</Website>
+            {/* <Website onPress={() => Linking.openURL(website_url)}>{website_url}</Website> */}
+
         </WebsiteContainer>
     </InfoCardCont >
 }
