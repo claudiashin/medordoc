@@ -1,6 +1,8 @@
 import React, { useState, useEffect, } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
+import { useNavigation } from '@react-navigation/native';
+
 
 // Import Comps
 import Map from '../comps/Map'
@@ -10,6 +12,7 @@ import ClinDocButton from '../comps/ClinDocButton'
 import Header from '../comps/Header'
 import BookingForm from '../comps/BookingForm';
 import NavBar from '../comps/NavBar';
+import BackBtn from '../comps/BackBtn';
 
 const Cont = styled.View`
   background-color: #F7F2EE;
@@ -18,12 +21,6 @@ const Cont = styled.View`
   align-items:center;
   justify-content: space-between;
 `
-
-// const SubCont = styled.ScrollView`
-
-
-// `;
-
 const Wave = styled.Image`
     width: 100%;
     height: 30%;
@@ -59,19 +56,27 @@ const CardCont = styled.View`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    
-  `
-const NavBarCont = styled.View`
-
+    `
+    const NavBarCont = styled.View`
 `;
+const BackCont = styled.View`
+  display: flex;
+  position: absolute;
+  z-index: 999;
+  right: 350px;
+  top: -16px;
+`
 
-export default function findclinic({ navigation }){
+export default function findclinic({navigation}){
+
   return (
     <Cont>
       <ScrollView keyboardShouldPersistTaps={'handled'}>
+        <BackCont>
+          <BackBtn onPress={() => navigation.goBack()}/>
+        </BackCont>
         <Wave source={require('../assets/backgroundmobile.png')} />
-        <Map />
+        <Map/>
         <FilterCont>
           <Filter 
           headerText1={"Language Prefrences"}

@@ -111,11 +111,13 @@ const MenuProps = {
 const names = [
   "English",
   "French",
-  "Chinese",
+  "Cantonese",
+  "Mandarin",
   "Japanese",
   "Korean",
-  "punjabi",
+  "Punjabi",
   "Hindi",
+  "Farsi"
 ];
 
 function getStyles(name, languages, theme) {

@@ -16,6 +16,8 @@ const Cont = styled.div`
   background-color: #f7f2ee;
   display: flex;
   flex-direction: column;
+
+    width: 100%;
 `;
 
 const WaveCont = styled.div`
@@ -45,17 +47,17 @@ const NavCont = styled.div`
   top: 0;
 `;
 const ContPatientCard = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
 `;
 
 const ContPatientCardInd = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 400px;
-  margin: 10px;
+    display: flex;
+
+    margin: 10px;
 `;
 
 const ContFooter = styled.div`
