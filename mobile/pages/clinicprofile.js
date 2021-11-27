@@ -82,7 +82,7 @@ useEffect(()=>{
     const MapdocSnap = await getDoc(MapdocRef);
     setChoice(MapdocSnap.data())
     
-    const docRef = doc(db, "clinics","uxDtPAIbYVOEFLdIOjXILD3KUf33" );
+    const docRef = doc(db, "clinics","0lTILXDCYOfuCVljAtYhispFL6f1" );
     const docSnap = await getDoc(docRef)  
     setInfo(docSnap.data())
     console.log(docSnap.data())

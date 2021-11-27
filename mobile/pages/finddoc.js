@@ -10,6 +10,9 @@ import BackBtn from '../comps/BackBtn';
 
 import BookingForm from '../comps/BookingForm';
 import NavBar from '../comps/NavBar';
+import { collection, doc, setDoc,getDoc,} from "firebase/firestore"; 
+import {db} from '../utils/store'
+
 
 
 const Cont = styled.View`
@@ -68,6 +71,20 @@ const BackCont = styled.View`
 `
 
 const finddoc = ({navigation})=>{
+
+const [info, setInfo] = useState('')
+
+  useEffect(()=>{
+    const GetData =async()=>{
+    
+      const docRef = doc(db, "doctors","eBdQi9EZrKiafQ31S2ru" );
+      const docSnap = await getDoc(docRef)  
+      setInfo(docSnap.data())
+      console.log(docSnap.data())
+      }
+
+      GetData()
+  },[])
 return( <Cont>
   <ScrollView keyboardShouldPersistTaps={'handled'}>
     <BackCont>
@@ -110,12 +127,12 @@ return( <Cont>
   </HeaderCont2>
    
   <CardCont>
-    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
-    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
-    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
-    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
-    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
-    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+    <ClinDocButton bodyText={info.name} cardpress={() => navigation.navigate("docprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
+    <ClinDocButton cardpress={() => navigation.navigate("docprofile")} />
   </CardCont> 
 </ScrollView> 
 
