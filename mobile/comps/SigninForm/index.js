@@ -15,7 +15,6 @@ import { setDoc, doc } from "firebase/firestore";
 import { db } from "../../utils/store";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
-
 const MainCont = styled.View`
   flex-direction: column;
 `;
@@ -53,7 +52,7 @@ const SigninForm = ({}) => {
   const [text, setText] = React.useState("");
   const [pass, setPass] = React.useState("");
   //for button
-  const [changeForm, setChangeForm] = useState(true);
+  const [changeForm, setChangeForm] = useState(false);
 
   //for second form
   const [medcon, setMedcon] = React.useState("");
@@ -67,24 +66,47 @@ const SigninForm = ({}) => {
     { label: "Prefer not to answer", value: "Prefer not to answer" },
   ]);
   const [add, setAdd] = useState("");
-  const [patientId, setPatientId] = useState();
+  const [patientId, setPatientId] = useState("");
+
+  const LogIn = {
+    email: text,
+    password: pass,
+  };
 
   const info = {
-    patientid: patientId,
-    fname: fname,
-    lname: lname
+    Fname: fname,
+    Lname: lname,
+    concern: medcon,
+    dob: inputDate,
+    gender: gender,
+    address: add,
+    patientid: patientId
+  };
+
+  const setLogin = ({ email = text,password = pass }) => {
+    setText(email);
+    setPass(password);
   };
 
   const setInfo = ({
-    patientid = patientId,
-    fname = fname,
-    lname = lname
-  }) => {
-    setFname(fname);
-    setLname(lname);
-    setPatientId(patientid);
-  }
+    Fname = fname,
+    Lname = lname,
+    concern = medcon,
+    dob = inputDate,
+    gen = gender,
+    address = add,
+    patientid = patientId
 
+  }) => {
+    setFname(Fname);
+    setLname(Lname);
+    setMedcon(concern);
+    setInputDate(dob);
+    setGender(gen);
+    setAdd(address);
+    setPatientId(patientid);
+
+  };
 
   if (changeForm === true) {
     return (
@@ -136,38 +158,30 @@ const SigninForm = ({}) => {
               width="130"
               height="50"
               borderRad="60"
-              // onPress={async () => {
-              //   const result = await addDoc(collection(db, "patientuser"), {
-              //     fname: fname,
-              //     lname: lname,
-              //     email: text,
-              //     password: pass,
-              //   });
-              //   setChangeForm(false);
-              // }}
-                 onPress={async () => {
-                   const auth = getAuth();
-                   const result = await createUserWithEmailAndPassword(
-                     auth,
-                     text,
-                     pass
-                   );
-                  info.patientid = result.user.uid;
-                    
-                    // console.log(result.user.uid);
-                    console.log(info.patientid)
+              //    onPress={async () => {
+              //      const auth = getAuth();
+              //      const result = await createUserWithEmailAndPassword(
+              //        auth,
+              //        text,
+              //        pass
+              //      );
+              //     info.patientid = result.user.uid;
 
-                  setChangeForm(false);
-              }}
-           
+              //       console.log(result.user.uid);
+              //       console.log(info.patientid)
+
+              //     setChangeForm(false);
+              // }}
+              onPress={setChangeForm(false)}
+              LogIn={LogIn}
+              setLogin={setLogin}
+
             ></Btn>
           </ButCont>
         </PaperProvider>
       </MainCont>
     );
   }
-
-
 
   return (
     <MainCont>
@@ -232,22 +246,21 @@ const SigninForm = ({}) => {
             height="50"
             borderRad="60"
             onPress={async () => {
-              const result = await setDoc(doc(db, "patientuser", info.patientid), {
-                // fname: fname,
-                // lname: lname,
-                dob: inputDate,
-                gender: gender,
-                address: add,
-                medconcern: medcon,
-                // id: info.patientid,
-                
-              });
-                console.log(info.patientid);
-                // navigation.navigate("accountconfirm");
-                return info;
-              }}
-              setInfo={setInfo}
-              info={info}
+              const auth = getAuth();
+              const result = await createUserWithEmailAndPassword(
+                auth,
+                text,
+                pass
+              );
+              info.uid = result.user.uid;
+              await setDoc(doc(db, "patientuser", result.user.uid), info);
+              console.log(result);
+            
+              navigation.navigate("accountconfirm");
+              // return info;
+            }}
+            setInfo={setInfo}
+            info={info}
           ></Btn>
         </ButCont>
       </PaperProvider>

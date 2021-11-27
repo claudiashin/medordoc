@@ -129,7 +129,6 @@ function getStyles(name, languages, theme) {
 
 const DoctorInputCard = ({
   profile = "https://placekitten.com/1200/1200",
-  placeholder = "Dr.Alex Chan",
   uid,
   showModal,
   reload,
@@ -193,7 +192,7 @@ const DoctorInputCard = ({
           <FormTitle>Name</FormTitle>
           <FormInput
             type="text"
-            placeholder="Dr.Alex Chan"
+            placeholder="Put your Dr name"
             value={nameDoc}
             onChange={(e) => setNameDoc(e.target.value)}
           />
@@ -221,7 +220,7 @@ const DoctorInputCard = ({
           <FormTitle>Location</FormTitle>
           <FormInput
             type="text"
-            placeholder={placeholder}
+            placeholder="Clinic Location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
           />

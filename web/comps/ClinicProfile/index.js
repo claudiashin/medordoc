@@ -96,13 +96,13 @@ const MenuProps = {
 const names = [
   "English",
   "French",
-  "Chinese",
+  "Mandarin",
+  "Cantonese",
   "Japanese",
   "Korean",
   "punjabi",
   "Hindi",
-  "Spanish",
-  "Russian",
+  "Farsi"
 ];
 
 function getStyles(name, personName, theme) {
@@ -136,33 +136,6 @@ const ClinicProfile = (props) => {
     );
   };
 
-  // function writeUserData(clinicId, name, add, num, open, close, lang) {
-  //   const db = getDatabase();
-  //   set(ref(db, 'clinics/' + clinics.clinicId), {
-  //     // username: name,
-  //     // email: email,
-  //     id: clinicId,
-  //     clinicname: name,
-  //     clinicadd: add,
-  //     clinicnum: num,
-  //     clinicopen: open,
-  //     clinicclose: close,
-  //     cliniclang: lang
-  //   });
-
-  //   console.log(db);
-  // }
-
-  // const dbRef = ref(getDatabase());
-  // get(child(dbRef, `clinics/YWNtg1MQC4SUgOIC4LSfWcmLQUA2`)).then((snapshot) => {
-  //   if(snapshot.exists()) {
-  //     console.log(snapshot.val());
-  //   } else {
-  //     console.log("no data available");
-  //   }
-  // }).catch((error)=>{
-  //   console.log(error);
-  // })
 
   useEffect(async () => {
     if (props.uid) {

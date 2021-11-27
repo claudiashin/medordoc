@@ -7,7 +7,14 @@ import PatientCard from "../PatientCard";
 import { DoctorInputCard, DoctorCard } from "../DoctorCard";
 import ClinicProfile from "../ClinicProfile";
 import Btn from "../Btn";
-import { getDocs, collection, query, where, deleteDoc, doc } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  query,
+  where,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "../../firebase";
 // import {getStorage, ref, uploadBytes} from "firebase/storage"
 
@@ -68,7 +75,7 @@ const MyCont = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 50px
+  margin-top: 50px;
 `;
 const ItemCont = styled.div`
   margin: 100px;
@@ -100,10 +107,7 @@ const DoctorCont = styled.div`
 `;
 
 const ButtonCont = styled.div`
- 
   margin-top: 30px;
-  
-
 `;
 
 const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
@@ -136,7 +140,7 @@ const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
   const deleteDoctor = async (doctorId) => {
     await deleteDoc(doc(db, "doctors", doctorId));
     reload(uid);
-  }
+  };
 
   useEffect(() => {
     if (uid) {
@@ -152,7 +156,7 @@ const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
           <Btn
             title="Create New"
             bgColor="#90AABB"
-            borderRad = "20"
+            borderRad="20"
             bgHover="#c5c5c5"
             width="100"
             height="50"
@@ -162,7 +166,7 @@ const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
               setModal();
             }}
           />
-      </ButtonCont>
+        </ButtonCont>
       </HeaderCont>
 
       <ItemCont2>
