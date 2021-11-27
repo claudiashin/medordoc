@@ -219,7 +219,16 @@ export default function Home() {
         <HeaderTitle title="Increase your clinic's patient base" />
         <ContOneText>Try MedorDoc to enhance your clinic's web presence and broaden your patient reach. Let MedOrDoc assist in expanding your practice and refine the patient experience. Start by listing your clinic today.</ContOneText>
         <BtnCont>
-          <Btn title="Upload Clinic" fSize="20px" fWeight="500" width="200px" height="70px" borderRad="4px" bgHover="#E08E8E" onClick={() => router.push("/signup")} />
+          <Btn
+            title="Upload Clinic"
+            fSize="20px"
+            fWeight="500"
+            width="200px"
+            height="70px"
+            borderRad="4px"
+            bgHover="#E08E8E"
+            onClick={() => router.push("/signup")}
+          />
         </BtnCont>
       </MainInfoCont>
 
@@ -275,7 +284,7 @@ export default function Home() {
           <FactText>Cut down the time it takes to check-in to avoid long wait times</FactText>
         </InfoCont>
       </FourInfoCont>
-      
+
     </ContThree>
 
     {/* FOURTH */}
@@ -283,7 +292,16 @@ export default function Home() {
       <MainInfoCont>
         <HeaderTitle title="Start your free six month trial now" />
         <BtnCont>
-          <Btn title="Start Now" fSize="20px" fWeight="500" width="180px" height="60px" borderRad="4px" bgHover="#E08E8E" onClick={() => router.push("/signup")} />
+          <Btn
+            title="Start Now"
+            fSize="20px"
+            fWeight="500"
+            width="180px"
+            height="60px"
+            borderRad="4px"
+            bgHover="#E08E8E"
+            onClick={() => router.push("/signup")}
+          />
         </BtnCont>
       </MainInfoCont>
 

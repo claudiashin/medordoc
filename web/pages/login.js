@@ -11,20 +11,18 @@ import HeaderTitle from "../comps/HeaderTitle";
 import LoginForm from "../comps/LoginForm";
 import HeroLottie from "../comps/HeroLottie";
 import NavBar from "../comps/NavBar";
-import myLottie from "../public/lottie_receptionist.json";
+import myLottie from "../public/lottie_woman_computer.json";
 import Btn from "../comps/Btn";
 import Footer from "../comps/Footer";
 
-const Cont = styled.div`
+const MainCont = styled.div`
   display: flex;
   flex-wrap: wrap;
   background-color: #f7f2ee;
   width: 100vw;
-  height: 100wh;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: relative;
 `;
 
 const WaveCont = styled.div`
@@ -50,33 +48,36 @@ const NavBarCont = styled.div`
 
 const BodyCont = styled.div`
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
+  margin-bottom: 15%;
 `;
+
 const TitleCont = styled.div`
-  position: absolute;
-  top: 300px;
-  right: 500px;
+  margin-top: -10%;
 `;
+
+const LottieCont = styled.div`
+  margin: 30px;
+`;
+
 const Subcont = styled.div`
-  display: flex;
-  flex-direction: column;
+  margin: 30px;
 `;
-const HeaderwithNav = styled.div`
+
+const LottieSignInCont = styled.div`
   display: flex;
-  height: 100px;
-  width: 100%;
-  background-color: #b9d1e1;
-  margin-bottom: 100px;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 export default function Home() {
   const router = useRouter();
 
   return (
-    <Cont>
+    <MainCont>
       <WaveCont>
         <Wave src={"/background-web5.svg"}></Wave>
       </WaveCont>
@@ -89,13 +90,18 @@ export default function Home() {
         <TitleCont>
           <HeaderTitle title="Welcome Back" fontSize="36" />
         </TitleCont>
-        <HeroLottie source={myLottie} width="400px" />
-        <Subcont style={{ marginTop: 100 }}>
-          <LoginForm width="250" style={{ marginTop: 100 }} />
-        </Subcont>
+
+        <LottieSignInCont>
+          <LottieCont>
+            <HeroLottie source={myLottie} width="400px" />
+          </LottieCont>
+          <Subcont /*style={{ marginTop: 100 }}*/>
+            <LoginForm width="250" style={{ marginTop: 100 }} />
+          </Subcont>
+        </LottieSignInCont>
       </BodyCont>
 
       <Footer />
-    </Cont>
+    </MainCont>
   );
 }
