@@ -143,9 +143,9 @@ const NavBar = ({
     </LogoCont>
 
     <NavCont>
-      <NavButton onClick={() => router.push(homelink)}>Home</NavButton>
-      <NavButton onClick={() => router.push(booking)}>Bookings</NavButton>
-      <NavButton onClick={() => router.push(request)}>Requests</NavButton>
+      <NavButton bg={bgHover} onClick={() => router.push(homelink)}>Home</NavButton>
+      <NavButton bg={bgHover} onClick={() => router.push(booking)}>Bookings</NavButton>
+      <NavButton bg={bgHover} onClick={() => router.push(request)}>Requests</NavButton>
       {/* <NavButton onClick={()=>router.push("/checkin")}>Checkin</NavButton> */}
     </NavCont>
 

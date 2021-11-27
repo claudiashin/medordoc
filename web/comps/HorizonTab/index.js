@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import Link from "next/link";
 import { withRouter } from "next/router";
 import styled from "styled-components";
@@ -40,9 +40,6 @@ const TabHead = styled("div")`
 
 const TabContainer = styled("div")`
   width: 100vw;
-  webkit-box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
-  -moz-box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
-
   align-items: center;
   justify-content: center;
   display: flex;
@@ -68,42 +65,59 @@ const MyCont = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 50px
+  margin-top: 50px;
 `;
+
 const ItemCont = styled.div`
   margin: 100px;
 `;
 const HeaderCont = styled.div`
-  margin: 22px;
-  font-size: 20px;
+  margin: 40px;
+  font-size: 22px;
   display: flex;
   flex-direction: column;
-  jsutify-content: center;
+  justify-content: center;
   align-items: center;
 `;
 const Text = styled.text``;
+
 const MyCont2 = styled.div`
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
   flex-direction: column;
-  position: relative;
+  /* position: relative; */
 `;
 const ItemCont2 = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 `;
+
+const AddedDoctorCont = styled.div`
+  margin: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const DoctorCont = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  /* flex-direction: column; */
   margin: 20px;
 `;
 
 const ButtonCont = styled.div`
- 
-  margin-top: 30px;
-  
-
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 90%;
+  margin: 30px 0px 0px 0px;
 `;
 
 const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
@@ -148,52 +162,54 @@ const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
     <MyCont2>
       <HeaderCont>
         <Text>List of Doctors</Text>
-        <ButtonCont>
-          <Btn
-            title="Create New"
-            bgColor="#90AABB"
-            borderRad = "20"
-            bgHover="#c5c5c5"
-            width="100"
-            height="50"
-            fSize="20"
-            onClick={() => {
-              showModal(true);
-              setModal();
-            }}
-          />
-      </ButtonCont>
       </HeaderCont>
 
-      <ItemCont2>
-        {doctors.map((doctor, index) => {
-          const info = {
-            id: doctor.id,
-            image: "https://placekitten.com/100/100",
-            gender: doctor.gender,
-            language: doctor.lang,
-            experience: doctor.ex,
-            location: doctor.location,
-            name: doctor.name,
-          };
-          return (
-            <DoctorCont key={index}>
-              <DoctorCard
-                info={info}
-                showModal={(show) => {
-                  if (show) {
-                    setModal(info);
-                    showModal(show);
-                  } else {
-                    showModal(show);
-                  }
-                }}
-                deleteDoctor={deleteDoctor}
-              />
-            </DoctorCont>
-          );
-        })}
-      </ItemCont2>
+      <ButtonCont>
+        <Btn
+          title="Create New"
+          fSize="20px"
+          bgColor="#90AABB"
+          bgHover="#688BA3"
+          borderRad="20px"
+          width="150px"
+          onClick={() => {
+            showModal(true);
+            setModal();
+          }}
+        />
+      </ButtonCont>
+
+      <AddedDoctorCont>
+        <ItemCont2>
+          {doctors.map((doctor, index) => {
+            const info = {
+              id: doctor.id,
+              image: "https://placekitten.com/100/100",
+              gender: doctor.gender,
+              language: doctor.lang,
+              experience: doctor.ex,
+              location: doctor.location,
+              name: doctor.name,
+            };
+            return (
+              <DoctorCont key={index}>
+                <DoctorCard
+                  info={info}
+                  showModal={(show) => {
+                    if (show) {
+                      setModal(info);
+                      showModal(show);
+                    } else {
+                      showModal(show);
+                    }
+                  }}
+                  deleteDoctor={deleteDoctor}
+                />
+              </DoctorCont>
+            );
+          })}
+        </ItemCont2>
+      </AddedDoctorCont>
     </MyCont2>
   );
 };
