@@ -77,7 +77,7 @@ const [info, setInfo] = useState('')
   useEffect(()=>{
     const GetData =async()=>{
     
-      const docRef = doc(db, "doctors","eBdQi9EZrKiafQ31S2ru" );
+      const docRef = doc(db, "doctors","R1AeIPqpQxFy1nthjalY" );
       const docSnap = await getDoc(docRef)  
       setInfo(docSnap.data())
       console.log(docSnap.data())
