@@ -4,6 +4,8 @@ import ImageUpload from 'image-upload-react'
 //important for getting nice style.
 import 'image-upload-react/dist/index.css'
 import {getStorage, ref, uploadBytes} from "firebase/storage"
+import { getDoc, doc, updateDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 
 
 const HeroAvatarCont = styled.div`
@@ -23,7 +25,7 @@ const PlusImage = styled.img`
   position:absolute;
   right:20px;
   bottom:10px;
-
+  display:${props=>props.display}
 `
 const MyFile = styled.input`
  opacity: 0;
@@ -42,6 +44,8 @@ const HeroAvatar = ({
   heroheight="200px",
   heromargin="0px",
   pluswidth="30px",
+  display="flex",
+  objectURL
 })=>{
 
 
@@ -68,7 +72,7 @@ const HeroAvatar = ({
   return<HeroAvatarCont herowidth={herowidth} heroheight={heroheight} heromargin={heromargin}>
        <HeroImage src={imagesrc}/>
     <MyLabel for="file">
-    <PlusImage pluswidth={pluswidth} src="https://www.iconsdb.com/icons/preview/caribbean-blue/plus-4-xxl.png"/>
+    <PlusImage display={display} pluswidth={pluswidth} src="https://www.iconsdb.com/icons/preview/caribbean-blue/plus-4-xxl.png"/>
       <MyFile onChange={Upload} id="file" type="file"/>
     </MyLabel>
   </HeroAvatarCont>
