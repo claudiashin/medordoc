@@ -184,7 +184,7 @@ const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
           {doctors.map((doctor, index) => {
             const info = {
               id: doctor.id,
-              image: "https://placekitten.com/100/100",
+              // image: "https://placekitten.com/100/100",
               gender: doctor.gender,
               language: doctor.lang,
               experience: doctor.ex,
@@ -241,7 +241,7 @@ const HorizonTab = ({ router, uid, showModal, setModalContent }) => {
           <React.Fragment>
             <MyCont>
               <ItemCont>
-                <HeroAvatar />
+                <HeroAvatar uid={uid} />
               </ItemCont>
               <ItemCont>
                 <ClinicProfile uid={uid} />
