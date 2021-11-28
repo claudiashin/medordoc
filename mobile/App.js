@@ -60,9 +60,9 @@ export default function App() {
   }
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="finddoc">
-        <Stack.Screen options={{ headerShown: false }} name="home" component={finddoc} />
-        <Stack.Screen options={{ headerShown: false }} name="findclinic" component={findclinic} />
+      <Stack.Navigator initialRouteName="login">
+        <Stack.Screen options={{ headerShown: false }} name="home" component={home} />
+        <Stack.Screen options={{ headerShown: false }} name="findclinic" options={{ headerShown: false }} component={findclinic} />
         <Stack.Screen options={{ headerShown: false }} name="finddoc" component={finddoc} />
         <Stack.Screen options={{ headerShown: false }} name="clinicprofile" component={clinicprofile} />
         <Stack.Screen options={{ headerShown: false }} name="docprofile" component={docprofile} />

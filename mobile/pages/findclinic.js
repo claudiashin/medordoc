@@ -77,7 +77,7 @@ export default function findclinic({navigation}){
           <BackBtn onPress={() => navigation.goBack()}/>
         </BackCont>
         <Wave source={require('../assets/backgroundmobile.png')} />
-        <Map onMappress ={()=>navigation.navigate('login')} />
+        <Map/>
         <FilterCont>
           <Filter 
           headerText1={"Language Prefrences"}
