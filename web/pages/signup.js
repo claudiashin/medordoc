@@ -14,14 +14,15 @@ import myLottie2 from "../public/lottie_welcome.json";
 import HeroAvatar from "../comps/HeroAvatar";
 import Footer from "../comps/Footer";
 
-
-import { setDoc, doc } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword,onAuthStateChanged  } from "firebase/auth";
+import { setDoc, doc, getDoc } from "firebase/firestore";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 import { db } from "../firebase";
-
-
-
-
+import { getStorage, ref, updateMetadata, uploadBytes } from "firebase/storage";
+import ClinicProfile from "../comps/ClinicProfile";
 
 const Cont = styled.div`
   background-color: #f7f2ee;
@@ -117,21 +118,84 @@ const FooterCont = styled.div`
   width: 100%;
   bottom: 0;
 `;
+const HeroCont = styled.div`
+  width: 200px;
+  height: 200px;
+  position: relative;
+  margin-top: 200px;
+  margin-right: 30px;
+  position: relative;
+`;
+
+const HeroImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+`;
+
+const EditImage = styled.label`
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  bottom: 5px;
+  right: 30px;
+  background-color: #e6e6fa;
+  border-radius: 50%;
+  cursor: pointer;
+`;
+
+// const ClinicImage = (props) => {
+//   const [clinicImage, setClinicImage] = React.useState("");
+
+//   useEffect(async () => {
+//     if (props.uid) {
+//       const usersDocRef = doc(db, "clincis", props.uid);
+//       const data = await getDoc(usersDocRef);
+//       const result = data.data();
+//       setClinicImage(result.image);
+//     }
+//   }, [props.uid]);
+
+//this code will be used for profile image upload!!!
+
+//   const Upload = async (e) => {
+//     console.log(e.target.files[0]);
+//     if (e.target.files.length <= 0) {
+//       alert("no files were selected");
+//       return false;
+//     }
+//     const file = e.target.files[0];
+//   const storage = getStorage();
+//   const storageRef = ref(storage, 'clinic/' + 'test.png');
+
+//     // 'file' comes from the Blob or File API
+//     const snapshot = await uploadBytes(storageRef, file);
+//     console.log("Uploaded!");
+//   };
+//   return (
+//     <HeroCont>
+//       <HeroImage src={"/profile.png"} />
+//       <EditImage>
+//         <input type="file" onChange={Upload} style={{ display: "none" }} />
+//       </EditImage>
+//     </HeroCont>
+//   );
+// };
 
 export default function Home() {
-
-  useEffect(()=>{
+  useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("Signed in", user)
+        console.log("Signed in", user);
         // might want to use a state that changes when signed in
       } else {
-        console.log("Signed out")
+        console.log("Signed out");
       }
     });
-  })
-  
+  });
+
   const router = useRouter();
 
   const [clinicEmail, setEmail] = React.useState("");
@@ -143,6 +207,7 @@ export default function Home() {
   const [clinicNum, setClinicNum] = React.useState("");
   const [clinicOpen, setClinicOpen] = React.useState("");
   const [clinicClose, setClinicClose] = React.useState("");
+  const [clinicImage, setClinicImage] = React.useState("");
 
   const [clinicid, setClinicId] = React.useState(null);
 
@@ -160,7 +225,7 @@ export default function Home() {
     num: clinicNum,
     open: clinicOpen,
     close: clinicClose,
-    clinicId: clinicid
+    clinicId: clinicid,
   };
 
   const setLogin = ({ email = clinicEmail, password = clinicPass }) => {
@@ -175,7 +240,7 @@ export default function Home() {
     num = clinicNum,
     open = clinicOpen,
     close = clinicClose,
-    clinicId = clinicid
+    clinicId = clinicid,
   }) => {
     setClinicName(name);
     setLanguage(lang);
@@ -190,7 +255,7 @@ export default function Home() {
     if (changePage === 0) {
       return (
         <div>
-            <HeaderTitleCont>
+          <HeaderTitleCont>
             <HeaderTitle title="Create Your Account" />
           </HeaderTitleCont>
           <BodyCont>
@@ -217,11 +282,6 @@ export default function Home() {
 
           <BodyCont>
             <HeroLottieCont>
-              <HeroAvatar
-                herowidth="220px"
-                heroheight="220px"
-                heromargin="50px 20px 40px 0px"
-              />
             </HeroLottieCont>
 
             <SignInCont_Two>

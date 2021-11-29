@@ -122,6 +122,7 @@ const ClinicProfile = (props) => {
   const [clinicNum, setClinicNum] = React.useState("");
   const [clinicOpen, setClinicOpen] = React.useState("");
   const [clinicClose, setClinicClose] = React.useState("");
+  const [clinicImage, setClinicImage] = React.useState("");
 
   const theme = useTheme();
   const [clinicLang, setLanguage] = React.useState([]);
@@ -148,6 +149,7 @@ const ClinicProfile = (props) => {
       setClinicOpen(result.open);
       setClinicClose(result.close);
       setLanguage(result.lang);
+      setClinicImage(result.image);
     }
   }, [props.uid]);
 
