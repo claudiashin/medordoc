@@ -14,7 +14,7 @@ import {
   where,
   deleteDoc,
   doc,
-  getDoc
+  getDoc,
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import { getAuth } from "firebase/auth";
@@ -128,14 +128,13 @@ const ButtonCont = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   width: 90%;
-  margin: 30px 0px 0px 0px;
+  margin: 30px 0px -50px 0px;
 `;
 const HeroImage = (props) => {
-
   const [clinicImage, setClinicImage] = React.useState("");
 
-  useEffect(async()=> {
-    if(props.uid) {
+  useEffect(async () => {
+    if (props.uid) {
       const usersDocRef = doc(db, "clinics", props.uid);
       const data = await getDoc(usersDocRef);
       const result = data.data();
@@ -161,19 +160,24 @@ const HeroImage = (props) => {
   // .catch((error) => {
   //   // Handle any errors
   // });
-  const auth = getAuth();
-  const storage = getStorage();
-  // const forestRef = ref('patient/' + auth.user.uid + '/1.jpg').put(file)
+  // const auth = getAuth();
+  // const storage = getStorage();
+  // const forestRef = ref('clinic/' + auth.user.uid + '/1.jpg').put(file)
 
-
-
-
-  return(
+  return (
     <div>
-      <img id="myimg" style={{width: 200, height: 200, borderRadius: 100, objectFit: "cover"}}/>
+      <img
+        id="myimg"
+        style={{
+          width: 200,
+          height: 200,
+          borderRadius: 100,
+          objectFit: "cover",
+        }}
+      />
     </div>
-  )
-}
+  );
+};
 
 const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
   const [popup, setShowPopup] = useState(true);
@@ -222,11 +226,11 @@ const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
       <ButtonCont>
         <Btn
           title="Create New"
-          fSize="20px"
+          fSize="16px"
           bgColor="#90AABB"
           bgHover="#688BA3"
           borderRad="20px"
-          width="150px"
+          width="120px"
           onClick={() => {
             showModal(true);
             setModal();
@@ -296,9 +300,7 @@ const HorizonTab = ({ router, uid, showModal, setModalContent }) => {
           <React.Fragment>
             <MyCont>
               <ItemCont>
-
                 <HeroImage />
-
               </ItemCont>
               <ItemCont>
                 <ClinicProfile uid={uid} />

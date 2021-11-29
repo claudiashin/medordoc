@@ -32,7 +32,7 @@ const TitleCont = styled.div`
 const Title = styled.p`
   font-size: 20px;
   font-weight: 600;
-  color: #505050;
+  // color: #505050;
 `;
 const UpdateButton = styled.button`
   background-color: #90aabb;

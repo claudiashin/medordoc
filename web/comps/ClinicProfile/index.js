@@ -63,13 +63,15 @@ const ButtonCont = styled.div`
 
 const Button = styled.button`
   margin: 15px;
-  width: 80px;
-  height: 30px;
+  width: 130px;
+  height: 50px;
   padding: 5px;
   background-color: #90aabb;
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
+  font-size: 18px;
+  cursor: pointer;
 `;
 
 const LangMain = styled.form``;
@@ -100,10 +102,9 @@ const names = [
   "Cantonese",
   "Japanese",
   "Korean",
-  "punjabi",
+  "Punjabi",
   "Hindi",
-  "Farsi"
-
+  "Farsi",
 ];
 
 function getStyles(name, personName, theme) {
@@ -138,7 +139,6 @@ const ClinicProfile = (props) => {
     );
   };
 
-
   useEffect(async () => {
     if (props.uid) {
       const usersDocRef = doc(db, "clinics", props.uid);
@@ -157,105 +157,106 @@ const ClinicProfile = (props) => {
   // const {user, users} = useContext(AuthenticatedUserContext);
   // console.log(users.name)
 
-  return <MainCont>
-    <Title>Clinic Information</Title>
-    <Form>
-      <FormTitle>Clinic Name</FormTitle>
-      <FormInput
-        readOnly={readOnly}
-        type="text"
-        placeholder="Clinic Name"
-        value={clinicName}
-        onChange={(e) => setClinicName(e.target.value)}
-      />
-    </Form>
-    <Form>
-      <FormTitle>Clinic Address</FormTitle>
-      <FormInput
-        readOnly={readOnly}
-        type="text"
-        placeholder="Clinic Address"
-        value={clinicAdd}
-        onChange={(e) => setClinicAdd(e.target.value)}
-      />
-    </Form>
-    <Form style={{ marginBottom: 50 }}>
-      <FormTitle>Contact Number</FormTitle>
-      <FormInput
-        readOnly={readOnly}
-        type="tel"
-        placeholder="Contact Number"
-        value={clinicNum}
-        onChange={(e) => setClinicNum(e.target.value)}
-      />
-    </Form>
-    <Title>Operation Hour</Title>
-    <TimeFormCont>
-      <FormTimeForm>
-        <FormTitle>Open</FormTitle>
+  return (
+    <MainCont>
+      <Title>Clinic Information</Title>
+      <Form>
+        <FormTitle>Clinic Name</FormTitle>
         <FormInput
           readOnly={readOnly}
-          type="time"
-          placeholder="Open Hour"
-          value={clinicOpen}
-          onChange={(e) => setClinicOpen(e.target.value)}
+          type="text"
+          placeholder="Clinic Name"
+          value={clinicName}
+          onChange={(e) => setClinicName(e.target.value)}
         />
-      </FormTimeForm>
-      <FormTimeForm>
-        <FormTitle>Close</FormTitle>
+      </Form>
+      <Form>
+        <FormTitle>Clinic Address</FormTitle>
         <FormInput
           readOnly={readOnly}
-          type="time"
-          placeholder="Close Hour"
-          value={clinicClose}
-          onChange={(e) => setClinicClose(e.target.value)}
+          type="text"
+          placeholder="Clinic Address"
+          value={clinicAdd}
+          onChange={(e) => setClinicAdd(e.target.value)}
         />
-      </FormTimeForm>
-    </TimeFormCont>
-    <Title>Additional Information</Title>
+      </Form>
+      <Form style={{ marginBottom: 50 }}>
+        <FormTitle>Contact Number</FormTitle>
+        <FormInput
+          readOnly={readOnly}
+          type="tel"
+          placeholder="Contact Number"
+          value={clinicNum}
+          onChange={(e) => setClinicNum(e.target.value)}
+        />
+      </Form>
+      <Title>Operation Hour</Title>
+      <TimeFormCont>
+        <FormTimeForm>
+          <FormTitle>Open</FormTitle>
+          <FormInput
+            readOnly={readOnly}
+            type="time"
+            placeholder="Open Hour"
+            value={clinicOpen}
+            onChange={(e) => setClinicOpen(e.target.value)}
+          />
+        </FormTimeForm>
+        <FormTimeForm>
+          <FormTitle>Close</FormTitle>
+          <FormInput
+            readOnly={readOnly}
+            type="time"
+            placeholder="Close Hour"
+            value={clinicClose}
+            onChange={(e) => setClinicClose(e.target.value)}
+          />
+        </FormTimeForm>
+      </TimeFormCont>
+      <Title>Additional Information</Title>
 
-    <div>
-      <FormControl
-        sx={{
-          m: 1,
-          width: 400,
-          height: 50,
-          marginBottom: 5,
-          marginLeft: 1.7,
-          color: "black",
-        }}
-      >
-        <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
-        <Select
-          readOnly={readOnly}
-          labelId="demo-multiple-name-label"
-          id="demo-multiple-name"
-          multiple
-          value={clinicLang}
-          onChange={handleChange}
-          input={<OutlinedInput label="Name" />}
-          MenuProps={MenuProps}
-          style={{ height: 50, borderBlockStyle: "black" }}
+      <div>
+        <FormControl
+          sx={{
+            m: 1,
+            width: 400,
+            height: 50,
+            marginBottom: 5,
+            marginLeft: 1.7,
+            color: "black",
+          }}
         >
-          {names.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, clinicLang, theme)}
-            >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </div>
-    <ButtonCont>
-      <Button
-        onClick={async () => {
-          if(readOnly) {
-            setReadOnly(false);
-          } else {
-            const usersDocRef = doc(db, "clinics", props.uid);
+          <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
+          <Select
+            readOnly={readOnly}
+            labelId="demo-multiple-name-label"
+            id="demo-multiple-name"
+            multiple
+            value={clinicLang}
+            onChange={handleChange}
+            input={<OutlinedInput label="Name" />}
+            MenuProps={MenuProps}
+            style={{ height: 50, borderBlockStyle: "black" }}
+          >
+            {names.map((name) => (
+              <MenuItem
+                key={name}
+                value={name}
+                style={getStyles(name, clinicLang, theme)}
+              >
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </div>
+      <ButtonCont>
+        <Button
+          onClick={async () => {
+            if (readOnly) {
+              setReadOnly(false);
+            } else {
+              const usersDocRef = doc(db, "clinics", props.uid);
               await updateDoc(usersDocRef, {
                 add: clinicAdd,
                 close: clinicClose,
@@ -265,13 +266,14 @@ const ClinicProfile = (props) => {
                 open: clinicOpen,
               });
               setReadOnly(true);
-          }
-        }}
-      >
-        {readOnly ? "Edit" : "Confirm"}
-      </Button>
-    </ButtonCont>
-  </MainCont>;
+            }
+          }}
+        >
+          {readOnly ? "Edit" : "Confirm"}
+        </Button>
+      </ButtonCont>
+    </MainCont>
+  );
 };
 
 export default ClinicProfile;

@@ -281,8 +281,7 @@ export default function Home() {
           </HeaderTitleCont>
 
           <BodyCont>
-            <HeroLottieCont>
-            </HeroLottieCont>
+            <HeroLottieCont></HeroLottieCont>
 
             <SignInCont_Two>
               <SigninFormTwo
@@ -296,6 +295,7 @@ export default function Home() {
                   );
                   info.clinicId = result.user.uid;
                   await setDoc(doc(db, "clinics", result.user.uid), info);
+                  // console.log(info);
                   return info;
                 }}
                 setInfo={setInfo}
