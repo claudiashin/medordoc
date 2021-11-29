@@ -79,7 +79,7 @@ const [info, setInfo] = useState('')
     
       const docRef = doc(db, "doctors","R1AeIPqpQxFy1nthjalY" );
       const docSnap = await getDoc(docRef)  
-      setInfo(docSnap.data())
+      // setInfo(docSnap.data())
       console.log(docSnap.data())
       }
 
