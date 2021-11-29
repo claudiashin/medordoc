@@ -112,8 +112,7 @@ const names = [
   "Korean",
   "punjabi",
   "Hindi",
-
-  "Farsi",
+  "Farsi"
 
 ];
 
