@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import 'react-calendar/dist/Calendar.css';
 
 //import comps
 import NavBar from "../comps/NavBar";

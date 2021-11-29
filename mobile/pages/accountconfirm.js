@@ -1,13 +1,14 @@
-import React, { useState, useEffect, } from 'react';
+import React, { useState, useEffect, Component} from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
+
+
 
 import Header from '../comps/Header';
 import InfoCard from '../comps/InfoCard';
 import Btn from '../comps/Btn';
 import NavBar from '../comps/NavBar';
-
 const AccountCont = styled.View`
     flex: 1;
 `;
@@ -42,6 +43,7 @@ const NavBarCont = styled.View`
 
 const accountconfirm = ({
 
+
 }) => {
     const navigation = useNavigation();
 
@@ -58,10 +60,12 @@ const accountconfirm = ({
                     <InfoCard
                         text={'Welcome Jenny Lee!'}
                         text2={'Thank you for choosing MedOrDoc.'}
-                        text3={'Start booking your first appointment by signing in.'}
+                        text3={'For faster check-in, scan the QR code at the front desk when you arrive.'}
+                        text4={'To view, click on the QR Code icon in the navigation bar below.'}
                         website_url={''}
                         weight2={'400'}
                         fontcolor={'#505050'}
+                        display={'flex'}
                     />
                 </InfoCardCont>
 

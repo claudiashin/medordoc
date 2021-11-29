@@ -41,15 +41,15 @@ const MyText = styled.Text``
 
 export default function EmailSignin({
     onSignin=()=>{},
-    onCreate=()=>{}
+    onCreate=()=>{},
+    uid = {}
 }){
   const [em, setEm] = useState('')  
   const [ps, setPs] = useState('')  
   const [showError, setShowError] = useState('')
   const [error, setError] = useState(false)
   const [errorTwo, setErrorTwo] = useState(false)
-  
-  
+
   const navigation = useNavigation(); 
 
 
@@ -58,10 +58,9 @@ export default function EmailSignin({
  
   return(
         <MainCont>
-           <AlertBanner show={setError,setErrorTwo}>{showError}</AlertBanner>
+           {/* <AlertBanner show={setError,setErrorTwo}>{showError}</AlertBanner> */}
          <PaperProvider>
             <TextInput
-        
             style={{width:300, height: 50, margin:5, borderRadius: 0, backgroundColor:'#fff'}}
             label="Email"
             returnKeyType="next"
@@ -85,7 +84,6 @@ export default function EmailSignin({
             onChangeText={(val)=>setPs(val)}
             error={errorTwo}
             /> 
-            {/* <Button onPress ={()=>onSignin(em,ps)}title="Sign in"></Button> */}
             <LastDiv>
             <Text style={{color:'#575757', paddingTop:20, paddingLeft:5}}>Don't have an account?</Text>
                 <TouchableOpacity
@@ -111,15 +109,12 @@ export default function EmailSignin({
                         setErrorTwo(true);
                     } 
                     else {
-                         {onSignin(em,ps);if(em && ps !==" "){{navigation.navigate('booking')}}}
+                         {onSignin(em,ps);if(em && ps !==" "){{navigation.navigate('booking',{clinicUID:uid})}}}
                     }
                 }
-                
             }
             /> 
             {/* <Button onPress ={()=>onCreate(em,ps)}title="Create Account"></Button> */}
-           
-            
             </PaperProvider>
         </MainCont>    
     )

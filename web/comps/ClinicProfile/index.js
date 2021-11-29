@@ -103,6 +103,7 @@ const names = [
   "punjabi",
   "Hindi",
   "Farsi"
+
 ];
 
 function getStyles(name, personName, theme) {

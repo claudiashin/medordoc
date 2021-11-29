@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { TextInput, Button } from 'react-native-paper';
-import { StyleSheet} from 'react-native';
+import { StyleSheet, Text} from 'react-native';
+import { collection, doc, setDoc,getDoc,} from "firebase/firestore"; 
+import {db} from '../../utils/store'
 
 const styles = StyleSheet.create({
     inputbox: {
@@ -20,6 +22,21 @@ const DrDetail = () => {
     const [experience, setExperience] = React.useState('');
     const [others, setOthers] = React.useState('');
 
+    const [info, setInfo] = useState('')
+
+  useEffect(()=>{
+    const GetData =async()=>{
+    
+      const docRef = doc(db, "doctors","R1AeIPqpQxFy1nthjalY" );
+      const docSnap = await getDoc(docRef)  
+      setInfo(docSnap.data())
+      console.log(docSnap.data())
+      }
+
+      GetData()
+      console.log(info.name)
+  },[])
+
   return <>
 
 
@@ -29,7 +46,7 @@ const DrDetail = () => {
         type="flat"
         label="Name"
         textContentType='name'
-        value={name}
+        value={info.name}
         editable={false}
         onChangeText={name => setName(name)}
     ></TextInput>
@@ -38,7 +55,7 @@ const DrDetail = () => {
         underlineColor="#505050"
         type="flat"
         label="Gender"
-        value={text}
+        value={info.gender}
         editable={false}
         onChangeText={text => setText(text)}
     ></TextInput>
@@ -49,7 +66,7 @@ const DrDetail = () => {
         textContentType="fullStreetAddress"
         type="flat"
         label="Language"
-        value={lang}
+        value={JSON.stringify(info.lang)}
         editable={false}
         onChangeText={lang => setLang(lang)}
     ></TextInput>
@@ -59,7 +76,7 @@ const DrDetail = () => {
         autoCapitalize='sentences'
         type="flat"
         label="Experience"
-        value={experience}
+        value={info.ex + " years"}
         editable={false}
         onChangeText={experience => setExperience(experience)}
     ></TextInput>
@@ -69,7 +86,7 @@ const DrDetail = () => {
         autoCapitalize='sentences'
         type="flat"
         label="Clinic"
-        value={address}
+        value={info.location}
         editable={false}
         onChangeText={address => setAddress(address)}
     ></TextInput>

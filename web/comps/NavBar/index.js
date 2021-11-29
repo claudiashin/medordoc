@@ -108,6 +108,8 @@ const NavBar = ({
   const [profile, setProfile] = React.useState("/login")
   const [booking, setBooking] = React.useState("/login")
   const [request, setRequest] = React.useState("/login")
+  const [log, setLog] = React.useState("")
+  const [sign, setSign] = React.useState("/login")
   useEffect(()=>{
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
@@ -117,7 +119,8 @@ const NavBar = ({
       setProfile("/profile")
       setBooking("/booking")
       setRequest("/request")
-      console.log("signin")
+      setLog("Log out")
+      setSign("/")
 
       } else {
         seetLogoLink("/")
@@ -125,7 +128,9 @@ const NavBar = ({
        setProfile("/login")
        setBooking("/login")
        setRequest("/login")
-       console.log("signout")
+       setLog("Log in")
+       setSign("/login")
+
       }
     });
   })
@@ -133,7 +138,7 @@ const NavBar = ({
   const SignOut = async()=>{
     const auth = getAuth();
     await signOut(auth);
-    router.push("/")
+    router.push(sign)
   }
 
 
@@ -155,7 +160,7 @@ const NavBar = ({
     <ProfileCont>
       <ProfileIcon onClick={() => router.push(profile)} className="icon" src={'/profile.png'}></ProfileIcon>
       <DropdownCont className="dropdown">
-        <MenuLink onClick={SignOut} className="signout" href="#">Sign Out</MenuLink>
+        <MenuLink onClick={SignOut} className="signout" href="#">{log}</MenuLink>
       </DropdownCont>
     </ProfileCont>
 

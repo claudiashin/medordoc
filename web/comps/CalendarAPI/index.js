@@ -10,8 +10,7 @@ const CalendarAPI = ({ dateInfo, setDateInfo, onChange }) => {
         oncChange={(e) => {
           setDateInfo(onChange);
         }}
-        onChange={onChange}
-      />
+        onChange={onChange};
     </div>
   );
 };
