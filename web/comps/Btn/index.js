@@ -15,6 +15,7 @@ const Button = styled.button`
     margin: ${props=>props.margin};
     border: none;
     box-shadow: 2px 3px 9px #AFAFAF; 
+    cursor: pointer;
 
     &:hover {
         background-color: ${props=>props.bgHover};

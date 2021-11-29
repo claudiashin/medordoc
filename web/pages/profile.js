@@ -89,8 +89,6 @@ export default function Profile() {
     });
   }, []);
 
-
-
   return (
     <Cont>
       <WaveCont>

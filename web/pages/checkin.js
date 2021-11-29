@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import Btn from "../comps/Btn";
 import HeaderTitle from "../comps/HeaderTitle";
 import NavBar from "../comps/NavBar";
-import Qrscan from "../comps/CheckIn";
 import BookingForm from "../comps/BookingForm";
 import Footer from "../comps/Footer";
 import QRscan from "../comps/QRscan";
