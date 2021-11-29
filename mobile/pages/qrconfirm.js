@@ -1,6 +1,10 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import styled from 'styled-components/native';
+import { addDoc, collection,setDoc,getDoc,doc,query,where,} from 'firebase/firestore';
+import {onAuthStateChanged,getAuth} from 'firebase/auth'
+import {Auth} from '../utils/auth'
+import {db} from '../utils/store'
 
 // Import Comps
 import Header from '../comps/Header';
@@ -39,6 +43,36 @@ const Cont = styled.View`
 `;
 
 const qrconfirm = () => {
+
+        
+
+    const [user,setUser] = useState('');
+    const [clinicID,setClnicID] =useState('')
+    const [name,setName] = useState('')
+    const [date,setDate] =useState('')
+    const [time,setTime] =useState('')
+    
+    useEffect(()=>{
+
+        const auth = getAuth()
+        const userid = auth.currentUser.uid;
+        setUser(userid)
+        
+        const getting =async()=>{
+            const docRef = doc(db, "appointment",user);
+            const docSnap = await getDoc(docRef);
+            setName(docSnap.data().patientname);
+            setDate(docSnap.data().bookingdate);
+            setTime(docSnap.data().bookingtime);
+            console.log(name)
+            console.log(date)
+            console.log(time)
+        }
+        getting()
+ },[])
+
+    
+
     return (
         <ConfirmCont>
                 <Wave source={require('../assets/backgroundmobile.png')} />
@@ -50,9 +84,9 @@ const qrconfirm = () => {
                 <Cont>
                     <InfoCardTwo
                         text1="Appointment Details"
-                        text2="Submitted on: Oct 7, 2021"
-                        text3="Appt Date: Oct 14, 2021"
-                        text4="Appt Time: 10:00 AM"
+                        text2={date}
+                        text3= {time}
+                        text4= "Location: Care Point Clinic"
                         text5="Location: Care Point Clinic"
                         text6="1234 Canada Way, Burnaby V4J2B7"
                         fweight="500"

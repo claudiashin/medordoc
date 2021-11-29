@@ -7,18 +7,18 @@ import styled from "styled-components/native";
 import {Auth} from '../../utils/auth'
 import {db} from '../../utils/store'
 
-
 const ButtonCont = styled.View`
-    /* justify-content: flex-end; */
-    align-items: flex-end;
+  
+    align-items: center;
     width: 275px;
-    /* height: 150px; */
+    height:300px;
     margin-top: 25px;
 `;
 
 export default function Datepick(
   //  bookingdate = {text},
   //  useruid= '',
+  clinicId = ''
 ) {
     const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('time');
@@ -27,36 +27,50 @@ export default function Datepick(
     const [dbtime, setTime] = useState('18:30') 
     const [dbday, setDay] = useState('') 
     const [user,setUser] = useState('');
+    const [fname,setFname] =useState('')
+    const [lname,setLname] =useState('')
+    const [clinicID,setClnicID] =useState('')
     
     useEffect (()=>{
         const auth = getAuth()
         const userid = auth.currentUser.uid;
         setUser(userid)
-        console.log(user)
+        setClnicID(clinicId.clinicId)
+        console.log(clinicID)
+
+      //   const getting =async()=>{
+      //   const docRef = doc(db, "patientuser",user);
+      //   const docSnap = await getDoc(docRef);
+      //   setInfo(docSnap.data())
+      //   console.log(docSnap.data())
+      // }
+      // getting()
+
        },[])
-
+ 
+   
     const booking = async(
-
     )=>{
-
+      getting()
+      
       await setDoc(doc(db,"appointment",user), {
           userid:user,
-          Time:dbtime,
-          Day:dbday});
-
-      //   const pushing = setDoc(doc(db,"appointment",useruid),{
-      //   fname: "hello",
-      //   lname: "again",
-      //   clinicid: "nah",
-      //   clincid: "bcit",
-      //   date: "hennry",
-      //   time: "medcon",
-      // })
+          clinicId:clinicID,
+          bookingtime:dbtime,
+          bookingdate:dbday,
+          patientname:fname+' '+lname
+           });
     }
 
-    
+     const getting =async()=>{
+         const docRef = doc(db, "patientuser",user);
+         const docSnap = await getDoc(docRef);
+         setFname(docSnap.data().fname);
+         setLname(docSnap.data().lname);
+         console.log(fname)
+         console.log(lname)
+     }
 
-    
 
       // useEffect (()=>{
       //  const auth = getAuth
@@ -99,42 +113,87 @@ export default function Datepick(
   
 
     return (
-      <View>
-        <View>
-          <Button onPress={showDatepicker} title="Show Date picker!"/>
-          <Button onPress={showTimepicker} title="Show time picker!"/>
-         <Text>{text}</Text>
-        
+      <View >
+        <View style = {styles.butcontainer}>
+          <Button onPress={showDatepicker} title="Pick the Date" style ={styles.button}/>
+        </View>
+
+         <View style = {styles.butcontainer}>
+          <Button onPress={showTimepicker} title="Pick the Time" style ={styles.button} />
+        </View>    
+     
+     {show && (
+      <DateTimePicker
+        testID="dateTimePicker"
+        value={date}
+        mode={mode}
+        is24Hour={true}
+        display="default"
+        onChange={onChange}
+      />
+    )}
+
+       <View style = {styles.bookinfo}>
+          <Text>Your Appoinment is</Text>
+          <Text>{text}</Text>
         </View> 
-        {show && (
-          <DateTimePicker
-            testID="dateTimePicker"
-            value={date}
-            mode={mode}
-            is24Hour={true}
-            display="default"
-            onChange={onChange}
-          />
-        )}
+       
+              
               <ButtonCont>
-                    <Button
+                    {/* <Button
                         title={'Confirm'}
                         fSize={18}
                         onPress={() => navigation.navigate('qrconfirm')}
-                     />
-                    <Button  title='getting' onPress = {booking}></Button>
-              </ButtonCont>
-             
+                    /> */}
+                    <Button  title='Checking' onPress = {getting} style = {styles.btn}></Button> 
+
+                  <Text>Your Name is {fname+ ' '+ lname}</Text>
+                    <Button  title='Booking' onPress = {booking} style = {styles.btn}></Button>
+ 
+              </ButtonCont>    
+
+
       </View>
     );
   };
 
-
-  // const styles = StyleSheet.create({
-  //   container: {
-  //     backgroundColor: '#fff',
-  //     alignItems: 'center',
-  //     justifyContent: 'center',
-  //   },})
+  const styles = StyleSheet.create({
+        container: {
+        flex:1,
+        backgroundColor: '#97BDD6',
+          //  flexDirection:'column',
+            alignItems: 'center',
+          justifyContent: 'center',
+          },
+        butcontainer: {
+          flex:1,
+          backgroundColor: '#97BDD6',
+          //  flexDirection:'column',
+            alignItems: 'center',
+          justifyContent: 'center',
+          },
+         bookinfo: {
+          flex:1,
+          backgroundColor: '#fff',
+           borderRadius:10,
+           alignItems: 'center',
+           justifyContent: 'center',
+           },
+          date:{
+            flex:1,
+            backgroundColor: '#fff',
+            margin:30,
+          },
+          time:{
+            flex:1,
+            backgroundColor: '#97BDD6',
+            margin:30,
+          },
+          button:{
+            margin:5,
+            backgroundColor: '#97BDD6',
+          }
+  
+    })
 
 // export default Datepick;

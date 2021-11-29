@@ -3,11 +3,12 @@ import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 
+
+
 import Header from '../comps/Header';
 import InfoCard from '../comps/InfoCard';
 import Btn from '../comps/Btn';
 import NavBar from '../comps/NavBar';
-
 const AccountCont = styled.View`
     flex: 1;
 `;
@@ -41,6 +42,7 @@ const NavBarCont = styled.View`
 `;
 
 const accountconfirm = ({
+
 
 }) => {
     const navigation = useNavigation();
