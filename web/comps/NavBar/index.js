@@ -103,6 +103,7 @@ const NavBar = ({
 }) => {
   const router = useRouter();
 
+  const [logo, setLogoLink] = React.useState("/")
   const [homelink, setHomeLink] = React.useState("/home")
   const [profile, setProfile] = React.useState("/login")
   const [booking, setBooking] = React.useState("/login")
@@ -113,6 +114,7 @@ const NavBar = ({
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        setLogoLink("/home")
       setHomeLink("/home")
       setProfile("/profile")
       setBooking("/booking")
@@ -121,6 +123,7 @@ const NavBar = ({
       setSign("/")
 
       } else {
+        seetLogoLink("/")
        setHomeLink("/")
        setProfile("/login")
        setBooking("/login")
@@ -142,7 +145,7 @@ const NavBar = ({
   return <NavBarCont>
     <LogoCont>
       <Logo
-        onClick={() => router.push("/")}
+        onClick={() => router.push(logo)}
         src={'/MedOrDoc.png'}
       />
     </LogoCont>

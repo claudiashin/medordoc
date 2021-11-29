@@ -96,14 +96,14 @@ const MenuProps = {
 const names = [
   "English",
   "French",
-  "Cantonese",
   "Mandarin",
+  "Cantonese",
   "Japanese",
   "Korean",
   "punjabi",
   "Hindi",
-  "Farsi",
-  
+  "Farsi"
+
 ];
 
 function getStyles(name, personName, theme) {
@@ -123,6 +123,7 @@ const ClinicProfile = (props) => {
   const [clinicNum, setClinicNum] = React.useState("");
   const [clinicOpen, setClinicOpen] = React.useState("");
   const [clinicClose, setClinicClose] = React.useState("");
+  const [clinicImage, setClinicImage] = React.useState("");
 
   const theme = useTheme();
   const [clinicLang, setLanguage] = React.useState([]);
@@ -137,33 +138,6 @@ const ClinicProfile = (props) => {
     );
   };
 
-  // function writeUserData(clinicId, name, add, num, open, close, lang) {
-  //   const db = getDatabase();
-  //   set(ref(db, 'clinics/' + clinics.clinicId), {
-  //     // username: name,
-  //     // email: email,
-  //     id: clinicId,
-  //     clinicname: name,
-  //     clinicadd: add,
-  //     clinicnum: num,
-  //     clinicopen: open,
-  //     clinicclose: close,
-  //     cliniclang: lang
-  //   });
-
-  //   console.log(db);
-  // }
-
-  // const dbRef = ref(getDatabase());
-  // get(child(dbRef, `clinics/YWNtg1MQC4SUgOIC4LSfWcmLQUA2`)).then((snapshot) => {
-  //   if(snapshot.exists()) {
-  //     console.log(snapshot.val());
-  //   } else {
-  //     console.log("no data available");
-  //   }
-  // }).catch((error)=>{
-  //   console.log(error);
-  // })
 
   useEffect(async () => {
     if (props.uid) {
@@ -176,6 +150,7 @@ const ClinicProfile = (props) => {
       setClinicOpen(result.open);
       setClinicClose(result.close);
       setLanguage(result.lang);
+      setClinicImage(result.image);
     }
   }, [props.uid]);
 

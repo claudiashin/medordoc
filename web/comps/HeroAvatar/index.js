@@ -3,9 +3,11 @@ import React , {useState} from 'react'
 import ImageUpload from 'image-upload-react'
 //important for getting nice style.
 import 'image-upload-react/dist/index.css'
-import {getStorage, ref, uploadBytes} from "firebase/storage"
+import {getStorage,  uploadBytes, getDownloadURL, ref} from "firebase/storage"
+import { storage, ref, db } from '../../firebase';
+import { FirebaseError } from '@firebase/util'
 import { getDoc, doc, updateDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+
 
 
 const HeroAvatarCont = styled.div`
@@ -44,6 +46,15 @@ const HeroAvatar = ({
   heroheight="200px",
   heromargin="0px",
   pluswidth="30px",
+  imagesrc="https://placekitten.com/1000/1000",
+  upload
+})=>{
+
+
+  
+  // const Upload = async(e)=>{
+    
+  //   console.log(e.target.files[0]);ç
   display="flex",
   objectURL
 })=>{
@@ -56,10 +67,17 @@ const HeroAvatar = ({
     console.log(e.target.files[0]);
     setImagesrc(objectURL)
     
-    if(e.target.files.length <= 0){
-        alert("no file selected");
-        return false;
-    }
+  //   if(e.target.files.length <= 0){
+  //       alert("no file selected");
+  //       return false;
+  //   }
+
+
+  //   const file = e.target.files[0];
+  //   const storage = getStorage();
+  //   const storageRef = ref(storage, 'test.jpg');  
+  //   const snapshot = await uploadBytes(storageRef,file)
+  //   console.log ('uploaded');
 
     const file = e.target.files[0];
     const storage = getStorage();
@@ -67,18 +85,27 @@ const HeroAvatar = ({
     const snapshot = await uploadBytes(storageRef,file)
     console.log ('uploaded');
 
-}
+
+  // }
+
+  const [clinicImage, setClinicImage] = useState(null);
+
+  function uploadImage() {
+    // const getAuth
+  }
     
   return<HeroAvatarCont herowidth={herowidth} heroheight={heroheight} heromargin={heromargin}>
+    <HeroImage src={imagesrc}/>
+    <PlusImage 
+    onClick={async() => {
+      const getStorage = getStorage();
+      const result = storage.ref('clinic/' + auth.user.uid + '/').putFile(photoURL)
+    }} 
+    pluswidth={pluswidth} src='../../public/plus.png'/>
 
-    <HeroImage onClick={Upload}  src={imagesrc}/>
-    <PlusImage onChange={Upload} pluswidth={pluswidth} src={"/plus.png"} />
-    <MyFile id="file" type="file"/>
-       <HeroImage src={imagesrc}/>
-    <MyLabel for="file">
-    <PlusImage display={display} pluswidth={pluswidth} src="https://www.iconsdb.com/icons/preview/caribbean-blue/plus-4-xxl.png"/>
-      <MyFile onChange={Upload} id="file" type="file"/>
-    </MyLabel>
+    {/* <MyFile id="file" type="file"/> */}
+
+
   </HeroAvatarCont>
 }
 

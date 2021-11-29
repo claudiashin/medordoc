@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import React, { useState } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
-const CalendarAPI = ()=>{
-  const [value, onChange] = useState(new Date());
-
+const CalendarAPI = ({ dateInfo, setDateInfo, onChange }) => {
   return (
     <div>
       <Calendar
-        onChange={onChange}
-        value={value}
-        
-      />
+        value={dateInfo.selectedDate}
+        oncChange={(e) => {
+          setDateInfo(onChange);
+        }}
+        onChange={onChange};
     </div>
   );
-}
-export default CalendarAPI
+};
+export default CalendarAPI;
