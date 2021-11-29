@@ -69,6 +69,7 @@ const BackCont = styled.View`
 
 export default function findclinic({navigation}){
 
+ 
   return (
     <Cont>
       <ScrollView keyboardShouldPersistTaps={'handled'}>

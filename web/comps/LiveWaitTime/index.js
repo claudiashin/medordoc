@@ -22,7 +22,7 @@ const MainCont = styled.div`
 const TitleCont = styled.div`
   width: 300px;
   height: 50px;
-  background-color: #F7E8DC;
+  background-color: #F6E1D0;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -75,11 +75,11 @@ const LiveWaitTime = () => {
             onChange={handleChange}
             label="Time"
           >
-            <MenuItem value={0}>No Wait</MenuItem>
-            <MenuItem value={15}>15 Minutes</MenuItem>
-            <MenuItem value={30}>30 Minutes</MenuItem>
-            <MenuItem value={45}>45 Minutes</MenuItem>
-            <MenuItem value={60}>60 Minutes</MenuItem>
+            <MenuItem value={0} style={{fontSize: 18}}>No Wait</MenuItem>
+            <MenuItem value={15} style={{fontSize: 18}}>15 Minutes</MenuItem>
+            <MenuItem value={30} style={{fontSize: 18}}>30 Minutes</MenuItem>
+            <MenuItem value={45} style={{fontSize: 18}}>45 Minutes</MenuItem>
+            <MenuItem value={60} style={{fontSize: 18}}>60 Minutes</MenuItem>
           </Select>
         </FormControl>
       </div>
