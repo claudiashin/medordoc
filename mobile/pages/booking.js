@@ -3,8 +3,9 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';
 import { addDoc, collection,setDoc,getDoc,doc,query,where,} from 'firebase/firestore';
 // import {db} from '../utils/store';
-// import {Auth} from '../utils/auth'
-// import {onAuthStateChanged} from 'firebase/auth'
+import {Auth} from '../utils/auth'
+// // import {onAuthStateChanged} from 'firebase/auth'
+import {getAuth} from 'firebase/auth'
 
 import Calendar from '../comps/Calendar';
 import Header from '../comps/Header';
@@ -14,12 +15,13 @@ import BackBtn from '../comps/BackBtn';
 import NavBar from '../comps/NavBar';
 import Datepick from '../comps/DataPicker';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useNavigationState } from '@react-navigation/native';
 
 const BookingCont = styled.View`
     flex: 1;
     background-color: #F7F2EE;
     justify-content: center;
-    align-items: center;
+
 `;
 
 const Wave = styled.Image`
@@ -29,12 +31,13 @@ const Wave = styled.Image`
     top: 0;
 `;
 
-const CalendarAPICont = styled.View`
-margin-top: 130px;
-`;
+// const CalendarAPICont = styled.View`
+// margin-top: 130px;
+// `;
 
 const DropDownCont = styled.View`
-margin: 50px;
+margin-top: 200px;
+align-items:center;
 
 `;
 
@@ -59,23 +62,17 @@ const BackCont = styled.View`
   right: 300px;
   z-index: 999;
 `
-const booking = ({ navigation }) => {
+const booking = ({ route,navigation }) => {
     
-    
-    
-    // useEffect (()=>{
-    //     onAuthStateChanged((u)=>{
-    //       if(u){
-    //         setUser(u);
-    //         console.log(u);
-    //       }
-    //     }) 
-    //    },[])
-
-
+    const [uid,setUID] = useState('');
+    useEffect (()=>{
+        const clinicUID = route.params;
+        const num = clinicUID.clinicUID
+        setUID(num);
+       },[])
+       console.log(uid);
 
     return (
-
         <BookingCont>
             <MyScrollView >
                 {/* <BackCont>
@@ -83,25 +80,26 @@ const booking = ({ navigation }) => {
                 </BackCont> */}
                 <Wave source={require('../assets/backgroundmobile.png')} />
 
-                <CalendarAPICont>
+                {/* <CalendarAPICont>
                     <Text>Calendar</Text>
                     <Calendar />
-                </CalendarAPICont>
+                </CalendarAPICont> */}
 
                 {/* <Header title={'Thursday, November 4th'}/> */}
 
                 <DropDownCont>
                     <Text>Pick the Time</Text>
-                    <Datepick />
+                    <Datepick clinicId ={uid}/>
                 </DropDownCont>
-
+ 
                 <ButtonCont>
                     <Btn
                         title={'Confirm'}
                         fSize={18}
                         onPress={() => navigation.navigate('qrconfirm')}
                     />
-                </ButtonCont>
+                </ButtonCont> 
+
             </MyScrollView>
 
             <NavBarCont>

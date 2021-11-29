@@ -2,6 +2,7 @@ import styled from "styled-components/native";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import QRCode from "react-native-qrcode-svg";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Cont = styled.View`
   margin-bottom: 50px;
@@ -15,12 +16,26 @@ const Cont = styled.View`
 `;
 
 const Qrcode = ({
-  val="default"
+  
 }) => {
+const [uid, setUserUid] = useState()
+  useEffect(async () => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, async (user) => {
+     
+      if (user) {
+        console.log(user.uid);
+        setUserUid(user.uid);
+      
+      }else{
+        console.log("no")
+      }
+    });
+  }, []);
   return (
     <Cont>
       <QRCode 
-        value={val} 
+        value={uid} 
         size={185}
       />
     </Cont>
