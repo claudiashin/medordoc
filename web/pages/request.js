@@ -50,12 +50,13 @@ const ContPatientCard = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin: 0px 40px 20px 40px;
+    
     
 `;
 
 const ContPatientCardInd = styled.div`
     display: flex;
-
     margin: 10px;
 `;
 

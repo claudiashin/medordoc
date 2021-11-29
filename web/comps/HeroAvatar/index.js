@@ -63,8 +63,7 @@ const HeroAvatar = ({
     
   return<HeroAvatarCont herowidth={herowidth} heroheight={heroheight} heromargin={heromargin}>
     <HeroImage onClick={Upload}  src={imagesrc}/>
-    <PlusImage onChange={Upload} pluswidth={pluswidth} src={require('../../public/plus.png')}/>
-    <MyLabel for="file">asdasd</MyLabel>
+    <PlusImage onChange={Upload} pluswidth={pluswidth} src={"/plus.png"} />
     <MyFile id="file" type="file"/>
 
   </HeroAvatarCont>

@@ -22,7 +22,7 @@ const MainCont = styled.div`
 const TitleCont = styled.div`
   width: 300px;
   height: 50px;
-  background-color: #F6E1D0;
+  background-color: #F2E1D3;
   border-radius: 5px;
   display: flex;
   align-items: center;

@@ -8,7 +8,7 @@ const Cont = styled.View`
   width: 200px;
   height: 200px;
   background: #FFFFFF;
-  border: 1px solid #E9D7CB;
+  /* border: 1px solid #E9D7CB; */
   border-radius: 5px;
   justify-content: center;
   align-items: center;

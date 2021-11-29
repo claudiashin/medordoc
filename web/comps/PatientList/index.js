@@ -14,7 +14,7 @@ const MainCont = styled.div`
 const TitleCont = styled.div`
   width: 300px;
   height: 50px;
-  background-color: #F6E1D0;
+  background-color: #F2E1D3;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -24,6 +24,7 @@ const TitleCont = styled.div`
 const Title = styled.p`
   font-size: 20px;
   font-weight: 600;
+  color: #505050;
 `;
 const ListCont = styled.div`
   display: flex;
@@ -38,24 +39,20 @@ const ListItem = styled.div`
   align-items: center;
   font-size: 20px;
   width: 350px;
-  height: 50px;
+  /* height: 50px; */
   margin: 8px;
   padding: 0 20px 0 20px;
   border-radius: 5px;
 `;
 const List = styled.p``;
 
-const PatientList = ({ height = "540" }) => {
+const PatientList = ({ height = "280" }) => {
   return (
     <MainCont height={height}>
       <TitleCont>
         <Title>October 8th Thursday</Title>
       </TitleCont>
       <ListCont>
-        <ListItem>
-          <List>9:00 AM</List>
-          <List>Tom Clooney</List>
-        </ListItem>
         <ListItem>
           <List>9:00 AM</List>
           <List>Tom Clooney</List>
