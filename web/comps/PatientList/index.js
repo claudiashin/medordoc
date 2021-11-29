@@ -14,7 +14,7 @@ const MainCont = styled.div`
 const TitleCont = styled.div`
   width: 300px;
   height: 50px;
-  background-color: #F7E8DC;
+  background-color: #F6E1D0;
   border-radius: 5px;
   display: flex;
   align-items: center;

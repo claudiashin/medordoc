@@ -35,7 +35,7 @@ const Btn = ({
     fWeight = "",
     letterSpace = 1,
     bgColor = "#EA9898",
-    borderRad = 5,
+    borderRad = 10,
     width = 250,
     height = 80,
     margin = 5,
@@ -44,13 +44,6 @@ const Btn = ({
 
 }) => {
     const router = useRouter();
-
-
-    // const [btnHover, setBtnHover] = useState("#BCDFF6");
-
-    // const BtnStyle = {
-    //     background: `${btnHover}`
-    // };
 
     return (
         
@@ -61,8 +54,6 @@ const Btn = ({
             borderRad={borderRad}
             margin={margin}
             bgHover={bgHover}
-            // onMouseEnter={()=>setBtnHover("#90AABB")}
-            // onMouseLeave={()=>setBtnHover("#BCDFF6")}
             >
                 <TextCont>
                     <Text style={{

@@ -10,6 +10,7 @@ import Select from "@mui/material/Select";
 import { IoIosClose } from "@react-icons/all-files/io/IoIosClose";
 import { db } from "../../firebase";
 import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
+import HeroAvatar from "../HeroAvatar";
 
 import { reload } from "@firebase/auth";
 
@@ -111,11 +112,13 @@ const MenuProps = {
 const names = [
   "English",
   "French",
-  "Chinese",
+  "Cantonese",
+  "Mandarin",
   "Japanese",
   "Korean",
-  "punjabi",
+  "Punjabi",
   "Hindi",
+  "Farsi"
 ];
 
 function getStyles(name, languages, theme) {
@@ -184,9 +187,10 @@ const DoctorInputCard = ({
         />
       </CloseModalbutton>
 
-      <AvatarCont>
+      {/* <AvatarCont>
         <AvatarImg src={profile} />
-      </AvatarCont>
+      </AvatarCont> */}
+      <HeroAvatar  />
       <AlertBanner show={showAlert}>{error}</AlertBanner>
       <FormCont>
         <Form>
@@ -288,6 +292,7 @@ const DoctorInputCard = ({
                   location: location,
                   lang: languages,
                   clinicId: uid,
+                  objectURL: objectURL
                 });
               }
               reload(uid);
@@ -403,9 +408,10 @@ const DoctorCard = ({ info, showModal, deleteDoctor }) => {
         />
       </Closebutton>
 
-      <Avatarcont>
+      {/* <Avatarcont>
         <Avatarimg src={info.image} />
-      </Avatarcont>
+      </Avatarcont> */}
+      <HeroAvatar display="none" herowidth="120px" heroheight="120px"/>
       <Nameheader>
         <Text style={{ fontSize: 20 }}>{info.name}</Text>
       </Nameheader>

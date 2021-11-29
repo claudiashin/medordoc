@@ -17,7 +17,9 @@ const Cont = styled.div`
   // height: 100vh;
   position: relative;
 `;
-const BodyCont = styled.div``;
+const BodyCont = styled.div`
+  
+`;
 const Modal = styled.div`
   position: absolute;
   justify-content: center;
@@ -27,6 +29,7 @@ const Modal = styled.div`
   background: rgba(0, 0, 0, 0.5);
   z-index: 100;
   display: ${(props) => (props.show ? "flex" : "none")};
+  top: 0;
 `;
 
 const WaveCont = styled.div`
@@ -60,11 +63,13 @@ const TabCont = styled.div`
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 40px;
 `;
 const HeaderCont = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin: 12px;
 `;
 
 export default function Profile() {
@@ -95,8 +100,8 @@ export default function Profile() {
       <NavBarCont>
         <NavBar />
         <HeaderCont>
-          <HeaderTitle title="Profile" />
-          <HeaderTitle fontSize="10 " title={clinicName} />
+          <HeaderTitle fontSize="32" title="Profile" />
+          <HeaderTitle fontSize="24" fontWeight="400" title={clinicName} />
         </HeaderCont>
       </NavBarCont>
 
