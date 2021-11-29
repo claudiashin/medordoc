@@ -3,6 +3,7 @@ import { StyleSheet, Text, View,Dimensions,Button } from 'react-native';
 import MapView,{PROVIDER_GOOGLE,Marker,Callout, Circle,}from 'react-native-maps';
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { useNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import styled from 'styled-components/native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
@@ -28,7 +29,7 @@ const Map =({
 	})
 
   const getLoc = () => {
-    console.log(location);
+    // console.log(location);
     const latitude =  location.coords.latitude;
     const longitude = location.coords.longitude;
   
@@ -96,7 +97,7 @@ const Map =({
 				}}
 				onPress={(data, details = null) => {
 					// 'details' is provided when fetchDetails = true
-					console.log(data, details)
+					// console.log(data, details)
 					setRegion({
 						latitude: details.geometry.location.lat,
 						longitude: details.geometry.location.lng,
