@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import NavBar from '../comps/NavBar';
 import MenuCard from '../comps/MenuCard';
-import QRscan from '../comps/CheckIn';
+// import QRscan from '../comps/CheckIn';
 import Footer from '../comps/Footer';
 import QRscan from '../comps/QRscan';
 
