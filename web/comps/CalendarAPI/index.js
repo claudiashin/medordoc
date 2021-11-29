@@ -10,6 +10,7 @@ const CalendarAPI = ()=>{
       <Calendar
         onChange={onChange}
         value={value}
+        
       />
     </div>
   );

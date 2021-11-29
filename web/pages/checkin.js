@@ -49,19 +49,28 @@ const BodyCont = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 const Low = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px;
 `;
+
 const Qrcode = styled.div`
   width: 400px;
   height: 400px;
   background-color: #868686;
 `;
+
 const BtnCont = styled.div`
   margin-top: 20px;
   margin-left: 150px;
+`;
+
+const FooterCont = styled.div`
+  margin-top: 15%;
+  width: 100%;
+
 `;
 
 export default function Home() {
@@ -93,16 +102,18 @@ export default function Home() {
               color="#fff"
               bgColor="#90AABB"
               width="125px"
-              height="40px"
+              height="50px"
               borderRad="25px"
               bgHover="#7592A5"
-              onClick={() => router.push("/confirm")}
+              onClick={() => router.push("/booking")}
             />
           </BtnCont>
         </Low>
       </BodyCont>
       <QRscan />
-      <Footer />
+      <FooterCont>
+        <Footer />
+      </FooterCont>
     </MainCont>
   );
 }

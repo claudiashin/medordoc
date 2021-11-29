@@ -70,6 +70,10 @@ const HeroAvatar = ({
 }
     
   return<HeroAvatarCont herowidth={herowidth} heroheight={heroheight} heromargin={heromargin}>
+
+    <HeroImage onClick={Upload}  src={imagesrc}/>
+    <PlusImage onChange={Upload} pluswidth={pluswidth} src={"/plus.png"} />
+    <MyFile id="file" type="file"/>
        <HeroImage src={imagesrc}/>
     <MyLabel for="file">
     <PlusImage display={display} pluswidth={pluswidth} src="https://www.iconsdb.com/icons/preview/caribbean-blue/plus-4-xxl.png"/>

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import 'react-calendar/dist/Calendar.css';
 
 //import comps
 import NavBar from "../comps/NavBar";
@@ -83,7 +84,7 @@ export default function Home() {
       <BodyCont>
 
         <CalendarCont>
-          <Calendar />
+          <Calendar/>
         </CalendarCont>
         
         <Low>
