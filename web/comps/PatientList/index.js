@@ -63,5 +63,7 @@ const PatientList = ({ info }) => {
       <List>{bookingTime}</List>
       <List>{patientName}</List>
     </ListItem>
+  )
+  };
 
-    export default PatientList;
+  export default PatientList;
