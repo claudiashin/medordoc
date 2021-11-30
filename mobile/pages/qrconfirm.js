@@ -122,7 +122,7 @@ const qrconfirm = () => {
                         text4= {name}
                         text5= {clname}
                         text6={cladd}
-                        fweight="500"
+                        fweight="510"
                         display="none"
                     />
 
