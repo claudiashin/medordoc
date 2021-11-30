@@ -8,6 +8,8 @@ import InfoCard from '../comps/InfoCard';
 import Btn from '../comps/Btn';
 import NavBar from '../comps/NavBar';
 import BackBtn from '../comps/BackBtn';
+import { useNavigation } from '@react-navigation/native';
+
 
 
 const Cont = styled.View`
@@ -61,8 +63,8 @@ const BackCont = styled.View`
 const MyScrollView = styled.ScrollView`
 
 `
-const ClinicProfile = ({ route,navigation }) => {
-
+const ClinicProfile = ({route,navigation}) => {
+  
 const [info,setInfo] =useState('')
 const [choice,setChoice] = useState('')
 const [cluid,setUid] = useState('')
@@ -80,7 +82,7 @@ useEffect(()=>{
     // }
     const {UID} = route.params;
     setUid(UID);
-    console.log(UID);
+    // console.log(cluid);
     
     const get =async()=>{
     const MapdocRef = doc(db, "mapchoice", UID);
@@ -126,7 +128,7 @@ useEffect(()=>{
     
                 </CardCont>
                 <BtnCont>
-                    <Btn onPress={() => navigation.navigate("login",{UID:cluid})} />
+                    <Btn onPress={() => navigation.navigate("login",{clinic:cluid})} />
                 </BtnCont>
             </MyScrollView>
 
