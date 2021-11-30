@@ -3,6 +3,7 @@ import { StyleSheet, Text, View,Dimensions,Button } from 'react-native';
 import MapView,{PROVIDER_GOOGLE,Marker,Callout, Circle,}from 'react-native-maps';
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { useNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import styled from 'styled-components/native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
@@ -160,12 +161,425 @@ const Map =({
         <Button title = "lead"/>
        </View>
    </MapView.Callout>  
-    </MapView.Marker>   
+    </MapView.Marker>  
+
+
+    <MapView.Marker
+     coordinate={{latitude: 49.119025947952196,
+     longitude: -122.69051360196951}}
+     key='test1'
+     title={"Beyond Health & Medical"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"tNhCs4WtlTat6NsZ8Q5egHYg1Qo1"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Beyond Health Medical{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker> 
+
+    {/* Vancouver  */}
+
+    <MapView.Marker
+     coordinate={{latitude: 49.244778852146425,
+     longitude: -123.0647862522749}}
+     key='test9'
+     title={"Pacific Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"oXOf7T5hj4ewq5ls5YzoJQpGbrp1"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Pacific Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker> 
+
+    <MapView.Marker
+     coordinate={{latitude: 49.26417601736956,
+     longitude: -123.1512787154561}}
+     key='test10'
+     title={"Maple Walk-In Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"bsZQIcxwkfRFjc7VOgIoxUY0l1T2"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Maple Walk-In Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker> 
+
+    <MapView.Marker
+     coordinate={{latitude: 49.23799460611637,
+     longitude: -123.03192121545707}}
+     key='test11'
+     title={"Care Point Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"7FKK9IbpIUhrfOOnk9d19SCy9By1"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Care Point Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+    {/* Richmond */}
+
+    <MapView.Marker
+     coordinate={{latitude: 49.17067718619756,
+     longitude: -123.13700408847518}}
+     key='test12'
+     title={"WELL Health - Richmond Central Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"Fe7Rz5MFkvcam9eIJoPugZ9GumJ2"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>WELL Health - Richmond Central Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+    <MapView.Marker
+     coordinate={{latitude: 49.17762637915499,
+     longitude: -123.12017978662351}}
+     key='test13'
+     title={"Mega Fu Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"9w9DqZEXIoczwfGSESl82tYCbnJ3"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Mega Fu Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+    <MapView.Marker
+     coordinate={{latitude: 49.17243946354279,
+     longitude: -123.13201701048123}}
+     key='test14'
+     title={"Elicare: Lansdowne Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"IKSr9FZPi9f1l9zRdcsopC8MQX42"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Elicare: Lansdowne Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+    {/* N. Vancouver */}
+
+    <MapView.Marker
+     coordinate={{latitude: 49.32502014827226,
+     longitude: -123.10976403079742}}
+     key='test15'
+     title={"WELL Health - Pemberton Marine Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"4nKPf2aTTgVxHTvbDYQvUX1ckK12"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>WELL Health - Pemberton Marine Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+    <MapView.Marker
+     coordinate={{latitude: 49.33709193342039,
+     longitude: -123.10156883079685}}
+     key='test16'
+     title={"Edgemont Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"AZGku04fe3VxBuWATRo7XGKQM4q1"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Edgemont Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+    <MapView.Marker
+     coordinate={{latitude: 49.32408385005227,
+     longitude: -123.10597326952801}}
+     key='test17'
+     title={"Integrated Wellness Medical Centre"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"5s7PlHsnLVQ92jlM1T73dcNDoQw1"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Integrated Wellness Medical Centre{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+    {/* Surrey */}
+
+    <MapView.Marker
+     coordinate={{latitude: 49.17625223466123,
+     longitude: -122.8661477442954}}
+     key='test18'
+     title={"Cedar Hills Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"0lTILXDCYOfuCVljAtYhispFL6f1"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Cedar Hills Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+    <MapView.Marker
+     coordinate={{latitude: 49.139615888454905,
+     longitude: -122.84382264429685}}
+     key='test19'
+     title={"Primacy - Manchanda Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"Zca6JHSUenPWWxrgxUxGIRB1THG2"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Primacy - Manchanda Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+    <MapView.Marker
+     coordinate={{latitude: 49.16786830279477,
+     longitude: -122.79983716289601}}
+     key='test20'
+     title={"WELL Health - Care Place Fleetwood Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"Fe7Rz5MFkvcam9eIJoPugZ9GumJ2"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>WELL Health - Care Place Fleetwood Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+    {/* Coquitlam */}
+
+    <MapView.Marker
+     coordinate={{latitude: 49.24950615192547,
+     longitude: -122.86775447464734}}
+     key='test21'
+     title={"The Well Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"GMUCL8SKdNhl7MmBpC0i8vq8qkQ2"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>The Well Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+    <MapView.Marker
+     coordinate={{latitude: 49.2846221548812,
+     longitude: -122.79547012742275}}
+     key='test22'
+     title={"Eagleridge Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"3DOGWNAI0eY2rl1cAhCwZKMYtHD2"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Eagleridge Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+     {/* Burnaby */}
+
+    <MapView.Marker
+     coordinate={{latitude: 49.23149795614685,
+     longitude: -123.00568035376993}}
+     key='test3'
+     title={"Old Orchard Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"koHQxfxwzJevDdhWLtXIpmO7wTu2"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Old Orchard Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>  
+
+    <MapView.Marker
+     coordinate={{latitude: 49.225848064224245,
+     longitude: -123.00572321668015}}
+     key='test4'
+     title={"Mango Walk-in Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"5KR7qdJxJRclkuRFdLqQGaS45EJ3"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Mango Walk-in Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker> 
+
+    <MapView.Marker
+     coordinate={{latitude: 49.26760916802921,
+     longitude: -122.99993537312844}}
+     key='test5'
+     title={"Brentwood Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"lklNfAH6oadPInmca1nFik3tGdY2"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Brentwood Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+    <MapView.Marker
+     coordinate={{latitude: 49.21914637937007,
+     longitude: -122.928060857557}}
+     key='test6'
+     title={"Welcome Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"jQ8PrGGxTHNfB5ICJHKQbRSaRyP2"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Welcome Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+    <MapView.Marker
+     coordinate={{latitude: 49.22906673032412,
+     longitude: -123.0007734941976}}
+     key='test7'
+     title={"Kingsway Medical Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"iBOBd62i4vUMaXlfFYJKaQq4fHk1"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Kingsway Medical Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
+
+    <MapView.Marker
+     coordinate={{latitude: 49.227159448828274,
+     longitude: -122.99475686906143}}
+     key='test8'
+     title={"Metrohealth Clinic"}
+     description={"description"}
+     
+    >
+     {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
+     <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
+       UID:"J5EZzpNev2OPal1H9oVKSkKGEZs2"
+     })} tooltip> 
+      <View style={styles.calloutText} >
+        <Text>Metrohealth Clinic{"\n"}</Text>
+        <Button title = "lead"/>
+       </View>
+   </MapView.Callout>  
+    </MapView.Marker>
    </MapView>
     <Button onPress = {getLoc} title = {loading} disabled = {visible}/>     
   </View>
     )
 }
+
 const styles = StyleSheet.create({
     container: {
       flex: 1.0,

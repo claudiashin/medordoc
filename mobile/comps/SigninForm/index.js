@@ -16,7 +16,6 @@ import Btn from "../Btn";
 import { addDoc, collection, setDoc,doc } from "firebase/firestore";
 import { db } from "../../utils/store";
 
-
 const MainCont = styled.View`
   flex-direction: column;
 `;
@@ -75,24 +74,47 @@ const SigninForm = ({
     { label: "Prefer not to answer", value: "Prefer not to answer" },
   ]);
   const [add, setAdd] = useState("");
-  const [patientId, setPatientId] = useState();
+  const [patientId, setPatientId] = useState("");
+
+  const LogIn = {
+    email: text,
+    password: pass,
+  };
 
   const info = {
-    patientid: patientId,
-    fname: fname,
-    lname: lname
+    Fname: fname,
+    Lname: lname,
+    concern: medcon,
+    dob: inputDate,
+    gender: gender,
+    address: add,
+    patientid: patientId
+  };
+
+  const setLogin = ({ email = text,password = pass }) => {
+    setText(email);
+    setPass(password);
   };
 
   const setInfo = ({
-    patientid = patientId,
-    fname = fname,
-    lname = lname
-  }) => {
-    setFname(fname);
-    setLname(lname);
-    setPatientId(patientid);
-  }
+    Fname = fname,
+    Lname = lname,
+    concern = medcon,
+    dob = inputDate,
+    gen = gender,
+    address = add,
+    patientid = patientId
 
+  }) => {
+    setFname(Fname);
+    setLname(Lname);
+    setMedcon(concern);
+    setInputDate(dob);
+    setGender(gen);
+    setAdd(address);
+    setPatientId(patientid);
+
+  };
 
   const [em, setEm] = useState('')  
   const [ps, setPs] = useState('')  
@@ -166,14 +188,19 @@ const SigninForm = ({
               width="130"
               height="50"
               borderRad="60"
-              // onPress={async () => {
-              //   const result = await addDoc(collection(db, "patientuser"), {
-              //     fname: fname,
-              //     lname: lname,
-              //     email: text,
-              //     password: pass,
-              //   });
-              //   setChangeForm(false);
+              //    onPress={async () => {
+              //      const auth = getAuth();
+              //      const result = await createUserWithEmailAndPassword(
+              //        auth,
+              //        text,
+              //        pass
+              //      );
+              //     info.patientid = result.user.uid;
+
+              //       console.log(result.user.uid);
+              //       console.log(info.patientid)
+
+              //     setChangeForm(false);
               // }}
               onPress={()=>{setChangeForm(false);}}
               
@@ -193,8 +220,6 @@ const SigninForm = ({
       </MainCont>
     );
   }
-
-
 
   return (
     <MainCont>

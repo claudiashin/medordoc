@@ -3,8 +3,10 @@ import styled from 'styled-components';
 
 //import comps
 import PatientList from '../comps/PatientList';
+import CalendarAPI from '../comps/CalendarAPI';
 import NavBar from "../comps/NavBar";
 import Footer from "../comps/Footer";
+import Calendar from "react-calendar";
 
 
 
@@ -70,7 +72,7 @@ export default function Home() {
             </NavBarCont>
             <BodyCont>
                 <Low>
-                    <Calander></Calander>
+                    <Calendar/>
                 </Low>
                 <Low>
                     <Column>

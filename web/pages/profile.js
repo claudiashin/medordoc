@@ -17,9 +17,7 @@ const Cont = styled.div`
   // height: 100vh;
   position: relative;
 `;
-const BodyCont = styled.div`
-  
-`;
+const BodyCont = styled.div``;
 const Modal = styled.div`
   position: absolute;
   justify-content: center;
@@ -29,7 +27,6 @@ const Modal = styled.div`
   background: rgba(0, 0, 0, 0.5);
   z-index: 100;
   display: ${(props) => (props.show ? "flex" : "none")};
-  top: 0;
 `;
 
 const WaveCont = styled.div`
@@ -86,7 +83,8 @@ export default function Profile() {
         const usersDocRef = doc(db, "clinics", user.uid);
         const data = await getDoc(usersDocRef);
         const result = data.data();
-        setClinicName(result.name);
+        console.log(result.name);
+        // setClinicName(result.name);
       }
     });
   }, []);

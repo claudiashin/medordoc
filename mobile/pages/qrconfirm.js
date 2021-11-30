@@ -1,6 +1,10 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import styled from 'styled-components/native';
+import { addDoc, collection,setDoc,getDoc,doc,query,where,} from 'firebase/firestore';
+import {onAuthStateChanged,getAuth} from 'firebase/auth'
+import {Auth} from '../utils/auth'
+import {db} from '../utils/store'
 
 // Import Comps
 import Header from '../comps/Header';
@@ -39,6 +43,54 @@ const Cont = styled.View`
 `;
 
 const qrconfirm = () => {
+
+        
+
+    const [user,setUser] = useState('');
+    const [clinicID,setClnicID] =useState('')
+    const [name,setName] = useState('')
+    const [date,setDate] =useState('')
+    const [time,setTime] =useState('')
+    const [clname,setClname] =useState('')
+    const [cladd,setAdd] =useState('')
+    
+    
+    useEffect(()=>{
+
+        const auth = getAuth()
+        const userid = auth.currentUser.uid;
+        setUser(userid)
+        
+        const gettingBK =async()=>{
+            const docRef = doc(db, "appointment",user);
+            const docSnap = await getDoc(docRef);
+            // const docRef1 = doc(db, "clinics",clinicID);
+            // const docSnap1 = await getDoc(docRef1);
+            // setClname(docSnap1.data().name);
+            // setAdd(docSnap1.data().add);
+            setName(docSnap.data().patientname);
+            setDate(docSnap.data().bookingdate);
+            setTime(docSnap.data().bookingtime);
+            setClnicID(docSnap.data().clinickId);
+            console.log(name)
+            console.log(date)
+            console.log(time)
+            console.log(clinicID)
+        }
+        gettingBK()
+
+        // const gettingCL =async()=>{
+            // const docRef = doc(db, "clinics",clinicID);
+            // const docSnap = await getDoc(docRef);
+            // setClname(docSnap.data().name);
+            // setAdd(docSnap.data().add);
+        // }
+        // gettingCL()
+
+ },[])
+
+    
+
     return (
         <ConfirmCont>
                 <Wave source={require('../assets/backgroundmobile.png')} />
@@ -50,10 +102,10 @@ const qrconfirm = () => {
                 <Cont>
                     <InfoCardTwo
                         text1="Appointment Details"
-                        text2="Submitted on: Oct 7, 2021"
-                        text3="Appt Date: Oct 14, 2021"
-                        text4="Appt Time: 10:00 AM"
-                        text5="Location: Care Point Clinic"
+                        text2={date}
+                        text3= {time}
+                        text4= {clname}
+                        text5= {cladd}
                         text6="1234 Canada Way, Burnaby V4J2B7"
                         fweight="500"
                         display="none"

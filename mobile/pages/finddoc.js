@@ -77,6 +77,7 @@ const finddoc = ({navigation})=>{
 const [doctors,setDoctors] = useState([])
 
   useEffect(()=>{
+
   const GetData = async()=>{
       const querySnapshot = await getDocs(collection(db, "doctors"));
       querySnapshot.forEach((doc) => {
