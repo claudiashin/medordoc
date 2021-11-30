@@ -27,6 +27,7 @@ const PlusImage = styled.img`
   position:absolute;
   right:20px;
   bottom:10px;
+  display:${props=>props.display}
 `
 const MyFile = styled.input`
 // opacity: 0;
@@ -42,7 +43,8 @@ const HeroAvatar = ({
   heromargin="0px",
   pluswidth="30px",
   imagesrc="https://placekitten.com/1000/1000",
-  upload
+  upload,
+  display="block"
 })=>{
 
 
@@ -77,7 +79,9 @@ const HeroAvatar = ({
       const getStorage = getStorage();
       const result = storage.ref('clinic/' + auth.user.uid + '/').putFile(photoURL)
     }} 
-    pluswidth={pluswidth} src='../../public/plus.png'/>
+    pluswidth={pluswidth} src='/plus.png'
+      display={display}
+    />
 
     {/* <MyFile id="file" type="file"/> */}
 

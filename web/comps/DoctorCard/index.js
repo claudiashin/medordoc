@@ -69,8 +69,8 @@ const ButtonCont = styled.div`
   display: flex;
   justify-content: right;
   width: 80%;
-  padding-top: 20px;
-  padding-bottom: 50px;
+  padding-top: 35px;
+  padding-bottom: 45px;
 `;
 const Button = styled.button`
   width: 120px;
@@ -189,14 +189,19 @@ const DoctorInputCard = ({
       {/* <AvatarCont>
         <AvatarImg src={profile} />
       </AvatarCont> */}
-      <HeroAvatar  />
+      <HeroAvatar 
+        herowidth="150px"
+        heroheight="150px"
+        heromargin="15px"
+        pluswidth="20px"
+      />
       <AlertBanner show={showAlert}>{error}</AlertBanner>
       <FormCont>
         <Form>
           <FormTitle>Name</FormTitle>
           <FormInput
             type="text"
-            placeholder="Put your Dr name"
+            placeholder="Enter Dr name"
             value={nameDoc}
             onChange={(e) => setNameDoc(e.target.value)}
           />
@@ -205,6 +210,7 @@ const DoctorInputCard = ({
           <FormTitle>Years Experience</FormTitle>
           <FormInput
             type="number"
+            placeholder="Enter years of experience"
             value={ex}
             onChange={(e) => setEx(e.target.value)}
           />
@@ -214,6 +220,7 @@ const DoctorInputCard = ({
           <SelectCont
             value={gender}
             onChange={(e) => setGender(e.target.value)}
+            placeholder="Choose Gender"
           >
             <SelectOpt></SelectOpt>
             <SelectOpt>Male</SelectOpt>
@@ -224,7 +231,7 @@ const DoctorInputCard = ({
           <FormTitle>Location</FormTitle>
           <FormInput
             type="text"
-            placeholder="Clinic Location"
+            placeholder="Enter Clinic Location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
           />
@@ -291,7 +298,7 @@ const DoctorInputCard = ({
                   location: location,
                   lang: languages,
                   clinicId: uid,
-                  objectURL: objectURL
+                  // objectURL: objectURL
                 });
               }
               reload(uid);
@@ -364,9 +371,10 @@ const Nameheader = styled.text`
 const Closebutton = styled.div`
   display: flex;
   border-radius: 50%;
-  margin-top: 30px;
+  margin-top: 60px;
   margin-left: 270px;
   cursor: pointer;
+  position: relative;
   &:hover {
     background-color: #eadca2;
     opacity: 0.8;
@@ -393,6 +401,7 @@ const Editbut = styled.div`
 
 const EditbutCont = styled.div`
   display: ${(props) => props.button2};
+  margin-bottom: 18px;
 `;
 
 const DoctorCard = ({ info, showModal, deleteDoctor }) => {
@@ -404,13 +413,16 @@ const DoctorCard = ({ info, showModal, deleteDoctor }) => {
             deleteDoctor(info.id);
           }}
           size={40}
+          style={{position: 'absolute', top: 0, right: -18}}
         />
       </Closebutton>
 
       {/* <Avatarcont>
         <Avatarimg src={info.image} />
       </Avatarcont> */}
-      <HeroAvatar display="none" herowidth="120px" heroheight="120px"/>
+      <HeroAvatar display="none" herowidth="120px" heroheight="120px"
+        heromargin="10px"
+      />
       <Nameheader>
         <Text style={{ fontSize: 20 }}>{info.name}</Text>
       </Nameheader>

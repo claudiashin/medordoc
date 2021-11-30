@@ -3,18 +3,17 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 const CalendarAPI = ({ dateInfo, setDateInfo, onChange }) => {
-  return( 
-  <div>
+  return (
+    <div>
       <Calendar
         value={dateInfo.selectedDate}
         oncChange={(e) => {
-          setDateInfo(onChange)
+          setDateInfo(onChange);
         }}
         onChange={onChange}
-        />
-      </div>
+      />
+    </div>
   );
 };
-
 
 export default CalendarAPI;
