@@ -44,8 +44,6 @@ const Cont = styled.View`
 
 const qrconfirm = () => {
 
-        
-
     const [user,setUser] = useState('');
     const [clinicID,setClnicID] =useState('')
     const [name,setName] = useState('')
@@ -60,36 +58,53 @@ const qrconfirm = () => {
         const auth = getAuth()
         const userid = auth.currentUser.uid;
         setUser(userid)
-        
+
         const gettingBK =async()=>{
-            const docRef = doc(db, "appointment",user);
+
+            const docRef = doc(db,"appointment",userid);
             const docSnap = await getDoc(docRef);
-            // const docRef1 = doc(db, "clinics",clinicID);
+            // const docRef1 = doc(db, "clinics",clID);
             // const docSnap1 = await getDoc(docRef1);
             // setClname(docSnap1.data().name);
             // setAdd(docSnap1.data().add);
+            const CID = (docSnap.data().clinicId)
+            console.log(CID)
+
+            const docRef1 = doc(db,"clinics",CID);
+            const docSnap1 = await getDoc(docRef1);
+
+            console.log(docSnap1.data().name)
+            setClnicID(docSnap.data().clinicId);
             setName(docSnap.data().patientname);
             setDate(docSnap.data().bookingdate);
             setTime(docSnap.data().bookingtime);
-            setClnicID(docSnap.data().clinickId);
-            console.log(name)
-            console.log(date)
-            console.log(time)
-            console.log(clinicID)
+            setClname(docSnap1.data().name);
+            setAdd(docSnap1.data().add);
+
+
+            // const q = query(doc(db, "clinics",CID), where("clinicId", "==", CID));
+            // const querySnapshot = await getDocs(q);
+            // console.log(querySnapshot.data())
+
+
+            // console.log(name)
+            // console.log(date)
+            // console.log(time)
+            // console.log(clinicID)
+
         }
         gettingBK()
 
-        // const gettingCL =async()=>{
-            // const docRef = doc(db, "clinics",clinicID);
-            // const docSnap = await getDoc(docRef);
-            // setClname(docSnap.data().name);
-            // setAdd(docSnap.data().add);
-        // }
-        // gettingCL()
+        //     const gettingCL =async()=>{
+        //     const docRef = doc(db, "clinics",clinicID);
+        //     const docSnap = await getDoc(docRef);
+        //     setClname(docSnap.data().name);
+        //     setAdd(docSnap.data().add);
+        //  }
+        //  gettingCL()
 
- },[])
+ },[user])
 
-    
 
     return (
         <ConfirmCont>
@@ -102,11 +117,11 @@ const qrconfirm = () => {
                 <Cont>
                     <InfoCardTwo
                         text1="Appointment Details"
-                        text2={date}
+                        text2= {date}   
                         text3= {time}
-                        text4= {clname}
-                        text5= {cladd}
-                        text6="1234 Canada Way, Burnaby V4J2B7"
+                        text4= {name}
+                        text5= {clname}
+                        text6={cladd}
                         fweight="500"
                         display="none"
                     />

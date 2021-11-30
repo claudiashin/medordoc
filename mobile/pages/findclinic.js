@@ -78,7 +78,7 @@ export default function findclinic({navigation}){
         </BackCont>
         <Wave source={require('../assets/backgroundmobile.png')} />
         <Map/>
-        <FilterCont>
+        {/* <FilterCont>
           <Filter 
           headerText1={"Language Prefrences"}
           headerText2={"Location"}
@@ -96,7 +96,7 @@ export default function findclinic({navigation}){
           optionText11={"Richmond"}
           optionText12={"Coquitlam"}
           /> 
-        </FilterCont>
+        </FilterCont> */}
         
         <CardCont>
           {/* <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />

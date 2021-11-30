@@ -107,7 +107,7 @@ const Map =({
 				}}
 				query={{
 					key: "AIzaSyCCt-xyjh42M9cMpdoeAo4nK6sP5bWDVss",
-					language: "en",
+					// language: "en ja",
 					components: "country:ca",
 					types: "establishment",
 					radius: 30000,
@@ -122,6 +122,7 @@ const Map =({
    <MapView style={styles.map}
     region={region}
     provider={PROVIDER_GOOGLE}　
+
     >
    
    <Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} />
@@ -590,7 +591,7 @@ const styles = StyleSheet.create({
     },
     map: {
       width: Dimensions.get('window').width,
-      height: Dimensions.get('window').height/2,
+      height: Dimensions.get('window').height/1.2,
     }})
 
 export default Map;
