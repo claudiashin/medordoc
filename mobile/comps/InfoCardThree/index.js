@@ -1,6 +1,11 @@
 import styled from "styled-components/native";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { StyleSheet, View, Button, Linking, Text } from "react-native";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getDocs, collection, query, where, deleteDoc, doc } from "firebase/firestore";
+import {db} from '../../utils/store'
+
+
 
 const InfoCardCont = styled.View`
   width: 300px;
@@ -51,6 +56,35 @@ const InfoCardThree = ({
   fontsize = 18,
   weight = 700,
 }) => {
+  const [apptData, setApptData] = useState("")
+  const [data, setData] = useState([])
+  const auth = getAuth();
+  
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+      console.log(uid)
+      const reload = async () => {
+        const q = query(collection(db, "appointment"), where("patientId", "==", uid));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          const appt = doc.data()
+            // data.push(<Date>{apptData.bookingdate}</Date>
+            //   )
+            //   setData([...data])
+            // console.log(appt)
+            // setApptData(appt)
+
+        });
+       
+      };
+      reload()
+      
+    } else {
+      console.log("no")
+    }
+  });
+  
   return (
     <InfoCardCont>
       <HeadingCont>
@@ -60,14 +94,8 @@ const InfoCardThree = ({
       </HeadingCont>
 
       <BodyCont>
-        <Date>{text2}</Date>
-        <Clinic>{text3}</Clinic>
-        <Date>{text4}</Date>
-        <Clinic>{text5}</Clinic>
-        <Date>{text6}</Date>
-        <Clinic>{text7}</Clinic>
-        <Date>{text8}</Date>
-        <Clinic>{text9}</Clinic>
+ 
+       {data}
       </BodyCont>
     </InfoCardCont>
   );
