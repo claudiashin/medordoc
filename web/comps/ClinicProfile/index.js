@@ -100,7 +100,7 @@ const names = [
   "Mandarin",
   "Japanese",
   "Korean",
-  "punjabi",
+  "Punjabi",
   "Hindi",
   "Farsi",
   
