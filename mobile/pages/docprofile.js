@@ -50,7 +50,8 @@ const NavBarCont = styled.View`
   flex: 0.15;
 `;
 
-export default function docprofile({ navigation }) {
+export default function docprofile({ navigation, route }) {
+  const { doctorInfo} = route.params;
   return (
     <MainCont>
       <Wave source={require("../assets/backgroundmobile.png")} />
@@ -58,7 +59,7 @@ export default function docprofile({ navigation }) {
         <ImageCont>
           <HeroAvatar heroheight="200" herowidth="200" visibility="hidden" />
         </ImageCont>
-        <DrDetail></DrDetail>
+        <DrDetail doctorInfo={doctorInfo}></DrDetail>
         <HdCont>
           <Header
             title="Would you like to request this doctor?"
@@ -81,7 +82,9 @@ export default function docprofile({ navigation }) {
             width="100"
             height="45"
             borderRad="50"
-            onPress={() => navigation.navigate("confirmreq")}
+            onPress={() => navigation.navigate("confirmreq",{
+              doctorInfo
+            })}
           />
         </ButCont>
       </ScrollView>
