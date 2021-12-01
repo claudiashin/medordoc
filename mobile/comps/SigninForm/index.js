@@ -126,7 +126,7 @@ const SigninForm = ({
         const auth =getAuth();
         const result = await createUserWithEmailAndPassword(auth,em,ps);
         userid = result.user.uid;
-        console.log(userid)
+        // console.log(userid)
         alert("Created!")
     
           const pushing = setDoc(doc(db,"patientuser",userid),{

@@ -2,8 +2,9 @@ import styled from "styled-components/native";
 import React, {useEffect, useState} from "react";
 import { StyleSheet, View, Button, Linking, Text } from "react-native";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getDocs, collection, query, where, deleteDoc, doc } from "firebase/firestore";
+import { getDocs, collection, query, where, deleteDoc, doc, getDoc } from "firebase/firestore";
 import {db} from '../../utils/store'
+import app from "../../utils/inits";
 
 
 
@@ -58,33 +59,55 @@ const InfoCardThree = ({
 }) => {
   const [apptData, setApptData] = useState("")
   const [data, setData] = useState([])
-  const auth = getAuth();
-  
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      console.log(uid)
-      const reload = async () => {
-        const q = query(collection(db, "appointment"), where("patientId", "==", uid));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-          const appt = doc.data()
-            // data.push(<Date>{apptData.bookingdate}</Date>
-            //   )
-            //   setData([...data])
-            // console.log(appt)
-            // setApptData(appt)
+  const [clinData, setClinData] = useState("")
+  const [dataTwo, setDataTwo] = useState([])
 
-        });
-        
-       
-      };
-      reload()
+  const [test, setTest] = useState("")
+  useEffect(()=>{
+    
+    const auth = getAuth();
+    const userid = auth.currentUser.uid;
+    console.log(userid)
+    
+    const reload = async() => {
       
-    } else {
-      console.log("no")
-    }
-  });
+      const q = query(collection(db, "appointment"), where("userid", "==", userid));
+      const querySnapshot =  await getDocs(q);
+ 
+      const b = query(collection(db, "clinics"), where("clinicId", "==", test));
+      const querySnapshotb =  await getDocs(b);
+
+      querySnapshotb.forEach((doc) => {
+        const clin = doc.data()
+        dataTwo.push(<Clinic>{doc.data().name}</Clinic>)
+        setDataTwo([...dataTwo])
+      })
+
+      querySnapshot.forEach((doc) => {
+        const appt = doc.data()
+        console.log(clinData.name)
+
+          data.push(
+            <>
+                      <Clinic>{appt.bookingdate}</Clinic>
+
+          <Date>{appt.bookingtime}</Date>
+          <Clinic>{clinData.name}</Clinic>
+          </>
+ 
+            )
+            setData([...data])
+          // console.log(appt)
+          setApptData(appt)
+          setTest(appt.clinicId)
+          
+      });
+      
+      
+    };
+    reload()
+  },[])
+
   
   return (
     <InfoCardCont>
@@ -95,8 +118,9 @@ const InfoCardThree = ({
       </HeadingCont>
 
       <BodyCont>
- 
+
        {data}
+       {dataTwo}
       </BodyCont>
     </InfoCardCont>
   );

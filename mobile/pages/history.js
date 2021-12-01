@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styled from 'styled-components/native';
 import HeroAvatar from '../comps/HeroAvatar';
 import InfoCard from '../comps/InfoCard'
@@ -41,18 +41,27 @@ const BodyContCont = styled.ScrollView`
 
 `
 const History = () => {
-  // const auth = getAuth();
   // const [myUid, setMyUid] = useState()
-  // onAuthStateChanged(auth, (user) => {
-  //   if (user) {
-  //     const uid = user.uid;
-  //     console.log(uid)
-  //     setMyUid(uid)
-      
-  //   } else {
-  //     console.log("no")
+  // useEffect(()=>{
+  //   const getUser = async () => {
+  //     const auth = getAuth();
+  //     const user = auth.currentUser;
+  //     setMyUid(user.uid)
+  //     console.log(user.uid)
   //   }
-  // });
+
+  //   // onAuthStateChanged(auth, (user) => {
+  //   //   if (user) {
+  //   //     const uid = user.uid;
+  //   //     console.log(myUid)
+  //   //     setMyUid(uid)
+  //   //   } else {
+  //   //     console.log("no")
+  //   //   }
+  //   // });
+  //   getUser()
+  // },[])
+  
   return <Cont>
 
     <BodyContCont>
@@ -69,7 +78,7 @@ const History = () => {
         </HeaderCont>
 
         <BodyCont>
-          <InfoCardThree  />
+          <InfoCardThree/>
         </BodyCont>
       </MainCont>
 
