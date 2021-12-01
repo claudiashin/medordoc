@@ -90,16 +90,7 @@ const DrDetail = ({doctorInfo}) => {
         editable={false}
         onChangeText={address => setAddress(address)}
     ></TextInput>
-    <TextInput
-        style={styles.inputbox}
-        underlineColor="#505050"
-        autoCapitalize='sentences'
-        type="flat"
-        label="Type"
-        value={others}
-        editable={false}
-        onChangeText={others => setOthers(others)}
-    ></TextInput>
+
 
     </>
 };
