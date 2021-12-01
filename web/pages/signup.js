@@ -52,13 +52,15 @@ const Wave = styled.img`
 const HeaderTitleCont = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+  margin-top: -40px;
 `;
 
 const HeroLottieCont = styled.div`
   display: flex;
-  // justify-content: center;
-  // align-items: center;
+  /* margin-left: -100px; */
+  /* justify-content: center; */
+  /* align-items: center; */
   // flex-wrap: wrap;
 `;
 
@@ -67,19 +69,19 @@ const BodyCont = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  margin-left: -60px;
 `;
 
 const SignInCont = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 10%;
 `;
 
 const SignInCont_Two = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 40px;
-  margin-bottom: 10%;
 `;
 
 const Title = styled.p`
@@ -117,6 +119,7 @@ const InfoCardCont = styled.div`
 const FooterCont = styled.div`
   width: 100%;
   bottom: 0;
+  margin-top: 10%;
 `;
 const HeroCont = styled.div`
   width: 200px;
@@ -258,9 +261,10 @@ export default function Home() {
           <HeaderTitleCont>
             <HeaderTitle title="Create Your Account" />
           </HeaderTitleCont>
+
           <BodyCont>
             <HeroLottieCont>
-              <HeroLottie changePage source={myLottie} width="550px" />
+              <HeroLottie changePage source={myLottie} width="650px" />
             </HeroLottieCont>
 
             <SignInCont>
