@@ -33,11 +33,13 @@ const Cont2 = styled.View`
     /* padding-top: 20px; */
     align-content:center;
     justify-content:center;
-`
+`;
+
 const Banner = styled.View`
     display: flex;
     z-index:2;
-`
+`;
+
 const NavBarCont = styled.View`
 `;
 
@@ -46,23 +48,25 @@ const CardCont = styled.View`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-`
+`;
 
 const BtnCont = styled.View`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     margin-right: 20px;
+`;
 
-`
 const BackCont = styled.View`
   display: flex;
   position: absolute;
   z-index: 999;
-`
+`;
+
 const MyScrollView = styled.ScrollView`
 
-`
+`;
+
 const ClinicProfile = ({route,navigation}) => {
   
 const [info,setInfo] =useState('')
@@ -107,15 +111,15 @@ useEffect(()=>{
                 </BackCont>
                 <Wave source={require('../assets/backgroundmobile.png')} />
                 <Cont2>
-                    <HeroAvatar herowidth={200} heroheight={200} />
+                    <HeroAvatar herowidth={180} heroheight={180} />
 
                 </Cont2>
                 <CardCont>
                     <InfoCard 
                         text = {info.name}
                         text2 = {info.add}
-                        text3 = {info.lang}
-                        text4 ={info.num}
+                        text3 = {info.num}
+                        text4 ={info.lang}
                         text5 = {info.open}
                         text6 ={info.close}
                         // text3 = "Website:"
@@ -124,9 +128,14 @@ useEffect(()=>{
                         weight = "700"
                         weight2 = "700"
                         fontcolor = '#226BAF'
+                        address="Address: "
+                        phone="Phone: "
+                        language="Language: "
+                        open="Open: "
+                        close="Close: "
                     />
-    
                 </CardCont>
+                
                 <BtnCont>
                     <Btn onPress={() => navigation.navigate("login",{clinic:cluid})} />
                 </BtnCont>
