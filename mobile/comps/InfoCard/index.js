@@ -99,34 +99,37 @@ const InfoCard = ({
         </QRCodeCont>
 
         <SubheadingCont>
-            <Subheadingtwo>{text2}</Subheadingtwo>
+            <Subheadingtwo>Address: {text2}</Subheadingtwo>
+        </SubheadingCont>
+
+        <SubheadingCont>
+            <Subheadingtwo>Open: {text5}</Subheadingtwo>
         </SubheadingCont>
 
 
         <SubheadingCont>
-            <Subheadingtwo>{text3}</Subheadingtwo>
+            <Subheadingtwo>Close: {text6}</Subheadingtwo>
         </SubheadingCont>
 
+         
         <SubheadingCont>
-            <Subheadingtwo>{text4}</Subheadingtwo>
+            <Subheadingtwo>Phone:  {text4}</Subheadingtwo>
         </SubheadingCont>
 
-        <SubheadingCont>
-            <Subheadingtwo>{text5}</Subheadingtwo>
-        </SubheadingCont>
 
 
         <SubheadingCont>
-            <Subheadingtwo>{text6}</Subheadingtwo>
+            <Subheadingtwo>Language: {text3}</Subheadingtwo>
         </SubheadingCont>
 
-        <WebsiteContainer /*style={styles.website_container}*/>
+        {/* <WebsiteContainer /*style={styles.website_container}>
             <Subheadingthree subheadingthree_fw={weight2} fontcolor={fontcolor}>{text3}</Subheadingthree>
             <Subheadingfour subheadingfour_fw={weight2} fontcolor={fontcolor}>{text4}</Subheadingfour>
             <Website onPress={() => Linking.openURL(website_url)}>{website_url}</Website>
-            {/* <Website onPress={() => Linking.openURL(website_url)}>{website_url}</Website> */}
+            <Website onPress={() => Linking.openURL(website_url)}>{website_url}</Website> 
 
-        </WebsiteContainer>
+        </WebsiteContainer> */}
+   
     </InfoCardCont >
 }
 

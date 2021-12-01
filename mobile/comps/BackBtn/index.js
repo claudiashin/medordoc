@@ -1,7 +1,8 @@
-import {View,Text, SafeAreaView, StyleSheet, TextInput, Pressable} from "react-native" ;
+import {View,Text, SafeAreaView, StyleSheet, TextInput, Pressable,Image} from "react-native" ;
 import styled from 'styled-components/native';
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
+import { Asset } from "react-native-unimodules";
 
 
 const Backcont = styled.TouchableOpacity`
@@ -26,6 +27,7 @@ const BackBtn = ({
             
             // onPress={() => navigation.goBack()}         
         />
+        {/* <Image source ={require('../../assets/plus.png')}/> */}
     </Backcont>
 }
 

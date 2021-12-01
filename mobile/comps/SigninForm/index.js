@@ -113,14 +113,12 @@ const SigninForm = ({
     setGender(gen);
     setAdd(address);
     setPatientId(patientid);
-
   };
 
   const [em, setEm] = useState('')  
   const [ps, setPs] = useState('')  
   const [id,setId] =useState('')
 
-  
   const CreateUser = async(em,ps)=>{
        
         const auth =getAuth();
@@ -128,7 +126,7 @@ const SigninForm = ({
         userid = result.user.uid;
         console.log(userid)
         alert("Created!")
-    
+
           const pushing = setDoc(doc(db,"patientuser",userid),{
           fname: fname,
           lname: lname,
