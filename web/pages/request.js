@@ -9,7 +9,14 @@ import HeaderTitle from "../comps/HeaderTitle";
 import QRscan from "../comps/QRscan";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getDocs, doc, collection, query, where, getDoc } from "firebase/firestore";
+import {
+  getDocs,
+  doc,
+  collection,
+  query,
+  where,
+  getDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 
 const Cont = styled.div`
@@ -17,6 +24,7 @@ const Cont = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-height: 300px;
 `;
 
 const WaveCont = styled.div`
@@ -45,18 +53,25 @@ const NavCont = styled.div`
   position: absolute;
   top: 0;
 `;
+const Subheader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-top: -20px;
+`;
 
 const ContPatientCard = styled.div`
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 0px 40px 20px 40px;  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 40px 20px 40px;
 `;
 
 const ContPatientCardInd = styled.div`
-    display: flex;
-    margin: 10px;
+  display: flex;
+  margin: 10px;
 `;
 
 const ContFooter = styled.div`
@@ -64,18 +79,9 @@ const ContFooter = styled.div`
   margin-top: 10%;
 `;
 
-const Modal = styled.div`
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 100;
-  display: ${(props) => (props.show ? "flex" : "none")};
-`;
 
-const PatientRequest = ({ uid, showModal, setModalContent }) => {
+
+const PatientRequest = ({ uid }) => {
   // const [uid, setUid] = useState();
   const [requests, setPatientRequests] = useState([]);
 
@@ -110,9 +116,7 @@ const PatientRequest = ({ uid, showModal, setModalContent }) => {
   }, [uid]);
 
   return (
-    <div
-        style={{display: "flex"}}
-    >
+    <div style={{ display: "flex" }}>
       {requests.map((request, index) => {
         const info = {
           id: request.id,
@@ -120,7 +124,6 @@ const PatientRequest = ({ uid, showModal, setModalContent }) => {
           email: request.email,
           concern: request.concern,
           name: request.name,
-          
         };
         return (
           <ContPatientCardInd key={index}>
@@ -142,24 +145,24 @@ const PatientRequest = ({ uid, showModal, setModalContent }) => {
   );
 };
 
-export default function Home({ }) {
-    const [uid, setUid] = useState();
-    const [showModal, setShowModal] = useState(false);
-    const [modalContent, setModalContent] = useState("");
-    
-    useEffect(async () => {
-        const auth = getAuth();
-        onAuthStateChanged(auth, async (user) => {
-          if (user) {
-            setUid(user.uid);
-            const usersDocRef = doc(db, "clinics", user.uid);
-            const data = await getDoc(usersDocRef);
-            // console.log(data);
-            const result = data.data();
-            console.log(result);
-          }
-        });
-      }, []);
+export default function Home({}) {
+  const [uid, setUid] = useState();
+  const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState("");
+
+  useEffect(async () => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        setUid(user.uid);
+        const usersDocRef = doc(db, "clinics", user.uid);
+        const data = await getDoc(usersDocRef);
+        // console.log(data);
+        const result = data.data();
+        console.log(result);
+      }
+    });
+  }, []);
 
   return (
     <Cont>
@@ -169,20 +172,24 @@ export default function Home({ }) {
       <NavCont>
         <NavBar />
         <HeaderCont>
-          <HeaderTitle title={"Patient List"} />
+          <HeaderTitle title={"Requests"} />
         </HeaderCont>
       </NavCont>
 
       <QRscan />
+      <div style={{position: 'relative'}}>
+        <Subheader>
+          <HeaderTitle title={"Patient Lists"} fontSize={22} fontWeight={600} />
+        </Subheader>
 
-      <ContPatientCard>
-        <PatientRequest
-          uid={uid}
-          showModal={setShowModal}
-          setModalContent={setModalContent}
-        />
-        <Modal show={showModal}>{modalContent}</Modal>
-      </ContPatientCard>
+        <ContPatientCard>
+          <PatientRequest
+            uid={uid}
+            showModal={setShowModal}
+            setModalContent={setModalContent}
+          />
+        </ContPatientCard>
+      </div>
       <ContFooter>
         <Footer />
       </ContFooter>

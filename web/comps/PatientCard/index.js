@@ -2,16 +2,13 @@ import React, { useEffect, useReducer } from "react";
 import styled from "styled-components";
 import { AiOutlineMail } from "@react-icons/all-files/ai/AiOutlineMail";
 import { IoIosClose } from "@react-icons/all-files/io/IoIosClose";
+import { BsTrash } from "react-icons/bs";
 
 import { useState } from "react";
 
-import { getDocs, doc, getDoc } from "firebase/firestore";
-// import { collection, getDoc, addDoc, doc } from "firebase/firestore";
+import { getDocs, doc, getDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 
-// import PopupCard from "../PopupCard";
-import { getDatabase, ref, onValue } from "firebase/database";
-import { onAuthStateChanged, getAuth } from "@firebase/auth";
 
 //card
 const Maincont = styled.div`
@@ -20,11 +17,12 @@ const Maincont = styled.div`
   justify-content: center;
   align-items: center;
   width: 330px;
-  height: 420px;
+  height: 400px;
   border-radius: 10px;
   border: 1px solid black;
   background: white;
   padding-bottom: 50px;
+  position: relative;
 `;
 //avatar image
 const Avatarcont = styled.div`
@@ -94,130 +92,116 @@ const Closebutton = styled.div`
   cursor: pointer;
 `;
 
-const PopupCont = styled.div`
-  display: flex;
-  position: absolute;
-  margin-top: 50px;
-  align-self: center;
-  justify-content: center;
-`;
-
 const EmailbutCont = styled.div`
   display: flex;
 `;
 
-//showModal 
+//showModal
 const PopupCardCont = styled.div`
-  display: flex;
-  background-color: #ffffff;
+  display: ${(props) => (props.show ? "block" : "none")};
+  background-color: #fff;
   flex-direction: column;
   justify-content: space-between;
   align-content: space-between;
-  width: 320px;
-  height: 300px;
-  border: 2px solid #505050;
-  border-radius: 10px;
+  width: 280px;
+  height: 250px;
+  border: 1px solid #505050;
+  border-radius: 5px;
+  z-index: 100;
+  position: absolute;
+  top: 70px;
 `;
 
 const CloseCont = styled.div`
   display: flex;
-  justify-content: flex-end;
-  margin: 5px 15px -30px 0px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 30px 0;
 `;
-
 
 const Heading = styled.h2`
   text-align: center;
-  margin: 40px;
-  line-height: 30px;
+  margin: 15px;
+  font-size: 18px;
+  font-weight: 600;
 `;
 
 const ButtonCont = styled.div`
   display: flex;
   justify-content: space-around;
-  background-color: white;
-  margin: 0px 20px 65px 20px;
+  margin: 20px 20px 0px 20px;
 `;
 
 const Button = styled.button`
-  color: #226baf;
-  font-size: 22px;
-  font-weight: 900;
+  color: #fff;
+  font-family: nunito;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 5px;
   border: none;
-  background-color: #fff;
+  border-radius: 5px;
+  width: 100px;
+  background-color: ${props => props.btncol};
   cursor: pointer;
 `;
 
-const showModalContent = ({showModal, setModalContent}) => {
-  return (
-    <PopupCardCont>
-      <CloseCont>
-        <IoIosClose
-          onClick={() => {
-           showModal(false);
-          }}
-          size={40}
-        />
-      </CloseCont>
-
-      <Heading>Are you sure you want to remove this patient request?</Heading>
-
-      <ButtonCont>
-        <Button
-          onClick={
-            (async () => {
-              await deletePatient(doc(db, "requests", patientId));
-            })
-          }
-        >
-          YES
-        </Button>
-        {/* <Button onClick={() => CloseCard()} bgHover={bgHover}>
-            NO
-          </Button> */}
-      </ButtonCont>
-      {/* </PopupCardCont> */}
-    </PopupCardCont>
-  );
-};
-
 const PatientCard = ({
   imagesource = "https://placekitten.com/100/100",
-  // //subject
-  // button1 = "flex",
-  // button2 = "flex",
-  // editDoc = () => { },
-
-  //   info,
-  //button
-    setShowModal,
-    showModalContent,
   info,
+  btncol = "#397fbf",
 }) => {
   const [patientName, setPatientName] = useState("");
   const [patientEmail, setPatientEmail] = useState("");
   const [patientConcern, setPatientConcern] = useState("");
   const [patientGender, setPatientGender] = useState("");
+  const [patientId, setPatientId] = useState("");
 
-//   const [showModal, setShowModal] = useState(false);
-//   const [modalContent, setModalContent] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setPatientName(info.name ?? "");
     setPatientEmail(info.email ?? "");
     setPatientGender(info.gender ?? "");
     setPatientConcern(info.concern ?? "");
+    setPatientId(info.id ?? "");
   }, [info]);
-
+  console.log(info);
 
 
   return (
     <Maincont>
+      <PopupCardCont show={showModal}>
+        <CloseCont>
+          <BsTrash size={50} />
+        </CloseCont>
+
+        <Heading>Are you sure you want to remove this patient request?</Heading>
+
+        <ButtonCont>
+          <Button
+            onClick={async () => {
+              await deleteDoc(doc(db, "requests", patientId));
+              // console.log(patientId);
+            }}
+            btncol="#397fbf"
+          >
+            Yes
+          </Button>
+          <Button
+            onClick={() => {
+              setShowModal(false);
+            }}
+            size={40}
+            btncol="#5c5c5c"
+          >
+            No
+          </Button>
+        </ButtonCont>
+      </PopupCardCont>
       <Closebutton>
         <IoIosClose
           onClick={() => {
             setShowModal(true);
-            showModalContent();
           }}
           size={40}
         />

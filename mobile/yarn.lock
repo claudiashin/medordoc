@@ -4424,6 +4424,7 @@ expo-font@~10.0.3:
     expo-modules-core "~0.4.4"
     fontfaceobserver "^2.1.0"
 
+<<<<<<< HEAD
 expo-font@~9.2.1:
   version "9.2.1"
   resolved "https://registry.npmjs.org/expo-font/-/expo-font-9.2.1.tgz"
@@ -4432,6 +4433,8 @@ expo-font@~9.2.1:
     expo-modules-core "~0.2.0"
     fontfaceobserver "^2.1.0"
 
+=======
+>>>>>>> 80b7c0f09881f1054921ea0718c83f4c03e5f8ab
 expo-google-app-auth@~9.0.0:
   version "9.0.0"
   resolved "https://registry.npmjs.org/expo-google-app-auth/-/expo-google-app-auth-9.0.0.tgz"
@@ -5197,11 +5200,14 @@ hyphenate-style-name@^1.0.2, hyphenate-style-name@^1.0.4:
   resolved "https://registry.npmjs.org/hyphenate-style-name/-/hyphenate-style-name-1.0.4.tgz"
   integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
 
+<<<<<<< HEAD
 i@^0.3.7:
   version "0.3.7"
   resolved "https://registry.npmjs.org/i/-/i-0.3.7.tgz"
   integrity sha512-FYz4wlXgkQwIPqhzC5TdNMLSE5+GS1IIDJZY/1ZiEPCT2S3COUVZeT5OW4BmW4r5LHLQuOosSwsvnroG9GR59Q==
 
+=======
+>>>>>>> 80b7c0f09881f1054921ea0718c83f4c03e5f8ab
 iconv-lite@^0.6.2:
   version "0.6.3"
   resolved "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz"
@@ -5282,11 +5288,14 @@ invariant@^2.2.2, invariant@^2.2.3, invariant@^2.2.4:
   dependencies:
     loose-envify "^1.0.0"
 
+<<<<<<< HEAD
 ionicons-npm@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/ionicons-npm/-/ionicons-npm-2.0.1.tgz"
   integrity sha1-7NC+lJRNnKafW7SRLt+E0uxwLhU=
 
+=======
+>>>>>>> 80b7c0f09881f1054921ea0718c83f4c03e5f8ab
 ip@^1.1.5:
   version "1.1.5"
   resolved "https://registry.npmjs.org/ip/-/ip-1.1.5.tgz"

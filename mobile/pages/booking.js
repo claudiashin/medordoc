@@ -35,10 +35,11 @@ const MyScrollView = styled.ScrollView`
 `;
 
 const Wave = styled.Image`
-  width: 100%;
-  height: 30%;
-  position: absolute;
-  top: 0;
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    top: 0;
+    z-index: 2;
 `;
 
 const Body = styled.View`

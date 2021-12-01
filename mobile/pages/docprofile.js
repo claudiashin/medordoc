@@ -15,6 +15,7 @@ import HeroAvatar from "../comps/HeroAvatar";
 import Btn from "../comps/Btn";
 import Header from "../comps/Header";
 import NavBar from "../comps/NavBar";
+import BackBtn from "../comps/BackBtn";
 
 const MainCont = styled.View`
   flex: 1;
@@ -43,12 +44,17 @@ const ButCont = styled.View`
   flex-direction: row;
   margin-top: 20px;
   margin-bottom: 20px;
-  align-items: center;
-  justify-content: space-around;
+  margin-left: 220px;
 `;
 const NavBarCont = styled.View`
   flex: 0.15;
 `;
+const BackCont = styled.View`
+  display: flex;
+  position: absolute;
+  right: 330px;
+  z-index: 999;
+`
 
 export default function docprofile({ navigation, route }) {
   const { doctorInfo} = route.params;
@@ -56,6 +62,9 @@ export default function docprofile({ navigation, route }) {
     <MainCont>
       <Wave source={require("../assets/backgroundmobile.png")} />
       <ScrollView style={styles.scrollView}>
+        <BackCont>
+          <BackBtn onPress={() => navigation.goBack()}/>
+        </BackCont>
         <ImageCont>
           <HeroAvatar heroheight="200" herowidth="200" visibility="hidden" />
         </ImageCont>
@@ -67,15 +76,7 @@ export default function docprofile({ navigation, route }) {
           />
         </HdCont>
         <ButCont>
-          <Btn
-            title="Back"
-            fsize="20"
-            bgcolor="#EA9898"
-            width="100"
-            height="45"
-            borderRad="50"
-            onPress={() => navigation.goBack()}
-          />
+
           <Btn
             title="Yes"
             fsize="22"

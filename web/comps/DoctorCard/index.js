@@ -127,6 +127,7 @@ function getStyles(name, languages, theme) {
       languages.indexOf(name) > -1
         ? theme.typography.fontWeightMedium
         : theme.typography.fontWeightRegular,
+        fontFamily:"nunito"
   };
 }
 
@@ -201,7 +202,7 @@ const DoctorInputCard = ({
           <FormTitle>Name</FormTitle>
           <FormInput
             type="text"
-            placeholder="Enter Dr name"
+            placeholder="Enter Dr Name"
             value={nameDoc}
             onChange={(e) => setNameDoc(e.target.value)}
           />
@@ -210,7 +211,7 @@ const DoctorInputCard = ({
           <FormTitle>Years Experience</FormTitle>
           <FormInput
             type="number"
-            placeholder="Enter years of experience"
+            placeholder="Enter Years of Experience"
             value={ex}
             onChange={(e) => setEx(e.target.value)}
           />
@@ -223,8 +224,8 @@ const DoctorInputCard = ({
             placeholder="Choose Gender"
           >
             <SelectOpt></SelectOpt>
-            <SelectOpt>Male</SelectOpt>
-            <SelectOpt>Female</SelectOpt>
+            <SelectOpt style={{fontFamily:"nunito"}}>Male</SelectOpt>
+            <SelectOpt style={{fontFamily:"nunito"}}>Female</SelectOpt>
           </SelectCont>
         </Form>
         <Form>
@@ -237,8 +238,8 @@ const DoctorInputCard = ({
           />
         </Form>
         <div>
-          <FormControl sx={{ m: 1, width: 400, height: 35, marginTop: 3 }}>
-            <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
+          <FormControl sx={{ m: 1, width: 400, height: 35, marginTop: 2, fontFamily:"nunito", borderRadius: 0, }}>
+            <InputLabel style={{fontFamily:"nunito", color: 'black'}} id="demo-multiple-name-label">Languages</InputLabel>
             <Select
               labelId="demo-multiple-name-label"
               id="demo-multiple-name"
@@ -252,6 +253,7 @@ const DoctorInputCard = ({
                 width: 390,
                 marginLeft: 5,
                 borderBlockColor: "black",
+                fontFamily:"nunito"
               }}
             >
               {names.map((name) => (
@@ -259,6 +261,7 @@ const DoctorInputCard = ({
                   key={name}
                   value={name}
                   style={getStyles(name, languages, theme)}
+                  
                 >
                   {name}
                 </MenuItem>
