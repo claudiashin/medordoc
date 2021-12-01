@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Button, Linking, Text } from 'react-native';
 import QRCode from '../QrCode';
 
+import AppLoading from 'expo-app-loading';
+import { useFonts, Nunito_400Regular, Nunito_600SemiBold,  Nunito_700Bold, } from '@expo-google-fonts/nunito';
+
 const InfoCardCont = styled.View`  
     height:400px;
     width: 300px;
@@ -10,6 +13,7 @@ const InfoCardCont = styled.View`
     padding: 20px;
     margin: 10px;
     background-color: #fff;
+
 `;
 
 const HeadingCont = styled.View`
@@ -89,9 +93,21 @@ const InfoCard = ({
     display= "none"
 }) => {
 
+    let [fontsLoaded] = useFonts({
+        Nunito_400Regular,
+        Nunito_600SemiBold,
+        Nunito_700Bold,
+      });
+    
+      if(!fontsLoaded) {
+          return <AppLoading />
+      } else {
+
     return <InfoCardCont>
         <HeadingCont>
-            <Heading heading_fs={fontsize} heading_fw={weight}>{text}</Heading>
+            <Heading 
+            style={{fontFamily: 'Nunito_700Bold'}}
+            heading_fs={fontsize} heading_fw={weight}>{text}</Heading>
         </HeadingCont>
 
         <QRCodeCont display={display}>
@@ -99,27 +115,37 @@ const InfoCard = ({
         </QRCodeCont>
 
         <SubheadingCont>
-            <Subheadingtwo>Address: {text2}</Subheadingtwo>
+            <Subheadingtwo
+                style={{fontFamily: 'Nunito_400Regular'}}
+            >{text2}</Subheadingtwo>
         </SubheadingCont>
 
         <SubheadingCont>
-            <Subheadingtwo>Open: {text5}</Subheadingtwo>
+            <Subheadingtwo
+                style={{fontFamily: 'Nunito_400Regular'}}
+            >{text3}</Subheadingtwo>
         </SubheadingCont>
 
 
         <SubheadingCont>
-            <Subheadingtwo>Close: {text6}</Subheadingtwo>
+            <Subheadingtwo
+                style={{fontFamily: 'Nunito_400Regular'}}
+            >{text4}</Subheadingtwo>
         </SubheadingCont>
 
          
         <SubheadingCont>
-            <Subheadingtwo>Phone:  {text4}</Subheadingtwo>
+            <Subheadingtwo
+                style={{fontFamily: 'Nunito_400Regular'}}
+            >{text5}</Subheadingtwo>
         </SubheadingCont>
 
 
 
         <SubheadingCont>
-            <Subheadingtwo>Language: {text3}</Subheadingtwo>
+            <Subheadingtwo
+                style={{fontFamily: 'Nunito_400Regular'}}
+            >{text6}</Subheadingtwo>
         </SubheadingCont>
 
         {/* <WebsiteContainer /*style={styles.website_container}>
@@ -131,6 +157,7 @@ const InfoCard = ({
         </WebsiteContainer> */}
    
     </InfoCardCont >
+      }
 }
 
 const styles = StyleSheet.create({

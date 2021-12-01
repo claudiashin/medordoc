@@ -73,7 +73,6 @@ export default function home() {
 
       <QRscan />
 
-      <MenuCard width={300} height={350} source={MyLottie} routeTo="/request" />
       <MenuCard
         title={"Appointment Bookings"}
         width={300}
@@ -81,8 +80,9 @@ export default function home() {
         source={MyLottie2}
         routeTo="/booking"
       />
+      <MenuCard width={300} height={350} source={MyLottie} routeTo="/request" />
       <MenuCard
-        title={"Doctors' Profiles"}
+        title={"Clinic & Doctor Profiles"}
         width={300}
         height={350}
         source={MyLottie3}

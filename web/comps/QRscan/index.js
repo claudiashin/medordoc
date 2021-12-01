@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography'
 
 const MainCont = styled.div`
     display: flex;
+    
 `;
 
 const code = ['go to check in']
@@ -33,29 +34,18 @@ function SimpleDialog(props) {
       console.error(err)
     }
 
-    // const handleScan = (data) => {
-    //     if(data) {
-    //       useState({
-    //             result:data
-    //         })
-    //         window.location.href = `/checkIn?ccode=${result.cornit}`;
-
-    //     }
-    // }
-
-
     const handleScan = (data) => {
       if (data) {
       setScanResult(data);
       // window.location.href = `/checkIn?ccode=${scanResult.cornit}`;
-      window.location.href = `/checkin`;
+      window.location.href = `/booking`;
       }
     };
 
     return (
       <Dialog onClose={handleClose} open={open}>
         <DialogTitle
-            sx={{marginLeft: 8, marginRight: 8}}
+            sx={{marginLeft: 8, marginRight: 8, fontFamily: 'nunito' }}
         >Scan QRcode and Check In</DialogTitle>
         <QrReader
             delay={300}
@@ -110,7 +100,12 @@ const QRscan = () => {
                 right: -80,
                 transform: "rotate(0.75turn)",
                 margin: 0,
-                boxShadow: "-3px 3px 5px grey;"
+                boxShadow: "-3px 3px 5px grey;",
+                fontFamily: 'nunito',
+                '&:hover': {
+                  backgroundColor: '#E97979',
+                  border: "none",
+                },
             }}
         >
         Check In 

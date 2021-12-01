@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import 'react-calendar/dist/Calendar.css';
+import "react-calendar/dist/Calendar.css";
 
 //import comps
 import NavBar from "../comps/NavBar";
@@ -92,8 +92,7 @@ const ListCon = styled.div`
 
 const ContPatientList = styled.div`
   width: 400px;
-  border: 1px solid black;
-  border-radius: 5px;
+  border: 1px solid #8E8E8E;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,19 +125,21 @@ const PatientBooking = ({ uid, date }) => {
   const [bookings, setPatientBooking] = useState([]);
 
   const getBooking = async (uid) => {
+    const datestr = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     const q = query(
       collection(db, "appointment"),
-      where("clinicId", "==", uid)
-      // where("bookingdate", "==", date)
+      where("clinicId", "==", uid),
+      where("bookingdate", "==", datestr)
     );
     const querySnapshot = await getDocs(q);
-    console.log(q);
+    console.log(querySnapshot);
     const bookings = [];
     querySnapshot.forEach((doc) => {
       var temp = doc.data();
       temp.id = doc.id;
       bookings.push(temp);
     });
+    console.log(bookings);
     setPatientBooking(bookings);
   };
 
@@ -146,7 +147,7 @@ const PatientBooking = ({ uid, date }) => {
     if (uid) {
       getBooking(uid);
     }
-  }, [uid]);
+  }, [uid, date]);
 
   return (
     <div>
@@ -160,9 +161,7 @@ const PatientBooking = ({ uid, date }) => {
         };
         return (
           <ListCon key={index}>
-            <PatientList
-              info={info}
-            />
+            <PatientList info={info} />
           </ListCon>
         );
       })}
@@ -210,7 +209,7 @@ export default function Home({}) {
       <NavBarCont>
         <NavBar />
         <HeaderCont>
-          <HeaderTitle title={"Booking"} />
+          <HeaderTitle title={"Bookings"} />
         </HeaderCont>
       </NavBarCont>
 
@@ -227,15 +226,15 @@ export default function Home({}) {
 
         <Low>
           <Column>
-            <LiveWaitTime></LiveWaitTime>
-          </Column>
-          <Column>
             <ContPatientList>
               <TitleCont>
                 <Title>{date.toDateString()}</Title>
               </TitleCont>
               <PatientBooking uid={uid} date={date} />
             </ContPatientList>
+          </Column>
+          <Column>
+            <LiveWaitTime uid={uid}></LiveWaitTime>
           </Column>
         </Low>
       </BodyCont>

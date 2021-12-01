@@ -19,7 +19,7 @@ const Extra = styled.View`
 `
 const Maincont = styled.View`
     display:flex;
-    flex:1;
+   
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -28,7 +28,7 @@ const Maincont = styled.View`
     background-color: #ffffff;
     border: 1px solid #E9D7CB;
     border-radius: 5px;
-    left: 20%;
+
 `
 
 //filter icon container
@@ -46,7 +46,12 @@ const FilterIcon = styled.Image`
 const Headercont = styled.View`
     display: flex;
     margin: 15px;
-    
+    margin-right: 100px;
+`
+const HeaderTwocont = styled.View`
+    display: flex;
+    margin: 15px;
+    margin-right: 245px;
 `
 const Filterheader = styled.Text`
     font-size: 24px;
@@ -59,6 +64,13 @@ const Filtercont = styled.View`
     flex-direction:row;
     justify-content: center;
     align-items: center;
+`
+const FilterTwocont = styled.View`
+    display:flex;
+    flex-direction:row;
+    margin-right: 100px;
+    
+   
 `
 const Filteropt = styled.TouchableOpacity`
     display: flex;
@@ -90,7 +102,7 @@ const Btncont = styled.View`
     display: flex;
     position: relative;
     margin-bottom: 10px;
-    top: 15px;
+    top: 25px;
     left: 80px;
 `
 
@@ -194,11 +206,11 @@ const Filter=({
                     <Filttext>{optionText6=optionText6}</Filttext>
                 </Filteropt>
             </Filtercont>
-            <Headercont>
+            <HeaderTwocont>
                 <Filterheader>{headerText2=headerText2}</Filterheader>
-            </Headercont>
+            </HeaderTwocont>
 
-            <Filtercont>
+            <FilterTwocont>
             <Filteropt
                  onPress={()=>setShow7(!show7)}
                  style={{backgroundColor: show7 ? "#fff" : "#E9D7CB"}}
@@ -211,6 +223,9 @@ const Filter=({
             >
                 <Filttext>{optionText8=optionText8}</Filttext>
             </Filteropt>
+
+
+
             <FilteroptTwo 
             onPress={()=>setShow9(!show9)}
             style={{backgroundColor: show9 ? "#fff" : "#E9D7CB"}}
@@ -236,10 +251,10 @@ const Filter=({
                 <Filttext>
                     {optionText8=optionText12}</Filttext>
             </FilteroptTwo>
-            </Filtercont>
+            </FilterTwocont>
 
             <Btncont>
-                <Btn title={"Apply"} height={50} width={120} fsize={20}/>
+                <Btn title={"Apply"} height={40} width={100} fsize={18}/>
             </Btncont>
         </Maincont>
         </Extra>

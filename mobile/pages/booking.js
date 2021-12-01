@@ -1,9 +1,17 @@
-import React, { useState, useEffect, } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import styled from 'styled-components/native';
-import { addDoc, collection,setDoc,getDoc,doc,query,where,} from 'firebase/firestore';
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View, Image } from "react-native";
+import styled from "styled-components/native";
+import {
+  addDoc,
+  collection,
+  setDoc,
+  getDoc,
+  doc,
+  query,
+  where,
+} from "firebase/firestore";
 // import {db} from '../utils/store';
-import {Auth} from '../utils/auth'
+import { Auth } from "../utils/auth";
 // // import {onAuthStateChanged} from 'firebase/auth'
 import {getAuth} from 'firebase/auth'
 import Calendar from '../comps/Calendar';
@@ -30,6 +38,7 @@ const Wave = styled.Image`
     height: 30%;
     position: absolute;
     top: 0;
+    z-index: 2;
 `;
 
 const DropDownCont = styled.View`
@@ -46,6 +55,8 @@ const ButtonCont = styled.View`
 
 const NavBarCont = styled.View`
 
+  width: 275px;
+  margin-top: 25px;
 `;
 const MyScrollView = styled.ScrollView`
 `

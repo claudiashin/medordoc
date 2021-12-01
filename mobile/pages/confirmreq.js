@@ -14,6 +14,7 @@ import Header from "../comps/Header";
 import InfoCardTwo from "../comps/InfoCardTwo";
 import Btn from "../comps/Btn";
 import BackBtn from "../comps/BackBtn";
+import NavBar from "../comps/NavBar";
 
 const MainCont = styled.View`
   flex: 1;
@@ -32,6 +33,11 @@ const HdCont = styled.View`
   justify-content: center;
   margin-top: 100px;
 `;
+const HdCont2 = styled.View`
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+`;
 const ButCont = styled.View`
   flex-direction: row;
   margin-top: 20px;
@@ -43,34 +49,38 @@ const BackCont = styled.View`
   display: flex;
   position: absolute;
   z-index: 999;
-  right: 340px;
-  top: 15px;
+  right: 370px;
+  top: -20px;
 `
+const NavBarCont = styled.View`
+  
 
-export default function confirmreq() {
+  
+`;
+
+export default function confirmreq({ navigation, route }) {
   const [changeForm, setChangeForm] = useState(true);
+  const { doctorInfo} = route.params;
 
   if (changeForm === true) {
     return (
       <MainCont>
           <BackCont>
-            <BackBtn/>
+            <BackBtn onPress={() => navigation.goBack()}/>
           </BackCont>
         <Wave source={require("../assets/backgroundmobile.png")} />
 
         <ScrollView>
-          <BackCont>
-            <BackBtn/>
-          </BackCont>
+
           <HdCont>
             <Header title="Request Process" fontSize="28" />
           </HdCont>
 
           <InfoCardTwo
             text1="Doctor and Clinic Details"
-            text3="Doctor: Dr.Mills"
-            text4="Languages: English and Punjabi"
-            text5="Location: St Johns Clinic Vancouver 1234 Canada Way, Vancouver V4J 2B7"
+            text3={"Doctor: " + doctorInfo.name}
+            text4={"Languages: " + doctorInfo.lang[0]}
+            text5={"Location: " + doctorInfo.location}
             text6="Contact: 604-123-4567"
             fsize="18"
             fweight="700"
@@ -83,13 +93,13 @@ export default function confirmreq() {
             display="none"
             height="280"
           />
-          <HdCont>
+          <HdCont2>
             <Header
               title="Would you like to proceed with this request?"
               fontSize="16"
               fontWeight="500"
             />
-          </HdCont>
+          </HdCont2>
           <ButCont>
             <Btn
               title="Send Request"
@@ -103,11 +113,15 @@ export default function confirmreq() {
             />
           </ButCont>
         </ScrollView>
+        <NavBarCont>
+            <NavBar/>
+          </NavBarCont>
       </MainCont>
     );
   }
   return (
     <MainCont>
+      <Wave source={require("../assets/backgroundmobile.png")} />
       <ScrollView>
         <HdCont>
           <Header title="Submission Confirmed" fontSize="28" />
@@ -116,8 +130,8 @@ export default function confirmreq() {
         <InfoCardTwo
           text1="Request Details"
           text3="Submitted on: Oct 7, 2021"
-          text4="Requested for: Dr. Mills"
-          text5="Location: St Johns Clinic Vancouver 1234 Canada Way, Vancouver V4J 2B7"
+          text4={"Requested for: " + doctorInfo.name}
+          text5={"Location: " + doctorInfo.location}
           text6="Contact: 604-123-4567"
           fsize="18"
           fweight="700"
@@ -131,6 +145,9 @@ export default function confirmreq() {
           height="280"
         />
       </ScrollView>
+      <NavBarCont>
+            <NavBar/>
+          </NavBarCont>
     </MainCont>
   );
 }

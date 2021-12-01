@@ -1,27 +1,25 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
-import styled from 'styled-components';
-import { useRouter, router } from 'next/router';
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import styled from "styled-components";
+import { useRouter, router } from "next/router";
 
-import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
+import { useTheme } from "@mui/material/styles";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
 
-import NavBar from '../comps/NavBar';
-import HeaderTitle from '../comps/HeaderTitle';
-import Btn from '../comps/Btn';
-import HeroLottie from '../comps/HeroLottie';
-import myLottie from '../public/lottie_woman_computer.json'
-import LaptopLottie from '../public/lottie_laptop.json'
-import Footer from '../comps/Footer';
-import { useEffect } from 'react';
-
-
+import NavBar from "../comps/NavBar";
+import HeaderTitle from "../comps/HeaderTitle";
+import Btn from "../comps/Btn";
+import HeroLottie from "../comps/HeroLottie";
+import myLottie from "../public/lottie_woman_computer.json";
+import LaptopLottie from "../public/lottie_laptop.json";
+import Footer from "../comps/Footer";
+import { useEffect } from "react";
 
 const MainCont = styled.div`
-  background-color: #F7F2EE;
+  background-color: #f7f2ee;
   /* height: 100%; */
   width: 100%;
 `;
@@ -41,10 +39,10 @@ const Wave = styled.img`
 `;
 
 const NavBarCont = styled.div`
-  width:100%;
+  width: 100%;
   // height:300px;
-  position:absolute;
-  top:0;
+  position: absolute;
+  top: 0;
 `;
 
 const ContOne = styled.div`
@@ -100,7 +98,7 @@ const MainInfoCont = styled.div`
   width: 60%;
   margin: 0px 10px 50px 40px;
   text-align: left;
-  
+
   @media only screen and (max-width: 600px) {
     /* text-align: left; */
     width: 100%;
@@ -131,7 +129,7 @@ const ContOneText = styled.p`
   font-size: 20px;
   text-align: left;
   width: 90%;
-  color: #5C5C5C;
+  color: #5c5c5c;
 
   @media only screen and (min-width: 500px) {
   }
@@ -141,7 +139,7 @@ const ContTwoText = styled.p`
   font-size: 20px;
   text-align: left;
   width: 100%;
-  color: #5C5C5C;
+  color: #5c5c5c;
 
   @media only screen and (min-width: 500px) {
   }
@@ -163,15 +161,15 @@ const FourInfoCont = styled.div`
   margin: 20px 80px 100px 80px;
   padding: 20px;
   display: flex;
-@media only screen and (min-width: 500px) {
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 0px;
-}
-/* If the screen size is 800px or more */
-@media only screen and (min-width: 800px) {
-  flex-wrap: nowrap;
-}
+  @media only screen and (min-width: 500px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0px;
+  }
+  /* If the screen size is 800px or more */
+  @media only screen and (min-width: 800px) {
+    flex-wrap: nowrap;
+  }
 `;
 
 const InfoCont = styled.div`
@@ -181,8 +179,8 @@ const InfoCont = styled.div`
   margin: 60px;
   width: 240px;
   @media only screen and (min-width: 500px) {
-  min-width: 0px;
-}
+    min-width: 0px;
+  }
 `;
 
 const Icon = styled.img`
@@ -204,116 +202,131 @@ const FactText = styled.p`
 export default function Home() {
   const router = useRouter();
 
-  return <MainCont>
-    <WaveCont>
-      <Wave src={'/background-web5.svg'}></Wave>
-    </WaveCont>
+  return (
+    <MainCont>
+      <WaveCont>
+        <Wave src={"/background-web5.svg"}></Wave>
+      </WaveCont>
 
-    <NavBarCont>
-      <NavBar />
-    </NavBarCont>
+      <NavBarCont>
+        <NavBar />
+      </NavBarCont>
 
-    {/* FIRST */}
-    <ContOne>
-      <MainInfoCont>
-        <HeaderTitle title="Increase your clinic's patient base" />
-        <ContOneText>Try MedorDoc to enhance your clinic's web presence and broaden your patient reach. Let MedOrDoc assist in expanding your practice and refine the patient experience. Start by listing your clinic today.</ContOneText>
-        <BtnCont>
-          <Btn
-            title="Upload Clinic"
-            fSize="20px"
-            fWeight="500"
+      {/* FIRST */}
+      <ContOne>
+        <MainInfoCont>
+          <HeaderTitle title="Increase your clinic's patient base" />
+          <ContOneText>
+            Try MedorDoc to enhance your clinic's web presence and broaden your
+            patient reach. Let MedOrDoc assist in expanding your practice and
+            refine the patient experience. Start by listing your clinic today.
+          </ContOneText>
+          <BtnCont>
+            <Btn
+              title="Upload Clinic"
+              fSize="20px"
+              fWeight="500"
+              width="200px"
+              height="70px"
+              borderRad="4px"
+              bgHover="#E08E8E"
+              onClick={() => router.push("/signup")}
+            />
+          </BtnCont>
+        </MainInfoCont>
+
+        <LottieCont>
+          <HeroLottie source={myLottie} width="400px" />
+        </LottieCont>
+      </ContOne>
+
+      {/* SECOND */}
+      <ContTwo>
+        <ImageCont>
+          <Image
+            src={"/startscreenlogo.png"}
+            width="150px"
+            height="300px"
+          ></Image>
+          <Image
+            src={"/twocardsmobilescreen.png"}
             width="200px"
-            height="70px"
-            borderRad="4px"
-            bgHover="#E08E8E"
-            onClick={() => router.push("/signup")}
-          />
-        </BtnCont>
-      </MainInfoCont>
+            height="400px"
+          ></Image>
+        </ImageCont>
+        <MainInfoCont>
+          <HeaderTitle title="What is MedOrDoc?" />
+          <ContTwoText>
+            MedorDoc is an online platform that connects patients with doctors
+            and serves to provide access to pateint care in the Lower Mainland.
+            Patients will have the ability to book appointments at your walk-in
+            clinic and smoothen the process for both parties.
+          </ContTwoText>
+        </MainInfoCont>
+      </ContTwo>
 
+      {/* THIRD */}
+      <ContThree>
+        <BenefitHeaderCont>
+          <HeaderTitle title="Benefits of MedOrDoc" />
+        </BenefitHeaderCont>
 
-      <LottieCont>
-        <HeroLottie
-          source={myLottie}
-          width="400px"
-        />
-      </LottieCont>
-    </ContOne>
+        <FourInfoCont>
+          <InfoCont>
+            <Icon src={"/live.png"}></Icon>
+            <Heading>Update Availability in Real Time</Heading>
+            <FactText>
+              Increase patient reach by keeping your availability status
+              up-to-date
+            </FactText>
+          </InfoCont>
 
-    {/* SECOND */}
-    <ContTwo>
-      <ImageCont>
-        <Image src={'/startscreenlogo.png'} width="150px" height="300px"></Image>
-        <Image src={'/twocardsmobilescreen.png'} width="200px" height="400px"></Image>
-      </ImageCont>
-      <MainInfoCont>
-        <HeaderTitle title="What is MedOrDoc?" />
-        <ContTwoText>MedorDoc is an online platform that connects patients with doctors and serves to provide access to pateint care in the Lower Mainland. Patients will have the ability to book appointments at your walk-in clinic and smoothen the process for both parties.</ContTwoText>
-      </MainInfoCont>
-    </ContTwo>
+          <InfoCont>
+            <Icon src={"/documents.png"}></Icon>
+            <Heading>Connect Family Doctors with Patients</Heading>
+            <FactText>Simplify the process and accept patients online</FactText>
+          </InfoCont>
 
-    {/* THIRD */}
-    <ContThree>
-      <BenefitHeaderCont>
-        <HeaderTitle title="Benefits of MedOrDoc" />
-      </BenefitHeaderCont>
+          <InfoCont>
+            <Icon src={"/timetable.png"}></Icon>
+            <Heading>Manage Patients Bookings</Heading>
+            <FactText>Simplify the process and accept patients online</FactText>
+          </InfoCont>
 
-      <FourInfoCont>
-        <InfoCont>
-          <Icon src={'/live.png'}></Icon>
-          <Heading>Update Availability in Real Time</Heading>
-          <FactText>Increase patient reach by keeping your availability status up-to-date</FactText>
-        </InfoCont>
+          <InfoCont>
+            <Icon src={"/qr.png"}></Icon>
+            <Heading>Generate a QR Code</Heading>
+            <FactText>
+              Cut down the time it takes to check-in to avoid long wait times
+            </FactText>
+          </InfoCont>
+        </FourInfoCont>
+      </ContThree>
 
-        <InfoCont>
-          <Icon src={'/documents.png'}></Icon>
-          <Heading>Connect Family Doctors with Patients</Heading>
-          <FactText>Simplify the process and accept patients online</FactText>
-        </InfoCont>
+      {/* FOURTH */}
+      <ContFour>
+        <MainInfoCont>
+          <HeaderTitle title="Start your free six month trial now" />
+          <BtnCont>
+            <Btn
+              title="Start Now"
+              fSize="20px"
+              fWeight="500"
+              width="180px"
+              height="60px"
+              borderRad="4px"
+              bgHover="#E08E8E"
+              onClick={() => router.push("/signup")}
+            />
+          </BtnCont>
+        </MainInfoCont>
 
-        <InfoCont>
-          <Icon src={'/timetable.png'}></Icon>
-          <Heading>Manage Patients Bookings</Heading>
-          <FactText>Simplify the process and accept patients online</FactText>
-        </InfoCont>
+        <LottieCont style={{}}>
+          <HeroLottie source={LaptopLottie} width="300px" />
+        </LottieCont>
+      </ContFour>
 
-        <InfoCont>
-          <Icon src={'/qr.png'}></Icon>
-          <Heading>Generate a QR Code</Heading>
-          <FactText>Cut down the time it takes to check-in to avoid long wait times</FactText>
-        </InfoCont>
-      </FourInfoCont>
-
-    </ContThree>
-
-    {/* FOURTH */}
-    <ContFour>
-      <MainInfoCont>
-        <HeaderTitle title="Start your free six month trial now" />
-        <BtnCont>
-          <Btn
-            title="Start Now"
-            fSize="20px"
-            fWeight="500"
-            width="180px"
-            height="60px"
-            borderRad="4px"
-            bgHover="#E08E8E"
-            onClick={() => router.push("/signup")}
-          />
-        </BtnCont>
-      </MainInfoCont>
-
-      <LottieCont style={{}}>
-        <HeroLottie
-          source={LaptopLottie}
-          width="300px"
-        />
-      </LottieCont>
-    </ContFour>
-
-    <Footer />
-
-  </MainCont>
+      <Footer />
+    </MainCont>
+  );
 }
