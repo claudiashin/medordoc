@@ -1,8 +1,10 @@
 import styled from 'styled-components/native';
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, Button, Linking, Text } from 'react-native';
+import QRCode from '../QrCode';
 
-const InfoCardCont = styled.View`
+const InfoCardCont = styled.View`  
+    height:400px;
     width: 300px;
     border: #E9D7CB;
     padding: 20px;
@@ -40,6 +42,8 @@ const Subheadingtwo = styled.Text`
 
 const WebsiteContainer = styled.View`
     flex-direction: row;
+    display: flex;
+    flex-direction: column;
 `;
 
 const Subheadingthree = styled.Text`
@@ -49,21 +53,40 @@ const Subheadingthree = styled.Text`
     font-weight: ${props => props.subheadingthree_fw};
 `;
 
+const Subheadingfour = styled.Text`
+    font-size: 16px;
+    color: ${props => props.fontcolor};
+    margin: 10px;
+    font-weight: ${props => props.subheadingfour_fw};
+`;
+
 const Website = styled.Text`
     font-size: 16px;
     color: #226BAF;
     margin: 10px;
 `;
 
+const QRCodeCont = styled.View`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    display: ${props => props.display};
+`;
+
 const InfoCard = ({
-    text = "Heading",
-    text2 = "Subheading",
+    text = "Welcome Jenny Lee",
+    text2 = "Thank you for choosing MedOrDoc.",
     text3 = "Website:",
+    text4 = "To view your ...",
+    text5 = "Website:",
+    text6 = "Website:",
     website_url = "https://www.bcit.ca/",
     fontsize = 20,
     weight = 700,
     weight2 = 700,
     fontcolor = '#226BAF',
+    display= "none"
 }) => {
 
     return <InfoCardCont>
@@ -71,13 +94,38 @@ const InfoCard = ({
             <Heading heading_fs={fontsize} heading_fw={weight}>{text}</Heading>
         </HeadingCont>
 
+        <QRCodeCont display={display}>
+            <QRCode/>
+        </QRCodeCont>
+
         <SubheadingCont>
             <Subheadingtwo>{text2}</Subheadingtwo>
         </SubheadingCont>
 
+
+        <SubheadingCont>
+            <Subheadingtwo>{text3}</Subheadingtwo>
+        </SubheadingCont>
+
+        <SubheadingCont>
+            <Subheadingtwo>{text4}</Subheadingtwo>
+        </SubheadingCont>
+
+        <SubheadingCont>
+            <Subheadingtwo>{text5}</Subheadingtwo>
+        </SubheadingCont>
+
+
+        <SubheadingCont>
+            <Subheadingtwo>{text6}</Subheadingtwo>
+        </SubheadingCont>
+
         <WebsiteContainer /*style={styles.website_container}*/>
             <Subheadingthree subheadingthree_fw={weight2} fontcolor={fontcolor}>{text3}</Subheadingthree>
+            <Subheadingfour subheadingfour_fw={weight2} fontcolor={fontcolor}>{text4}</Subheadingfour>
             <Website onPress={() => Linking.openURL(website_url)}>{website_url}</Website>
+            {/* <Website onPress={() => Linking.openURL(website_url)}>{website_url}</Website> */}
+
         </WebsiteContainer>
     </InfoCardCont >
 }

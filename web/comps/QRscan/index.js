@@ -2,23 +2,25 @@ import React, { Component, useState, setState } from 'react';
 import dynamic from "next/dynamic";
 import styled from 'styled-components';
 
-//dialog comps from mui
+import axios from 'axios';
 
+//dialog comps from mui
 import Dialog from '@mui/material/Dialog';
 import Button from '@mui/material/Button';
 import PropTypes from 'prop-types';
 import DialogTitle from '@mui/material/DialogTitle';
 import ListItem from '@mui/material/ListItem';
+import Typography from '@mui/material/Typography'
 
 const MainCont = styled.div`
     display: flex;
 `;
 
-const code = [];
-
+const code = ['go to check in']
 function SimpleDialog(props) {
     const { onClose, selectedValue, open } = props;
-  
+    const [scanResult, setScanResult] = React.useState('');
+
     const handleClose = () => {
       onClose(selectedValue);
     };
@@ -27,20 +29,18 @@ function SimpleDialog(props) {
       onClose(value);
     };
 
-    const handleScan = (data) => {
-        if(data) {
-            setState({
-                result: data
-            })
-        }
-    }
     const handleError = (err) => {
-        console.error(err)
+      console.error(err)
     }
 
-   
-    
-  
+    const handleScan = (data) => {
+      if (data) {
+      setScanResult(data);
+      // window.location.href = `/checkIn?ccode=${scanResult.cornit}`;
+      window.location.href = `/booking`;
+      }
+    };
+
     return (
       <Dialog onClose={handleClose} open={open}>
         <DialogTitle
@@ -52,8 +52,8 @@ function SimpleDialog(props) {
             onScan={handleScan}
             style={{width: '100%'}}
         />
+        {/* <Typography>{`Coded text: ${scanResult}`}</Typography> */}
         <ListItem button onClick={() => handleListItemClick(code)} key={code}>
-            {/* {result.data} */}
         </ListItem>
       </Dialog>
     );
@@ -83,9 +83,6 @@ const QRscan = () => {
         setOpen(false);
         setSelectedValue(value);
       };
-
-
-    // const result = ""
 
     return  <MainCont>
         <Button 

@@ -1,14 +1,30 @@
-import React, {useState} from "react"
-import Link from "next/link"
-import { withRouter } from "next/router"
-import styled from "styled-components"
+import React, { useState, useEffect, Component } from "react";
+import Link from "next/link";
+import { withRouter } from "next/router";
+import styled from "styled-components";
 import HeroAvatar from "../HeroAvatar";
 import PatientCard from "../PatientCard";
-import DoctorCard from "../DoctorCard";
-import SigninFormTwo from '../SigninFormTwo';
-import Btn from "../Btn"
+import { DoctorInputCard, DoctorCard } from "../DoctorCard";
+import ClinicProfile from "../ClinicProfile";
+import Btn from "../Btn";
+import {
+  getDocs,
+  collection,
+  query,
+  where,
+  deleteDoc,
+  doc,
+  getDoc,
+} from "firebase/firestore";
+import { db } from "../../firebase";
+import { getAuth } from "firebase/auth";
 
- const Nav = styled("div")`
+// import {getStorage, ref, uploadBytes} from "firebase/storage"
+
+// import { getDatabase, ref, set } from "firebase/database";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+
+const Nav = styled("div")`
   & > * {
     margin-left: 1em;
     color: white;
@@ -18,357 +34,253 @@ import Btn from "../Btn"
   height: 2em;
   display: flex;
   align-items: center;
-`
+`;
 
- const PageBody = styled("div")`
+const PageBody = styled("div")`
   width: 100%;
   height: 100%;
-  padding: 2em;
-`
+`;
 
- const TabHead = styled("div")`
-  border-bottom: 2px solid black;
+const TabHead = styled("div")`
+  border-bottom: 1.8px solid black;
   display: flex;
-  background: white;
-`
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+`;
 
- const TabContainer = styled("div")`
+const TabContainer = styled("div")`
   width: 100vw;
-  height: 30em;
-  webkit-box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
-  -moz-box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
-  box-shadow: -1px 0px 5px 0px rgba(184, 184, 184, 1);
-  align-items:center;
-  display:flex;
-  flex-direction:column;
-`
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+`;
 
- const TabBody = styled(PageBody)`
+const TabBody = styled(PageBody)`
   height: 100%;
-`
+  margin-bottom: 100px;
+`;
 
- const Tab = styled("div")`
-  padding: 1em;
-  background: ${({ selected }) => (selected ? "white" : "#F7F2EE")};
-  * {
-    color: black;
-  }
-`
+const Tab = styled("div")`
+  padding: 10px 100px 10px 100px;
+
+  color: ${({ selected }) => (selected ? "#226BAF" : "black")};
+  font-weight: ${({ selected }) => (selected ? "700" : "300")};
+  font-size: 24px;
+`;
 
 const MyCont = styled.div`
-  width:100vw;
-  min-height:500px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-`
+  width: 100vw;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+`;
+
 const ItemCont = styled.div`
-  margin:100px;
-`
+  margin: 100px;
+`;
 const HeaderCont = styled.div`
+  margin: 40px;
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+const Text = styled.text``;
 
-`
-const Text = styled.text`
-
-`
 const MyCont2 = styled.div`
-  width:100vw;
-  min-height:500px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-`
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  /* justify-content: center; */
+  flex-direction: column;
+  /* position: relative; */
+`;
 const ItemCont2 = styled.div`
-  display:flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+`;
 
-`
+const AddedDoctorCont = styled.div`
+  margin: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const DoctorCont = styled.div`
-  margin:20px;
-`
-
-const DoctorCardCont = styled.div`
-  position:absolute;
-  top:660px;
-  background:white;
-  display:${props=>props.display};
-`
+  display: flex;
+  justify-content: flex-start;
+  /* flex-direction: column; */
+  margin: 20px;
+`;
 
 const ButtonCont = styled.div`
-  display:flex;
-  justify-content:flex-end;
-  width:100vw;
-  margin-right:250px;
-`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 90%;
+  margin: 30px 0px -50px 0px;
+`;
+const HeroImage = (props) => {
+  const [clinicImage, setClinicImage] = React.useState("");
 
-const MyTab = ({
-}) =>{
-  const [popup, setShowPopup] = useState(true)
+  useEffect(async () => {
+    if (props.uid) {
+      const usersDocRef = doc(db, "clinics", props.uid);
+      const data = await getDoc(usersDocRef);
+      const result = data.data();
+      setClinicImage(result.image);
+    }
+  }, [props.uid]);
 
-  if(popup === true){
-    return  <MyCont2>
-    <HeaderCont>
-      {/* replace with real header */}
-      <Text>List of Doctors</Text>
-    </HeaderCont>
+  // const storage = getStorage();
+  // getDownloadURL(ref(storage, clinicImage))
+  // .then((url) => {
+  //   // `url` is the download URL for 'images/stars.jpg'
 
-    <ItemCont2>
-      <DoctorCont>
-        <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{
-          setShowPopup(false)
+  //   // This can be downloaded directly:
+  //   const xhr = new XMLHttpRequest();
+  //   xhr.responseType = 'blob';
+  //   xhr.onload = (event) => {
+  //     const blob = xhr.response;
+  //   };
+  //   xhr.open('GET', url);
+  //   xhr.send();
+
+  // })
+  // .catch((error) => {
+  //   // Handle any errors
+  // });
+  // const auth = getAuth();
+  // const storage = getStorage();
+  // const forestRef = ref('clinic/' + auth.user.uid + '/1.jpg').put(file)
+
+  return (
+    <div>
+      <img
+        id="myimg"
+        style={{
+          width: 200,
+          height: 200,
+          borderRadius: 100,
+          objectFit: "cover",
         }}
+      />
+    </div>
+  );
+};
+
+const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
+  const [popup, setShowPopup] = useState(true);
+  const [doctors, setDoctors] = useState([]);
+
+  const reload = async (uid) => {
+    const q = query(collection(db, "doctors"), where("clinicId", "==", uid));
+    const querySnapshot = await getDocs(q);
+    const doctors = [];
+    querySnapshot.forEach((doc) => {
+      var temp = doc.data();
+      temp.id = doc.id;
+      doctors.push(temp);
+    });
+    setDoctors(doctors);
+  };
+
+  const setModal = (info = {}) => {
+    setModalContent(
+      <DoctorInputCard
+        showModal={showModal}
+        uid={uid}
+        info={info}
+        reload={reload}
+      />
+    );
+  };
+
+  const deleteDoctor = async (doctorId) => {
+    await deleteDoc(doc(db, "doctors", doctorId));
+    reload(uid);
+  };
+
+  useEffect(() => {
+    if (uid) {
+      reload(uid);
+    }
+  }, [uid]);
+
+  return (
+    <MyCont2>
+      <HeaderCont>
+        <Text>List of Doctors</Text>
+      </HeaderCont>
+
+      <ButtonCont>
+        <Btn
+          title="Create New"
+          fSize="16px"
+          bgColor="#90AABB"
+          bgHover="#688BA3"
+          borderRad="20px"
+          width="120px"
+          onClick={() => {
+            showModal(true);
+            setModal();
+          }}
         />
-      </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-    </ItemCont2>
+      </ButtonCont>
 
-    <ItemCont2>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-    </ItemCont2>
-    
-    <ButtonCont onClick={()=>{
-        setShowPopup(false)
-      }}>
-      <Btn title="Create New" bgColor="#90AABB" onClick={()=>{
-        setShowPopup(false)
-      }}/>
-    </ButtonCont>
+      <AddedDoctorCont>
+        <ItemCont2>
+          {doctors.map((doctor, index) => {
+            const info = {
+              id: doctor.id,
+              // image: "https://placekitten.com/100/100",
+              gender: doctor.gender,
+              language: doctor.lang,
+              experience: doctor.ex,
+              location: doctor.location,
+              name: doctor.name,
+            };
+            return (
+              <DoctorCont key={index}>
+                <DoctorCard
+                  info={info}
+                  showModal={(show) => {
+                    if (show) {
+                      setModal(info);
+                      showModal(show);
+                    } else {
+                      showModal(show);
+                    }
+                  }}
+                  deleteDoctor={deleteDoctor}
+                />
+              </DoctorCont>
+            );
+          })}
+        </ItemCont2>
+      </AddedDoctorCont>
+    </MyCont2>
+  );
+};
 
-  </MyCont2> 
-  }else if(popup === false){
-    return  <MyCont2>
-    <HeaderCont>
-      {/* replace with real header */}
-      <Text>List of Doctors</Text>
-    </HeaderCont>
-
-    <ItemCont2>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        
-        editDoc={()=>{setShowPopup(false)}}/>
-      </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-    </ItemCont2>
-
-    <ItemCont2>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-      <DoctorCont>
-      <PatientCard 
-        name="Name: " 
-        nameText="George Jordan" 
-        gender="Experience: " 
-        genderText="3 Years" 
-        age="Gender: " 
-        ageText="40" 
-        medicalconcerns="Language: " 
-        medicalText=" English" 
-        phone="Location: " 
-        phoneText="St. Joseph’s Clinic" 
-        emailText="Edit" 
-        button1={"none"}
-        editDoc={()=>{setShowPopup(false)}}
-        />      
-        </DoctorCont>
-    </ItemCont2>
-
-    <ButtonCont >
-      <Btn title="Create New" bgColor="#90AABB" />
-    </ButtonCont>
-    <DoctorCardCont>
-      <DoctorCard xDoc={()=>{
-        setShowPopup(true)
-       
-      }} 
-      addDoc={()=>{
-        setShowPopup(true)
-        titleDoc="add"
-      }}/>
-    </DoctorCardCont>
-  </MyCont2> 
-  }
-}
-const HorizonTab = ({ router }) => {
+const HorizonTab = ({ router, uid, showModal, setModalContent }) => {
   const {
-    query: { tab }
-  } = router
+    query: { tab },
+  } = router;
 
-  const isTabOne = tab === "1" || tab == null
-  const isTabTwo = tab === "2"
+  const isTabOne = tab === "1" || tab == null;
+  const isTabTwo = tab === "2";
+
   return (
     <TabContainer>
       <TabHead>
@@ -384,22 +296,30 @@ const HorizonTab = ({ router }) => {
         </Tab>
       </TabHead>
       <TabBody>
-        {isTabOne && <React.Fragment>
-          <MyCont>
-        <ItemCont>
-          <HeroAvatar/>
-        </ItemCont>
-        <ItemCont>
-          <SigninFormTwo />
-        </ItemCont>
-        </MyCont>   
-          </React.Fragment>}
-        {isTabTwo && <React.Fragment>
-            <MyTab></MyTab>
-          </React.Fragment>}
+        {isTabOne && (
+          <React.Fragment>
+            <MyCont>
+              <ItemCont>
+                <HeroImage />
+              </ItemCont>
+              <ItemCont>
+                <ClinicProfile uid={uid} />
+              </ItemCont>
+            </MyCont>
+          </React.Fragment>
+        )}
+        {isTabTwo && (
+          <React.Fragment>
+            <ClinicDoctors
+              uid={uid}
+              showModal={showModal}
+              setModalContent={setModalContent}
+            ></ClinicDoctors>
+          </React.Fragment>
+        )}
       </TabBody>
     </TabContainer>
-  )
-}
+  );
+};
 
-export default withRouter(HorizonTab)
+export default withRouter(HorizonTab);

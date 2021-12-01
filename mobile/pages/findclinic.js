@@ -1,15 +1,18 @@
 import React, { useState, useEffect, } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
+import { useNavigation } from '@react-navigation/native';
+
 
 // Import Comps
 import Map from '../comps/Map'
 import SearchBar from '../comps/SearchBar'
-import Filiter from '../comps/Filter'
+import Filter from '../comps/Filter'
 import ClinDocButton from '../comps/ClinDocButton'
 import Header from '../comps/Header'
 import BookingForm from '../comps/BookingForm';
 import NavBar from '../comps/NavBar';
+import BackBtn from '../comps/BackBtn';
 
 const Cont = styled.View`
   background-color: #F7F2EE;
@@ -18,10 +21,6 @@ const Cont = styled.View`
   align-items:center;
   justify-content: space-between;
 `
-
-const SubCont = styled.ScrollView`
-`;
-
 const Wave = styled.Image`
     width: 100%;
     height: 30%;
@@ -41,7 +40,7 @@ const Wave = styled.Image`
 const SearchCont = styled.View`
     display: flex;
     flex-direction: row;
-    margin-top: 10px;
+    margin-top: 30px;
   `
 const MapCont = styled.View`
     display: flex;
@@ -49,44 +48,72 @@ const MapCont = styled.View`
   `
 const FilterCont = styled.View`
     display: flex;
-    margin-top: 50px;
+    margin-top: 20px;
+   
   `
 const CardCont = styled.View`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  `
-const NavBarCont = styled.View`
-
+    `
+    const NavBarCont = styled.View`
 `;
+const BackCont = styled.View`
+  display: flex;
+  position: absolute;
+  z-index: 999;
+  right: 350px;
+  top: -16px;
+`
 
-const findclinic = ({ navigation }) => {
+export default function findclinic({navigation}){
+
+ 
   return (
     <Cont>
-      <SubCont>
+      <ScrollView keyboardShouldPersistTaps={'handled'}>
+        <BackCont>
+          <BackBtn onPress={() => navigation.goBack()}/>
+        </BackCont>
         <Wave source={require('../assets/backgroundmobile.png')} />
-        <SearchBar />
-        <Map />
+        <Map/>
+        <FilterCont>
+          <Filter 
+          headerText1={"Language Prefrences"}
+          headerText2={"Location"}
+          optionText1={"French"}
+          optionText2={"Chinese"}
+          optionText3={"Korean"}
+          optionText4={"Japanese"}
+          optionText5={"Punjabi"}
+          optionText6={"Vietnamese"}
 
-        <Filiter />
+          optionText7={"Vancouver"}
+          optionText8={"N.Vancouver"}
+          optionText9={"Surrey"}
+          optionText10={"Burnaby"}
+          optionText11={"Richmond"}
+          optionText12={"Coquitlam"}
+          /> 
+        </FilterCont>
+        
         <CardCont>
+          {/* <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
           <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
-          <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
-          <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
-        </CardCont>
-      </SubCont>
+          <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} /> */}
+        </CardCont> 
+      </ScrollView> 
 
       <NavBarCont>
         <NavBar />
       </NavBarCont>
-
     </Cont>
 
   )
 
 }
-export default findclinic;
+
 
 
 

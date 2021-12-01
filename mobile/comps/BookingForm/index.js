@@ -15,8 +15,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     }
 })
-
 const BookingForm = ({
+    dbname ='',
+    dbaddress = '',
+    dbconcerns = '',
+    dbdob ='',
     editable='false'
 }) => {
     
@@ -25,10 +28,19 @@ const BookingForm = ({
   const [address, setAddress] = React.useState('');
   const [concerns, setConcerns] = React.useState('');
   const [others, setOthers] = React.useState('');
-
 //   const {inputDate, setInputDate } = React.useState < Date | undefined>(undefined);
-
   const [inputDate, setInputDate ] = React.useState('');
+
+//   useEffect(()=>{
+//         const getting =async()=>{
+//         const docRef = doc(db, "patientuser",user);
+//         const docSnap = await getDoc(docRef);
+//         setInfo(docSnap.data())
+//         console.log(docSnap.data())
+//       }
+//       getting()
+//   },[])
+
 
   return <>
     <TextInput
@@ -38,32 +50,34 @@ const BookingForm = ({
         type="flat"
         label="Name"
         textContentType='name'
-        value={name}
+        value={dbname}
         editable={editable}
-        onChangeText={name => setName(name)}
+        onChangeText={dbname => setName(dbname)}
     ></TextInput>
-    <TextInput
-        style={styles.inputbox}
-        underlineColor="#505050"
-        returnKeyType="next"
-        type="flat"
-        label="Phone Number"
-        textContentType="telephoneNumber"
-        keyboardType='phone-pad'
-        value={text}
-        editable={editable}
-        onChangeText={text => setText(text)}
-    ></TextInput>
+
     <DatePickerInput
         locale="en"
         label="Date of Birth"
-        value={inputDate}
-        onChange={inputDate => setInputDate(inputDate)}
+        value={dbdob}
+        onChange={dbdob => setInputDate(dbdob)}
         inputMode="start"
         mode="flat"
         style={styles.inputbox}
         editable={editable}
-    ></DatePickerInput>
+    ></DatePickerInput> 
+{/* 
+<TextInput
+        style={styles.inputbox}
+        underlineColor="#505050"
+        returnKeyType="next"
+        textContentType="date of the birth"
+        type="flat"
+        label="Date of the birth"
+        value={dbdob}
+        editable={editable}
+        onChangeText={dbdob => setAddress(dbdob)}
+    ></TextInput> */}
+
     <TextInput
         style={styles.inputbox}
         underlineColor="#505050"
@@ -71,9 +85,9 @@ const BookingForm = ({
         textContentType="fullStreetAddress"
         type="flat"
         label="Address"
-        value={address}
+        value={dbaddress}
         editable={editable}
-        onChangeText={address => setAddress(address)}
+        onChangeText={dbaddress => setAddress(dbaddress)}
     ></TextInput>
     <TextInput
         style={styles.inputbox}
@@ -82,23 +96,12 @@ const BookingForm = ({
         autoCapitalize='sentences'
         type="flat"
         label="Concerns"
-        value={concerns}
+        value={dbconcerns}
         editable={editable}
-        onChangeText={concerns => setConcerns(concerns)}
+        onChangeText={dbconcerns => setConcerns(dbconcerns)}
     ></TextInput>
-    <TextInput
-        style={styles.inputbox}
-        underlineColor="#505050"
-        returnKeyType="done"
-        autoCapitalize='sentences'
-        type="flat"
-        label="Others"
-        value={others}
-        editable={editable}
-        onChangeText={others => setOthers(others)}
-    ></TextInput>
-
     </>
+
 };
 
 export default BookingForm;

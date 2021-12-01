@@ -1,29 +1,46 @@
-import styled from 'styled-components/native'
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import QRCode from 'react-native-qrcode-svg';
+import styled from "styled-components/native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import QRCode from "react-native-qrcode-svg";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const QR = ({})=>{
-return(
-    <QRCode
-    value="https://www.google.com/"
-    logoSize={80}
-  />
-)
-}
-export default QR;
+const Cont = styled.View`
+  margin-bottom: 50px;
+  width: 200px;
+  height: 200px;
+  background: #FFFFFF;
+  /* border: 1px solid #E9D7CB; */
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+`;
 
-
-// export default function QR() {
-
-//   const [size, setSize] = useState(400);
-//   const [word, setWord] = useState("");
-//   const [qrCode, setQrCode] = useState("");
-
-//   useEffect(() => {
-//     setQrCode
-//   (`http://api.qrserver.com/v1/create-qr-code/?data=${word}!&size=${size}x${size}&bgcolor=${bgColor}`);
-//   }, [word, size]);
-// }
+const Qrcode = ({
+  
+}) => {
+const [uid, setUserUid] = useState()
+  useEffect(async () => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, async (user) => {
+     
+      if (user) {
+        console.log(user.uid);
+        setUserUid(user.uid);
+      
+      }else{
+        console.log("no")
+      }
+    });
+  }, []);
+  return (
+    <Cont>
+      <QRCode 
+        value={uid} 
+        size={185}
+      />
+    </Cont>
+  );
+};
+export default Qrcode;
 
 

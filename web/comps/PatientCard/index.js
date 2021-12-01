@@ -1,190 +1,249 @@
-import React from "react";
+import React, { useEffect, useReducer } from "react";
 import styled from "styled-components";
-import {AiOutlineMail} from '@react-icons/all-files/ai/AiOutlineMail';
-import {IoIosClose} from '@react-icons/all-files/io/IoIosClose';
+import { AiOutlineMail } from "@react-icons/all-files/ai/AiOutlineMail";
+import { IoIosClose } from "@react-icons/all-files/io/IoIosClose";
 
-import {useState} from 'react';
+import { useState } from "react";
 
-import PopupCard from '../PopupCard';
+import { getDocs, doc, getDoc } from "firebase/firestore";
+// import { collection, getDoc, addDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase";
+
+// import PopupCard from "../PopupCard";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { onAuthStateChanged, getAuth } from "@firebase/auth";
 
 //card
 const Maincont = styled.div`
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 370px;
-    height: 420px;
-    border-radius: 10px;
-    border: 1px solid black;
-    background:white;
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 330px;
+  height: 420px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background: white;
+  padding-bottom: 50px;
+`;
 //avatar image
 const Avatarcont = styled.div`
-    display:flex;
-    height: 105px;
-    width: 105px;
-    right:50px;
-    margin: 5px;
-    border-radius: 50px;
-    background-color: #c4c4c4;
-`
+  display: flex;
+  height: 105px;
+  width: 105px;
+  right: 50px;
+  margin: 5px;
+  border-radius: 50px;
+  background-color: #c4c4c4;
+`;
 
 const Avatarimg = styled.img`
-    width: 100%;
-    height:100%;
-    resize-mode:cover;
-    border-radius: 50px;
-`
+  width: 100%;
+  height: 100%;
+  /* resize-mode:cover; */
+  border-radius: 50px;
+`;
 
 //Patient info text
 const Textcont = styled.div`
-    display:flex;
-    flex-direction:column;
-    margin-right: 85px;
-`
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  padding: 10px 30px 15px 30px;
+  // margin-right: 85px;
+`;
 const Text = styled.text`
-    font-size: 18px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    text-align:left;
-`
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: left;
+`;
+const Nameheader = styled.text`
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: bold;
+`;
 //email button
 const Emailbut = styled.div`
-    display:flex;
-    flex-direction: row;
-    justify-content:center;
-    align-items:center;
-    margin-top:5px;
-    width:175px;
-    height:55px;
-    background-color: #FAF0BF;
-    border-radius: 5px;
-`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  width: 100px;
+  height: 35px;
+  background-color: #faf0bf;
+  border-radius: 5px;
+  &:hover {
+    background-color: #eadca2;
+    transition: 1s;
+  }
+`;
 const Emailtext = styled.text`
-    font-size: 20px;
-    padding-left:20px;
-`
+  font-size: 16px;
+  padding-left: 10px;
+`;
 //close button
 const Closebutton = styled.div`
-    display: flex;
-    margin-left: 300px;
-`
-//edit button for doctor side
-const Editbut = styled.div`
-    display:flex;
-    flex-direction: row;
-    justify-content:center;
-    align-items:center;
-    margin-top:5px;
-    width:175px;
-    height:55px;
-    background-color: #FAF0BF;
-    border-radius: 5px;
-`
+  display: flex;
+  border-radius: 50%;
+  margin-top: 30px;
+  margin-left: 270px;
+  cursor: pointer;
+`;
+
 const PopupCont = styled.div`
-    display: flex;
-    position: absolute;
-    
-    align-self: center;
-    justify-content: center;
-`
+  display: flex;
+  position: absolute;
+  margin-top: 50px;
+  align-self: center;
+  justify-content: center;
+`;
 
 const EmailbutCont = styled.div`
-    display:${props=>props.button1};
-`
-const EditbutCont = styled.div`
-display:${props=>props.button2};
-`
-const PatientCard=({
-    //info
-    nameText = "Default Text",
-    genderText = "Default Text",
-    ageText = "Default Text",
-    medicalText = "Default Text",
-    phoneText = "Default Text",
-    emailText = "Email",
-    imagesource="https://placekitten.com/100/100",
-    //subject
-    name = "default text",
-    gender = "default text",
-    age = "default text",
-    experience = "default text",
-    location = "default text",
-    language = "default text",
-    medicalconcerns = "default text",
-    phone = "default text",
-    button1="flex",
-    button2="flex",
-    editDoc=()=>{}
-    //button
-})=>{
+  display: flex;
+`;
 
-    const [open, setOpen] = useState(0);
+//showModal 
+const PopupCardCont = styled.div`
+  display: flex;
+  background-color: #ffffff;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+  width: 320px;
+  height: 300px;
+  border: 2px solid #505050;
+  border-radius: 10px;
+`;
+
+const CloseCont = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px 15px -30px 0px;
+`;
 
 
-    if(open == 0){
-    return <Maincont>
-        
-        <Closebutton>
-        <IoIosClose onClick={()=>{setOpen(1)}} size={60}/>
-        </Closebutton>
-        
-        <Avatarcont>
-            <Avatarimg src={imagesource}/>
-        </Avatarcont>
-        <Textcont>
-            <Text>{name}{nameText}</Text>
-            <Text>{gender}{genderText}</Text>
-            <Text>{age}{ageText}</Text>
-            <Text>{medicalconcerns}{medicalText}</Text>
-            <Text>{phone}{phoneText}</Text>
-        </Textcont>
-        <EmailbutCont button1={button1}>
-        <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
-        
-            <AiOutlineMail size={30}/>
-            <Emailtext>{emailText}</Emailtext>
-        </Emailbut></a>
-        </EmailbutCont>
-        <EditbutCont button2={button2} >
-            <Editbut onClick={()=>{editDoc()}}>{emailText}</Editbut>
-        </EditbutCont>
+const Heading = styled.h2`
+  text-align: center;
+  margin: 40px;
+  line-height: 30px;
+`;
+
+const ButtonCont = styled.div`
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  margin: 0px 20px 65px 20px;
+`;
+
+const Button = styled.button`
+  color: #226baf;
+  font-size: 22px;
+  font-weight: 900;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+`;
+
+const showModalContent = ({showModal, setModalContent}) => {
+  return (
+    <PopupCardCont>
+      <CloseCont>
+        <IoIosClose
+          onClick={() => {
+           showModal(false);
+          }}
+          size={40}
+        />
+      </CloseCont>
+
+      <Heading>Are you sure you want to remove this patient request?</Heading>
+
+      <ButtonCont>
+        <Button
+          onClick={
+            (async () => {
+              await deletePatient(doc(db, "requests", patientId));
+            })
+          }
+        >
+          YES
+        </Button>
+        {/* <Button onClick={() => CloseCard()} bgHover={bgHover}>
+            NO
+          </Button> */}
+      </ButtonCont>
+      {/* </PopupCardCont> */}
+    </PopupCardCont>
+  );
+};
+
+const PatientCard = ({
+  imagesource = "https://placekitten.com/100/100",
+  // //subject
+  // button1 = "flex",
+  // button2 = "flex",
+  // editDoc = () => { },
+
+  //   info,
+  //button
+    setShowModal,
+    showModalContent,
+  info,
+}) => {
+  const [patientName, setPatientName] = useState("");
+  const [patientEmail, setPatientEmail] = useState("");
+  const [patientConcern, setPatientConcern] = useState("");
+  const [patientGender, setPatientGender] = useState("");
+
+//   const [showModal, setShowModal] = useState(false);
+//   const [modalContent, setModalContent] = useState("");
+
+  useEffect(() => {
+    setPatientName(info.name ?? "");
+    setPatientEmail(info.email ?? "");
+    setPatientGender(info.gender ?? "");
+    setPatientConcern(info.concern ?? "");
+  }, [info]);
+
+
+
+  return (
+    <Maincont>
+      <Closebutton>
+        <IoIosClose
+          onClick={() => {
+            setShowModal(true);
+            showModalContent();
+          }}
+          size={40}
+        />
+      </Closebutton>
+
+      <Avatarcont>
+        <Avatarimg src={imagesource} />
+      </Avatarcont>
+      <Nameheader>
+        <Text style={{ fontSize: 20 }}>{patientName}</Text>
+      </Nameheader>
+      <Textcont>
+        <Text>{"Gender: " + patientGender}</Text>
+        <Text>{"Medical Concern: " + patientConcern}</Text>
+        <Text>{"Eamil: " + patientEmail}</Text>
+      </Textcont>
+      <EmailbutCont>
+        <a href="mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...">
+          {" "}
+          <Emailbut>
+            <AiOutlineMail size={20} />
+            <Emailtext>Email</Emailtext>
+          </Emailbut>
+        </a>
+      </EmailbutCont>
     </Maincont>
-    
-}else if(open == 1){
-    return <Maincont>
-        <PopupCont>
-            <PopupCard CloseCard={()=>{
-                setOpen(2)
-            }} ClosePop={()=>{
-                setOpen(0)
-            }}/>
-        </PopupCont>
-        
-        <Closebutton>
-        <IoIosClose  size={60}/>
-        </Closebutton>
-        
-        <Avatarcont>
-            <Avatarimg src={imagesource}/>
-        </Avatarcont>
-        <Textcont>
-            <Text>{name}{nameText}</Text>
-            <Text>{gender}{genderText}</Text>
-            <Text>{age}{ageText}</Text>
-            <Text>{medicalconcerns}{medicalText}</Text>
-            <Text>{phone}{phoneText}</Text>
-        </Textcont>
-        <a href='mailto:?subject=Dear Patient!&body=You have an appointment with our doctor at ...'> <Emailbut>
-    
-            <AiOutlineMail size={30}/>
-            <Emailtext>{emailText}</Emailtext>
-        </Emailbut></a>
-    </Maincont>
-}else if(open == 2){
-    return <></>
-}
-}
-
+  );
+};
 export default PatientCard;

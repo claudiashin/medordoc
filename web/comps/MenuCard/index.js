@@ -30,7 +30,7 @@ const MenuCard = ({
 }) => {
 
     const defaultOptions = {
-        // loop: true,
+        loop: false,
         autoplay: true,
         animationData: source,
         rendererSettings: {

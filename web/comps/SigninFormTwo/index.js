@@ -1,208 +1,293 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { useRouter } from 'next/router';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { useRouter } from "next/router";
 
-import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import { useTheme } from "@mui/material/styles";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import Btn from "../Btn";
 
 const MainCont = styled.div`
-    display: flex;
-    flex-direction: column;
-`
-const Form = styled.fieldset`
-    margin: 15px;
-    border: 1px solid black;
-    width: 400px;
-    height: 55px;
-`
+  display: flex;
+  flex-direction: column;
+`;
+const FormField = styled.fieldset`
+  margin: 15px;
+  border: 1px solid black;
+  width: 400px;
+  height: 55px;
+`;
 const FormTitle = styled.legend`
-    margin: 5px;
-    font-size: 14px;
-`
+  margin: 5px;
+  font-size: 14px;
+`;
 const FormInput = styled.input`
-    border: none;
-    outline: none;
-    padding-bottom: 5px;
-    background-color: #F7F2EE;
-`
+  border: none;
+  outline: none;
+  padding-bottom: 5px;
+  background-color: #f7f2ee;
+  width: 400px;
+`;
 const FormTimeForm = styled.fieldset`
-    margin: 15px;
-    border: 1px solid black;
-    width: 185px;
-    height: 55px;
-
-`
+  margin: 15px;
+  border: 1px solid black;
+  width: 185px;
+  height: 57 px;
+`;
 const TimeFormCont = styled.div`
-    display: flex;
-    margin-bottom: 30px;
-`
+  display: flex;
+  margin-bottom: 30px;
+`;
+const FormTimeInput = styled.input`
+  border: none;
+  outline: none;
+  padding-bottom: 5px;
+  background-color: #f7f2ee;
+  width: 174px;
+`;
 const Title = styled.p`
-    margin-left: 15px;
-    font-size: 16px;
-    font-weight: 600;
-`
+  margin-left: 15px;
+  font-size: 16px;
+  font-weight: 600;
+`;
 
 const ButtonCont = styled.div`
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const Button = styled.button`
-    margin: 15px;
-    width: 80px;
-    height: 30px;
-    padding: 5px;
-    background-color: #90AABB;
-    color: white;
-    border: none;
-    border-radius: 10px;
-`
-const LangMain = styled.form`
+  margin: 15px;
+  width: 80px;
+  height: 30px;
+  padding: 5px;
+  background-color: #90aabb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+`;
 
-`
-const LangCont = styled.select`
-    width: 400px;
-    height: 18px;
-    margin-top: -15px;
- 
-    border:none;
-`
-const LangOpt = styled.option`
+const TwoButtonCont = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
 
-`
+const BtnCont = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 80px;
+`;
+
+const AlertBanner = styled.div`
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+  display: ${(props) => (props.show ? "block" : "none")};
+`;
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
-    PaperProps: {
-        style: {
-            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-            width: 250,
-        },
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
     },
+  },
 };
 
 const names = [
-    'English',
-    'French',
-    'Chinese',
-    'Japanese',
-    'Korean',
-    'punjabi',
-    'Hindi',
-    'Spanish',
-    'Russian',
-
+  "English",
+  "French",
+  "Cantonese",
+  "Mandarin",
+  "Japanese",
+  "Korean",
+  "Punjabi",
+  "Hindi",
+  "Farsi",
 ];
 
 function getStyles(name, personName, theme) {
-    return {
-        fontWeight:
-            personName.indexOf(name) === -1
-                ? theme.typography.fontWeightRegular
-                : theme.typography.fontWeightMedium,
-    };
+  return {
+    fontWeight:
+      personName.indexOf(name) === -1
+        ? theme.typography.fontWeightRegular
+        : theme.typography.fontWeightMedium,
+  };
 }
 
-const SigninFormTwo = ({
+const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
+  const [showAlert, setShowAlert] = React.useState(false);
+  const [error, setError] = React.useState("");
+  const theme = useTheme();
 
-}) => {
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setInfo({ lang: typeof value === "string" ? value.split(",") : value });
+  };
 
-    const theme = useTheme();
-    const [personName, setPersonName] = React.useState([]);
-
-    const handleChange = (event) => {
-        const {
-            target: { value },
-        } = event;
-        setPersonName(
-            // On autofill we get a the stringified value.
-            typeof value === 'string' ? value.split(',') : value,
-        );
-    };
-
-    return <MainCont>
-        <Title>Clinic Information</Title>
-        <Form>
-            <FormTitle>Clinic Name</FormTitle>
-            <FormInput
-                type="text"
-                placeholder="Clinic Name"
-            />
-        </Form>
-        <Form>
-            <FormTitle>Clinic Address</FormTitle>
-            <FormInput
-                type="text"
-                placeholder="Clinic Address"
-            />
-        </Form>
-        <Form
-            style={{ marginBottom: 50 }}
-        >
-            <FormTitle>Contact Number</FormTitle>
-            <FormInput
-                type="tel"
-                placeholder="Contact Number"
-            />
-        </Form>
-        <Title>Operation Hour</Title>
-        <TimeFormCont>
-            <FormTimeForm>
-                <FormTitle>Open</FormTitle>
-                <FormInput
-                    type="time"
-                    placeholder="Open Hour"
-                />
-            </FormTimeForm>
-            <FormTimeForm>
-                <FormTitle>Close</FormTitle>
-                <FormInput
-                    type="time"
-                    placeholder="Open Hour"
-                />
-            </FormTimeForm>
-        </TimeFormCont>
-        <Title>Additional Information</Title>
-
-        <div>
-            <FormControl sx={{ m: 1, width: 400, height: 50, marginBottom: 5, marginLeft: 1.7, color: 'black' }}>
-                <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
-                <Select
-                    labelId="demo-multiple-name-label"
-                    id="demo-multiple-name"
-                    multiple
-                    value={personName}
-                    onChange={handleChange}
-                    input={<OutlinedInput label="Name" />}
-                    MenuProps={MenuProps}
-                    style={{ height: 50, borderBlockStyle: 'black' }}
-                >
-                    {names.map((name) => (
-                        <MenuItem
-                            key={name}
-                            value={name}
-                            style={getStyles(name, personName, theme)}
-                        >
-                            {name}
-                        </MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
-        </div>
-        {/* <ButtonCont>
-        <Button
-            onClick={() => {
-                router.push("www.bcit.ca")
+  return (
+    <MainCont>
+      <AlertBanner show={showAlert}>{error}</AlertBanner>
+      <Title>Clinic Information</Title>
+      <FormField>
+        <FormTitle>Clinic Name</FormTitle>
+        <FormInput
+          type="text"
+          placeholder="Clinic Name"
+          value={info.name}
+          onChange={(e) => {
+            setInfo({ name: e.target.value });
+          }}
+        />
+      </FormField>
+      <FormField>
+        <FormTitle>Clinic Address</FormTitle>
+        <FormInput
+          type="text"
+          placeholder="Clinic Address"
+          value={info.add}
+          onChange={(e) => {
+            setInfo({ add: e.target.value });
+          }}
+        />
+      </FormField>
+      <FormField style={{ marginBottom: 50 }}>
+        <FormTitle>Contact Number</FormTitle>
+        <FormInput
+          type="tel"
+          placeholder="Contact Number"
+          value={info.num}
+          onChange={(e) => {
+            setInfo({ num: e.target.value });
+          }}
+        />
+      </FormField>
+      <Title>Operation Hour</Title>
+      <TimeFormCont>
+        <FormTimeForm>
+          <FormTitle>Open</FormTitle>
+          <FormTimeInput
+            type="time"
+            placeholder="Open Hour"
+            value={info.open}
+            onChange={(e) => {
+              setInfo({ open: e.target.value });
             }}
-        >Confirm</Button>
-    </ButtonCont> */}
-    </MainCont>
+          />
+        </FormTimeForm>
+        <FormTimeForm>
+          <FormTitle>Close</FormTitle>
+          <FormTimeInput
+            type="time"
+            placeholder="Open Hour"
+            value={info.close}
+            onChange={(e) => {
+              setInfo({ close: e.target.value });
+            }}
+          />
+        </FormTimeForm>
+      </TimeFormCont>
+      <Title>Additional Information</Title>
 
-}
+      <div>
+        <FormControl
+          sx={{
+            m: 1,
+            width: 440,
+            height: 50,
+            border: "1px solid black",
+            marginBottom: 5,
+            color: "black",
+          }}
+        >
+          <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
+          <Select
+            labelId="demo-multiple-name-label"
+            id="demo-multiple-name"
+            multiple
+            value={info.lang}
+            onChange={handleChange}
+            input={<OutlinedInput label="Name" />}
+            MenuProps={MenuProps}
+            style={{ height: 50, borderBlockStyle: "black" }}
+          >
+            {names.map((name) => (
+              <MenuItem
+                key={name}
+                value={name}
+                style={getStyles(name, info.lang, theme)}
+              >
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </div>
+      <TwoButtonCont>
+        <BtnCont onClick={() => setChangePage(-1)}>
+          <Btn
+            title="Back"
+            width="120px"
+            height="40px"
+            fSize="16px"
+            bgColor="#717476"
+            borderRad="20px"
+            margin="40px 15px 0px 0px"
+            bgHover="#949494"
+          />
+        </BtnCont>
+        <BtnCont
+          onClick={async () => {
+            setShowAlert(false);
+            if (
+              info.name == "" ||
+              info.lang == "" ||
+              info.add == "" ||
+              info.num == "" ||
+              info.open == "" ||
+              info.close == ""
+            ) {
+              setError("Please fill out the form correctly");
+              setShowAlert(true);
+            } else {
+              const result = await submit();
+              if (result.clinicId) {
+                setChangePage(1);
+                // console.log(result);
+              } else {
+                setError(
+                  "We have some issue to sign you up. Please try again later."
+                );
+                setShowAlert(true);
+              }
+            }
+          }}
+        >
+          <Btn
+            title="Confirm"
+            width="120px"
+            height="40px"
+            fSize="16px"
+            bgColor="#90AABB"
+            borderRad="20px"
+            margin="40px 15px 0px 0px"
+            bgHover="#BCDFF6"
+          />
+        </BtnCont>
+      </TwoButtonCont>
+    </MainCont>
+  );
+};
 
 export default SigninFormTwo;

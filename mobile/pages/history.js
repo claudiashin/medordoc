@@ -45,7 +45,7 @@ const History = () => {
       <MainCont>
         
         <AvatarCont>
-          <HeroAvatar imagesrc="https://placekitten.com/3000/2000" herowidth={150} heroheight={150}></HeroAvatar>
+          <HeroAvatar visible={"none"} imagesrc="https://placekitten.com/3000/2000" herowidth={150} heroheight={150}></HeroAvatar>
           <Header fontSize={18} fontWeight={"normal"} title="Jenny Lee" />
         </AvatarCont>
 

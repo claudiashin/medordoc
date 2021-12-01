@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Provider as PaperProvider, TextInput } from 'react-native-paper';
+import { Provider as PaperProvider, TextInput, DefaultTheme } from 'react-native-paper';
 import { TouchableOpacity, Text } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-
+import { color } from 'react-native-elements/dist/helpers';
 const MainCont = styled.View`
     flex-direction: column;
 `
@@ -15,7 +15,6 @@ const LastDiv = styled.View`
 
 `
 
-
 const LoginForm = ({
     
 }) => {
@@ -23,12 +22,25 @@ const LoginForm = ({
     const [text, setText] = React.useState('');
     const [pass, setPass] = React.useState('');
 
+    const [data, setData] = React.useState({
+        isValidUser: true,
+        isValidPassword: true,
+    })
+    const handleValidUser = (e) =>{
+        if (e.target.value.length > 8){
+           backgroundColor="red"
+        }
+    }
+
     const navigation = useNavigation(); 
 
     return <MainCont>
+
         <PaperProvider>
+           
             <TextInput
             style={{width:300, height: 50, margin:5, borderRadius: 0, backgroundColor:'#fff'}}
+            outlineColor={handleValidUser}
             label="Email"
             returnKeyType="next"
             autoCapitalize="none"
@@ -39,6 +51,7 @@ const LoginForm = ({
             mode='outlined'
             onChangeText={text => setText(text)}
             />
+
             <TextInput
             style={{width:300, height: 50, margin:5, backgroundColor:'#fff'}}
             label="Password"

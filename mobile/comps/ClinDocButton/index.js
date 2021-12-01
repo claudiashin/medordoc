@@ -7,21 +7,22 @@ import styled from "styled-components/native";
 const Maincont = styled.View`
     display:flex;
     flex-direction: row;
-    justify-content: center;
+    padding-left:70px;
     align-items: center;
     background-color:#FFFFFF;
     box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5)
-    width: 284px;
-    height: 80px;
-    margin:20px;
+    width: 350px;
+    height: 100px;
+    margin:10px;
     border-radius: 15px;
+   
 `
 const Avatarcont = styled.View`
     display:flex;
-    height: 55px;
-    width: 55px;
+    height: 80px;
+    width: 80px;
     right:50px;
-    margin-right: 10px;
+
     border-radius: 50px;
     background-color: #c4c4c4;
 `
@@ -32,10 +33,12 @@ const Avatarimg = styled.Image`
     resize-mode:cover;
     border-radius: 50px;
 `
+const TextCont = styled.View`
 
+`
 const ClinDocButton=({
     bodyText = "Default Text",
-    imageSource = "https://placekitten.com/100/100",
+    imageSource = "https://placekitten.com/100/200",
     cardpress  =()=>{},
 })=>{
     return <TouchableOpacity onPress ={cardpress}>
@@ -43,7 +46,9 @@ const ClinDocButton=({
         <Avatarcont>
         <Avatarimg source={{uri:imageSource}}/>
         </Avatarcont>
+        <TextCont>
         <Text style={styles.titleText}>{bodyText}</Text>
+        </TextCont>
     </Maincont>
     </TouchableOpacity>
 }

@@ -1,16 +1,14 @@
 // import { getStorage, ref, uploadBytes } from "firebase/storage";
 // import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 // import React,{useState} from 'react';
-// import app from '../utils/inits'
-// import styled from 'styled-components/native'
-// import Sign from '../comps/Test/'
+// import { StyleSheet, Button, View, Text } from "react-native";
+// import app from "../utils/inits"
+// import styled from 'styled-components/native';
+// import EmailSignin from '../comps/EmailSignin';
 
-// export default function sign(){
-
-// const Upload = async()=>{
-    
+// const Sign =()=>{
+// const Upload = async(e)=>{
 //     console.log(e.target.files[0]);
-    
 //     if(e.target.files.length <= 0){
 //         alert("no file selected");
 //         return false;
@@ -21,27 +19,40 @@
 //     const storageRef = ref(storage, 'test.jpg');  
 //     const snapshot = await uploadBytes(storageRef,file)
 //     console.log ('uploaded');
-
 // }
 
-//     const CreateUser = async()=>{
+//     const CreateUser = async(em,ps)=>{
 //     const auth =getAuth();
 //     const result = await createUserWithEmailAndPassword(auth,em,ps);
-//     alret("Created!")
+//     alert("Created!")
 //         }
         
-//     const signin = async()=>{
-//         const auth =getAuth();
-//         const result = await signInWithEmailAndPassword(auth,em.ps);
-//         alret("Sign in!")
+//     const Signin = async(em,ps)=>{
+//     const auth =getAuth();
+//     const result = await signInWithEmailAndPassword(auth,em,ps);
+//     alert("Sign in!")
 //         }
 
 //         return (
-
-//             <View>
-//                 <Sign onSignin = {signin}/>
-//                 <Sign onCreate = {CreateUser}/>
+//             <View style = {styles.container}>
+//                 <EmailSignin onSignin = {Signin}
+//                  onCreate = {CreateUser}/>
 //             </View>    
 //         )
+//     }  
+//   export default  Sign;
 
-//     }        
+//     const styles = StyleSheet.create({
+//         container: {
+//           flex: 1,
+//           backgroundColor: '#fff',
+//           alignItems: 'center',
+//           justifyContent: 'center',
+//           // margin:50
+//         }})
+
+
+
+
+
+

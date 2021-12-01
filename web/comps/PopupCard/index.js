@@ -4,7 +4,7 @@ import {IoIosClose} from '@react-icons/all-files/io/IoIosClose';
 import {useState} from 'react';
 
 const PopupCardCont = styled.div`
-    display: flex;
+    display: ${props=>props.display};
     background-color: #ffffff;
     flex-direction: column;
     justify-content: space-between;
@@ -46,29 +46,25 @@ const Button = styled.button`
 `;
 
 const PopupCard = ({
-    ClosePop=()=>{},
-    CloseCard=()=>{},
+
 }) => {
     
-    // const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(true);
 
-    // var display = "none";
-    // if(open){
-    //     display = "flex"
-    // }
-    return <PopupCardCont>
-        {/* <PopupCardCont display={display}> */}
+    var display = "none";
+    if(open){
+        display = "flex"
+    }
+    return <PopupCardCont display={display}>
         <CloseCont>
-        {/* <IoIosClose onClick={()=>setOpen(!open)} size={60}/> */}
-        <IoIosClose onClick={()=>{ClosePop()}} size={60}/>
-
+        <IoIosClose onClick={()=>setOpen(!open)} size={60}/>
         </CloseCont>
 
         <Heading>Are you sure you want to remove this patient request?</Heading>
 
         <ButtonCont>
-            <Button onClick={()=>CloseCard()}>YES</Button>
-            <Button onClick={()=>ClosePop()}>NO</Button>
+            <Button>YES</Button>
+            <Button onClick={()=>setOpen(!open)}>NO</Button>
         </ButtonCont>
     </PopupCardCont>
 
