@@ -43,8 +43,7 @@ const ButCont = styled.View`
   flex-direction: row;
   margin-top: 20px;
   margin-bottom: 20px;
-  align-items: center;
-  justify-content: space-around;
+  margin-left: 220px;
 `;
 const NavBarCont = styled.View`
   flex: 0.15;
@@ -67,15 +66,7 @@ export default function docprofile({ navigation, route }) {
           />
         </HdCont>
         <ButCont>
-          <Btn
-            title="Back"
-            fsize="20"
-            bgcolor="#EA9898"
-            width="100"
-            height="45"
-            borderRad="50"
-            onPress={() => navigation.goBack()}
-          />
+
           <Btn
             title="Yes"
             fsize="22"
