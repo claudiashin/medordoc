@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import 'react-calendar/dist/Calendar.css';
+import "react-calendar/dist/Calendar.css";
 
 //import comps
 import NavBar from "../comps/NavBar";
@@ -126,19 +126,21 @@ const PatientBooking = ({ uid, date }) => {
   const [bookings, setPatientBooking] = useState([]);
 
   const getBooking = async (uid) => {
+    const datestr = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     const q = query(
       collection(db, "appointment"),
-      where("clinicId", "==", uid)
-      // where("bookingdate", "==", date)
+      where("clinicId", "==", uid),
+      where("bookingdate", "==", datestr)
     );
     const querySnapshot = await getDocs(q);
-    console.log(q);
+    console.log(querySnapshot);
     const bookings = [];
     querySnapshot.forEach((doc) => {
       var temp = doc.data();
       temp.id = doc.id;
       bookings.push(temp);
     });
+    console.log(bookings);
     setPatientBooking(bookings);
   };
 
@@ -146,7 +148,7 @@ const PatientBooking = ({ uid, date }) => {
     if (uid) {
       getBooking(uid);
     }
-  }, [uid]);
+  }, [uid, date]);
 
   return (
     <div>
@@ -160,9 +162,7 @@ const PatientBooking = ({ uid, date }) => {
         };
         return (
           <ListCon key={index}>
-            <PatientList
-              info={info}
-            />
+            <PatientList info={info} />
           </ListCon>
         );
       })}
@@ -227,7 +227,7 @@ export default function Home({}) {
 
         <Low>
           <Column>
-            <LiveWaitTime></LiveWaitTime>
+            <LiveWaitTime uid={uid}></LiveWaitTime>
           </Column>
           <Column>
             <ContPatientList>

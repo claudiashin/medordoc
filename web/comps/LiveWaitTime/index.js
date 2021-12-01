@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { addDoc, collection } from "@firebase/firestore";
+
 import { db } from "../../firebase";
+import { doc, updateDoc } from "firebase/firestore";
 
 const MainCont = styled.div`
   width: 400px;
@@ -22,7 +23,7 @@ const MainCont = styled.div`
 const TitleCont = styled.div`
   width: 300px;
   height: 50px;
-  background-color: #F2E1D3;
+  background-color: #f2e1d3;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -63,10 +64,9 @@ const AlertBanner = styled.div`
   border-color: #bee5eb;
   z-index: 200;
   display: ${(props) => (props.show ? "block" : "none")};
-
 `;
 
-const LiveWaitTime = () => {
+const LiveWaitTime = ({ uid }) => {
   const [time, setTime] = React.useState("");
   const handleChange = (event) => {
     setTime(event.target.value);
@@ -74,8 +74,6 @@ const LiveWaitTime = () => {
 
   const [showAlert, setShowAlert] = React.useState(false);
   const [confirm, setConfirm] = React.useState("");
-
-
 
   return (
     <MainCont>
@@ -116,29 +114,14 @@ const LiveWaitTime = () => {
       </div>
       <UpdateButton
         onClick={async () => {
-          const result = await addDoc(collection(db, "waittime"), {
-            time: time,
+          await updateDoc(doc(db, "clinics", uid), {
+            waittime: time,
           });
-          // useEffect(()=> {
-          //   setTimeout(()=>{
-          //     setShowAlert(true);
-          //     setConfirm("Your Clinic live wait time has been updated");
-          //   }, 3000);
-          // }, []);
           setShowAlert(true);
-          setConfirm("Your Clinic wait time has been updated");
-          
-          // useEffect(() => {
-          //   const timeId = setTimeout(() => {
-          //     // After 3 seconds set the show value to false
-          //     setShowAlert(true)
-          //     setConfirm("Your Clinic live wait time has been updated");
-          //   }, 3000)
-        
-          //   return () => {
-          //     clearTimeout(timeId)
-          //   }
-          // }, []);
+          setConfirm("Your Clinic live wait time has been updated");
+          setTimeout(() => {
+            setShowAlert(false);
+          }, 3000);
         }}
       >
         Update
