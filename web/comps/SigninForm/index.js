@@ -54,7 +54,7 @@ const SigninForm = ({ setChangePage, LogIn, setLogin }) => {
   return (
     <MainCont>
       <AlertBanner show={showAlert}>{error}</AlertBanner>
-      <Title>Log in Information</Title>
+      {/* <Title>Log in Information</Title> */}
       <Form>
         <FormTitle>Email Address</FormTitle>
         <FormInput
