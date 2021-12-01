@@ -33,22 +33,11 @@ function SimpleDialog(props) {
       console.error(err)
     }
 
-    // const handleScan = (data) => {
-    //     if(data) {
-    //       useState({
-    //             result:data
-    //         })
-    //         window.location.href = `/checkIn?ccode=${result.cornit}`;
-
-    //     }
-    // }
-
-
     const handleScan = (data) => {
       if (data) {
       setScanResult(data);
       // window.location.href = `/checkIn?ccode=${scanResult.cornit}`;
-      window.location.href = `/checkin`;
+      window.location.href = `/booking`;
       }
     };
 

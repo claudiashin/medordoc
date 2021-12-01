@@ -1,6 +1,8 @@
 import React, { useState, useEffect, } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';
+import { useFonts, Nunito_400Regular } from '@expo-google-fonts/nunito';
+// import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
 
 // Import Comps
 import MenuCard from '../comps/MenuCard';
@@ -10,6 +12,9 @@ const NavBarCont = styled.View``;
 
 
 const home = ({ navigation }) => {
+  let [fontsLoaded] = useFonts({
+    Nunito_400Regular,
+  });
 
   const [loading, setLoad] = useState(true)
   useEffect(() => {
@@ -19,7 +24,7 @@ const home = ({ navigation }) => {
 
   })
 
-  if (loading === true) {
+  if (loading === true && !fontsLoaded) {
 
     return (
       <View style={styles.container}>
@@ -30,7 +35,9 @@ const home = ({ navigation }) => {
   return <>
    <View style={styles.container}>
       <MenuCard ind={[5]} Cardpress={() => navigation.navigate("findclinic")} />
-      <MenuCard title="Find a Doctor" ind={[3]} Cardpress={() => navigation.navigate("finddoc")} />
+      <MenuCard 
+         style={{ fontFamily: 'Nunito_400Regular', fontSize: 40 }}
+      title="Find a Doctor" ind={[3]} Cardpress={() => navigation.navigate("finddoc")} />
     </View>
       <NavBarCont>
       <NavBar />
@@ -46,6 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 20,
     marginTop: 70,
+    fontFamily: 'Nunito_400Regular'
   },
 
   image: {
