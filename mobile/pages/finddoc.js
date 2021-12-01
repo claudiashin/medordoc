@@ -34,7 +34,7 @@ const Wave = styled.Image`
   `
 
   const FilterCont = styled.View`
-    margin-top: 180px;
+    bottom: 350px;
     align-items: center;
   `
   const HeaderCont = styled.View`
@@ -42,14 +42,14 @@ const Wave = styled.Image`
     justify-content: center;
     align-items: center;
     text-align: center;
-    top: 120px;
+    bottom: 400px;
   `
   const HeaderCont2 = styled.View`
   display:flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 50px;
+  bottom: 350px;
   margin-top: 25px;
 `
 const CardCont = styled.View`
@@ -57,6 +57,7 @@ const CardCont = styled.View`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    bottom: 350px;
   `
 const NavBarCont = styled.View`
 

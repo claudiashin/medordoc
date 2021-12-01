@@ -158,7 +158,7 @@ const Map =({
         })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Burnaby{"\n"}20 minutes</Text>
-        <Button title = "lead"/>
+        <Button title = "Burnaby Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>  
@@ -178,7 +178,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Beyond Health Medical{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Beyond Health"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker> 
@@ -199,7 +199,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Pacific Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Pacific Medical"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker> 
@@ -218,7 +218,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Maple Walk-In Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Maple Walk-In"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker> 
@@ -237,7 +237,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Care Point Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Care Point"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -258,7 +258,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>WELL Health - Richmond Central Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "WELL Health"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -277,7 +277,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Mega Fu Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Mega Fu"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -296,7 +296,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Elicare: Lansdowne Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Elicare"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -317,7 +317,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>WELL Health - Pemberton Marine Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "WELL Health"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -336,7 +336,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Edgemont Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Edgemont"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -355,7 +355,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Integrated Wellness Medical Centre{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Integrated Wellness"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -376,7 +376,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Cedar Hills Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Cedar Hills"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -395,7 +395,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Primacy - Manchanda Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Manchanda Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -414,7 +414,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>WELL Health - Care Place Fleetwood Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "WELL Health"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -435,7 +435,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>The Well Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "The Well"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -454,7 +454,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Eagleridge Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Eagleridge"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -475,7 +475,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Old Orchard Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Old Orchard"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>  
@@ -494,7 +494,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Mango Walk-in Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Mango"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker> 
@@ -513,7 +513,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Brentwood Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Brentwood"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -532,7 +532,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Welcome Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Welcome"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -551,7 +551,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Kingsway Medical Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Kingsway"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -570,7 +570,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Metrohealth Clinic{"\n"}</Text>
-        <Button title = "lead"/>
+        <Button title = "Metrohealth"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>

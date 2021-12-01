@@ -11,6 +11,9 @@ import BackBtn from '../comps/BackBtn';
 import { useNavigation } from '@react-navigation/native';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
+import AppLoading from 'expo-app-loading';
+import { useFonts, Nunito_400Regular } from '@expo-google-fonts/nunito';
+
 
 
 const Cont = styled.View`
@@ -20,6 +23,7 @@ const Cont = styled.View`
   align-content:center;
   justify-content: space-between;
   z-index:1;
+
 `
 
 const Wave = styled.Image`
@@ -70,6 +74,9 @@ const [info,setInfo] =useState('')
 const [choice,setChoice] = useState('')
 const [cluid,setUid] = useState('')
 
+let [fontsLoaded] = useFonts({
+    Nunito_400Regular,
+  });
 
     
 useEffect(()=>{
@@ -113,6 +120,10 @@ useEffect(()=>{
 },[])
 
 const [path, setPath] = useState()
+    if(!AppLoading) {
+        return <AppLoading />
+    }
+    else {
     return (
         <Cont>
             <MyScrollView>
@@ -126,6 +137,7 @@ const [path, setPath] = useState()
                 </Cont2>
                 <CardCont>
                     <InfoCard 
+
                         text = {info.name}
                         text2 = {info.add}
                         text3 = {info.lang}
@@ -151,7 +163,8 @@ const [path, setPath] = useState()
                 <NavBar />
             </NavBarCont>
         </Cont>
-    )
+    );
+    }
 }
 
 export default ClinicProfile;
