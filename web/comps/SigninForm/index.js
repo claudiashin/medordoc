@@ -94,10 +94,10 @@ const SigninForm = ({ setChangePage, LogIn, setLogin }) => {
           width="120px"
           height="40px"
           fSize="16px"
-          bgColor="#90AABB"
-          borderRad="20px"
+          bgColor="#397FBF"
+          borderRad="5px"
           margin="40px 15px 0px 0px"
-          bgHover="#BCDFF6"
+          bgHover="#306799"
         />
       </ButtonCont>
     </MainCont>

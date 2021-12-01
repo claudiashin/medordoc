@@ -82,7 +82,7 @@ export default function home() {
       />
       <MenuCard width={300} height={350} source={MyLottie} routeTo="/request" />
       <MenuCard
-        title={"Doctors' Profiles"}
+        title={"Clinic & Doctor Profiles"}
         width={300}
         height={350}
         source={MyLottie3}

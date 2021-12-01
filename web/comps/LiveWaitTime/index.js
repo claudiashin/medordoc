@@ -12,13 +12,13 @@ import { doc, updateDoc } from "firebase/firestore";
 const MainCont = styled.div`
   width: 400px;
   // height: 300px;
-  border: 1px solid #505050;
-  border-radius: 5px;
+  border: 1px solid #8e8e8e;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #fcfcfc;
   position: relative;
+  font-family: nunito;
 `;
 const TitleCont = styled.div`
   width: 300px;
@@ -36,22 +36,20 @@ const Title = styled.p`
   // color: #505050;
 `;
 const UpdateButton = styled.button`
-  background-color: #90aabb;
+  background-color: #397FBF;
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 100px;
   height: 40px;
   padding: 10px;
   margin-bottom: 30px;
   font-size: 16px;
-  // position: absolute;
-  // right: 25px;
-  // bottom: 25px;
-
+  font-family: nunito;
   &:hover {
-    background-color: #7592a5;
+    background-color: #306799;
   }
+  cursor: pointer;
 `;
 
 const AlertBanner = styled.div`
@@ -82,7 +80,7 @@ const LiveWaitTime = ({ uid }) => {
       </TitleCont>
       <div>
         <FormControl variant="standard" sx={{ m: 4, minWidth: 300 }}>
-          <InputLabel id="demo-simple-select-standard-label">
+          <InputLabel style={{fontFamily: 'nunito' }}id="demo-simple-select-standard-label">
             Wait time
           </InputLabel>
           <Select
@@ -92,19 +90,19 @@ const LiveWaitTime = ({ uid }) => {
             onChange={handleChange}
             label="Time"
           >
-            <MenuItem value={0} style={{ fontSize: 18 }}>
+            <MenuItem value={0} style={{ fontSize: 18, fontFamily: 'nunito' }}>
               No Wait
             </MenuItem>
-            <MenuItem value={15} style={{ fontSize: 18 }}>
+            <MenuItem value={15} style={{ fontSize: 18, fontFamily: 'nunito'  }}>
               15 Minutes
             </MenuItem>
-            <MenuItem value={30} style={{ fontSize: 18 }}>
+            <MenuItem value={30} style={{ fontSize: 18, fontFamily: 'nunito'  }}>
               30 Minutes
             </MenuItem>
-            <MenuItem value={45} style={{ fontSize: 18 }}>
+            <MenuItem value={45} style={{ fontSize: 18, fontFamily: 'nunito'  }}>
               45 Minutes
             </MenuItem>
-            <MenuItem value={60} style={{ fontSize: 18 }}>
+            <MenuItem value={60} style={{ fontSize: 18, fontFamily: 'nunito'  }}>
               60 Minutes
             </MenuItem>
           </Select>
