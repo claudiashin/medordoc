@@ -6,6 +6,7 @@ import HeroAvatar from "../HeroAvatar";
 import PatientCard from "../PatientCard";
 import { DoctorInputCard, DoctorCard } from "../DoctorCard";
 import ClinicProfile from "../ClinicProfile";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 import Btn from "../Btn";
 import {
   getDocs,
@@ -18,11 +19,8 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import { getAuth } from "firebase/auth";
-
-// import {getStorage, ref, uploadBytes} from "firebase/storage"
-
-// import { getDatabase, ref, set } from "firebase/database";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { urlObjectKeys } from "next/dist/shared/lib/utils";
 
 const Nav = styled("div")`
   & > * {
@@ -130,52 +128,89 @@ const ButtonCont = styled.div`
   width: 90%;
   margin: 30px 0px -50px 0px;
 `;
-const HeroImage = (props) => {
-  const [clinicImage, setClinicImage] = React.useState("");
+const ImageCont = styled.div`
+  position: relative;
+`;
+const UploadBtn = styled.div`
+  position: absolute,
+  right: 10,
+  bottom: 15
+  
+`;
 
-  useEffect(async () => {
-    if (props.uid) {
-      const usersDocRef = doc(db, "clinics", props.uid);
-      const data = await getDoc(usersDocRef);
-      const result = data.data();
-      setClinicImage(result.image);
+const HeroImage = ({ uid }) => {
+  const [profileImage, setProfileImage] = useState("");
+  console.log(uid);
+
+  const Upload = async (e) => {
+    console.log(e.target.files[0]);
+    if (e.target.files.length <= 0) {
+      alert("no files were selected");
+      return false;
     }
-  }, [props.uid]);
+    const file = e.target.files[0];
+    const storage = getStorage();
+    const storageRef = ref(storage, "users/" + uid + ".jpg");
+    console.log(storageRef);
 
-  // const storage = getStorage();
-  // getDownloadURL(ref(storage, clinicImage))
-  // .then((url) => {
-  //   // `url` is the download URL for 'images/stars.jpg'
+    const snapshot = await uploadBytes(storageRef, file);
+    console.log("Uploaded!");
+    // console.log(storageRef);
 
-  //   // This can be downloaded directly:
-  //   const xhr = new XMLHttpRequest();
-  //   xhr.responseType = 'blob';
-  //   xhr.onload = (event) => {
-  //     const blob = xhr.response;
-  //   };
-  //   xhr.open('GET', url);
-  //   xhr.send();
+    // const objectURL = URL.createObjectURL(storageRef);
+  };
+    // const imgUrl = async () => {
+    //   await storageRef.getDownloadURL().then((imgUrl) => {
+    //     img.src = imgUrl + '.jpg';
+    //     console.log(img.src);
+    //     // console.log(imgUrl);
+    //   });
+    // };
+    // const storage = getStorage();
+    // getDownloadURL(ref(storage, "users/" + uid + ".jpg")).then((url) => {
+    //   const xhr = new XMLHttpRequest();
+    //   xhr.responseType = 'blob';
+    //   xhr.onload = (event) => {
+    //       const blob = xhr.response;
+    //   };
+    //   xhr.open('GET', url);
+    //   xhr.send();
 
-  // })
-  // .catch((error) => {
-  //   // Handle any errors
-  // });
-  // const auth = getAuth();
-  // const storage = getStorage();
-  // const forestRef = ref('clinic/' + auth.user.uid + '/1.jpg').put(file)
+    //   const img = document.getElementById('myimg');
+    //   console.log(img.src);
+    // })
+    // .catch((error)=>{
+    //   //handle any errors
+    // })
 
   return (
-    <div>
-      <img
-        id="myimg"
-        style={{
-          width: 200,
-          height: 200,
-          borderRadius: 100,
-          objectFit: "cover",
-        }}
-      />
-    </div>
+    <ImageCont>
+      <div>
+        <img
+        // src={'https://firebasestorage.googleapis.com/v0/b/medordoc-516a4.appspot.com/o/users%2F9w9DqZEXIoczwfGSESl82tYCbnJ3.jpg?alt=media&token=65d58427-3374-40f5-87fd-021686a46f5c'}
+          id="myimg"
+          style={{
+            width: 200,
+            height: 200,
+            borderRadius: 100,
+            objectFit: "cover",
+          }}
+        />
+      </div>
+      <UploadBtn>
+        <input
+          type="file"
+          // style={{display: 'none'}}
+          onChange={Upload}
+          // onClick = {async()=>{
+          //   await updateDoc(doc(db,'clinics',uid), {
+          //     img: profileImage,
+          //   })
+          // }}
+        ></input>
+        <AiOutlinePlusCircle size={25} />
+      </UploadBtn>
+    </ImageCont>
   );
 };
 
@@ -227,9 +262,9 @@ const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
         <Btn
           title="Create New"
           fSize="16px"
-          bgColor="#90AABB"
-          bgHover="#688BA3"
-          borderRad="20px"
+          bgColor="#397FBF"
+          bgHover="#306799"
+          borderRad="5px"
           width="120px"
           onClick={() => {
             showModal(true);
@@ -286,7 +321,7 @@ const HorizonTab = ({ router, uid, showModal, setModalContent }) => {
       <TabHead>
         <Tab selected={isTabOne}>
           <Link href={{ pathname: "/profile/", query: { tab: "1" } }}>
-            <a>Clinics</a>
+            <a>Clinic</a>
           </Link>
         </Tab>
         <Tab selected={isTabTwo}>
@@ -300,7 +335,7 @@ const HorizonTab = ({ router, uid, showModal, setModalContent }) => {
           <React.Fragment>
             <MyCont>
               <ItemCont>
-                <HeroImage />
+                <HeroImage uid={uid} />
               </ItemCont>
               <ItemCont>
                 <ClinicProfile uid={uid} />

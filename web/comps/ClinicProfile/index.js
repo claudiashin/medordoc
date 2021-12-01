@@ -39,12 +39,19 @@ const FormInput = styled.input`
   outline: none;
   padding-bottom: 5px;
   background-color: #f7f2ee;
+  width: 390px;
 `;
 const FormTimeForm = styled.fieldset`
   margin: 15px;
   border: 1px solid black;
   width: 185px;
-  height: 60px;
+  height: 55px;
+`;
+const FormTimeInput = styled.input`
+  border: none;
+  outline: none;
+  background-color: #f7f2ee;
+  width: 163px;
 `;
 const TimeFormCont = styled.div`
   display: flex;
@@ -63,15 +70,19 @@ const ButtonCont = styled.div`
 
 const Button = styled.button`
   margin: 15px;
-  width: 130px;
-  height: 50px;
+  width: 120px;
+  height: 40px;
   padding: 5px;
-  background-color: #90aabb;
+  background-color: #397FBF;
   color: white;
   border: none;
-  border-radius: 30px;
-  font-size: 18px;
+  border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
+  font-family: 'nunito';
+  &:hover {
+    background-color: #306799;
+  } 
 `;
 
 const LangMain = styled.form``;
@@ -83,6 +94,21 @@ const LangCont = styled.select`
   border: none;
 `;
 const LangOpt = styled.option``;
+
+
+const AlertBanner = styled.div`
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+  z-index: 200;
+  display: ${(props) => (props.show ? "block" : "none")};
+`;
+
+
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -134,7 +160,7 @@ const ClinicProfile = (props) => {
       target: { value },
     } = event;
     setLanguage(
-      // On autofill we get a the stringified value.
+
       typeof value === "string" ? value.split(",") : value
     );
   };
@@ -154,8 +180,9 @@ const ClinicProfile = (props) => {
     }
   }, [props.uid]);
 
-  // const {user, users} = useContext(AuthenticatedUserContext);
-  // console.log(users.name)
+
+  const [showAlert, setShowAlert] = React.useState(false);
+  const [confirm, setConfirm] = React.useState("");
 
   return (
     <MainCont>
@@ -194,7 +221,7 @@ const ClinicProfile = (props) => {
       <TimeFormCont>
         <FormTimeForm>
           <FormTitle>Open</FormTitle>
-          <FormInput
+          <FormTimeInput
             readOnly={readOnly}
             type="time"
             placeholder="Open Hour"
@@ -204,7 +231,7 @@ const ClinicProfile = (props) => {
         </FormTimeForm>
         <FormTimeForm>
           <FormTitle>Close</FormTitle>
-          <FormInput
+          <FormTimeInput
             readOnly={readOnly}
             type="time"
             placeholder="Close Hour"
@@ -219,14 +246,16 @@ const ClinicProfile = (props) => {
         <FormControl
           sx={{
             m: 1,
-            width: 400,
+            width: 410,
             height: 50,
             marginBottom: 5,
             marginLeft: 1.7,
             color: "black",
+            borderColor: 'black',
+            borderRadius: 0,
           }}
         >
-          <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
+          <InputLabel style={{fontFamily: 'nunito', color: 'black'}} id="demo-multiple-name-label">Languages</InputLabel>
           <Select
             readOnly={readOnly}
             labelId="demo-multiple-name-label"
@@ -236,13 +265,14 @@ const ClinicProfile = (props) => {
             onChange={handleChange}
             input={<OutlinedInput label="Name" />}
             MenuProps={MenuProps}
-            style={{ height: 50, borderBlockStyle: "black" }}
+            style={{ height: 50, borderBlockStyle: "black", fontFamily: 'nunito' }}
           >
             {names.map((name) => (
               <MenuItem
                 key={name}
                 value={name}
                 style={getStyles(name, clinicLang, theme)}
+                sx={{fontFamily: 'nunito'}}
               >
                 {name}
               </MenuItem>
@@ -250,6 +280,7 @@ const ClinicProfile = (props) => {
           </Select>
         </FormControl>
       </div>
+      <AlertBanner show={showAlert}>{confirm}</AlertBanner>
       <ButtonCont>
         <Button
           onClick={async () => {
@@ -266,6 +297,11 @@ const ClinicProfile = (props) => {
                 open: clinicOpen,
               });
               setReadOnly(true);
+              setShowAlert(true);
+              setConfirm("Your Clinic Information has been updated");
+              setTimeout(()=>{
+                setShowAlert(false);
+              }, 3000);
             }
           }}
         >

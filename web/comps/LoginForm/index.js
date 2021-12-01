@@ -10,12 +10,17 @@ const MainCont = styled.div`
   display: flex;
   flex-direction: column;
   width: $ ${(props) => props.width}px;
+  align-items: flex-end;
+  position: relative;
 `;
 
 const Title = styled.p`
   margin-left: 15px;
   font-size: 16px;
   font-weight: 600;
+  position: absolute;
+  left: 10px;
+  top: -40px;
 `;
 
 const Form = styled.fieldset`
@@ -33,7 +38,7 @@ const FormInput = styled.input`
   outline: none;
   type: text;
   width: 380px;
-  padding-bottom: 5px;
+  
   background-color: #f7f2ee;
 `;
 const LastDiv = styled.div`
@@ -41,19 +46,23 @@ const LastDiv = styled.div`
   justify-content: flex-end;
   margin-right: 15px;
   margin-top: -10px;
+  font-family: 'nunito';
 `;
 const Text = styled.p`
   font-size: 16px;
   color: #979595;
+  font-family: 'nunito';
 `;
 const TextLink = styled.a`
   font-size: 16px;
   color: #226baf;
   margin-left: 10px;
+  font-family: 'nunito';
 `;
 const BtnCont = styled.div`
   margin-top: 70px;
   margin-left: 130px;
+
 `;
 
 const AlertBanner = styled.div`
@@ -88,6 +97,7 @@ const LoginForm = ({ width = "300" }) => {
         <FormInput
           type="text"
           placeholder="Email Address"
+          style={{fontFamily: 'nunito'}}
           value={clinicEmail}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -97,6 +107,7 @@ const LoginForm = ({ width = "300" }) => {
         <FormInput
           type="password"
           placeholder="Password"
+          style={{fontFamily: 'nunito'}}
           value={clinicPass}
           onChange={(e) => setPass(e.target.value)}
         />
@@ -110,14 +121,14 @@ const LoginForm = ({ width = "300" }) => {
       <BtnCont>
         <Btn
           title="Sign In"
-          fSize="22px"
+          fSize="18px"
           color="#fff"
-          bgColor="#90AABB"
-          width="200px"
-          height="53px"
+          bgColor="#397FBF"
+          width="120px"
+          height="50px"
           margin="5px"
-          borderRad="25px"
-          bgHover="#7C9AAD"
+          borderRad="5px"
+          bgHover="#306799"
           onClick={async () => {
             setShowAlert(false);
             if (clinicEmail == "" || clinicPass == "") {
