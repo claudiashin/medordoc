@@ -14,7 +14,7 @@ const Backcont = styled.TouchableOpacity`
     display: flex;
     justify-content: center;
     align-items:center;
-    width: 40px;
+    width: 39px;
     height: 40px;
     top: 100px;
     left: 25px;
