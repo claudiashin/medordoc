@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import PropTypes from 'prop-types';
 import DialogTitle from '@mui/material/DialogTitle';
 import ListItem from '@mui/material/ListItem';
+import Typography from '@mui/material/Typography'
 
 const MainCont = styled.div`
     display: flex;
@@ -18,7 +19,8 @@ const MainCont = styled.div`
 const code = ['go to check in']
 function SimpleDialog(props) {
     const { onClose, selectedValue, open } = props;
-  
+    const [scanResult, setScanResult] = React.useState('');
+
     const handleClose = () => {
       onClose(selectedValue);
     };
@@ -31,16 +33,24 @@ function SimpleDialog(props) {
       console.error(err)
     }
 
+    // const handleScan = (data) => {
+    //     if(data) {
+    //       useState({
+    //             result:data
+    //         })
+    //         window.location.href = `/checkIn?ccode=${result.cornit}`;
+
+    //     }
+    // }
+
+
     const handleScan = (data) => {
-        if(data) {
-            useState({
-                result: data
-            })
-            window.location.href = `/checkIn?ccode=${result.cornit}`;
-            // window.location.href = '/checkin';
-            //axios user id 
-        }
-    }
+      if (data) {
+      setScanResult(data);
+      // window.location.href = `/checkIn?ccode=${scanResult.cornit}`;
+      window.location.href = `/checkin`;
+      }
+    };
 
     return (
       <Dialog onClose={handleClose} open={open}>
@@ -53,6 +63,7 @@ function SimpleDialog(props) {
             onScan={handleScan}
             style={{width: '100%'}}
         />
+        {/* <Typography>{`Coded text: ${scanResult}`}</Typography> */}
         <ListItem button onClick={() => handleListItemClick(code)} key={code}>
         </ListItem>
       </Dialog>

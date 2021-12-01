@@ -46,3 +46,5 @@ npm-debug.*
 
 #DS_Store File
 */.DS_Store
+mobile/package-lock.json
+web/package-lock.json

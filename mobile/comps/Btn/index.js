@@ -28,7 +28,6 @@ const Btn = ({
     height = '60',
     borderRad = '50',
     onPress={}
-
 }) => {
 
     return (
