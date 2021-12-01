@@ -20,6 +20,7 @@ const Cont = styled.div`
 const BodyCont = styled.div``;
 const Modal = styled.div`
   position: absolute;
+  top: 0;
   justify-content: center;
   align-items: center;
   width: 100%;

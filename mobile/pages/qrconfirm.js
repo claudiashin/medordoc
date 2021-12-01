@@ -58,6 +58,7 @@ const qrconfirm = () => {
     useEffect(()=>{
 
         const auth = getAuth()
+        
         const userid = auth.currentUser.uid;
         setUser(userid)
         

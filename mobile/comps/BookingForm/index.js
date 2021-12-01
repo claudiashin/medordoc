@@ -52,7 +52,7 @@ const BookingForm = ({
         textContentType='name'
         value={dbname}
         editable={editable}
-        onChangeText={dbname => setName(dbname)}
+        onChangeText={(e) => setName(dbname)}
     ></TextInput>
 
     <DatePickerInput
@@ -85,9 +85,9 @@ const BookingForm = ({
         textContentType="fullStreetAddress"
         type="flat"
         label="Address"
-        value={dbaddress}
+        value={address}
         editable={editable}
-        onChangeText={dbaddress => setAddress(dbaddress)}
+        onChangeText={address => setAddress(address)}
     ></TextInput>
     <TextInput
         style={styles.inputbox}
@@ -96,9 +96,9 @@ const BookingForm = ({
         autoCapitalize='sentences'
         type="flat"
         label="Concerns"
-        value={dbconcerns}
+        value={concerns}
         editable={editable}
-        onChangeText={dbconcerns => setConcerns(dbconcerns)}
+        onChangeText={concerns => setConcerns(concerns)}
     ></TextInput>
     </>
 

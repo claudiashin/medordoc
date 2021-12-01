@@ -92,8 +92,7 @@ const ListCon = styled.div`
 
 const ContPatientList = styled.div`
   width: 400px;
-  border: 1px solid black;
-  border-radius: 5px;
+  border: 1px solid #8E8E8E;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -210,7 +209,7 @@ export default function Home({}) {
       <NavBarCont>
         <NavBar />
         <HeaderCont>
-          <HeaderTitle title={"Booking"} />
+          <HeaderTitle title={"Bookings"} />
         </HeaderCont>
       </NavBarCont>
 
@@ -227,15 +226,15 @@ export default function Home({}) {
 
         <Low>
           <Column>
-            <LiveWaitTime uid={uid}></LiveWaitTime>
-          </Column>
-          <Column>
             <ContPatientList>
               <TitleCont>
                 <Title>{date.toDateString()}</Title>
               </TitleCont>
               <PatientBooking uid={uid} date={date} />
             </ContPatientList>
+          </Column>
+          <Column>
+            <LiveWaitTime uid={uid}></LiveWaitTime>
           </Column>
         </Low>
       </BodyCont>

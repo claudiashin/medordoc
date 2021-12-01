@@ -83,7 +83,6 @@ const [doctors,setDoctors] = useState([])
       const querySnapshot = await getDocs(collection(db, "doctors"));
       querySnapshot.forEach((doc) => {
         const doctorInfo = doc.data()
-        console.log(doctorInfo.clinicId)
         doctors.push(<ClinDocButton bodyText={doc.data().name} cardpress={() => navigation.navigate("docprofile",{
           doctorInfo
         })} />
