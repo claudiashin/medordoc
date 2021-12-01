@@ -19,8 +19,9 @@ const BackBtn = ({
 
 }) => {
 
-
-    return <Backcont onPress={onPress}>
+    return <Backcont 
+    // source={require('../../assets/icons/back-button.png')}
+    onPress={onPress}>
         
         <Ionicons name="chevron-back" size={50} color="black"
             

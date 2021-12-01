@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import Btn from "../comps/Btn";
 import HeaderTitle from "../comps/HeaderTitle";
 import NavBar from "../comps/NavBar";
-import QRComponent from "../comps/CheckIn";
 import BookingForm from "../comps/BookingForm";
 import Footer from "../comps/Footer";
 import QRscan from "../comps/QRscan";
@@ -49,19 +48,28 @@ const BodyCont = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 const Low = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px;
 `;
+
 const Qrcode = styled.div`
   width: 400px;
   height: 400px;
   background-color: #868686;
 `;
+
 const BtnCont = styled.div`
   margin-top: 20px;
   margin-left: 150px;
+`;
+
+const FooterCont = styled.div`
+  margin-top: 15%;
+  width: 100%;
+
 `;
 
 export default function Home() {
@@ -80,9 +88,9 @@ export default function Home() {
       <HeaderTitle title="Booking Confirmation" fontSize="36" />
       <BodyCont>
         <Low>
-          <Qrcode>
+          {/* <Qrcode>
             <img src="/qrcode.png" width="100%" />
-          </Qrcode>
+          </Qrcode> */}
         </Low>
         <Low>
           <BookingForm></BookingForm>
@@ -93,16 +101,18 @@ export default function Home() {
               color="#fff"
               bgColor="#90AABB"
               width="125px"
-              height="40px"
+              height="50px"
               borderRad="25px"
               bgHover="#7592A5"
-              onClick={() => router.push("/confirm")}
+              onClick={() => router.push("/booking")}
             />
           </BtnCont>
         </Low>
       </BodyCont>
       <QRscan />
-      <Footer />
+      <FooterCont>
+        <Footer />
+      </FooterCont>
     </MainCont>
   );
 }

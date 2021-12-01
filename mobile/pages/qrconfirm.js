@@ -51,6 +51,9 @@ const qrconfirm = () => {
     const [name,setName] = useState('')
     const [date,setDate] =useState('')
     const [time,setTime] =useState('')
+    const [clname,setClname] =useState('')
+    const [cladd,setAdd] =useState('')
+    
     
     useEffect(()=>{
 
@@ -58,17 +61,32 @@ const qrconfirm = () => {
         const userid = auth.currentUser.uid;
         setUser(userid)
         
-        const getting =async()=>{
+        const gettingBK =async()=>{
             const docRef = doc(db, "appointment",user);
             const docSnap = await getDoc(docRef);
+            // const docRef1 = doc(db, "clinics",clinicID);
+            // const docSnap1 = await getDoc(docRef1);
+            // setClname(docSnap1.data().name);
+            // setAdd(docSnap1.data().add);
             setName(docSnap.data().patientname);
             setDate(docSnap.data().bookingdate);
             setTime(docSnap.data().bookingtime);
+            setClnicID(docSnap.data().clinickId);
             console.log(name)
             console.log(date)
             console.log(time)
+            console.log(clinicID)
         }
-        getting()
+        gettingBK()
+
+        // const gettingCL =async()=>{
+            // const docRef = doc(db, "clinics",clinicID);
+            // const docSnap = await getDoc(docRef);
+            // setClname(docSnap.data().name);
+            // setAdd(docSnap.data().add);
+        // }
+        // gettingCL()
+
  },[])
 
     
@@ -86,8 +104,8 @@ const qrconfirm = () => {
                         text1="Appointment Details"
                         text2={date}
                         text3= {time}
-                        text4= "Location: Care Point Clinic"
-                        text5="Location: Care Point Clinic"
+                        text4= {clname}
+                        text5= {cladd}
                         text6="1234 Canada Way, Burnaby V4J2B7"
                         fweight="500"
                         display="none"

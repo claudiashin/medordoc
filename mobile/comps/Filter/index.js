@@ -19,7 +19,7 @@ const Extra = styled.View`
 `
 const Maincont = styled.View`
     display:flex;
-    flex:1;
+   
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -28,7 +28,7 @@ const Maincont = styled.View`
     background-color: #ffffff;
     border: 1px solid #E9D7CB;
     border-radius: 5px;
-    left: 20%;
+
 `
 
 //filter icon container

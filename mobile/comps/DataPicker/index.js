@@ -30,14 +30,13 @@ export default function Datepick(
     const [fname,setFname] =useState('')
     const [lname,setLname] =useState('')
     const [clinicID,setClnicID] =useState('')
+    const [ready,setReady] =useState('')
     
     useEffect (()=>{
         const auth = getAuth()
         const userid = auth.currentUser.uid;
         setUser(userid)
-        setClnicID(clinicId.clinicId)
         console.log(clinicID)
-
       //   const getting =async()=>{
       //   const docRef = doc(db, "patientuser",user);
       //   const docSnap = await getDoc(docRef);
@@ -46,12 +45,17 @@ export default function Datepick(
       // }
       // getting()
 
-       },[])
- 
-   
+       },[]) 
+
+  
+    console.log(clinicID)
+
     const booking = async(
     )=>{
+      // setClnicID(clinicId.clinicId)
       getting()
+      console.log(clinicID)
+    
       
       await setDoc(doc(db,"appointment",user), {
           userid:user,
@@ -62,15 +66,16 @@ export default function Datepick(
            });
     }
 
-     const getting =async()=>{
+         const getting =async()=>{
          const docRef = doc(db, "patientuser",user);
          const docSnap = await getDoc(docRef);
+         setClnicID(clinicId.clinicId)
+         setReady("ready to go")
          setFname(docSnap.data().fname);
          setLname(docSnap.data().lname);
          console.log(fname)
-         console.log(lname)
+         console.log(lname)  
      }
-
 
       // useEffect (()=>{
       //  const auth = getAuth
@@ -145,11 +150,13 @@ export default function Datepick(
                         fSize={18}
                         onPress={() => navigation.navigate('qrconfirm')}
                     /> */}
-                    <Button  title='Checking' onPress = {getting} style = {styles.btn}></Button> 
+                    <Button  title='Check-in' onPress = {getting} style = {styles.btn}></Button> 
 
-                  <Text>Your Name is {fname+ ' '+ lname}</Text>
+                          <Text>Your Name is {fname+ ' '+ lname}</Text>
+                          <Text>Your booking is {ready}</Text>
+
                     <Button  title='Booking' onPress = {booking} style = {styles.btn}></Button>
- 
+
               </ButtonCont>    
 
 
@@ -182,12 +189,12 @@ export default function Datepick(
           date:{
             flex:1,
             backgroundColor: '#fff',
-            margin:30,
+            // margin:30,
           },
           time:{
             flex:1,
             backgroundColor: '#97BDD6',
-            margin:30,
+            // margin:30,
           },
           button:{
             margin:5,

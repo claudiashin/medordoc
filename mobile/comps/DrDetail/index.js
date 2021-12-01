@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     }
 })
 
-const DrDetail = () => {
+const DrDetail = ({doctorInfo}) => {
 
     const [text, setText] = React.useState('');
     const [name, setName] = React.useState('');
@@ -34,7 +34,7 @@ const DrDetail = () => {
       }
 
       GetData()
-      console.log(info.name)
+
   },[])
 
   return <>
@@ -46,7 +46,7 @@ const DrDetail = () => {
         type="flat"
         label="Name"
         textContentType='name'
-        value={info.name}
+        value={doctorInfo.name}
         editable={false}
         onChangeText={name => setName(name)}
     ></TextInput>
@@ -55,7 +55,7 @@ const DrDetail = () => {
         underlineColor="#505050"
         type="flat"
         label="Gender"
-        value={info.gender}
+        value={doctorInfo.gender}
         editable={false}
         onChangeText={text => setText(text)}
     ></TextInput>
@@ -66,7 +66,7 @@ const DrDetail = () => {
         textContentType="fullStreetAddress"
         type="flat"
         label="Language"
-        value={JSON.stringify(info.lang)}
+        value={doctorInfo.lang.join(", ")}
         editable={false}
         onChangeText={lang => setLang(lang)}
     ></TextInput>
@@ -76,7 +76,7 @@ const DrDetail = () => {
         autoCapitalize='sentences'
         type="flat"
         label="Experience"
-        value={info.ex + " years"}
+        value={doctorInfo.ex + ' years'}
         editable={false}
         onChangeText={experience => setExperience(experience)}
     ></TextInput>
@@ -86,7 +86,7 @@ const DrDetail = () => {
         autoCapitalize='sentences'
         type="flat"
         label="Clinic"
-        value={info.location}
+        value={doctorInfo.location}
         editable={false}
         onChangeText={address => setAddress(address)}
     ></TextInput>
