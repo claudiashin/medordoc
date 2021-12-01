@@ -29,6 +29,7 @@ const Wave = styled.Image`
     height: 30%;
     position: absolute;
     top: 0;
+    z-index: 2;
 `;
 
 // const CalendarAPICont = styled.View`
@@ -62,6 +63,15 @@ const BackCont = styled.View`
   right: 300px;
   z-index: 999;
 `
+const HeaderCont = styled.View`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    top: 100px;
+    z-index: 999;
+
+`
 const booking = ({ route,navigation }) => {
     
     const [uid,setUID] = useState('');
@@ -75,10 +85,16 @@ const booking = ({ route,navigation }) => {
     return (
         <BookingCont>
             <MyScrollView >
+
                 {/* <BackCont>
                     <BackBtn/>
                 </BackCont> */}
                 <Wave source={require('../assets/backgroundmobile.png')} />
+                <HeaderCont>
+                <Header
+                    title= "Schedule your appointment"
+                />
+                </HeaderCont>
 
                 {/* <CalendarAPICont>
                     <Text>Calendar</Text>
