@@ -15,6 +15,7 @@ import HeroAvatar from "../comps/HeroAvatar";
 import Btn from "../comps/Btn";
 import Header from "../comps/Header";
 import NavBar from "../comps/NavBar";
+import BackBtn from "../comps/BackBtn";
 
 const MainCont = styled.View`
   flex: 1;
@@ -48,6 +49,12 @@ const ButCont = styled.View`
 const NavBarCont = styled.View`
   flex: 0.15;
 `;
+const BackCont = styled.View`
+  display: flex;
+  position: absolute;
+  right: 330px;
+  z-index: 999;
+`
 
 export default function docprofile({ navigation, route }) {
   const { doctorInfo} = route.params;
@@ -55,6 +62,9 @@ export default function docprofile({ navigation, route }) {
     <MainCont>
       <Wave source={require("../assets/backgroundmobile.png")} />
       <ScrollView style={styles.scrollView}>
+        <BackCont>
+          <BackBtn onPress={() => navigation.goBack()}/>
+        </BackCont>
         <ImageCont>
           <HeroAvatar heroheight="200" herowidth="200" visibility="hidden" />
         </ImageCont>
