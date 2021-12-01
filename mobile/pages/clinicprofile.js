@@ -9,6 +9,7 @@ import Btn from '../comps/Btn';
 import NavBar from '../comps/NavBar';
 import BackBtn from '../comps/BackBtn';
 import { useNavigation } from '@react-navigation/native';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import AppLoading from 'expo-app-loading';
 import { useFonts, Nunito_400Regular } from '@expo-google-fonts/nunito';
@@ -107,8 +108,22 @@ useEffect(()=>{
     }
     get()
 
+    const auth = getAuth();
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+         console.log("yes")
+         setPath("booking")
+        } else {
+            console.log("no")
+            setPath("login")
+          }
+        });
+        
+
 },[])
 
+const [path, setPath] = useState()
     if(!AppLoading) {
         return <AppLoading />
     }
@@ -148,7 +163,7 @@ useEffect(()=>{
                 </CardCont>
                 
                 <BtnCont>
-                    <Btn onPress={() => navigation.navigate("login",{clinic:cluid})} />
+                    <Btn onPress={() => navigation.navigate(path,{clinic:cluid})} />
                 </BtnCont>
             </MyScrollView>
 

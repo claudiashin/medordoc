@@ -56,9 +56,12 @@ const login = ({route,navigation})=>{
     // const navigation = useNavigation();
  
     useEffect(()=>{
-       const UID = route.params;
-       const num = UID.clinic 
-       setUID(num);
+        if(uid){
+            const UID = route.params;
+            const num = UID.clinic 
+            setUID(num);
+        }
+       
        
     },[])
     
