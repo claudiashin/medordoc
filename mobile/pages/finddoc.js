@@ -10,6 +10,9 @@ import BackBtn from '../comps/BackBtn';
 
 import BookingForm from '../comps/BookingForm';
 import NavBar from '../comps/NavBar';
+import { collection, query, where, getDocs } from "firebase/firestore";
+import {db} from '../utils/store'
+
 
 
 const Cont = styled.View`
@@ -26,12 +29,13 @@ const Wave = styled.Image`
   top: 0;
   `;
   const WaveCont = styled.View`
-  
+  width:100%;
+  height:500px
   `
 
   const FilterCont = styled.View`
-    
     margin-top: 180px;
+    align-items: center;
   `
   const HeaderCont = styled.View`
     display:flex;
@@ -53,12 +57,13 @@ const CardCont = styled.View`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
   `
 const NavBarCont = styled.View`
 
 `;
 const ScrollView = styled.ScrollView`
+
+
 
 `
 const BackCont = styled.View`
@@ -68,15 +73,52 @@ const BackCont = styled.View`
 `
 
 const finddoc = ({navigation})=>{
+
+const [doctors,setDoctors] = useState([])
+
+  useEffect(()=>{
+
+  const GetData = async()=>{
+      const querySnapshot = await getDocs(collection(db, "doctors"));
+      querySnapshot.forEach((doc) => {
+        const doctorInfo = doc.data()
+        console.log(doctorInfo.clinicId)
+        doctors.push(<ClinDocButton bodyText={doc.data().name} cardpress={() => navigation.navigate("docprofile",{
+          doctorInfo
+        })} />
+        )
+      });
+     setDoctors([
+       ...doctors
+     ])
+
+      }
+
+      GetData()
+
+      
+  },[])
+
+  // const reload = async () => {
+  //   const q = query(collection(db, "doctors"), where("gender", "==", "male"));
+  //   const querySnapshot = await getDocs(q);
+  //   console.log(querySnapshot);
+  //   const doctors = [];
+    // querySnapshot.forEach((doc) => {
+    //   var temp = doc.data();
+    //   temp.id = doc.id;
+    //   doctors.push(temp);
+    // });
 return( <Cont>
   <ScrollView keyboardShouldPersistTaps={'handled'}>
-    <BackCont>
+  <BackCont>
     <BackBtn onPress={() => navigation.goBack()} />
     </BackCont>
-    
-  <Wave source={require('../assets/backgroundmobile.png')} />
 
-  <HeaderCont>
+    <WaveCont>
+  <Wave source={require('../assets/backgroundmobile.png')} />
+  </WaveCont>
+  <HeaderCont >
     <Header
       title="Find a Family Doctor"
       fSize="26px"
@@ -109,14 +151,11 @@ return( <Cont>
       />
   </HeaderCont2>
    
+
   <CardCont>
-    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
-    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
-    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
-    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
-    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
-    <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
+    {doctors}
   </CardCont> 
+
 </ScrollView> 
 
 <NavBarCont>
@@ -124,6 +163,7 @@ return( <Cont>
 </NavBarCont>
 </Cont>
   )
+
 }
 
 export default finddoc;

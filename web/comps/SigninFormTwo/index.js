@@ -35,7 +35,7 @@ const FormTimeForm = styled.fieldset`
   margin: 15px;
   border: 1px solid black;
   width: 185px;
-  height: 57    px;
+  height: 57 px;
 `;
 const TimeFormCont = styled.div`
   display: flex;
@@ -106,11 +106,13 @@ const MenuProps = {
 const names = [
   "English",
   "French",
-  "Chinese",
+  "Cantonese",
+  "Mandarin",
   "Japanese",
   "Korean",
-  "punjabi",
+  "Punjabi",
   "Hindi",
+  "Farsi",
 ];
 
 function getStyles(name, personName, theme) {
@@ -131,7 +133,7 @@ const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
     const {
       target: { value },
     } = event;
-    setInfo({lang: typeof value === "string" ? value.split(",") : value});
+    setInfo({ lang: typeof value === "string" ? value.split(",") : value });
   };
 
   return (
@@ -145,7 +147,7 @@ const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
           placeholder="Clinic Name"
           value={info.name}
           onChange={(e) => {
-            setInfo({name: e.target.value });
+            setInfo({ name: e.target.value });
           }}
         />
       </FormField>
@@ -260,10 +262,13 @@ const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
               setShowAlert(true);
             } else {
               const result = await submit();
-              if (result.clincId) {
+              if (result.clinicId) {
                 setChangePage(1);
+                // console.log(result);
               } else {
-                setError("We have some issue to sign you up. Please try again later.");
+                setError(
+                  "We have some issue to sign you up. Please try again later."
+                );
                 setShowAlert(true);
               }
             }

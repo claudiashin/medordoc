@@ -47,8 +47,9 @@ const BackCont = styled.View`
   top: 15px;
 `
 
-export default function confirmreq() {
+export default function confirmreq({ navigation, route }) {
   const [changeForm, setChangeForm] = useState(true);
+  const { doctorInfo} = route.params;
 
   if (changeForm === true) {
     return (
@@ -68,9 +69,9 @@ export default function confirmreq() {
 
           <InfoCardTwo
             text1="Doctor and Clinic Details"
-            text3="Doctor: Dr.Mills"
-            text4="Languages: English and Punjabi"
-            text5="Location: St Johns Clinic Vancouver 1234 Canada Way, Vancouver V4J 2B7"
+            text3={"Doctor: " + doctorInfo.name}
+            text4={"Languages: " + doctorInfo.lang[0]}
+            text5={"Location: " + doctorInfo.location}
             text6="Contact: 604-123-4567"
             fsize="18"
             fweight="700"
@@ -116,8 +117,8 @@ export default function confirmreq() {
         <InfoCardTwo
           text1="Request Details"
           text3="Submitted on: Oct 7, 2021"
-          text4="Requested for: Dr. Mills"
-          text5="Location: St Johns Clinic Vancouver 1234 Canada Way, Vancouver V4J 2B7"
+          text4={"Requested for: " + doctorInfo.name}
+          text5={"Location: " + doctorInfo.location}
           text6="Contact: 604-123-4567"
           fsize="18"
           fweight="700"

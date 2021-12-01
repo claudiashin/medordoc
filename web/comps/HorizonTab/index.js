@@ -7,11 +7,22 @@ import PatientCard from "../PatientCard";
 import { DoctorInputCard, DoctorCard } from "../DoctorCard";
 import ClinicProfile from "../ClinicProfile";
 import Btn from "../Btn";
-import { getDocs, collection, query, where, deleteDoc, doc } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  query,
+  where,
+  deleteDoc,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 import { db } from "../../firebase";
+import { getAuth } from "firebase/auth";
+
 // import {getStorage, ref, uploadBytes} from "firebase/storage"
 
-import { getDatabase, ref, set } from "firebase/database";
+// import { getDatabase, ref, set } from "firebase/database";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 const Nav = styled("div")`
   & > * {
@@ -117,8 +128,56 @@ const ButtonCont = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   width: 90%;
-  margin: 30px 0px 0px 0px;
+  margin: 30px 0px -50px 0px;
 `;
+const HeroImage = (props) => {
+  const [clinicImage, setClinicImage] = React.useState("");
+
+  useEffect(async () => {
+    if (props.uid) {
+      const usersDocRef = doc(db, "clinics", props.uid);
+      const data = await getDoc(usersDocRef);
+      const result = data.data();
+      setClinicImage(result.image);
+    }
+  }, [props.uid]);
+
+  // const storage = getStorage();
+  // getDownloadURL(ref(storage, clinicImage))
+  // .then((url) => {
+  //   // `url` is the download URL for 'images/stars.jpg'
+
+  //   // This can be downloaded directly:
+  //   const xhr = new XMLHttpRequest();
+  //   xhr.responseType = 'blob';
+  //   xhr.onload = (event) => {
+  //     const blob = xhr.response;
+  //   };
+  //   xhr.open('GET', url);
+  //   xhr.send();
+
+  // })
+  // .catch((error) => {
+  //   // Handle any errors
+  // });
+  // const auth = getAuth();
+  // const storage = getStorage();
+  // const forestRef = ref('clinic/' + auth.user.uid + '/1.jpg').put(file)
+
+  return (
+    <div>
+      <img
+        id="myimg"
+        style={{
+          width: 200,
+          height: 200,
+          borderRadius: 100,
+          objectFit: "cover",
+        }}
+      />
+    </div>
+  );
+};
 
 const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
   const [popup, setShowPopup] = useState(true);
@@ -150,7 +209,7 @@ const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
   const deleteDoctor = async (doctorId) => {
     await deleteDoc(doc(db, "doctors", doctorId));
     reload(uid);
-  }
+  };
 
   useEffect(() => {
     if (uid) {
@@ -167,11 +226,11 @@ const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
       <ButtonCont>
         <Btn
           title="Create New"
-          fSize="20px"
+          fSize="16px"
           bgColor="#90AABB"
           bgHover="#688BA3"
           borderRad="20px"
-          width="150px"
+          width="120px"
           onClick={() => {
             showModal(true);
             setModal();
@@ -184,7 +243,7 @@ const ClinicDoctors = ({ uid, showModal, setModalContent }) => {
           {doctors.map((doctor, index) => {
             const info = {
               id: doctor.id,
-              image: "https://placekitten.com/100/100",
+              // image: "https://placekitten.com/100/100",
               gender: doctor.gender,
               language: doctor.lang,
               experience: doctor.ex,
@@ -241,7 +300,7 @@ const HorizonTab = ({ router, uid, showModal, setModalContent }) => {
           <React.Fragment>
             <MyCont>
               <ItemCont>
-                <HeroAvatar />
+                <HeroImage />
               </ItemCont>
               <ItemCont>
                 <ClinicProfile uid={uid} />

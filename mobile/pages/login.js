@@ -2,7 +2,7 @@ import styled from 'styled-components/native'
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button, ScrollView, Image } from 'react-native';
 import { GoogleAuthProvider, getAuth, signInWithPopup,createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 import Header from '../comps/Header';
 import app from '../utils/inits';
 import HeroLottie from '../comps/HeroLottie';
@@ -34,6 +34,7 @@ const MainCont = styled.View`
     justify-content: space-between;
 `
 const Login = styled.View`
+
 `
 const ButCont = styled.View`
     margin-top: 20px;
@@ -48,9 +49,22 @@ const BackCont = styled.View`
   z-index: 999;
 `
 
-const login = ()=>{
-     const navigation = useNavigation(); 
-     const SignInGoogle = async()=>{
+const login = ({route,navigation})=>{
+    
+    const [uid,setUID] = useState('')
+    
+    // const navigation = useNavigation();
+ 
+    useEffect(()=>{
+       const UID = route.params;
+       const num = UID.clinic 
+       setUID(num);
+       
+    },[])
+    
+    console.log(uid);
+
+    const SignInGoogle = async()=>{
          const auth = getAuth();
          const provider = new GoogleAuthProvider();
          const result  = await signInWithPopup(auth,provider);
@@ -84,14 +98,6 @@ const login = ()=>{
         alert("Sign in!")
             }
 
-    const booking = async() =>{
-      const bookingdata = collection(db,"bookings")
-      await setDoc(doc(bookingdata,user.uid), {
-          date:23,
-          month:12,
-          year:2021});
-  }
-
 
  return <MainCont>
     <Wave source={require('../assets/backgroundmobile.png')} />
@@ -108,13 +114,11 @@ const login = ()=>{
      <Login>
      <View style = {styles.container}>
         <EmailSignin onSignin = {Signin}
-                 onCreate = {CreateUser}/>
-    </View> 
+                 onCreate = {CreateUser}
+                 uid = {uid}/>
+     </View> 
 
-     
      </Login>
-
-   
 
        </ScrollView>
 

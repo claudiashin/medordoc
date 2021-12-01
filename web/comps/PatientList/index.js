@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const MainCont = styled.div`
@@ -33,6 +33,7 @@ const ListCont = styled.div`
   height: 400px;
   margin-top: 35px;
 `;
+
 const ListItem = styled.div`
   display: flex;
   justify-content: space-between;
@@ -46,40 +47,23 @@ const ListItem = styled.div`
 `;
 const List = styled.p``;
 
-const PatientList = ({ height = "280" }) => {
-  return (
-    <MainCont height={height}>
-      <TitleCont>
-        <Title>October 8th Thursday</Title>
-      </TitleCont>
-      <ListCont>
-        <ListItem>
-          <List>9:00 AM</List>
-          <List>Tom Clooney</List>
-        </ListItem>
-        <ListItem>
-          <List>9:00 AM</List>
-          <List>Tom Clooney</List>
-        </ListItem>
-        <ListItem>
-          <List>9:00 AM</List>
-          <List>Tom Clooney</List>
-        </ListItem>
-        <ListItem>
-          <List>9:00 AM</List>
-          <List>Tom Clooney</List>
-        </ListItem>
-        <ListItem>
-          <List>9:00 AM</List>
-          <List>Tom Clooney</List>
-        </ListItem>
-        <ListItem>
-          <List>9:00 AM</List>
-          <List>Tom Clooney</List>
-        </ListItem>
-      </ListCont>
-    </MainCont>
-  );
-};
+const PatientList = ({ info }) => {
+  const [bookingDate, setBookingDate] = useState("");
+  const [bookingTime, setBookingTime] = useState("");
+  const [patientName, setPatientName] = useState("");
 
-export default PatientList;
+  useEffect(() => {
+    setBookingDate(info.bookingdate ?? "");
+    setBookingTime(info.bookingtime ?? "");
+    setPatientName(info.patientname ?? "");
+  }, [info]);
+
+  return (
+    <ListItem>
+      <List>{bookingTime}</List>
+      <List>{patientName}</List>
+    </ListItem>
+  )
+  };
+
+  export default PatientList;

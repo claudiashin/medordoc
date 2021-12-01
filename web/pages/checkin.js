@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import Btn from "../comps/Btn";
 import HeaderTitle from "../comps/HeaderTitle";
 import NavBar from "../comps/NavBar";
-import QRComponent from "../comps/CheckIn";
 import BookingForm from "../comps/BookingForm";
 import Footer from "../comps/Footer";
 import QRscan from "../comps/QRscan";
@@ -89,9 +88,9 @@ export default function Home() {
       <HeaderTitle title="Booking Confirmation" fontSize="36" />
       <BodyCont>
         <Low>
-          <Qrcode>
+          {/* <Qrcode>
             <img src="/qrcode.png" width="100%" />
-          </Qrcode>
+          </Qrcode> */}
         </Low>
         <Low>
           <BookingForm></BookingForm>
