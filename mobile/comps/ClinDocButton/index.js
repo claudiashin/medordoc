@@ -10,7 +10,7 @@ const Maincont = styled.View`
     padding-left:70px;
     align-items: center;
     background-color:#FFFFFF;
-    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5)
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4)
     width: 350px;
     height: 100px;
     margin:10px;

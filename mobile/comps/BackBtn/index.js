@@ -3,14 +3,21 @@ import styled from 'styled-components/native';
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 
+const Backimg = styled.Image`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  `;
 
 const Backcont = styled.TouchableOpacity`
     display: flex;
     justify-content: center;
     align-items:center;
-    width: 100px;
-    height: 100px;
-    top: 50px;
+    width: 40px;
+    height: 40px;
+    top: 100px;
+    left: 25px;
 `; 
 
 
@@ -22,11 +29,11 @@ const BackBtn = ({
     return <Backcont 
     // source={require('../../assets/icons/back-button.png')}
     onPress={onPress}>
-        
-        <Ionicons name="chevron-back" size={50} color="black"
+        <Backimg source={require('../../assets/icons/left-arrow.png')}/>
+        {/* <Ionicons name="chevron-back" size={50} color="black"
             
             // onPress={() => navigation.goBack()}         
-        />
+        /> */}
     </Backcont>
 }
 
