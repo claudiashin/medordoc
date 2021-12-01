@@ -395,7 +395,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Primacy - Manchanda Medical Clinic{"\n"}</Text>
-        <Button title = "Manchanda"/>
+        <Button title = "Manchanda Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
