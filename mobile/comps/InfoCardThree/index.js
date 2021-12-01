@@ -76,6 +76,7 @@ const InfoCardThree = ({
             // setApptData(appt)
 
         });
+        
        
       };
       reload()
