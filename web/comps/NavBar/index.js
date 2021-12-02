@@ -81,6 +81,7 @@ const NavButton = styled.p`
 
 const ProfileCont = styled.div`
   margin-right: 40px;
+  margin-top: 5px;
   // position: relative;
   // display: inline-block;
 
@@ -100,6 +101,18 @@ const ProfileIcon = styled.img`
   // &:hover {
   //   background-color: #31FF00;
   // }
+
+  @media only screen and (max-width: 500px) {
+    width: 30px;
+    height: 30px;
+  }
+
+  //for mobile
+  @media only screen and (max-width: 700px) {
+    width: 30px;
+    height: 30px;
+  }
+
 `;
 
 const DropdownCont = styled.div`

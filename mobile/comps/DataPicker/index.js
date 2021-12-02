@@ -21,9 +21,8 @@ export default function Datepick(
   //  bookingdate = {text},
   //  useruid= '',
   clinicId = '',
-  ClinicName = '',
-  ClinicAdd = ''
-
+  ClinicName = "",
+  ClinicAdd = ""
 ) {
     const navigation = useNavigation();  
     const [date, setDate] = useState(new Date());
@@ -36,40 +35,53 @@ export default function Datepick(
     const [month,setAmonth] = useState('');
     const [year,setAyear] = useState('') 
 
-
     const [user,setUser] = useState('');
     const [fname,setFname] =useState('')
     const [lname,setLname] =useState('')
     const [clinicID,setClnicID] =useState('')
     const [ready,setReady] =useState('')
-    
-    useEffect (()=>{
-        const auth = getAuth()
-        const userid = auth.currentUser.uid;
-        setUser(userid)
-        setClnicID(clinicId)
-        console.log(userid)
-        console.log(clinicId)
-        // const clinicUID = route.params;
-        // const num = clinicUID.clinicUID
-        // setUID(num);
-       
-      //   const getting =async()=>{
-      //   const docRef = doc(db, "patientuser",user);
-      //   const docSnap = await getDoc(docRef);
-      //   setInfo(docSnap.data())
-      //   console.log(docSnap.data())
-      // }
-      // getting()
-       },[]) 
 
-    console.log(clinicID)
+    // const auth = getAuth()
+    // const userid = auth.currentUser.uid;
+    // setUser(userid)
+    // setClnicID(clinicId)
+
+
+    useEffect (()=>{
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) =>{
+        if(user){
+          const auth = getAuth()
+          const userid = auth.currentUser.uid;
+          setUser(userid)
+          setClnicID(clinicId.clinicId)
+       
+
+          // console.log(userid)
+          // console.log(clinicId.clinicId)
+
+          // console.log(user)
+          console.log(clinicId.ClinicName)
+          console.log(clinicId.ClinicAdd)
+        }
+      })
+       },[user])
+
+
+      
+  
+    // console.log(clinicID)
+    // console.log(user)
 
     const booking = async(
     )=>{
       // setClnicID(clinicId.clinicId)
       getting()
-      console.log(clinicID)
+      // console.log(ClinicName);
+      // console.log(ClinicAdd);
+
+      // console.log(clinicID)
+      // console.log(user)
       await addDoc(collection(db,"appointment"),{
           userid:user,
           clinicId:clinicID,
@@ -79,11 +91,15 @@ export default function Datepick(
           year:year,
           month:month,
           day:day,
+          clinicname:clinicId.ClinicName,
+          clinicAdd:clinicId.ClinicAdd
            });
     }
          const getting =async()=>{
-         const docRef = doc(db, "patientuser",user);
+         const docRef = doc(db,"patientuser",user);
          const docSnap = await getDoc(docRef);
+
+         console.log(docSnap.data().clinicId)
          setClnicID(clinicId.clinicId)
          setReady("ready to go")
          setFname(docSnap.data().fname);
@@ -102,8 +118,6 @@ export default function Datepick(
        let day = tempDate.getDate();
        let month = (tempDate.getMonth()+1);
        let year = tempDate.getFullYear();
-
-
        setAday(day)
        setAmonth(month)
        setAyear(year)
@@ -160,15 +174,13 @@ export default function Datepick(
                           <Text>Your booking is {ready}</Text>
                        </View>    
                      <View style = {{margin:10}}>  
-                     <Btn title='Booking' onPress = {booking} /> 
+                     <Btn title='Booking' onPress = {getting} />  
                      </View>  
 
                      <View style = {{margin:10}}>  
-                     <Btn title={'Confirm'} onPress ={() => {booking;navigation.navigate('qrconfirm')}} /> 
+                     <Btn title={'Confirm'} onPress ={() => {getting();booking();navigation.navigate('qrconfirm')}} /> 
                      </View>
               </ButtonCont>    
-
-
       </View>
     );
   };

@@ -21,8 +21,10 @@ const HeroCont = styled.View`
     margin-bottom: 50px;
 `
 const ButCont = styled.View`
-    margin-left: 180px;
-    margin-top: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 50px 0px 50px 0px;
 `
 const Cont = styled.View`
     flex:1;
@@ -32,7 +34,7 @@ const NavBarCont = styled.View`
 
 const Wave = styled.Image`
     width: 100%;
-    height: 30%;
+    height: 25%;
     position: absolute;
 `;
 
@@ -50,9 +52,10 @@ top:50px;
 position:absolute;
 z-index:1;
 `
+const MyScrollView= styled.ScrollView`
+`
 export default function patientprofile() {
 
-    
     const [fname,setFname] = useState();
     const [lname,setLname] =useState();
     const [add,setAdd] =useState();
@@ -67,9 +70,7 @@ export default function patientprofile() {
                 const getting =async()=>{
                 const docRef = doc(db, "patientuser",userid);
                 const docSnap = await getDoc(docRef);
-
                 // const timestamp = Timestamp(Date())
-               
                 setFname(docSnap.data().fname)
                 setLname(docSnap.data().lname)
                 setBd(docSnap.data().dob.seconds)
@@ -77,6 +78,7 @@ export default function patientprofile() {
                 setBd(date)
                 setAdd(docSnap.data().address)
                 setCon(docSnap.data().medconcern)
+                // console.log(docSnap.data().medconcern)
                 // console.log(docSnap.data().dob.seconds)
               }
               getting()
@@ -88,11 +90,30 @@ export default function patientprofile() {
             setAdd(address)
             setCon(medconcern)
             console.log(docSnap.data())
+  
         }
-
-
-    
        },[])
+
+       const info = {
+        fname:fname,
+        lname:lname,
+        add:add,
+        concern:con,
+        dob:bd,
+      };
+      const setInfo = ({
+        fname: fname,
+        lname: lname,
+        add: add,
+        concern:con,
+        dob: bd,
+      }) => {
+        setFname(fname);
+        setLname(lname);
+        setAdd(add);
+        setCon(con);
+        setBd(bd);
+      };
 
     const [changeForm, setChangeForm] = useState(true);
 
@@ -112,30 +133,30 @@ export default function patientprofile() {
             <ImgCont  onPress={SignOut} >
             <SignOutImg  source={require("../assets/icons/sign-out.png")}/>
             </ImgCont>
-            <ScrollView style={styles.scrollView} >
+            <MyScrollView style={styles.scrollView} >
                 <HeroCont>
                     <HeroAvatar 
-                        heroheight="150"
-                        herowidth="150"
+                        heroheight="160"
+                        herowidth="160"
                         pluswidth="25"
                         plusheight="25"
                         visible="none"
                     />
                 </HeroCont>
-                <BookingForm  dbname = {fname + '' + lname} dbaddress ={add} dbconcerns ={con} />
+                <BookingForm  setInfo = {setInfo} info = {info} />
 
                 <ButCont>
                         <Btn
                         title = "Edit"
                         fsize = '20'
                         bgcolor = "#B9D1E1"
-                        width = '150'
+                        width = '120'
                         height = '50'
                         borderRad = '60'
                         onPress={()=>{setChangeForm(false)}}
                     ></Btn>
                 </ButCont>
-            </ScrollView>
+            </MyScrollView>
              <NavBarCont>
              <NavBar/>
            </NavBarCont>
@@ -148,11 +169,11 @@ export default function patientprofile() {
             <ImgCont>
             <SignOutImg source={require("../assets/icons/sign-out.png")}/>
             </ImgCont>
-    <ScrollView style={styles.scrollView} >
+    <MyScrollView style={styles.scrollView} >
         <HeroCont>
             <HeroAvatar 
-                heroheight="150"
-                herowidth="150"
+                heroheight="160"
+                herowidth="160"
                 pluswidth="25"
                 plusheight="25"
             />
@@ -165,13 +186,13 @@ export default function patientprofile() {
             title = "Save"
             fsize = '20'
             bgcolor = "#97BDD6"
-            width = '150'
+            width = '120'
             height = '50'
             borderRad = '60'
             onPress={()=>{setChangeForm(true)}}
             ></Btn>
         </ButCont>
-    </ScrollView>
+    </MyScrollView>
     <NavBarCont>
     <NavBar/>
     </NavBarCont>
@@ -181,7 +202,7 @@ export default function patientprofile() {
 const styles = StyleSheet.create({
     scrollView: {
       flex:1,
-      marginHorizontal: 30,
+      marginHorizontal: 10,
       marginTop: 30,
     },
   });

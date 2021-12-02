@@ -16,6 +16,7 @@ import {
   deleteDoc,
   doc,
   getDoc,
+  updateDoc
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import { getAuth } from "firebase/auth";
@@ -130,6 +131,10 @@ const ButtonCont = styled.div`
 `;
 const ImageCont = styled.div`
   position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 150px;
+  padding: 5px;
 `;
 const UploadBtn = styled.div`
   position: absolute,
@@ -140,7 +145,10 @@ const UploadBtn = styled.div`
 
 const HeroImage = ({ uid }) => {
   const [profileImage, setProfileImage] = useState("");
-  console.log(uid);
+  const handleChange = (event) => {
+    setProfileImage(event.target.src);
+  };
+ 
 
   const Upload = async (e) => {
     console.log(e.target.files[0]);
@@ -155,61 +163,37 @@ const HeroImage = ({ uid }) => {
 
     const snapshot = await uploadBytes(storageRef, file);
     console.log("Uploaded!");
-    // console.log(storageRef);
-
-    // const objectURL = URL.createObjectURL(storageRef);
+    console.log(snapshot);
   };
-    // const imgUrl = async () => {
-    //   await storageRef.getDownloadURL().then((imgUrl) => {
-    //     img.src = imgUrl + '.jpg';
-    //     console.log(img.src);
-    //     // console.log(imgUrl);
-    //   });
-    // };
-    // const storage = getStorage();
-    // getDownloadURL(ref(storage, "users/" + uid + ".jpg")).then((url) => {
-    //   const xhr = new XMLHttpRequest();
-    //   xhr.responseType = 'blob';
-    //   xhr.onload = (event) => {
-    //       const blob = xhr.response;
-    //   };
-    //   xhr.open('GET', url);
-    //   xhr.send();
 
-    //   const img = document.getElementById('myimg');
-    //   console.log(img.src);
-    // })
-    // .catch((error)=>{
-    //   //handle any errors
-    // })
 
   return (
     <ImageCont>
-      <div>
         <img
-        // src={'https://firebasestorage.googleapis.com/v0/b/medordoc-516a4.appspot.com/o/users%2F9w9DqZEXIoczwfGSESl82tYCbnJ3.jpg?alt=media&token=65d58427-3374-40f5-87fd-021686a46f5c'}
+        src={'https://firebasestorage.googleapis.com/v0/b/medordoc-516a4.appspot.com/o/users%2F7FKK9IbpIUhrfOOnk9d19SCy9By1.jpg?alt=media&token=5c2cb996-1b09-43ed-910b-12af39ad282a'}
           id="myimg"
           style={{
-            width: 200,
-            height: 200,
-            borderRadius: 100,
+            width: '100%',
+            height: '100%',
+            borderRadius: '50%',
             objectFit: "cover",
           }}
+          onChange={handleChange}
         />
-      </div>
-      <UploadBtn>
-        <input
+      {/* </div> */}
+      {/* <UploadBtn> */}
+        {/* <input
           type="file"
-          // style={{display: 'none'}}
           onChange={Upload}
-          // onClick = {async()=>{
-          //   await updateDoc(doc(db,'clinics',uid), {
-          //     img: profileImage,
-          //   })
-          // }}
-        ></input>
-        <AiOutlinePlusCircle size={25} />
-      </UploadBtn>
+          onClick = {async()=>{
+            await updateDoc(doc(db,'clinics',uid), {
+              img: profileImage,
+            })
+            console.log(profileImage);
+          }}
+        ></input> */}
+        {/* <AiOutlinePlusCircle size={25} /> */}
+      {/* </UploadBtn> */}
     </ImageCont>
   );
 };

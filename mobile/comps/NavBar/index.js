@@ -4,7 +4,8 @@ import { StyleSheet, View, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {db} from '../../utils/store'
-
+import AppLoading from 'expo-app-loading';
+import { useFonts, Nunito_400Regular, Nunito_600SemiBold,  Nunito_700Bold, } from '@expo-google-fonts/nunito';
 
 const FooterCont = styled.View`
     flex-direction: row;
@@ -22,7 +23,7 @@ const Footer = styled.TouchableOpacity`
 const Image = styled.Image`
     width: 30px;
     height: 30px;
-    margin: 5px;
+    margin: 3px;
 `;
 
 const Text = styled.Text`
@@ -55,24 +56,35 @@ const NavBar = ({
       }
     });
 
+    let [fontsLoaded] = useFonts({
+        Nunito_400Regular,
+        Nunito_600SemiBold,
+        Nunito_700Bold,
+      });
+    
+      if(!fontsLoaded) {
+          return <AppLoading />
+      } else {
+
     return <FooterCont>
         <Footer onPress={() => navigation.navigate('home')}>
             <Image source={require('../../assets/icons/home.png')} />
-            <Text>Home</Text>
+            <Text style={{fontFamily: 'Nunito_400Regular', fontSize:16}}>Home</Text>
         </Footer>
         <Footer onPress={() => navigation.navigate(qrPath)}>
             <Image source={require('../../assets/icons/QR.png')} />
-            <Text>QR Code</Text>
+            <Text style={{fontFamily: 'Nunito_400Regular', fontSize:16}}>QR Code</Text>
         </Footer>
         <Footer onPress={() => navigation.navigate(historyPath)}>
             <Image source={require('../../assets/icons/history.png')} />
-            <Text>History</Text>
+            <Text style={{fontFamily: 'Nunito_400Regular', fontSize:16}}>History</Text>
         </Footer>
         <Footer onPress={() => navigation.navigate(profilePath)}>
             <Image source={require('../../assets/icons/profile.png')} />
-            <Text>Profile</Text>
+            <Text style={{fontFamily: 'Nunito_400Regular', fontSize:16}}>Profile</Text>
         </Footer>
     </FooterCont>
+}
 }
 
 const styles = StyleSheet.create({

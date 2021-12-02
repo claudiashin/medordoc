@@ -64,6 +64,7 @@ const BackCont = styled.View`
   display: flex;
   position: absolute;
   z-index: 999;
+  top: -10;
 `
 
 const booking = ({ route,navigation }) => {
@@ -73,11 +74,21 @@ const booking = ({ route,navigation }) => {
     const [cladd,setAdd] =useState('')
     
     useEffect (()=>{
-        const clinicUID = route.params;
-        const num = clinicUID.clinic
-        setUID(num);
 
-     
+        const clinicUID = route.params;
+        const num = clinicUID.clinicUID
+        setUID(num);
+        // console.log(clinicUID.clinicUID)
+
+        const getting =async()=>{
+        const docRef = doc(db,"clinics",clinicUID.clinicUID);
+        const docSnap = await getDoc(docRef);
+        console.log(docSnap.data().name)
+        setClname(docSnap.data().name)
+        setAdd(docSnap.data().add)
+      }
+      getting()
+        
         // const gettingCL =async()=>{
         //     const docRef = doc(db, "clinics",num);
         //     const docSnap = await getDoc(docRef);
@@ -87,13 +98,11 @@ const booking = ({ route,navigation }) => {
         //     }
         //     gettingCL()
 
-
        },[])
 
-       console.log(uid);
-       
-
-      
+      //  console.log(uid)
+      //  console.log(clname)
+      //  console.log(cladd)
 
     return (
         <BookingCont>
@@ -108,7 +117,7 @@ const booking = ({ route,navigation }) => {
                     <Header title = {"Schedule an appointment"} />
                 </View>  
 
-                    <Datepick clinicId ={uid}/>
+                    <Datepick clinicId ={uid} ClinicName ={clname} ClinicAdd ={cladd} />
                     {/* <Btn title={'Confirm'} onPress ={() => navigation.navigate('qrconfirm')} />  */}
                     </DropDownCont>
 {/* 

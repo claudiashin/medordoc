@@ -63,8 +63,8 @@ const BackCont = styled.View`
   display: flex;
   position: absolute;
   z-index: 999;
-  right: 350px;
-  top: -16px;
+  right: 410px;
+  top: 10px;
 `
 
 export default function findclinic({navigation}){
@@ -72,8 +72,8 @@ export default function findclinic({navigation}){
  
   return (
     <Cont>
-      <ScrollView keyboardShouldPersistTaps={'handled'}>
         <BackCont>
+          
           <BackBtn onPress={() => navigation.goBack()}/>
         </BackCont>
         <Wave source={require('../assets/backgroundmobile.png')} />
@@ -103,7 +103,6 @@ export default function findclinic({navigation}){
           <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
           <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} /> */}
         </CardCont> 
-      </ScrollView> 
 
       <NavBarCont>
         <NavBar />
