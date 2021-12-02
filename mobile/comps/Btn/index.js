@@ -17,7 +17,6 @@ const TextCont = styled.Text`
   font-size: ${props=>props.fsize}px;
   font-weight: bold;
   color: #fff;
-
 `;
 
 const Btn = ({
@@ -25,8 +24,9 @@ const Btn = ({
     fsize = '22',
     bgcolor = "#97BDD6",
     width = '145',
-    height = '60',
+    height = '50',
     borderRad = '50',
+    margin = '30',
     onPress={}
 }) => {
 
@@ -37,6 +37,7 @@ const Btn = ({
             width={width}
             height={height}
             borderRad={borderRad}
+            margin ={margin}
         >
             <TextCont
                 fsize={fsize}

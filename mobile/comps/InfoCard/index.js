@@ -52,6 +52,17 @@ const QRCodeCont = styled.View`
     margin-top: 15px;
     display: ${props => props.display};
 `;
+const Subheadingtwo = styled.Text`
+    font-size: 16px;
+    color: #505050;
+    margin: 10px;
+`;
+const Subheadingthree = styled.Text`
+    font-size: 16px;
+    color: ${props => props.fontcolor};
+    margin: 10px;
+    font-weight: ${props => props.subheadingthree_fw};
+`;
 
 const InfoCard = ({
     text = "Welcome Jenny Lee",
@@ -92,48 +103,25 @@ const InfoCard = ({
         </QRCodeCont>
 
         <SubheadingCont>
-            <Information>{address}{text2}</Information>
-            <Subheadingtwo
-                style={{fontFamily: 'Nunito_400Regular'}}
-            >{text2}</Subheadingtwo>
+            <Information style={{fontFamily: 'Nunito_400Regular'}}>{address}{text2}</Information>
+        </SubheadingCont>
+
+        <SubheadingCont>
+            <Information style={{fontFamily: 'Nunito_400Regular'}}>{phone}{text3}</Information>
         </SubheadingCont>
 
 
         <SubheadingCont>
-            <Information>{phone}{text3}</Information>
+            <Information style={{fontFamily: 'Nunito_400Regular'}}>{language}{text4}</Information>
+        </SubheadingCont>
+
+         
+        <SubheadingCont>
+            <Information style={{fontFamily: 'Nunito_400Regular'}}>{open}{text5}</Information>
         </SubheadingCont>
 
         <SubheadingCont>
-            <Information>{language}{text4}</Information>
-        </SubheadingCont>
-
-        <SubheadingCont>
-            <Information>{open}{text5}</Information>
-            <Subheadingtwo
-                style={{fontFamily: 'Nunito_400Regular'}}
-            >{text3}</Subheadingtwo>
-        </SubheadingCont>
-
-        <SubheadingCont>
-            <Subheadingtwo
-                style={{fontFamily: 'Nunito_400Regular'}}
-            >{text4}</Subheadingtwo>
-        </SubheadingCont>
-
-        <SubheadingCont>
-            <Subheadingtwo
-                style={{fontFamily: 'Nunito_400Regular'}}
-            >{text5}</Subheadingtwo>
-        </SubheadingCont>
-
-        <SubheadingCont>
-            <Information>{close}{text6}</Information>
-        </SubheadingCont>
-
-        <SubheadingCont>
-            <Subheadingtwo
-                style={{fontFamily: 'Nunito_400Regular'}}
-            >{text6}</Subheadingtwo>
+            <Information style={{fontFamily: 'Nunito_400Regular'}}>{close}{text6}</Information>
         </SubheadingCont>
 
     </InfoCardCont >
