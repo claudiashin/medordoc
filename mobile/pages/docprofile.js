@@ -17,6 +17,11 @@ import Header from "../comps/Header";
 import NavBar from "../comps/NavBar";
 import BackBtn from "../comps/BackBtn";
 
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { getDoc, doc, updateDoc, addDoc, collection } from 'firebase/firestore';
+import { db } from '../utils/store';
+
+
 const MainCont = styled.View`
   flex: 1;
   justify-content: flex-start;
@@ -57,8 +62,33 @@ const BackCont = styled.View`
 `
 
 export default function docprofile({ navigation, route }) {
-  const { doctorInfo} = route.params;
+  const { doctorInfo } = route.params;
+  
+  const [uid, setUid] = useState();
+  
+  useEffect(async () => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, async (user) => {
+      if(user) {
+        setUid(user.uid);
+        // console.log(user.uid);
+        const userPatRef = doc(db, 'patientuser', user.uid);
+        // console.log(userPatRef);
+        const data = await getDoc(userPatRef);
+        const result = data.data();
+        console.log(result.fname + " " +result.lname);
+        console.log(result.email);
+        console.log(result.gender);
+        console.log(result.concern);
+      }
+    })
+
+  },[]);
+  
+
+  
   return (
+
     <MainCont>
       <Wave source={require("../assets/backgroundmobile.png")} />
       <ScrollView style={styles.scrollView}>
@@ -68,7 +98,9 @@ export default function docprofile({ navigation, route }) {
         <ImageCont>
           <HeroAvatar heroheight="200" herowidth="200" visibility="hidden" />
         </ImageCont>
-        <DrDetail doctorInfo={doctorInfo}></DrDetail>
+        <DrDetail 
+        doctorInfo={doctorInfo}
+        ></DrDetail>
         <HdCont>
           <Header
             title="Would you like to request this doctor?"
@@ -83,9 +115,18 @@ export default function docprofile({ navigation, route }) {
             width="100"
             height="45"
             borderRad="50"
-            onPress={() => navigation.navigate("confirmreq",{
-              doctorInfo
-            })}
+            // onPress={() => navigation.navigate("confirmreq",{
+            //   doctorInfo
+            // }
+            // console.log(doctorInfo.clinicId);)}
+            onPress={async() => {
+              const reqDoc = await addDoc(collection(db, "requests"), {
+                // name: result.fname + result.lname,
+                // email: result.email,
+              })
+              navigation.navigate("confirmreq", {doctorInfo})
+            }
+          }
           />
         </ButCont>
       </ScrollView>

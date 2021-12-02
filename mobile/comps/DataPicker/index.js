@@ -20,9 +20,10 @@ const ButtonCont = styled.View`
 export default function Datepick(
   //  bookingdate = {text},
   //  useruid= '',
-  clinicId = '',
-  ClinicName = '',
-  ClinicAdd = ''
+  // clinicId = '',
+  // ClinicName = '',
+  // ClinicAdd = ''
+  uid
 
 ) {
     const navigation = useNavigation();  
