@@ -16,6 +16,7 @@ const Button = styled.button`
     border: none;
     box-shadow: 2px 3px 9px #AFAFAF; 
     cursor: pointer;
+    font-family: nunito;
 
     &:hover {
         background-color: ${props=>props.bgHover};
@@ -36,7 +37,7 @@ const Btn = ({
     fWeight = "",
     letterSpace = 1,
     bgColor = "#EA9898",
-    borderRad = 10,
+    borderRad = 5,
     width = 250,
     height = 80,
     margin = 5,

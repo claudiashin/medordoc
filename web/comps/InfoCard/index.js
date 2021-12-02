@@ -34,8 +34,8 @@ const Subheading = styled.p`
 
 const InfoCard = ({
     heading = "Welcome to MedOrDoc!",
-    subheading = "An email confirmation has been sent to you.",
-    subheading_two = "Please check your inbox and validate your account.",
+    subheading = "Please sign in with your email and password.",
+    subheading_two = "For faster checking in patients, use the tab on the right hand side of every page.",
     width = 500,
 }) => {
 

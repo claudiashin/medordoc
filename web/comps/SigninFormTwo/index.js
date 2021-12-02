@@ -18,7 +18,7 @@ const FormField = styled.fieldset`
   margin: 15px;
   border: 1px solid black;
   width: 400px;
-  height: 55px;
+  height: 57px;
 `;
 const FormTitle = styled.legend`
   margin: 5px;
@@ -35,7 +35,7 @@ const FormTimeForm = styled.fieldset`
   margin: 15px;
   border: 1px solid black;
   width: 185px;
-  height: 57 px;
+  height: 55px;
 `;
 const TimeFormCont = styled.div`
   display: flex;
@@ -44,7 +44,7 @@ const TimeFormCont = styled.div`
 const FormTimeInput = styled.input`
   border: none;
   outline: none;
-  padding-bottom: 5px;
+  
   background-color: #f7f2ee;
   width: 174px;
 `;
@@ -121,6 +121,7 @@ function getStyles(name, personName, theme) {
       personName.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
+        fontFamily: 'nunito'
   };
 }
 
@@ -145,6 +146,7 @@ const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
         <FormInput
           type="text"
           placeholder="Clinic Name"
+          style={{fontFamily: 'nunito'}}
           value={info.name}
           onChange={(e) => {
             setInfo({ name: e.target.value });
@@ -156,6 +158,7 @@ const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
         <FormInput
           type="text"
           placeholder="Clinic Address"
+          style={{fontFamily: 'nunito'}}
           value={info.add}
           onChange={(e) => {
             setInfo({ add: e.target.value });
@@ -167,6 +170,7 @@ const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
         <FormInput
           type="tel"
           placeholder="Contact Number"
+          style={{fontFamily: 'nunito'}}
           value={info.num}
           onChange={(e) => {
             setInfo({ num: e.target.value });
@@ -180,6 +184,7 @@ const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
           <FormTimeInput
             type="time"
             placeholder="Open Hour"
+            style={{fontFamily: 'nunito'}}
             value={info.open}
             onChange={(e) => {
               setInfo({ open: e.target.value });
@@ -191,6 +196,7 @@ const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
           <FormTimeInput
             type="time"
             placeholder="Open Hour"
+            style={{fontFamily: 'nunito'}}
             value={info.close}
             onChange={(e) => {
               setInfo({ close: e.target.value });
@@ -206,12 +212,12 @@ const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
             m: 1,
             width: 440,
             height: 50,
-            border: "1px solid black",
+         
             marginBottom: 5,
             color: "black",
           }}
         >
-          <InputLabel id="demo-multiple-name-label">Languages</InputLabel>
+          <InputLabel style={{fontFamily: 'nunito', color: 'black'}} id="demo-multiple-name-label">Languages</InputLabel>
           <Select
             labelId="demo-multiple-name-label"
             id="demo-multiple-name"
@@ -220,7 +226,7 @@ const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
             onChange={handleChange}
             input={<OutlinedInput label="Name" />}
             MenuProps={MenuProps}
-            style={{ height: 50, borderBlockStyle: "black" }}
+            style={{ height: 50, borderBlockStyle: "black", fontFamily: 'nunito' }}
           >
             {names.map((name) => (
               <MenuItem
@@ -241,10 +247,10 @@ const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
             width="120px"
             height="40px"
             fSize="16px"
-            bgColor="#717476"
-            borderRad="20px"
+            bgColor="#7c7c7c"
+            borderRad="5px"
             margin="40px 15px 0px 0px"
-            bgHover="#949494"
+            bgHover="#5F5F5F"
           />
         </BtnCont>
         <BtnCont
@@ -279,10 +285,10 @@ const SigninFormTwo = ({ setChangePage, submit, setInfo, info }) => {
             width="120px"
             height="40px"
             fSize="16px"
-            bgColor="#90AABB"
-            borderRad="20px"
-            margin="40px 15px 0px 0px"
-            bgHover="#BCDFF6"
+            bgColor="#397FBF"
+          borderRad="5px"
+          margin="40px 15px 0px 0px"
+          bgHover="#306799"
           />
         </BtnCont>
       </TwoButtonCont>

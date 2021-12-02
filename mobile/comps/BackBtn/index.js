@@ -1,16 +1,24 @@
-import {View,Text, SafeAreaView, StyleSheet, TextInput, Pressable} from "react-native" ;
+import {View,Text, SafeAreaView, StyleSheet, TextInput, Pressable,Image} from "react-native" ;
 import styled from 'styled-components/native';
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
+import { Asset } from "react-native-unimodules";
 
+const Backimg = styled.Image`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  `;
 
 const Backcont = styled.TouchableOpacity`
     display: flex;
     justify-content: center;
     align-items:center;
-    width: 100px;
-    height: 100px;
-    top: 50px;
+    width: 39px;
+    height: 40px;
+    top: 100px;
+    left: 25px;
 `; 
 
 
@@ -19,13 +27,14 @@ const BackBtn = ({
 
 }) => {
 
-
-    return <Backcont onPress={onPress}>
-        
-        <Ionicons name="chevron-back" size={50} color="black"
+    return <Backcont 
+    // source={require('../../assets/icons/back-button.png')}
+    onPress={onPress}>
+        <Backimg source={require('../../assets/icons/left-arrow.png')}/>
+        {/* <Ionicons name="chevron-back" size={50} color="black"
             
             // onPress={() => navigation.goBack()}         
-        />
+        /> */}
     </Backcont>
 }
 

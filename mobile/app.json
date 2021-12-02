@@ -20,7 +20,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.company",
       "config": {
-          "googleMapsApiKey": "482059226385-43qbe3toqo6125as7od1q1ota179qghl.apps.googleusercontent.com"
+        "googleMapsApiKey": "482059226385-43qbe3toqo6125as7od1q1ota179qghl.apps.googleusercontent.com"
       }
     },
     "android": {
@@ -31,6 +31,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }

@@ -16,7 +16,6 @@ const Title = styled.p`
 
 const HeaderTitle = ({
     title = "Create an Account",
-    subtitle = "Personal Information",
     fontWeight = "bold",
     fontSize = 30,
 }) => {

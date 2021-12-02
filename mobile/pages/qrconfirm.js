@@ -1,8 +1,9 @@
 import React,{useEffect,useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,  } from 'react-native';
 import styled from 'styled-components/native';
-import { addDoc, collection,setDoc,getDoc,doc,query,where,} from 'firebase/firestore';
+import { addDoc,collection,setDoc,getDoc,doc,query,where, getDocs,limit,orderBy} from 'firebase/firestore';
 import {onAuthStateChanged,getAuth} from 'firebase/auth'
+import { useNavigation } from '@react-navigation/native';
 import {Auth} from '../utils/auth'
 import {db} from '../utils/store'
 
@@ -11,6 +12,7 @@ import Header from '../comps/Header';
 // import InfoCard from '../comps/InfoCard';
 import NavBar from '../comps/NavBar';
 import InfoCardTwo from '../comps/InfoCardTwo';
+import BackBtn from '../comps/BackBtn';
 
 
 const ConfirmCont = styled.View`
@@ -42,14 +44,25 @@ const Cont = styled.View`
     margin-top: 20px;
 `;
 
+const BackCont = styled.View`
+  display: flex;
+  position: absolute;
+  z-index: 999;
+`
+
 const qrconfirm = () => {
 
-        
+    const [uid,setUID] = useState('');
 
+    const navigation = useNavigation();  
     const [user,setUser] = useState('');
     const [clinicID,setClnicID] =useState('')
     const [name,setName] = useState('')
     const [date,setDate] =useState('')
+    const [day,setAday] =useState('')
+    const [month,setAmonth] =useState('')
+    const [year,setAyear] =useState('')
+
     const [time,setTime] =useState('')
     const [clname,setClname] =useState('')
     const [cladd,setAdd] =useState('')
@@ -58,38 +71,66 @@ const qrconfirm = () => {
     useEffect(()=>{
 
         const auth = getAuth()
+        
         const userid = auth.currentUser.uid;
         setUser(userid)
-        
-        const gettingBK =async()=>{
-            const docRef = doc(db, "appointment",user);
-            const docSnap = await getDoc(docRef);
-            // const docRef1 = doc(db, "clinics",clinicID);
-            // const docSnap1 = await getDoc(docRef1);
-            // setClname(docSnap1.data().name);
-            // setAdd(docSnap1.data().add);
-            setName(docSnap.data().patientname);
-            setDate(docSnap.data().bookingdate);
-            setTime(docSnap.data().bookingtime);
-            setClnicID(docSnap.data().clinickId);
-            console.log(name)
-            console.log(date)
-            console.log(time)
-            console.log(clinicID)
-        }
-        gettingBK()
 
-        // const gettingCL =async()=>{
+        const gettingBK =async()=>{
+
+            const q = query(collection(db, "appointment"), where("userid", "==", userid),orderBy('year',"desc"),orderBy('month',"desc"),orderBy('day',"desc"),limit(1));
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+    
+                const bookingyear = doc.data().year;
+                const bookingmonth = doc.data().month;
+                const bookingday = doc.data().day;
+                const clID = doc.data().clinicId
+
+                const bookingtime = doc.data().bookingtime;
+                const patientname = doc.data().patientname;
+
+                const userid = doc.data().userid;
+                console.log (bookingyear);
+                console.log (bookingmonth);
+                console.log (bookingday);
+                console.log (userid);
+                // console.log (clID);
+                setAyear(bookingyear);
+                setAmonth(bookingmonth);
+                setAday(bookingday)
+                setTime(bookingtime)
+                setName(patientname);
+                setClnicID(clID)
+
+            });
+
+           
+
             // const docRef = doc(db, "clinics",clinicID);
             // const docSnap = await getDoc(docRef);
             // setClname(docSnap.data().name);
             // setAdd(docSnap.data().add);
-        // }
-        // gettingCL()
+        
 
- },[])
+            // const docRef = doc(db,"appointment",userid);
+            // const docSnap = await getDoc(docRef);
+           
+            // setClname(docSnap1.data().name);
+            // setAdd(docSnap1.data().add);
+            // const CID = (docSnap.data().clinicId)
+            // console.log(querySnapshot.data())
 
-    
+
+   
+        }
+        gettingBK()
+
+
+ },[user])
+ 
+ 
+  
+
 
     return (
         <ConfirmCont>
@@ -98,25 +139,26 @@ const qrconfirm = () => {
                 <HeaderCont>
                     <Header title="Booking Confirmed" fontSize={24} />
                 </HeaderCont>
+             
                 
                 <Cont>
                     <InfoCardTwo
                         text1="Appointment Details"
-                        text2={date}
+                        text2= {year +" " + month +"  "+ day}   
                         text3= {time}
-                        text4= {clname}
-                        text5= {cladd}
-                        text6="1234 Canada Way, Burnaby V4J2B7"
+                        text4= {name}
+                        text5= {clname}
+                        text6={cladd}
                         fweight="500"
                         display="none"
                     />
 
-                    <InfoCardTwo
+                    {/* <InfoCardTwo
                         text1="QR Code Generated"
                         text2="Your QR code has your booking details. For faster check-in, scan it at the front desk when you arrive."
                         text3="To view, click on the QR Code icon in the nav below."
                         fweight="300"
-                    />
+                    /> */}
                 </Cont>
             </MyScrollView>
             <NavBarCont>

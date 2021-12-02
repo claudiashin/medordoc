@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styled from 'styled-components/native';
 import HeroAvatar from '../comps/HeroAvatar';
 import InfoCard from '../comps/InfoCard'
@@ -6,6 +6,9 @@ import NavBar from "../comps/NavBar";
 import Header from "../comps/Header";
 import InfoCardThree from '../comps/InfoCardThree';
 import { EdgeInsetsPropType } from "react-native";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {db} from '../utils/store'
+
 
 const AvatarCont = styled.View`
   align-items:center;
@@ -38,6 +41,27 @@ const BodyContCont = styled.ScrollView`
 
 `
 const History = () => {
+  // const [myUid, setMyUid] = useState()
+  // useEffect(()=>{
+  //   const getUser = async () => {
+  //     const auth = getAuth();
+  //     const user = auth.currentUser;
+  //     setMyUid(user.uid)
+  //     console.log(user.uid)
+  //   }
+
+  //   // onAuthStateChanged(auth, (user) => {
+  //   //   if (user) {
+  //   //     const uid = user.uid;
+  //   //     console.log(myUid)
+  //   //     setMyUid(uid)
+  //   //   } else {
+  //   //     console.log("no")
+  //   //   }
+  //   // });
+  //   getUser()
+  // },[])
+  
   return <Cont>
 
     <BodyContCont>
@@ -54,7 +78,7 @@ const History = () => {
         </HeaderCont>
 
         <BodyCont>
-          <InfoCardThree />
+          <InfoCardThree/>
         </BodyCont>
       </MainCont>
 

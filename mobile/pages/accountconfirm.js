@@ -3,8 +3,6 @@ import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 
-
-
 import Header from '../comps/Header';
 import InfoCard from '../comps/InfoCard';
 import Btn from '../comps/Btn';
@@ -15,7 +13,7 @@ const AccountCont = styled.View`
 
 const Wave = styled.Image`
     width: 100%;
-    height: 30%;
+    height: 20%;
     position: absolute;
 `;
 
@@ -62,14 +60,10 @@ const accountconfirm = ({
                         text2={'Thank you for choosing MedOrDoc.'}
                         text3={'For faster check-in, scan the QR code at the front desk when you arrive.'}
                         text4={'To view, click on the QR Code icon in the navigation bar below.'}
-                        website_url={''}
-                        weight2={'400'}
                         fontcolor={'#505050'}
                         display={'flex'}
                     />
                 </InfoCardCont>
-
-
 
                 <BtnCont>
                     <Btn
