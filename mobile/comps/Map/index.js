@@ -17,16 +17,17 @@ const Map =({
   const [visible,setVisible] =useState(true)
   const navigation = useNavigation();
   const [region,setRegion]=useState({
-    latitude: 48.250150584432035,
-    longitude: -123.01565794794925,
+    latitude: 49.24995196234725,
+    longitude: -123.00040359387948,
     latitudeDelta: 0.015,
     longitudeDelta: 0.0121,
   })
 
   const [ pin, setPin ] = React.useState({
-		latitude: 48.250150584432035,
-		longitude: -123.01565794794925
-	})
+		latitude: 49.24995196234725,
+		longitude: -123.00040359387948
+  })
+
 
   const getLoc = () => {
     console.log(location);

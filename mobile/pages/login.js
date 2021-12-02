@@ -52,14 +52,16 @@ const BackCont = styled.View`
 const login = ({route,navigation})=>{
     
     const [uid,setUID] = useState('')
+
+
     
     // const navigation = useNavigation();
  
     useEffect(()=>{
-        const UID = route.params;
-        // const num = UID.clinicUID 
-        setUID(UID.clinicUID);
-        console.log(UID);
+            const UID = route.params;
+            // const num = UID.clinicUID 
+            setUID(UID.clinicUID);
+            console.log(UID);
     },[])
     
     console.log(uid);
