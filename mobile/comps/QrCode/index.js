@@ -19,19 +19,21 @@ const Qrcode = ({
   
 }) => {
 const [uid, setUserUid] = useState()
-  useEffect(async () => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, async (user) => {
+  // useEffect(async () => {
+  //   const auth = getAuth();
+  //   onAuthStateChanged(auth, async (user) => {
      
-      if (user) {
-        console.log(user.uid);
-        setUserUid(user.uid);
+  //     if (user) {
+       
+  //       setUserUid(user.uid);
       
-      }else{
-        console.log("no")
-      }
-    });
-  }, []);
+  //     }else{
+  //       console.log("no")
+  //       setUserUid("default");
+
+  //     }
+  //   });
+  // }, []);
   return (
     <Cont>
       <QRCode 

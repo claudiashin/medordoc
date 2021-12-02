@@ -13,13 +13,13 @@ import {
 } from "firebase/auth";
 
 const GoogleButton = styled.View`
-  width: 300;
-  height: 50;
-  margin-left: 5;
-  margin-bottom: 20;
-  margin-top: 50;
+  width: 300px;
+  height: 50px;
+  margin-left: 5px;
+  margin-bottom: 20px;
+  margin-top: 50px;
   border: none;
-  border-radius: 10;
+  border-radius: 10px;
   justify-content: center;
   align-items: center;
 `;

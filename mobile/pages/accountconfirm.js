@@ -56,7 +56,7 @@ const accountconfirm = ({
 
                 <InfoCardCont>
                     <InfoCard
-                        text={'Welcome Jenny Lee!'}
+                        text={'Welcome Will!'}
                         text2={'Thank you for choosing MedOrDoc.'}
                         text3={'For faster check-in, scan the QR code at the front desk when you arrive.'}
                         text4={'To view, click on the QR Code icon in the navigation bar below.'}

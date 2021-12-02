@@ -56,6 +56,7 @@ export default function Datepick(
           setUser(userid)
           setClnicID(clinicId.clinicId)
        
+
           // console.log(userid)
           // console.log(clinicId.clinicId)
 
@@ -65,6 +66,7 @@ export default function Datepick(
         }
       })
        },[user])
+
 
       
   
