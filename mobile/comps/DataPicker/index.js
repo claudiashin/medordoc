@@ -44,6 +44,7 @@ export default function Datepick(
     const [ready,setReady] =useState('')
     
     useEffect (()=>{
+      if(user){
         const auth = getAuth()
         const userid = auth.currentUser.uid;
         setUser(userid)
@@ -61,8 +62,10 @@ export default function Datepick(
       //   console.log(docSnap.data())
       // }
       // getting()
-       },[]) 
+      }
+       },[])
 
+  
     console.log(clinicID)
 
     const booking = async(
