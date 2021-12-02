@@ -1,6 +1,9 @@
 import styled from 'styled-components/native'
 import React from 'react'
 
+import AppLoading from 'expo-app-loading';
+import { useFonts, Nunito_400Regular, Nunito_600SemiBold,  Nunito_700Bold, } from '@expo-google-fonts/nunito';
+
 
 const ButCont = styled.TouchableOpacity`
     background-color: ${props=>props.bgcolor};
@@ -30,6 +33,16 @@ const Btn = ({
     onPress={}
 }) => {
 
+    let [fontsLoaded] = useFonts({
+        Nunito_400Regular,
+        Nunito_600SemiBold,
+        Nunito_700Bold,
+      });
+    
+      if(!fontsLoaded) {
+          return <AppLoading />
+      } else {
+
     return (
         <ButCont
             onPress={onPress}
@@ -39,11 +52,12 @@ const Btn = ({
             borderRad={borderRad}
             margin ={margin}
         >
-            <TextCont
+            <TextCont 
+                style={{fontFamily: 'Nunito_700Bold', fontSize:20}}
                 fsize={fsize}
             >{title}</TextCont>
         </ButCont>
     )
-}
+    }}
 
 export default Btn

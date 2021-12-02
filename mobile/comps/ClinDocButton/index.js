@@ -4,6 +4,10 @@ import {View,Text, StyleSheet} from "react-native" ;
 import { TouchableOpacity } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 
+import AppLoading from 'expo-app-loading';
+import { useFonts, Nunito_400Regular, Nunito_600SemiBold,  Nunito_700Bold, } from '@expo-google-fonts/nunito';
+
+
 const Maincont = styled.View`
     display:flex;
     flex-direction: row;
@@ -41,21 +45,31 @@ const ClinDocButton=({
     imageSource = "https://placekitten.com/100/200",
     cardpress  =()=>{},
 })=>{
+    let [fontsLoaded] = useFonts({
+        Nunito_400Regular,
+        Nunito_600SemiBold,
+        Nunito_700Bold,
+      });
+    
+      if(!fontsLoaded) {
+          return <AppLoading />
+      } else {
     return <TouchableOpacity onPress ={cardpress}>
     <Maincont onpress>
         <Avatarcont>
         <Avatarimg source={{uri:imageSource}}/>
         </Avatarcont>
         <TextCont>
-        <Text style={styles.titleText}>{bodyText}</Text>
+        <Text style={styles.titleText} style={{fontFamily: 'Nunito_400Regular', fontSize: 20}}>{bodyText}</Text>
         </TextCont>
     </Maincont>
     </TouchableOpacity>
+      }
 }
 
 const styles = StyleSheet.create({
     titleText: {
-      fontSize: 20,
+      fontSize: 30,
     },
     
   });

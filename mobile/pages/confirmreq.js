@@ -95,6 +95,7 @@ export default function confirmreq({ navigation, route }) {
           />
           <HdCont2>
             <Header
+              style={{fontSize: 16}}
               title="Would you like to proceed with this request?"
               fontSize="16"
               fontWeight="500"

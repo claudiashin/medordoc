@@ -2,6 +2,9 @@ import styled from 'styled-components/native';
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
+import AppLoading from 'expo-app-loading';
+import { useFonts, Nunito_400Regular, Nunito_600SemiBold,  Nunito_700Bold, } from '@expo-google-fonts/nunito';
+
 const InfoCardTwoCont = styled.View`
     width: 300px;
     height: ${props=>props.height}px;
@@ -60,6 +63,15 @@ const InfoCardTwo = ({
     height = "240"
 }) => {
 
+    let [fontsLoaded] = useFonts({
+        Nunito_400Regular,
+        Nunito_600SemiBold,
+        Nunito_700Bold,
+      });
+    
+      if(!fontsLoaded) {
+          return <AppLoading />
+      } else {
     return <InfoCardTwoCont height={height} >
         <HeaderCont>
             <Header
@@ -70,19 +82,19 @@ const InfoCardTwo = ({
         </HeaderCont>
 
         <SubheaderCont>
-            <Subheader>{text2}</Subheader>
+            <Subheader style={{fontFamily: 'Nunito_400Regular'}}>{text2}</Subheader>
 
             <QRImageCont>
                 <QRImage source={require('../../assets/icons/QR.png')} display={display}/>
             </QRImageCont>
 
-            <Subheader>{text3}</Subheader>
-            <Subheader>{text4}</Subheader>
-            <Subheader>{text5}</Subheader>
-            <Subheader>{text6}</Subheader>
+            <Subheader style={{fontFamily: 'Nunito_400Regular'}}>{text3}</Subheader>
+            <Subheader style={{fontFamily: 'Nunito_400Regular'}}>{text4}</Subheader>
+            <Subheader style={{fontFamily: 'Nunito_400Regular'}}> {text5}</Subheader>
+            <Subheader style={{fontFamily: 'Nunito_400Regular'}}>{text6}</Subheader>
         </SubheaderCont>
     </InfoCardTwoCont>
 }
-
+}
 
 export default InfoCardTwo;

@@ -4,6 +4,9 @@ import { StyleSheet, Text} from 'react-native';
 import { collection, doc, setDoc,getDoc,} from "firebase/firestore"; 
 import {db} from '../../utils/store'
 
+import AppLoading from 'expo-app-loading';
+import { useFonts, Nunito_400Regular, Nunito_600SemiBold,  Nunito_700Bold, } from '@expo-google-fonts/nunito';
+
 const styles = StyleSheet.create({
     inputbox: {
         width: 335,
@@ -36,11 +39,20 @@ const DrDetail = ({doctorInfo}) => {
       GetData()
 
   },[])
+  let [fontsLoaded] = useFonts({
+    Nunito_400Regular,
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+  });
 
+  if(!fontsLoaded) {
+      return <AppLoading />
+  } else {
   return <>
 
 
     <TextInput
+        style={{fontFamily: 'Nunito_400Regular'}}
         style={styles.inputbox}
         underlineColor="#505050"
         type="flat"
@@ -51,6 +63,7 @@ const DrDetail = ({doctorInfo}) => {
         onChangeText={name => setName(name)}
     ></TextInput>
     <TextInput
+        style={{fontFamily: 'Nunito_400Regular'}}
         style={styles.inputbox}
         underlineColor="#505050"
         type="flat"
@@ -61,6 +74,7 @@ const DrDetail = ({doctorInfo}) => {
     ></TextInput>
 
     <TextInput
+         style={{fontFamily: 'Nunito_400Regular'}}
         style={styles.inputbox}
         underlineColor="#505050"
         textContentType="fullStreetAddress"
@@ -71,6 +85,7 @@ const DrDetail = ({doctorInfo}) => {
         onChangeText={lang => setLang(lang)}
     ></TextInput>
     <TextInput
+        style={{fontFamily: 'Nunito_400Regular'}}
         style={styles.inputbox}
         underlineColor="#505050"
         autoCapitalize='sentences'
@@ -81,6 +96,7 @@ const DrDetail = ({doctorInfo}) => {
         onChangeText={experience => setExperience(experience)}
     ></TextInput>
     <TextInput
+        style={{fontFamily: 'Nunito_400Regular'}}
         style={styles.inputbox}
         underlineColor="#505050"
         autoCapitalize='sentences'
@@ -93,7 +109,7 @@ const DrDetail = ({doctorInfo}) => {
 
 
     </>
-};
+};}
 
 
 export default DrDetail;
