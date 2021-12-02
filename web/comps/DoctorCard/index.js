@@ -419,16 +419,15 @@ const DoctorCard = ({ info, showModal, deleteDoctor }) => {
 //  }
 
 
-  // var imgSrc = document.getElementById('heroimg').src;
+  var img = '/maledoctor.png';
 
-  // console.log(imgSrc);
-  // if (info.gender == "Female") {
-  //   imgSrc = '/femaledoctor.png';
-  // }
-  // else if (info.gender == "Male") {
-  //   imgSrc = '/maledoctor.png';
-  // }
-  // console.log(info.gender);
+  if (info.gender == "Female") {
+    img = '/femaledoctor.png';
+  }
+  else if (info.gender == "Male") {
+    img = '/maledoctor.png';
+  }
+  console.log(info.gender);
 
 
   return (
@@ -448,7 +447,7 @@ const DoctorCard = ({ info, showModal, deleteDoctor }) => {
       <img
         style={{width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover'}}
         id="heroimg"
-        src={'/maledoctor.png'}
+        src={img}
       />
       </div>
       <Nameheader>

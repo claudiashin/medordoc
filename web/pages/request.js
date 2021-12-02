@@ -172,14 +172,14 @@ export default function Home({}) {
       <NavCont>
         <NavBar />
         <HeaderCont>
-          <HeaderTitle title={"Requests"} />
+          <HeaderTitle title={"Family Doctor Requests"} />
         </HeaderCont>
       </NavCont>
 
       <QRscan />
       <div style={{position: 'relative'}}>
         <Subheader>
-          <HeaderTitle title={"Patient Lists"} fontSize={22} fontWeight={600} />
+          <HeaderTitle title={"Incoming Patient Requests"} fontSize={22} fontWeight={600} />
         </Subheader>
 
         <ContPatientCard>

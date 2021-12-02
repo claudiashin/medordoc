@@ -146,7 +146,7 @@ const Button = styled.button`
 `;
 
 const PatientCard = ({
-  imagesource = "https://placekitten.com/100/100",
+
   info,
   btncol = "#397fbf",
 }) => {
@@ -167,6 +167,15 @@ const PatientCard = ({
   }, [info]);
   console.log(info);
 
+  var img = "/man.png";
+
+  if (patientGender == "Female") {
+    img = '/woman.png';
+  }
+  else if (patientGender == "Male") {
+    img = '/man.png';
+  }
+  console.log(patientGender);
 
   return (
     <Maincont>
@@ -208,7 +217,9 @@ const PatientCard = ({
       </Closebutton>
 
       <Avatarcont>
-        <Avatarimg src={imagesource} />
+        <Avatarimg 
+        id="avatar"
+        src={img} />
       </Avatarcont>
       <Nameheader>
         <Text style={{ fontSize: 20 }}>{patientName}</Text>
