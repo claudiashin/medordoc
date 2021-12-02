@@ -63,6 +63,7 @@ const qrconfirm = () => {
     const [month,setAmonth] =useState('')
     const [year,setAyear] =useState('')
 
+
     const [time,setTime] =useState('')
     const [clname,setClname] =useState('')
     const [cladd,setAdd] =useState('')
@@ -75,7 +76,8 @@ const qrconfirm = () => {
         setUser(userid)
 
         const gettingBK =async()=>{
-
+            
+     
             const q = query(collection(db, "appointment"), where("userid", "==", userid),orderBy('year',"desc"),orderBy('month',"desc"),orderBy('day',"desc"),limit(1));
             const querySnapshot = await getDocs(q);
            
@@ -84,6 +86,8 @@ const qrconfirm = () => {
                 const bookingmonth = doc.data().month;
                 const bookingday = doc.data().day;
                 const clID = doc.data().clinicId
+                const clnicname = doc.data().clinicname
+                const clnicadd = doc.data().clinicAdd
 
                 const bookingtime = doc.data().bookingtime;
                 const patientname = doc.data().patientname;
@@ -94,28 +98,27 @@ const qrconfirm = () => {
                 console.log (bookingday);
                 console.log (userid);
                 console.log (clID);
+                setClname(clnicname)
+                setAdd(clnicadd)
                 setAyear(bookingyear);
                 setAmonth(bookingmonth);
                 setAday(bookingday)
                 setTime(bookingtime)
                 setName(patientname);
                 setClnicID(clID);
+                console.log(clinicID)
             });
         }
         gettingBK()
  },[user])
 
-    const getclinicinfo = async()=>{
-    const docRef = doc(db, "clinics",clinicID);
-    const docSnap = await getDoc(docRef);
-    setClname(docSnap.data().name);
-    setAdd(docSnap.data().add);
-    }
-
-    getclinicinfo()
- 
- 
-  
+    // const getclinicinfo = async()=>{
+    // const docRef = doc(db, "clinics",clinicID);
+    // const docSnap = await getDoc(docRef);
+    // setClname(docSnap.data().name);
+    // setAdd(docSnap.data().add);
+    // }
+    // getclinicinfo()
 
 
     return (

@@ -21,9 +21,8 @@ export default function Datepick(
   //  bookingdate = {text},
   //  useruid= '',
   clinicId = '',
-  ClinicName = '',
-  ClinicAdd = ''
-
+  ClinicName = "",
+  ClinicAdd = ""
 ) {
     const navigation = useNavigation();  
     const [date, setDate] = useState(new Date());
@@ -47,7 +46,6 @@ export default function Datepick(
     // setUser(userid)
     // setClnicID(clinicId)
 
-    
 
     useEffect (()=>{
       const auth = getAuth();
@@ -57,13 +55,16 @@ export default function Datepick(
           const userid = auth.currentUser.uid;
           setUser(userid)
           setClnicID(clinicId.clinicId)
+       
           // console.log(userid)
           // console.log(clinicId.clinicId)
 
           // console.log(user)
+          console.log(clinicId.ClinicName)
+          console.log(clinicId.ClinicAdd)
         }
       })
-       },[])
+       },[user])
 
       
   
@@ -74,6 +75,9 @@ export default function Datepick(
     )=>{
       // setClnicID(clinicId.clinicId)
       getting()
+      // console.log(ClinicName);
+      // console.log(ClinicAdd);
+
       // console.log(clinicID)
       // console.log(user)
       await addDoc(collection(db,"appointment"),{
@@ -85,18 +89,14 @@ export default function Datepick(
           year:year,
           month:month,
           day:day,
+          clinicname:clinicId.ClinicName,
+          clinicAdd:clinicId.ClinicAdd
            });
     }
          const getting =async()=>{
          const docRef = doc(db,"patientuser",user);
          const docSnap = await getDoc(docRef);
 
-        //  const clinicinfo = (docSnap.data())
-        //  console.log(clinicinfo)
-        //  const docRef1 = doc(db,"clinics",clinicinfo);
-        //  const docSnap1 = await getDoc(docRef1);
-        
-        // console.log(docSnap1)
          console.log(docSnap.data().clinicId)
          setClnicID(clinicId.clinicId)
          setReady("ready to go")
@@ -116,7 +116,6 @@ export default function Datepick(
        let day = tempDate.getDate();
        let month = (tempDate.getMonth()+1);
        let year = tempDate.getFullYear();
-
        setAday(day)
        setAmonth(month)
        setAyear(year)

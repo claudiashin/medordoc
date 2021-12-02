@@ -71,6 +71,7 @@ export default function confirmreq({ navigation, route }) {
         <Wave source={require("../assets/backgroundmobile.png")} />
 
         <ScrollView>
+          <View style ={{display:"flex",alignItems:'center', marginTop:30}}>
 
           <HdCont>
             <Header title="Request Process" fontSize="28" />
@@ -94,10 +95,10 @@ export default function confirmreq({ navigation, route }) {
             height="280"
           />
           <HdCont2>
+
             <Header
-              style={{fontSize: 16}}
               title="Would you like to proceed with this request?"
-              fontSize="16"
+              fontSize="18"
               fontWeight="500"
             />
           </HdCont2>
@@ -113,6 +114,7 @@ export default function confirmreq({ navigation, route }) {
               }}
             />
           </ButCont>
+          </View>
         </ScrollView>
         <NavBarCont>
             <NavBar/>
