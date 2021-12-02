@@ -73,6 +73,7 @@ export default function findclinic({navigation}){
   return (
     <Cont>
         <BackCont>
+          
           <BackBtn onPress={() => navigation.goBack()}/>
         </BackCont>
         <Wave source={require('../assets/backgroundmobile.png')} />
