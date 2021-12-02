@@ -107,7 +107,7 @@ const Map =({
 				}}
 				query={{
 					key: "AIzaSyCCt-xyjh42M9cMpdoeAo4nK6sP5bWDVss",
-					language: "en",
+					// language: "en ja",
 					components: "country:ca",
 					types: "establishment",
 					radius: 30000,
@@ -122,6 +122,7 @@ const Map =({
    <MapView style={styles.map}
     region={region}
     provider={PROVIDER_GOOGLE}　
+
     >
    
    <Marker coordinate={{ latitude: region.latitude, longitude: region.longitude }} />
@@ -157,7 +158,6 @@ const Map =({
           UID:"oXOf7T5hj4ewq5ls5YzoJQpGbrp1"
         })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Burnaby{"\n"}20 minutes</Text>
         <Button title = "Burnaby Clinic"/>
        </View>
    </MapView.Callout>  
@@ -178,7 +178,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Beyond Health Medical{"\n"}</Text>
-        <Button title = "Beyond Health"/>
+        <Button title = "Beyond Health Medical"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker> 
@@ -199,7 +199,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Pacific Medical Clinic{"\n"}</Text>
-        <Button title = "Pacific Medical"/>
+        <Button title = "Pacific Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker> 
@@ -218,7 +218,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>Maple Walk-In Medical Clinic{"\n"}</Text>
-        <Button title = "Maple Walk-In"/>
+        <Button title = "aple Walk-In Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker> 
@@ -414,7 +414,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>WELL Health - Care Place Fleetwood Medical Clinic{"\n"}</Text>
-        <Button title = "WELL Health"/>
+        <Button title = "WELL Health - Care Place Fleetwood Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -435,7 +435,7 @@ const Map =({
      })} tooltip> 
       <View style={styles.calloutText} >
         <Text>The Well Medical Clinic{"\n"}</Text>
-        <Button title = "The Well"/>
+        <Button title = "The Well Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -590,7 +590,7 @@ const styles = StyleSheet.create({
     },
     map: {
       width: Dimensions.get('window').width,
-      height: Dimensions.get('window').height/2,
+      height: Dimensions.get('window').height/1.2,
     }})
 
 export default Map;
