@@ -42,13 +42,14 @@ export default function Datepick(
     const [ready,setReady] =useState('')
     
     useEffect (()=>{
-      if(user){
+        const auth = getAuth()
         const userid = auth.currentUser.uid;
         setUser(userid)
-        console.log(clinicID)
-      }
-        const auth = getAuth()
-        const user = auth.currentUser;
+        setClnicID(clinicId)
+        // const clinicUID = route.params;
+        // const num = clinicUID.clinicUID
+        // setUID(num);
+       
       //   const getting =async()=>{
       //   const docRef = doc(db, "patientuser",user);
       //   const docSnap = await getDoc(docRef);
@@ -159,7 +160,7 @@ export default function Datepick(
                      </View>  
 
                      <View style = {{margin:10}}>  
-                     <Btn title={'Confirm'} onPress ={() => {booking();navigation.navigate('qrconfirm')}} /> 
+                     <Btn title={'Confirm'} onPress ={() => {booking;navigation.navigate('qrconfirm')}} /> 
                      </View>
               </ButtonCont>    
 
