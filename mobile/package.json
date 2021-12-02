@@ -22,11 +22,7 @@
     "expo-app-loading": "~1.2.1",
     "expo-asset": "~8.4.3",
     "expo-constants": "~12.1.3",
-<<<<<<< HEAD
-    "expo-font": "~9.2.1",
-=======
     "expo-font": "~10.0.3",
->>>>>>> f6989ebce92d0e2a5855e549de3f8fdba9186f0c
     "expo-google-app-auth": "~9.0.0",
     "expo-image-picker": "^11.0.3",
     "expo-location": "~13.0.4",
