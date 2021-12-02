@@ -57,6 +57,7 @@ export default function Datepick(
       //   console.log(docSnap.data())
       // }
       // getting()
+      }
        },[]) 
 
     console.log(clinicID)

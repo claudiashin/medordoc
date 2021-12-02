@@ -66,7 +66,7 @@ export default function docprofile({ navigation, route }) {
           <BackBtn onPress={() => navigation.goBack()}/>
         </BackCont>
         <ImageCont>
-          <HeroAvatar heroheight="200" herowidth="200" visibility="hidden" />
+          <HeroAvatar heroheight="200" herowidth="200" visible="none" />
         </ImageCont>
         <DrDetail doctorInfo={doctorInfo}></DrDetail>
         <HdCont>

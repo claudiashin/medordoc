@@ -72,7 +72,6 @@ export default function findclinic({navigation}){
  
   return (
     <Cont>
-      <ScrollView keyboardShouldPersistTaps={'handled'}>
         <BackCont>
           <BackBtn onPress={() => navigation.goBack()}/>
         </BackCont>
@@ -103,7 +102,6 @@ export default function findclinic({navigation}){
           <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
           <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} /> */}
         </CardCont> 
-      </ScrollView> 
 
       <NavBarCont>
         <NavBar />

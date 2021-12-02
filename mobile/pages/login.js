@@ -91,14 +91,13 @@ const login = ({route,navigation})=>{
         const CreateUser = async(em,ps)=>{
         const auth =getAuth();
         const result = await createUserWithEmailAndPassword(auth,em,ps);
-        alert("Created!")
+
             }
             
         const Signin = async(em,ps)=>{
         const auth =getAuth();
         const result = await signInWithEmailAndPassword(auth,em,ps);
         console.log(result);
-        alert("Sign in!")
             }
 
 
