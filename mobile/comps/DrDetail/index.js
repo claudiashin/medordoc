@@ -52,6 +52,7 @@ const DrDetail = ({doctorInfo}) => {
 
 
     <TextInput
+        style={{fontFamily: 'Nunito_400Regular'}}
         style={styles.inputbox}
         underlineColor="#505050"
         type="flat"
@@ -62,6 +63,7 @@ const DrDetail = ({doctorInfo}) => {
         onChangeText={name => setName(name)}
     ></TextInput>
     <TextInput
+        style={{fontFamily: 'Nunito_400Regular'}}
         style={styles.inputbox}
         underlineColor="#505050"
         type="flat"
@@ -72,6 +74,7 @@ const DrDetail = ({doctorInfo}) => {
     ></TextInput>
 
     <TextInput
+         style={{fontFamily: 'Nunito_400Regular'}}
         style={styles.inputbox}
         underlineColor="#505050"
         textContentType="fullStreetAddress"
@@ -82,6 +85,7 @@ const DrDetail = ({doctorInfo}) => {
         onChangeText={lang => setLang(lang)}
     ></TextInput>
     <TextInput
+        style={{fontFamily: 'Nunito_400Regular'}}
         style={styles.inputbox}
         underlineColor="#505050"
         autoCapitalize='sentences'
@@ -92,6 +96,7 @@ const DrDetail = ({doctorInfo}) => {
         onChangeText={experience => setExperience(experience)}
     ></TextInput>
     <TextInput
+        style={{fontFamily: 'Nunito_400Regular'}}
         style={styles.inputbox}
         underlineColor="#505050"
         autoCapitalize='sentences'
