@@ -89,15 +89,16 @@ const InfoCard = ({
             <Information style={{fontFamily: 'Nunito_400Regular'}}>{address}{text2}</Information>
         </SubheadingCont>
 
-
         <SubheadingCont>
             <Information style={{fontFamily: 'Nunito_400Regular'}}>{phone}{text3}</Information>
         </SubheadingCont>
+
 
         <SubheadingCont>
             <Information style={{fontFamily: 'Nunito_400Regular'}}>{language}{text4}</Information>
         </SubheadingCont>
 
+         
         <SubheadingCont>
             <Information style={{fontFamily: 'Nunito_400Regular'}}>{open}{text5}</Information>
         </SubheadingCont>

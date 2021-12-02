@@ -3,29 +3,38 @@ import { StyleSheet, Text, View, TouchableOpacity,Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { addDoc,collection,setDoc,getDoc,doc,query,where} from 'firebase/firestore';
 import {onAuthStateChanged,getAuth} from 'firebase/auth'
+import Btn from '../../comps/Btn';
 import styled from "styled-components/native";
+import { useNavigation } from '@react-navigation/native';
+
 import {Auth} from '../../utils/auth'
 import {db} from '../../utils/store'
 
 const ButtonCont = styled.View`
-  
     align-items: center;
-    width: 275px;
-    height:300px;
-    margin-top: 25px;
+    height:200px;
+    width:275px;
+    margin:50px;
 `;
 
 export default function Datepick(
   //  bookingdate = {text},
   //  useruid= '',
-  clinicId = ''
+
+  clinicId = '',
 ) {
+    const navigation = useNavigation();  
     const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('time');
     const [show, setShow] = useState(true);
     const [text, setText] = useState('Select Date and Time');
     const [dbtime, setTime] = useState('18:30') 
     const [dbday, setDay] = useState('') 
+    const [day,setAday] = useState('') 
+    const [month,setAmonth] = useState('');
+    const [year,setAyear] = useState('') 
+
+
     const [user,setUser] = useState('');
     const [fname,setFname] =useState('')
     const [lname,setLname] =useState('')
@@ -47,10 +56,8 @@ export default function Datepick(
       //   console.log(docSnap.data())
       // }
       // getting()
-
        },[]) 
 
-  
     console.log(clinicID)
 
     const booking = async(
@@ -58,17 +65,17 @@ export default function Datepick(
       // setClnicID(clinicId.clinicId)
       getting()
       console.log(clinicID)
-    
-      
-      await setDoc(doc(db,"appointment",user), {
+      await addDoc(collection(db,"appointment"),{
           userid:user,
           clinicId:clinicID,
           bookingtime:dbtime,
           bookingdate:dbday,
-          patientname:fname+' '+lname
+          patientname:fname+' '+lname,
+          year:year,
+          month:month,
+          day:day,
            });
     }
-
          const getting =async()=>{
          const docRef = doc(db, "patientuser",user);
          const docSnap = await getDoc(docRef);
@@ -80,28 +87,24 @@ export default function Datepick(
          console.log(lname)  
      }
 
-      // useEffect (()=>{
-      //  const auth = getAuth
-      //  auth.currentUser
-      //  onAuthStateChanged((u)=>{
-      //    if(u){
-      //      setUser(u);
-      //      console.log(u)
-      //    }
-      //  }) 
-      // },[])
-
       const onChange = (event, selectedDate) => {
       const currentDate = selectedDate || date;
       setShow(Platform.OS === 'ios');
       setDate(currentDate);
        let tempDate = new Date(currentDate);
-       let fdate =tempDate.getDate() + "/" +tempDate.getMonth() + "/" +tempDate.getFullYear();
+       let fdate =tempDate.getDate() + "/" +(tempDate.getMonth()+1) + "/" +tempDate.getFullYear();
        let ftime = tempDate.getHours() + ":" +tempDate.getMinutes();
-      setText(fdate + "      " + ftime);
-      setTime(ftime);
-      setDay(fdate);
-      
+       let day = tempDate.getDate();
+       let month = (tempDate.getMonth()+1);
+       let year = tempDate.getFullYear();
+
+
+       setAday(day)
+       setAmonth(month)
+       setAyear(year)
+       setText(fdate + "      " + ftime);
+       setTime(ftime);
+       setDay(fdate);
       // setTime(ftime)
     };
   
@@ -109,25 +112,23 @@ export default function Datepick(
       setShow(true);
       setMode(currentMode);
     };
-  
+
      const showDatepicker = () => {
        showMode('date');
      };
-  
+
     const showTimepicker = () => {
       showMode('time');
     };
 
-  
-
     return (
-      <View >
+      <View style = {styles.container} >
         <View style = {styles.butcontainer}>
-          <Button onPress={showDatepicker} title="Pick the Date" style ={styles.button}/>
+          <Btn onPress={showDatepicker} title="Select A Date" />
         </View>
 
          <View style = {styles.butcontainer}>
-          <Button onPress={showTimepicker} title="Pick the Time" style ={styles.button} />
+          <Btn  onPress={showTimepicker} title="Select A Time"  />
         </View>    
      
      {show && (
@@ -138,6 +139,7 @@ export default function Datepick(
         is24Hour={true}
         display="default"
         onChange={onChange}
+        style = {{alignItems:"center"}}
       />
     )}
 
@@ -145,21 +147,20 @@ export default function Datepick(
           <Text>Your Appoinment is</Text>
           <Text>{text}</Text>
         </View> 
-       
-              
+  
               <ButtonCont>
-                    {/* <Button
-                        title={'Confirm'}
-                        fSize={18}
-                        onPress={() => navigation.navigate('qrconfirm')}
-                    /> */}
-                    <Button  title='Check-in' onPress = {getting} style = {styles.btn}></Button> 
-
+                    {/* <Btn title='Check-in'onPress ={getting} />   */}
+                        <View>
                           <Text>Your Name is {fname+ ' '+ lname}</Text>
                           <Text>Your booking is {ready}</Text>
+                       </View>    
+                     <View style = {{margin:10}}>  
+                     <Btn title='Booking' onPress = {booking} /> 
+                     </View>  
 
-                    <Button  title='Booking' onPress = {booking} style = {styles.btn}></Button>
-
+                     <View style = {{margin:10}}>  
+                     <Btn title={'Confirm'} onPress ={() => {booking();navigation.navigate('qrconfirm')}} /> 
+                     </View>
               </ButtonCont>    
 
 
@@ -170,16 +171,17 @@ export default function Datepick(
   const styles = StyleSheet.create({
         container: {
         flex:1,
-        backgroundColor: '#97BDD6',
+        backgroundColor: '#f7f2ee',
           //  flexDirection:'column',
-            alignItems: 'center',
-          justifyContent: 'center',
+          //   alignItems: 'center',
+          // justifyContent: 'center',
           },
         butcontainer: {
           flex:1,
           backgroundColor: '#97BDD6',
+          margin:10,
           //  flexDirection:'column',
-            alignItems: 'center',
+          alignItems: 'center',
           justifyContent: 'center',
           },
          bookinfo: {
@@ -199,9 +201,11 @@ export default function Datepick(
             backgroundColor: '#97BDD6',
             // margin:30,
           },
-          button:{
+          btn:{
             margin:5,
-            backgroundColor: '#97BDD6',
+            // width:100,
+            // height:100,
+            // backgroundColor: '#97BDD6',
           }
   
     })
