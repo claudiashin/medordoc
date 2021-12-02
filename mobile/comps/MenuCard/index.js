@@ -3,6 +3,9 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import LottieView from 'lottie-react-native';
 
+import AppLoading from 'expo-app-loading';
+import { useFonts, Nunito_400Regular, Nunito_600SemiBold,  Nunito_700Bold, } from '@expo-google-fonts/nunito';
+
 const lottieFiles =[
     require('../../assets/lottie_clipboard.json'),
     require('../../assets/lottie_desktop.json'),    
@@ -39,6 +42,16 @@ const MenuCard = ({
     ind = 0,
 }) => {
     var anim = useRef();
+
+    let [fontsLoaded] = useFonts({
+        Nunito_400Regular,
+        Nunito_600SemiBold,
+        Nunito_700Bold,
+      });
+    
+      if(!fontsLoaded) {
+          return <AppLoading />
+      } else {
     return (
         <MenuCont>
             <TouchableOpacity onPress={Cardpress}>
@@ -69,6 +82,7 @@ const MenuCard = ({
                     />
 
                     <Text style={{
+                        fontFamily: 'Nunito_700Bold',
                         textAlign: "center",
                         fontSize: fSize,
                         color: color,
@@ -79,7 +93,7 @@ const MenuCard = ({
             </TouchableOpacity>
         </MenuCont>
     )
-}
+}}
 
 export default MenuCard
 
