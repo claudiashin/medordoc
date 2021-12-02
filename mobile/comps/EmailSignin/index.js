@@ -49,13 +49,9 @@ export default function EmailSignin({
   const [showError, setShowError] = useState('')
   const [error, setError] = useState(false)
   const [errorTwo, setErrorTwo] = useState(false)
-
   const navigation = useNavigation(); 
+  console.log(uid)
 
-
-
-
- 
   return(
         <MainCont>
            {/* <AlertBanner show={setError,setErrorTwo}>{showError}</AlertBanner> */}
