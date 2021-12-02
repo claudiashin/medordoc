@@ -6,6 +6,8 @@ import { getDocs, collection, query, where, deleteDoc, doc, getDoc } from "fireb
 import {db} from '../../utils/store'
 import app from "../../utils/inits";
 
+import AppLoading from 'expo-app-loading';
+import { useFonts, Nunito_400Regular } from '@expo-google-fonts/nunito';
 
 
 const InfoCardCont = styled.View`
@@ -108,6 +110,15 @@ const InfoCardThree = ({
     reload()
   },[])
 
+  let [fontsLoaded] = useFonts({
+    Nunito_400Regular,
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+  });
+
+  if(!fontsLoaded) {
+      return <AppLoading />
+  } else {
   
   return (
     <InfoCardCont>
@@ -117,14 +128,14 @@ const InfoCardThree = ({
         </Heading>
       </HeadingCont>
 
-      <BodyCont>
+      <BodyCont style={{fontFamily: 'Nunito_400Regular'}}>
 
        {data}
        {dataTwo}
       </BodyCont>
     </InfoCardCont>
   );
-};
+  };}
 
 const styles = StyleSheet.create({});
 
