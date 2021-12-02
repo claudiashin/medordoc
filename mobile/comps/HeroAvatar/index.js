@@ -111,7 +111,7 @@ const HeroAvatar = ({
   <PlusCont onPress={Upload} onPress={pickImage} >
   <PlusImage pluswidth={pluswidth} plusheight={plusheight} right={right} bottom={bottom} visible={visible} source={require('../../assets/plus.png')}/>
   </PlusCont>
-  <MyButton onPress={TakePicture} title="Take picture"/>
+  {/* <MyButton onPress={TakePicture} title="Take picture"/> */}
 
 </HeroAvatarCont>
 }

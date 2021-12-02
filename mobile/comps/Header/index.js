@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { StyleSheet, Text, View } from 'react-native';
 
+import AppLoading from 'expo-app-loading';
+import { useFonts, Nunito_400Regular, Nunito_600SemiBold,  Nunito_700Bold, } from '@expo-google-fonts/nunito';
+
 const HeaderCont = styled.View`
     flex-direction: row;
     justify-content: flex-start;
@@ -24,14 +27,25 @@ const Header = ({
     lineHeight = 30,
 
 }) => {
+    let [fontsLoaded] = useFonts({
+        Nunito_400Regular,
+        Nunito_600SemiBold,
+        Nunito_700Bold,
+      });
+    
+      if(!fontsLoaded) {
+          return <AppLoading />
+      } else {
 
     return <HeaderCont>
        <Title 
+       style={{fontFamily: 'Nunito_700Bold', fontSize: 25}}
        fWeight={fontWeight} 
        fSize={fontSize} 
        lHeight={lineHeight}
        >{title}</Title>
     </HeaderCont>
+}
 }
 
 export default Header;

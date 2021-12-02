@@ -95,6 +95,7 @@ export default function confirmreq({ navigation, route }) {
           />
           <HdCont2>
             <Header
+              style={{fontSize: 16}}
               title="Would you like to proceed with this request?"
               fontSize="16"
               fontWeight="500"
@@ -105,7 +106,7 @@ export default function confirmreq({ navigation, route }) {
               title="Send Request"
               fsize="18"
               width="160"
-              height="45"
+              height="50"
               borderRad="50"
               onPress={() => {
                 setChangeForm(false);
