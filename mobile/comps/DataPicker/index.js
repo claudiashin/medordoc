@@ -20,8 +20,10 @@ const ButtonCont = styled.View`
 export default function Datepick(
   //  bookingdate = {text},
   //  useruid= '',
-
   clinicId = '',
+  ClinicName = '',
+  ClinicAdd = ''
+
 ) {
     const navigation = useNavigation();  
     const [date, setDate] = useState(new Date());
@@ -46,6 +48,8 @@ export default function Datepick(
         const userid = auth.currentUser.uid;
         setUser(userid)
         setClnicID(clinicId)
+        console.log(userid)
+        console.log(clinicId)
         // const clinicUID = route.params;
         // const num = clinicUID.clinicUID
         // setUID(num);
