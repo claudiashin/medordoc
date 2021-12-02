@@ -39,7 +39,7 @@ const Header = ({
 
     return <HeaderCont>
        <Title 
-       style={{fontFamily: 'Nunito_700Bold', fontSize: 25}}
+        style={{fontFamily: 'Nunito_700Bold', fontSize: 25}}
        fWeight={fontWeight} 
        fSize={fontSize} 
        lHeight={lineHeight}

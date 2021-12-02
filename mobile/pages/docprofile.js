@@ -17,6 +17,9 @@ import Header from "../comps/Header";
 import NavBar from "../comps/NavBar";
 import BackBtn from "../comps/BackBtn";
 
+import AppLoading from 'expo-app-loading';
+import { useFonts, Nunito_400Regular, Nunito_600SemiBold,  Nunito_700Bold, } from '@expo-google-fonts/nunito';
+
 const MainCont = styled.View`
   flex: 1;
   justify-content: flex-start;
@@ -58,6 +61,16 @@ const BackCont = styled.View`
 
 export default function docprofile({ navigation, route }) {
   const { doctorInfo} = route.params;
+
+  let [fontsLoaded] = useFonts({
+    Nunito_400Regular,
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+  });
+
+  if(!fontsLoaded) {
+      return <AppLoading />
+  } else {
   return (
     <MainCont>
       <Wave source={require("../assets/backgroundmobile.png")} />
@@ -71,8 +84,9 @@ export default function docprofile({ navigation, route }) {
         <DrDetail doctorInfo={doctorInfo}></DrDetail>
         <HdCont>
           <Header
+            // syle={{fontSize:10}}
             title="Would you like to request this doctor?"
-            fontSize="16"
+          fontSize={10}
           />
         </HdCont>
         <ButCont>
@@ -95,7 +109,7 @@ export default function docprofile({ navigation, route }) {
       </NavBarCont>
     </MainCont>
   );
-}
+}}
 
 const styles = StyleSheet.create({
   scrollView: {
