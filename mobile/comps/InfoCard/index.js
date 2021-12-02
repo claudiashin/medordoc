@@ -31,6 +31,12 @@ const Heading = styled.Text`
 const SubheadingCont = styled.View`
 `;
 
+const Subheadingtwo = styled.Text`
+    font-size: 16px;
+    color: #505050;
+    margin: 10px;
+`;
+
 const Title = styled.Text``;
 
 const Information = styled.Text`
