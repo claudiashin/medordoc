@@ -23,7 +23,7 @@ const MainCont = styled.div`
 const TitleCont = styled.div`
   width: 300px;
   height: 50px;
-  background-color: #f2e1d3;
+  background-color: #f6e1d0;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -31,7 +31,7 @@ const TitleCont = styled.div`
   margin-top: 25px;
 `;
 const Title = styled.p`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   // color: #505050;
 `;
@@ -76,7 +76,7 @@ const LiveWaitTime = ({ uid }) => {
   return (
     <MainCont>
       <TitleCont>
-        <Title>Update Live Wait Time</Title>
+        <Title>Update Today's Live Wait Time</Title>
       </TitleCont>
       <div>
         <FormControl variant="standard" sx={{ m: 4, minWidth: 300 }}>
