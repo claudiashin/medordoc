@@ -68,8 +68,8 @@ const accountconfirm = ({
                 <BtnCont>
                     <Btn
                         title="Sign In"
-                        fsize="20"
-                        width="130"
+                        fsize="18"
+                        width="120"
                         height="50"
                         onPress={() => navigation.navigate("login")}
                     />
