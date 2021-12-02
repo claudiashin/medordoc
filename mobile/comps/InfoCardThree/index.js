@@ -7,7 +7,7 @@ import {db} from '../../utils/store'
 import app from "../../utils/inits";
 
 import AppLoading from 'expo-app-loading';
-import { useFonts, Nunito_400Regular } from '@expo-google-fonts/nunito';
+import { useFonts, Nunito_400Regular, Nunito_600SemiBold,  Nunito_700Bold, } from '@expo-google-fonts/nunito';
 
 
 const InfoCardCont = styled.View`
