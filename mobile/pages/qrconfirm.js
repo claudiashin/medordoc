@@ -76,8 +76,7 @@ const qrconfirm = () => {
         setUser(userid)
 
         const gettingBK =async()=>{
-            
-     
+
             const q = query(collection(db, "appointment"), where("userid", "==", userid),orderBy('year',"desc"),orderBy('month',"desc"),orderBy('day',"desc"),limit(1));
             const querySnapshot = await getDocs(q);
            
