@@ -118,15 +118,15 @@ return( <Cont>
     <WaveCont>
   <Wave source={require('../assets/backgroundmobile.png')} />
   </WaveCont>
-  <HeaderCont >
+  {/* <HeaderCont >
     <Header
       title="Find a Family Doctor"
       fSize="26px"
       />
-  </HeaderCont>
+  </HeaderCont> */}
 
   
-    <FilterCont>
+    {/* <FilterCont>
     <Filiter 
               headerText1={"Language Prefrences"}
               headerText2={"Gender"}
@@ -142,7 +142,7 @@ return( <Cont>
               display={"none"}
 
     /> 
-    </FilterCont>
+    </FilterCont> */}
 
     <HeaderCont2>
     <Header

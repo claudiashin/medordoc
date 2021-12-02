@@ -51,6 +51,12 @@ const Subheadingtwo = styled.Text`
     color: #505050;
     margin: 10px;
 `;
+const Subheadingthree = styled.Text`
+    font-size: 16px;
+    color: ${props => props.fontcolor};
+    margin: 10px;
+    font-weight: ${props => props.subheadingthree_fw};
+`;
 
 const InfoCard = ({
     text = "Welcome Jenny Lee",

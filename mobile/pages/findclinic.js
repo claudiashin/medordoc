@@ -63,8 +63,8 @@ const BackCont = styled.View`
   display: flex;
   position: absolute;
   z-index: 999;
-  right: 350px;
-  top: -16px;
+  right: 410px;
+  top: 10px;
 `
 
 export default function findclinic({navigation}){
@@ -76,7 +76,7 @@ export default function findclinic({navigation}){
           <BackBtn onPress={() => navigation.goBack()}/>
         </BackCont>
         <Wave source={require('../assets/backgroundmobile.png')} />
-        <Map/>
+        <Map />
         {/* <FilterCont>
           <Filter 
           headerText1={"Language Prefrences"}
