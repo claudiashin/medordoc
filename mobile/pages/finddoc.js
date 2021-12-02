@@ -83,7 +83,7 @@ const [doctors,setDoctors] = useState([])
       const querySnapshot = await getDocs(collection(db, "doctors"));
       querySnapshot.forEach((doc) => {
         const doctorInfo = doc.data()
-        doctors.push(<ClinDocButton bodyText={doc.data().name} cardpress={() => navigation.navigate("docprofile",{
+        doctors.push(<ClinDocButton imageSource={doc.data().img} bodyText={doc.data().name} cardpress={() => navigation.navigate("docprofile",{
           doctorInfo
         })} />
         )
@@ -115,15 +115,15 @@ return( <Cont>
     <WaveCont>
   <Wave source={require('../assets/backgroundmobile.png')} />
   </WaveCont>
-  <HeaderCont >
+  {/* <HeaderCont >
     <Header
       title="Find a Family Doctor"
       fSize="26px"
       />
-  </HeaderCont>
+  </HeaderCont> */}
 
   
-    <FilterCont>
+    {/* <FilterCont>
     <Filiter 
               headerText1={"Language Prefrences"}
               headerText2={"Gender"}
@@ -139,7 +139,7 @@ return( <Cont>
               display={"none"}
 
     /> 
-    </FilterCont>
+    </FilterCont> */}
 
     <HeaderCont2>
     <Header
