@@ -46,6 +46,11 @@ const QRCodeCont = styled.View`
     margin-top: 15px;
     display: ${props => props.display};
 `;
+const Subheadingtwo = styled.Text`
+    font-size: 16px;
+    color: #505050;
+    margin: 10px;
+`;
 
 const InfoCard = ({
     text = "Welcome Jenny Lee",
