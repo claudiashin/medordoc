@@ -10,9 +10,8 @@ import {
   query,
   where,
 } from "firebase/firestore";
-// import {db} from '../utils/store';
+import {db} from '../utils/store';
 import { Auth } from "../utils/auth";
-// // import {onAuthStateChanged} from 'firebase/auth'
 import {getAuth} from 'firebase/auth'
 import Calendar from '../comps/Calendar';
 import Header from '../comps/Header';
@@ -70,13 +69,31 @@ const BackCont = styled.View`
 const booking = ({ route,navigation }) => {
     
     const [uid,setUID] = useState('');
+    const [clname,setClname] =useState('')
+    const [cladd,setAdd] =useState('')
     
     useEffect (()=>{
         const clinicUID = route.params;
-        const num = clinicUID.clinicUID
+        const num = clinicUID.clinic
         setUID(num);
+
+     
+        // const gettingCL =async()=>{
+        //     const docRef = doc(db, "clinics",num);
+        //     const docSnap = await getDoc(docRef);
+        //     console.log(docSnap.data())
+        //     setClname(docSnap.data().name);
+        //     setAdd(docSnap.data().add);
+        //     }
+        //     gettingCL()
+
+
        },[])
+
        console.log(uid);
+       
+
+      
 
     return (
         <BookingCont>

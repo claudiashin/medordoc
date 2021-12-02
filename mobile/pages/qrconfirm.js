@@ -80,8 +80,7 @@ const qrconfirm = () => {
             const q = query(collection(db, "appointment"), where("userid", "==", userid),orderBy('year',"desc"),orderBy('month',"desc"),orderBy('day',"desc"),limit(1));
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                // console.log(doc.id, " => ", doc.data());
+    
                 const bookingyear = doc.data().year;
                 const bookingmonth = doc.data().month;
                 const bookingday = doc.data().day;
@@ -102,20 +101,10 @@ const qrconfirm = () => {
                 setTime(bookingtime)
                 setName(patientname);
                 setClnicID(clID)
-              
+
             });
 
-            // const gettingCL =async()=>{
-            // const docRef = doc(db, "clinics",clinicID);
-            // const docSnap = await getDoc(docRef);
-            // setClname(docSnap.data().name);
-            // setAdd(docSnap.data().add);
-            //       }
-            // gettingCL()
-
            
-
-
 
             // const docRef = doc(db, "clinics",clinicID);
             // const docSnap = await getDoc(docRef);
@@ -132,13 +121,7 @@ const qrconfirm = () => {
             // console.log(querySnapshot.data())
 
 
-            // console.log(docSnap1.data().name)
-            // setClnicID(docSnap.data().clinicId);
-            // setName(docSnap.data().patientname);
-            // setDate(docSnap.data().bookingdate);
-            // setTime(docSnap.data().bookingtime);
-            // setClname(docSnap1.data().name);
-            // setAdd(docSnap1.data().add);
+   
         }
         gettingBK()
 
