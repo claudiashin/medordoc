@@ -31,6 +31,12 @@ const Heading = styled.Text`
 const SubheadingCont = styled.View`
 `;
 
+const Subheadingtwo = styled.Text`
+    font-size: 16px;
+    color: #505050;
+    margin: 10px;
+`;
+
 const Title = styled.Text``;
 
 const Information = styled.Text`
@@ -46,17 +52,13 @@ const QRCodeCont = styled.View`
     margin-top: 15px;
     display: ${props => props.display};
 `;
-const Subheadingtwo = styled.Text`
-    font-size: 16px;
-    color: #505050;
-    margin: 10px;
-`;
-const Subheadingthree = styled.Text`
-    font-size: 16px;
-    color: ${props => props.fontcolor};
-    margin: 10px;
-    font-weight: ${props => props.subheadingthree_fw};
-`;
+
+// const Subheadingthree = styled.Text`
+//     font-size: 16px;
+//     color: ${props => props.fontcolor};
+//     margin: 10px;
+//     font-weight: ${props => props.subheadingthree_fw};
+// `;
 
 const InfoCard = ({
     text = "Welcome Jenny Lee",

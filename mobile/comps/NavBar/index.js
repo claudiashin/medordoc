@@ -4,10 +4,8 @@ import { StyleSheet, View, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {db} from '../../utils/store'
-
 import AppLoading from 'expo-app-loading';
 import { useFonts, Nunito_400Regular, Nunito_600SemiBold,  Nunito_700Bold, } from '@expo-google-fonts/nunito';
-
 
 const FooterCont = styled.View`
     flex-direction: row;

@@ -24,7 +24,7 @@ const Cont = styled.View`
 `
 const Wave = styled.Image`
     width: 100%;
-    height: 30%;
+    height: 40%;
     position: absolute;
 `;
 
@@ -32,7 +32,7 @@ const NavBarCont = styled.View`
 `;
 
 const HeaderCont = styled.View`
-  margin-left: 50px;
+  margin: 20px 0px 0px 50px;
 `;
 
 const MainCont = styled.View`
@@ -69,7 +69,7 @@ const History = () => {
       <MainCont>
         
         <AvatarCont>
-          <HeroAvatar visible={"none"} imagesrc="https://placekitten.com/3000/2000" herowidth={150} heroheight={150}></HeroAvatar>
+          <HeroAvatar visible={"none"} imagesrc="https://placekitten.com/3000/2000" herowidth={160} heroheight={160}></HeroAvatar>
           <Header fontSize={18} fontWeight={"normal"} title="Jenny Lee" />
         </AvatarCont>
 

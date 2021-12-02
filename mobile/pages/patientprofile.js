@@ -21,8 +21,10 @@ const HeroCont = styled.View`
     margin-bottom: 50px;
 `
 const ButCont = styled.View`
-    margin-left: 180px;
-    margin-top: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 50px 0px 50px 0px;
 `
 const Cont = styled.View`
     flex:1;
@@ -32,7 +34,7 @@ const NavBarCont = styled.View`
 
 const Wave = styled.Image`
     width: 100%;
-    height: 30%;
+    height: 25%;
     position: absolute;
 `;
 
@@ -117,8 +119,8 @@ export default function patientprofile() {
             <MyScrollView style={styles.scrollView} >
                 <HeroCont>
                     <HeroAvatar 
-                        heroheight="150"
-                        herowidth="150"
+                        heroheight="160"
+                        herowidth="160"
                         pluswidth="25"
                         plusheight="25"
                         visible="none"
@@ -131,7 +133,7 @@ export default function patientprofile() {
                         title = "Edit"
                         fsize = '20'
                         bgcolor = "#B9D1E1"
-                        width = '150'
+                        width = '120'
                         height = '50'
                         borderRad = '60'
                         onPress={()=>{setChangeForm(false)}}
@@ -153,8 +155,8 @@ export default function patientprofile() {
     <MyScrollView style={styles.scrollView} >
         <HeroCont>
             <HeroAvatar 
-                heroheight="150"
-                herowidth="150"
+                heroheight="160"
+                herowidth="160"
                 pluswidth="25"
                 plusheight="25"
             />
@@ -167,7 +169,7 @@ export default function patientprofile() {
             title = "Save"
             fsize = '20'
             bgcolor = "#97BDD6"
-            width = '150'
+            width = '120'
             height = '50'
             borderRad = '60'
             onPress={()=>{setChangeForm(true)}}

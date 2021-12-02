@@ -14,8 +14,6 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import AppLoading from 'expo-app-loading';
 import { useFonts, Nunito_400Regular } from '@expo-google-fonts/nunito';
 
-
-
 const Cont = styled.View`
   flex:1;
   background-color: #F7F2EE;
@@ -23,8 +21,7 @@ const Cont = styled.View`
   align-content:center;
   justify-content: space-between;
   z-index:1;
-
-`
+`;
 
 const Wave = styled.Image`
     width: 100%;
@@ -53,19 +50,22 @@ const CardCont = styled.View`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 `;
 
 const BtnCont = styled.View`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin-right: 20px;
+    align-items: flex-end;
+    margin: 30px 40px 0px 0px;
 `;
 
 const BackCont = styled.View`
   display: flex;
   position: absolute;
   z-index: 999;
+  top: -10px;
 `;
 
 const MyScrollView = styled.ScrollView`
@@ -136,7 +136,7 @@ const [path, setPath] = useState()
                 </BackCont>
                 <Wave source={require('../assets/backgroundmobile.png')} />
                 <Cont2>
-                    <HeroAvatar herowidth={180} heroheight={180} />
+                    <HeroAvatar herowidth={180} heroheight={180} visible="none"/>
 
                 </Cont2>
                 <CardCont>
@@ -163,7 +163,10 @@ const [path, setPath] = useState()
                 </CardCont>
                 
                 <BtnCont>
-                    <Btn onPress={() => navigation.navigate(path,{clinic:cluid})} />
+                    <Btn onPress={() => navigation.navigate(path,{clinic:cluid})}
+                    width={120}
+                    fsize={20}
+                    />
                 </BtnCont>
             </MyScrollView>
 

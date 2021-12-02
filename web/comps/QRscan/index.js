@@ -46,7 +46,7 @@ function SimpleDialog(props) {
       <Dialog onClose={handleClose} open={open}>
         <DialogTitle
             sx={{marginLeft: 8, marginRight: 8, fontFamily: 'nunito' }}
-        >Scan QRcode and Check In</DialogTitle>
+        >Scan Patient's QR Code</DialogTitle>
         <QrReader
             delay={300}
             onError={handleError}

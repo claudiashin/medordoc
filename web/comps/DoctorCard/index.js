@@ -41,6 +41,7 @@ const AvatarImg = styled.img`
 const FormCont = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 100px;
 `;
 const Form = styled.fieldset`
   margin: 15px;
@@ -143,6 +144,7 @@ const DoctorInputCard = ({
   const [gender, setGender] = useState("");
   const [location, setLocation] = useState("");
   const [languages, setLanguages] = React.useState([]);
+  const [imgUrl, setImageUrl] = useState("");
 
   const [showAlert, setShowAlert] = React.useState(false);
   const [error, setError] = React.useState("");
@@ -155,6 +157,7 @@ const DoctorInputCard = ({
     setGender(info.gender ?? "");
     setLocation(info.location ?? "");
     setLanguages(info.language ?? []);
+    setImageUrl(info.imgUrl ?? "");
   }, [info]);
 
   const handleChange = (event) => {
@@ -173,6 +176,7 @@ const DoctorInputCard = ({
     setGender("");
     setEx("");
     setLanguages([]);
+    setImageUrl("");
   };
 
   return (
@@ -190,12 +194,13 @@ const DoctorInputCard = ({
       {/* <AvatarCont>
         <AvatarImg src={profile} />
       </AvatarCont> */}
-      <HeroAvatar 
+      {/* <HeroAvatar 
         herowidth="150px"
         heroheight="150px"
         heromargin="15px"
         pluswidth="20px"
-      />
+        profile={imgUrl}
+      /> */}
       <AlertBanner show={showAlert}>{error}</AlertBanner>
       <FormCont>
         <Form>
@@ -408,6 +413,23 @@ const EditbutCont = styled.div`
 `;
 
 const DoctorCard = ({ info, showModal, deleteDoctor }) => {
+
+//  const ChangeImage = () => {
+
+//  }
+
+
+  var img = '/maledoctor.png';
+
+  if (info.gender == "Female") {
+    img = '/femaledoctor.png';
+  }
+  else if (info.gender == "Male") {
+    img = '/maledoctor.png';
+  }
+  console.log(info.gender);
+
+
   return (
     <Maincont>
       <Closebutton>
@@ -419,13 +441,15 @@ const DoctorCard = ({ info, showModal, deleteDoctor }) => {
           style={{position: 'absolute', top: 0, right: -18}}
         />
       </Closebutton>
-
-      {/* <Avatarcont>
-        <Avatarimg src={info.image} />
-      </Avatarcont> */}
-      <HeroAvatar display="none" herowidth="120px" heroheight="120px"
-        heromargin="10px"
+      <div
+        style={{width: 80, height: 80, margin: 10}}
+      >
+      <img
+        style={{width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover'}}
+        id="heroimg"
+        src={img}
       />
+      </div>
       <Nameheader>
         <Text style={{ fontSize: 20 }}>{info.name}</Text>
       </Nameheader>
