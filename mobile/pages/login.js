@@ -1,7 +1,7 @@
 import styled from 'styled-components/native'
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button, ScrollView, Image } from 'react-native';
-import { GoogleAuthProvider, getAuth, signInWithPopup,createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithPopup,createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 // import { useNavigation } from '@react-navigation/native';
 import Header from '../comps/Header';
 import app from '../utils/inits';
@@ -52,17 +52,22 @@ const BackCont = styled.View`
 const login = ({route,navigation})=>{
     
     const [uid,setUID] = useState('')
+
+
     
     // const navigation = useNavigation();
  
     useEffect(()=>{
-        if(uid){
-            const UID = route.params;
-            const num = UID.clinic 
-            setUID(num);
-        }
+        const auth = getAuth()
        
-       
+        onAuthStateChanged(auth,(user)=>{
+            if (user){
+                const UID = route.params;
+                // const num = UID.clinicUID 
+                setUID(UID.clinicUID);
+                console.log(UID);
+            }
+        })
     },[])
     
     console.log(uid);
