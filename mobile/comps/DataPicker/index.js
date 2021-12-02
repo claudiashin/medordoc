@@ -42,15 +42,13 @@ export default function Datepick(
     const [ready,setReady] =useState('')
     
     useEffect (()=>{
-        const auth = getAuth()
+      if(user){
         const userid = auth.currentUser.uid;
         setUser(userid)
-        setClnicID(clinicId)
-
-        // const clinicUID = route.params;
-        // const num = clinicUID.clinicUID
-        // setUID(num);
-       
+        console.log(clinicID)
+      }
+        const auth = getAuth()
+        const user = auth.currentUser;
       //   const getting =async()=>{
       //   const docRef = doc(db, "patientuser",user);
       //   const docSnap = await getDoc(docRef);

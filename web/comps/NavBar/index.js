@@ -27,6 +27,12 @@ const LogoCont = styled.div`
 const Logo = styled.img`
   width: 110px;
   height: 90px;
+
+  @media only screen and (max-width: 500px) {
+    object-fit: cover;
+    width: 90px;
+    height: 75px;
+  }
 `;
 
 const NavCont = styled.div`
@@ -38,7 +44,17 @@ const NavCont = styled.div`
   left: 200px;
   position: absolute;
   flex-wrap: wrap;
-  margin-left: 20px;
+  margin-left: 30px;
+
+  //for mobile
+  @media only screen and (max-width: 700px) {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+    width: 100%;
+    font-size: 16px;
+    left: 130px;
+  }
 `;
 
 const NavButton = styled.p`
@@ -51,6 +67,16 @@ const NavButton = styled.p`
     font-weight: bold;
     color: ${(props) => props.bgHover};
   }
+
+  @media only screen and (max-width: 500px) {
+    margin-right: 40px;
+  }
+
+  //for mobile
+  @media only screen and (max-width: 700px) {
+    margin-right: 30px;
+  }
+  
 `;
 
 const ProfileCont = styled.div`
@@ -103,6 +129,7 @@ const MenuLink = styled.a`
   // }
 `;
 
+
 const NavBar = ({ bgHover = "#5D5D5D" }) => {
   const router = useRouter();
 
@@ -122,7 +149,7 @@ const NavBar = ({ bgHover = "#5D5D5D" }) => {
         setProfile("/profile");
         setBooking("/booking");
         setRequest("/request");
-        setLog("Log out");
+        setLog("Sign Out");
         setSign("/");
       } else {
         setLogoLink("/");
@@ -130,7 +157,7 @@ const NavBar = ({ bgHover = "#5D5D5D" }) => {
         setProfile("/login");
         setBooking("/login");
         setRequest("/login");
-        setLog("Log in");
+        setLog("Log In");
         setSign("/login");
       }
     });

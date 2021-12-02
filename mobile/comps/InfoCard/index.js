@@ -7,7 +7,6 @@ import AppLoading from 'expo-app-loading';
 import { useFonts, Nunito_400Regular, Nunito_600SemiBold,  Nunito_700Bold, } from '@expo-google-fonts/nunito';
 
 const InfoCardCont = styled.View`  
-    height:400px;
     width: 300px;
     border: #E9D7CB;
     padding: 20px;
@@ -32,41 +31,11 @@ const Heading = styled.Text`
 const SubheadingCont = styled.View`
 `;
 
-const Subheading = styled.Text`
-    font-size: ${props => props.subheading_fs}px;
-    color: #505050;
-    margin: 10px 10px 0px 10px;
-    font-weight: 700;
-`;
-const Subheadingtwo = styled.Text`
+const Title = styled.Text``;
+
+const Information = styled.Text`
     font-size: 16px;
     color: #505050;
-    margin: 10px;
-`;
-
-const WebsiteContainer = styled.View`
-    flex-direction: row;
-    display: flex;
-    flex-direction: column;
-`;
-
-const Subheadingthree = styled.Text`
-    font-size: 16px;
-    color: ${props => props.fontcolor};
-    margin: 10px;
-    font-weight: ${props => props.subheadingthree_fw};
-`;
-
-const Subheadingfour = styled.Text`
-    font-size: 16px;
-    color: ${props => props.fontcolor};
-    margin: 10px;
-    font-weight: ${props => props.subheadingfour_fw};
-`;
-
-const Website = styled.Text`
-    font-size: 16px;
-    color: #226BAF;
     margin: 10px;
 `;
 
@@ -81,16 +50,18 @@ const QRCodeCont = styled.View`
 const InfoCard = ({
     text = "Welcome Jenny Lee",
     text2 = "Thank you for choosing MedOrDoc.",
-    text3 = "Website:",
+    text3 = "For faster check-in, scan the QR at the ...",
     text4 = "To view your ...",
-    text5 = "Website:",
-    text6 = "Website:",
-    website_url = "https://www.bcit.ca/",
+    text5 = "",
+    text6 = "",
+    address = "",
+    phone = "",
+    language = "",
+    open = "",
+    close = "",
     fontsize = 20,
     weight = 700,
-    weight2 = 700,
-    fontcolor = '#226BAF',
-    display= "none"
+    display = "none"
 }) => {
 
     let [fontsLoaded] = useFonts({
@@ -111,55 +82,34 @@ const InfoCard = ({
         </HeadingCont>
 
         <QRCodeCont display={display}>
-            <QRCode/>
+            <QRCode />
         </QRCodeCont>
 
         <SubheadingCont>
-            <Subheadingtwo
-                style={{fontFamily: 'Nunito_400Regular'}}
-            >{text2}</Subheadingtwo>
+            <Information style={{fontFamily: 'Nunito_400Regular'}}>{address}{text2}</Information>
         </SubheadingCont>
 
         <SubheadingCont>
-            <Subheadingtwo
-                style={{fontFamily: 'Nunito_400Regular'}}
-            >{text3}</Subheadingtwo>
+            <Information style={{fontFamily: 'Nunito_400Regular'}}>{phone}{text3}</Information>
         </SubheadingCont>
 
 
         <SubheadingCont>
-            <Subheadingtwo
-                style={{fontFamily: 'Nunito_400Regular'}}
-            >{text4}</Subheadingtwo>
+            <Information style={{fontFamily: 'Nunito_400Regular'}}>{language}{text4}</Information>
         </SubheadingCont>
 
          
         <SubheadingCont>
-            <Subheadingtwo
-                style={{fontFamily: 'Nunito_400Regular'}}
-            >{text5}</Subheadingtwo>
+            <Information style={{fontFamily: 'Nunito_400Regular'}}>{open}{text5}</Information>
         </SubheadingCont>
-
-
 
         <SubheadingCont>
-            <Subheadingtwo
-                style={{fontFamily: 'Nunito_400Regular'}}
-            >{text6}</Subheadingtwo>
+            <Information style={{fontFamily: 'Nunito_400Regular'}}>{close}{text6}</Information>
         </SubheadingCont>
 
-        {/* <WebsiteContainer /*style={styles.website_container}>
-            <Subheadingthree subheadingthree_fw={weight2} fontcolor={fontcolor}>{text3}</Subheadingthree>
-            <Subheadingfour subheadingfour_fw={weight2} fontcolor={fontcolor}>{text4}</Subheadingfour>
-            <Website onPress={() => Linking.openURL(website_url)}>{website_url}</Website>
-            <Website onPress={() => Linking.openURL(website_url)}>{website_url}</Website> 
-
-        </WebsiteContainer> */}
-   
     </InfoCardCont >
-      }
 }
-
+}
 const styles = StyleSheet.create({
 });
 

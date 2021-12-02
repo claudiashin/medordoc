@@ -9,6 +9,7 @@ import Btn from '../comps/Btn';
 import NavBar from '../comps/NavBar';
 import BackBtn from '../comps/BackBtn';
 import { useNavigation } from '@react-navigation/native';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import AppLoading from 'expo-app-loading';
 import { useFonts, Nunito_400Regular } from '@expo-google-fonts/nunito';
@@ -37,11 +38,13 @@ const Cont2 = styled.View`
     /* padding-top: 20px; */
     align-content:center;
     justify-content:center;
-`
+`;
+
 const Banner = styled.View`
     display: flex;
     z-index:2;
-`
+`;
+
 const NavBarCont = styled.View`
 `;
 
@@ -50,23 +53,25 @@ const CardCont = styled.View`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-`
+`;
 
 const BtnCont = styled.View`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     margin-right: 20px;
+`;
 
-`
 const BackCont = styled.View`
   display: flex;
   position: absolute;
   z-index: 999;
-`
+`;
+
 const MyScrollView = styled.ScrollView`
 
-`
+`;
+
 const ClinicProfile = ({route,navigation}) => {
   
 const [info,setInfo] =useState('')
@@ -103,8 +108,22 @@ useEffect(()=>{
     }
     get()
 
+    const auth = getAuth();
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+         console.log("yes")
+         setPath("booking")
+        } else {
+            console.log("no")
+            setPath("login")
+          }
+        });
+        
+
 },[])
 
+const [path, setPath] = useState()
     if(!AppLoading) {
         return <AppLoading />
     }
@@ -117,7 +136,7 @@ useEffect(()=>{
                 </BackCont>
                 <Wave source={require('../assets/backgroundmobile.png')} />
                 <Cont2>
-                    <HeroAvatar herowidth={200} heroheight={200} />
+                    <HeroAvatar herowidth={180} heroheight={180} />
 
                 </Cont2>
                 <CardCont>
@@ -125,8 +144,8 @@ useEffect(()=>{
 
                         text = {info.name}
                         text2 = {info.add}
-                        text3 = {info.lang}
-                        text4 ={info.num}
+                        text3 = {info.num}
+                        text4 ={info.lang}
                         text5 = {info.open}
                         text6 ={info.close}
                         // text3 = "Website:"
@@ -135,11 +154,16 @@ useEffect(()=>{
                         weight = "700"
                         weight2 = "700"
                         fontcolor = '#226BAF'
+                        address="Address: "
+                        phone="Phone: "
+                        language="Language: "
+                        open="Open: "
+                        close="Close: "
                     />
-    
                 </CardCont>
+                
                 <BtnCont>
-                    <Btn onPress={() => navigation.navigate("login",{clinic:cluid})} />
+                    <Btn onPress={() => navigation.navigate(path,{clinic:cluid})} />
                 </BtnCont>
             </MyScrollView>
 

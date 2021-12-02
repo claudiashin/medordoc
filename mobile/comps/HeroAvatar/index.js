@@ -49,7 +49,7 @@ const HeroAvatar = ({
     (async () => {
       if (Platform.OS !== 'web') {
         var { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        var { status } = await ImagePicker.requestCameraPermissionsAsync();
+        // var { status } = await ImagePicker.requestCameraPermissionsAsync();
         if (status !== 'granted') {
           alert('Sorry, we need camera roll permissions to make this work!');
         }
