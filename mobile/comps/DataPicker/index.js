@@ -161,7 +161,7 @@ export default function Datepick(
                      </View>  
 
                      <View style = {{margin:10}}>  
-                     <Btn title={'Confirm'} onPress ={() => {navigation.navigate('qrconfirm')}} /> 
+                     <Btn title={'Confirm'} onPress ={() => {booking();navigation.navigate('qrconfirm')}} /> 
                      </View>
               </ButtonCont>    
 

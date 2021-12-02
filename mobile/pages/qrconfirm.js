@@ -104,6 +104,16 @@ const qrconfirm = () => {
               
             });
 
+            // const gettingCL =async()=>{
+            // const docRef = doc(db, "clinics",clinicID);
+            // const docSnap = await getDoc(docRef);
+            // setClname(docSnap.data().name);
+            // setAdd(docSnap.data().add);
+            //       }
+            // gettingCL()
+
+           
+
 
 
             // const docRef = doc(db, "clinics",clinicID);
@@ -128,22 +138,14 @@ const qrconfirm = () => {
             // setTime(docSnap.data().bookingtime);
             // setClname(docSnap1.data().name);
             // setAdd(docSnap1.data().add);
-          
-
         }
         gettingBK()
 
 
  },[user])
  
-    const gettingCL =async()=>{
-    const docRef = doc(db, "clinics",clinicID);
-    const docSnap = await getDoc(docRef);
-    setClname(docSnap.data().name);
-    setAdd(docSnap.data().add);
-      }
-    
-    gettingCL()
+ 
+  
 
 
     return (

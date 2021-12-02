@@ -90,10 +90,9 @@ const booking = ({ route,navigation }) => {
                 <View>
                     <Header title = {"Schedule an appointment"} />
                 </View>  
-    
 
                     <Datepick clinicId ={uid}/>
-                    <Btn title={'Confirm'} onPress ={() => navigation.navigate('qrconfirm')} /> 
+                    {/* <Btn title={'Confirm'} onPress ={() => navigation.navigate('qrconfirm')} />  */}
                     </DropDownCont>
 {/* 
                 <ButtonCont>
