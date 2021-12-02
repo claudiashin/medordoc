@@ -71,7 +71,6 @@ const qrconfirm = () => {
     useEffect(()=>{
 
         const auth = getAuth()
-        
         const userid = auth.currentUser.uid;
         setUser(userid)
 
@@ -79,8 +78,8 @@ const qrconfirm = () => {
 
             const q = query(collection(db, "appointment"), where("userid", "==", userid),orderBy('year',"desc"),orderBy('month',"desc"),orderBy('day',"desc"),limit(1));
             const querySnapshot = await getDocs(q);
+           
             querySnapshot.forEach((doc) => {
-    
                 const bookingyear = doc.data().year;
                 const bookingmonth = doc.data().month;
                 const bookingday = doc.data().day;
@@ -94,39 +93,26 @@ const qrconfirm = () => {
                 console.log (bookingmonth);
                 console.log (bookingday);
                 console.log (userid);
-                // console.log (clID);
+                console.log (clID);
                 setAyear(bookingyear);
                 setAmonth(bookingmonth);
                 setAday(bookingday)
                 setTime(bookingtime)
                 setName(patientname);
-                setClnicID(clID)
-
+                setClnicID(clID);
             });
-
-           
-
-            // const docRef = doc(db, "clinics",clinicID);
-            // const docSnap = await getDoc(docRef);
-            // setClname(docSnap.data().name);
-            // setAdd(docSnap.data().add);
-        
-
-            // const docRef = doc(db,"appointment",userid);
-            // const docSnap = await getDoc(docRef);
-           
-            // setClname(docSnap1.data().name);
-            // setAdd(docSnap1.data().add);
-            // const CID = (docSnap.data().clinicId)
-            // console.log(querySnapshot.data())
-
-
-   
         }
         gettingBK()
-
-
  },[user])
+
+    const getclinicinfo = async()=>{
+    const docRef = doc(db, "clinics",clinicID);
+    const docSnap = await getDoc(docRef);
+    setClname(docSnap.data().name);
+    setAdd(docSnap.data().add);
+    }
+
+    getclinicinfo()
  
  
   

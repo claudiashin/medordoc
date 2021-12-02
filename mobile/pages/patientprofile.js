@@ -52,7 +52,6 @@ z-index:1;
 `
 export default function patientprofile() {
 
-    
     const [fname,setFname] = useState();
     const [lname,setLname] =useState();
     const [add,setAdd] =useState();
@@ -67,9 +66,7 @@ export default function patientprofile() {
                 const getting =async()=>{
                 const docRef = doc(db, "patientuser",userid);
                 const docSnap = await getDoc(docRef);
-
                 // const timestamp = Timestamp(Date())
-               
                 setFname(docSnap.data().fname)
                 setLname(docSnap.data().lname)
                 setBd(docSnap.data().dob.seconds)
@@ -77,6 +74,7 @@ export default function patientprofile() {
                 setBd(date)
                 setAdd(docSnap.data().address)
                 setCon(docSnap.data().medconcern)
+                // console.log(docSnap.data().medconcern)
                 // console.log(docSnap.data().dob.seconds)
               }
               getting()
@@ -88,11 +86,30 @@ export default function patientprofile() {
             setAdd(address)
             setCon(medconcern)
             console.log(docSnap.data())
+  
         }
-
-
-    
        },[])
+
+       const info = {
+        fname:fname,
+        lname:lname,
+        add:add,
+        concern:con,
+        dob:bd,
+      };
+      const setInfo = ({
+        fname: fname,
+        lname: lname,
+        add: add,
+        concern:con,
+        dob: bd,
+      }) => {
+        setFname(fname);
+        setLname(lname);
+        setAdd(add);
+        setCon(con);
+        setBd(bd);
+      };
 
     const [changeForm, setChangeForm] = useState(true);
 
@@ -122,7 +139,7 @@ export default function patientprofile() {
                         visible="none"
                     />
                 </HeroCont>
-                <BookingForm  dbname = {fname + '' + lname} dbaddress ={add} dbconcerns ={con} />
+                <BookingForm  setInfo = {setInfo} info = {info} />
 
                 <ButCont>
                         <Btn

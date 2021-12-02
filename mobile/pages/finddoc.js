@@ -93,10 +93,7 @@ const [doctors,setDoctors] = useState([])
      ])
 
       }
-
       GetData()
-
-      
   },[])
 
   // const reload = async () => {

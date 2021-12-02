@@ -84,23 +84,15 @@ let [fontsLoaded] = useFonts({
 
     
 useEffect(()=>{
-    
-    // const gettinginfo =(()=>{
-    // const docRef = doc(db, "clinics", "HxjkpD1lNC5H8xdLn0jT");
-    // const docSnap = getDoc(docRef)   
-    // setInfo(docSnap.date)
-    // console.log('fuck')
-    // gettinginfo();
-    // }
+
     const {UID} = route.params;
     setUid(UID);
-    // console.log(cluid);
+   
     
     const get =async()=>{
-    const MapdocRef = doc(db, "mapchoice", UID);
-    const MapdocSnap = await getDoc(MapdocRef);
-    setChoice(MapdocSnap.data())
-    
+    // const MapdocRef = doc(db, "mapchoice", UID);
+    // const MapdocSnap = await getDoc(MapdocRef);
+    // setChoice(MapdocSnap.data())
     const docRef = doc(db, "clinics",UID );
     const docSnap = await getDoc(docRef)  
     setInfo(docSnap.data())
@@ -112,16 +104,19 @@ useEffect(()=>{
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
-         console.log("yes")
+        //  console.log("yes")
          setPath("booking")
         } else {
-            console.log("no")
+            // console.log("no")
             setPath("login")
           }
         });
         
 
 },[])
+
+
+ console.log(cluid);
 
 const [path, setPath] = useState()
     if(!AppLoading) {
@@ -163,7 +158,7 @@ const [path, setPath] = useState()
                 </CardCont>
                 
                 <BtnCont>
-                    <Btn onPress={() => navigation.navigate(path,{clinic:cluid})} />
+                    <Btn onPress={() => navigation.navigate(path,{clinicUID:cluid})} />
                 </BtnCont>
             </MyScrollView>
 

@@ -36,43 +36,46 @@ export default function Datepick(
     const [month,setAmonth] = useState('');
     const [year,setAyear] = useState('') 
 
-
     const [user,setUser] = useState('');
     const [fname,setFname] =useState('')
     const [lname,setLname] =useState('')
     const [clinicID,setClnicID] =useState('')
     const [ready,setReady] =useState('')
+
+    // const auth = getAuth()
+    // const userid = auth.currentUser.uid;
+    // setUser(userid)
+    // setClnicID(clinicId)
+
     
+
     useEffect (()=>{
-      if(user){
-        const auth = getAuth()
-        const userid = auth.currentUser.uid;
-        setUser(userid)
-        setClnicID(clinicId)
-        console.log(userid)
-        console.log(clinicId)
-        // const clinicUID = route.params;
-        // const num = clinicUID.clinicUID
-        // setUID(num);
-       
-      //   const getting =async()=>{
-      //   const docRef = doc(db, "patientuser",user);
-      //   const docSnap = await getDoc(docRef);
-      //   setInfo(docSnap.data())
-      //   console.log(docSnap.data())
-      // }
-      // getting()
-      }
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) =>{
+        if(user){
+          const auth = getAuth()
+          const userid = auth.currentUser.uid;
+          setUser(userid)
+          setClnicID(clinicId.clinicId)
+          // console.log(userid)
+          // console.log(clinicId.clinicId)
+
+          // console.log(user)
+        }
+      })
        },[])
 
+      
   
-    console.log(clinicID)
+    // console.log(clinicID)
+    // console.log(user)
 
     const booking = async(
     )=>{
       // setClnicID(clinicId.clinicId)
       getting()
-      console.log(clinicID)
+      // console.log(clinicID)
+      // console.log(user)
       await addDoc(collection(db,"appointment"),{
           userid:user,
           clinicId:clinicID,
@@ -85,8 +88,16 @@ export default function Datepick(
            });
     }
          const getting =async()=>{
-         const docRef = doc(db, "patientuser",user);
+         const docRef = doc(db,"patientuser",user);
          const docSnap = await getDoc(docRef);
+
+        //  const clinicinfo = (docSnap.data())
+        //  console.log(clinicinfo)
+        //  const docRef1 = doc(db,"clinics",clinicinfo);
+        //  const docSnap1 = await getDoc(docRef1);
+        
+        // console.log(docSnap1)
+         console.log(docSnap.data().clinicId)
          setClnicID(clinicId.clinicId)
          setReady("ready to go")
          setFname(docSnap.data().fname);
@@ -105,7 +116,6 @@ export default function Datepick(
        let day = tempDate.getDate();
        let month = (tempDate.getMonth()+1);
        let year = tempDate.getFullYear();
-
 
        setAday(day)
        setAmonth(month)
@@ -163,15 +173,13 @@ export default function Datepick(
                           <Text>Your booking is {ready}</Text>
                        </View>    
                      <View style = {{margin:10}}>  
-                     <Btn title='Booking' onPress = {booking} /> 
+                     <Btn title='Booking' onPress = {getting} />  
                      </View>  
 
                      <View style = {{margin:10}}>  
-                     <Btn title={'Confirm'} onPress ={() => {booking;navigation.navigate('qrconfirm')}} /> 
+                     <Btn title={'Confirm'} onPress ={() => {getting();booking();navigation.navigate('qrconfirm')}} /> 
                      </View>
               </ButtonCont>    
-
-
       </View>
     );
   };

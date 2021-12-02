@@ -73,11 +73,12 @@ const booking = ({ route,navigation }) => {
     const [cladd,setAdd] =useState('')
     
     useEffect (()=>{
-        const clinicUID = route.params;
-        const num = clinicUID.clinic
-        setUID(num);
 
-     
+        const clinicUID = route.params;
+        const num = clinicUID.clinicUID
+        setUID(num);
+        console.log(clinicUID.clinicUID)
+
         // const gettingCL =async()=>{
         //     const docRef = doc(db, "clinics",num);
         //     const docSnap = await getDoc(docRef);
@@ -87,13 +88,12 @@ const booking = ({ route,navigation }) => {
         //     }
         //     gettingCL()
 
-
        },[])
 
-       console.log(uid);
-       
+       console.log(uid)
 
-      
+   
+
 
     return (
         <BookingCont>
