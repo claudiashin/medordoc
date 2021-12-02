@@ -4,7 +4,7 @@ import { StyleSheet, View, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {db} from '../../utils/store'
-
+import { useFonts } from 'expo-font';
 
 const FooterCont = styled.View`
     flex-direction: row;
