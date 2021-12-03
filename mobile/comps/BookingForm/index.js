@@ -10,7 +10,7 @@ import styled from 'styled-components';
 
 const styles = StyleSheet.create({
     inputbox: {
-        width: 345,
+        width: 380,
         height: 0,
         margin: 5,
         backgroundColor: '#fff'
@@ -68,8 +68,12 @@ const Cont = styled.View`
         onChange={(bod) => setInputDate(bod)}
         inputMode="start"
         mode="flat"
-        style={styles.inputbox}
+        style={{
+          width: 250
+
+        }}
         editable={editable}
+   
     ></DatePickerInput> 
 {/* 
 <TextInput

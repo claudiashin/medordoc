@@ -23,6 +23,7 @@ const Maincont = styled.div`
   background: white;
   padding-bottom: 50px;
   position: relative;
+  
 `;
 //avatar image
 const Avatarcont = styled.div`

@@ -123,7 +123,7 @@ const InfoCard = ({
         </SubheadingCont>
 
         <SubheadingCont>
-            <Information style={{fontFamily: 'Nunito_400Regular'}}>{waittime}{text7} minutes</Information>
+            <Information style={{fontFamily: 'Nunito_400Regular'}}>{waittime}{text7} Minutes</Information>
         </SubheadingCont>
 
     </InfoCardCont >
