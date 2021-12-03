@@ -25,6 +25,7 @@ const Cont = styled.div`
   flex-direction: column;
   width: 100%;
   min-height: 300px;
+  
 `;
 
 const WaveCont = styled.div`
@@ -72,6 +73,7 @@ const ContPatientCard = styled.div`
 const ContPatientCardInd = styled.div`
   display: flex;
   margin: 10px;
+  flex-wrap: wrap;
 `;
 
 const ContFooter = styled.div`
@@ -116,7 +118,7 @@ const PatientRequest = ({ uid }) => {
   }, [uid]);
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", flexFlow: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
       {requests.map((request, index) => {
         const info = {
           id: request.id,

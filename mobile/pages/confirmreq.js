@@ -155,7 +155,7 @@ export default function confirmreq({ navigation, route }) {
             display="none"
           />
           <InfoCardTwo
-            text2="Your request for a family doctor has been sent to St Johns Clinic Vancouver.  "
+            text2="Your request for a family doctor has been sent to your designated clinic.  "
             text4="You will be contacted directly by the clinic. "
             text5="Please contact the clinic for further details. "
             display="none"
@@ -168,37 +168,4 @@ export default function confirmreq({ navigation, route }) {
       </MainCont>
     );
   }
-
-  return (
-    <MainCont>
-      <Wave source={require("../assets/backgroundmobile.png")} />
-      <ScrollView>
-        <HdCont>
-          <Header title="Submission Confirmed" fontSize="28" />
-        </HdCont>
-
-        <InfoCardTwo
-          text1="Request Details"
-          text3="Submitted on: Oct 7, 2021"
-          text4={"Requested for: " + doctorInfo.name}
-          text5={"Location: " + doctorInfo.location}
-          text6="Contact: 604-123-4567"
-          fsize="18"
-          fweight="700"
-          display="none"
-        />
-        <InfoCardTwo
-          text2="Your request for a family doctor has been sent.  "
-          text4="You will be contacted directly by the clinic. "
-          text5="Please contact the clinic for further details. "
-          display="none"
-          height="280"
-        />
-      </ScrollView>
-      <NavBarCont>
-            <NavBar/>
-          </NavBarCont>
-    </MainCont>
-  );
-
 }
