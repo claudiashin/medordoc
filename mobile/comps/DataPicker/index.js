@@ -116,8 +116,8 @@ export default function Datepick(
       (tempDate.getMonth() + 1) +
       "/" +
       tempDate.getFullYear();
-    // let ftime = tempDate.getHours() + ":" + tempDate.getUTCMinutes();
-    let ftime = tempDate.toTimeString();
+    let ftime = tempDate.getHours() + ":" + tempDate.getUTCMinutes();
+    // let ftime = tempDate.toTimeString();
     let day = tempDate.getDate();
     let month = tempDate.getMonth() + 1;
     let year = tempDate.getFullYear();
@@ -172,13 +172,12 @@ export default function Datepick(
               mode={mode}
               is24Hour={true}
               onChange={onChange}
-
             />
           )}
         </View>
 
-        <View style={styles.bookinfo}>
-        </View>
+        {/* <View style={styles.bookinfo}>
+        </View> */}
 
         <View
           style={{

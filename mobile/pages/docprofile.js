@@ -72,21 +72,11 @@ const BackCont = styled.View`
 `
 
 export default function docprofile({ navigation, route }) {
-  const {doctorInfo} = route.params;
-
-  let [fontsLoaded] = useFonts({
-    Nunito_400Regular,
-    Nunito_600SemiBold,
-    Nunito_700Bold,
-  });
-
-  if(!fontsLoaded) {
-      return <AppLoading />
-  } else {
+  // const {doctorInfo} = route.params;
   const {doctorInfo} = route.params;
   
   const [uid, setUid] = useState();
-  
+
   useEffect(async () => {
     const auth = getAuth();
     onAuthStateChanged(auth, async (user) => {
@@ -105,6 +95,15 @@ export default function docprofile({ navigation, route }) {
     })
 
   },[]);
+  let [fontsLoaded] = useFonts({
+    Nunito_400Regular,
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+  });
+
+  if(!fontsLoaded) {
+    return <AppLoading />
+} else {
   
 
   
@@ -127,7 +126,7 @@ export default function docprofile({ navigation, route }) {
           <Header
             // syle={{fontSize:10}}
             title="Would you like to request this doctor?"
-          fontSize={10}
+          fontSize={18}
           />
         </HdCont>
         <ButCont>

@@ -93,9 +93,7 @@ let [fontsLoaded] = useFonts({
 useEffect(()=>{
 
     const {UID} = route.params;
-    setUid(UID);
-   
-    
+    setUid(UID); 
     const get =async()=>{
     // const MapdocRef = doc(db, "mapchoice", UID);
     // const MapdocSnap = await getDoc(MapdocRef);
@@ -108,7 +106,6 @@ useEffect(()=>{
     get()
 
     const auth = getAuth();
-
     onAuthStateChanged(auth, (user) => {
         if (user) {
         //  console.log("yes")
@@ -123,8 +120,7 @@ useEffect(()=>{
 },[])
 
 
- console.log(cluid);
-
+console.log(cluid);
 const [path, setPath] = useState()
     if(!AppLoading) {
         return <AppLoading />

@@ -93,7 +93,7 @@ const InfoCardThree = ({
 
           data.push(
             <Test key={doc.id}>
-          <Date >Clinic: {appt.cliname}</Date>
+          <Date >Clinic: {appt.clinicname}</Date>
           <Clinic >Date: {appt.bookingdate}, Time: {appt.bookingtime}</Clinic>
           </Test>
  

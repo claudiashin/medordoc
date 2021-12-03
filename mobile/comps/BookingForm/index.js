@@ -17,13 +17,11 @@ const styles = StyleSheet.create({
     }
 })
 const BookingForm = ({
-
-    dbname ='',
-    dbaddress = '',
-    dbconcerns = '',
-    dbdob ='',
+    dbname ={},
+    dbaddress = {},
+    dbconcerns = {},
+    dbdob ={},
     editable=false
-
 }) => {
   const [text, setText] = React.useState('');
   const [name, setName] = React.useState('');
@@ -31,7 +29,7 @@ const BookingForm = ({
   const [concerns, setConcerns] = React.useState('');
   const [others, setOthers] = React.useState('');
   const [bod,setBod]  = React.useState('');
-//   const {inputDate, setInputDate } = React.useState < Date | undefined>(undefined);
+// const {inputDate, setInputDate } = React.useState < Date | undefined>(undefined);
   const [inputDate, setInputDate ] = React.useState('');
 
   useEffect(()=>{
@@ -47,7 +45,6 @@ const BookingForm = ({
 
 const Cont = styled.View`
 
-
 `
   return <Cont>
     <TextInput
@@ -60,7 +57,7 @@ const Cont = styled.View`
         value={name}
         editable={editable}
         onChangeText= {(name) => {
-            setName(name);
+        setName(name);
           }}
     ></TextInput>
  
@@ -107,8 +104,8 @@ const Cont = styled.View`
         label="Concerns"
         value={concerns}
         editable={editable}
-        onChangeText= {(val) => {
-        setConcerns({concern:val});
+        onChangeText= {(concerns) => {
+        setConcerns(concerns);
           }}
     ></TextInput>
     </Cont>
