@@ -90,7 +90,7 @@ const InfoCardTwo = ({
 
             <Subheader style={{fontFamily: 'Nunito_400Regular'}}>{text3}</Subheader>
             <Subheader style={{fontFamily: 'Nunito_400Regular'}}>{text4}</Subheader>
-            <Subheader style={{fontFamily: 'Nunito_400Regular'}}> {text5}</Subheader>
+            <Subheader style={{fontFamily: 'Nunito_400Regular'}}>{text5}</Subheader>
             <Subheader style={{fontFamily: 'Nunito_400Regular'}}>{text6}</Subheader>
         </SubheaderCont>
     </InfoCardTwoCont>

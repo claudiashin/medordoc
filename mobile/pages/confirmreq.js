@@ -31,7 +31,8 @@ const Wave = styled.Image`
 const HdCont = styled.View`
   align-items: center;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 135px;
+margin-bottom:20px;
 `;
 const HdCont2 = styled.View`
   align-items: center;
@@ -39,11 +40,12 @@ const HdCont2 = styled.View`
   margin-top: 10px;
 `;
 const ButCont = styled.View`
-  flex-direction: row;
+
   margin-top: 20px;
   margin-bottom: 30px;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-end;
+  width:78%;
 `;
 const BackCont = styled.View`
   display: flex;
@@ -141,7 +143,7 @@ export default function confirmreq({ navigation, route }) {
           display="none"
         />
         <InfoCardTwo
-          text2="Your request for a family doctor has been sent to St Johns Clinic Vancouver.  "
+          text2="Your request for a family doctor has been sent.  "
           text4="You will be contacted directly by the clinic. "
           text5="Please contact the clinic for further details. "
           display="none"
