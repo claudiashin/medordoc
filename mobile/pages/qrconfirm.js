@@ -35,13 +35,13 @@ const MyScrollView = styled.ScrollView`
 `
 
 const HeaderCont = styled.View`
-    margin-top: 100px;
+    margin-top: 50%;
     justify-content: center;
     align-items: center;
 `;
 
 const Cont = styled.View`
-    margin-top: 20px;
+    margin-top: 25%;
 `;
 
 const BackCont = styled.View`
@@ -133,13 +133,16 @@ const qrconfirm = () => {
                 <Cont>
                     <InfoCardTwo
                         text1="Appointment Details"
-                        text2= {year +" " + month +"  "+ day}   
-                        text3= {time}
-                        text4= {name}
-                        text5= {clname}
-                        text6={cladd}
+                        text2= {"Date: " + year +" " + month +"  "+ day}   
+                        text3= {"Time: "+time}
+                        text4= {"Patient: " + name}
+                        text5= {"Clinic: "+ clname}
+                        text6={"Address: " + cladd}
+                        text7="Check-in process"
+                        text8="Upon arrival, check-in with your QR code to save time!"
                         fweight="500"
                         display="none"
+                        height="400"
                     />
 
                     {/* <InfoCardTwo

@@ -57,6 +57,8 @@ const InfoCardTwo = ({
     text4 = "",
     text5 = "",
     text6 = "",
+    text7 = "",
+    text8 = "",
     fsize = "18",
     fweight = "700",
     display = "flex",
@@ -93,6 +95,15 @@ const InfoCardTwo = ({
             <Subheader style={{fontFamily: 'Nunito_400Regular'}}>{text4}</Subheader>
             <Subheader style={{fontFamily: 'Nunito_400Regular'}}>{text5}</Subheader>
             <Subheader style={{fontFamily: 'Nunito_400Regular'}}>{text6}</Subheader>
+
+            <HeaderCont>
+            <Header
+                fontSize={fsize}
+                fontWeight={fweight}
+            >{text7}
+            </Header>
+        </HeaderCont>
+            <Subheader style={{fontFamily: 'Nunito_400Regular'}}>{text8}</Subheader>
         </SubheaderCont>
     </InfoCardTwoCont>
 }
