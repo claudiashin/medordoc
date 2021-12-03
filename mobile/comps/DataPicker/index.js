@@ -55,31 +55,16 @@ export default function Datepick(
           const userid = auth.currentUser.uid;
           setUser(userid)
           setClnicID(clinicId.clinicId)
-       
-          // console.log(userid)
-          // console.log(clinicId.clinicId)
-
-          // console.log(user)
           console.log(clinicId.ClinicName)
           console.log(clinicId.ClinicAdd)
         }
       })
        },[user])
 
-      
-  
-    // console.log(clinicID)
-    // console.log(user)
-
     const booking = async(
     )=>{
-      // setClnicID(clinicId.clinicId)
-      getting()
-      // console.log(ClinicName);
-      // console.log(ClinicAdd);
 
-      // console.log(clinicID)
-      // console.log(user)
+      getting()
       await addDoc(collection(db,"appointment"),{
           userid:user,
           clinicId:clinicID,
@@ -96,7 +81,6 @@ export default function Datepick(
          const getting =async()=>{
          const docRef = doc(db,"patientuser",user);
          const docSnap = await getDoc(docRef);
-
          console.log(docSnap.data().clinicId)
          setClnicID(clinicId.clinicId)
          setReady("ready to go")
@@ -149,6 +133,7 @@ export default function Datepick(
         </View>    
      
      {show && (
+      <View style = {styles.box}> 
       <DateTimePicker
         testID="dateTimePicker"
         value={date}
@@ -158,21 +143,19 @@ export default function Datepick(
         onChange={onChange}
         style = {{alignItems:"center"}}
       />
+      </View>
     )}
 
        <View style = {styles.bookinfo}>
           <Text>Your Appoinment is</Text>
           <Text>{text}</Text>
         </View> 
-  
+
               <ButtonCont>
-                    {/* <Btn title='Check-in'onPress ={getting} />   */}
                         <View>
-                          <Text>Your Name is {fname+ ' '+ lname}</Text>
                           <Text>Your booking is {ready}</Text>
                        </View>    
                      <View style = {{margin:10}}>  
-                     <Btn title='Booking' onPress = {getting} />  
                      </View>  
 
                      <View style = {{margin:10}}>  
@@ -221,7 +204,13 @@ export default function Datepick(
             // width:100,
             // height:100,
             // backgroundColor: '#97BDD6',
+          },
+          box:{
+            width:300,
+            justifyContent:"center",
+            marginLeft:200
           }
+
   
     })
 

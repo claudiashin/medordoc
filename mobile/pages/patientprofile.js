@@ -71,12 +71,13 @@ export default function patientprofile() {
                 // const timestamp = Timestamp(Date())
                 setFname(docSnap.data().fname)
                 setLname(docSnap.data().lname)
-                setBd(docSnap.data().dob.seconds)
-                const date = (new Date(bd*1000))
-                setBd(date)
+                // setBd(docSnap.data().dob.seconds)
+                // console.log(new Date(bd*1000))
+                //setBd(docSnap.data().dob.seconds)
+                // console.log(docSnap.data().dob.seconds)
                 setAdd(docSnap.data().address)
                 setCon(docSnap.data().medconcern)
-                // console.log(docSnap.data().medconcern)
+                console.log(docSnap.data().medconcern)
                 // console.log(docSnap.data().dob.seconds)
               }
               getting()
@@ -88,30 +89,29 @@ export default function patientprofile() {
             setAdd(address)
             setCon(medconcern)
             console.log(docSnap.data())
-  
         }
        },[])
 
-       const info = {
-        fname:fname,
-        lname:lname,
-        add:add,
-        concern:con,
-        dob:bd,
-      };
-      const setInfo = ({
-        fname: fname,
-        lname: lname,
-        add: add,
-        concern:con,
-        dob: bd,
-      }) => {
-        setFname(fname);
-        setLname(lname);
-        setAdd(add);
-        setCon(con);
-        setBd(bd);
-      };
+    //    const info = {
+    //     fname:fname,
+    //     lname:lname,
+    //     add:add,
+    //     concern:con,
+    //     dob:bd,
+    //   };
+    //   const setInfo = ({
+    //     fname:fname,
+    //     lname:lname,
+    //     add: add,
+    //     concern:con,
+    //     dob:bd,
+    //   }) => {
+    //     setFname(fname);
+    //     setLname(lname);
+    //     setAdd(add);
+    //     setCon(con);
+    //     setBd(bd);
+    //   };
 
     const [changeForm, setChangeForm] = useState(true);
 
@@ -121,8 +121,6 @@ export default function patientprofile() {
         console.log("signout")
         navigation.navigate('login')
       };
-
-
     if (changeForm === true ){
         return (
             <Cont>
@@ -141,7 +139,7 @@ export default function patientprofile() {
                         visible="none"
                     />
                 </HeroCont>
-                <BookingForm  setInfo = {setInfo} info = {info} />
+                <BookingForm  dbaddress = {add} dbconcerns= {con} dbname = {fname + lname} />
 
                 <ButCont>
                         <Btn
@@ -177,7 +175,7 @@ export default function patientprofile() {
             />
         </HeroCont>
         <BookingForm 
-            editable={true}
+            editable={true} 
         />
         <ButCont>
          <Btn

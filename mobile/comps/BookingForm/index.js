@@ -16,11 +16,12 @@ const styles = StyleSheet.create({
     }
 })
 const BookingForm = ({
-    setInfo,
-    info,
-    // dbaddress = '',
-    // dbconcerns = '',
-    // dbdob ='',
+    // setInfo,
+    // info,
+    dbname = {},
+    dbaddress = {},
+    dbconcerns = {},
+    dbdob = {},
     editable= false
 }) => {
   const [text, setText] = React.useState('');
@@ -28,19 +29,20 @@ const BookingForm = ({
   const [address, setAddress] = React.useState('');
   const [concerns, setConcerns] = React.useState('');
   const [others, setOthers] = React.useState('');
+  const [bod,setBod]  = React.useState('');
 //   const {inputDate, setInputDate } = React.useState < Date | undefined>(undefined);
   const [inputDate, setInputDate ] = React.useState('');
-  console.log(info.concern)
 
   useEffect(()=>{
-       setText(info.fname)
-       setName(info.lname)
-       setAddress(info.add)
-       setConcerns(info.concern)
+       setName(dbname);
+       setAddress(dbaddress);
+       setConcerns(dbconcerns);
+    // setBod(dbdob)
+       console.log(dbname);
+       console.log(dbaddress);
+       console.log(bod);
       }
   ,[])
-
-  console.log(name)
 
   return <>
     <TextInput
@@ -52,21 +54,23 @@ const BookingForm = ({
         textContentType='name'
         value={name}
         editable={editable}
-        onChangeText={name => setName(name)}
+        onChangeText= {(name) => {
+            setName(name);
+          }}
     ></TextInput>
-
-    <DatePickerInput
+ 
+      <DatePickerInput
         locale="en"
         label="Date of Birth"
-        value={info.bd}
-        onChange={(val) => setInputDate(info.bd)}
+        value={bod}
+        onChange={(bod) => setInputDate(bod)}
         inputMode="start"
         mode="flat"
         style={styles.inputbox}
         editable={editable}
-    ></DatePickerInput> 
-{/* 
-<TextInput
+    ></DatePickerInput>     
+
+   {/* <TextInput
         style={styles.inputbox}
         underlineColor="#505050"
         returnKeyType="next"
@@ -76,7 +80,7 @@ const BookingForm = ({
         value={dbdob}
         editable={editable}
         onChangeText={dbdob => setAddress(dbdob)}
-    ></TextInput> */}
+    ></TextInput>  */}
 
     <TextInput
         style={styles.inputbox}
@@ -96,10 +100,10 @@ const BookingForm = ({
         autoCapitalize='sentences'
         type="flat"
         label="Concerns"
-        value={info.concern}
+        value={concerns}
         editable={editable}
         onChangeText= {(val) => {
-            setInfo({concern:val});
+        setConcerns({concern:val});
           }}
     ></TextInput>
     </>
