@@ -19,7 +19,7 @@ const TextCont = styled.Text`
   align-items: center;
   font-size: ${props=>props.fsize}px;
   font-weight: bold;
-  color: #fff;
+  color:  ${props=>props.fcolor};
 `;
 
 const Btn = ({
@@ -30,6 +30,7 @@ const Btn = ({
     height = '50',
     borderRad = '50',
     margin = '30',
+    fcolor = '#fff',
     onPress={}
 }) => {
 
@@ -55,6 +56,7 @@ const Btn = ({
             <TextCont 
                 style={{fontFamily: 'Nunito_700Bold', fontSize:20}}
                 fsize={fsize}
+                fcolor={fcolor}
             >{title}</TextCont>
         </ButCont>
     )
