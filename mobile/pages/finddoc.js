@@ -24,7 +24,7 @@ const Cont = styled.View`
   `
 const Wave = styled.Image`
   width: 100%;
-  height: 30%;
+  height: 40%;
   position: absolute;
   top: 0;
   `;
@@ -49,7 +49,7 @@ const Wave = styled.Image`
   justify-content: center;
   align-items: center;
   text-align: center;
-  bottom: 350px;
+  bottom: 400px;
   margin-top: 25px;
 `
 const CardCont = styled.View`
