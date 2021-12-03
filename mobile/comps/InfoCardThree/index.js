@@ -46,6 +46,9 @@ const Clinic = styled.Text`
   color: #505050;
 `;
 
+const Test = styled.View`
+`
+
 const InfoCardThree = ({
   text = "Details",
   text2 = "January 16, 2021",
@@ -69,7 +72,6 @@ const InfoCardThree = ({
     
     const auth = getAuth();
     const userid = auth.currentUser.uid;
-    console.log(userid)
     
     const reload = async() => {
       
@@ -90,12 +92,10 @@ const InfoCardThree = ({
         console.log(clinData.name)
 
           data.push(
-            <>
-                      <Clinic>{appt.bookingdate}</Clinic>
-
-          <Date>{appt.bookingtime}</Date>
-          <Clinic>{clinData.name}</Clinic>
-          </>
+            <Test key={doc.id}>
+          <Date >Clinic: {appt.cliname}</Date>
+          <Clinic >Date: {appt.bookingdate}, Time: {appt.bookingtime}</Clinic>
+          </Test>
  
             )
             setData([...data])
