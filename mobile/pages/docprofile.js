@@ -17,6 +17,8 @@ import Header from "../comps/Header";
 import NavBar from "../comps/NavBar";
 import BackBtn from "../comps/BackBtn";
 
+import AppLoading from 'expo-app-loading';
+import { useFonts, Nunito_400Regular, Nunito_600SemiBold,  Nunito_700Bold, } from '@expo-google-fonts/nunito';
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { getDoc, doc, updateDoc, addDoc, collection } from 'firebase/firestore';
 import { db } from '../utils/store';
@@ -70,10 +72,11 @@ const BackCont = styled.View`
 `
 
 export default function docprofile({ navigation, route }) {
-  const { doctorInfo } = route.params;
+  // const {doctorInfo} = route.params;
+  const {doctorInfo} = route.params;
   
   const [uid, setUid] = useState();
-  
+
   useEffect(async () => {
     const auth = getAuth();
     onAuthStateChanged(auth, async (user) => {
@@ -92,6 +95,15 @@ export default function docprofile({ navigation, route }) {
     })
 
   },[]);
+  let [fontsLoaded] = useFonts({
+    Nunito_400Regular,
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+  });
+
+  if(!fontsLoaded) {
+    return <AppLoading />
+} else {
   
 
   
@@ -112,8 +124,9 @@ export default function docprofile({ navigation, route }) {
         ></DrDetail>
         <HdCont>
           <Header
+            // syle={{fontSize:10}}
             title="Would you like to request this doctor?"
-            fontSize="16"
+          fontSize={18}
           />
         </HdCont>
         <ButCont>
@@ -145,7 +158,7 @@ export default function docprofile({ navigation, route }) {
       </NavBarCont>
     </MainCont>
   );
-}
+}}
 
 const styles = StyleSheet.create({
   scrollView: {

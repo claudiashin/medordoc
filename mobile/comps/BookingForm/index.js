@@ -30,15 +30,18 @@ const BookingForm = ({
   const [address, setAddress] = React.useState('');
   const [concerns, setConcerns] = React.useState('');
   const [others, setOthers] = React.useState('');
+  const [bod,setBod]  = React.useState('');
 //   const {inputDate, setInputDate } = React.useState < Date | undefined>(undefined);
   const [inputDate, setInputDate ] = React.useState('');
-  console.log(info.concern)
 
   useEffect(()=>{
-       setText(info.fname)
-       setName(info.lname)
-       setAddress(info.add)
-       setConcerns(info.concern)
+       setName(dbname);
+       setAddress(dbaddress);
+       setConcerns(dbconcerns);
+    // setBod(dbdob)
+       console.log(dbname);
+       console.log(dbaddress);
+       console.log(bod);
       }
   ,[])
 
@@ -56,19 +59,20 @@ const Cont = styled.View`
         textContentType='name'
         value={name}
         editable={editable}
-        onChangeText={name => setName(name)}
+        onChangeText= {(name) => {
+            setName(name);
+          }}
     ></TextInput>
-
-    <DatePickerInput
+ 
+      <DatePickerInput
         locale="en"
         label="Date of Birth"
-        value={info.bd}
-        onChange={(val) => setInputDate(info.bd)}
+        value={bod}
+        onChange={(bod) => setInputDate(bod)}
         inputMode="start"
         mode="flat"
         style={styles.inputbox}
         editable={editable}
-
     ></DatePickerInput> 
 {/* 
 <TextInput
@@ -81,7 +85,7 @@ const Cont = styled.View`
         value={dbdob}
         editable={editable}
         onChangeText={dbdob => setAddress(dbdob)}
-    ></TextInput> */}
+    ></TextInput>  */}
 
     <TextInput
         style={styles.inputbox}
@@ -101,10 +105,10 @@ const Cont = styled.View`
         autoCapitalize='sentences'
         type="flat"
         label="Concerns"
-        value={info.concern}
+        value={concerns}
         editable={editable}
         onChangeText= {(val) => {
-            setInfo({concern:val});
+        setConcerns({concern:val});
           }}
     ></TextInput>
     </Cont>

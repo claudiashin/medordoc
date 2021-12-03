@@ -8,6 +8,7 @@ import InfoCardThree from '../comps/InfoCardThree';
 import { EdgeInsetsPropType } from "react-native";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {db} from '../utils/store'
+import { getDocs, collection, query, where, deleteDoc, doc, getDoc } from "firebase/firestore";
 
 
 const AvatarCont = styled.View`
@@ -41,26 +42,25 @@ const BodyContCont = styled.ScrollView`
 
 `
 const History = () => {
-  // const [myUid, setMyUid] = useState()
-  // useEffect(()=>{
-  //   const getUser = async () => {
-  //     const auth = getAuth();
-  //     const user = auth.currentUser;
-  //     setMyUid(user.uid)
-  //     console.log(user.uid)
-  //   }
+  const [userName, setUserName] = useState()
+  useEffect(()=>{
+    const auth = getAuth();
+    const userid = auth.currentUser.uid;
+    const getUser = async () => {
+      const docRef = doc(db, "patientuser", userid);
+      const docSnap = await getDoc(docRef);
+      const userName2 = docSnap.data().fname + ' ' + docSnap.data().lname
+      if (docSnap.exists()) {
+       setUserName(userName2)
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }
 
-  //   // onAuthStateChanged(auth, (user) => {
-  //   //   if (user) {
-  //   //     const uid = user.uid;
-  //   //     console.log(myUid)
-  //   //     setMyUid(uid)
-  //   //   } else {
-  //   //     console.log("no")
-  //   //   }
-  //   // });
-  //   getUser()
-  // },[])
+  
+    getUser()
+  },[])
   
   return <Cont>
 
@@ -70,7 +70,7 @@ const History = () => {
         
         <AvatarCont>
           <HeroAvatar visible={"none"} imagesrc="https://placekitten.com/3000/2000" herowidth={160} heroheight={160}></HeroAvatar>
-          <Header fontSize={18} fontWeight={"normal"} title="Jenny Lee" />
+          <Header fontSize={18} fontWeight={"normal"} title={userName} />
         </AvatarCont>
 
         <HeaderCont>
@@ -78,7 +78,7 @@ const History = () => {
         </HeaderCont>
 
         <BodyCont>
-          <InfoCardThree/>
+          <InfoCardThree />
         </BodyCont>
       </MainCont>
 

@@ -28,8 +28,8 @@ import docprofile from './pages/docprofile';
 import patientprofile from './pages/patientprofile';
 import confirmreq from './pages/confirmreq';
 import QR from './pages/QR';
-import test from './pages/test'
-import dbtest from './pages/dbtest'
+
+
 
 
 import { Ionicons } from '@expo/vector-icons';
