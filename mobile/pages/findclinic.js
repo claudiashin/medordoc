@@ -64,7 +64,7 @@ const BackCont = styled.View`
   position: absolute;
   z-index: 999;
   right: 410px;
-  top: 10px;
+  top: 5px;
 `
 
 export default function findclinic({navigation}){
@@ -98,11 +98,11 @@ export default function findclinic({navigation}){
           /> 
         </FilterCont> */}
         
-        <CardCont>
+        {/* <CardCont> */}
           {/* <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
           <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} />
           <ClinDocButton cardpress={() => navigation.navigate("clinicprofile")} /> */}
-        </CardCont> 
+        {/* </CardCont>  */}
 
       <NavBarCont>
         <NavBar />

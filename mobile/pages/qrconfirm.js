@@ -106,6 +106,7 @@ const qrconfirm = () => {
                 setName(patientname);
                 setClnicID(clID);
                 console.log(clinicID)
+                console.log(setTime);
             });
         }
         gettingBK()
