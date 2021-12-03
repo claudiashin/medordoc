@@ -67,11 +67,13 @@ const InfoCard = ({
     text4 = "To view your ...",
     text5 = "",
     text6 = "",
+    text7 = "",
     address = "",
     phone = "",
     language = "",
     open = "",
     close = "",
+    waittime="",
     fontsize = 20,
     weight = 700,
     display = "none"
@@ -118,6 +120,10 @@ const InfoCard = ({
 
         <SubheadingCont>
             <Information style={{fontFamily: 'Nunito_400Regular'}}>{close}{text6}</Information>
+        </SubheadingCont>
+
+        <SubheadingCont>
+            <Information style={{fontFamily: 'Nunito_400Regular'}}>{waittime}{text7} minutes</Information>
         </SubheadingCont>
 
     </InfoCardCont >

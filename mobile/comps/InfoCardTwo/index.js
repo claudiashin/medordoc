@@ -77,6 +77,7 @@ const InfoCardTwo = ({
     return <InfoCardTwoCont height={height} >
         <HeaderCont>
             <Header
+            style={{fontFamily: 'Nunito_700Bold'}}
                 fontSize={fsize}
                 fontWeight={fweight}
             >{text1}

@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 
 import HeroAvatar from '../comps/HeroAvatar';
 import InfoCard from '../comps/InfoCard'
 import NavBar from "../comps/NavBar";
 import Header from "../comps/Header";
+
 
 const AvatarCont = styled.View`
   align-items:center;
@@ -15,35 +16,40 @@ const BodyCont = styled.View`
 `
 
 const Cont = styled.View`
-  flex:1;
+justify-content:space-between;
+flex:1;
 `;
 
 const Wave = styled.Image`
     width: 100%;
-    height: 30%;
+    height: 40%;
     position: absolute;
 `;
-
 const NavBarCont = styled.View`
  
 `
-const BodyContCont = styled.View`
+const BodyContCont = styled.ScrollView`
 
 `
 const QRSrc = styled.Image`
  
 `
 
-const MyScroll = styled.ScrollView`
-  
-`
+
+const MainCont = styled.View`
+`;
 const scan = ({
   QRimg="https://placekitten.com/1300/2000",
 })=>{
+
+ 
   return <Cont>
-    <MyScroll>
+
     <Wave source={require('../assets/backgroundmobile.png')} />
+ 
     <BodyContCont>
+
+    <MainCont> 
       <AvatarCont>
         <HeroAvatar imagesrc="https://placekitten.com/3000/2000" herowidth={150} heroheight={150}></HeroAvatar>
         <Header fontSize={18} fontWeight={"normal"} title="Jenny Lee"/>
@@ -60,9 +66,10 @@ const scan = ({
       <BodyCont>
         <InfoCard/>
       </BodyCont>
+
+      </MainCont>
     </BodyContCont>
 
-    </MyScroll>
 
       <NavBarCont>
         <NavBar/> 

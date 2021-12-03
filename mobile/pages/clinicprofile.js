@@ -14,6 +14,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import AppLoading from 'expo-app-loading';
 import { useFonts, Nunito_400Regular } from '@expo-google-fonts/nunito';
 
+
 const Cont = styled.View`
   flex:1;
   background-color: #F7F2EE;
@@ -33,7 +34,7 @@ const Cont2 = styled.View`
     display: flex;
     margin-top: 100px;
     /* padding-top: 20px; */
-    align-content:center;
+    align-items:center;
     justify-content:center;
 `;
 
@@ -72,6 +73,12 @@ const MyScrollView = styled.ScrollView`
 
 `;
 
+const Avatar=styled.Image`
+width:180px;
+height:180px;   
+border-radius:500px;
+`
+
 const ClinicProfile = ({route,navigation}) => {
   
 const [info,setInfo] =useState('')
@@ -93,10 +100,10 @@ useEffect(()=>{
     // const MapdocRef = doc(db, "mapchoice", UID);
     // const MapdocSnap = await getDoc(MapdocRef);
     // setChoice(MapdocSnap.data())
-    const docRef = doc(db, "clinics",UID );
+    const docRef = doc(db,"clinics",UID );
     const docSnap = await getDoc(docRef)  
     setInfo(docSnap.data())
-    // console.log(docSnap.data())
+    console.log(docSnap.data())
     }
     get()
 
@@ -131,18 +138,18 @@ const [path, setPath] = useState()
                 </BackCont>
                 <Wave source={require('../assets/backgroundmobile.png')} />
                 <Cont2>
-                    <HeroAvatar herowidth={180} heroheight={180} visible="none"/>
+                    <Avatar source={require("../assets/carepoint.png")}/>
 
                 </Cont2>
                 <CardCont>
                     <InfoCard 
-
                         text = {info.name}
                         text2 = {info.add}
                         text3 = {info.num}
                         text4 ={info.lang}
                         text5 = {info.open}
                         text6 ={info.close}
+                        text7 ={info.waittime}
                         // text3 = "Website:"
                         // website_url = {info.website}
                         fontsize = "20"
@@ -154,6 +161,7 @@ const [path, setPath] = useState()
                         language="Language: "
                         open="Open: "
                         close="Close: "
+                        waittime = "Waittime: "
                     />
                 </CardCont>
                 
