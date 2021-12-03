@@ -8,6 +8,9 @@ import styled from 'styled-components/native';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 
+
+
+
 const Map =({
 //  onMappress =()=>{}
 })=>{
@@ -115,8 +118,8 @@ const Map =({
 					location: `${region.latitude}, ${region.longitude}`
 				}}
 				styles={{
-					container: { flex: 0, position: "absolute",top:"13%", width: "80%", zIndex: 1 },
-					listView: { backgroundColor: "white" }
+					container: { flex: 0, position: "absolute",top:"10%", width: "80%", zIndex: 1,  border: "1px solid #5c5c5c"  },
+					listView: { backgroundColor: "white", borderColor: '#5c5c5c'}
 				}}
 			/>
   
@@ -143,7 +146,7 @@ const Map =({
 				>
    
 					<Callout>
-						<Text>I'm here</Text>
+						{/* <Text>I'm here</Text> */}
 					</Callout>
 				</Marker>
 				<Circle center={pin} radius={1000} /> 
@@ -159,7 +162,9 @@ const Map =({
           UID:"oXOf7T5hj4ewq5ls5YzoJQpGbrp1"
         })} tooltip> 
       <View style={styles.calloutText} >
-        <Button title = "Burnaby Clinic"/>
+        <Button 
+        color="black"
+        title = "Burnaby Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>  
@@ -178,8 +183,9 @@ const Map =({
        UID:"tNhCs4WtlTat6NsZ8Q5egHYg1Qo1"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Beyond Health Medical{"\n"}</Text>
-        <Button title = "Beyond Health Medical"/>
+        <Button 
+        color="black"
+        title = "Beyond Health Medical"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker> 
@@ -199,8 +205,9 @@ const Map =({
        UID:"oXOf7T5hj4ewq5ls5YzoJQpGbrp1"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Pacific Medical Clinic{"\n"}</Text>
-        <Button title = "Pacific Medical Clinic"/>
+        <Button 
+        color="black"
+        title = "Pacific Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker> 
@@ -218,8 +225,7 @@ const Map =({
        UID:"bsZQIcxwkfRFjc7VOgIoxUY0l1T2"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Maple Walk-In Medical Clinic{"\n"}</Text>
-        <Button title = "aple Walk-In Medical Clinic"/>
+        <Button color="black" title = "Maple Walk-In Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker> 
@@ -235,10 +241,12 @@ const Map =({
      {/*<MapView.Callout onPress={()=>alert('lk')} tooltip>  */}
      <MapView.Callout onPress={()=>navigation.navigate('clinicprofile',{
        UID:"7FKK9IbpIUhrfOOnk9d19SCy9By1"
+       
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Care Point Medical Clinic{"\n"}</Text>
-        <Button title = "Care Point"/>
+        <Button 
+        color = 'black'
+        title = "Care Point Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -258,8 +266,7 @@ const Map =({
        UID:"Fe7Rz5MFkvcam9eIJoPugZ9GumJ2"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>WELL Health - Richmond Central Medical Clinic{"\n"}</Text>
-        <Button title = "WELL Health"/>
+        <Button color="black" title = "WELL Health"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -277,8 +284,7 @@ const Map =({
        UID:"9w9DqZEXIoczwfGSESl82tYCbnJ3"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Mega Fu Medical Clinic{"\n"}</Text>
-        <Button title = "Mega Fu"/>
+        <Button color="black" title = "MegaFu Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -296,8 +302,7 @@ const Map =({
        UID:"IKSr9FZPi9f1l9zRdcsopC8MQX42"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Elicare: Lansdowne Medical Clinic{"\n"}</Text>
-        <Button title = "Elicare"/>
+        <Button color="black" title = "Elicare: Lansdowne Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -317,8 +322,7 @@ const Map =({
        UID:"4nKPf2aTTgVxHTvbDYQvUX1ckK12"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>WELL Health - Pemberton Marine Medical Clinic{"\n"}</Text>
-        <Button title = "WELL Health"/>
+        <Button color="black" title = "WELL Health"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -336,8 +340,7 @@ const Map =({
        UID:"AZGku04fe3VxBuWATRo7XGKQM4q1"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Edgemont Medical Clinic{"\n"}</Text>
-        <Button title = "Edgemont"/>
+        <Button color="black" title = "Edgemont Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -355,8 +358,7 @@ const Map =({
        UID:"5s7PlHsnLVQ92jlM1T73dcNDoQw1"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Integrated Wellness Medical Centre{"\n"}</Text>
-        <Button title = "Integrated Wellness"/>
+        <Button color="black" title = "Integrated Wellness"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -376,8 +378,7 @@ const Map =({
        UID:"0lTILXDCYOfuCVljAtYhispFL6f1"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Cedar Hills Medical Clinic{"\n"}</Text>
-        <Button title = "Cedar Hills"/>
+        <Button color="black" title = "Cedar Hills Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -395,8 +396,7 @@ const Map =({
        UID:"Zca6JHSUenPWWxrgxUxGIRB1THG2"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Primacy - Manchanda Medical Clinic{"\n"}</Text>
-        <Button title = "Manchanda Clinic"/>
+        <Button color="black" title = "Primacy: Manchanda Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -414,8 +414,7 @@ const Map =({
        UID:"Fe7Rz5MFkvcam9eIJoPugZ9GumJ2"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>WELL Health - Care Place Fleetwood Medical Clinic{"\n"}</Text>
-        <Button title = "WELL Health - Care Place Fleetwood Medical Clinic"/>
+        <Button color="black" title = "WELL Health - Care Place Fleetwood Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -435,8 +434,7 @@ const Map =({
        UID:"GMUCL8SKdNhl7MmBpC0i8vq8qkQ2"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>The Well Medical Clinic{"\n"}</Text>
-        <Button title = "The Well Medical Clinic"/>
+        <Button color="black" title = "The Well Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -454,8 +452,7 @@ const Map =({
        UID:"3DOGWNAI0eY2rl1cAhCwZKMYtHD2"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Eagleridge Medical Clinic{"\n"}</Text>
-        <Button title = "Eagleridge"/>
+        <Button color="black" title = "Eagleridge"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -475,8 +472,7 @@ const Map =({
        UID:"koHQxfxwzJevDdhWLtXIpmO7wTu2"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Old Orchard Medical Clinic{"\n"}</Text>
-        <Button title = "Old Orchard"/>
+        <Button color="black" title = "Old Orchard"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>  
@@ -494,8 +490,7 @@ const Map =({
        UID:"5KR7qdJxJRclkuRFdLqQGaS45EJ3"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Mango Walk-in Clinic{"\n"}</Text>
-        <Button title = "Mango"/>
+        <Button color="black" title = "Mango Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker> 
@@ -513,8 +508,7 @@ const Map =({
        UID:"lklNfAH6oadPInmca1nFik3tGdY2"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Brentwood Medical Clinic{"\n"}</Text>
-        <Button title = "Brentwood"/>
+        <Button color="black" title = "Brentwood Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -532,8 +526,7 @@ const Map =({
        UID:"jQ8PrGGxTHNfB5ICJHKQbRSaRyP2"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Welcome Medical Clinic{"\n"}</Text>
-        <Button title = "Welcome"/>
+        <Button color="black" title = "Welcome"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -551,8 +544,8 @@ const Map =({
        UID:"iBOBd62i4vUMaXlfFYJKaQq4fHk1"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Kingsway Medical Clinic{"\n"}</Text>
-        <Button title = "Kingsway"/>
+
+        <Button color="black" title = "Kingsway Medical Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -570,8 +563,7 @@ const Map =({
        UID:"J5EZzpNev2OPal1H9oVKSkKGEZs2"
      })} tooltip> 
       <View style={styles.calloutText} >
-        <Text>Metrohealth Clinic{"\n"}</Text>
-        <Button title = "Metrohealth"/>
+        <Button color="black" title = "Metrohealth Clinic"/>
        </View>
    </MapView.Callout>  
     </MapView.Marker>
@@ -584,11 +576,23 @@ const Map =({
 const styles = StyleSheet.create({
     container: {
       flex: 1.0,
-      backgroundColor: '#fff',
+      // backgroundColor: '#fff',
       alignItems: 'center',
       // justifyContent: 'center',
       // margin:50
+      fontFamily: 'Nunito_400Regular'
     },
+    calloutText: {
+      width: 200,
+      height: 40,
+      backgroundColor: '#fff',
+      borderRadius: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+      margin: 5,
+      fontFamily: 'Nunito_400Regular'
+
+    },   
     map: {
       width: Dimensions.get('window').width,
       height: Dimensions.get('window').height/1.2,
