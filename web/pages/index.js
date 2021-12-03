@@ -284,7 +284,7 @@ export default function Home() {
           <InfoCont>
             <Icon src={"/documents.png"}></Icon>
             <Heading>Connect Family Doctors with Patients</Heading>
-            <FactText>Simplify the process and accept patients online</FactText>
+            <FactText>Find new patients and increase patient base</FactText>
           </InfoCont>
 
           <InfoCont>

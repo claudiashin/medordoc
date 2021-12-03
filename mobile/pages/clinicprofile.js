@@ -14,6 +14,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import AppLoading from 'expo-app-loading';
 import { useFonts, Nunito_400Regular } from '@expo-google-fonts/nunito';
 
+
 const Cont = styled.View`
   flex:1;
   background-color: #F7F2EE;
@@ -33,7 +34,7 @@ const Cont2 = styled.View`
     display: flex;
     margin-top: 100px;
     /* padding-top: 20px; */
-    align-content:center;
+    align-items:center;
     justify-content:center;
 `;
 
@@ -71,6 +72,12 @@ const BackCont = styled.View`
 const MyScrollView = styled.ScrollView`
 
 `;
+
+const Avatar=styled.Image`
+width:180px;
+height:180px;   
+border-radius:500px;
+`
 
 const ClinicProfile = ({route,navigation}) => {
   
@@ -131,7 +138,7 @@ const [path, setPath] = useState()
                 </BackCont>
                 <Wave source={require('../assets/backgroundmobile.png')} />
                 <Cont2>
-                    <HeroAvatar herowidth={180} heroheight={180} visible="none"/>
+                    <Avatar source={require("../assets/carepoint.png")}/>
 
                 </Cont2>
                 <CardCont>
