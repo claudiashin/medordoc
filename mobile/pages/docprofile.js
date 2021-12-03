@@ -17,6 +17,8 @@ import Header from "../comps/Header";
 import NavBar from "../comps/NavBar";
 import BackBtn from "../comps/BackBtn";
 
+import AppLoading from 'expo-app-loading';
+import { useFonts, Nunito_400Regular, Nunito_600SemiBold,  Nunito_700Bold, } from '@expo-google-fonts/nunito';
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { getDoc, doc, updateDoc, addDoc, collection } from 'firebase/firestore';
 import { db } from '../utils/store';
@@ -33,10 +35,18 @@ const Wave = styled.Image`
   height: 30%;
   position: absolute;
 `;
+const Avatar = styled.Image`
+  width: 200px;
+  height: 200px;
+  border-radius:500px;
+`;
 
 const ImageCont = styled.View`
   margin-top: 100px;
   margin-bottom: 20px;
+  width:100%;
+  justify-content:center;
+  align-items:center;
 `;
 
 const HdCont = styled.View`
@@ -62,7 +72,18 @@ const BackCont = styled.View`
 `
 
 export default function docprofile({ navigation, route }) {
-  const { doctorInfo } = route.params;
+  const {doctorInfo} = route.params;
+
+  let [fontsLoaded] = useFonts({
+    Nunito_400Regular,
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+  });
+
+  if(!fontsLoaded) {
+      return <AppLoading />
+  } else {
+  const {doctorInfo} = route.params;
   
   const [uid, setUid] = useState();
   
@@ -96,15 +117,17 @@ export default function docprofile({ navigation, route }) {
           <BackBtn onPress={() => navigation.goBack()}/>
         </BackCont>
         <ImageCont>
-          <HeroAvatar heroheight="200" herowidth="200" visibility="hidden" />
+          {/* <HeroAvatar heroheight="200" herowidth="200" visible="none" /> */}
+        <Avatar source={{uri:doctorInfo.img}}/>
         </ImageCont>
         <DrDetail 
         doctorInfo={doctorInfo}
         ></DrDetail>
         <HdCont>
           <Header
+            // syle={{fontSize:10}}
             title="Would you like to request this doctor?"
-            fontSize="16"
+          fontSize={10}
           />
         </HdCont>
         <ButCont>
@@ -136,7 +159,7 @@ export default function docprofile({ navigation, route }) {
       </NavBarCont>
     </MainCont>
   );
-}
+}}
 
 const styles = StyleSheet.create({
   scrollView: {

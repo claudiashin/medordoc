@@ -61,7 +61,7 @@ const signup = (
 
   return (
     <BookingCont>
-      <ScrollView style={styles.scrollView}>
+      {/* <ScrollView style={styles.scrollView}> */}
         <Wave source={require("../assets/backgroundmobile.png")} />
 
         <LottieCont>
@@ -81,7 +81,7 @@ const signup = (
          
         </SignUpFormCont>
         
-      </ScrollView>
+      {/* </ScrollView> */}
       <NavBarCont>
         <NavBar />
       </NavBarCont>

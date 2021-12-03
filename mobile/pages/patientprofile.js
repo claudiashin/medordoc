@@ -52,6 +52,8 @@ top:50px;
 position:absolute;
 z-index:1;
 `
+const MyScrollView= styled.ScrollView`
+`
 export default function patientprofile() {
 
     const [fname,setFname] = useState();
@@ -129,7 +131,7 @@ export default function patientprofile() {
             <ImgCont  onPress={SignOut} >
             <SignOutImg  source={require("../assets/icons/sign-out.png")}/>
             </ImgCont>
-            <ScrollView style={styles.scrollView} >
+            <MyScrollView style={styles.scrollView} >
                 <HeroCont>
                     <HeroAvatar 
                         heroheight="160"
@@ -152,7 +154,7 @@ export default function patientprofile() {
                         onPress={()=>{setChangeForm(false)}}
                     ></Btn>
                 </ButCont>
-            </ScrollView>
+            </MyScrollView>
              <NavBarCont>
              <NavBar/>
            </NavBarCont>
@@ -165,7 +167,7 @@ export default function patientprofile() {
             <ImgCont>
             <SignOutImg source={require("../assets/icons/sign-out.png")}/>
             </ImgCont>
-    <ScrollView style={styles.scrollView} >
+    <MyScrollView style={styles.scrollView} >
         <HeroCont>
             <HeroAvatar 
                 heroheight="160"
@@ -188,7 +190,7 @@ export default function patientprofile() {
             onPress={()=>{setChangeForm(true)}}
             ></Btn>
         </ButCont>
-    </ScrollView>
+    </MyScrollView>
     <NavBarCont>
     <NavBar/>
     </NavBarCont>
@@ -198,7 +200,7 @@ export default function patientprofile() {
 const styles = StyleSheet.create({
     scrollView: {
       flex:1,
-      marginHorizontal: 30,
+      marginHorizontal: 10,
       marginTop: 30,
     },
   });

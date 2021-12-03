@@ -15,18 +15,19 @@ const Maincont = styled.View`
     align-items: center;
     background-color:#FFFFFF;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4)
-    width: 350px;
+    width: 305px;
     height: 100px;
     margin:10px;
+    margin-bottom: 20px;
     border-radius: 15px;
+    padding-left: 60px;
    
 `
 const Avatarcont = styled.View`
     display:flex;
-    height: 80px;
-    width: 80px;
+    height: 65px;
+    width: 65px;
     right:50px;
-
     border-radius: 50px;
     background-color: #c4c4c4;
 `
@@ -38,7 +39,7 @@ const Avatarimg = styled.Image`
     border-radius: 50px;
 `
 const TextCont = styled.View`
-
+    
 `
 const ClinDocButton=({
     bodyText = "Default Text",

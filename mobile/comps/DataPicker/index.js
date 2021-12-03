@@ -55,11 +55,23 @@ export default function Datepick(
           const userid = auth.currentUser.uid;
           setUser(userid)
           setClnicID(clinicId.clinicId)
+       
+
+          // console.log(userid)
+          // console.log(clinicId.clinicId)
+
+          // console.log(user)
           console.log(clinicId.ClinicName)
           console.log(clinicId.ClinicAdd)
         }
       })
        },[user])
+
+
+      
+  
+    // console.log(clinicID)
+    // console.log(user)
 
     const booking = async(
     )=>{

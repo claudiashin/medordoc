@@ -5,24 +5,25 @@ import { StyleSheet} from 'react-native';
 import { en,registerTranslation } from 'react-native-paper-dates'
   registerTranslation('en', en)
 import { DatePickerInput } from 'react-native-paper-dates';
+import styled from 'styled-components';
 
 
 const styles = StyleSheet.create({
     inputbox: {
-        width: 335,
-        height: 50,
+        width: 345,
+        height: 0,
         margin: 5,
         backgroundColor: '#fff'
     }
 })
 const BookingForm = ({
-    // setInfo,
-    // info,
-    dbname = {},
-    dbaddress = {},
-    dbconcerns = {},
-    dbdob = {},
-    editable= false
+
+    dbname ='',
+    dbaddress = '',
+    dbconcerns = '',
+    dbdob ='',
+    editable=false
+
 }) => {
   const [text, setText] = React.useState('');
   const [name, setName] = React.useState('');
@@ -44,7 +45,11 @@ const BookingForm = ({
       }
   ,[])
 
-  return <>
+const Cont = styled.View`
+
+
+`
+  return <Cont>
     <TextInput
         style={styles.inputbox}
         underlineColor="#505050"
@@ -68,9 +73,9 @@ const BookingForm = ({
         mode="flat"
         style={styles.inputbox}
         editable={editable}
-    ></DatePickerInput>     
-
-   {/* <TextInput
+    ></DatePickerInput> 
+{/* 
+<TextInput
         style={styles.inputbox}
         underlineColor="#505050"
         returnKeyType="next"
@@ -106,7 +111,7 @@ const BookingForm = ({
         setConcerns({concern:val});
           }}
     ></TextInput>
-    </>
+    </Cont>
 
 };
 

@@ -64,7 +64,7 @@ const BackCont = styled.View`
   display: flex;
   position: absolute;
   z-index: 999;
-  top: -10;
+  top: -10px;
 `
 
 const booking = ({ route,navigation }) => {

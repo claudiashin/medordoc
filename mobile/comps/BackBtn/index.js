@@ -5,8 +5,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { Asset } from "react-native-unimodules";
 
 const Backimg = styled.Image`
-  width: 30px;
-  height: 30px;
+  width: 27px;
+  height: 27px;
   position: absolute;
 
   `;
