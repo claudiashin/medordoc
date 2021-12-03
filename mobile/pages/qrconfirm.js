@@ -134,7 +134,6 @@ const qrconfirm = () => {
                         text1="Appointment Details"
                         text2= {"Date: " + year +" " + month +"  "+ day}   
                         text3= {"Time: "+time}
-                        text4= {"Patient: " + name}
                         text5= {"Clinic: "+ clname}
                         text6={"Address: " + cladd}
                         text7="Check-in process"
