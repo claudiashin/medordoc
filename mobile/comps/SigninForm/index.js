@@ -12,6 +12,7 @@ import store from '../../utils/inits'
 
 //import comps
 import Btn from "../Btn";
+import BackBtn from '../BackBtn';
 
 import { addDoc, collection, setDoc,doc } from "firebase/firestore";
 import { db } from "../../utils/store";
@@ -44,6 +45,14 @@ const ButCont = styled.View`
   align-items: flex-end;
   margin: 50px 10px 80px 0px;
 `;
+
+const BackCont = styled.View`
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  right: 340px;
+  top: -390px;
+`
 
 const SigninForm = ({
  userid = ''
@@ -181,11 +190,11 @@ const SigninForm = ({
           <ButCont>
             <Btn
               title="Next"
-              fsize="20"
+              fsize="18"
               bgcolor="#97BDD6"
-              width="130"
+              width="120"
               height="50"
-              borderRad="60"
+              borderRad="50"
               //    onPress={async () => {
               //      const auth = getAuth();
               //      const result = await createUserWithEmailAndPassword(
@@ -221,6 +230,9 @@ const SigninForm = ({
 
   return (
     <MainCont>
+      <BackCont>
+          <BackBtn onPress={() => navigation.goBack()}/>
+        </BackCont>
       <PaperProvider>
         <Title>Additional Information</Title>
         <DateCont>
@@ -276,11 +288,11 @@ const SigninForm = ({
         <ButCont>
           <Btn
             title="Confirm"
-            fsize="20"
+            fsize="18"
             bgcolor="#97BDD6"
-            width="130"
+            width="120"
             height="50"
-            borderRad="60"
+            borderRad="50"
             onPress={ 
                 ()=>{CreateUser(em,ps);
               //   async () => {

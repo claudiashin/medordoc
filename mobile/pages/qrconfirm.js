@@ -35,13 +35,13 @@ const MyScrollView = styled.ScrollView`
 `
 
 const HeaderCont = styled.View`
-    margin-top: 100px;
+    margin-top: 50%;
     justify-content: center;
     align-items: center;
 `;
 
 const Cont = styled.View`
-    margin-top: 20px;
+    margin-top: 25%;
 `;
 
 const BackCont = styled.View`
@@ -63,6 +63,7 @@ const qrconfirm = () => {
     const [month,setAmonth] =useState('')
     const [year,setAyear] =useState('')
 
+
     const [time,setTime] =useState('')
     const [clname,setClname] =useState('')
     const [cladd,setAdd] =useState('')
@@ -71,7 +72,6 @@ const qrconfirm = () => {
     useEffect(()=>{
 
         const auth = getAuth()
-        
         const userid = auth.currentUser.uid;
         setUser(userid)
 
@@ -79,12 +79,14 @@ const qrconfirm = () => {
 
             const q = query(collection(db, "appointment"), where("userid", "==", userid),orderBy('year',"desc"),orderBy('month',"desc"),orderBy('day',"desc"),limit(1));
             const querySnapshot = await getDocs(q);
+           
             querySnapshot.forEach((doc) => {
-    
                 const bookingyear = doc.data().year;
                 const bookingmonth = doc.data().month;
                 const bookingday = doc.data().day;
                 const clID = doc.data().clinicId
+                const clnicname = doc.data().clinicname
+                const clnicadd = doc.data().clinicAdd
 
                 const bookingtime = doc.data().bookingtime;
                 const patientname = doc.data().patientname;
@@ -94,42 +96,28 @@ const qrconfirm = () => {
                 console.log (bookingmonth);
                 console.log (bookingday);
                 console.log (userid);
-                // console.log (clID);
+                console.log (clID);
+                setClname(clnicname)
+                setAdd(clnicadd)
                 setAyear(bookingyear);
                 setAmonth(bookingmonth);
                 setAday(bookingday)
                 setTime(bookingtime)
                 setName(patientname);
-                setClnicID(clID)
-
+                setClnicID(clID);
+                console.log(clinicID)
             });
-
-           
-
-            // const docRef = doc(db, "clinics",clinicID);
-            // const docSnap = await getDoc(docRef);
-            // setClname(docSnap.data().name);
-            // setAdd(docSnap.data().add);
-        
-
-            // const docRef = doc(db,"appointment",userid);
-            // const docSnap = await getDoc(docRef);
-           
-            // setClname(docSnap1.data().name);
-            // setAdd(docSnap1.data().add);
-            // const CID = (docSnap.data().clinicId)
-            // console.log(querySnapshot.data())
-
-
-   
         }
         gettingBK()
-
-
  },[user])
- 
- 
-  
+
+    // const getclinicinfo = async()=>{
+    // const docRef = doc(db, "clinics",clinicID);
+    // const docSnap = await getDoc(docRef);
+    // setClname(docSnap.data().name);
+    // setAdd(docSnap.data().add);
+    // }
+    // getclinicinfo()
 
 
     return (
@@ -144,13 +132,16 @@ const qrconfirm = () => {
                 <Cont>
                     <InfoCardTwo
                         text1="Appointment Details"
-                        text2= {year +" " + month +"  "+ day}   
-                        text3= {time}
-                        text4= {name}
-                        text5= {clname}
-                        text6={cladd}
+                        text2= {"Date: " + year +" " + month +"  "+ day}   
+                        text3= {"Time: "+time}
+                        text4= {"Patient: " + name}
+                        text5= {"Clinic: "+ clname}
+                        text6={"Address: " + cladd}
+                        text7="Check-in process"
+                        text8="Upon arrival, check-in with your QR code to save time!"
                         fweight="500"
                         display="none"
+                        height="400"
                     />
 
                     {/* <InfoCardTwo

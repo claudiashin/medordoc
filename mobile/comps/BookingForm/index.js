@@ -1,28 +1,30 @@
 import * as React from 'react';
+import {useState,useEffect} from 'react';
 import { TextInput, Button } from 'react-native-paper';
 import { StyleSheet} from 'react-native';
 import { en,registerTranslation } from 'react-native-paper-dates'
   registerTranslation('en', en)
 import { DatePickerInput } from 'react-native-paper-dates';
-
+import styled from 'styled-components';
 
 
 const styles = StyleSheet.create({
     inputbox: {
-        width: 335,
-        height: 50,
+        width: 345,
+        height: 0,
         margin: 5,
         backgroundColor: '#fff'
     }
 })
 const BookingForm = ({
+
     dbname ='',
     dbaddress = '',
     dbconcerns = '',
     dbdob ='',
-    editable='false'
+    editable=false
+
 }) => {
-    
   const [text, setText] = React.useState('');
   const [name, setName] = React.useState('');
   const [address, setAddress] = React.useState('');
@@ -30,19 +32,21 @@ const BookingForm = ({
   const [others, setOthers] = React.useState('');
 //   const {inputDate, setInputDate } = React.useState < Date | undefined>(undefined);
   const [inputDate, setInputDate ] = React.useState('');
+  console.log(info.concern)
 
-//   useEffect(()=>{
-//         const getting =async()=>{
-//         const docRef = doc(db, "patientuser",user);
-//         const docSnap = await getDoc(docRef);
-//         setInfo(docSnap.data())
-//         console.log(docSnap.data())
-//       }
-//       getting()
-//   },[])
+  useEffect(()=>{
+       setText(info.fname)
+       setName(info.lname)
+       setAddress(info.add)
+       setConcerns(info.concern)
+      }
+  ,[])
+
+const Cont = styled.View`
 
 
-  return <>
+`
+  return <Cont>
     <TextInput
         style={styles.inputbox}
         underlineColor="#505050"
@@ -50,20 +54,21 @@ const BookingForm = ({
         type="flat"
         label="Name"
         textContentType='name'
-        value={dbname}
+        value={name}
         editable={editable}
-        onChangeText={(e) => setName(dbname)}
+        onChangeText={name => setName(name)}
     ></TextInput>
 
     <DatePickerInput
         locale="en"
         label="Date of Birth"
-        value={dbdob}
-        onChange={dbdob => setInputDate(dbdob)}
+        value={info.bd}
+        onChange={(val) => setInputDate(info.bd)}
         inputMode="start"
         mode="flat"
         style={styles.inputbox}
         editable={editable}
+
     ></DatePickerInput> 
 {/* 
 <TextInput
@@ -96,11 +101,13 @@ const BookingForm = ({
         autoCapitalize='sentences'
         type="flat"
         label="Concerns"
-        value={concerns}
+        value={info.concern}
         editable={editable}
-        onChangeText={concerns => setConcerns(concerns)}
+        onChangeText= {(val) => {
+            setInfo({concern:val});
+          }}
     ></TextInput>
-    </>
+    </Cont>
 
 };
 

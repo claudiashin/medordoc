@@ -110,7 +110,7 @@ const TitleCont = styled.div`
   margin-top: 25px;
 `;
 const Title = styled.p`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
 `;
 const ListCont = styled.div`
@@ -228,7 +228,7 @@ export default function Home({}) {
           <Column>
             <ContPatientList>
               <TitleCont>
-                <Title>{date.toDateString()}</Title>
+                <Title>Bookings for: {date.toDateString()}</Title>
               </TitleCont>
               <PatientBooking uid={uid} date={date} />
             </ContPatientList>

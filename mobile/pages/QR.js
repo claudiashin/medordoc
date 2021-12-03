@@ -22,7 +22,7 @@ const Cont = styled.View`
 
 const Wave = styled.Image`
   width: 100%;
-  height: 30%;
+  height: 10%;
   position: absolute;
 `;
 

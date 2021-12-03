@@ -22,6 +22,7 @@ const Title = styled.Text`
 const Header = ({
     title = "Create an Account",
     subtitle = "Personal Information",
+    fontFamily ='Nunito_700Bold',
     fontWeight = "bold",
     fontSize = 24,
     lineHeight = 30,
@@ -39,7 +40,8 @@ const Header = ({
 
     return <HeaderCont>
        <Title 
-        style={{fontFamily: 'Nunito_700Bold', fontSize: 25}}
+    //    style={{fontFamily: 'Nunito_700Bold', fontSize: 16}}
+       fontFamily ={fontFamily}
        fWeight={fontWeight} 
        fSize={fontSize} 
        lHeight={lineHeight}
