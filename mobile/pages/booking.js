@@ -112,14 +112,7 @@ const booking = ({ route, navigation, getting }) => {
             {/* <Btn title={'Confirm'} onPress ={() => navigation.navigate('qrconfirm')} />  */}
           </View>
         </DropDownCont>
-        {/* 
-                <ButtonCont>
-                    <Btn
-                        title={'Confirm'}
-                        fSize={18}
-                        onPress={() => navigation.navigate('qrconfirm')}
-                        />
-                   </ButtonCont>   */}
+
       </ScrollView>
 
       <NavBarCont>
