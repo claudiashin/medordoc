@@ -217,7 +217,7 @@ export default function Home() {
         <MainInfoCont>
           <HeaderTitle title="Increase your clinic's patient base" />
           <ContOneText>
-            Try MedorDoc to enhance your clinic's web presence and broaden your
+            Try MedOrDoc to enhance your clinic's web presence and broaden your
             patient reach. Let MedOrDoc assist in expanding your practice and
             refine the patient experience. Start by listing your clinic today.
           </ContOneText>
@@ -257,7 +257,7 @@ export default function Home() {
         <MainInfoCont>
           <HeaderTitle title="What is MedOrDoc?" />
           <ContTwoText>
-            MedorDoc is an online platform that connects patients with doctors
+            MedOrDoc is an online platform that connects patients with doctors
             and serves to provide access to pateint care in the Lower Mainland.
             Patients will have the ability to book appointments at your walk-in
             clinic and smoothen the process for both parties.

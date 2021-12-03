@@ -126,7 +126,7 @@ export default function docprofile({ navigation, route }) {
           <Header
             // syle={{fontSize:10}}
             title="Would you like to request this doctor?"
-          fontSize={18}
+          fontSize={20}
           />
         </HdCont>
         <ButCont>

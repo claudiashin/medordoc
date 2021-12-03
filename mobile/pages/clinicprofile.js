@@ -158,10 +158,10 @@ const [path, setPath] = useState()
                         fontcolor = '#226BAF'
                         address="Address: "
                         phone="Phone: "
-                        language="Language: "
+                        language="Language(s): "
                         open="Open: "
                         close="Close: "
-                        waittime = "Waittime: "
+                        waittime = "Wait Time: "
                     />
                 </CardCont>
                 

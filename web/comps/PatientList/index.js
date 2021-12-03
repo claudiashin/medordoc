@@ -44,6 +44,7 @@ const ListItem = styled.div`
   margin: 8px;
   padding: 0 20px 0 20px;
   border-radius: 5px;
+  overflow: scroll;
 `;
 const List = styled.p``;
 
