@@ -54,10 +54,10 @@ const Cont = styled.View`
         type="flat"
         label="Name"
         textContentType='name'
-        value={name}
+        value={dbname}
         editable={editable}
-        onChangeText= {(name) => {
-        setName(name);
+        onChangeText= {(dbname) => {
+        setName(dbname);
           }}
     ></TextInput>
  
@@ -70,7 +70,6 @@ const Cont = styled.View`
         mode="flat"
         style={{
           width: 250
-
         }}
         editable={editable}
    
@@ -95,9 +94,9 @@ const Cont = styled.View`
         textContentType="fullStreetAddress"
         type="flat"
         label="Address"
-        value={address}
+        value={dbaddress}
         editable={editable}
-        onChangeText={address => setAddress(address)}
+        onChangeText={dbaddress => setAddress(dbaddress)}
     ></TextInput>
     <TextInput
         style={styles.inputbox}
@@ -106,10 +105,10 @@ const Cont = styled.View`
         autoCapitalize='sentences'
         type="flat"
         label="Concerns"
-        value={concerns}
+        value={dbconcerns}
         editable={editable}
-        onChangeText= {(concerns) => {
-        setConcerns(concerns);
+        onChangeText= {(dbconcerns) => {
+        setConcerns(dbconcerns);
           }}
     ></TextInput>
     </Cont>

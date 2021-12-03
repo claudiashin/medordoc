@@ -110,12 +110,7 @@ const login = ({route,navigation})=>{
         console.log ('uploaded');
     }
 
-    const file = e.target.files[0];
-    const storage = getStorage();
-    const storageRef = ref(storage, "test.jpg");
-    const snapshot = await uploadBytes(storageRef, file);
-    console.log("uploaded");
-  };
+  
 
   const CreateUser = async (em, ps) => {
     const auth = getAuth();
@@ -150,7 +145,7 @@ const login = ({route,navigation})=>{
       <NavBar></NavBar>
     </MainCont>
   );
-
+}
 
 const styles = StyleSheet.create({
   container: {

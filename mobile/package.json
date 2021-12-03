@@ -52,7 +52,8 @@
     "react-native-web": "0.17.1",
     "rn-qr-generator": "^1.2.0",
     "styled-components": "^5.3.3",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "expo-file-system": "~13.0.3"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",

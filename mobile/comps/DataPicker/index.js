@@ -173,12 +173,13 @@ export default function Datepick(
               mode={mode}
               is24Hour={true}
               onChange={onChange}
+
             />
           )}
         </View>
 
-        {/* <View style={styles.bookinfo}>
-        </View> */}
+        <View style={styles.bookinfo}>
+        </View>
 
         <View
           style={{

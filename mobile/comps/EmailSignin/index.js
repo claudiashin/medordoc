@@ -124,7 +124,7 @@ export default function EmailSignin({
                 onSignin(em, ps);
                 if (em && ps !== " ") {
                   {
-                    navigation.navigate("home", { clinicUID: uid });
+                    navigation.navigate("booking", { clinicUID: uid });
                   }
                 }
               }

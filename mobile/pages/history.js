@@ -8,6 +8,14 @@ import InfoCardThree from '../comps/InfoCardThree';
 import { EdgeInsetsPropType } from "react-native";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {db} from '../utils/store'
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  Button,
+} from "react-native";
 import { getDocs, collection, query, where, deleteDoc, doc, getDoc } from "firebase/firestore";
 
 
@@ -69,7 +77,14 @@ const History = () => {
       <MainCont>
         
         <AvatarCont>
-          <HeroAvatar visible={"none"} imagesrc="https://placekitten.com/3000/2000" herowidth={160} heroheight={160}></HeroAvatar>
+
+        <View style={{ backgroundColor: "white", borderRadius: "100%" }}>
+              <Image
+                source={require("../assets/man.png")}
+                style={{ width: 120, height: 120, margin: 10 }}
+              />
+       </View>
+    
           <Header fontSize={18} fontWeight={"normal"} title={userName} />
         </AvatarCont>
 
