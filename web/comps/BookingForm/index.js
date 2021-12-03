@@ -31,30 +31,30 @@ const BookingForm = () => {
                         <DarkerDisabledTextField
                             id="standard-read-only-input"
                             label="Name"
-                            defaultValue="Patient Name"
+                            defaultValue="Iori Takeshita"
                             variant="standard"
-                            disabled={true}
+                            readonly={true}
                         />
                         <TextField
                             id="standard-read-only-input"
-                            label="Confirmation Code"
-                            defaultValue="ABCDEF1234"
+                            label="Gender"
+                            defaultValue="Male"
                             variant="standard"
-                            disabled={true}
+                            readonly={true}
                         />
                         <TextField
                             id="standard-read-only-input"
                             label="Booking Date"
-                            defaultValue="November 1st"
+                            defaultValue="December 3, 2021"
                             variant="standard"
-                            disabled={true}
+                            readonly={true}
                         />
                         <TextField
                             id="standard-read-only-input"
                             label="Booking Time"
-                            defaultValue="9:00 AM"
+                            defaultValue="18:30"
                             variant="standard"
-                            disabled={true}
+                            readonly={true}
                         />
                     </div>
                 </Box>
