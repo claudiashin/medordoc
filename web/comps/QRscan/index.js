@@ -38,7 +38,7 @@ function SimpleDialog(props) {
       if (data) {
       setScanResult(data);
       // window.location.href = `/checkIn?ccode=${scanResult.cornit}`;
-      window.location.href = `/booking`;
+      window.location.href = `/checkin`;
       }
     };
 

@@ -24,7 +24,7 @@ const home = ({ navigation }) => {
 
   })
 
-  if (loading === true && !fontsLoaded) {
+  if (loading === true) {
 
     return (
       <View style={styles.container}>

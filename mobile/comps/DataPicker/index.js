@@ -90,6 +90,7 @@ export default function Datepick(
   const booking = async () => {
     getting();
   
+    
     await addDoc(collection(db, "appointment"), {
       userid: user,
       clinicId: clinicID,
@@ -116,8 +117,8 @@ export default function Datepick(
       (tempDate.getMonth() + 1) +
       "/" +
       tempDate.getFullYear();
-    // let ftime = tempDate.getHours() + ":" + tempDate.getUTCMinutes();
-    let ftime = tempDate.toTimeString();
+    let ftime = tempDate.getHours() + ":" + tempDate.getMinutes();
+    // let ftime = tempDate.toTimeString();
     let day = tempDate.getDate();
     let month = tempDate.getMonth() + 1;
     let year = tempDate.getFullYear();

@@ -63,8 +63,8 @@ const BackCont = styled.View`
   display: flex;
   position: absolute;
   z-index: 999;
-  right: 410px;
-  top: 5px;
+  left: -25px;
+  top: -15px;
 `
 
 export default function findclinic({navigation}){

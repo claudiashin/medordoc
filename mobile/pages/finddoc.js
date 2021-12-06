@@ -24,7 +24,7 @@ const Cont = styled.View`
   `
 const Wave = styled.Image`
   width: 100%;
-  height: 40%;
+  height: 50%;
   position: absolute;
   top: 0;
   `;
@@ -70,6 +70,8 @@ const ScrollView = styled.ScrollView`
 const BackCont = styled.View`
   display: flex;
   position: absolute;
+  left: 10px;
+  top: -20px;
   z-index: 999;
 `
 

@@ -75,7 +75,18 @@ const QR = ({ navigation }) => {
         <Wave source={require("../assets/backgroundmobile.png")} />
         <MainCont>
         <HeaderCont>
-          <HeroAvatar visible={"none"} heroheight="180" herowidth="180" />
+          {/* <HeroAvatar visible={"none"} heroheight="180" herowidth="180" /> */}
+          <View
+            style={{backgroundColor: '#faf7f3',
+            borderRadius: '100%',
+
+          }}
+          >
+          <Image 
+            source={require('../assets/man.png')}
+            style={{width: 120, height: 120, margin: 10}}
+          />
+          </View>
           <Header title={userName} fontSize="22" style={{ paddingTop: 20 }} />
           <Header title="Scan Your QR Code" />
         </HeaderCont>

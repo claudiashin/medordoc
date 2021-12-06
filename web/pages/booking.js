@@ -88,6 +88,7 @@ const Column = styled.div`
 const ListCon = styled.div`
   display: flex;
   flex-direction: column;
+  overflow: scroll;
 `;
 
 const ContPatientList = styled.div`
